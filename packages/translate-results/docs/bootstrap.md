@@ -1,21 +1,20 @@
-# Suitest test execution results translation
+# Test bootstrap
 
-This document contains all results that Suitest may return for the test execution and translations for those errors.
+Messages related to bootstrap phase of the test execution.
 
-Error translations support small subset of Markdown text formatting:
+## Test bootstrap status
 
-* Bold text `**bold**`
-* Code block `` `code` ``
-* Hyperlinks `[text](url){attribute: 'value'}`
-* Images `![caption](src){attribute: 'value'}`
-
-## Failure to start the execution
-
-This errors are received in case it was not possible to start the test execution. Error typ is defined by `notStartedReason`.
+This statuses are received as part of the test result in case it was not possible to start the test execution by the time status is requested.
+Reason is defined by `reason` field of `notStartedReason` message:
 
 ```typescript
-// TODO put example of JSON received from server
+type NotRunningMessage = {
+    type: 'notRunningReason',
+    reason: NotRunningReasons,
+};
 ```
+
+Where `NotRunningReasons` are listed below.
 
 ### androidPlatformError
 
@@ -87,7 +86,7 @@ Error description: `Your subscription has expired, to continue using Suitest ple
 
 Error title: `Cannot continue: you\'ve used up all of your testing minutes`
 
-Error description: `You testing a lot! How about [getting a bigger subscription](https://the.suite.st/preferences/billing)? Or, if you would like to purchase more testing minutes for the current billing cycle, please contact sales@suite.st. Your testing minutes will renew`
+Error description: `You testing a lot! How about [getting a bigger subscription](https://the.suite.st/preferences/billing)? Or, if you would like to purchase more testing minutes for the current billing cycle, please contact [sales@suite.st](mailto:sales@suite.st). Your testing minutes will renew`
 
 ### notDefinedPlatform
 
@@ -130,3 +129,56 @@ Error description: `Execution will start as soon as other tests queued on this d
 Error title: `Cannot continue: Xbox driver has failed`
 
 Error description: `Xbox driver has misbehaved. Please verify that the device is online and it's current IP address and developer credentials are correctly specified in Suitest. If nothing helps try rebooting the device and restarting SuitestDrive`
+
+## Test bootstrap progress
+
+During test bootstrap phase in interactive mode, Suitest server would notify about the progress.
+This way user may be made aware of the steps that are being made to start the execution.
+
+```typescript
+type ProgressMessage = {
+  type: 'progress',
+  code: string,
+  status: string,
+}
+```
+
+Messages with `status` define current step in the bootstrap process.
+
+Messages with `code` define the final step in bootstrap and exactly correspond to `reason`s of `notRunningReason` message.
+
+## openingApp
+
+Title: `Trying to open app...`
+
+## closingApp
+
+Title: `Trying to close app...`
+
+## bootingDevice
+
+Title: `Running the boot sequence defined for the device...`
+
+## needManual
+
+Title: `Paused. For this platform, install and open the application manually.`
+
+## recoveringID
+
+Title: `Trying to recover Suitest device ID...`
+
+## waitingForConnectionFromBootstrap
+
+Title: `Waiting for connection from the Suitest app on device...`
+
+## waitingForConnectionFromIL
+
+Title: `Waiting for connection from the instrumentation library...`
+
+## unistallingApp
+
+Title: `Uninstalling app...`
+
+## uploadingAndInstallingApp
+
+Title: `Uploading and installing app...`
