@@ -10,11 +10,11 @@ Reason is defined by `reason` field of `notStartedReason` message:
 ```typescript
 type NotRunningMessage = {
     type: 'notRunningReason',
-    reason: NotRunningReasons,
+    reason: NotRunningReason,
 };
 ```
 
-Where `NotRunningReasons` are listed below.
+Where `NotRunningReason` enum values are listed below.
 
 ### androidPlatformError
 
@@ -138,47 +138,48 @@ This way user may be made aware of the steps that are being made to start the ex
 ```typescript
 type ProgressMessage = {
   type: 'progress',
-  code: string,
-  status: string,
+  code: NotRunningReason,
+  status: ProgressMessageStatus,
 }
 ```
 
 Messages with `status` define current step in the bootstrap process.
 
-Messages with `code` define the final step in bootstrap and exactly correspond to `reason`s of `notRunningReason` message.
+Messages with `code` define current step in the bootstrap process in case further execution is blocked.
+Code exactly correspond to `reason` of `notRunningReason` message, see above for translations.
 
-## openingApp
+### openingApp
 
 Title: `Trying to open app...`
 
-## closingApp
+### closingApp
 
 Title: `Trying to close app...`
 
-## bootingDevice
+### bootingDevice
 
 Title: `Running the boot sequence defined for the device...`
 
-## needManual
+### needManual
 
 Title: `Paused. For this platform, install and open the application manually.`
 
-## recoveringID
+### recoveringID
 
 Title: `Trying to recover Suitest device ID...`
 
-## waitingForConnectionFromBootstrap
+### waitingForConnectionFromBootstrap
 
 Title: `Waiting for connection from the Suitest app on device...`
 
-## waitingForConnectionFromIL
+### waitingForConnectionFromIL
 
 Title: `Waiting for connection from the instrumentation library...`
 
-## unistallingApp
+### unistallingApp
 
 Title: `Uninstalling app...`
 
-## uploadingAndInstallingApp
+### uploadingAndInstallingApp
 
 Title: `Uploading and installing app...`
