@@ -26,7 +26,7 @@ Description: `Android driver has misbehaved. Please verify that the device is on
 
 Title: `Cannot continue: Apple TV driver has failed`
 
-Description: `TODO`
+Description: `Apple driver has misbehaved. Please verify that the device is paired with Mac that is running SuitestDrive. Make sure that application build is installable on that device. If nothing helps try rebooting the device and restarting SuitestDrive`
 
 ### blasterError
 
@@ -104,7 +104,7 @@ Description: `TODO`
 
 Title: `Cannot continue: Roku driver has failed`
 
-Description: `TODO`
+Description: `Roku driver has misbehaved. Please verify that the device is online and it's current IP address and developer credentials are correctly specified in Suitest. Then double check if the Development mode is enabled on the device and your channel/application is valid. If the local IP of the device changes, make sure to set up a static IP for the device`
 
 ### runningBootSequence
 
