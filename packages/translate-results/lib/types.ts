@@ -1,6 +1,5 @@
-// input - TODO
 export type LineDefinition = TestLineDefinitionType;
-// COPY from TestResultLineType
+// COPIED from TestResultLineType
 export type LineResult = {
 	lineId: string,
 	result: 'success' | 'warning' | 'fail' | 'fatal' | 'exit',
@@ -41,17 +40,6 @@ export type Options = {
 	config: AppConfiguration,
 };
 
-export enum StartupError {
-	blasterError = 'blasterError', bootstrappedPlatformError = 'bootstrappedPlatformError', testQueued = 'testQueued',
-	noAvailableAutomatedMinutes = 'noAvailableAutomatedMinutes', noActivePlan = 'noActivePlan',
-	candyBoxOffline = 'candyBoxOffline', suitestDriveOffline = 'suitestDriveOffline',
-	runningBootSequence = 'runningBootSequence', deviceInUse = 'deviceInUse', deviceDisabled = 'deviceDisabled',
-	deviceDeleted = 'deviceDeleted', internalError = 'internalError', notDefinedPlatform = 'notDefinedPlatform',
-	lgWebosPlatformError = 'lgWebosPlatformError', xboxPlatformError = 'xboxPlatformError',
-	androidPlatformError = 'androidPlatformError'
-}
-
-// output
 // A string with subset of Markdown formatting
 export type FormattedString = string;
 export type Comparator = PropertyStringComparatorsType
@@ -67,12 +55,15 @@ export type LineResultDetail = {
 	expectedDefault: boolean, // For Test Editor tests defines if expected value is taken from element repo or was overridden
 	comparator: Comparator, // e.g. '=' or 'does not contain'
 };
+
+export type Translation = {
+	title: FormattedString,
+	description?: FormattedString,
+};
 // A structure with line result translation
 export type LineResultTranslated = {
 	title: FormattedString,
-	description: FormattedString,
-} | {
-	title: FormattedString,
+	description?: FormattedString,
 	details: LineResultDetail[],
 };
 
@@ -102,8 +93,7 @@ type TestLineDefinitionType = TestLineButtonType
 	| TestLineSendTextType
 	| TestLineSetTextType
 	| TestLineClickType
-	| TestLineMoveToType
-	;
+	| TestLineMoveToType;
 
 type TestLineType = {
 	lineId: string,
@@ -433,6 +423,7 @@ type PropertyColorComparatorsType = '=' | '!=' | '+-';
 type PropertySpecificComparatorsType = '=' | '!=';
 type PropertyEqualComparatorType = '=';
 
+// TODO improve properties definitions by creating type aliases for each prop
 type AllElementProperties = AssertElementNumericPropertyType['property']
 	| AssertElementStringPropertyType['property']
 	| AssertElementBooleanPropertyType['property']
