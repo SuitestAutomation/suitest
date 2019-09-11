@@ -5,7 +5,7 @@ import {StartupError, translateStartupError} from './startup';
 /**
  * @description Get humanized progress status explanation result
  */
-export function translateProgress(message: ProgressMessage): Translation {
+export function translateProgress(message: ProgressMessage): Translation | undefined {
 	if ('code' in message) {
 		return translateStartupError(message.code);
 	}
@@ -20,7 +20,7 @@ export function translateProgress(message: ProgressMessage): Translation {
 		case 'waitingForConnectionFromIL': return {title: t['progress.status.waitingForConnectionFromIL']()};
 		case 'unistallingApp': return {title: t['progress.status.unistallingApp']()};
 		case 'uploadingAndInstallingApp': return {title: t['progress.status.uploadingAndInstallingApp']()};
-		case 'nothing': break;
+		case 'nothing': return {title: ''};
 		// actionFailed should comes with code, so it will proceeded by translateStartupError above
 		case 'actionFailed': break;
 		default:
@@ -28,7 +28,7 @@ export function translateProgress(message: ProgressMessage): Translation {
 			console.warn(_status, 'progression status not handled');
 	}
 
-	return {title: ''};
+	return undefined;
 }
 
 export const PROGRESS_STATUS = Object.freeze({

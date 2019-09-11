@@ -1,10 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Interactive progress explanation. Translation result for "actionFailed" status 1`] = `
-Object {
-  "title": "",
-}
-`;
+exports[`Interactive progress explanation. Translation result for "actionFailed" status 1`] = `undefined`;
 
 exports[`Interactive progress explanation. Translation result for "bootingDevice" status 1`] = `
 Object {

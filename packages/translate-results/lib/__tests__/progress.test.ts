@@ -20,10 +20,8 @@ describe('Interactive progress explanation.', () => {
 	});
 
 	it('Translation result for unknown statuses/codes', () => {
-		const res = {title: ''};
-
-		expect(translateProgress({status: 'unknownStatus'} as any)).toStrictEqual(res);
-		expect(translateProgress({status: 'unknownStatus', code: 'unknownCode'} as any)).toStrictEqual(res);
-		expect(translateProgress({code: 'unknownCode'} as any)).toStrictEqual(res);
+		expect(translateProgress({status: 'unknownStatus'} as any)).toBe(undefined);
+		expect(translateProgress({status: 'unknownStatus', code: 'unknownCode'} as any)).toBe(undefined);
+		expect(translateProgress({code: 'unknownCode'} as any)).toBe(undefined);
 	});
 });

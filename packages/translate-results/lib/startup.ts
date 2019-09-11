@@ -4,7 +4,7 @@ import t from './texts';
 /**
  * Translate the reason for test not being executed
  */
-export function translateStartupError(code: StartupError): Translation {
+export function translateStartupError(code: StartupError): Translation | undefined {
 	switch (code) {
 		case STARTUP_ERROR.blasterError:
 			return {
@@ -108,7 +108,7 @@ export function translateStartupError(code: StartupError): Translation {
 
 	}
 
-	return {title: ''};
+	return undefined;
 }
 
 export const STARTUP_ERROR = Object.freeze({

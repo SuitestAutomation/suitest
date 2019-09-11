@@ -1,10 +1,8 @@
 import {translateStartupError, STARTUP_ERROR} from '../startup';
 
 describe('Testing startup errors translation.', () => {
-	it(`${translateStartupError.name} should return "empty" object for unknown code`, () => {
-		expect(translateStartupError('unknownCode' as any)).toStrictEqual({
-			title: '',
-		});
+	it(`${translateStartupError.name} should return undefined for unknown code`, () => {
+		expect(translateStartupError('unknownCode' as any)).toBe(undefined);
 	});
 
 	it(`${translateStartupError.name} should return object with translated title and description`, () => {
