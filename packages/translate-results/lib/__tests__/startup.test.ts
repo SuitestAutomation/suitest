@@ -1,4 +1,4 @@
-import {translateStartupError} from '../startup';
+import {translateStartupError, STARTUP_ERROR} from '../startup';
 
 describe('Testing startup errors translation.', () => {
 	it(`${translateStartupError.name} should return "empty" object for unknown code`, () => {
@@ -12,5 +12,13 @@ describe('Testing startup errors translation.', () => {
 			title: 'Cannot continue: Your subscription has expired',
 			description: 'Your subscription has expired, to continue using Suitest please [renew your subscription](https://the.suite.st/preferences/billing)',
 		});
+	});
+
+	describe('Startup error translations for', () => {
+		for (const code of Object.values(STARTUP_ERROR)) {
+			it(`"${code}" code`, () => {
+				expect(translateStartupError(code)).toMatchSnapshot();
+			});
+		}
 	});
 });
