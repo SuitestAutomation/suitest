@@ -102,10 +102,10 @@ type TestLineType = {
 	screenshot: boolean, // screenshot will be made during line execution
 };
 
-type TestLineTypes =
-	'assert'|'button'|'runSnippet'|
-	'wait'|'pollUrl'|'sleep'|'clearAppData'|
-	'execCmd'|'execBRSCmd'|'openApp'|'openUrl'|'comment' |
+export type TestLineTypes =
+	'assert' | 'button' | 'runSnippet' |
+	'wait' | 'pollUrl' | 'sleep' | 'clearAppData' |
+	'execCmd' | 'execBRSCmd' | 'openApp' | 'openUrl' | 'comment' |
 	'browserCommand' | 'sendText' | 'setText' | 'click' | 'moveTo';
 
 type BrowserCommandTypes =
@@ -273,7 +273,7 @@ type SetTextTargetType = {
 	elementId?: string,
 };
 
-type AssertConditionType = AssertConditionElementType
+export type AssertConditionType = AssertConditionElementType
 	| AssertConditionVideoType
 	| AssertConditionLocationType
 	| AssertConditionCookieType
@@ -282,7 +282,7 @@ type AssertConditionType = AssertConditionElementType
 	| AssertConditionNetworkType
 	| AssertConditionApplicationType
 	| AssertConditionVideoType
-	;
+	| AssertConditionPlayStationVideoType;
 
 type StringComparatorsType = '=' | '!=' | '~' | '!~' | '^' | '$';
 type MatchComparatorsType = 'matches';
@@ -378,17 +378,17 @@ export type AssertConditionElementType = {
 		elementId: string,
 	},
 	expression: Array<
-		AssertElementNumericPropertyType
-		| AssertElementStringPropertyType
-		| AssertElementBooleanPropertyType
-		| AssertElementColorPropertyType
-		| AssertElementSpecificPropertyType
-		| AssertBorderStylePropertyType
-		| AssertVisibilityPropertyType
-		| AssertContentModePropertyType
-		| AssertStatePropertyType
-		| AssertTextAlignmentPropertyType
-		| AssertImageLoadStatePropertyType
+		NumericProperties
+		| StringProperties
+		| BooleanProperties
+		| ColorProperties
+		| ImageHashProperty
+		| BorderStyleProperty
+		| VisibilityProperty
+		| ContentModeProperty
+		| StateProperty
+		| TextAlignmentProperty
+		| ImageLoadStateProperty
 		>,
 	type: 'has' | 'exists' | '!exists' | 'matches' | 'matchesBRS',
 	val?: string
@@ -401,20 +401,36 @@ export type AssertConditionVideoType = {
 		flag?: number
 	},
 	expression: Array<
-		AssertElementNumericPropertyType
-		| AssertElementStringPropertyType
-		| AssertElementBooleanPropertyType
-		| AssertElementColorPropertyType
-		| AssertElementSpecificPropertyType
-		| AssertVideoStatePropertyType
-		| AssertBorderStylePropertyType
-		| AssertVisibilityPropertyType
-		| AssertContentModePropertyType
-		| AssertStatePropertyType
-		| AssertTextAlignmentPropertyType
+		NumericProperties
+		| StringProperties
+		| BooleanProperties
+		| ColorProperties
+		| ImageHashProperty
+		| VideoStateProperty
+		| BorderStyleProperty
+		| VisibilityProperty
+		| ContentModeProperty
+		| StateProperty
+		| TextAlignmentProperty
 		>,
 	type: 'has' | 'exists' | '!exists' | 'matches' | 'matchesBRS',
 	val?: string
+};
+
+type AssertConditionPlayStationVideoType = PlayStationHasCondition | PlayStationHadErrorCondition;
+type PlayStationHasCondition = {
+	subject: {
+		type: 'psVideo',
+	},
+	expression: Array<VideoStateProperty | VideoPosProperty | VideoLengthProperty | VideoUrlProperty>,
+	type: 'has',
+};
+type PlayStationHadErrorCondition = {
+	subject: {
+		type: 'psVideo',
+	},
+	type: 'hadNoError',
+	searchStrategy: 'all' | 'currentUrl'
 };
 
 type PropertyStringComparatorsType = '=' | '!=' | '~' | '!~' | '^' | '!^' | '$' | '!$';
@@ -423,148 +439,162 @@ type PropertyColorComparatorsType = '=' | '!=' | '+-';
 type PropertySpecificComparatorsType = '=' | '!=';
 type PropertyEqualComparatorType = '=';
 
-// TODO improve properties definitions by creating type aliases for each prop
-type AllElementProperties = AssertElementNumericPropertyType['property']
-	| AssertElementStringPropertyType['property']
-	| AssertElementBooleanPropertyType['property']
-	| AssertElementColorPropertyType['property']
-	| AssertElementSpecificPropertyType['property']
-	| AssertVideoStatePropertyType['property']
-	| AssertBorderStylePropertyType['property']
-	| AssertVisibilityPropertyType['property']
-	| AssertContentModePropertyType['property']
-	| AssertStatePropertyType['property']
-	| AssertTextAlignmentPropertyType['property']
-	| AssertImageLoadStatePropertyType['property'];
+export type AllElementProperties = NumericProperties['property']
+	| StringProperties['property']
+	| BooleanProperties['property']
+	| ColorProperties['property']
+	| ImageHashProperty['property']
+	| VideoStateProperty['property']
+	| BorderStyleProperty['property']
+	| VisibilityProperty['property']
+	| ContentModeProperty['property']
+	| StateProperty['property']
+	| TextAlignmentProperty['property']
+	| ImageLoadStateProperty['property'];
 
-type AssertElementNumericPropertyType = {
-	property: 'zIndex' | 'opacity' | 'borderWidth' | 'top' | 'left' | 'width' | 'height' | 'videoPos'
-		| 'videoLength' | 'itemFocused' | 'margin' | 'padding' | 'fontSize' | 'fontWeight' | 'focusMargin'
-		| 'focusPrimaryWidth' | 'focusSecondaryWidth' | 'textSize' | 'scaleX' | 'scaleY' | 'translationX'
-		| 'translationY' | 'pivotX' | 'pivotY' | 'tagInt' | 'numberOfSegments' | 'leftAbsolute' | 'topAbsolute',
-	type: PropertyNumericComparatorsType,
-	name?: string,
+type BasePropertyType<TProp, TType, TVal = string> = {
+	property: TProp,
+	type: TType,
+	val?: TVal,
 	uid: string,
 	inherited?: boolean,
-	val: string | number,
 };
 
-type AssertElementStringPropertyType = {
-	property: 'text' | 'image' | 'id' | 'class' | 'href' | 'videoUrl' | 'fontFamily' | 'name'
-		| 'automationName' | 'automationId' | 'alpha' | 'tag' | 'contentDescription' | 'hint' | 'packageName'
-		| 'accessibilityIdentifier' | 'fontName' | 'fontURI' | 'placeholder' | 'proposalURL' | 'url' | 'value',
-	type: PropertyStringComparatorsType,
-	name?: string,
-	uid: string,
-	inherited?: boolean,
-	val: string | number,
-};
-type AssertElementBooleanPropertyType = {
-	property: 'isCompletelyDisplayed' | 'isEnabled' | 'hasFocus' | 'isClickable' | 'isChecked' | 'isSelected'
-		| 'isFocusable' | 'isTouchable' | 'hasMetaData' | 'hasNavMarkers' | 'isOpaque' | 'isFocused',
-	type: PropertyEqualComparatorType,
-	name?: string,
-	uid: string,
-	inherited?: boolean,
-	val: string | number,
-};
+type ZIndexProperty = BasePropertyType<'zIndex', PropertyNumericComparatorsType, number>;
+type OpacityProperty = BasePropertyType<'opacity', PropertyNumericComparatorsType, number>;
+type BorderWidthProperty = BasePropertyType<'borderWidth', PropertyNumericComparatorsType, number>;
+type TopProperty = BasePropertyType<'top', PropertyNumericComparatorsType, number>;
+type LeftProperty = BasePropertyType<'left', PropertyNumericComparatorsType, number>;
+type WidthProperty = BasePropertyType<'width', PropertyNumericComparatorsType, number>;
+type HeightProperty = BasePropertyType<'height', PropertyNumericComparatorsType, number>;
+type VideoPosProperty = BasePropertyType<'videoPos', PropertyNumericComparatorsType, number>;
+type VideoLengthProperty = BasePropertyType<'videoLength', PropertyNumericComparatorsType, number>;
+type ItemFocusedProperty = BasePropertyType<'itemFocused', PropertyNumericComparatorsType, number>;
+type MarginProperty = BasePropertyType<'margin', PropertyNumericComparatorsType, number>;
+type PaddingProperty = BasePropertyType<'padding', PropertyNumericComparatorsType, number>;
+type FontSizeProperty = BasePropertyType<'fontSize', PropertyNumericComparatorsType, number>;
+type FontWeightProperty = BasePropertyType<'fontWeight', PropertyNumericComparatorsType, number>;
+type FocusMarginProperty = BasePropertyType<'focusMargin', PropertyNumericComparatorsType, number>;
+type FocusPrimaryWidthProperty = BasePropertyType<'focusPrimaryWidth', PropertyNumericComparatorsType, number>;
+type FocusSecondaryWidthProperty = BasePropertyType<'focusSecondaryWidth', PropertyNumericComparatorsType, number>;
+type TextSizeProperty = BasePropertyType<'textSize', PropertyNumericComparatorsType, number>;
+type ScaleXProperty = BasePropertyType<'scaleX', PropertyNumericComparatorsType, number>;
+type ScaleYProperty = BasePropertyType<'scaleY', PropertyNumericComparatorsType, number>;
+type TranslationXProperty = BasePropertyType<'translationX', PropertyNumericComparatorsType, number>;
+type TranslationYProperty = BasePropertyType<'translationY', PropertyNumericComparatorsType, number>;
+type PivotXProperty = BasePropertyType<'pivotX', PropertyNumericComparatorsType, number>;
+type PivotYProperty = BasePropertyType<'pivotY', PropertyNumericComparatorsType, number>;
+type TagIntProperty = BasePropertyType<'tagInt', PropertyNumericComparatorsType, number>;
+type NumberOfSegmentsProperty = BasePropertyType<'numberOfSegments', PropertyNumericComparatorsType, number>;
+type LeftAbsoluteProperty = BasePropertyType<'leftAbsolute', PropertyNumericComparatorsType, number>;
+type TopAbsoluteProperty = BasePropertyType<'topAbsolute', PropertyNumericComparatorsType, number>;
 
-type AssertElementColorPropertyType = {
-	property: 'backgroundColor' | 'color' | 'borderColor' | 'focusPrimaryColor' | 'focusSecondaryColor' | 'barTintColor'
-		| 'selectedImageTintColor' | 'tintColor',
-	type: PropertyColorComparatorsType,
-	name?: string,
-	uid: string,
-	inherited?: boolean,
-	val: string | number,
-};
+type NumericProperties  =
+	ZIndexProperty | OpacityProperty | BorderWidthProperty | TopProperty | LeftProperty | WidthProperty | HeightProperty |
+	VideoPosProperty | VideoLengthProperty | ItemFocusedProperty |  MarginProperty| PaddingProperty |  FontSizeProperty |
+	FontWeightProperty | FocusMarginProperty | FocusPrimaryWidthProperty | FocusSecondaryWidthProperty | TextSizeProperty |
+	ScaleXProperty| ScaleYProperty | TranslationXProperty | TranslationYProperty | PivotXProperty | PivotYProperty |
+	TagIntProperty | NumberOfSegmentsProperty | LeftAbsoluteProperty | TopAbsoluteProperty;
 
-type AssertElementSpecificPropertyType = {
-	property: 'imageHash',
-	type: PropertySpecificComparatorsType,
-	name?: string,
-	uid: string,
-	inherited?: boolean,
-	val: string | number,
-};
+type TextProperty = BasePropertyType<'text', PropertyStringComparatorsType, string>;
+type ImageProperty = BasePropertyType<'image', PropertyStringComparatorsType, string>;
+type IdProperty = BasePropertyType<'id', PropertyStringComparatorsType, string>;
+type ClassProperty = BasePropertyType<'class', PropertyStringComparatorsType, string>;
+type HrefProperty = BasePropertyType<'href', PropertyStringComparatorsType, string>;
+type VideoUrlProperty = BasePropertyType<'videoUrl', PropertyStringComparatorsType, string>;
+type FontFamilyProperty = BasePropertyType<'fontFamily', PropertyStringComparatorsType, string>;
+type NameProperty = BasePropertyType<'name', PropertyStringComparatorsType, string>;
+type AutomationNameProperty = BasePropertyType<'automationName', PropertyStringComparatorsType, string>;
+type AutomationIdProperty = BasePropertyType<'automationId', PropertyStringComparatorsType, string>;
+type AlphaProperty = BasePropertyType<'alpha', PropertyStringComparatorsType, string>;
+type TagProperty = BasePropertyType<'tag', PropertyStringComparatorsType, string>;
+type ContentDescriptionProperty = BasePropertyType<'contentDescription', PropertyStringComparatorsType, string>;
+type HintProperty = BasePropertyType<'hint', PropertyStringComparatorsType, string>;
+type PackageNameProperty = BasePropertyType<'packageName', PropertyStringComparatorsType, string>;
+type AccessibilityIdentifierProperty = BasePropertyType<'accessibilityIdentifier', PropertyStringComparatorsType, string>;
+type FontNameProperty = BasePropertyType<'fontName', PropertyStringComparatorsType, string>;
+type FontURIProperty = BasePropertyType<'fontURI', PropertyStringComparatorsType, string>;
+type PlaceholderProperty = BasePropertyType<'placeholder', PropertyStringComparatorsType, string>;
+type ProposalURLProperty = BasePropertyType<'proposalURL', PropertyStringComparatorsType, string>;
+type UrlProperty = BasePropertyType<'url', PropertyStringComparatorsType, string>;
+type ValueProperty = BasePropertyType<'value', PropertyStringComparatorsType, string>;
+
+type StringProperties =
+	TextProperty | ImageProperty | IdProperty | ClassProperty | HrefProperty | VideoUrlProperty | FontFamilyProperty |
+	NameProperty | AutomationNameProperty | AutomationIdProperty | AlphaProperty | TagProperty |
+	ContentDescriptionProperty | HintProperty | PackageNameProperty | AccessibilityIdentifierProperty |
+	FontNameProperty | FontURIProperty | PlaceholderProperty | ProposalURLProperty | UrlProperty | ValueProperty;
+
+type IsCompletelyDisplayedProperty = BasePropertyType<'isCompletelyDisplayed', PropertyEqualComparatorType, boolean>;
+type IsEnabledProperty = BasePropertyType<'isEnabled', PropertyEqualComparatorType, boolean>;
+type HasFocusProperty = BasePropertyType<'hasFocus', PropertyEqualComparatorType, boolean>;
+type IsClickableProperty = BasePropertyType<'isClickable', PropertyEqualComparatorType, boolean>;
+type IsCheckedProperty = BasePropertyType<'isChecked', PropertyEqualComparatorType, boolean>;
+type IsSelectedProperty = BasePropertyType<'isSelected', PropertyEqualComparatorType, boolean>;
+type IsFocusableProperty = BasePropertyType<'isFocusable', PropertyEqualComparatorType, boolean>;
+type IsTouchableProperty = BasePropertyType<'isTouchable', PropertyEqualComparatorType, boolean>;
+type HasMetaDataProperty = BasePropertyType<'hasMetaData', PropertyEqualComparatorType, boolean>;
+type HasNavMarkersProperty = BasePropertyType<'hasNavMarkers', PropertyEqualComparatorType, boolean>;
+type IsOpaqueProperty = BasePropertyType<'isOpaque', PropertyEqualComparatorType, boolean>;
+type IsFocusedProperty = BasePropertyType<'isFocused', PropertyEqualComparatorType, boolean>;
+
+type BooleanProperties =
+	IsCompletelyDisplayedProperty | IsEnabledProperty | HasFocusProperty | IsClickableProperty | IsCheckedProperty |
+	IsSelectedProperty | IsFocusableProperty | IsTouchableProperty | HasMetaDataProperty | HasNavMarkersProperty |
+	IsOpaqueProperty | IsFocusedProperty;
+
+type backgroundColorProperty = BasePropertyType<'backgroundColor', PropertyColorComparatorsType, string>;
+type colorProperty = BasePropertyType<'color', PropertyColorComparatorsType, string>;
+type borderColorProperty = BasePropertyType<'borderColor', PropertyColorComparatorsType, string>;
+type focusPrimaryColorProperty = BasePropertyType<'focusPrimaryColor', PropertyColorComparatorsType, string>;
+type focusSecondaryColorProperty = BasePropertyType<'focusSecondaryColor', PropertyColorComparatorsType, string>;
+type barTintColorProperty = BasePropertyType<'barTintColor', PropertyColorComparatorsType, string>;
+type selectedImageTintColorProperty = BasePropertyType<'selectedImageTintColor', PropertyColorComparatorsType, string>;
+type tintColorProperty = BasePropertyType<'tintColor', PropertyColorComparatorsType, string>;
+
+type ColorProperties =
+	backgroundColorProperty | colorProperty | borderColorProperty | focusPrimaryColorProperty |
+	focusSecondaryColorProperty | barTintColorProperty | selectedImageTintColorProperty | tintColorProperty;
+
+// imageHash property
+type ImageHashProperty = BasePropertyType<'imageHash', PropertySpecificComparatorsType, string>;
 
 // videoState property
+type VideoStateProperty = BasePropertyType<
+	'videoState',
+	PropertySpecificComparatorsType,
+	VideoStatesDefaultType | VideoStatesAndroidType | VideoStatesTvOSType
+>;
 type VideoStatesDefaultType = 'stopped' | 'playing' | 'paused' | 'connecting' | 'buffering' | 'finished' | 'error';
 type VideoStatesAndroidType = 'error' | 'idle' | 'preparing' | 'prepared' | 'playing' | 'paused' | 'playback_completed' | 'unknown';
 type VideoStatesTvOSType = 'finished' | 'paused' | 'reversing' | 'playing' | 'error' | 'buffering' | 'undefined';
-type AssertVideoStatePropertyType = {
-	property: 'videoState',
-	type: PropertySpecificComparatorsType,
-	name?: VideoStatesDefaultType | VideoStatesAndroidType | VideoStatesTvOSType,
-	uid: string,
-	inherited?: boolean,
-	val: string | number,
-};
 
 // borderStyle property
 type BorderStyleTvOSType = 'none' | 'bezel' | 'rectangle' | 'rounded';
-type AssertBorderStylePropertyType = {
-	property: 'borderStyle',
-	type: PropertyEqualComparatorType,
-	name?: BorderStyleTvOSType,
-	uid: string,
-	inherited?: boolean,
-	val: string | number,
-};
+type BorderStyleProperty = BasePropertyType<'borderStyle', PropertyEqualComparatorType, BorderStyleTvOSType>;
 
 // visibility property
+type VisibilityProperty = BasePropertyType<
+	'visibility',
+	PropertyEqualComparatorType,
+	VisibilityXboxType | VisibilityAndroidType | VisibilityRokuType
+>;
 type VisibilityXboxType = 'visible' | 'collapsed';
 type VisibilityAndroidType = 'visible' | 'invisible' | 'collapsed';
 type VisibilityRokuType = 'visible' | 'invisible';
-type AssertVisibilityPropertyType = {
-	property: 'visibility',
-	type: PropertyEqualComparatorType,
-	name?: VisibilityXboxType | VisibilityAndroidType | VisibilityRokuType,
-	uid: string,
-	inherited?: boolean,
-	val: string | number,
-};
 
 // contentMode property
+type ContentModeProperty = BasePropertyType<'contentMode', PropertyEqualComparatorType, ContentModesType>;
 type ContentModesType = 'scaleToFill' | 'scaleAspectFit' | 'scaleAspectFill' | 'redraw' | 'center' | 'top' | 'bottom'
 	| 'bottomLeft' | 'bottomRight' | 'left' | 'right' | 'topLeft' | 'topRight';
-type AssertContentModePropertyType = {
-	property: 'contentMode',
-	type: PropertyEqualComparatorType,
-	name?: ContentModesType,
-	uid: string,
-	inherited?: boolean,
-	val: string | number,
-};
 
 // element state property
+type StateProperty = BasePropertyType<'state', PropertyEqualComparatorType, ElementStatesTvOSType>;
 type ElementStatesTvOSType = 'selected' | 'highlighted' | 'disabled' | 'normal' | 'application' | 'focused' | 'reserved';
-type AssertStatePropertyType = {
-	property: 'state',
-	type: PropertyEqualComparatorType,
-	name?: ElementStatesTvOSType,
-	uid: string,
-	inherited?: boolean,
-	val: string | number,
-};
 
 // textAlignment property
+type TextAlignmentProperty = BasePropertyType<'textAlignment', PropertyEqualComparatorType, TextAlignmentTvOSType>;
 type TextAlignmentTvOSType = 'center' | 'justified' | 'left' | 'right' | 'natural';
-type AssertTextAlignmentPropertyType = {
-	property: 'textAlignment',
-	type: PropertyEqualComparatorType,
-	name?: TextAlignmentTvOSType,
-	uid: string,
-	inherited?: boolean,
-	val: string | number,
-};
 
+type ImageLoadStateProperty = BasePropertyType<'imageLoadState', PropertyEqualComparatorType, ImageLoadStateHtmlBased>;
 type ImageLoadStateHtmlBased = 'loaded' | 'loading' | 'error' | 'unknown' | '';
-type AssertImageLoadStatePropertyType = {
-	property: 'imageLoadState',
-	type: PropertyEqualComparatorType,
-	name?: ImageLoadStateHtmlBased,
-	uid: string,
-	inherited?: boolean,
-	val: string | number,
-};
