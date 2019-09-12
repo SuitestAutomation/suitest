@@ -543,18 +543,18 @@ type BooleanProperties =
 	IsSelectedProperty | IsFocusableProperty | IsTouchableProperty | HasMetaDataProperty | HasNavMarkersProperty |
 	IsOpaqueProperty | IsFocusedProperty;
 
-type backgroundColorProperty = BasePropertyType<'backgroundColor', PropertyColorComparatorsType, string>;
-type colorProperty = BasePropertyType<'color', PropertyColorComparatorsType, string>;
-type borderColorProperty = BasePropertyType<'borderColor', PropertyColorComparatorsType, string>;
-type focusPrimaryColorProperty = BasePropertyType<'focusPrimaryColor', PropertyColorComparatorsType, string>;
-type focusSecondaryColorProperty = BasePropertyType<'focusSecondaryColor', PropertyColorComparatorsType, string>;
-type barTintColorProperty = BasePropertyType<'barTintColor', PropertyColorComparatorsType, string>;
-type selectedImageTintColorProperty = BasePropertyType<'selectedImageTintColor', PropertyColorComparatorsType, string>;
-type tintColorProperty = BasePropertyType<'tintColor', PropertyColorComparatorsType, string>;
+type BackgroundColorProperty = BasePropertyType<'backgroundColor', PropertyColorComparatorsType, string>;
+type ColorProperty = BasePropertyType<'color', PropertyColorComparatorsType, string>;
+type BorderColorProperty = BasePropertyType<'borderColor', PropertyColorComparatorsType, string>;
+type FocusPrimaryColorProperty = BasePropertyType<'focusPrimaryColor', PropertyColorComparatorsType, string>;
+type FocusSecondaryColorProperty = BasePropertyType<'focusSecondaryColor', PropertyColorComparatorsType, string>;
+type BarTintColorProperty = BasePropertyType<'barTintColor', PropertyColorComparatorsType, string>;
+type SelectedImageTintColorProperty = BasePropertyType<'selectedImageTintColor', PropertyColorComparatorsType, string>;
+type TintColorProperty = BasePropertyType<'tintColor', PropertyColorComparatorsType, string>;
 
 type ColorProperties =
-	backgroundColorProperty | colorProperty | borderColorProperty | focusPrimaryColorProperty |
-	focusSecondaryColorProperty | barTintColorProperty | selectedImageTintColorProperty | tintColorProperty;
+	BackgroundColorProperty | ColorProperty | BorderColorProperty | FocusPrimaryColorProperty |
+	FocusSecondaryColorProperty | BarTintColorProperty | SelectedImageTintColorProperty | TintColorProperty;
 
 // imageHash property
 type ImageHashProperty = BasePropertyType<'imageHash', PropertySpecificComparatorsType, string>;
