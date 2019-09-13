@@ -6,7 +6,7 @@ import {StartupError, translateStartupError} from './startup';
  * @description Get humanized progress status explanation result
  */
 export function translateProgress(message: ProgressMessage): Translation | undefined {
-	if ('code' in message) {
+	if ('code' in message && message.code !== undefined) {
 		return translateStartupError(message.code);
 	}
 
@@ -52,4 +52,5 @@ type ProgressMessage = {
 	code: StartupError,
 } | {
 	status: ProgressStatus,
+	code?: undefined,
 };
