@@ -23,5 +23,15 @@ describe('Interactive progress explanation.', () => {
 		expect(translateProgress({status: 'unknownStatus'} as any)).toBe(undefined);
 		expect(translateProgress({status: 'unknownStatus', code: 'unknownCode'} as any)).toBe(undefined);
 		expect(translateProgress({code: 'unknownCode'} as any)).toBe(undefined);
+
+		// status valid and code undefined
+		expect(translateProgress({status: 'openingApp', code: undefined})).toStrictEqual({
+			title: 'Trying to open app...',
+		});
+		// code is valid and status undefined
+		expect(translateProgress({status: undefined, code: 'candyBoxOffline'})).toStrictEqual({
+			description: 'Check that the cable plugged into the CandyBox delivers Internet connection or reboot the CandyBox and allow about 5 minutes for it to initialize',
+			title: 'Cannot continue: CandyBox controlling this device is offline'
+		});
 	});
 });
