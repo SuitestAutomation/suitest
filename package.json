@@ -1,4 +1,5 @@
 {
+  "name": "suitest",
   "private": true,
   "scripts": {
     "test": "lerna run test",
