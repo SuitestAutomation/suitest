@@ -1,4 +1,4 @@
-import {PROGRESS_STATUS} from "../constants";
+import {PROGRESS_STATUS} from '../constants';
 import {translateProgress} from '../progress';
 
 describe('Interactive progress explanation.', () => {
