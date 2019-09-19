@@ -9,7 +9,8 @@
     "exclude": [
       "*.json",
       "node_modules/**",
-      "build/**",
+      "umd/**",
+      "commonjs/**",
       "coverage/**"
     ]
   }

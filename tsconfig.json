@@ -6,8 +6,7 @@
       "es5",
       "es6",
       "es7",
-      "es2017",
-      "es2019"
+      "es2017"
     ],
     "experimentalDecorators": true,
     "preserveConstEnums": true,
@@ -18,7 +17,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "resolveJsonModule": true,
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "declaration": true
   },
   "compileOnSave": false
 }

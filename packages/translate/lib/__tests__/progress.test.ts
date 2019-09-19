@@ -1,4 +1,5 @@
-import {PROGRESS_STATUS, translateProgress} from '../progress';
+import {PROGRESS_STATUS} from "../constants";
+import {translateProgress} from '../progress';
 
 describe('Interactive progress explanation.', () => {
 	// No need for deep testing because translateProgress with code will return the same result as translateStartupError

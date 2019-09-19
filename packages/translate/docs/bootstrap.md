@@ -96,9 +96,9 @@ Description: `You have scheduled the test execution with a configuration that de
 
 ### planLimitExceeded
 
-Title: `TODO`
+Title: `Application or user limit has been exceeded`
 
-Description: `TODO`
+Description: `Looks like you have reached the limit of applications or users, check your [billing section](https://the.suite.st/preferences/billing) to increase your plan. Please contact [sales@suite.st](sales@suite.st) if you require help with your plan.`
 
 ### rokuPlatformError
 

@@ -2,13 +2,17 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "rootDir": "lib",
-    "outDir": "build"
+    "outDir": "commonjs",
+    "moduleResolution": "node"
   },
   "include": [
     "lib"
   ],
   "exclude": [
     "node_modules",
-    "coverage"
+    "coverage",
+    "umd",
+    "commonjs",
+    "lib/__tests__"
   ]
 }

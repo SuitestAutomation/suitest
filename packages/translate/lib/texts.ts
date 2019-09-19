@@ -26,7 +26,7 @@ export const texts = Object.freeze({
 	'startupError.notDefinedPlatform': () => 'Cannot continue: Device does not support this platform',
 	'startupError.notDefinedPlatform.desc': () => 'You have scheduled the test execution with a configuration that depends on a platform, which this device does not currently support. You should either configure the platform on the device or cancel the test run',
 	'startupError.lgWebosPlatformError': () => 'Cannot continue: LG WebOS driver has failed',
-	'startupError.lgWebosPlatformError.desc': () => 'LG WebOS driver has misbehaved. Please verify that the device is online and it\'s current IP address is correctly specified in Suitest. Then doublecheck if the Development mode is enabled on the device. If nothing helps try rebooting the device and/or the CandyBox',
+	'startupError.lgWebosPlatformError.desc': () => 'LG WebOS driver has misbehaved. Please verify that the device is online and it\'s current IP address is correctly specified in Suitest. Then double check if the Development mode is enabled on the device. If nothing helps try rebooting the device and/or the CandyBox',
 	'startupError.xboxPlatformError': () => 'Cannot continue: Xbox driver has failed',
 	'startupError.xboxPlatformError.desc': () => 'Xbox driver has misbehaved. Please verify that the device is online and it\'s current IP address and developer credentials are correctly specified in Suitest. If nothing helps try rebooting the device and restarting SuitestDrive',
 	'startupError.androidPlatformError': () => 'Cannot continue: Android driver has failed',
@@ -35,10 +35,10 @@ export const texts = Object.freeze({
 	'startupError.applePlatformError.desc': () => 'Apple driver has misbehaved. Please verify that the device is paired with Mac that is running SuitestDrive. Make sure that application build is installable on that device. If nothing helps try rebooting the device and restarting SuitestDrive',
 	'startupError.rokuPlatformError': () => 'Cannot continue: Roku driver has failed',
 	'startupError.rokuPlatformError.desc': () => 'Roku driver has misbehaved. Please verify that the device is online and it\'s current IP address and developer credentials are correctly specified in Suitest. Then double check if the Development mode is enabled on the device and your channel/application is valid. If the local IP of the device changes, make sure to set up a static IP for the device',
-	// TODO
-	'startupError.planLimitExceeded': () => '',
-	// TODO
-	'startupError.planLimitExceeded.desc': () => '',
+	'startupError.playstationPlatformError': () => 'Cannot continue: PlayStation 4 driver has failed',
+	'startupError.playstationPlatformError.desc': () => 'PlayStation 4 driver has misbehaved. TODO', // TODO
+	'startupError.planLimitExceeded': () => 'Application or user limit has been exceeded',
+	'startupError.planLimitExceeded.desc': () => 'Looks like you have reached the limit of applications or users, check your [billing section](https://the.suite.st/preferences/billing) to increase your plan. Please contact [sales@suite.st](sales@suite.st) if you require help with your plan.',
 
 	'progress.status.openingApp': () => 'Trying to open app...',
 	'progress.status.closingApp': () => 'Trying to close app...',
