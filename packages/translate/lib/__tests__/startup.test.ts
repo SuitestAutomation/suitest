@@ -1,4 +1,5 @@
-import {translateStartupError, STARTUP_ERROR} from '../startup';
+import {NOT_STARTED_REASON} from '../constants';
+import {translateStartupError} from '../startup';
 
 describe('Testing startup errors translation.', () => {
 	it(`${translateStartupError.name} should return undefined for unknown code`, () => {
@@ -13,7 +14,7 @@ describe('Testing startup errors translation.', () => {
 	});
 
 	describe('Startup error translations for', () => {
-		for (const code of Object.values(STARTUP_ERROR)) {
+		for (const code of Object.values(NOT_STARTED_REASON)) {
 			it(`"${code}" code`, () => {
 				expect(translateStartupError(code)).toMatchSnapshot();
 			});

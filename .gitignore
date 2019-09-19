@@ -62,3 +62,5 @@ typings/
 
 # package builds
 packages/**/build
+packages/**/umd
+packages/**/commonjs
