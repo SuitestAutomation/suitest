@@ -12,15 +12,13 @@ describe('Interactive progress explanation.', () => {
 		expect(translateProgress({code: 'noActivePlan', status: 'actionFailed'})).toStrictEqual(res);
 	});
 
-	describe('Translation result for', () => {
-		for (const status of Object.values(PROGRESS_STATUS)) {
-			it(`"${status}" status`, () => {
-				expect(translateProgress({status})).toMatchSnapshot();
-			});
-		}
-	});
+	for (const status of Object.values(PROGRESS_STATUS)) {
+		it(`Should translate "${status}" status`, () => {
+			expect(translateProgress({status})).toMatchSnapshot();
+		});
+	}
 
-	it('Translation result for unknown statuses/codes', () => {
+	it('Should handle unknown statuses/codes', () => {
 		expect(translateProgress({status: 'unknownStatus'} as any)).toBe(undefined);
 		expect(translateProgress({status: 'unknownStatus', code: 'unknownCode'} as any)).toBe(undefined);
 		expect(translateProgress({code: 'unknownCode'} as any)).toBe(undefined);

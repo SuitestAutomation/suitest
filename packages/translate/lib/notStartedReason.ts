@@ -5,7 +5,7 @@ import t from './texts';
 /**
  * Translate the reason for test not being executed
  */
-export function translateStartupError(code: NotStartedReason): Translation | undefined {
+export function translateNotStartedReason(code: NotStartedReason): Translation | undefined {
 	switch (code) {
 		case NOT_STARTED_REASON.BLASTER_ERROR:
 			return {

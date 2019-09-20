@@ -1,8 +1,8 @@
-import {translateStartupError, translateProgress} from '../index';
+import {translateNotStartedReason, translateProgress} from '../index';
 
 describe('Check exports.', () => {
-	it(`${translateStartupError.name} should be available for export`, () => {
-		expect(typeof translateStartupError).toBe('function');
+	it(`${translateNotStartedReason.name} should be available for export`, () => {
+		expect(typeof translateNotStartedReason).toBe('function');
 	});
 
 	it(`${translateProgress.name} should be available for export`, () => {

@@ -1,62 +1,62 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Interactive progress explanation. Translation result for "actionFailed" status 1`] = `undefined`;
+exports[`Interactive progress explanation. Should translate "actionFailed" status 1`] = `undefined`;
 
-exports[`Interactive progress explanation. Translation result for "bootingDevice" status 1`] = `
+exports[`Interactive progress explanation. Should translate "bootingDevice" status 1`] = `
 Object {
   "title": "Running the boot sequence defined for the device...",
 }
 `;
 
-exports[`Interactive progress explanation. Translation result for "closingApp" status 1`] = `
+exports[`Interactive progress explanation. Should translate "closingApp" status 1`] = `
 Object {
   "title": "Trying to close app...",
 }
 `;
 
-exports[`Interactive progress explanation. Translation result for "needManual" status 1`] = `
+exports[`Interactive progress explanation. Should translate "needManual" status 1`] = `
 Object {
   "title": "Paused. For this platform, install and open the application manually.",
 }
 `;
 
-exports[`Interactive progress explanation. Translation result for "nothing" status 1`] = `
+exports[`Interactive progress explanation. Should translate "nothing" status 1`] = `
 Object {
   "title": "",
 }
 `;
 
-exports[`Interactive progress explanation. Translation result for "openingApp" status 1`] = `
+exports[`Interactive progress explanation. Should translate "openingApp" status 1`] = `
 Object {
   "title": "Trying to open app...",
 }
 `;
 
-exports[`Interactive progress explanation. Translation result for "recoveringID" status 1`] = `
+exports[`Interactive progress explanation. Should translate "recoveringID" status 1`] = `
 Object {
   "title": "Trying to recover Suitest device ID...",
 }
 `;
 
-exports[`Interactive progress explanation. Translation result for "unistallingApp" status 1`] = `
+exports[`Interactive progress explanation. Should translate "unistallingApp" status 1`] = `
 Object {
   "title": "Uninstalling app...",
 }
 `;
 
-exports[`Interactive progress explanation. Translation result for "uploadingAndInstallingApp" status 1`] = `
+exports[`Interactive progress explanation. Should translate "uploadingAndInstallingApp" status 1`] = `
 Object {
   "title": "Uploading and installing app...",
 }
 `;
 
-exports[`Interactive progress explanation. Translation result for "waitingForConnectionFromBootstrap" status 1`] = `
+exports[`Interactive progress explanation. Should translate "waitingForConnectionFromBootstrap" status 1`] = `
 Object {
   "title": "Waiting for connection from the Suitest app on device...",
 }
 `;
 
-exports[`Interactive progress explanation. Translation result for "waitingForConnectionFromIL" status 1`] = `
+exports[`Interactive progress explanation. Should translate "waitingForConnectionFromIL" status 1`] = `
 Object {
   "title": "Waiting for connection from the instrumentation library...",
 }

@@ -1,14 +1,14 @@
 import t from './texts';
 import {Translation} from './types';
 import {PROGRESS_STATUS, ProgressStatus, NotStartedReason} from './constants';
-import {translateStartupError} from './startup';
+import {translateNotStartedReason} from './notStartedReason';
 
 /**
  * @description Get humanized progress status explanation result
  */
 export function translateProgress(message: ProgressMessage): Translation | undefined {
 	if ('code' in message && message.code !== undefined) {
-		return translateStartupError(message.code);
+		return translateNotStartedReason(message.code);
 	}
 
 	switch (message.status) {
@@ -33,7 +33,7 @@ export function translateProgress(message: ProgressMessage): Translation | undef
 }
 
 type ProgressMessage = {
-	status?: typeof PROGRESS_STATUS.ACTION_FAILED
+	status?: typeof PROGRESS_STATUS.ACTION_FAILED,
 	code: NotStartedReason,
 } | {
 	status: ProgressStatus,
