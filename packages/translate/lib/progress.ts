@@ -5,6 +5,7 @@ import {translateNotStartedReason} from './notStartedReason';
 
 /**
  * @description Get humanized progress status explanation result
+ * @throws {Error} Throws an Error if unknown status is provided or code is required and missing
  */
 export function translateProgress(message: ProgressMessage): Translation {
 	if ('code' in message && message.code !== undefined) {

@@ -4,6 +4,7 @@ import t from './texts';
 
 /**
  * @description Translate the reason for test not being executed
+ * @throws {Error} Throws an Error if unknown code is provided
  */
 export function translateNotStartedReason(code: NotStartedReason): Translation {
 	switch (code) {
