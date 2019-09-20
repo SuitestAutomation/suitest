@@ -36,7 +36,7 @@ export const texts = Object.freeze({
 	'startupError.rokuPlatformError': () => 'Cannot continue: Roku driver has failed',
 	'startupError.rokuPlatformError.desc': () => 'Roku driver has misbehaved. Please verify that the device is online and it\'s current IP address and developer credentials are correctly specified in Suitest. Then double check if the Development mode is enabled on the device and your channel/application is valid. If the local IP of the device changes, make sure to set up a static IP for the device',
 	'startupError.playstationPlatformError': () => 'Cannot continue: PlayStation 4 driver has failed',
-	'startupError.playstationPlatformError.desc': () => 'PlayStation 4 driver has misbehaved. TODO', // TODO
+	'startupError.playstationPlatformError.desc': () => 'PlayStation 4 driver has misbehaved. Please verify that the device is online and it\'s current IP address is correctly specified in Suitest. If nothing helps try rebooting the device and restarting SuitestDrive. If the local IP of the device changes, make sure to set up a static IP for the device.',
 	'startupError.planLimitExceeded': () => 'Application or user limit has been exceeded',
 	'startupError.planLimitExceeded.desc': () => 'Looks like you have reached the limit of applications or users, check your [billing section](https://the.suite.st/preferences/billing) to increase your plan. Please contact [sales@suite.st](sales@suite.st) if you require help with your plan.',
 
