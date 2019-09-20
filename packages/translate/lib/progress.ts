@@ -6,7 +6,7 @@ import {translateNotStartedReason} from './notStartedReason';
 /**
  * @description Get humanized progress status explanation result
  */
-export function translateProgress(message: ProgressMessage): Translation | undefined {
+export function translateProgress(message: ProgressMessage): Translation {
 	if ('code' in message && message.code !== undefined) {
 		return translateNotStartedReason(message.code);
 	}
@@ -23,13 +23,12 @@ export function translateProgress(message: ProgressMessage): Translation | undef
 		case PROGRESS_STATUS.APP_UPLOAD_INSTALL: return {title: t['progress.status.uploadingAndInstallingApp']()};
 		case PROGRESS_STATUS.NOTHING: return {title: ''};
 		// actionFailed should come with code, so it will be proceeded by translateStartupError above
-		case 'actionFailed': break;
+		case 'actionFailed':
+			throw new Error(t['progress.status.actionFailedNoCode']());
 		default:
 			const _status: never = message.status;
-			console.warn(_status, 'progress status not handled');
+			throw new Error(t['progress.status.unknownStatusCode'](_status));
 	}
-
-	return undefined;
 }
 
 type ProgressMessage = {

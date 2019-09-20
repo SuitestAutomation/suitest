@@ -1,16 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Interactive progress explanation. Should translate "actionFailed" status 1`] = `undefined`;
-
 exports[`Interactive progress explanation. Should translate "bootingDevice" status 1`] = `
 Object {
-  "title": "Running the boot sequence defined for the device...",
+  "title": "Running the boot sequence defined for the device…",
 }
 `;
 
 exports[`Interactive progress explanation. Should translate "closingApp" status 1`] = `
 Object {
-  "title": "Trying to close app...",
+  "title": "Trying to close app…",
 }
 `;
 
@@ -28,36 +26,36 @@ Object {
 
 exports[`Interactive progress explanation. Should translate "openingApp" status 1`] = `
 Object {
-  "title": "Trying to open app...",
+  "title": "Trying to open app…",
 }
 `;
 
 exports[`Interactive progress explanation. Should translate "recoveringID" status 1`] = `
 Object {
-  "title": "Trying to recover Suitest device ID...",
+  "title": "Trying to recover Suitest device ID…",
 }
 `;
 
 exports[`Interactive progress explanation. Should translate "unistallingApp" status 1`] = `
 Object {
-  "title": "Uninstalling app...",
+  "title": "Uninstalling app…",
 }
 `;
 
 exports[`Interactive progress explanation. Should translate "uploadingAndInstallingApp" status 1`] = `
 Object {
-  "title": "Uploading and installing app...",
+  "title": "Uploading and installing app…",
 }
 `;
 
 exports[`Interactive progress explanation. Should translate "waitingForConnectionFromBootstrap" status 1`] = `
 Object {
-  "title": "Waiting for connection from the Suitest app on device...",
+  "title": "Waiting for connection from the Suitest app on device…",
 }
 `;
 
 exports[`Interactive progress explanation. Should translate "waitingForConnectionFromIL" status 1`] = `
 Object {
-  "title": "Waiting for connection from the instrumentation library...",
+  "title": "Waiting for connection from the instrumentation library…",
 }
 `;

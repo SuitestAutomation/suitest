@@ -3,9 +3,9 @@ import {NOT_STARTED_REASON, NotStartedReason} from './constants';
 import t from './texts';
 
 /**
- * Translate the reason for test not being executed
+ * @description Translate the reason for test not being executed
  */
-export function translateNotStartedReason(code: NotStartedReason): Translation | undefined {
+export function translateNotStartedReason(code: NotStartedReason): Translation {
 	switch (code) {
 		case NOT_STARTED_REASON.BLASTER_ERROR:
 			return {
@@ -109,10 +109,6 @@ export function translateNotStartedReason(code: NotStartedReason): Translation |
 			};
 		default:
 			const _code: never = code;
-			console.warn(_code, 'startup error code does not exist');
-			break;
-
+			throw new Error(t['startupError.unknownReason'](_code));
 	}
-
-	return undefined;
 }

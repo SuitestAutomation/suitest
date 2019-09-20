@@ -13,19 +13,32 @@ describe('Interactive progress explanation.', () => {
 	});
 
 	for (const status of Object.values(PROGRESS_STATUS)) {
+		if (status === 'actionFailed') {
+			continue;
+		}
+
 		it(`Should translate "${status}" status`, () => {
 			expect(translateProgress({status})).toMatchSnapshot();
 		});
 	}
 
+	it('Should throw an error if actionFailed message does not deliver code', () => {
+		expect(() => translateProgress({status: 'actionFailed'}))
+			.toThrowError('A code is expected when receiving "actionFailed" progress status');
+	});
+
 	it('Should handle unknown statuses/codes', () => {
-		expect(translateProgress({status: 'unknownStatus'} as any)).toBe(undefined);
-		expect(translateProgress({status: 'unknownStatus', code: 'unknownCode'} as any)).toBe(undefined);
-		expect(translateProgress({code: 'unknownCode'} as any)).toBe(undefined);
+		expect(() => translateProgress({status: 'unknownStatus'} as any))
+			.toThrowError('Unknown status code received: unknownStatus');
+
+		expect(() => translateProgress({status: 'unknownStatus', code: 'unknownCode'} as any))
+			.toThrowError('Unknown not started reason received: unknownCode');
+		expect(() => translateProgress({code: 'unknownCode'} as any))
+			.toThrowError('Unknown not started reason received: unknownCode');
 
 		// status valid and code undefined
 		expect(translateProgress({status: 'openingApp', code: undefined})).toStrictEqual({
-			title: 'Trying to open app...',
+			title: 'Trying to open app…',
 		});
 		// code is valid and status undefined
 		expect(translateProgress({status: undefined, code: 'candyBoxOffline'})).toStrictEqual({
