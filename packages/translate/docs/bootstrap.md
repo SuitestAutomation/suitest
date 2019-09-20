@@ -5,7 +5,7 @@ Messages related to bootstrap phase of the test execution.
 ## Test bootstrap status
 
 This statuses are received as part of the test result in case it was not possible to start the test execution by the time status is requested.
-Reason is defined by `reason` field of `notStartedReason` message:
+Reason is defined by `reason` field of `notRunningReason` message:
 
 ```typescript
 type NotRunningMessage = {
@@ -15,6 +15,14 @@ type NotRunningMessage = {
 ```
 
 Where `NotRunningReason` enum values are listed below.
+
+Example:
+
+```typescript
+import {translateNotStartedReason} from '@suitest/translate';
+
+const {title, description} = translateNotStartedReason('blasterError');
+```
 
 ### androidPlatformError
 
@@ -153,6 +161,14 @@ Messages with `status` define current step in the bootstrap process.
 
 Messages with `code` define current step in the bootstrap process in case further execution is blocked.
 Code exactly correspond to `reason` of `notRunningReason` message, see above for translations.
+
+Example:
+
+```typescript
+import {translateProgress} from '@suitest/translate';
+
+const {title, description} = translateProgress({status: 'openingApp', code: 'blasterError'});
+```
 
 ### openingApp
 
