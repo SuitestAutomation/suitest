@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "../../tslint.json"
+  ],
+  "linterOptions": {
+    "include": [
+      "lib/**"
+    ],
+    "exclude": [
+      "*.json",
+      "node_modules/**",
+      "umd/**",
+      "commonjs/**",
+      "coverage/**"
+    ]
+  }
+}
