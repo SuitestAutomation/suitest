@@ -8,7 +8,7 @@ This statuses are received as part of the test result in case it was not possibl
 Reason is defined by `reason` field of `notRunningReason` message:
 
 ```typescript
-type NotRunningMessage = {
+type NotStartedReason = {
     type: 'notRunningReason',
     reason: NotRunningReason,
 };
@@ -152,8 +152,8 @@ This way user may be made aware of the steps that are being made to start the ex
 ```typescript
 type ProgressMessage = {
   type: 'progress',
-  code: NotRunningReason,
-  status: ProgressMessageStatus,
+  code: NotStartedReason,
+  status: ProgressStatus,
 }
 ```
 
