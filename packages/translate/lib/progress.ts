@@ -12,6 +12,10 @@ export function translateProgress(message: ProgressMessage): Translation {
 		return translateNotStartedReason(message.code);
 	}
 
+	if (message.status === undefined) {
+		throw new Error(t['progress.status.undefined']());
+	}
+
 	switch (message.status) {
 		case PROGRESS_STATUS.OPENING_APP: return {title: t['progress.status.openingApp']()};
 		case PROGRESS_STATUS.CLOSING_APP: return {title: t['progress.status.closingApp']()};
@@ -33,9 +37,6 @@ export function translateProgress(message: ProgressMessage): Translation {
 }
 
 type ProgressMessage = {
-	status?: typeof PROGRESS_STATUS.ACTION_FAILED,
-	code: NotStartedReason,
-} | {
-	status: ProgressStatus,
-	code?: undefined,
+	code?: NotStartedReason,
+	status?: ProgressStatus,
 };
