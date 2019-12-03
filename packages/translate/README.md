@@ -15,7 +15,7 @@ Error translations support small subset of Markdown text formatting:
 
 Messages are split into following categories:
 
-* [Test bootstrap](docs/bootstrap.md)
+* [Test bootstrap](/packages/translate/docs/bootstrap.md)
 
 ## Using the library
 
