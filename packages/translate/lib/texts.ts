@@ -39,6 +39,7 @@ export const texts = Object.freeze({
 	'startupError.playstationPlatformError.desc': () => 'PlayStation 4 driver has misbehaved. Please verify that the device is online and it\'s current IP address is correctly specified in Suitest. If nothing helps try rebooting the device and restarting SuitestDrive. If the local IP of the device changes, make sure to set up a static IP for the device.',
 	'startupError.planLimitExceeded': () => 'Application or user limit has been exceeded',
 	'startupError.planLimitExceeded.desc': () => 'Looks like you have reached the limit of applications or users, check your [billing section](https://the.suite.st/preferences/billing) to increase your plan. Please contact [sales@suite.st](sales@suite.st) if you require help with your plan.',
+	'startupError.packageCorrupted': () => 'Failed to open the app. Please make sure that your app is working correctly.',
 	'startupError.unknownReason': (reason: string) => `Unknown not started reason received: ${reason}`,
 
 	'progress.status.openingApp': () => 'Trying to open app…',
