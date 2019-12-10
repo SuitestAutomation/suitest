@@ -82,7 +82,7 @@ Description: `We are very sorry, but some fishy error occurred when Suitest was 
 
 Title: `Cannot continue: LG WebOS driver has failed`
 
-Description: `LG WebOS driver has misbehaved. Please verify that the device is online and it's current IP address is correctly specified in Suitest. Then doublecheck if the Development mode is enabled on the device. If nothing helps try rebooting the device and/or the CandyBox`
+Description: `LG WebOS driver has misbehaved. Please verify that the device is online and it's current IP address is correctly specified in Suitest. Then doublecheck if the Development mode is enabled on the device. If nothing helps try rebooting the device`
 
 ### noActivePlan
 
