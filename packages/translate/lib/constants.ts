@@ -19,6 +19,7 @@ export const NOT_STARTED_REASON = Object.freeze({
 	PLATFORM_ERROR_APPLE_TV: 'applePlatformError',
 	SUITEST_DRIVE_OFFLINE: 'suitestDriveOffline',
 	TEST_QUEUED: 'testQueued',
+	PACKAGE_CORRUPTED: 'packageCorrupted',
 } as const);
 
 export type NotStartedReason = typeof NOT_STARTED_REASON[keyof typeof NOT_STARTED_REASON];

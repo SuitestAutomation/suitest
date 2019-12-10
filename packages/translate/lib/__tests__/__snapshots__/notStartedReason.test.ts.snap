@@ -91,6 +91,13 @@ Object {
 }
 `;
 
+exports[`Testing not started reason translation. Should translate "packageCorrupted" code 1`] = `
+Object {
+  "description": "",
+  "title": "Failed to open the app. Please make sure that your app is working correctly.",
+}
+`;
+
 exports[`Testing not started reason translation. Should translate "planLimitExceeded" code 1`] = `
 Object {
   "description": "Looks like you have reached the limit of applications or users, check your [billing section](https://the.suite.st/preferences/billing) to increase your plan. Please contact [sales@suite.st](sales@suite.st) if you require help with your plan.",
