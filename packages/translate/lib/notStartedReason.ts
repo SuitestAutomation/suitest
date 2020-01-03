@@ -108,6 +108,11 @@ export function translateNotStartedReason(code: NotStartedReason): Translation {
 				title: t['startupError.playstationPlatformError'](),
 				description: t['startupError.playstationPlatformError.desc'](),
 			};
+		case NOT_STARTED_REASON.PACKAGE_CORRUPTED:
+			return {
+				title: t['startupError.packageCorrupted'](),
+				description: '',
+			};
 		default:
 			const _code: never = code;
 			throw new Error(t['startupError.unknownReason'](_code));

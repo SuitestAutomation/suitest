@@ -26,7 +26,7 @@ export const texts = Object.freeze({
 	'startupError.notDefinedPlatform': () => 'Cannot continue: Device does not support this platform',
 	'startupError.notDefinedPlatform.desc': () => 'You have scheduled the test execution with a configuration that depends on a platform, which this device does not currently support. You should either configure the platform on the device or cancel the test run',
 	'startupError.lgWebosPlatformError': () => 'Cannot continue: LG WebOS driver has failed',
-	'startupError.lgWebosPlatformError.desc': () => 'LG WebOS driver has misbehaved. Please verify that the device is online and it\'s current IP address is correctly specified in Suitest. Then double check if the Development mode is enabled on the device. If nothing helps try rebooting the device and/or the CandyBox',
+	'startupError.lgWebosPlatformError.desc': () => 'LG WebOS driver has misbehaved. Please verify that the device is online and it\'s current IP address is correctly specified in Suitest. Then double check if the Development mode is enabled on the device. If nothing helps try rebooting the device',
 	'startupError.xboxPlatformError': () => 'Cannot continue: Xbox driver has failed',
 	'startupError.xboxPlatformError.desc': () => 'Xbox driver has misbehaved. Please verify that the device is online and it\'s current IP address and developer credentials are correctly specified in Suitest. If nothing helps try rebooting the device and restarting SuitestDrive',
 	'startupError.androidPlatformError': () => 'Cannot continue: Android driver has failed',
@@ -39,6 +39,7 @@ export const texts = Object.freeze({
 	'startupError.playstationPlatformError.desc': () => 'PlayStation 4 driver has misbehaved. Please verify that the device is online and it\'s current IP address is correctly specified in Suitest. If nothing helps try rebooting the device and restarting SuitestDrive. If the local IP of the device changes, make sure to set up a static IP for the device.',
 	'startupError.planLimitExceeded': () => 'Application or user limit has been exceeded',
 	'startupError.planLimitExceeded.desc': () => 'Looks like you have reached the limit of applications or users, check your [billing section](https://the.suite.st/preferences/billing) to increase your plan. Please contact [sales@suite.st](sales@suite.st) if you require help with your plan.',
+	'startupError.packageCorrupted': () => 'Failed to open the app. Please make sure that your app is working correctly.',
 	'startupError.unknownReason': (reason: string) => `Unknown not started reason received: ${reason}`,
 
 	'progress.status.openingApp': () => 'Trying to open app…',
