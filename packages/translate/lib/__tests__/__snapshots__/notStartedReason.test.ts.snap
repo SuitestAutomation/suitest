@@ -133,6 +133,13 @@ Object {
 }
 `;
 
+exports[`Testing not started reason translation. Should translate "suitestDriveServiceOffline" code 1`] = `
+Object {
+  "description": "",
+  "title": "The SuitestDrive process is not running on the CandyBox.",
+}
+`;
+
 exports[`Testing not started reason translation. Should translate "testQueued" code 1`] = `
 Object {
   "description": "Execution will start as soon as other tests queued on this device will finish execution",

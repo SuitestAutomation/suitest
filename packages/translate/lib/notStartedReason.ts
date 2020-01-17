@@ -43,6 +43,11 @@ export function translateNotStartedReason(code: NotStartedReason): Translation {
 				title: t['startupError.suitestDriveOffline'](),
 				description: t['startupError.suitestDriveOffline.desc'](),
 			};
+		case NOT_STARTED_REASON.SUITEST_DRIVE_SERVICE_OFFLINE:
+			return {
+				title: t['startupError.suitestDriveServiceOffline'](),
+				description: '',
+			};
 		case NOT_STARTED_REASON.BOOTING:
 			return {
 				title: t['startupError.runningBootSequence'](),
