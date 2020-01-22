@@ -136,7 +136,7 @@ Object {
 exports[`Testing not started reason translation. Should translate "suitestDriveServiceOffline" code 1`] = `
 Object {
   "description": "",
-  "title": "The SuitestDrive process is not running on the CandyBox.",
+  "title": "The SuitestDrive is not running on the CandyBox",
 }
 `;
 
