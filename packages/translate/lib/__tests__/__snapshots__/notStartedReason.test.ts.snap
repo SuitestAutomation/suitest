@@ -91,6 +91,13 @@ Object {
 }
 `;
 
+exports[`Testing not started reason translation. Should translate "outOfMemory" code 1`] = `
+Object {
+  "description": "",
+  "title": "Failed to open the app. Device is out of memory, please restart the device.",
+}
+`;
+
 exports[`Testing not started reason translation. Should translate "packageCorrupted" code 1`] = `
 Object {
   "description": "",
