@@ -1,6 +1,6 @@
 {
   "name": "@suitest/translate",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "A module that translate Suitest server messages to human readable strings",
   "repository": {
     "type": "git",
