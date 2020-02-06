@@ -27,9 +27,7 @@ export function translateProgress(message: ProgressMessage): Translation {
 		case PROGRESS_STATUS.APP_UNINSTALL: return {title: t['progress.status.unistallingApp']()};
 		case PROGRESS_STATUS.APP_UPLOAD_INSTALL: return {title: t['progress.status.uploadingAndInstallingApp']()};
 		case PROGRESS_STATUS.NOTHING: return {title: ''};
-		// actionFailed should come with code, so it will be proceeded by translateStartupError above
-		case PROGRESS_STATUS.ACTION_FAILED:
-			throw new Error(t['progress.status.actionFailedNoCode']());
+		case PROGRESS_STATUS.ACTION_FAILED: return {title: ''};
 		default:
 			const _status: never = message.status;
 			throw new Error(t['progress.status.unknownStatusCode'](_status));
