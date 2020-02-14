@@ -118,11 +118,6 @@ export function translateNotStartedReason(code: NotStartedReason): Translation {
 				title: t['startupError.packageCorrupted'](),
 				description: '',
 			};
-		case NOT_STARTED_REASON.OUT_OF_MEMORY:
-			return {
-				title: t['startupError.outOfMemory'](),
-				description: '',
-			};
 		default:
 			const _code: never = code;
 			throw new Error(t['startupError.unknownReason'](_code));

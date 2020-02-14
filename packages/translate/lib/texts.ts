@@ -42,7 +42,6 @@ export const texts = Object.freeze({
 	'startupError.planLimitExceeded.desc': () => 'Looks like you have reached the limit of applications or users, check your [billing section](https://the.suite.st/preferences/billing) to increase your plan. Please contact [sales@suite.st](sales@suite.st) if you require help with your plan.',
 	'startupError.packageCorrupted': () => 'Failed to open the app. Please make sure that your app is working correctly.',
 	'startupError.unknownReason': (reason: string) => `Unknown not started reason received: ${reason}`,
-	'startupError.outOfMemory': () => 'Failed to open the app. Device is out of memory, please restart the device.',
 
 	'progress.status.openingApp': () => 'Trying to open app…',
 	'progress.status.closingApp': () => 'Trying to close app…',
