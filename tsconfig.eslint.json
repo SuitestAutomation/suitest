@@ -1,0 +1,10 @@
+{
+  "extend": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "include": [
+    "packages/*/lib/**/*.ts",
+    "packages/*/lib/**/*.tsx"
+  ]
+}
