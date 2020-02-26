@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "../../tslint.json"
+  ],
+  "linterOptions": {
+    "include": [
+      "**"
+    ],
+    "exclude": [
+      "*.json",
+      "node_modules/**"
+    ]
+  }
+}
