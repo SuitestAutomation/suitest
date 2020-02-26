@@ -1,10 +1,11 @@
 module.exports = {
     "preset": "ts-jest",
     "transform": {
-        "^.+\\.(j|t)s?$": "ts-jest"
+        "^.+\\.(j|t)sx?$": "ts-jest"
     },
     "testMatch": [
-        "<rootDir>/lib/__tests__/*.test.ts"
+        "<rootDir>/lib/__tests__/*.test.ts",
+		"<rootDir>/lib/__tests__/*.test.tsx"
     ],
     "collectCoverageFrom": [
         "<rootDir>/lib/index.ts"
