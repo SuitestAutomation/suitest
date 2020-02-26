@@ -3,7 +3,8 @@ import {
 	CookieSubject,
 	CurrentLocationSubject,
 	ElementSubject,
-	JavaScriptExpressionSubject, NetworkRequestSubject
+	JavaScriptExpressionSubject,
+	NetworkRequestSubject,
 } from './subject';
 import {Comparator, StringComparator} from './comparator';
 

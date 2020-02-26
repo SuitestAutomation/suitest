@@ -16,5 +16,8 @@ module.exports = {
             "lines": 100,
             "statements": 100
         }
-    }
+    },
+	"moduleFileExtensions": [
+		"js", "json", "jsx", "ts", "d.ts", "tsx", "node",
+	],
 };

@@ -27,7 +27,9 @@
     "build:commonjs": "rimraf commonjs && tsc",
     "test": "jest",
     "coverage": "jest --coverage",
-    "lint": "tslint -p .",
-    "prepublishOnly": "npm run lint && npm run coverage && npm run build"
+    "prepublishOnly": "npm run coverage && npm run build"
+  },
+  "dependencies": {
+    "@suitest/types": "2.0.4"
   }
 }
