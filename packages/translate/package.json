@@ -30,6 +30,7 @@
     "prepublishOnly": "npm run coverage && npm run build"
   },
   "dependencies": {
-    "@suitest/types": "2.0.4"
+    "@suitest/types": "2.0.4",
+    "unist-builder": "^2.0.3"
   }
 }
