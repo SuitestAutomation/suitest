@@ -25,7 +25,7 @@ export type ParagraphNode = {
 };
 export type CellNode = {
 	type: 'cell',
-	children: TextNode[],
+	children: Array<TextNode | SectionNode>,
 };
 export type RowNode = {
 	type: 'row',

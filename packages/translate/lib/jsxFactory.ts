@@ -2,6 +2,7 @@ import '../types/intrinsicElements.d.ts';
 import * as assert from 'assert';
 import * as ub from 'unist-builder';
 import {
+	CellNode,
 	ConditionNode,
 	DictionaryNode,
 	Node,
@@ -48,6 +49,9 @@ const buildTextFragment = (children: any[]): TextFragmentNode =>
 	}, []));
 
 const buildTable = (children: any[], label?: Label): TableNode => {
+	// Flatten children to allow for record like <table>{something.map(...)}</table>
+	children = children.reduce((acc, item) => acc.concat(item), []);
+
 	children.forEach(child =>
 		assert(child.type === 'row', 'Table can accepts only Row as it\'s child')
 	);
@@ -66,6 +70,16 @@ const buildDictionary = (children: any[], label?: Label): DictionaryNode => {
 	const dictLabel = typeof label === 'string' ? ub('text', label) : label;
 
 	return ub('dictionary', {label: dictLabel}, children);
+};
+
+const buildCell = (children: any[]): CellNode => {
+	// Cell is a special case - it can have either textual or block elements
+	if (children.every(child => typeof child === 'string' || plainTypes.includes(child.type))) {
+		// Pass children through test fragment logic to it's wrapped correctly
+		return ub('cell', buildTextFragment(children).children);
+	}
+
+	return ub('cell', children);
 };
 
 const assertUnknownIntrinsicElementType = (type: never): never => {
@@ -103,6 +117,7 @@ export const jsx = (type: Node['type'], props: {[key: string]: any}, ...children
 		case 'dictionary':
 			return buildDictionary(children, props?.label);
 		case 'cell':
+			return buildCell(children);
 		case 'paragraph':
 		case 'warning-block':
 		case 'error-block':
