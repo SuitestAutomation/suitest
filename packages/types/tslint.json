@@ -4,14 +4,11 @@
   ],
   "linterOptions": {
     "include": [
-      "lib/**"
+      "**"
     ],
     "exclude": [
       "*.json",
-      "node_modules/**",
-      "umd/**",
-      "commonjs/**",
-      "coverage/**"
+      "node_modules/**"
     ]
   }
 }

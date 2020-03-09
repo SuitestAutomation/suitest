@@ -18,7 +18,10 @@
     "noUnusedParameters": true,
     "resolveJsonModule": true,
     "downlevelIteration": true,
-    "declaration": true
+    "declaration": true,
+    "jsx": "react",
+    "jsxFactory": "jsx",
+    "esModuleInterop": true
   },
   "compileOnSave": false
 }

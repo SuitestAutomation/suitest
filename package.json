@@ -3,25 +3,30 @@
   "private": true,
   "scripts": {
     "test": "lerna run test",
-    "lint": "lerna run lint",
+    "lint": "eslint --ext .jsx,.js packages/*/lib/**/*.ts?\\(x\\)",
     "coverage": "lerna run coverage",
     "postinstall": "lerna bootstrap --hoist"
   },
-  "workspaces": [
-    "packages/*"
-  ],
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.1",
     "@types/jest": "24.0.18",
+    "@types/unist": "^2.0.3",
+    "@typescript-eslint/eslint-plugin": "^2.21.0",
+    "@typescript-eslint/eslint-plugin-tslint": "^2.21.0",
+    "@typescript-eslint/parser": "^2.21.0",
+    "eslint": "^6.8.0",
     "husky": "3.0.3",
     "jest": "24.9.0",
-    "lerna": "^3.16.4",
+    "lerna": "^3.20.2",
     "rimraf": "3.0.0",
     "rollup": "^1.21.4",
     "rollup-plugin-typescript2": "^0.24.2",
     "rollup-plugin-uglify": "^6.0.3",
     "ts-jest": "24.0.2",
-    "tslint": "5.19.0",
-    "typescript": "3.6.2"
+    "tslint": "^6.0.0",
+    "typescript": "^3.7.5",
+    "unist-builder": "^2.0.3"
   },
   "husky": {
     "hooks": {

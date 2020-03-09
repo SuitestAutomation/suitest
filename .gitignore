@@ -64,3 +64,5 @@ typings/
 packages/**/build
 packages/**/umd
 packages/**/commonjs
+
+.idea

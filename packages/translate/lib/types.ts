@@ -15,7 +15,7 @@ export type LineResult = {
 			buttonIds?: string[],
 			error?: string,
 			exception?: string,
-		}
+		},
 	},
 	actualValue?: string,
 	expression?: Array<{
@@ -24,7 +24,7 @@ export type LineResult = {
 		errorType?: string,
 		message?: {
 			code?: string,
-		}
+		},
 	}>,
 	errors?: NetworkError[],
 	snippetLineId?: string,
@@ -68,11 +68,11 @@ export type LineResultTranslated = {
 };
 
 export type NetworkError = {
-	actualValue: string
-	name: string
-	message: 'response' | 'request'
-	reason: 'notMatched'
-	type: 'header' | 'noUriFound' | 'status'
+	actualValue: string,
+	name: string,
+	message: 'response' | 'request',
+	reason: 'notMatched',
+	type: 'header' | 'noUriFound' | 'status',
 };
 
 // frontend types
@@ -245,7 +245,7 @@ declare type TestLineBrowserCommandType = TestLineType & {
 			width?: number | null,
 			height?: number | null,
 			text?: string | null,
-		}
+		},
 	},
 	condition?: AssertConditionType,
 	negateCondition?: true,
@@ -264,7 +264,7 @@ type BrowserCommandWindowTargetType = {
 	coordinates: {
 		x?: number,
 		y?: number,
-	}
+	},
 };
 
 type SetTextTargetType = {
@@ -329,10 +329,10 @@ export type AssertConditionNetworkType = {
 		val?: string,
 		compare: '=' | '~',
 		requestInfo: Array<InfoBodyType | InfoMethodType | InfoHeaderType>,
-		responseInfo: Array<InfoBodyType | InfoStatusType | InfoHeaderType>
+		responseInfo: Array<InfoBodyType | InfoStatusType | InfoHeaderType>,
 	},
 	type: 'made',
-	searchStrategy: 'all' | 'notMatched'
+	searchStrategy: 'all' | 'notMatched',
 };
 
 type InfoBodyType = {
@@ -365,9 +365,9 @@ type InfoHeaderType = {
 
 type AssertConditionApplicationType = {
 	subject: {
-		type: 'application'
+		type: 'application',
 	},
-	type: 'exited'
+	type: 'exited',
 };
 
 export type AssertConditionElementType = {
@@ -391,14 +391,14 @@ export type AssertConditionElementType = {
 		| ImageLoadStateProperty
 		>,
 	type: 'has' | 'exists' | '!exists' | 'matches' | 'matchesBRS',
-	val?: string
+	val?: string,
 };
 
 export type AssertConditionVideoType = {
 	subject: {
 		type: 'video',
 		name?: string,
-		flag?: number
+		flag?: number,
 	},
 	expression: Array<
 		NumericProperties
@@ -414,7 +414,7 @@ export type AssertConditionVideoType = {
 		| TextAlignmentProperty
 		>,
 	type: 'has' | 'exists' | '!exists' | 'matches' | 'matchesBRS',
-	val?: string
+	val?: string,
 };
 
 type AssertConditionPlayStationVideoType = PlayStationHasCondition | PlayStationHadErrorCondition;
@@ -430,7 +430,7 @@ type PlayStationHadErrorCondition = {
 		type: 'psVideo',
 	},
 	type: 'hadNoError',
-	searchStrategy: 'all' | 'currentUrl'
+	searchStrategy: 'all' | 'currentUrl',
 };
 
 type PropertyStringComparatorsType = '=' | '!=' | '~' | '!~' | '^' | '!^' | '$' | '!$';
@@ -489,12 +489,12 @@ type NumberOfSegmentsProperty = BasePropertyType<'numberOfSegments', PropertyNum
 type LeftAbsoluteProperty = BasePropertyType<'leftAbsolute', PropertyNumericComparatorsType, number>;
 type TopAbsoluteProperty = BasePropertyType<'topAbsolute', PropertyNumericComparatorsType, number>;
 
-type NumericProperties  =
-	ZIndexProperty | OpacityProperty | BorderWidthProperty | TopProperty | LeftProperty | WidthProperty | HeightProperty |
-	VideoPosProperty | VideoLengthProperty | ItemFocusedProperty |  MarginProperty| PaddingProperty |  FontSizeProperty |
-	FontWeightProperty | FocusMarginProperty | FocusPrimaryWidthProperty | FocusSecondaryWidthProperty | TextSizeProperty |
-	ScaleXProperty| ScaleYProperty | TranslationXProperty | TranslationYProperty | PivotXProperty | PivotYProperty |
-	TagIntProperty | NumberOfSegmentsProperty | LeftAbsoluteProperty | TopAbsoluteProperty;
+type NumericProperties  = ZIndexProperty | OpacityProperty | BorderWidthProperty | TopProperty | LeftProperty
+	| WidthProperty | HeightProperty | VideoPosProperty | VideoLengthProperty | ItemFocusedProperty |  MarginProperty
+	| PaddingProperty |  FontSizeProperty | FontWeightProperty | FocusMarginProperty | FocusPrimaryWidthProperty
+	| FocusSecondaryWidthProperty | TextSizeProperty | ScaleXProperty| ScaleYProperty | TranslationXProperty
+	| TranslationYProperty | PivotXProperty | PivotYProperty | TagIntProperty | NumberOfSegmentsProperty
+	| LeftAbsoluteProperty | TopAbsoluteProperty;
 
 type TextProperty = BasePropertyType<'text', PropertyStringComparatorsType, string>;
 type ImageProperty = BasePropertyType<'image', PropertyStringComparatorsType, string>;

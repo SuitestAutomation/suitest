@@ -53,7 +53,7 @@ export const texts = Object.freeze({
 	'progress.status.unistallingApp': () => 'Uninstalling app…',
 	'progress.status.uploadingAndInstallingApp': () => 'Uploading and installing app…',
 	'progress.status.unknownStatusCode': (code: string) => `Unknown status code received: ${code}`,
-	'progress.status.undefined': () => 'A status is expected.'
+	'progress.status.undefined': () => 'A status is expected.',
 });
 
 export default texts;

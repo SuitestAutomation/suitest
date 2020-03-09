@@ -38,7 +38,7 @@ describe('Interactive progress explanation.', () => {
 		// code is valid and status undefined
 		expect(translateProgress({status: undefined, code: 'candyBoxOffline'})).toStrictEqual({
 			description: 'Check that the cable plugged into the CandyBox delivers Internet connection or reboot the CandyBox and allow about 5 minutes for it to initialize',
-			title: 'Cannot continue: CandyBox controlling this device is offline'
+			title: 'Cannot continue: CandyBox controlling this device is offline',
 		});
 	});
 });
