@@ -18,11 +18,12 @@
   "main": "umd/index.js",
   "files": [
     "umd/",
-    "commonjs",
-    "docs/"
+    "commonjs/",
+    "docs/",
+    "suitest-test-line.css"
   ],
   "scripts": {
-    "build": "npm run build:umd && npm run build:commonjs",
+    "build": "npm run build:umd && npm run build:commonjs && cp ./lib/suitest-test-line.css ./",
     "build:umd": "rimraf umd && rollup -c --environment FORMAT:umd",
     "build:commonjs": "rimraf commonjs && tsc",
     "test": "jest",
@@ -30,7 +31,6 @@
     "prepublishOnly": "npm run coverage && npm run build"
   },
   "dependencies": {
-    "@suitest/types": "2.0.4",
-    "unist-builder": "^2.0.3"
+    "@suitest/types": "2.0.4"
   }
 }

@@ -12,6 +12,7 @@ export type AssertThen = 'success' | 'fail' | 'warning' | 'exit';
 export type AssertTestLine = BaseTestLine & {
 	type: 'assert',
 	condition: Condition,
+	timeout?: number | string, // String in case it's a variable
 	then: AssertThen,
 };
 
@@ -115,6 +116,10 @@ export type PositionTarget = {
 		y: number | string,
 	},
 };
+
+export type Target = ElementTarget
+	| WindowTarget
+	| PositionTarget;
 
 export type ClickTestLine = BaseTestLine & {
 	type: 'click',

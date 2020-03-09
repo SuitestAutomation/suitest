@@ -1,78 +1,65 @@
-export type PlainTextNode = {
+declare type PlainTextNode = {
 	type: 'text',
 	value: string,
 };
-export type BoldTextNode = {
+declare type BoldTextNode = {
 	type: 'bold',
 	value: string,
 };
-export type EmphasisTextNode = {
+declare type EmphasisTextNode = {
 	type: 'emphasis',
 	value: string,
 };
-export type CodeTextNode = {
+declare type CodeTextNode = {
 	type: 'code',
 	value: string,
 };
-export type TextFragmentNode = {
-	type: 'text-fragment',
-	children: TextNode[],
-};
-export type TextNode = PlainTextNode | BoldTextNode | EmphasisTextNode | CodeTextNode;
-export type ParagraphNode = {
+declare type TextNode = PlainTextNode | BoldTextNode | EmphasisTextNode | CodeTextNode;
+declare type ParagraphNode = {
 	type: 'paragraph',
 	children: TextNode[],
 };
-export type CellNode = {
+declare type CellNode = {
 	type: 'cell',
-	children: Array<TextNode | SectionNode>,
+	children: TextNode[],
 };
-export type RowNode = {
+declare type RowNode = {
 	type: 'row',
 	children: CellNode[],
 };
-export type TableNode = {
+declare type TableNode = {
 	type: 'table',
-	label?: TextNode | TextFragmentNode,
+	label?: TextNode[],
 	children: RowNode[],
 };
-export type DictionaryRowNode = {
+declare type DictionaryRowNode = {
 	type: 'row',
 	children: [CellNode, CellNode],
 };
-export type DictionaryNode = {
+declare type DictionaryNode = {
 	type: 'dictionary',
-	label?: TextNode | TextFragmentNode,
+	label?: TextNode[],
 	children: DictionaryRowNode[],
 };
-export type CodeBlockNode = {
+declare type CodeBlockNode = {
 	type: 'code-block',
-	label?: TextNode | TextFragmentNode,
+	label?: TextNode[],
 	value: string,
 };
-export type ErrorBlockNode = {
-	type: 'error-block',
-	children: TextNode[],
-};
-export type WarningBlockNode = {
-	type: 'warning-block',
-	children: TextNode[],
-};
-export type SectionNode = ParagraphNode
+declare type SectionNode = ParagraphNode
 	| TableNode
 	| DictionaryNode
 	| CodeBlockNode
-	| ErrorBlockNode
-	| WarningBlockNode
 	| ConditionNode;
-export type TestLineNode = {
+declare type TestLineNode = {
 	type: 'test-line',
-	title: TextNode | TextFragmentNode,
+	title: TextNode[],
 	children: SectionNode[],
 };
-export type ConditionNode = {
+declare type ConditionNode = {
 	type: 'condition',
-	title: TextNode | TextFragmentNode,
+	title: TextNode[],
 	children: SectionNode[],
 };
-export type Node = ConditionNode | TestLineNode | SectionNode | CellNode | RowNode | TextFragmentNode | TextNode;
+declare type SingleNode = ConditionNode | TestLineNode | SectionNode | CellNode | RowNode | TextNode;
+declare type Node =  SingleNode | SingleNode[];

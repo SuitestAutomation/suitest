@@ -1,7 +1,7 @@
-import '../types/intrinsicElements';
+/// <reference path="../types/intrinsicElements.d.ts" />
+/// <reference path="../types/unistTestLine.d.ts" />
 import {jsx} from './jsxFactory';
 import {AppConfiguration} from '@suitest/types';
-import {Node} from '../types/unistTestLine';
 
 /**
  * Replace variables in text
@@ -23,8 +23,69 @@ export const formatVariables = (text: string, variables: AppConfiguration['confi
 
 	if (resultText !== text) {
 		// There was some replacing done
-		return <text-fragment><bold>{resultText}</bold> (<code>{text}</code>)</text-fragment>;
+		return <fragment><bold>{resultText}</bold> (<code>{text}</code>)</fragment>;
 	}
 
 	return <bold>{text}</bold>;
 };
+
+/**
+ * Replace variable and output timeout value as unist node
+ */
+export const formatTimeout = (timeout: number | string, variables: AppConfiguration['configVariables']): Node => {
+	// Replace variables (if any) in timeout
+	const t = typeof timeout === 'string' ? replaceVariables(timeout, variables) : String(timeout);
+	// Get final value in ms as a number
+	const ms = +t;
+
+	if (isNaN(ms)) {
+		// Wrong variable or other invalid value
+		// Just display it as is
+		return <bold>{String(timeout)}</bold>;
+	}
+
+	// Value to display to user, as string, in seconds
+	const s = String(ms / 1000) + 's';
+
+	if (String(timeout) !== t) {
+		// Variable is used
+		return <fragment><bold>{s}</bold> (<code>{String(timeout)}</code>)</fragment>;
+	}
+
+	// Not a variable
+	return <bold>{s}</bold>;
+};
+
+export const formatCount = (count: number | string, variables: AppConfiguration['configVariables']): Node => {
+	const countAsString = String(count);
+	const countAsStringWithReplacedVars = typeof count === 'string' ? replaceVariables(count, variables) : countAsString;
+	// Get final value in ms as a number
+	const countAsNumberWithReplacedVars = +countAsStringWithReplacedVars;
+
+	if (isNaN(countAsNumberWithReplacedVars)) {
+		// Wrong variable or other invalid value
+		// Just display it as is
+		return <bold>{countAsString}</bold>;
+	}
+
+	if (countAsString !== countAsStringWithReplacedVars) {
+		// Variable is used
+		return <fragment><bold>{countAsStringWithReplacedVars}</bold>x (<code>{countAsString}</code>)</fragment>;
+	}
+
+	// Not a variable
+	return <fragment><bold>{countAsString}</bold>x</fragment>;
+};
+
+export const escapeHtml = (text: string): string => text.replace(/[&<"']/g, function(m) {
+	switch (m) {
+		case '&':
+			return '&amp;';
+		case '<':
+			return '&lt;';
+		case '"':
+			return '&quot;';
+		default:
+			return '&#039;';
+	}
+});

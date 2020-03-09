@@ -20,7 +20,8 @@
     "downlevelIteration": true,
     "declaration": true,
     "jsx": "react",
-    "jsxFactory": "jsx"
+    "jsxFactory": "jsx",
+    "esModuleInterop": true
   },
   "compileOnSave": false
 }

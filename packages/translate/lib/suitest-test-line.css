@@ -1,0 +1,74 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.suitest-test-line {
+    margin: 1rem 1rem 2rem;
+    padding-left: 2rem;
+}
+
+.suitest-test-line > figcaption {
+    margin-left: -2rem;
+}
+
+.suitest-test-line__text--bold {
+    font-weight: bold;
+}
+
+.suitest-test-line__text--emphasis {
+    font-style: italic;
+}
+
+.suitest-test-line__text--code {
+    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    background: #e8e8e8;
+    border-radius: 2px;
+    padding: 0 3px;
+}
+
+.suitest-test-line__table {
+    margin: 0;
+}
+
+.suitest-test-line__table > table {
+    border-collapse: collapse;
+}
+
+.suitest-test-line__table td {
+    border: 1px solid grey;
+    padding: 5px;
+}
+
+.suitest-test-line__dictionary {
+    margin: 0;
+    padding-left: 2rem;
+}
+
+.suitest-test-line__dictionary > figcaption {
+    margin-left: -2rem;
+}
+
+.suitest-test-line__dictionary dl {
+    margin: 0;
+}
+
+.suitest-test-line__dictionary dt::after {
+    content: ": ";
+}
+
+.suitest-test-line__dictionary dt {
+    display: block;
+    float: left;
+    padding-right: 1em;
+}
+
+.suitest-test-line__condition {
+    margin: 0;
+    padding-left: 2rem;
+}
+
+.suitest-test-line__condition > figcaption {
+    margin-left: -2rem;
+}
