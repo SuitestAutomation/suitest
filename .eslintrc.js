@@ -44,6 +44,7 @@ module.exports = {
 		'@typescript-eslint/no-explicit-any': 'off',
 		'@typescript-eslint/no-misused-new': 'error',
 		'@typescript-eslint/no-namespace': 'off',
+		'@typescript-eslint/no-non-null-assertion': 'off',
 		'@typescript-eslint/no-parameter-properties': 'off',
 		'@typescript-eslint/no-unused-vars': ['error', {'varsIgnorePattern': 'jsx'}],
 		'@typescript-eslint/no-use-before-define': 'off',
@@ -63,7 +64,7 @@ module.exports = {
 			'error',
 			'always',
 		],
-		'@typescript-eslint/triple-slash-reference': 'error',
+		'@typescript-eslint/triple-slash-reference': 'off', // Off because of Rollup.js
 		'@typescript-eslint/type-annotation-spacing': 'error',
 		'@typescript-eslint/unified-signatures': 'error',
 		'arrow-body-style': 'error',
@@ -147,7 +148,7 @@ module.exports = {
 			'error',
 			'never',
 		],
-		'spaced-comment': 'error',
+		'spaced-comment': 'off', // Off because of TypeScript triple slash references
 		'unicorn/filename-case': 'off',
 		'use-isnan': 'error',
 		'valid-typeof': 'off',

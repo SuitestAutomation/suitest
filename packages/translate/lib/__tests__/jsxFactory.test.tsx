@@ -1,6 +1,6 @@
-import '../../types/intrinsicElements';
-import {jsx} from '../jsxFactory';
-import {BoldTextNode, CodeTextNode, EmphasisTextNode, PlainTextNode, TextFragmentNode} from '../../types/unistTestLine';
+/// <reference path="../../types/intrinsicElements.d.ts" />
+/// <reference path="../../types/unistTestLine.d.ts" />
+import {jsx, flatten} from '../jsxFactory';
 
 describe('jsxFactory', () => {
 	it('should accept JSX node and generate correct unist elements out of it', () => {
@@ -30,76 +30,63 @@ describe('jsxFactory', () => {
 	});
 
 	it('should process complex text nodes', () => {
-		const jsxResult = <text-fragment>some <emphasis>emphasis</emphasis> and <bold>bold</bold> text</text-fragment>;
-		const unist: TextFragmentNode = {
-			type: 'text-fragment',
-			children: [
-				{
-					type: 'text',
-					value: 'some ',
-				},
-				{
-					type: 'emphasis',
-					value: 'emphasis',
-				},
-				{
-					type: 'text',
-					value: ' and ',
-				},
-				{
-					type: 'bold',
-					value: 'bold',
-				},
-				{
-					type: 'text',
-					value: ' text',
-				},
-			],
-		};
+		const jsxResult = <fragment>some <emphasis>emphasis</emphasis> and <bold>bold</bold> text</fragment>;
+		const unist: Node[] = [
+			{
+				type: 'text',
+				value: 'some ',
+			},
+			{
+				type: 'emphasis',
+				value: 'emphasis',
+			},
+			{
+				type: 'text',
+				value: ' and ',
+			},
+			{
+				type: 'bold',
+				value: 'bold',
+			},
+			{
+				type: 'text',
+				value: ' text',
+			},
+		];
 
 		expect(jsxResult).toEqual(unist);
 	});
 
 	it('should filter out empty elements and merge same element types that are listed in sequence', () => {
-		const jsxResult = <text-fragment>some {undefined} string <bold>bold</bold></text-fragment>;
-		const unist: TextFragmentNode = {
-			type: 'text-fragment',
-			children: [
-				{
-					type: 'text',
-					value: 'some  string ',
-				},
-				{
-					type: 'bold',
-					value: 'bold',
-				},
-			],
-		};
+		const jsxResult = <fragment>some {undefined} string <bold>bold</bold></fragment>;
+		const unist: Node[] = [
+			{
+				type: 'text',
+				value: 'some  string ',
+			},
+			{
+				type: 'bold',
+				value: 'bold',
+			},
+		];
 
 		expect(jsxResult).toEqual(unist);
 	});
 
-	it('should throw if text fragment receives non-textual children', () => {
-		expect(() => <text-fragment><paragraph>...</paragraph></text-fragment>).toThrow();
-	});
-
 	it('should unfold any nested text fragment into a single one', () => {
-		const jsxResult = <text-fragment>
-			<text-fragment>Some test</text-fragment> <emphasis>another</emphasis>
-		</text-fragment>;
-		const unist: TextFragmentNode = {
-			type: 'text-fragment',
-			children: [
-				{
-					type: 'text',
-					value: 'Some test ',
-				},
-				{
-					type: 'emphasis',
-					value: 'another',
-				},
-			],
-		};
+		const jsxResult = <fragment>
+			<fragment>Some test</fragment> <emphasis>another</emphasis>
+		</fragment>;
+		const unist: Node[] = [
+			{
+				type: 'text',
+				value: 'Some test ',
+			},
+			{
+				type: 'emphasis',
+				value: 'another',
+			},
+		];
 
 		expect(jsxResult).toEqual(unist);
 	});
@@ -121,43 +108,37 @@ describe('jsxFactory', () => {
 	it('should save title property for test line and condition', () => {
 		expect(<test-line title="Some title"><text>text</text></test-line>).toEqual({
 			type: 'test-line',
-			title: {type: 'text', value: 'Some title'},
+			title: [{type: 'text', value: 'Some title'}],
 			children: [{type: 'text', value: 'text'}],
 		});
 
-		expect(<test-line title={<text-fragment>Some <bold>bold</bold> title</text-fragment>}>
+		expect(<test-line title={<fragment>Some <bold>bold</bold> title</fragment>}>
 			<text>text</text>
 		</test-line>).toEqual({
 			type: 'test-line',
-			title: {
-				type: 'text-fragment',
-				children: [
-					{type: 'text', value: 'Some '},
-					{type: 'bold', value: 'bold'},
-					{type: 'text', value: ' title'},
-				],
-			},
+			title: [
+				{type: 'text', value: 'Some '},
+				{type: 'bold', value: 'bold'},
+				{type: 'text', value: ' title'},
+			],
 			children: [{type: 'text', value: 'text'}],
 		});
 
 		expect(<condition title="Some title"><text>text</text></condition>).toEqual({
 			type: 'condition',
-			title: {type: 'text', value: 'Some title'},
+			title: [{type: 'text', value: 'Some title'}],
 			children: [{type: 'text', value: 'text'}],
 		});
 
-		expect(<condition title={<text-fragment>Some <bold>bold</bold> title</text-fragment>}>
+		expect(<condition title={<fragment>Some <bold>bold</bold> title</fragment>}>
 			<text>text</text>
 		</condition>).toEqual({
 			type: 'condition',
-			title: {
-				type: 'text-fragment',
-				children: [
-					{type: 'text', value: 'Some '},
-					{type: 'bold', value: 'bold'},
-					{type: 'text', value: ' title'},
-				],
-			},
+			title: [
+				{type: 'text', value: 'Some '},
+				{type: 'bold', value: 'bold'},
+				{type: 'text', value: ' title'},
+			],
 			children: [{type: 'text', value: 'text'}],
 		});
 	});
@@ -170,13 +151,13 @@ describe('jsxFactory', () => {
 
 		expect(<code-block label="Label">test</code-block>).toEqual({
 			type: 'code-block',
-			label: {type: 'text', value: 'Label'},
+			label: [{type: 'text', value: 'Label'}],
 			value: 'test',
 		});
 
 		expect(<code-block label={<bold>TEST</bold>}>test</code-block>).toEqual({
 			type: 'code-block',
-			label: {type: 'bold', value: 'TEST'},
+			label: [{type: 'bold', value: 'TEST'}],
 			value: 'test',
 		});
 
@@ -187,13 +168,13 @@ describe('jsxFactory', () => {
 
 		expect(<table label="Label"><row><cell>test</cell></row></table>).toEqual({
 			type: 'table',
-			label: {type: 'text', value: 'Label'},
+			label: [{type: 'text', value: 'Label'}],
 			children: [{type: 'row', children: [{type: 'cell', children: [{type: 'text', value: 'test'}]}]}],
 		});
 
 		expect(<table label={<bold>TEST</bold>}><row><cell>test</cell></row></table>).toEqual({
 			type: 'table',
-			label: {type: 'bold', value: 'TEST'},
+			label: [{type: 'bold', value: 'TEST'}],
 			children: [{type: 'row', children: [{type: 'cell', children: [{type: 'text', value: 'test'}]}]}],
 		});
 
@@ -218,7 +199,7 @@ describe('jsxFactory', () => {
 
 		expect(<dictionary label="Label"><row><cell>test</cell><cell>test</cell></row></dictionary>).toEqual({
 			type: 'dictionary',
-			label: {type: 'text', value: 'Label'},
+			label: [{type: 'text', value: 'Label'}],
 			children: [
 				{
 					type: 'row',
@@ -240,7 +221,7 @@ describe('jsxFactory', () => {
 			<row><cell>test</cell><cell>test</cell></row>
 		</dictionary>).toEqual({
 			type: 'dictionary',
-			label: {type: 'bold', value: 'TEST'},
+			label: [{type: 'bold', value: 'TEST'}],
 			children: [
 				{
 					type: 'row',
@@ -256,6 +237,16 @@ describe('jsxFactory', () => {
 					],
 				},
 			],
+		});
+	});
+
+	describe('flatten util', () => {
+		it('should flatten array of any depth', () => {
+			expect(flatten([1, [2, [3, 4], 5], 6])).toEqual([1, 2, 3, 4, 5, 6]);
+		});
+
+		it('should always return an array, even if input is not', () => {
+			expect(flatten('whatever')).toEqual(['whatever']);
 		});
 	});
 });

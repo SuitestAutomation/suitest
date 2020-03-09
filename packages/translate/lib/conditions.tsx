@@ -1,4 +1,5 @@
-import '../types/intrinsicElements';
+/// <reference path="../types/intrinsicElements.d.ts" />
+/// <reference path="../types/unistTestLine.d.ts" />
 import {jsx} from './jsxFactory';
 import {
 	Condition,
@@ -10,14 +11,13 @@ import {
 	Comparator,
 	NetworkRequestInfo,
 	AppConfiguration,
-	Elements, ElementSubject,
+	Elements, ElementSubject, CustomElementSubject,
 } from '@suitest/types';
 import {formatVariables, replaceVariables} from './utils';
 import {translateComparator} from './comparators';
-import {ConditionNode, Node} from '../types/unistTestLine';
 
 const translateApplicationExitedCondition = (): ConditionNode =>
-	<condition title="Application has exited" /> as ConditionNode;
+	<condition title="Application has exited"/> as ConditionNode;
 
 const translateCurrentLocationCondition = (
 	condition: CurrentLocationCondition,
@@ -26,7 +26,7 @@ const translateCurrentLocationCondition = (
 	<condition title="Current location">
 		<table>
 			<row>
-				<cell>URL</cell>
+				<cell>Current location</cell>
 				<cell>{translateComparator(condition.type)}</cell>
 				<cell>{formatVariables(condition.val, appConfig.configVariables)}</cell>
 			</row>
@@ -37,7 +37,7 @@ const translateCookieCondition = (condition: CookieCondition, appConfig: AppConf
 	<condition title="Cookie">
 		<table>
 			<row>
-				<cell>{formatVariables(condition.subject.val, appConfig.configVariables)} cookie`)}</cell>
+				<cell>{formatVariables(condition.subject.val, appConfig.configVariables)} cookie</cell>
 				<cell>{translateComparator(condition.type)}</cell>
 				<cell>{formatVariables(condition.val, appConfig.configVariables)}</cell>
 			</row>
@@ -48,20 +48,34 @@ const translateCookieCondition = (condition: CookieCondition, appConfig: AppConf
 const translateElementProperty = (property: string): string => {
 	switch (property) {
 		// Special cases, when converting from cameCase is not enough
-		case 'videoUrl': return 'video URL';
-		case 'url': return 'URL';
-		case 'color': return 'text color';
-		case 'zIndex': return 'z-index';
-		case 'automationId': return 'automation ID';
-		case 'scaleX': return 'scale X';
-		case 'scaleY': return 'scale Y';
-		case 'translationX': return 'translation X';
-		case 'translationY': return 'translation Y';
-		case 'pivotX': return 'pivot X';
-		case 'pivotY': return 'pivot Y';
-		case 'tagInt': return 'tag';
-		case 'fontURI': return 'font URI';
-		case 'proposalURL': return 'proposal URL';
+		case 'videoUrl':
+			return 'video URL';
+		case 'url':
+			return 'URL';
+		case 'color':
+			return 'text color';
+		case 'zIndex':
+			return 'z-index';
+		case 'automationId':
+			return 'automation ID';
+		case 'scaleX':
+			return 'scale X';
+		case 'scaleY':
+			return 'scale Y';
+		case 'translationX':
+			return 'translation X';
+		case 'translationY':
+			return 'translation Y';
+		case 'pivotX':
+			return 'pivot X';
+		case 'pivotY':
+			return 'pivot Y';
+		case 'tagInt':
+			return 'tag';
+		case 'fontURI':
+			return 'font URI';
+		case 'proposalURL':
+			return 'proposal URL';
 		default:
 			// Split camel case to words
 			return property.replace(/([A-Z+])/g, (_, match) => ' ' + match.toLowerCase());
@@ -72,8 +86,8 @@ const assertUnknownElementCondition = (condition: never): never => {
 	throw new Error(`Unknown element condition type: ${JSON.stringify(condition)}`);
 };
 
-const translateElementName = (subject: ElementSubject, elements?: Elements): Node => {
-	if (subject.type === 'video') {
+const translateElementName = (subject: ElementSubject, elements?: Elements): Node | Node[] => {
+	if (subject.type === 'video' || (subject as CustomElementSubject).val?.video) {
 		return <bold>video</bold>;
 	}
 
@@ -93,18 +107,25 @@ const translateElementName = (subject: ElementSubject, elements?: Elements): Nod
 			return <bold>{subject.nameHint}</bold>;
 		}
 
-		return <text-fragment>
+		return <fragment>
 			Unknown element (<code>{subject.elementId.slice(0, 4) + '...' + subject.elementId.slice(-4)}</code>)
-		</text-fragment>;
+		</fragment>;
 	}
 
 	if ('apiId' in subject) {
 		// Element defined by it's API ID
-		return <text-fragment><bold>{subject.apiId}</bold> element</text-fragment>;
+		return <bold>{subject.apiId}</bold>;
 	}
 
 	// Otherwise it's a custom element defined by it's selector
 	const {ifMultipleFoundReturn, ...selector} = subject.val;
+	const selectorKeys = Object.keys(selector);
+
+	if (selectorKeys.length === 1) {
+		// A common case when there is a single selector, e.g. css or xpath
+		// Casting to any because TS throws an unwarranted error otherwise
+		return <code>{(selector as any)[selectorKeys[0]]}</code>;
+	}
 
 	return <code>{JSON.stringify({...selector, index: ifMultipleFoundReturn ?? 1})}</code>;
 };
@@ -118,13 +139,13 @@ const translateElementCondition = (
 
 	switch (condition.type) {
 		case 'exists':
-			return <condition title={<text-fragment>{elementName} exists</text-fragment>} /> as ConditionNode;
+			return <condition title={<fragment>{elementName} exists</fragment>}/> as ConditionNode;
 		case '!exists':
-			return <condition title={<text-fragment>{elementName} does not exist</text-fragment>} /> as ConditionNode;
+			return <condition title={<fragment>{elementName} does not exist</fragment>}/> as ConditionNode;
 		case 'matches':
 			const codeReplacedVars = replaceVariables(condition.val, appConfig.configVariables);
 
-			return <condition title={<text-fragment>{elementName} matches JavaScript</text-fragment>}>
+			return <condition title={<fragment>{elementName} matches JavaScript</fragment>}>
 				<code-block label="JavaScript matcher">{codeReplacedVars}</code-block>
 				{codeReplacedVars !== condition.val
 					? <code-block label="With variables">{condition.val}</code-block>
@@ -132,17 +153,17 @@ const translateElementCondition = (
 				}
 			</condition> as ConditionNode;
 		case 'visible':
-			return <condition title={<text-fragment>{elementName} is visible</text-fragment>} /> as ConditionNode;
+			return <condition title={<fragment>{elementName} is visible</fragment>}/> as ConditionNode;
 		case 'has':
-			return <condition title={<text-fragment>{elementName} properties</text-fragment>}>
+			return <condition title={<fragment>{elementName} properties</fragment>}>
 				<table>
-				{condition.expression.map(exp => (
-					<row>
-						<cell>{translateElementProperty(exp.property)}</cell>
-						<cell>{translateComparator(exp.type)}</cell>
-						<cell>{formatVariables(exp.val + (exp.type === '+-' ? ' ± ' + exp.deviation : ''), appConfig.configVariables)}</cell>
-					</row>
-				))}
+					{condition.expression.map(exp => (
+						<row>
+							<cell>{translateElementProperty(exp.property)}</cell>
+							<cell>{translateComparator(exp.type)}</cell>
+							<cell>{formatVariables(exp.val + (exp.type === '+-' ? ' ± ' + exp.deviation : ''), appConfig.configVariables)}</cell>
+						</row>
+					))}
 				</table>
 			</condition> as ConditionNode;
 		default:
@@ -158,33 +179,36 @@ const translateJavaScriptExpressionCondition = (
 
 	return <condition title="JavaScript expression">
 		<code-block label="JavaScript expression">{code}</code-block>
-		{code !== condition.val
-			? <code-block label="With variables">{condition.val}</code-block>
+		{code !== condition.subject.val
+			? <code-block label="With variables">{condition.subject.val}</code-block>
 			: undefined
 		}
 		<table>
 			<row>
 				<cell>Expression result</cell>
 				<cell>{translateComparator(condition.type)}</cell>
-				<cell>formatVariables(condition.val, appConfig.configVariables)</cell>
+				<cell>{formatVariables(condition.val, appConfig.configVariables)}</cell>
 			</row>
 		</table>
 	</condition> as ConditionNode;
 };
 
-const translateNetworkInfo = (isRequest: boolean, appConfig: AppConfiguration) =>
-	({name, compare, val}: {name: string, compare: Comparator, val: string | number}): Node =>
-		<row>
-			<cell>
-				<text>{isRequest ? 'Request' : 'Response'} </text>
-				{name.startsWith('@')
-					? <text>name.slice(1)</text>
-					: <text-fragment>header {formatVariables(name, appConfig.configVariables)}</text-fragment>
-				}
-			</cell>
-			<cell>{translateComparator(compare)}</cell>
-			<cell>{formatVariables(String(val), appConfig.configVariables)}</cell>
-		</row>;
+const translateNetworkInfo = (isRequest: boolean, appConfig: AppConfiguration) => ({
+	name,
+	compare,
+	val,
+}: { name: string, compare: Comparator, val: string | number }): Node | Node[] =>
+	<row>
+		<cell>
+			<text>{isRequest ? 'Request' : 'Response'} </text>
+			{name.startsWith('@')
+				? <text>{name.slice(1)}</text>
+				: <fragment>header {formatVariables(name, appConfig.configVariables)}</fragment>
+			}
+		</cell>
+		<cell>{translateComparator(compare)}</cell>
+		<cell>{formatVariables(String(val), appConfig.configVariables)}</cell>
+	</row>;
 
 /**
  * Put @status and @method on top, then show headers, then - @body.
@@ -219,9 +243,9 @@ const translateNetworkRequestCondition = (
 	appConfig: AppConfiguration
 ): ConditionNode => {
 	const requestInfo = condition
-			.subject
-			.requestInfo?.sort(sortNetworkInfo)
-			.map(translateNetworkInfo(true, appConfig)) ?? [];
+		.subject
+		.requestInfo?.sort(sortNetworkInfo)
+		.map(translateNetworkInfo(true, appConfig)) ?? [];
 	const responseInfo = condition
 		.subject
 		.responseInfo?.sort(sortNetworkInfo)
@@ -231,12 +255,14 @@ const translateNetworkRequestCondition = (
 	return <condition title={<text>Network request {condition.type === 'made' ? 'was made' : 'was not made'}</text>}>
 		<dictionary>
 			<row>
-				<cell>{condition.subject.compare === '=' ? 'URL' : 'URL matching'}</cell>
+				<cell>{condition.subject.compare === '=' ? 'Exact URL' : 'URL matching'}</cell>
 				<cell>{formatVariables(condition.subject.val, appConfig.configVariables)}</cell>
 			</row>
 			<row>
 				<cell>Previously matched</cell>
-				<cell><bold>{condition.searchStrategy === 'all' ? 'Yes' : 'No'}</bold></cell>
+				<cell>
+					<bold>{condition.searchStrategy === 'all' ? 'Yes' : 'No'}</bold>
+				</cell>
 			</row>
 		</dictionary>
 		{tableRows.length

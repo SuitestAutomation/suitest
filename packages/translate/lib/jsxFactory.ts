@@ -1,89 +1,78 @@
-import '../types/intrinsicElements.d.ts';
-import * as assert from 'assert';
-import * as ub from 'unist-builder';
-import {
-	CellNode,
-	ConditionNode,
-	DictionaryNode,
-	Node,
-	TableNode,
-	TestLineNode,
-	TextFragmentNode,
-	TextNode,
-} from '../types/unistTestLine';
+/// <reference path="../types/intrinsicElements.d.ts" />
+/// <reference path="../types/unistTestLine.d.ts" />
+import ub from 'unist-builder';
 
-type Label = string | TextNode | TextFragmentNode;
+const plainTypes = ['text', 'code', 'bold', 'emphasis'];
+const isTextNode = (input: SingleNode): input is TextNode => plainTypes.includes(input.type);
 
-const plainTypes = ['text-fragment', 'text', 'code', 'bold', 'emphasis'];
-
-const buildTextFragment = (children: any[]): TextFragmentNode =>
-	ub('text-fragment', children.map(child => {
-		if (typeof  child === 'string') {
-			return ub('text', child);
-		}
-
-		assert(plainTypes.includes(child.type), 'Text fragment can only accept textual children');
-
-		return child;
-	}).reduce((newChildren, child) => {
-		// Recursively process nested text fragments
-		const childrenToProcess = child.type === 'text-fragment'
-			? (jsx('text-fragment', {}, ...child.children) as TextFragmentNode).children
-			: [child];
-
-		childrenToProcess.forEach((nestedChild: TextNode | string) => {
-			if (typeof nestedChild === 'string') {
-				nestedChild = ub('text', nestedChild);
-			}
-
-			const lastChild = newChildren[newChildren.length - 1];
-
-			if (lastChild?.type === nestedChild.type) {
-				lastChild.value += nestedChild.value;
-			} else {
-				newChildren.push(nestedChild);
-			}
-		});
-
-		return newChildren;
-	}, []));
-
-const buildTable = (children: any[], label?: Label): TableNode => {
-	// Flatten children to allow for record like <table>{something.map(...)}</table>
-	children = children.reduce((acc, item) => acc.concat(item), []);
-
-	children.forEach(child =>
-		assert(child.type === 'row', 'Table can accepts only Row as it\'s child')
-	);
-
-	const tableLabel = typeof label === 'string' ? ub('text', label) : label;
-
-	return ub('table', {label: tableLabel}, children);
-};
-
-const buildDictionary = (children: any[], label?: Label): DictionaryNode => {
-	children.forEach(child => {
-		assert(child.type === 'row', 'Dictionary can accepts only Row as it\'s child');
-		assert(child.children.length === 2, 'Dictionary expects exactly 2 child nodes');
-	});
-
-	const dictLabel = typeof label === 'string' ? ub('text', label) : label;
-
-	return ub('dictionary', {label: dictLabel}, children);
-};
-
-const buildCell = (children: any[]): CellNode => {
-	// Cell is a special case - it can have either textual or block elements
-	if (children.every(child => typeof child === 'string' || plainTypes.includes(child.type))) {
-		// Pass children through test fragment logic to it's wrapped correctly
-		return ub('cell', buildTextFragment(children).children);
+type DeepArrayOrOne<T> = T | Array<T | DeepArrayOrOne<T>>;
+export const flatten = <T extends any>(input: DeepArrayOrOne<T>): T[] => {
+	if (Array.isArray(input)) {
+		return input.reduce((acc: T[], item: DeepArrayOrOne<T>) => acc.concat(flatten(item)), []);
 	}
 
-	return ub('cell', children);
+	return [input];
 };
+
+/**
+ * Normalize textual children - make them flat and merge sequential text items of same type
+ */
+const normalizePlainChildren = (
+	children: Array<SingleNode | string>,
+	parentType: keyof JSX.IntrinsicElements
+): SingleNode[] =>
+	children.reduce((output: SingleNode[], child: SingleNode | string) => {
+		if (typeof child === 'string') {
+			// Wrap plain strings into text nodes
+			child = ub(plainTypes.includes(parentType) ? parentType : 'text', child) as PlainTextNode;
+		}
+
+		// Nested child is a textual node
+		const lastChild = output[output.length - 1];
+
+		if (isTextNode(child) && lastChild?.type === child.type) {
+			// Textual node with same time as the previous one - merge them
+			lastChild.value += child.value;
+		} else {
+			output.push(child);
+		}
+
+		return output;
+	}, []);
+
+const processLabel = (label?: string | SingleNode | Array<string | SingleNode>): SingleNode[] | undefined => {
+	if (typeof label !== 'undefined') {
+		return normalizePlainChildren(flatten([label]), 'text');
+	}
+
+	return undefined;
+};
+
+const isCellChildren = (children: SingleNode[]): children is CellNode[] =>
+	children.every(child => child.type === 'cell');
+
+const isRowChildren = (children: SingleNode[]): children is RowNode[] =>
+	children.every(child => child.type === 'row');
+
+const isDictionaryRowChildren = (children: SingleNode[]): children is DictionaryRowNode[] =>
+	children.every(child => child.type === 'row' && child.children.length === 2);
+
+const isTextChildren = (children: SingleNode[]): children is TextNode[] =>
+	children.every(isTextNode);
+
+const isSinglePlainTextChildren = (children: SingleNode[]): children is [TextNode] =>
+	children.length === 1 && children[0].type === 'text';
 
 const assertUnknownIntrinsicElementType = (type: never): never => {
 	throw new Error(`Unknown intrinsic element type ${type}`);
+};
+
+export const assertUnknownSectionNode = (node: never): never => {
+	throw new Error('Unknown node type: ' + JSON.stringify(node));
+};
+
+export const assertUnknownTextNode = (node: never): never => {
+	throw new Error('Unknown plain text node: ' + JSON.stringify(node));
 };
 
 /**
@@ -92,47 +81,57 @@ const assertUnknownIntrinsicElementType = (type: never): never => {
  * anyway and always returns whatever is provided in JSX.Element type/interface.
  * Some validation is added to ensure correct data at least runtime.
  */
-export const jsx = (type: Node['type'], props: {[key: string]: any}, ...children: any[]): Node => {
-	// Do not include empty children, to allow for ternary operations in
-	children = children.filter(Boolean);
+export const jsx = (
+	type: keyof JSX.IntrinsicElements,
+	props: {[key: string]: any} | null,
+	...children: Array<Node | string>
+): Node => {
+	// Do not include empty children, to allow for ternary operations in JSX
+	// Flatten the children - to support nested arrays in JSX and manage fragments
+	const processedChildren = normalizePlainChildren(flatten(children.filter(Boolean)), type);
 
 	switch (type) {
 		case 'text':
 		case 'bold':
 		case 'emphasis':
 		case 'code':
-			// Can have multiple string children, e.g. if got <text>some {variable}</text>
-			// Validation of children is done statically by typescript
-			return ub(type, children.join(''));
-		case 'text-fragment':
-			return buildTextFragment(children);
-		case 'row':
-			children.forEach(child =>
-				assert(child.type === 'cell', 'Row can accepts only Cell as it\'s child')
-			);
-
-			return ub('row', children);
-		case 'table':
-			return buildTable(children, props?.label);
-		case 'dictionary':
-			return buildDictionary(children, props?.label);
+			return processedChildren[0];
+		case 'fragment':
+			return processedChildren;
 		case 'cell':
-			return buildCell(children);
+			if (isTextChildren(processedChildren)) {
+				return ub('cell', processedChildren);
+			}
+
+			throw new TypeError('Cell can only accept section or textual nodes');
+		case 'row':
+			if (isCellChildren(processedChildren)) {
+				return ub('row', processedChildren);
+			}
+
+			throw new TypeError('Row can only accept Cell as its child');
+		case 'table':
+			if (isRowChildren(processedChildren)) {
+				return ub('table', {label: processLabel(props?.label)}, processedChildren);
+			}
+
+			throw new TypeError('Table can only accept Row as its child');
+		case 'dictionary':
+			if (isDictionaryRowChildren(processedChildren)) {
+				return ub('dictionary', {label: processLabel(props?.label)}, processedChildren);
+			}
+
+			throw new TypeError('Dictionary can only accept Row with 2 Cells as its child');
 		case 'paragraph':
-		case 'warning-block':
-		case 'error-block':
-			// Pass children through test fragment logic to it's wrapped correctly
-			return ub(type, buildTextFragment(children).children);
 		case 'condition':
 		case 'test-line':
-			const title = typeof props.title === 'string' ? ub('text', props.title) : props.title;
-
-			return ub(type, {title}, children) as ConditionNode | TestLineNode;
+			return ub(type, {title: processLabel(props?.title)}, processedChildren) as ConditionNode | TestLineNode;
 		case 'code-block':
-			const codeBlockLabel = typeof props?.label === 'string' ? ub('text', props.label) : props?.label;
+			if (isSinglePlainTextChildren(processedChildren)) {
+				return ub('code-block', {label: processLabel(props?.label)}, processedChildren[0].value);
+			}
 
-			// Code block is a special case - block that can receive only strings as children
-			return ub('code-block', {label: codeBlockLabel}, children.join(''));
+			throw new Error('Code block can only accept plain text children');
 		default:
 			return assertUnknownIntrinsicElementType(type);
 	}

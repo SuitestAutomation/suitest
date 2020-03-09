@@ -3,10 +3,12 @@
 exports[`conditions translation should translate "application has exited" line 1`] = `
 Object {
   "children": Array [],
-  "title": Object {
-    "type": "text",
-    "value": "Application has exited",
-  },
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Application has exited",
+    },
+  ],
   "type": "condition",
 }
 `;
@@ -22,19 +24,11 @@ Object {
               "children": Array [
                 Object {
                   "type": "bold",
-                  "value": "my-cookieval1",
+                  "value": "my-cookie",
                 },
                 Object {
                   "type": "text",
-                  "value": " (",
-                },
-                Object {
-                  "type": "code",
-                  "value": "my-cookie<%var1%>",
-                },
-                Object {
-                  "type": "text",
-                  "value": ") cookie\`)}",
+                  "value": " cookie",
                 },
               ],
               "type": "cell",
@@ -52,19 +46,7 @@ Object {
               "children": Array [
                 Object {
                   "type": "bold",
-                  "value": "expectedval2",
-                },
-                Object {
-                  "type": "text",
-                  "value": " (",
-                },
-                Object {
-                  "type": "code",
-                  "value": "expected<%var2%>",
-                },
-                Object {
-                  "type": "text",
-                  "value": ")",
+                  "value": "expecte value",
                 },
               ],
               "type": "cell",
@@ -77,10 +59,12 @@ Object {
       "type": "table",
     },
   ],
-  "title": Object {
-    "type": "text",
-    "value": "Cookie",
-  },
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Cookie",
+    },
+  ],
   "type": "condition",
 }
 `;
@@ -96,7 +80,7 @@ Object {
               "children": Array [
                 Object {
                   "type": "text",
-                  "value": "URL",
+                  "value": "Current location",
                 },
               ],
               "type": "cell",
@@ -114,19 +98,7 @@ Object {
               "children": Array [
                 Object {
                   "type": "bold",
-                  "value": "expected val1",
-                },
-                Object {
-                  "type": "text",
-                  "value": " (",
-                },
-                Object {
-                  "type": "code",
-                  "value": "expected <%var1%>",
-                },
-                Object {
-                  "type": "text",
-                  "value": ")",
+                  "value": "expected value",
                 },
               ],
               "type": "cell",
@@ -139,70 +111,46 @@ Object {
       "type": "table",
     },
   ],
-  "title": Object {
-    "type": "text",
-    "value": "Current location",
-  },
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Current location",
+    },
+  ],
   "type": "condition",
 }
 `;
 
-exports[`conditions translation should translate "element does not exist" line 1`] = `
+exports[`conditions translation should translate "element ... does not exist" line 1`] = `
 Object {
   "children": Array [],
-  "title": Object {
-    "children": Array [
-      Object {
-        "type": "bold",
-        "value": "Element 1",
-      },
-      Object {
-        "type": "text",
-        "value": " does not exist",
-      },
-    ],
-    "type": "text-fragment",
-  },
+  "title": Array [
+    Object {
+      "type": "bold",
+      "value": "Element 1",
+    },
+    Object {
+      "type": "text",
+      "value": " does not exist",
+    },
+  ],
   "type": "condition",
 }
 `;
 
-exports[`conditions translation should translate "element exists" line 1`] = `
+exports[`conditions translation should translate "element ... is visible" line 1`] = `
 Object {
   "children": Array [],
-  "title": Object {
-    "children": Array [
-      Object {
-        "type": "bold",
-        "value": "video",
-      },
-      Object {
-        "type": "text",
-        "value": " exists",
-      },
-    ],
-    "type": "text-fragment",
-  },
-  "type": "condition",
-}
-`;
-
-exports[`conditions translation should translate "element is visible" line 1`] = `
-Object {
-  "children": Array [],
-  "title": Object {
-    "children": Array [
-      Object {
-        "type": "bold",
-        "value": "My element",
-      },
-      Object {
-        "type": "text",
-        "value": " element is visible",
-      },
-    ],
-    "type": "text-fragment",
-  },
+  "title": Array [
+    Object {
+      "type": "bold",
+      "value": "My element",
+    },
+    Object {
+      "type": "text",
+      "value": " is visible",
+    },
+  ],
   "type": "condition",
 }
 `;
@@ -211,35 +159,26 @@ exports[`conditions translation should translate "element matches JS" line 1`] =
 Object {
   "children": Array [
     Object {
-      "label": Object {
-        "type": "text",
-        "value": "JavaScript matcher",
-      },
+      "label": Array [
+        Object {
+          "type": "text",
+          "value": "JavaScript matcher",
+        },
+      ],
       "type": "code-block",
-      "value": "thisIsJS(\\"val1\\");",
-    },
-    Object {
-      "label": Object {
-        "type": "text",
-        "value": "With variables",
-      },
-      "type": "code-block",
-      "value": "thisIsJS(\\"<%var1%>\\");",
+      "value": "someJS();",
     },
   ],
-  "title": Object {
-    "children": Array [
-      Object {
-        "type": "code",
-        "value": "{\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1}",
-      },
-      Object {
-        "type": "text",
-        "value": " matches JavaScript",
-      },
-    ],
-    "type": "text-fragment",
-  },
+  "title": Array [
+    Object {
+      "type": "code",
+      "value": "{\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1}",
+    },
+    Object {
+      "type": "text",
+      "value": " matches JavaScript",
+    },
+  ],
   "type": "condition",
 }
 `;
@@ -305,7 +244,7 @@ Object {
               "children": Array [
                 Object {
                   "type": "bold",
-                  "value": "123 ± 3",
+                  "value": "123 ± 3v5",
                 },
                 Object {
                   "type": "text",
@@ -362,23 +301,20 @@ Object {
       "type": "table",
     },
   ],
-  "title": Object {
-    "children": Array [
-      Object {
-        "type": "text",
-        "value": "Unknown element (",
-      },
-      Object {
-        "type": "code",
-        "value": "unkn...n-id",
-      },
-      Object {
-        "type": "text",
-        "value": ") properties",
-      },
-    ],
-    "type": "text-fragment",
-  },
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Unknown element (",
+    },
+    Object {
+      "type": "code",
+      "value": "unkn...n-id",
+    },
+    Object {
+      "type": "text",
+      "value": ") properties",
+    },
+  ],
   "type": "condition",
 }
 `;
@@ -403,7 +339,7 @@ Object {
               "children": Array [
                 Object {
                   "type": "bold",
-                  "value": "/partial/url/val1",
+                  "value": "/partial/url/123",
                 },
                 Object {
                   "type": "text",
@@ -458,7 +394,7 @@ Object {
               "children": Array [
                 Object {
                   "type": "text",
-                  "value": "Request name.slice(1)",
+                  "value": "Request method",
                 },
               ],
               "type": "cell",
@@ -526,7 +462,7 @@ Object {
               "children": Array [
                 Object {
                   "type": "text",
-                  "value": "Request name.slice(1)",
+                  "value": "Request body",
                 },
               ],
               "type": "cell",
@@ -570,7 +506,7 @@ Object {
               "children": Array [
                 Object {
                   "type": "text",
-                  "value": "Response name.slice(1)",
+                  "value": "Response status",
                 },
               ],
               "type": "cell",
@@ -606,7 +542,7 @@ Object {
                 },
                 Object {
                   "type": "bold",
-                  "value": "Content-val1",
+                  "value": "Content-123",
                 },
                 Object {
                   "type": "text",
@@ -662,7 +598,7 @@ Object {
               "children": Array [
                 Object {
                   "type": "text",
-                  "value": "Response name.slice(1)",
+                  "value": "Response body",
                 },
               ],
               "type": "cell",
@@ -689,17 +625,21 @@ Object {
           "type": "row",
         },
       ],
-      "label": Object {
-        "type": "text",
-        "value": "Network request properties",
-      },
+      "label": Array [
+        Object {
+          "type": "text",
+          "value": "Network request properties",
+        },
+      ],
       "type": "table",
     },
   ],
-  "title": Object {
-    "type": "text",
-    "value": "Network request was not made",
-  },
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Network request was not made",
+    },
+  ],
   "type": "condition",
 }
 `;
@@ -715,7 +655,7 @@ Object {
               "children": Array [
                 Object {
                   "type": "text",
-                  "value": "URL",
+                  "value": "Exact URL",
                 },
               ],
               "type": "cell",
@@ -724,7 +664,7 @@ Object {
               "children": Array [
                 Object {
                   "type": "bold",
-                  "value": "http://suite.st/val1",
+                  "value": "http://suite.st/123",
                 },
                 Object {
                   "type": "text",
@@ -772,10 +712,29 @@ Object {
       "type": "dictionary",
     },
   ],
-  "title": Object {
-    "type": "text",
-    "value": "Network request was made",
-  },
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Network request was made",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "video exists" line 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "bold",
+      "value": "video",
+    },
+    Object {
+      "type": "text",
+      "value": " exists",
+    },
+  ],
   "type": "condition",
 }
 `;
