@@ -22,11 +22,6 @@ describe('Interactive progress explanation.', () => {
 		});
 	}
 
-	it('Should throw an error if actionFailed message does not deliver code', () => {
-		expect(() => translateProgress({status: 'actionFailed'}))
-			.toThrowError('A code is expected when receiving "actionFailed" progress status');
-	});
-
 	it('Should handle unknown statuses/codes', () => {
 		expect(() => translateProgress({status: 'unknownStatus'} as any))
 			.toThrowError('Unknown status code received: unknownStatus');
