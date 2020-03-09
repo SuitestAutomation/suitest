@@ -5,6 +5,7 @@ import {
 	Snippets, StringComparator,
 	TestLine,
 } from '@suitest/types';
+import {PSVideoHaNoErrorCondition} from '@suitest/types/lib';
 
 export const elements: Elements = {
 	'element-id-1': {
@@ -128,6 +129,11 @@ export const conditions = {
 				val: 'expected text',
 			},
 		] as Array<{property: string, type: Comparator, val: string | number, deviation?: number}>,
+	}),
+	'PS4 video had no error': (searchStrategy: PSVideoHaNoErrorCondition['searchStrategy'] = 'all'): Condition => ({
+		subject: {type: 'psVideo'},
+		type: 'hadNoError',
+		searchStrategy,
 	}),
 	'network request to URL was made including matched': (): Condition => ({
 		subject: {

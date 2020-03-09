@@ -15,6 +15,7 @@ import {
 } from '@suitest/types';
 import {formatVariables, replaceVariables} from './utils';
 import {translateComparator} from './comparators';
+import {ElementPropertiesCondition, PSVideoHaNoErrorCondition, PSVideoSubject} from '@suitest/types/lib';
 
 const translateApplicationExitedCondition = (): ConditionNode =>
 	<condition title="Application has exited"/> as ConditionNode;
@@ -86,9 +87,13 @@ const assertUnknownElementCondition = (condition: never): never => {
 	throw new Error(`Unknown element condition type: ${JSON.stringify(condition)}`);
 };
 
-const translateElementName = (subject: ElementSubject, elements?: Elements): Node | Node[] => {
+const translateElementName = (subject: ElementSubject | PSVideoSubject, elements?: Elements): Node | Node[] => {
 	if (subject.type === 'video' || (subject as CustomElementSubject).val?.video) {
 		return <bold>video</bold>;
+	}
+
+	if (subject.type === 'psVideo') {
+		return <bold>PlayStation 4 video</bold>;
 	}
 
 	if ('elementId' in subject) {
@@ -169,6 +174,14 @@ const translateElementCondition = (
 		default:
 			return assertUnknownElementCondition(condition);
 	}
+};
+
+const translatePSVideoCondition = (condition: PSVideoHaNoErrorCondition): ConditionNode => {
+	const title = <fragment>PlayStation 4 video had no error</fragment>;
+
+	return <condition title={title}>
+		<paragraph>{condition.searchStrategy === 'all' ? 'For any source' : 'For current source'}</paragraph>
+	</condition> as ConditionNode;
 };
 
 const translateJavaScriptExpressionCondition = (
@@ -292,6 +305,12 @@ export const translateCondition = (
 		case 'element':
 		case 'video':
 			return translateElementCondition(condition as ElementCondition, appConfig, elements);
+		case 'psVideo':
+			if (condition.type === 'hadNoError') {
+				return translatePSVideoCondition(condition);
+			} else {
+				return translateElementCondition(condition as ElementPropertiesCondition, appConfig, elements);
+			}
 		case 'javascript':
 			return translateJavaScriptExpressionCondition(condition as JavaScriptExpressionCondition, appConfig);
 		case 'location':

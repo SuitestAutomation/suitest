@@ -48,6 +48,10 @@ export type VideoSubject = {
 
 export type ElementSubject = ApiElementSubject | IdElementSubject | CustomElementSubject | VideoSubject;
 
+export type PSVideoSubject = {
+	type: 'psVideo',
+};
+
 export type NetworkRequestBodyInfo = {
 	name: '@body',
 	compare: '=',
@@ -94,6 +98,6 @@ export type Subject = ApplicationSubject
 	| CurrentLocationSubject
 	| CookieSubject
 	| ElementSubject
-	| VideoSubject
+	| PSVideoSubject
 	| NetworkRequestSubject
 	| JavaScriptExpressionSubject;

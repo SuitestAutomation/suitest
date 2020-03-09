@@ -1,5 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`conditions translation should translate "PS4 video had no error" line 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "text",
+          "value": "For any source",
+        },
+      ],
+      "title": undefined,
+      "type": "paragraph",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "PlayStation 4 video had no error",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
 exports[`conditions translation should translate "application has exited" line 1`] = `
 Object {
   "children": Array [],
