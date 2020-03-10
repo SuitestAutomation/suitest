@@ -15,11 +15,6 @@ import {
 import {translateCondition} from './conditions';
 import {formatVariables, replaceVariables, formatTimeout, formatCount} from './utils';
 
-export type TranslatedTestLine = {
-	title: string,
-	details: string[][],
-};
-
 const renderConditionCountDelay = (
 	count: number | string,
 	delay: number | string,
@@ -75,17 +70,20 @@ const getConditionInfo = (
 	return [undefined, undefined];
 };
 
+/* istanbul ignore next */
 const assertAssertThen = (then: never): never => {
 	throw new Error(`Unknown "then" in assert: ${then}`);
 };
 
 const translateAssertThen = (then: AssertThen): string => {
 	switch (then) {
+		/* istanbul ignore next - disabling because we choose not to render "continue" in results */
 		case 'success': return 'continue';
 		case 'exit': return 'stop test';
 		case 'fail': return 'fail';
 		case 'warning': return 'warn';
 		default:
+			/* istanbul ignore next */
 			return assertAssertThen(then);
 	}
 };
@@ -233,17 +231,19 @@ const translateRunTestTestLine = (
 	</test-line> as TestLineNode;
 };
 
+/* istanbul ignore next */
 const assertUnknownTarget = (target: never): never => {
 	throw new Error('Unknown target: ' + JSON.stringify(target));
 };
 
 const translateTarget = (target: Target): Node | Node[] => {
 	switch (target.type) {
-		case 'element':
+		case 'element': // TODO nyc for some reason reports an uncovered branch here
 			return <bold>element</bold>;
 		case 'window':
 			return <bold>{'coordinates' in target ? 'position' : 'window'}</bold>;
 		default:
+			/* istanbul ignore next */
 			return assertUnknownTarget(target);
 	}
 };
@@ -273,6 +273,7 @@ const translateSetTextTestLine = (
 	return <test-line title={title}>{condition}</test-line> as TestLineNode;
 };
 
+/* istanbul ignore next */
 const assertUnknownBrowserCommand = (browserCommand: never): never => {
 	throw new Error(`Unknown browser command: ${JSON.stringify(browserCommand)}`);
 };
@@ -285,7 +286,7 @@ const translateBrowserCommandTestLine = (
 	const condition = testLine.condition ? translateCondition(testLine.condition, appConfig, elements) : undefined;
 
 	switch (testLine.browserCommand.type) {
-		case 'goBack':
+		case 'goBack':  // TODO nyc for some reason reports an uncovered branch here
 			return <test-line title="Go back">{condition}</test-line> as TestLineNode;
 		case 'goForward':
 			return <test-line title="Go forward">{condition}</test-line> as TestLineNode;
@@ -319,6 +320,7 @@ const translateBrowserCommandTestLine = (
 				{condition}
 			</test-line> as TestLineNode;
 		default:
+			/* istanbul ignore next */
 			return assertUnknownBrowserCommand(testLine.browserCommand);
 	}
 };
@@ -348,6 +350,7 @@ const translateMoveToTestLine = (
 const translateCommentTestLine = (testLine: CommentTestLine): TestLineNode =>
 	<test-line title={testLine.val} /> as TestLineNode;
 
+/* istanbul ignore next */
 const assertUnknownLineType = (testLine: never): never => {
 	throw new Error(`Unknown line type: ${JSON.stringify(testLine)}`);
 };
@@ -359,7 +362,7 @@ export const testLineToAst = (
 	snippets?: Snippets
 ): TestLineNode => {
 	switch (testLine.type) {
-		case 'assert':
+		case 'assert':  // TODO nyc for some reason reports an uncovered branch here
 		case 'wait':
 			return translateAssertTestLine(testLine, appConfig, elements);
 		case 'clearAppData':
@@ -391,6 +394,7 @@ export const testLineToAst = (
 		case 'comment':
 			return translateCommentTestLine(testLine);
 		default:
+			/* istanbul ignore next */
 			return assertUnknownLineType(testLine);
 	}
 };

@@ -94,7 +94,11 @@ const renderNode = (node: SingleNode): string => {
 		case 'row':
 		case 'cell':
 			throw new Error('Cell and Row nodes can only be rendered as part of table or dictionary');
+		case 'alert':
+			// TODO implement
+			return `<p class="suitest-test-line__paragraph">${node.children.map(renderNode).join('')}</p>`;
 		default:
+			/* istanbul ignore next */
 			return assertUnknownSectionNode(node);
 	}
 };

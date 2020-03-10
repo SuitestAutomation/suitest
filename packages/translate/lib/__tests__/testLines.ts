@@ -105,6 +105,18 @@ export const conditions = {
 		type: 'matches',
 		val,
 	}),
+	'element matches JS with vars': (): Condition => ({
+		subject: {
+			type: 'element',
+			val: {
+				css: '.some.class',
+				xpath: '//div',
+				// ifMultipleFoundReturn: 1, // Commented out intentionally to cover all branches
+			},
+		},
+		type: 'matches',
+		val: 'someJS("<%var1%>");',
+	}),
 	'element properties': (): Condition => ({
 		subject: {
 			type: 'element',
@@ -130,10 +142,65 @@ export const conditions = {
 			},
 		] as Array<{property: string, type: Comparator, val: string | number, deviation?: number}>,
 	}),
+	'element with single selector exists': (): Condition => ({
+		subject: {
+			type: 'element',
+			val: {
+				css: '#fooBar',
+				ifMultipleFoundReturn: 3,
+			},
+		},
+		type: 'exists',
+	}),
+	'element with name hint exists': (): Condition => ({
+		subject: {
+			type: 'element',
+			elementId: 'unknown-id',
+			nameHint: 'Foo Bar',
+		},
+		type: 'exists',
+	}),
+	'element with legacy name exists': (): Condition => ({
+		subject: {
+			type: 'element',
+			elementId: 'unknown-id',
+			name: 'Foo Bar',
+		},
+		type: 'exists',
+	}),
 	'PS4 video had no error': (searchStrategy: PSVideoHaNoErrorCondition['searchStrategy'] = 'all'): Condition => ({
 		subject: {type: 'psVideo'},
 		type: 'hadNoError',
 		searchStrategy,
+	}),
+	'PS4 video for current had no error': (): Condition => ({
+		subject: {type: 'psVideo'},
+		type: 'hadNoError',
+		searchStrategy: 'currentUrl',
+	}),
+	'PS4 video has props': (): Condition => ({
+		subject: {type: 'psVideo'},
+		type: 'has',
+		searchStrategy: 'all',
+		expression: [
+			{property: 'width', type: '=', val: 123},
+		],
+	}),
+	'JavaScript expression ... equals ...': (): Condition => ({
+		subject: {
+			type: 'javascript',
+			val: 'someJS()',
+		},
+		type: '=',
+		val: 'returned value',
+	}),
+	'JavaScript expression with variables ... equals ...': (): Condition => ({
+		subject: {
+			type: 'javascript',
+			val: 'someJS("<%var1%>")',
+		},
+		type: '=',
+		val: 'returned value',
 	}),
 	'network request to URL was made including matched': (): Condition => ({
 		subject: {
@@ -300,13 +367,51 @@ export const testLines = {
 		delay,
 	}),
 	'Run snippet ... every ... exactly ...': (
-		val = 'snippet-id-1',
+		val = 'unknown-snippet-id-1',
 		count: number | string = 2,
 		delay: number | string = 3000
 	): TestLine => ({
 		...baseTestLine,
 		type: 'runSnippet',
 		val,
+		count,
+		delay,
+	}),
+	// Press button
+	'Press ... once': (ids = ['LEFT']): TestLine => ({
+		...baseTestLine,
+		type: 'press',
+		ids,
+	}),
+	'Press ... only if ...': (ids = ['LEFT'], condition: Condition = appExitedCondition): TestLine => ({
+		...baseTestLine,
+		type: 'press',
+		ids,
+		condition,
+		negateCondition: true,
+	}),
+	'Press ... until ... every ... max ...': (
+		ids = ['LEFT', 'RIGHT'],
+		condition: Condition = appExitedCondition,
+		count: number | string = 2,
+		delay: number | string = 3000
+	): TestLine => ({
+		...baseTestLine,
+		type: 'press',
+		ids,
+		condition,
+		negateCondition: false,
+		count,
+		delay,
+	}),
+	'Press ... every ... exactly ...': (
+		ids = ['LEFT'],
+		count: number | string = 2,
+		delay: number | string = 3000
+	): TestLine => ({
+		...baseTestLine,
+		type: 'press',
+		ids,
 		count,
 		delay,
 	}),
@@ -478,6 +583,14 @@ export const testLines = {
 		},
 		condition,
 		negateCondition: true,
+	}),
+	'Browser command: Set window size': (width: number | string = 123, height: number | string = 234): TestLine => ({
+		...baseTestLine,
+		type: 'browserCommand',
+		browserCommand: {
+			type: 'setWindowSize',
+			params: {width, height},
+		},
 	}),
 	// CLICK
 	'Click on position ... once': (x: number | string = 123, y: number | string = 234): TestLine => ({

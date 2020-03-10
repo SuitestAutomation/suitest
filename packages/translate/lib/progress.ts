@@ -26,7 +26,7 @@ export function translateProgress(message: ProgressMessage): Translation {
 		case PROGRESS_STATUS.WAITING_FOR_IL: return {title: t['progress.status.waitingForConnectionFromIL']()};
 		case PROGRESS_STATUS.APP_UNINSTALL: return {title: t['progress.status.unistallingApp']()};
 		case PROGRESS_STATUS.APP_UPLOAD_INSTALL: return {title: t['progress.status.uploadingAndInstallingApp']()};
-		case PROGRESS_STATUS.NOTHING: return {title: ''};
+		case PROGRESS_STATUS.NOTHING:
 		case PROGRESS_STATUS.ACTION_FAILED: return {title: ''};
 		default:
 			const _status: never = message.status;

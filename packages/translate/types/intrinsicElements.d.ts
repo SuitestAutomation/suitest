@@ -22,9 +22,10 @@ declare namespace JSX {
 		bold: {children: StringOrStrings},
 		emphasis: {children: StringOrStrings},
 		code: {children: StringOrStrings},
-		error: {children: ElementOrTextChildren},
-		warning: {children: ElementOrTextChildren},
-		exit: {children: ElementOrTextChildren},
+		alert: {
+			level: 'error' | 'fatal' | 'warning' | 'exit' | 'excluded',
+			children: ElementOrTextChildren,
+		},
 		fragment: {children: ElementOrTextChildren},
 		paragraph: {children: ElementOrTextChildren},
 		cell: {children: ElementOrTextChildren},

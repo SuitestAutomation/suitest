@@ -46,11 +46,17 @@ declare type CodeBlockNode = {
 	label?: TextNode[],
 	value: string,
 };
+declare type AlertNode = {
+	type: 'alert',
+	level: 'error' | 'warning' | 'exit' | 'excluded',
+	children: TextNode[],
+};
 declare type SectionNode = ParagraphNode
 	| TableNode
 	| DictionaryNode
 	| CodeBlockNode
-	| ConditionNode;
+	| ConditionNode
+	| AlertNode;
 declare type TestLineNode = {
 	type: 'test-line',
 	title: TextNode[],
