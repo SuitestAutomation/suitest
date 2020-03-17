@@ -1,7 +1,9 @@
 import {Condition} from './condition';
 
+export type LineId = string;
+
 export type BaseTestLine = {
-	lineId: string,
+	lineId: LineId,
 	excluded: boolean,
 	fatal: boolean,
 	screenshot: boolean,
