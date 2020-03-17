@@ -1,13 +1,12 @@
 import typescript from 'rollup-plugin-typescript2';
 import { uglify } from "rollup-plugin-uglify";
-import resolve from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
 
 export default {
 	input: './lib/index.ts',
+	external: [
+		'unist-builder',
+	],
 	plugins: [
-		resolve(),
-		commonjs(),
 		uglify(),
 		typescript({tsconfigOverride: {compilerOptions: {module: 'ES2015'}}}),
 	],
@@ -16,5 +15,8 @@ export default {
 		name: 'translate',
 		format: process.env.FORMAT,
 		compact: process.env.FORMAT === 'umd',
+		globals: {
+			'unist-builder': 'ub',
+		},
 	},
 };

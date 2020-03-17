@@ -25,6 +25,7 @@ Library provides 2 builds: UMD library is loaded by default when importing
 specific files. E.g. if you would want to get a list of Suitest message
 code you could import `@suitest/translate/commonjs/constants.js`.
 
-The UMD build is isomorphic and already minified.
+The UMD build is isomorphic and already minified. It has one peer dependency - "unist-builder".
+Make sure it's either available is node_modules (when running in NodeJS), or as a global "ub" variable in browser.
 
 CommonJS build is not minified and meant to be used with NodeJS (or with bundler).
