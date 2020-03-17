@@ -5,7 +5,7 @@ import {
 	Snippets, StringComparator,
 	TestLine,
 } from '@suitest/types';
-import {PSVideoHaNoErrorCondition} from '@suitest/types/lib';
+import {PSVideoHadNoErrorCondition} from '@suitest/types/lib';
 
 export const elements: Elements = {
 	'element-id-1': {
@@ -168,7 +168,7 @@ export const conditions = {
 		},
 		type: 'exists',
 	}),
-	'PS4 video had no error': (searchStrategy: PSVideoHaNoErrorCondition['searchStrategy'] = 'all'): Condition => ({
+	'PS4 video had no error': (searchStrategy: PSVideoHadNoErrorCondition['searchStrategy'] = 'all'): Condition => ({
 		subject: {type: 'psVideo'},
 		type: 'hadNoError',
 		searchStrategy,

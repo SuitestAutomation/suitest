@@ -15,7 +15,7 @@ import {
 } from '@suitest/types';
 import {formatVariables, replaceVariables} from './utils';
 import {translateComparator} from './comparators';
-import {ElementPropertiesCondition, PSVideoHaNoErrorCondition, PSVideoSubject} from '@suitest/types/lib';
+import {ElementPropertiesCondition, PSVideoHadNoErrorCondition, PSVideoSubject} from '@suitest/types/lib';
 
 const translateApplicationExitedCondition = (): ConditionNode =>
 	<condition title="Application has exited"/> as ConditionNode;
@@ -177,7 +177,7 @@ const translateElementCondition = (
 	}
 };
 
-const translatePSVideoCondition = (condition: PSVideoHaNoErrorCondition): ConditionNode => {
+const translatePSVideoCondition = (condition: PSVideoHadNoErrorCondition): ConditionNode => {
 	const title = <fragment>PlayStation 4 video had no error</fragment>;
 
 	return <condition title={title}>

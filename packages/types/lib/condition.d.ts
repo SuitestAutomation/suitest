@@ -64,7 +64,7 @@ export type ElementCondition = ElementExistsCondition
 	| ElementMatchesJavaScriptCondition
 	| ElementPropertiesCondition;
 
-export type PSVideoHaNoErrorCondition = {
+export type PSVideoHadNoErrorCondition = {
 	subject: PSVideoSubject,
 	type: 'hadNoError',
 	searchStrategy: 'all' | 'currentUrl',
@@ -86,6 +86,6 @@ export type Condition = ApplicationExitedCondition
 	| CurrentLocationCondition
 	| CookieCondition
 	| ElementCondition
-	| PSVideoHaNoErrorCondition
+	| PSVideoHadNoErrorCondition
 	| JavaScriptExpressionCondition
 	| NetworkRequestCondition;
