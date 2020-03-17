@@ -466,6 +466,49 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Browser command: Set window size" 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "type": "text",
+                  "value": "Size",
+                },
+              ],
+              "type": "cell",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "type": "text",
+                  "value": "123x234",
+                },
+              ],
+              "type": "cell",
+            },
+          ],
+          "type": "row",
+        },
+      ],
+      "label": undefined,
+      "type": "dictionary",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Resize window",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Clear app data" 1`] = `
 Object {
   "children": Array [],
@@ -997,6 +1040,247 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Press ... every ... exactly ..." 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "type": "text",
+                  "value": "Repeat",
+                },
+              ],
+              "type": "cell",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "type": "bold",
+                  "value": "2",
+                },
+                Object {
+                  "type": "text",
+                  "value": "x",
+                },
+              ],
+              "type": "cell",
+            },
+          ],
+          "type": "row",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "type": "text",
+                  "value": "Every",
+                },
+              ],
+              "type": "cell",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "type": "bold",
+                  "value": "3s",
+                },
+              ],
+              "type": "cell",
+            },
+          ],
+          "type": "row",
+        },
+      ],
+      "label": Array [
+        Object {
+          "type": "text",
+          "value": "Condition settings",
+        },
+      ],
+      "type": "dictionary",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Press button ",
+    },
+    Object {
+      "type": "bold",
+      "value": "LEFT",
+    },
+    Object {
+      "type": "text",
+      "value": " exactly ",
+    },
+    Object {
+      "type": "bold",
+      "value": "2",
+    },
+    Object {
+      "type": "text",
+      "value": "x",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Press ... once" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Press button ",
+    },
+    Object {
+      "type": "bold",
+      "value": "LEFT",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Press ... only if ..." 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Press button ",
+    },
+    Object {
+      "type": "bold",
+      "value": "LEFT",
+    },
+    Object {
+      "type": "text",
+      "value": " only if condition is met",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Press ... until ... every ... max ..." 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "type": "text",
+                  "value": "Repeat",
+                },
+              ],
+              "type": "cell",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "type": "bold",
+                  "value": "2",
+                },
+                Object {
+                  "type": "text",
+                  "value": "x",
+                },
+              ],
+              "type": "cell",
+            },
+          ],
+          "type": "row",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "type": "text",
+                  "value": "Every",
+                },
+              ],
+              "type": "cell",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "type": "bold",
+                  "value": "3s",
+                },
+              ],
+              "type": "cell",
+            },
+          ],
+          "type": "row",
+        },
+      ],
+      "label": Array [
+        Object {
+          "type": "text",
+          "value": "Condition settings",
+        },
+      ],
+      "type": "dictionary",
+    },
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Press button ",
+    },
+    Object {
+      "type": "bold",
+      "value": "LEFT",
+    },
+    Object {
+      "type": "text",
+      "value": ", ",
+    },
+    Object {
+      "type": "bold",
+      "value": "RIGHT",
+    },
+    Object {
+      "type": "text",
+      "value": " until condition is met",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Run snippet ... every ... exactly ..." 1`] = `
 Object {
   "children": Array [
@@ -1065,15 +1349,15 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Run test ",
+      "value": "Run test (",
     },
     Object {
-      "type": "bold",
-      "value": "Snippet 1",
+      "type": "code",
+      "value": "unkn...id-1",
     },
     Object {
       "type": "text",
-      "value": " exactly ",
+      "value": ") exactly ",
     },
     Object {
       "type": "bold",

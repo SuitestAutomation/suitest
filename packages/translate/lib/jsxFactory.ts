@@ -60,17 +60,17 @@ const isDictionaryRowChildren = (children: SingleNode[]): children is Dictionary
 const isTextChildren = (children: SingleNode[]): children is TextNode[] =>
 	children.every(isTextNode);
 
-const isSinglePlainTextChildren = (children: SingleNode[]): children is [TextNode] =>
-	children.length === 1 && children[0].type === 'text';
-
+/* istanbul ignore next */
 const assertUnknownIntrinsicElementType = (type: never): never => {
 	throw new Error(`Unknown intrinsic element type ${type}`);
 };
 
+/* istanbul ignore next */
 export const assertUnknownSectionNode = (node: never): never => {
 	throw new Error('Unknown node type: ' + JSON.stringify(node));
 };
 
+/* istanbul ignore next */
 export const assertUnknownTextNode = (node: never): never => {
 	throw new Error('Unknown plain text node: ' + JSON.stringify(node));
 };
@@ -91,7 +91,7 @@ export const jsx = (
 	const processedChildren = normalizePlainChildren(flatten(children.filter(Boolean)), type);
 
 	switch (type) {
-		case 'text':
+		case 'text': // TODO nyc for some reason reports an uncovered branch here
 		case 'bold':
 		case 'emphasis':
 		case 'code':
@@ -123,16 +123,22 @@ export const jsx = (
 
 			throw new TypeError('Dictionary can only accept Row with 2 Cells as its child');
 		case 'paragraph':
+			return ub(type, processedChildren) as ParagraphNode;
 		case 'condition':
 		case 'test-line':
-			return ub(type, {title: processLabel(props?.title)}, processedChildren) as ConditionNode | TestLineNode;
+			// Type casting for props because of IntrinsicElements definition
+			return ub(type, {
+				title: processLabel((props as {title: any}).title),
+			}, processedChildren) as ConditionNode | TestLineNode;
 		case 'code-block':
-			if (isSinglePlainTextChildren(processedChildren)) {
-				return ub('code-block', {label: processLabel(props?.label)}, processedChildren[0].value);
-			}
-
-			throw new Error('Code block can only accept plain text children');
+			// Type casting because IntrinsicElements definition would not allow anything other then string
+			return ub('code-block', {label: processLabel(props?.label)}, (processedChildren[0] as TextNode).value);
+		case 'alert':
+			// Type casting for level is done because we can be sure it's always provided - it's enforced in
+			// IntrinsicElements definition
+			return ub('alert', {level: (props as {level: any}).level}, processedChildren) as AlertNode;
 		default:
+			/* istanbul ignore next */
 			return assertUnknownIntrinsicElementType(type);
 	}
 };

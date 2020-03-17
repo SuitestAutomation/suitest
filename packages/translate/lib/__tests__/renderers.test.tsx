@@ -57,6 +57,22 @@ describe('AST renderers', () => {
 		<paragraph>I am content</paragraph>
 	</test-line>;
 
+	const errorAlert = <alert level="error">
+		<text>Foo</text>
+	</alert>;
+	const warningAlert = <alert level="warning">
+		<text>Foo</text>
+	</alert>;
+	const exitAlert = <alert level="exit">
+		<text>Foo</text>
+	</alert>;
+	const excludedAlert = <alert level="excluded">
+		<text>Foo</text>
+	</alert>;
+	const fatalAlert = <alert level="fatal">
+		<text>Foo</text>
+	</alert>;
+
 	describe('plain text renderer', () => {
 		it('should handle textual nodes', () => {
 			expect(toText(plainText, false)).toEqual('TEXT');
@@ -87,6 +103,19 @@ describe('AST renderers', () => {
 
 		it('should render test line', () => {
 			expect(toText(testLine, false)).toMatchSnapshot();
+		});
+
+		it('should throw when trying to render row or cell directly', () => {
+			expect(() => toText(<row><cell>test</cell></row>, false)).toThrow();
+			expect(() => toText(<cell>test</cell>, false)).toThrow();
+		});
+
+		it('should render alerts', () => {
+			expect(toText(errorAlert, false)).toEqual('Foo\n');
+			expect(toText(warningAlert, false)).toEqual('Foo\n');
+			expect(toText(exitAlert, false)).toEqual('Foo\n');
+			expect(toText(excludedAlert, false)).toEqual('Foo\n');
+			expect(toText(fatalAlert, false)).toEqual('Foo\n');
 		});
 	});
 
@@ -121,6 +150,19 @@ describe('AST renderers', () => {
 		it('should render test line', () => {
 			expect(toText(testLine, true)).toMatchSnapshot();
 		});
+
+		it('should throw when trying to render row or cell directly', () => {
+			expect(() => toText(<row><cell>test</cell></row>, true)).toThrow();
+			expect(() => toText(<cell>test</cell>, true)).toThrow();
+		});
+
+		it('should render alerts', () => {
+			expect(toText(errorAlert, true)).toEqual('Foo\n');
+			expect(toText(warningAlert, true)).toEqual('Foo\n');
+			expect(toText(exitAlert, true)).toEqual('Foo\n');
+			expect(toText(excludedAlert, true)).toEqual('Foo\n');
+			expect(toText(fatalAlert, true)).toEqual('Foo\n');
+		});
 	});
 
 	describe('html renderer', () => {
@@ -153,6 +195,19 @@ describe('AST renderers', () => {
 
 		it('should render test line', () => {
 			expect(toHtml(testLine)).toMatchSnapshot();
+		});
+
+		it('should throw when trying to render row or cell directly', () => {
+			expect(() => toHtml(<row><cell>test</cell></row>)).toThrow();
+			expect(() => toHtml(<cell>test</cell>)).toThrow();
+		});
+
+		it('should render alerts', () => {
+			expect(toHtml(errorAlert)).toEqual('<p class="suitest-test-line__paragraph">Foo</p>');
+			expect(toHtml(warningAlert)).toEqual('<p class="suitest-test-line__paragraph">Foo</p>');
+			expect(toHtml(exitAlert)).toEqual('<p class="suitest-test-line__paragraph">Foo</p>');
+			expect(toHtml(excludedAlert)).toEqual('<p class="suitest-test-line__paragraph">Foo</p>');
+			expect(toHtml(fatalAlert)).toEqual('<p class="suitest-test-line__paragraph">Foo</p>');
 		});
 	});
 });

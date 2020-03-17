@@ -34,6 +34,7 @@ const renderFormattedTextNode: RenderTextFunc = (node: TextNode): string => {
 		case 'code':
 			return format.cyan + value + format.cancel;
 		default:
+			/* istanbul ignore next */
 			return assertUnknownTextNode(node);
 	}
 };
@@ -183,7 +184,11 @@ const renderNode = (node: SingleNode, renderTextNode: RenderTextFunc, prefix = '
 		case 'cell':
 		case 'row':
 			throw new Error('Cell and Row nodes can only be rendered as part of table or dictionary');
+		case 'alert':
+			// TODO implement
+			return prefix + node.children.map(renderTextNode).join('') + nl;
 		default:
+			/* istanbul ignore next */
 			return assertUnknownSectionNode(node);
 	}
 };

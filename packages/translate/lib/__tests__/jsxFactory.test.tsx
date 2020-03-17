@@ -105,6 +105,14 @@ describe('jsxFactory', () => {
 		expect(() => <dictionary><row><cell>Test</cell></row></dictionary>).toThrow();
 	});
 
+	it('should throw if cell receives anything other then TextNode or string', () => {
+		expect(() => <cell><paragraph>test</paragraph></cell>).toThrow();
+		expect(() => <cell><test-line title="test"><bold>test</bold></test-line></cell>).toThrow();
+		expect(() => <cell>test</cell>).not.toThrow();
+		expect(() => <cell><bold>test</bold></cell>).not.toThrow();
+		expect(() => <cell><fragment>test</fragment></cell>).not.toThrow();
+	});
+
 	it('should save title property for test line and condition', () => {
 		expect(<test-line title="Some title"><text>text</text></test-line>).toEqual({
 			type: 'test-line',
@@ -235,6 +243,19 @@ describe('jsxFactory', () => {
 							children: [{type: 'text', value: 'test'}],
 						},
 					],
+				},
+			],
+		});
+	});
+
+	it('should convert alert message correctly', () => {
+		expect(<alert level="error">Some alert</alert>).toEqual({
+			type: 'alert',
+			level: 'error',
+			children: [
+				{
+					type: 'text',
+					value: 'Some alert',
 				},
 			],
 		});

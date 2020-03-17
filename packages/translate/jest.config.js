@@ -8,14 +8,15 @@ module.exports = {
 		"<rootDir>/lib/__tests__/*.test.tsx"
     ],
     "collectCoverageFrom": [
-        "<rootDir>/lib/index.ts"
+        "<rootDir>/lib/**/*.{ts,tsx}",
+		"!<rootDir>/lib/__tests__/**/*"
     ],
     "coverageThreshold": {
         "global": {
-            "branches": 100,
-            "functions": 100,
-            "lines": 100,
-            "statements": 100
+            "branches": 80, // Branches coverage is decreased because of issue with switch/case fallthrough invalid marked as not covered
+            "functions": 95,
+            "lines": 95,
+            "statements": 95
         }
     },
 	"moduleFileExtensions": [

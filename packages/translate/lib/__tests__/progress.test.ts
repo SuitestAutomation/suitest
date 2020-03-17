@@ -13,10 +13,6 @@ describe('Interactive progress explanation.', () => {
 	});
 
 	for (const status of Object.values(PROGRESS_STATUS)) {
-		if (status === 'actionFailed') {
-			continue;
-		}
-
 		it(`Should translate "${status}" status`, () => {
 			expect(translateProgress({status})).toMatchSnapshot();
 		});
@@ -40,5 +36,8 @@ describe('Interactive progress explanation.', () => {
 			description: 'Check that the cable plugged into the CandyBox delivers Internet connection or reboot the CandyBox and allow about 5 minutes for it to initialize',
 			title: 'Cannot continue: CandyBox controlling this device is offline',
 		});
+
+		expect(() => translateProgress({} as any))
+			.toThrowError('A status is expected.');
 	});
 });

@@ -15,6 +15,7 @@ import {
 } from '@suitest/types';
 import {formatVariables, replaceVariables} from './utils';
 import {translateComparator} from './comparators';
+import {ElementPropertiesCondition, PSVideoHadNoErrorCondition, PSVideoSubject} from '@suitest/types/lib';
 
 const translateApplicationExitedCondition = (): ConditionNode =>
 	<condition title="Application has exited"/> as ConditionNode;
@@ -44,8 +45,7 @@ const translateCookieCondition = (condition: CookieCondition, appConfig: AppConf
 		</table>
 	</condition> as ConditionNode;
 
-// TODO - cover with unit tests
-const translateElementProperty = (property: string): string => {
+export const translateElementProperty = (property: string): string => {
 	switch (property) {
 		// Special cases, when converting from cameCase is not enough
 		case 'videoUrl':
@@ -82,13 +82,18 @@ const translateElementProperty = (property: string): string => {
 	}
 };
 
+/* istanbul ignore next */
 const assertUnknownElementCondition = (condition: never): never => {
 	throw new Error(`Unknown element condition type: ${JSON.stringify(condition)}`);
 };
 
-const translateElementName = (subject: ElementSubject, elements?: Elements): Node | Node[] => {
+const translateElementName = (subject: ElementSubject | PSVideoSubject, elements?: Elements): Node | Node[] => {
 	if (subject.type === 'video' || (subject as CustomElementSubject).val?.video) {
 		return <bold>video</bold>;
+	}
+
+	if (subject.type === 'psVideo') {
+		return <bold>PlayStation 4 video</bold>;
 	}
 
 	if ('elementId' in subject) {
@@ -138,7 +143,7 @@ const translateElementCondition = (
 	const elementName = translateElementName(condition.subject, elements);
 
 	switch (condition.type) {
-		case 'exists':
+		case 'exists': // TODO nyc for some reason reports an uncovered branch here
 			return <condition title={<fragment>{elementName} exists</fragment>}/> as ConditionNode;
 		case '!exists':
 			return <condition title={<fragment>{elementName} does not exist</fragment>}/> as ConditionNode;
@@ -167,8 +172,17 @@ const translateElementCondition = (
 				</table>
 			</condition> as ConditionNode;
 		default:
+			/* istanbul ignore next */
 			return assertUnknownElementCondition(condition);
 	}
+};
+
+const translatePSVideoCondition = (condition: PSVideoHadNoErrorCondition): ConditionNode => {
+	const title = <fragment>PlayStation 4 video had no error</fragment>;
+
+	return <condition title={title}>
+		<paragraph>{condition.searchStrategy === 'all' ? 'For any source' : 'For current source'}</paragraph>
+	</condition> as ConditionNode;
 };
 
 const translateJavaScriptExpressionCondition = (
@@ -216,7 +230,7 @@ const translateNetworkInfo = (isRequest: boolean, appConfig: AppConfiguration) =
  *
  * Ordering might be off for headers if variables are used for header names, but that is minor
  */
-const sortNetworkInfo = (a: NetworkRequestInfo, b: NetworkRequestInfo): number => {
+export const sortNetworkInfo = (a: NetworkRequestInfo, b: NetworkRequestInfo): number => {
 	// Method and status always on top
 	if (['@method', '@status'].includes(a.name)) {
 		return -1;
@@ -235,7 +249,7 @@ const sortNetworkInfo = (a: NetworkRequestInfo, b: NetworkRequestInfo): number =
 		return -1;
 	}
 
-	return a.name > b.name ? -1 : 1;
+	return a.name > b.name ? 1 : -1;
 };
 
 const translateNetworkRequestCondition = (
@@ -274,6 +288,7 @@ const translateNetworkRequestCondition = (
 	</condition> as ConditionNode;
 };
 
+/* istanbul ignore next */
 const assertUnknownConditionSubject = (subject: never): never => {
 	throw new Error(`Unknown condition subject: ${JSON.stringify(subject)}`);
 };
@@ -289,9 +304,16 @@ export const translateCondition = (
 	elements?: Elements
 ): ConditionNode => {
 	switch (condition.subject.type) {
-		case 'element':
+		case 'element': // TODO nyc for some reason reports an uncovered branch here
+			return translateElementCondition(condition as ElementCondition, appConfig, elements);
 		case 'video':
 			return translateElementCondition(condition as ElementCondition, appConfig, elements);
+		case 'psVideo':
+			if (condition.type === 'hadNoError') {
+				return translatePSVideoCondition(condition);
+			} else {
+				return translateElementCondition(condition as ElementPropertiesCondition, appConfig, elements);
+			}
 		case 'javascript':
 			return translateJavaScriptExpressionCondition(condition as JavaScriptExpressionCondition, appConfig);
 		case 'location':
@@ -303,6 +325,7 @@ export const translateCondition = (
 		case 'application':
 			return translateApplicationExitedCondition();
 		default:
+			/* istanbul ignore next */
 			return assertUnknownConditionSubject(condition.subject);
 	}
 };

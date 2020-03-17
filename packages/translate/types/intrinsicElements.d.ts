@@ -2,6 +2,7 @@
 
 type ElementOrTextChildren = string | SingleNode | undefined | ElementOrTextChildren[];
 type ElementChildren = SingleNode | undefined | ElementChildren[];
+type StringOrStrings = string | string[];
 
 declare namespace JSX {
 	interface ElementChildrenAttribute {
@@ -17,17 +18,21 @@ declare namespace JSX {
 	interface IntrinsicElements {
 		// Plain text, should accept only string or other textual elements to make
 		// it easier to format text
-		text: {children: string | string[]},
-		bold: {children: string | string[]},
-		emphasis: {children: string | string[]},
-		code: {children: string | string[]},
+		text: {children: StringOrStrings},
+		bold: {children: StringOrStrings},
+		emphasis: {children: StringOrStrings},
+		code: {children: StringOrStrings},
+		alert: {
+			level: 'error' | 'fatal' | 'warning' | 'exit' | 'excluded',
+			children: ElementOrTextChildren,
+		},
 		fragment: {children: ElementOrTextChildren},
 		paragraph: {children: ElementOrTextChildren},
 		cell: {children: ElementOrTextChildren},
 		row: {children: ElementChildren},
 		table: {children: ElementChildren, label?: ElementOrTextChildren},
 		dictionary: {children: ElementChildren, label?: ElementOrTextChildren},
-		'code-block': {children: string | string[], label?: ElementOrTextChildren},
+		'code-block': {children: StringOrStrings, label?: ElementOrTextChildren},
 		condition: {
 			title: ElementOrTextChildren,
 			children?: ElementChildren,

@@ -1,5 +1,241 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`conditions translation should translate "JavaScript expression ... equals ..." line 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "label": Array [
+        Object {
+          "type": "text",
+          "value": "JavaScript expression",
+        },
+      ],
+      "type": "code-block",
+      "value": "someJS()",
+    },
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "type": "text",
+                  "value": "Expression result",
+                },
+              ],
+              "type": "cell",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "type": "text",
+                  "value": "=",
+                },
+              ],
+              "type": "cell",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "type": "bold",
+                  "value": "returned value",
+                },
+              ],
+              "type": "cell",
+            },
+          ],
+          "type": "row",
+        },
+      ],
+      "label": undefined,
+      "type": "table",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "JavaScript expression",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "JavaScript expression with variables ... equals ..." line 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "label": Array [
+        Object {
+          "type": "text",
+          "value": "JavaScript expression",
+        },
+      ],
+      "type": "code-block",
+      "value": "someJS(\\"123\\")",
+    },
+    Object {
+      "label": Array [
+        Object {
+          "type": "text",
+          "value": "With variables",
+        },
+      ],
+      "type": "code-block",
+      "value": "someJS(\\"<%var1%>\\")",
+    },
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "type": "text",
+                  "value": "Expression result",
+                },
+              ],
+              "type": "cell",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "type": "text",
+                  "value": "=",
+                },
+              ],
+              "type": "cell",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "type": "bold",
+                  "value": "returned value",
+                },
+              ],
+              "type": "cell",
+            },
+          ],
+          "type": "row",
+        },
+      ],
+      "label": undefined,
+      "type": "table",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "JavaScript expression",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "PS4 video for current had no error" line 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "text",
+          "value": "For current source",
+        },
+      ],
+      "type": "paragraph",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "PlayStation 4 video had no error",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "PS4 video had no error" line 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "type": "text",
+          "value": "For any source",
+        },
+      ],
+      "type": "paragraph",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "PlayStation 4 video had no error",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "PS4 video has props" line 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "type": "text",
+                  "value": "width",
+                },
+              ],
+              "type": "cell",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "type": "text",
+                  "value": "=",
+                },
+              ],
+              "type": "cell",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "type": "bold",
+                  "value": "123",
+                },
+              ],
+              "type": "cell",
+            },
+          ],
+          "type": "row",
+        },
+      ],
+      "label": undefined,
+      "type": "table",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "bold",
+      "value": "PlayStation 4 video",
+    },
+    Object {
+      "type": "text",
+      "value": " properties",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
 exports[`conditions translation should translate "application has exited" line 1`] = `
 Object {
   "children": Array [],
@@ -149,6 +385,44 @@ Object {
     Object {
       "type": "text",
       "value": " is visible",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "element matches JS with vars" line 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "label": Array [
+        Object {
+          "type": "text",
+          "value": "JavaScript matcher",
+        },
+      ],
+      "type": "code-block",
+      "value": "someJS(\\"123\\");",
+    },
+    Object {
+      "label": Array [
+        Object {
+          "type": "text",
+          "value": "With variables",
+        },
+      ],
+      "type": "code-block",
+      "value": "someJS(\\"<%var1%>\\");",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "code",
+      "value": "{\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1}",
+    },
+    Object {
+      "type": "text",
+      "value": " matches JavaScript",
     },
   ],
   "type": "condition",
@@ -313,6 +587,57 @@ Object {
     Object {
       "type": "text",
       "value": ") properties",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "element with legacy name exists" line 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "bold",
+      "value": "Foo Bar",
+    },
+    Object {
+      "type": "text",
+      "value": " exists",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "element with name hint exists" line 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "bold",
+      "value": "Foo Bar",
+    },
+    Object {
+      "type": "text",
+      "value": " exists",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "element with single selector exists" line 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "code",
+      "value": "#fooBar",
+    },
+    Object {
+      "type": "text",
+      "value": " exists",
     },
   ],
   "type": "condition",

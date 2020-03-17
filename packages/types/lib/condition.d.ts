@@ -5,6 +5,7 @@ import {
 	ElementSubject,
 	JavaScriptExpressionSubject,
 	NetworkRequestSubject,
+	PSVideoSubject,
 } from './subject';
 import {Comparator, StringComparator} from './comparator';
 
@@ -47,7 +48,7 @@ export type ElementMatchesJavaScriptCondition = {
 };
 
 export type ElementPropertiesCondition = {
-	subject: ElementSubject,
+	subject: ElementSubject | PSVideoSubject,
 	type: 'has',
 	expression: Array<{
 		property: string,
@@ -62,6 +63,12 @@ export type ElementCondition = ElementExistsCondition
 	| ElementVisibleCondition
 	| ElementMatchesJavaScriptCondition
 	| ElementPropertiesCondition;
+
+export type PSVideoHadNoErrorCondition = {
+	subject: PSVideoSubject,
+	type: 'hadNoError',
+	searchStrategy: 'all' | 'currentUrl',
+};
 
 export type JavaScriptExpressionCondition = {
 	subject: JavaScriptExpressionSubject,
@@ -79,5 +86,6 @@ export type Condition = ApplicationExitedCondition
 	| CurrentLocationCondition
 	| CookieCondition
 	| ElementCondition
+	| PSVideoHadNoErrorCondition
 	| JavaScriptExpressionCondition
 	| NetworkRequestCondition;
