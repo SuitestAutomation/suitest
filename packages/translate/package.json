@@ -1,6 +1,6 @@
 {
   "name": "@suitest/translate",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "A module that translate Suitest server messages to human readable strings",
   "repository": {
     "type": "git",
@@ -31,7 +31,7 @@
     "prepublishOnly": "npm run coverage && npm run build"
   },
   "dependencies": {
-    "@suitest/types": "^2.1.0",
+    "@suitest/types": "^2.1.2",
     "unist-builder": "^2.0.3"
   },
   "peerDependencies": {
