@@ -374,7 +374,7 @@ export const testLineToAst = (
 			return translateSleepTestLine(testLine, appConfig);
 		case 'pollUrl':
 			return translatePollUrlTestLine(testLine, appConfig);
-		case 'press':
+		case 'button':
 			return translatePressButtonTestLine(testLine, appConfig, elements);
 		case 'runSnippet':
 			return translateRunTestTestLine(testLine, appConfig, elements, snippets);
