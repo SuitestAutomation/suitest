@@ -37,8 +37,8 @@ Object {
 
 exports[`Testing not started reason translation. Should translate "configuratorError" code 1`] = `
 Object {
-  "description": "",
-  "title": "Make sure that Apple Configurator 2 and Automation Tools are installed. Please see our docs.",
+  "description": "Please see [our docs](https://suite.st/docs/devices/apple-tv/#installing-apple-configurator-2).",
+  "title": "Make sure that Apple Configurator 2 and Automation Tools are installed",
 }
 `;
 
