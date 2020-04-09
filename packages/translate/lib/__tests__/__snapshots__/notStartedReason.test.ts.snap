@@ -35,6 +35,13 @@ Object {
 }
 `;
 
+exports[`Testing not started reason translation. Should translate "configuratorError" code 1`] = `
+Object {
+  "description": "",
+  "title": "Make sure that Apple Configurator 2 and Automation Tools are installed. Please see our docs.",
+}
+`;
+
 exports[`Testing not started reason translation. Should translate "deviceDeleted" code 1`] = `
 Object {
   "description": "The device on which the execution was scheduled has been deleted. Please cancel the test and schedule it on another available device",

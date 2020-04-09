@@ -118,6 +118,11 @@ export function translateNotStartedReason(code: NotStartedReason): Translation {
 				title: t['startupError.packageCorrupted'](),
 				description: '',
 			};
+		case NOT_STARTED_REASON.CONFIGURATION_ERROR:
+			return {
+				title: t['startupError.configuratorError'](),
+				description: '',
+			};
 		default:
 			const _code: never = code;
 			throw new Error(t['startupError.unknownReason'](_code));

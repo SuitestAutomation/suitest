@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "test": "lerna run test",
-    "lint": "eslint --ext .jsx,.js packages/*/lib/**/*.ts?\\(x\\)",
+    "lint": "eslint --ext .jsx,.js packages/*/lib/**/*.{ts,tsx}",
     "coverage": "lerna run coverage",
     "postinstall": "lerna bootstrap --hoist"
   },
