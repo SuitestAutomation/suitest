@@ -21,6 +21,7 @@ export const NOT_STARTED_REASON = Object.freeze({
 	SUITEST_DRIVE_SERVICE_OFFLINE: 'suitestDriveServiceOffline',
 	TEST_QUEUED: 'testQueued',
 	PACKAGE_CORRUPTED: 'packageCorrupted',
+	CONFIGURATION_ERROR: 'configuratorError',
 } as const);
 
 export type NotStartedReason = typeof NOT_STARTED_REASON[keyof typeof NOT_STARTED_REASON];
