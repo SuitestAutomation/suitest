@@ -35,10 +35,6 @@ export type BaseResult = {
 	loopResults?: TestLineResult[], // snippet until loops and lines results
 };
 
-export type SuccessResult = BaseResult & {
-	result: 'success' | 'exit' | 'excluded',
-};
-
 /**
  * Describes a result with simple error type,
  * that does not require extra structure to describe what's wrong
@@ -265,8 +261,7 @@ export type InvalidPackageError = BaseResult & {
 	},
 };
 
-export type TestLineResult = SuccessResult
-	| SimpleError
+export type TestLineResult = SimpleError
 	| OutdatedInstrumentationLibraryError
 	| QueryTimeoutError
 	| SyntaxError
