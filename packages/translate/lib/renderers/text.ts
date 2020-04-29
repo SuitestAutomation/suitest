@@ -147,7 +147,7 @@ const renderTable = (node: TableNode, renderTextNode: RenderTextFunc, prefix = '
 
 	return label + prefix + '┌' + columnWidth.map(column => ''.padStart(column + 2, '─')).join('┬') + '┐' + nl +
 		rows.join('\n' + prefix + '├' + columnWidth.map(column => ''.padStart(column + 2, '─')).join('┼') + '┤' + '\n') +
-		nl + prefix + '└' + columnWidth.map(column => ''.padStart(column + 2, '─')).join('┴') + '┘';
+		nl + prefix + '└' + columnWidth.map(column => ''.padStart(column + 2, '─')).join('┴') + '┘' + nl;
 };
 
 const renderCodeBlock = (node: CodeBlockNode, renderTextNode: RenderTextFunc, prefix = ''): string => {
@@ -186,7 +186,7 @@ const renderNode = (node: SingleNode, renderTextNode: RenderTextFunc, prefix = '
 			throw new Error('Cell and Row nodes can only be rendered as part of table or dictionary');
 		case 'alert':
 			// TODO implement
-			return prefix + node.children.map(renderTextNode).join('') + nl;
+			return prefix + node.children.map((n) => renderNode(n, renderTextNode, prefix)).join('') + nl;
 		default:
 			/* istanbul ignore next */
 			return assertUnknownSectionNode(node);

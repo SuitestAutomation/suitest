@@ -6,4 +6,11 @@ export type ColorComparator = '=' | '!=' | '+-';
 
 export type JavaScriptComparator = 'matches';
 
-export type Comparator = StringComparator | NumberComparator | ColorComparator | JavaScriptComparator;
+type ExistComparator = 'exists' | '!exists';
+
+export type Comparator =
+	StringComparator
+	| NumberComparator
+	| ColorComparator
+	| JavaScriptComparator
+	| ExistComparator;

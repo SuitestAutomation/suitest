@@ -4,7 +4,8 @@ import {Comparator} from '@suitest/types';
  * Translate only values that might be unclear to user, like "^",
  * leave obvious comparators as they are
  */
-export const translateComparator = (comparator: Comparator): string => {
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export const translateComparator = (comparator: Comparator) => {
 	switch (comparator) {
 		case '~':
 			return 'contains';

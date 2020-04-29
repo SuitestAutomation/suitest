@@ -22,4 +22,11 @@ module.exports = {
 	"moduleFileExtensions": [
 		"js", "json", "jsx", "ts", "d.ts", "tsx", "node",
 	],
+	"globals": {
+		"ts-jest": {
+			"diagnostics": {
+				"warnOnly": true
+			},
+		},
+	},
 };

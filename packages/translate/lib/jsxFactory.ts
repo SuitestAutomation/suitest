@@ -32,7 +32,10 @@ const normalizePlainChildren = (
 
 		if (isTextNode(child) && lastChild?.type === child.type) {
 			// Textual node with same time as the previous one - merge them
-			lastChild.value += child.value;
+			output.splice(output.length - 1, 1, {
+				type: child.type,
+				value: lastChild.value + child.value,
+			});
 		} else {
 			output.push(child);
 		}

@@ -15,16 +15,49 @@ import {
 } from '@suitest/types';
 import {formatVariables, replaceVariables} from './utils';
 import {translateComparator} from './comparators';
-import {ElementPropertiesCondition, PSVideoHadNoErrorCondition, PSVideoSubject} from '@suitest/types/lib';
+import {
+	ElementPropertiesCondition,
+	PSVideoHadNoErrorCondition,
+	PSVideoSubject,
+	TestLineResult, TestLineResultType,
+} from '@suitest/types/lib';
+import {translateTestLineResult} from './testLineResults';
 
-const translateApplicationExitedCondition = (): ConditionNode =>
-	<condition title="Application has exited"/> as ConditionNode;
+const translateApplicationExitedCondition = (lineResult?: TestLineResult): ConditionNode => {
+	const alertNode = lineResult && lineResult.result !== 'success' ?
+		<alert level={lineResult.result}>{translateTestLineResult(lineResult)}</alert> as AlertNode :
+		undefined;
+
+	return <condition title="Application has exited">{alertNode}</condition> as ConditionNode;
+};
 
 const translateCurrentLocationCondition = (
 	condition: CurrentLocationCondition,
-	appConfig: AppConfiguration
-): ConditionNode =>
-	<condition title="Current location">
+	appConfig: AppConfiguration,
+	lineResult?: TestLineResult,
+): ConditionNode => {
+	let alertNode: AlertNode | undefined;
+	if (lineResult && lineResult.result !== 'success') {
+		if (lineResult.errorType === 'queryFailed') {
+			if ('expectedValue' in lineResult && 'actualValue' in lineResult) {
+				alertNode = <alert level={lineResult.result}>
+					<dictionary label="Failing checks:">
+						{...getExpectedAndActualValues({
+							expectedKey: 'compared value', expectedValue: lineResult.expectedValue,
+							actualKey: 'current location', actualValue: lineResult.actualValue,
+						})}
+					</dictionary>
+				</alert> as AlertNode;
+			} else if (isMatchJsFail(condition, lineResult)) {
+				alertNode = matchJSAlertNode(condition.val, lineResult.result);
+			}
+		}
+		if (!alertNode) {
+			alertNode = <alert level={lineResult.result}>{translateTestLineResult(lineResult)}</alert> as AlertNode;
+		}
+	}
+
+	return <condition title="Current location">
 		<table>
 			<row>
 				<cell>Current location</cell>
@@ -32,18 +65,48 @@ const translateCurrentLocationCondition = (
 				<cell>{formatVariables(condition.val, appConfig.configVariables)}</cell>
 			</row>
 		</table>
+		{alertNode}
 	</condition> as ConditionNode;
+};
 
-const translateCookieCondition = (condition: CookieCondition, appConfig: AppConfiguration): ConditionNode =>
-	<condition title="Cookie">
+const translateCookieCondition = (
+	condition: CookieCondition, appConfig: AppConfiguration, lineResult?: TestLineResult
+): ConditionNode => {
+	let alertNode: AlertNode | undefined;
+	if (lineResult && lineResult.result !== 'success') {
+		if (lineResult.errorType === 'queryFailed') {
+			if ('expectedValue' in lineResult && 'actualValue' in lineResult) {
+				alertNode = <alert level={lineResult.result}>
+					<dictionary label="Failing checks:">
+						{...getExpectedAndActualValues({
+							expectedKey: 'compared value', expectedValue: processPropValues(lineResult.expectedValue),
+							actualKey: 'cookie value', actualValue: processPropValues(lineResult.actualValue),
+						})}
+					</dictionary>
+				</alert> as AlertNode;
+			} else if (isMatchJsFail(condition, lineResult)) {
+				alertNode = matchJSAlertNode(condition.val, lineResult.result);
+			}
+		}
+		if (!alertNode) {
+			alertNode = <alert level={lineResult.result}>{translateTestLineResult(lineResult)}</alert> as AlertNode;
+		}
+	}
+
+	return <condition title="Cookie">
 		<table>
 			<row>
 				<cell>{formatVariables(condition.subject.val, appConfig.configVariables)} cookie</cell>
 				<cell>{translateComparator(condition.type)}</cell>
-				<cell>{formatVariables(condition.val, appConfig.configVariables)}</cell>
+				{condition.type === 'exists' || condition.type === '!exists' ?
+					undefined :
+					<cell>{formatVariables(condition.val, appConfig.configVariables)}</cell>
+				}
 			</row>
 		</table>
+		{alertNode}
 	</condition> as ConditionNode;
+};
 
 export const translateElementProperty = (property: string): string => {
 	switch (property) {
@@ -113,7 +176,8 @@ const translateElementName = (subject: ElementSubject | PSVideoSubject, elements
 		}
 
 		return <fragment>
-			Unknown element (<code>{subject.elementId.slice(0, 4) + '...' + subject.elementId.slice(-4)}</code>)
+			Unknown element
+			(<code>{subject.elementId.length > 12 ? subject.elementId.slice(0, 4) + '...' + subject.elementId.slice(-4) : subject.elementId}</code>)
 		</fragment>;
 	}
 
@@ -138,15 +202,96 @@ const translateElementName = (subject: ElementSubject | PSVideoSubject, elements
 const translateElementCondition = (
 	condition: ElementCondition,
 	appConfig: AppConfiguration,
-	elements?: Elements
+	elements?: Elements,
+	lineResult?: TestLineResult,
 ): ConditionNode => {
+	let alertNode: AlertNode | undefined;
 	const elementName = translateElementName(condition.subject, elements);
+
+	if (lineResult && lineResult.result !== 'success') {
+		if (lineResult.errorType === 'invalidRepositoryReference') {
+			alertNode = <alert level={lineResult.result}>
+				Element {elementName} was not found in repository.
+			</alert> as AlertNode;
+
+			if (lineResult.message) {
+				switch (lineResult.message.code) {
+					case 'notExistingElement':
+						break;
+					case 'notExistingPlatform':
+						alertNode = <alert level={lineResult.result}>
+							Element {elementName} is not defined for selected platform
+						</alert> as AlertNode;
+						break;
+					case 'unknownProperty':
+						alertNode = <alert level={lineResult.result}>
+							Element does not support property {translateElementProperty(lineResult.message.property)}
+						</alert> as AlertNode;
+						break;
+					default:
+						const _message: never = lineResult.message;
+						console.warn('invalidRepositoryReference unknown message: ', JSON.stringify(_message));
+				}
+			}
+		} else if (
+			lineResult.errorType === 'queryFailed'
+			&& condition.type === 'matches'
+			&& isMatchJsFail(condition, lineResult)
+		) {
+			alertNode = matchJSAlertNode(condition.val, lineResult.result);
+		} else if ('expression' in lineResult && Array.isArray(lineResult.expression) && condition.type === 'has') {
+			alertNode = <alert level={lineResult.result}>
+				<dictionary label="Failing checks:">
+					{lineResult.expression.reduce((acc, propResult, index) => {
+						if (propResult.result === 'success') {
+							return acc;
+						}
+						const prop = condition.expression[index];
+
+						if (
+							propResult.errorType === 'queryFailed'
+							&& 'expectedValue' in propResult
+							&& 'actualValue' in propResult
+						) {
+							// display actual/expected queryFailed
+							acc.push(...getExpectedAndActualValues({
+								expectedKey: prop.property, expectedValue: processPropValues(propResult.expectedValue),
+								actualKey: prop.property, actualValue: String(propResult.actualValue),
+							}));
+						} else if ('message' in propResult && propResult.message.code === 'missingProperty') {
+							// display error when property not exists for running platform
+							acc.push(...getExpectedAndActualValues({
+								expectedKey: prop.property, expectedValue: processPropValues(prop.val),
+								actualKey: prop.property, actualValue: 'property missing',
+							}));
+						} else if ('message' in propResult && propResult.message.code === 'wrongExpression') {
+							// display error when property has invalid value or comparator
+							acc.push(...getExpectedAndActualValues({
+								expectedKey: prop.property, expectedValue: processPropValues(prop.val),
+								actualKey: prop.property, actualValue: 'wrong format',
+							}));
+						}
+
+						return acc;
+					}, [] as RowNode[])}
+				</dictionary>
+			</alert> as AlertNode;
+		}
+
+		if (!alertNode) {
+			alertNode = <alert level={lineResult.result}>{translateTestLineResult(lineResult)}</alert> as AlertNode;
+		}
+	}
 
 	switch (condition.type) {
 		case 'exists': // TODO nyc for some reason reports an uncovered branch here
-			return <condition title={<fragment>{elementName} exists</fragment>}/> as ConditionNode;
+			return <condition title={<fragment>{elementName} exists</fragment>}>
+				{alertNode}
+			</condition> as ConditionNode;
 		case '!exists':
-			return <condition title={<fragment>{elementName} does not exist</fragment>}/> as ConditionNode;
+			return <condition title={<fragment>{elementName} does not exist</fragment>}>
+				{alertNode}
+			</condition> as ConditionNode;
 		case 'matches':
 			const codeReplacedVars = replaceVariables(condition.val, appConfig.configVariables);
 
@@ -156,9 +301,12 @@ const translateElementCondition = (
 					? <code-block label="With variables">{condition.val}</code-block>
 					: undefined
 				}
+				{alertNode}
 			</condition> as ConditionNode;
 		case 'visible':
-			return <condition title={<fragment>{elementName} is visible</fragment>}/> as ConditionNode;
+			return <condition title={<fragment>{elementName} is visible</fragment>}>
+				{alertNode}
+			</condition> as ConditionNode;
 		case 'has':
 			return <condition title={<fragment>{elementName} properties</fragment>}>
 				<table>
@@ -170,6 +318,7 @@ const translateElementCondition = (
 						</row>
 					))}
 				</table>
+				{alertNode}
 			</condition> as ConditionNode;
 		default:
 			/* istanbul ignore next */
@@ -177,33 +326,90 @@ const translateElementCondition = (
 	}
 };
 
-const translatePSVideoCondition = (condition: PSVideoHadNoErrorCondition): ConditionNode => {
-	const title = <fragment>PlayStation 4 video had no error</fragment>;
+/**
+ * @description return key-value pairs for expected/actual results
+ */
+const getExpectedAndActualValues = ({
+	expectedKey, actualKey, actualValue, expectedValue,
+}: {
+	expectedKey: string, expectedValue: string, actualKey: string, actualValue: string,
+}): RowNode[] => [
+	<row>
+		<cell>~ {expectedKey}</cell>
+		<cell>{expectedValue} (expected)</cell>
+	</row> as RowNode,
+	<row>
+		<cell>× {actualKey}</cell>
+		<cell>{actualValue} (actual)</cell>
+	</row> as RowNode,
+];
+
+const processPropValues = (val: string | number): string => val === '' ? '[EMPTY STRING]' : String(val);
+
+const translatePSVideoCondition = (
+	condition: PSVideoHadNoErrorCondition,
+	lineResult?: TestLineResult
+): ConditionNode => {
+	const title = <fragment>PlayStation 4 video had no error {
+		condition.searchStrategy === 'all' ? 'for any source' : 'for current source'
+	}</fragment>;
+
+	// TODO: investigate possible errors related to psVideo
+	const alertNode = lineResult && lineResult.result !== 'success' ?
+		<alert level={lineResult.result}>{translateTestLineResult(lineResult)}</alert> as AlertNode :
+		undefined;
 
 	return <condition title={title}>
-		<paragraph>{condition.searchStrategy === 'all' ? 'For any source' : 'For current source'}</paragraph>
+		{alertNode}
 	</condition> as ConditionNode;
 };
 
 const translateJavaScriptExpressionCondition = (
 	condition: JavaScriptExpressionCondition,
-	appConfig: AppConfiguration
+	appConfig: AppConfiguration,
+	lineResult?: TestLineResult,
 ): ConditionNode => {
-	const code = replaceVariables(condition.subject.val, appConfig.configVariables);
+	const notSpecifiedMessage = '[NOT SPECIFIED]';
+	const code = condition.subject.val !== undefined ?
+		replaceVariables(condition.subject.val, appConfig.configVariables) :
+		notSpecifiedMessage;
+	let alertMessage: AlertNode | undefined;
+	if (lineResult && lineResult.result !== 'success') {
+		if (lineResult.errorType === 'queryFailed' && 'expectedValue' in lineResult && 'actualValue' in lineResult) {
+			alertMessage = <alert level={lineResult.result}>
+				<dictionary label="Failing checks:">
+					{...getExpectedAndActualValues({
+						expectedKey: 'compared value', expectedValue: processPropValues(lineResult.expectedValue),
+						actualKey: 'returned value', actualValue: processPropValues(lineResult.actualValue),
+					})}
+				</dictionary>
+			</alert> as AlertNode;
+		} else {
+			alertMessage = <alert level={lineResult.result}>{translateTestLineResult(lineResult)}</alert> as AlertNode;
+		}
+	}
 
 	return <condition title="JavaScript expression">
-		<code-block label="JavaScript expression">{code}</code-block>
-		{code !== condition.subject.val
-			? <code-block label="With variables">{condition.subject.val}</code-block>
-			: undefined
+		{condition.subject.val !== undefined ?
+			<fragment>
+				<code-block label="JavaScript expression">{code}</code-block>
+				{code !== condition.subject.val
+					? <code-block label="With variables">{condition.subject.val}</code-block>
+					: undefined
+				}
+			</fragment> :
+			<paragraph>{notSpecifiedMessage}</paragraph>
 		}
 		<table>
 			<row>
 				<cell>Expression result</cell>
 				<cell>{translateComparator(condition.type)}</cell>
-				<cell>{formatVariables(condition.val, appConfig.configVariables)}</cell>
+				<cell>{
+					condition.val ? formatVariables(condition.val, appConfig.configVariables) : notSpecifiedMessage
+				}</cell>
 			</row>
 		</table>
+		{alertMessage}
 	</condition> as ConditionNode;
 };
 
@@ -254,7 +460,8 @@ export const sortNetworkInfo = (a: NetworkRequestInfo, b: NetworkRequestInfo): n
 
 const translateNetworkRequestCondition = (
 	condition: NetworkRequestCondition,
-	appConfig: AppConfiguration
+	appConfig: AppConfiguration,
+	lineResult?: TestLineResult,
 ): ConditionNode => {
 	const requestInfo = condition
 		.subject
@@ -265,6 +472,60 @@ const translateNetworkRequestCondition = (
 		.responseInfo?.sort(sortNetworkInfo)
 		.map(translateNetworkInfo(false, appConfig)) ?? [];
 	const tableRows = requestInfo.concat(responseInfo);
+
+	let alertNode: AlertNode | undefined;
+	if (lineResult && lineResult.result !== 'success') {
+		if ('errors' in lineResult) {
+			const processValues = (val: string | number): string =>
+				replaceVariables(processPropValues(val), appConfig.configVariables);
+
+			alertNode = <alert level={lineResult.result}>
+				<dictionary label="Failing checks:">
+					{lineResult.errors.reduce((rows, err) => {
+						if (err.type === 'noUriFound') {
+							rows.push(...getExpectedAndActualValues({
+								expectedKey: 'url',
+								expectedValue: processValues(condition.subject.val),
+								actualKey: 'url',
+								actualValue: 'request was not made',
+							}));
+
+							return rows;
+						}
+
+						const props = {
+							request: condition.subject.requestInfo ?? [],
+							response: condition.subject.responseInfo ?? [],
+						};
+						const name = err.type === 'header' ? err.name : '@' + err.type;
+						const propField = props[err.message].find(field => field.name === name);
+
+						if (propField) {
+							const expected = propField.val;
+							const actual = 'actualValue' in err && err.reason === 'notMatched' ?
+								err.actualValue :
+								err.reason === 'notFound' ? 'not found' : 'unknown';
+							const key = `${err.message} ${err.type}` + ('name' in err ? ` "${err.name}"` : '');
+
+							rows.push(...getExpectedAndActualValues({
+								expectedKey: key,
+								expectedValue: processValues(expected),
+								actualKey: key,
+								actualValue: processValues(actual),
+							}));
+
+							return rows;
+						}
+
+						return rows;
+					}, [] as RowNode[])}
+				</dictionary>
+			</alert> as AlertNode;
+		}
+		if (!alertNode) {
+			alertNode = <alert level={lineResult.result}>{translateTestLineResult(lineResult)}</alert> as AlertNode;
+		}
+	}
 
 	return <condition title={<text>Network request {condition.type === 'made' ? 'was made' : 'was not made'}</text>}>
 		<dictionary>
@@ -285,6 +546,7 @@ const translateNetworkRequestCondition = (
 			</table>
 			: undefined
 		}
+		{alertNode}
 	</condition> as ConditionNode;
 };
 
@@ -293,6 +555,14 @@ const assertUnknownConditionSubject = (subject: never): never => {
 	throw new Error(`Unknown condition subject: ${JSON.stringify(subject)}`);
 };
 
+const matchJSAlertNode = (jsCode: string, result: Exclude<TestLineResultType, 'success'>): AlertNode =>
+	<alert level={result}>
+		Expected to match JS function:
+		<code-block>{jsCode}</code-block>
+	</alert> as AlertNode;
+
+const isMatchJsFail = (condition: Condition, lineResult: TestLineResult): boolean =>
+	condition.type === 'matches' && !Reflect.has(lineResult, 'message');
 /**
  * Translate condition part of the test line into human readable strings
  * "elements" is optional property. BE is going to update results feed to include elements map,
@@ -301,29 +571,32 @@ const assertUnknownConditionSubject = (subject: never): never => {
 export const translateCondition = (
 	condition: Condition,
 	appConfig: AppConfiguration,
-	elements?: Elements
+	elements?: Elements,
+	lineResult?: TestLineResult,
 ): ConditionNode => {
 	switch (condition.subject.type) {
 		case 'element': // TODO nyc for some reason reports an uncovered branch here
-			return translateElementCondition(condition as ElementCondition, appConfig, elements);
+			return translateElementCondition(condition as ElementCondition, appConfig, elements, lineResult);
 		case 'video':
-			return translateElementCondition(condition as ElementCondition, appConfig, elements);
+			return translateElementCondition(condition as ElementCondition, appConfig, elements, lineResult);
 		case 'psVideo':
 			if (condition.type === 'hadNoError') {
-				return translatePSVideoCondition(condition);
-			} else {
-				return translateElementCondition(condition as ElementPropertiesCondition, appConfig, elements);
+				return translatePSVideoCondition(condition, lineResult);
 			}
+
+			return translateElementCondition(condition as ElementPropertiesCondition, appConfig, elements, lineResult);
 		case 'javascript':
-			return translateJavaScriptExpressionCondition(condition as JavaScriptExpressionCondition, appConfig);
+			return translateJavaScriptExpressionCondition(
+				condition as JavaScriptExpressionCondition, appConfig, lineResult
+			);
 		case 'location':
-			return translateCurrentLocationCondition(condition as CurrentLocationCondition, appConfig);
+			return translateCurrentLocationCondition(condition as CurrentLocationCondition, appConfig, lineResult);
 		case 'cookie':
-			return translateCookieCondition(condition as CookieCondition, appConfig);
+			return translateCookieCondition(condition as CookieCondition, appConfig, lineResult);
 		case 'network':
-			return translateNetworkRequestCondition(condition as NetworkRequestCondition, appConfig);
+			return translateNetworkRequestCondition(condition as NetworkRequestCondition, appConfig, lineResult);
 		case 'application':
-			return translateApplicationExitedCondition();
+			return translateApplicationExitedCondition(lineResult);
 		default:
 			/* istanbul ignore next */
 			return assertUnknownConditionSubject(condition.subject);

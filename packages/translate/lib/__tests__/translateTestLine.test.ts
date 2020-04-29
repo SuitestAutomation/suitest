@@ -6,19 +6,19 @@ describe('translateTestLine module', () => {
 
 	describe('testLineToPlainText function', () => {
 		it('should connect AST builder function with plain text renderer', () => {
-			expect(testLineToPlainText(line, appConfig)).toEqual('Clear application data\n');
+			expect(testLineToPlainText({lineDefinition: line, appConfig})).toEqual('Clear application data\n');
 		});
 	});
 
 	describe('testLineToFormattedText function', () => {
 		it('should connect AST builder function with formatted text renderer', () => {
-			expect(testLineToFormattedText(line, appConfig)).toEqual('Clear application data\n');
+			expect(testLineToFormattedText({lineDefinition: line, appConfig})).toEqual('Clear application data\n');
 		});
 	});
 
 	describe('testLineToHtml function', () => {
 		it('should connect AST builder function with HTML renderer', () => {
-			expect(testLineToHtml(line, appConfig)).toMatchSnapshot();
+			expect(testLineToHtml({lineDefinition: line, appConfig})).toMatchSnapshot();
 		});
 	});
 });

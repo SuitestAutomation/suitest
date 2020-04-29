@@ -91,7 +91,7 @@ export type NetworkRequestSubject = {
 
 export type JavaScriptExpressionSubject = {
 	type: 'javascript',
-	val: string,
+	val?: string,
 };
 
 export type Subject = ApplicationSubject

@@ -5,7 +5,7 @@ import {
 	Snippets, StringComparator,
 	TestLine,
 } from '@suitest/types';
-import {PSVideoHadNoErrorCondition} from '@suitest/types/lib';
+import {PSVideoHadNoErrorCondition, JavaScriptComparator, ExistComparator, ElementProperty} from '@suitest/types/lib';
 
 export const elements: Elements = {
 	'element-id-1': {
@@ -58,14 +58,18 @@ export const conditions = {
 		},
 		type: 'exited',
 	}),
-	'current location': (type: StringComparator = '~', val = 'expected value'): Condition => ({
+	'current location': (type: StringComparator | JavaScriptComparator = '~', val = 'expected value'): Condition => ({
 		subject: {
 			type: 'location',
 		},
 		type,
 		val,
 	}),
-	'cookie': (cookieName = 'my-cookie', type: StringComparator = '!=', val = 'expecte value'): Condition => ({
+	'cookie': (
+		cookieName = 'my-cookie',
+		type: StringComparator | JavaScriptComparator | ExistComparator = '!=',
+		val = 'expect value'
+	): Condition => ({
 		subject: {
 			type: 'cookie',
 			val: cookieName,
@@ -76,6 +80,20 @@ export const conditions = {
 	'video exists': (): Condition => ({
 		subject: {
 			type: 'video',
+		},
+		type: 'exists',
+	}),
+	'ps video had not error': (searchStrategy: PSVideoHadNoErrorCondition['searchStrategy'] = 'currentUrl'): Condition => ({
+		subject: {
+			type: 'psVideo',
+		},
+		type: 'hadNoError',
+		searchStrategy,
+	}),
+	'element ... exist': (elementId = 'element-id-1'): Condition => ({
+		subject: {
+			type: 'element',
+			elementId,
 		},
 		type: 'exists',
 	}),
@@ -117,13 +135,13 @@ export const conditions = {
 		type: 'matches',
 		val: 'someJS("<%var1%>");',
 	}),
-	'element properties': (): Condition => ({
+	'element properties': (expression?: ElementProperty[]): Condition => ({
 		subject: {
 			type: 'element',
 			elementId: 'unknown-id',
 		},
 		type: 'has',
-		expression: [
+		expression: expression ?? [
 			{
 				property: 'videoPosition',
 				type: '>=',
@@ -186,13 +204,15 @@ export const conditions = {
 			{property: 'width', type: '=', val: 123},
 		],
 	}),
-	'JavaScript expression ... equals ...': (): Condition => ({
+	'JavaScript expression ... equals ...': (
+		jsCode = 'someJS()', val = 'returned value', type: StringComparator = '='
+	): Condition => ({
 		subject: {
 			type: 'javascript',
-			val: 'someJS()',
+			val: jsCode,
 		},
-		type: '=',
-		val: 'returned value',
+		type,
+		val,
 	}),
 	'JavaScript expression with variables ... equals ...': (): Condition => ({
 		subject: {

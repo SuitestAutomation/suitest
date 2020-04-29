@@ -23,7 +23,7 @@ declare namespace JSX {
 		emphasis: {children: StringOrStrings},
 		code: {children: StringOrStrings},
 		alert: {
-			level: 'error' | 'fatal' | 'warning' | 'exit' | 'excluded',
+			level: 'error' | 'fatal' | 'fail' | 'warning' | 'exit' | 'excluded',
 			children: ElementOrTextChildren,
 		},
 		fragment: {children: ElementOrTextChildren},

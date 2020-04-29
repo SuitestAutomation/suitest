@@ -48,7 +48,7 @@ declare type CodeBlockNode = {
 };
 declare type AlertNode = {
 	type: 'alert',
-	level: 'error' | 'warning' | 'exit' | 'excluded',
+	level: 'error' | 'fatal' | 'fail' | 'warning' | 'exit' | 'excluded',
 	children: TextNode[],
 };
 declare type SectionNode = ParagraphNode
