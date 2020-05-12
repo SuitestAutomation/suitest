@@ -228,7 +228,7 @@ const translatePressButtonTestLine = (
 
 const translateTestName = (testId: string, snippets?: Snippets): Node | Node[] => {
 	if (snippets && snippets[testId]) {
-		return <bold>{snippets[testId].name}</bold>;
+		return <subject>{snippets[testId].name}</subject>;
 	}
 
 	return <fragment>(<code>{testId.slice(0, 4) + '...' + testId.slice(-4)}</code>)</fragment>;
@@ -261,10 +261,10 @@ const assertUnknownTarget = (target: never): never => {
 const translateTarget = (target: Target): Node | Node[] => {
 	switch (target.type) {
 		case 'element': // TODO nyc for some reason reports an uncovered branch here
-			return <bold>element</bold>;
+			return <subject>element</subject>;
 		case 'window':
 			// TODO should we translate 'window' depending on running platform?
-			return <bold>{'coordinates' in target ? 'position' : 'window'}</bold>;
+			return <subject>{'coordinates' in target ? 'position' : 'window'}</subject>;
 		default:
 			/* istanbul ignore next */
 			return assertUnknownTarget(target);

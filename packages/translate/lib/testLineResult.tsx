@@ -19,7 +19,7 @@ import {
 	InvalidPackageError,
 	OutdatedInstrumentationLibraryError, TestLine, AppConfiguration, Elements, Snippets,
 } from '@suitest/types';
-import {testLine} from './testLine';
+import {translateTestLine} from './testLine';
 
 const simpleErrorMap: {[key: string]: string} = {
 	failedStart: 'Failed to open application',
@@ -391,7 +391,7 @@ export const translateTestLineResult = (options: {
 	elements?: Elements,
 	snippets?: Snippets,
 }): TestLineResultNode => {
-	const testLineTranslation = testLine(options);
+	const testLineTranslation = translateTestLine(options);
 	const {lineResult} = options;
 
 	return <test-line-result
