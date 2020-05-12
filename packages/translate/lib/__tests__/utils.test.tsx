@@ -1,7 +1,7 @@
 /// <reference path="../../types/intrinsicElements.d.ts" />
-import {jsx} from '../jsxFactory';
+import {jsx} from '@suitest/smst/commonjs/jsxFactory.js';
 import {AppConfiguration} from '@suitest/types';
-import {escapeHtml, formatCount, formatTimeout, formatVariables, replaceVariables} from '../utils';
+import {formatCount, formatTimeout, formatVariables, replaceVariables} from '../utils';
 
 describe('Translation utils', () => {
 	const vars: AppConfiguration['configVariables'] = [
@@ -84,16 +84,6 @@ describe('Translation utils', () => {
 		it('should display invalid values as is', () => {
 			expect(formatCount('<%unknown%>', vars)).toEqual(<bold>{'<%unknown%>'}</bold>);
 			expect(formatCount('abc', vars)).toEqual(<bold>abc</bold>);
-		});
-	});
-
-	describe('escapeHtml util', () => {
-		it('should escape special characters', () => {
-			expect(escapeHtml('& < " \'')).toEqual('&amp; &lt; &quot; &#039;');
-		});
-
-		it('should replace entities even if they repeat', () => {
-			expect(escapeHtml('&&&')).toEqual('&amp;&amp;&amp;');
 		});
 	});
 });

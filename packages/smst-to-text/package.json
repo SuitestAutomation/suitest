@@ -1,14 +1,14 @@
 {
-  "name": "@suitest/translate",
+  "name": "@suitest/smst-to-text",
   "version": "2.1.1",
-  "description": "A module that translate Suitest server messages to human readable strings",
+  "description": "Utility to convert SMST to plain text or ANSI-styled text",
   "repository": {
     "type": "git",
-    "url": "https://github.com/SuitestAutomation/suitest",
-    "directory": "packages/translate"
+    "url": "git+https://github.com/SuitestAutomation/suitest.git",
+    "directory": "packages/smst-to-text"
   },
-  "keywords": [
-    "suitest"
+  "kywords": [
+    "suitest", "unist"
   ],
   "license": "MIT",
   "bugs": {
@@ -18,20 +18,20 @@
   "main": "umd/index.js",
   "files": [
     "umd/",
-    "commonjs/",
-    "docs/",
-    "suitest-test-line.css"
+    "commonjs/"
   ],
   "scripts": {
-    "build": "npm run build:umd && npm run build:commonjs && cp ./lib/suitest-test-line.css ./",
+    "build": "npm run build:umd && npm run build:commonjs",
     "build:umd": "rimraf umd && rollup -c --environment FORMAT:umd",
     "build:commonjs": "rimraf commonjs && tsc",
     "test": "jest",
     "coverage": "jest --coverage",
     "prepublishOnly": "npm run coverage && npm run build"
   },
-  "dependencies": {
-    "@suitest/types": "^2.1.0",
-    "@suitest/smst": "^2.1.0"
+  "devDependencies": {
+    "@suitest/smst": "2.1.1"
+  },
+  "peerDependencies": {
+    "@suitest/smst": "2.1.1"
   }
 }
