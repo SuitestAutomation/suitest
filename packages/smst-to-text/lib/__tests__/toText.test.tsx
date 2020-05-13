@@ -29,7 +29,7 @@ describe('AST renderers', () => {
 			name={<text>prop name prop name prop name prop name prop name</text>}
 			expectedValue={<text>expected value expected value expected value expected value expected value</text>}
 			comparator="~"
-			actualValue={<text>expected value expected value expected value expected value expected value</text>}
+			actualValue="expected value expected value expected value expected value expected value"
 			status="fail"
 		/>
 		<prop
@@ -53,7 +53,7 @@ describe('AST renderers', () => {
 		{simpleCondition}
 	</test-line>;
 
-	const failResult = <test-line-result status="fail" message="fail: Condition was not met">
+	const failResult = <test-line-result status="fail" message={<text>fail: Condition was not met</text>}>
 		<test-line
 			title={<text>Assert application has exited</text>}
 			status="fail"

@@ -76,7 +76,7 @@ declare type TestLineResultNode = {
 	type: 'test-line-result',
 	status: TestLineResultStatus,
 	children: TestLineNode[],
-	message?: string,
+	message?: InlineTextNode[],
 };
 
 declare type SingleNode = InlineTextNode

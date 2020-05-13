@@ -15,7 +15,7 @@
     "url": "https://github.com/SuitestAutomation/suitest/issues"
   },
   "homepage": "https://suite.st/",
-  "main": "umd/index.js",
+  "main": "umd/toText.js",
   "files": [
     "umd/",
     "commonjs/"

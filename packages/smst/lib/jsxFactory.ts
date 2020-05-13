@@ -154,7 +154,7 @@ export const jsx = (
 			if (isTestLineNodeArray(processedChildren) || processedChildren.length === 1) {
 				return ub('test-line-result', {
 					status: props?.status,
-					message: props?.message,
+					message: processLabel(props?.message) as InlineTextNode[],
 				}, processedChildren as TestLineNode[]);
 			}
 

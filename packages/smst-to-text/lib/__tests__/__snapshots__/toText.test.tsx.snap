@@ -2,15 +2,19 @@
 
 exports[`AST renderers formatted text renderer should handle tables 1`] = `
 "prop name = expected value
-prop name   > someJS();   "
+prop name  
+  > someJS();"
 `;
 
 exports[`AST renderers formatted text renderer should handle tables 2`] = `
 "[31m✖ [0mprop name prop name prop name prop name prop name ~ expected value expected value expected value expected value 
                                                       expected value                                              
-[31m✖ [0mJavaScript expression                      > someJS(); someJS(); someJS(); someJS();                   
-                                                      > someJS(); someJS(); someJS();                             
-                                                      > someJS(); someJS(); someJS();                             "
+                                                    → expected value expected value expected value expected value 
+                                                      expected value                                              
+[31m✖ [0mJavaScript expression                     
+  > someJS(); someJS(); someJS(); someJS();        
+  > someJS(); someJS(); someJS();                  
+  > someJS(); someJS(); someJS();                  "
 `;
 
 exports[`AST renderers formatted text renderer should render condition 1`] = `
@@ -24,9 +28,12 @@ exports[`AST renderers formatted text renderer should render condition 2`] = `
 condition: element [32mMy element[0m exists
     [31m✖ [0mprop name prop name prop name prop name prop name ~ expected value expected value expected value expected value 
                                                           expected value                                              
-    [31m✖ [0mJavaScript expression                      > someJS(); someJS(); someJS(); someJS();                   
-                                                          > someJS(); someJS(); someJS();                             
-                                                          > someJS(); someJS(); someJS();                             "
+                                                        → expected value expected value expected value expected value 
+                                                          expected value                                              
+    [31m✖ [0mJavaScript expression                     
+      > someJS(); someJS(); someJS(); someJS();        
+      > someJS(); someJS(); someJS();                  
+      > someJS(); someJS(); someJS();                  "
 `;
 
 exports[`AST renderers formatted text renderer should render test line 1`] = `
@@ -42,42 +49,46 @@ exports[`AST renderers formatted text renderer should render test line 2`] = `
 `;
 
 exports[`AST renderers formatted text renderer should render test line results 1`] = `
-"Assert application has exited
+"[31m✖ [0mAssert application has exited
 
-[31m[object Object][0m"
+[31mfail: Condition was not met[0m"
 `;
 
 exports[`AST renderers formatted text renderer should render test line results 2`] = `
-"Assert application has exited
+"[33m‼ [0mAssert application has exited
 "
 `;
 
 exports[`AST renderers formatted text renderer should render test line results 3`] = `
-"Assert application has exited
+"[34m» [0mAssert application has exited
 "
 `;
 
 exports[`AST renderers formatted text renderer should render test line results 4`] = `
-"Assert application has exited
+"» Assert application has exited
 "
 `;
 
 exports[`AST renderers formatted text renderer should render test line results 5`] = `
-"Assert application has exited
+"[31m✖ [0mAssert application has exited
 "
 `;
 
 exports[`AST renderers plain text renderer should handle props 1`] = `
 "prop name = expected value
-prop name   > someJS();   "
+prop name  
+  > someJS();"
 `;
 
 exports[`AST renderers plain text renderer should handle props 2`] = `
 "✖ prop name prop name prop name prop name prop name ~ expected value expected value expected value expected value 
                                                       expected value                                              
-✖ JavaScript expression                               > someJS(); someJS(); someJS(); someJS();                   
-                                                      > someJS(); someJS(); someJS();                             
-                                                      > someJS(); someJS(); someJS();                             "
+                                                    → expected value expected value expected value expected value 
+                                                      expected value                                              
+✖ JavaScript expression                              
+  > someJS(); someJS(); someJS(); someJS();        
+  > someJS(); someJS(); someJS();                  
+  > someJS(); someJS(); someJS();                  "
 `;
 
 exports[`AST renderers plain text renderer should render condition 1`] = `
@@ -91,9 +102,12 @@ exports[`AST renderers plain text renderer should render condition 2`] = `
 condition: element My element exists
     ✖ prop name prop name prop name prop name prop name ~ expected value expected value expected value expected value 
                                                           expected value                                              
-    ✖ JavaScript expression                               > someJS(); someJS(); someJS(); someJS();                   
-                                                          > someJS(); someJS(); someJS();                             
-                                                          > someJS(); someJS(); someJS();                             "
+                                                        → expected value expected value expected value expected value 
+                                                          expected value                                              
+    ✖ JavaScript expression                              
+      > someJS(); someJS(); someJS(); someJS();        
+      > someJS(); someJS(); someJS();                  
+      > someJS(); someJS(); someJS();                  "
 `;
 
 exports[`AST renderers plain text renderer should render test line 1`] = `
