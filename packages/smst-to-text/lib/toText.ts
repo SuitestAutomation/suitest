@@ -13,15 +13,16 @@ const nl = '\n';
 const tab = '  ';
 
 const format = {
-	cancel: '\u001b[0m',
-	subject: '\u001b[32m',	// green
-	code: '\u001b[36m',	// cyan
-	input: '\u001b[4m',	// underscore
-	success: '\u001b[32m',	// green
-	fail: '\u001b[31m',	// red
-	fatal: '\u001b[31m',	// red
-	warning: '\u001b[33m',	// yellow
-	exit: '\u001b[34m',	// blue
+	cancel: 	'\u001b[0m',
+	subject: 	'\u001b[32m',	// green
+	code: 		'\u001b[36m',	// cyan
+	input: 		'\u001b[4m',	// underscore
+	success: 	'\u001b[32m',	// green
+	fail: 		'\u001b[31m',	// red
+	fatal: 		'\u001b[31m',	// red
+	warning: 	'\u001b[33m',	// yellow
+	exit: 		'\u001b[34m',	// blue
+	excluded: 	'\u001b[34m',	// blue
 };
 
 const formatString = (text: string, type: string): string => {
@@ -159,9 +160,7 @@ const renderProps = (node: PropertiesNode, renderTextNode: RenderTextFunc, prefi
 			currentRow = [];
 			table.push(currentRow);
 
-			// Currently there is only one type of block content in SMST - code block
-			// If that ever changes, this has to be updated
-			currentRow.push(prop.expectedValue.value.split(nl).map(line => tab + '> ' + line));
+			currentRow.push(renderNode(prop.expectedValue, renderTextNode, tab).split(nl));
 		} else {
 			// Render non-code block value
 			const [valueCellLength, valueColumnContent] = wrapTextNodes(prop.expectedValue, renderTextNode);
@@ -232,11 +231,11 @@ const renderNode = (node: SingleNode, renderTextNode: RenderTextFunc, prefix = '
 		case 'prop':
 			throw new Error('Prop node can only be rendered as part of Props');
 		case 'code-block':
-			throw new Error('CodeBlock node can only be rendered as part of Props');
+			return node.value.split(nl).map(line => prefix + '> ' + line).join(nl);
 		case 'test-line':
 			return renderTestLineOrCondition(node, renderTextNode);
 		case 'condition':
-			return nl + prefix + renderTestLineOrCondition(node, renderTextNode, prefix + tab);
+			return renderTestLineOrCondition(node, renderTextNode, prefix);
 		case 'test-line-result':
 			return renderTestLineResult(node, renderTextNode, prefix);
 		default:
@@ -254,14 +253,14 @@ const renderTestLineOrCondition = (
 	const title = node.title.map(renderTextNode).join('');
 	const body = node.children.map(child => renderNode(child, renderTextNode, prefix + tab)).join('');
 
-	return status + title + nl + body;
+	return [prefix + status + title, body].filter(Boolean).join(nl);
 };
 
 const renderTestLineResult = (node: TestLineResultNode, renderTextNode: RenderTextFunc, prefix = ''): string => {
 	const message = node.message
-		? renderTextNode({type: node.status, value: node.message.map(renderTextNode).join('')})
+		? tab + renderTextNode({type: node.status, value: node.status + ': '}) + node.message.map(renderTextNode).join('')
 		: '';
-	const body = renderTestLineOrCondition(node.children[0], renderTextNode, prefix + tab);
+	const body = renderTestLineOrCondition(node.children[0], renderTextNode, prefix);
 
 	return [body, message].filter(Boolean).join(nl);
 };

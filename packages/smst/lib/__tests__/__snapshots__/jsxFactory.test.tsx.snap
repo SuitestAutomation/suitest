@@ -2,12 +2,10 @@
 
 exports[`jsxFactory should create correct Prop element 1`] = `
 Object {
-  "actualValue": Array [
-    Object {
-      "type": "text",
-      "value": "actual value",
-    },
-  ],
+  "actualValue": Object {
+    "type": "text",
+    "value": "actual value",
+  },
   "comparator": "=",
   "contentType": "inline",
   "expectedValue": Array [
@@ -29,6 +27,7 @@ Object {
 
 exports[`jsxFactory should create correct Prop element 2`] = `
 Object {
+  "comparator": undefined,
   "contentType": "block",
   "expectedValue": Object {
     "language": "javascript",
@@ -78,7 +77,6 @@ Object {
   "children": Array [
     Object {
       "children": Array [],
-      "status": undefined,
       "title": Array [
         Object {
           "type": "text",
@@ -88,7 +86,12 @@ Object {
       "type": "test-line",
     },
   ],
-  "message": "Some text",
+  "message": Array [
+    Object {
+      "type": "text",
+      "value": "Some text",
+    },
+  ],
   "status": "fail",
   "type": "test-line-result",
 }

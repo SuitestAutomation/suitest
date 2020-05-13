@@ -45,39 +45,42 @@ describe('AST renderers', () => {
 	/>;
 	const longCondition = <condition
 		title={<fragment>condition: element <subject>My element</subject> exists</fragment>}
+		status="fail"
 	>{longProps}</condition>;
 	const simpleLine = <test-line
 		title={<fragment>Assert element <subject>My element</subject> is visible</fragment>}
 	/>;
-	const longLine = <test-line title={<fragment>Assert element <subject>My element</subject></fragment>}>
+	const longLine = <test-line
+		title={<fragment>Press <input>OK</input>, <input>LEFT</input> only if condition is met</fragment>}
+	>
 		{simpleCondition}
 	</test-line>;
 
-	const failResult = <test-line-result status="fail" message={<text>fail: Condition was not met</text>}>
+	const failResult = <test-line-result status="fail" message={<text>Condition was not met</text>}>
 		<test-line
-			title={<text>Assert application has exited</text>}
+			title={<fragment>Run test <subject>My test</subject> until condition is met max 5x every 5s</fragment>}
 			status="fail"
-		/>
+		>{longCondition}</test-line>
 	</test-line-result>;
-	const warningResult = <test-line-result status="warning">
+	const warningResult = <test-line-result status="warning" message={<text>Some warning message</text>}>
 		<test-line
 			title={<text>Assert application has exited</text>}
 			status="warning"
 		/>
 	</test-line-result>;
-	const exitResult = <test-line-result status="exit">
+	const exitResult = <test-line-result status="exit" message={<text>Condition was met</text>}>
 		<test-line
 			title={<text>Assert application has exited</text>}
 			status="exit"
 		/>
 	</test-line-result>;
-	const excludedResult = <test-line-result status="excluded">
+	const excludedResult = <test-line-result status="excluded" message={<text>Line was not executed</text>}>
 		<test-line
-			title={<text>Assert application has exited</text>}
+			title={<fragment>Press <input>OK</input> only if condition is met</fragment>}
 			status="excluded"
-		/>
+		>{simpleCondition}</test-line>
 	</test-line-result>;
-	const fatalResult = <test-line-result status="fatal">
+	const fatalResult = <test-line-result status="fatal" message={<text>Some generic error message</text>}>
 		<test-line
 			title={<text>Assert application has exited</text>}
 			status="fatal"
@@ -90,6 +93,11 @@ describe('AST renderers', () => {
 			expect(toText(subjectText, false)).toEqual('SUBJECT');
 			expect(toText(inputText, false)).toEqual('INPUT');
 			expect(toText(codeText, false)).toEqual('CODE');
+		});
+
+		it('should handle code blocks', () => {
+			expect(toText(simpleCodeBlock, false)).toMatchSnapshot();
+			expect(toText(longCodeBlock, false)).toMatchSnapshot();
 		});
 
 		it('should handle props', () => {
@@ -122,6 +130,11 @@ describe('AST renderers', () => {
 			expect(toText(subjectText, true)).toEqual('\u001b[32mSUBJECT\u001b[0m');
 			expect(toText(inputText, true)).toEqual('\u001b[4mINPUT\u001b[0m');
 			expect(toText(codeText, true)).toEqual('\u001b[36mCODE\u001b[0m');
+		});
+
+		it('should handle code blocks', () => {
+			expect(toText(simpleCodeBlock, true)).toMatchSnapshot();
+			expect(toText(longCodeBlock, true)).toMatchSnapshot();
 		});
 
 		it('should handle tables', () => {
