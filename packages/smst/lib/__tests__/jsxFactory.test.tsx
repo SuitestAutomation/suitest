@@ -35,6 +35,13 @@ describe('jsxFactory', () => {
 		};
 		expect(<code-block>test</code-block>).toEqual(codeBlock);
 		expect(<code-block language="javascript">test</code-block>).toEqual(codeBlock);
+
+		// Has to produce empty text node instead of just skipping the element altogether
+		const emptyText = {
+			type: 'text',
+			value: '',
+		};
+		expect(<text>{''}</text>).toEqual(emptyText);
 	});
 
 	it('should process complex text nodes', () => {
@@ -103,7 +110,7 @@ describe('jsxFactory', () => {
 		expect(<prop
 			name={<text>prop name</text>}
 			expectedValue={<text>expected value</text>}
-			actualValue={<text>actual value</text>}
+			actualValue="actual value"
 			comparator="="
 			status="success"
 		/>).toMatchSnapshot();
@@ -177,7 +184,7 @@ describe('jsxFactory', () => {
 	it('should translate test line result line correctly', () => {
 		expect(<test-line-result
 			status="fail"
-			message="Some text"
+			message={<text>Some text</text>}
 		>
 			<test-line title={<text>Some title</text>}/>
 		</test-line-result>).toMatchSnapshot();

@@ -2,10 +2,12 @@ import {jsx} from '@suitest/smst/commonjs/jsxFactory';
 import {toText} from '../toText';
 
 describe('AST renderers', () => {
-	const plainText = <fragment>TEXT</fragment>;
+	const plainText = <text>TEXT</text>;
 	const subjectText = <subject>SUBJECT</subject>;
 	const inputText = <input>INPUT</input>;
 	const codeText = <code>CODE</code>;
+	const mixedText = <fragment>TEXT <subject>SUBJ</subject> TEXT</fragment>;
+	const emptyText = <text>{''}</text>;
 
 	const simpleCodeBlock = <code-block>someJS();</code-block>;
 	const longCodeBlock = <code-block>
@@ -93,6 +95,8 @@ describe('AST renderers', () => {
 			expect(toText(subjectText, false)).toEqual('SUBJECT');
 			expect(toText(inputText, false)).toEqual('INPUT');
 			expect(toText(codeText, false)).toEqual('CODE');
+			expect(toText(mixedText, false)).toEqual('TEXT SUBJ TEXT');
+			expect(toText(emptyText, false)).toEqual('');
 		});
 
 		it('should handle code blocks', () => {
@@ -130,6 +134,8 @@ describe('AST renderers', () => {
 			expect(toText(subjectText, true)).toEqual('\u001b[32mSUBJECT\u001b[0m');
 			expect(toText(inputText, true)).toEqual('\u001b[4mINPUT\u001b[0m');
 			expect(toText(codeText, true)).toEqual('\u001b[36mCODE\u001b[0m');
+			expect(toText(mixedText, true)).toEqual('TEXT \u001b[32mSUBJ\u001b[0m TEXT');
+			expect(toText(emptyText, true)).toEqual('');
 		});
 
 		it('should handle code blocks', () => {

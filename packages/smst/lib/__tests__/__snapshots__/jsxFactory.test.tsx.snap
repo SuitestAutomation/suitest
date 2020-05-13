@@ -2,10 +2,7 @@
 
 exports[`jsxFactory should create correct Prop element 1`] = `
 Object {
-  "actualValue": Object {
-    "type": "text",
-    "value": "actual value",
-  },
+  "actualValue": "actual value",
   "comparator": "=",
   "contentType": "inline",
   "expectedValue": Array [

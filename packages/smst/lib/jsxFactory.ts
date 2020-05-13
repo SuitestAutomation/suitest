@@ -115,7 +115,9 @@ export const jsx = (
 ): Node => {
 	// Do not include empty children, to allow for ternary operations in JSX
 	// Flatten the children - to support nested arrays in JSX and manage fragments
-	const processedChildren = normalizePlainChildren(flatten(children.filter(Boolean)), type);
+	const processedChildren = normalizePlainChildren(flatten(
+		children.filter(child => typeof child !== 'undefined' && child !== null)
+	), type);
 
 	switch (type) {
 		case 'text': // TODO nyc for some reason reports an uncovered branch here
