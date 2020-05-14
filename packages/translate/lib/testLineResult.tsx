@@ -17,9 +17,13 @@ import {
 	InvalidReferenceError,
 	ADBError,
 	InvalidPackageError,
-	OutdatedInstrumentationLibraryError, TestLine, AppConfiguration, Elements, Snippets,
+	OutdatedInstrumentationLibraryError,
+	InvalidRepositoryReferenceError,
+	TestLineErrorResult,
+	TestLine, AppConfiguration, Elements, Snippets,
 } from '@suitest/types';
 import {translateTestLine} from './testLine';
+import {translateElementProperty} from './condition';
 
 const simpleErrorMap: {[key: string]: string} = {
 	failedStart: 'Failed to open application',
@@ -129,7 +133,7 @@ const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
 
 	}
 
-	return <text>Query failed.</text>;
+	return <text>Condition was not met.</text>;
 };
 
 const translateInvalidInputError = (result: InvalidInputError): TextNode => {
@@ -321,12 +325,34 @@ const translateOutdatedLibraryError = (result: OutdatedInstrumentationLibraryErr
 	return defaultMessage;
 };
 
+const translateInvalidRepositoryReference = (result: InvalidRepositoryReferenceError): TextNode => {
+	let textMsg = 'Element was not found in repository';
+
+	if (result.message) {
+		switch (result.message.code) {
+			case 'notExistingElement':
+				break;
+			case 'notExistingPlatform':
+				textMsg = 'Element is not defined for selected platform';
+				break;
+			case 'unknownProperty':
+				textMsg = `Element does not support property ${translateElementProperty(result.message.property)}`;
+				break;
+			default:
+				const _message: never = result.message;
+				console.warn('invalidRepositoryReference unknown message: ', JSON.stringify(_message));
+		}
+	}
+
+	return <text>{textMsg}</text> as TextNode;
+};
+
 // TODO: investigate how to get jsExpressionError, testSnippetError, outdatedLibraryWarning described in suitest-js-api
 // TODO: investigate handlers from FE:
 //  	cyclicReference, snippetError, snippetUndone, instrumentationFailed, packageCorrupted, unknownElementProperty
 //  	configuratorError, appStoreBuild
 // TODO: better test coverage
-export const translateResultMessage = (result: TestLineResult): Node => {
+export const translateResultMessage = (result: TestLineErrorResult): Node => {
 	if (result.errorType in simpleErrorMap) {
 		return <text>{simpleErrorMap[result.errorType]}</text>;
 	}
@@ -334,7 +360,7 @@ export const translateResultMessage = (result: TestLineResult): Node => {
 		return translateQueryFailedResults(result);
 	}
 	if (result.errorType === 'queryFailed') {
-		return <text>Query failed.</text>;
+		return <text>Condition was not met.</text>;
 	}
 	if (result.errorType === 'invalidInput') {
 		return translateInvalidInputError(result);
@@ -378,6 +404,9 @@ export const translateResultMessage = (result: TestLineResult): Node => {
 	if (result.errorType === 'outdatedLibrary' || result.errorType === 'outdatedLibraryConnected') {
 		return translateOutdatedLibraryError(result);
 	}
+	if (result.errorType === 'invalidRepositoryReference') {
+		return translateInvalidRepositoryReference(result);
+	}
 
 	console.warn('Error message not implemented for', JSON.stringify(result));
 
@@ -387,12 +416,18 @@ export const translateResultMessage = (result: TestLineResult): Node => {
 export const translateTestLineResult = (options: {
 	testLine: TestLine,
 	appConfig: AppConfiguration,
-	lineResult: TestLineResult,
+	lineResult?: TestLineResult,
 	elements?: Elements,
 	snippets?: Snippets,
 }): TestLineResultNode => {
 	const testLineTranslation = translateTestLine(options);
 	const {lineResult} = options;
+
+	if (!lineResult || lineResult.result === 'success') {
+		return <test-line-result
+			status="success"
+		>{testLineTranslation}</test-line-result> as TestLineResultNode;
+	}
 
 	return <test-line-result
 		status={lineResult.result}

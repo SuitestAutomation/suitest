@@ -1,4 +1,4 @@
-/// <reference path="../../types/intrinsicElements.d.ts" />
+/// <reference path="../../../smst/types/intrinsicElements.d.ts" />
 import {jsx} from '@suitest/smst/commonjs/jsxFactory.js';
 import {AppConfiguration} from '@suitest/types';
 import {formatCount, formatTimeout, formatVariables, replaceVariables} from '../utils';

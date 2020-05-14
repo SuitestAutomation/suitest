@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@suitest/types": "^2.1.0",
-    "@suitest/smst": "^2.1.0"
+    "@suitest/smst": "^2.1.0",
+    "@suitest/smst-to-text": "^2.1.1"
   }
 }

@@ -334,7 +334,15 @@ export type ADBError = BaseResult & {
 	},
 };
 
-export type TestLineResult = SimpleError
+export type TestLineSuccessResult = BaseResult & {
+	result: 'success',
+	errorType?: undefined,
+};
+
+export type TestLineErrorResult = Exclude<TestLineResult, TestLineSuccessResult>;
+
+export type TestLineResult = TestLineSuccessResult
+	| SimpleError
 	| OutdatedInstrumentationLibraryError
 	| QueryTimeoutError
 	| SyntaxError
