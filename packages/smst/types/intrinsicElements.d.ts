@@ -19,7 +19,6 @@ declare namespace JSX {
 		// Plain text, should accept only string or other textual elements to make
 		// it easier to format text
 		text: {children: StringOrStrings},
-		bold: {children: StringOrStrings},
 		subject: {children: StringOrStrings},
 		input: {children: StringOrStrings},
 		code: {children: StringOrStrings},

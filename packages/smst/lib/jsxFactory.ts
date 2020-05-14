@@ -123,7 +123,6 @@ export const jsx = (
 		case 'text': // TODO nyc for some reason reports an uncovered branch here
 		case 'subject':
 		case 'input':
-		case 'bold':
 		case 'code':
 			return processedChildren[0];
 		case 'fragment':
