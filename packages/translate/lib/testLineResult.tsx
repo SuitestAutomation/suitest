@@ -1,6 +1,4 @@
 /* eslint-disable max-len */
-/// <reference path="../../smst/types/intrinsicElements.d.ts" />
-/// <reference path="../../smst/types/unistTestLine.d.ts" />
 import {jsx} from '@suitest/smst/commonjs/jsxFactory';
 import {
 	TestLineResult,
@@ -22,6 +20,7 @@ import {
 	TestLineErrorResult,
 	TestLine, AppConfiguration, Elements, Snippets,
 } from '@suitest/types';
+import {TestLineResultNode, TextNode} from '@suitest/smst/types/unistTestLine';
 import {translateTestLine} from './testLine';
 import {translateElementProperty} from './condition';
 

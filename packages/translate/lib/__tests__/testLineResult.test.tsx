@@ -7,7 +7,7 @@ import {
 } from '@suitest/types/lib';
 import {translateResultMessage, translateTestLineResult} from '../testLineResult';
 import {appConfig, conditions, elements, testLinesExamples} from './testLinesExamples';
-import {toText} from '@suitest/smst-to-text/lib/toText';
+import {toText} from '@suitest/smst-to-text';
 
 describe('Test line results translation', () => {
 	const baseResult = {
@@ -959,8 +959,7 @@ describe('Test line results translation', () => {
 								compare: '=',
 								val: 'http://suite.st/<%var1%>',
 								requestInfo: [],
-								// @ts-expect-error
-								responseInfo: [ { name: '@status', val: 303, compare: '~' } ],
+								responseInfo: [ { name: '@status', val: String(303), compare: '~' as const } ],
 							},
 							type: 'made',
 							searchStrategy: 'all',

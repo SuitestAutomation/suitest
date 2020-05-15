@@ -1,5 +1,3 @@
-/// <reference path="../../smst/types/intrinsicElements.d.ts" />
-/// <reference path="../../smst/types/unistTestLine.d.ts" />
 import {jsx} from '@suitest/smst/commonjs/jsxFactory';
 import {
 	Condition,
@@ -13,8 +11,6 @@ import {
 	AppConfiguration,
 	Elements, ElementSubject, CustomElementSubject,
 } from '@suitest/types';
-import {formatVariables, mapStatus, translateCodeProp} from './utils';
-import {translateComparator} from './comparator';
 import {
 	ElementPropertiesCondition,
 	PSVideoHadNoErrorCondition,
@@ -22,6 +18,9 @@ import {
 	QueryFailedNetworkError,
 	TestLineResult,
 } from '@suitest/types/lib';
+import {ConditionNode, InlinePropertyNode} from '@suitest/smst/types/unistTestLine';
+import {formatVariables, mapStatus, translateCodeProp} from './utils';
+import {translateComparator} from './comparator';
 
 const translateApplicationExitedCondition = (lineResult?: TestLineResult): ConditionNode =>
 	<condition

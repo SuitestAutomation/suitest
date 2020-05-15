@@ -1,5 +1,3 @@
-/// <reference path="../../smst/types/intrinsicElements.d.ts" />
-/// <reference path="../../smst/types/unistTestLine.d.ts" />
 import {jsx} from '@suitest/smst/commonjs/jsxFactory';
 import {AppConfiguration} from '@suitest/types';
 

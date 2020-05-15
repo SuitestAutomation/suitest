@@ -55,7 +55,7 @@ const formatString = (text: string, type: string): string => {
 /**
  * Render a single text node as plain text
  */
-const renderPlainTextNode: RenderTextFunc = (node: ExtendedInlineNodes): string => node.value;
+const renderPlainTextNode: RenderTextFunc = (node?: ExtendedInlineNodes): string => node ? node.value : '';
 
 /**
  * Render a single text node with ANSI styling

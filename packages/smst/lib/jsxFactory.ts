@@ -13,7 +13,7 @@ import {
 import ub from 'unist-builder';
 
 const plainTypes = ['text', 'code', 'subject', 'input'];
-const isTextNode = (input: SingleNode): input is TextNode => plainTypes.includes(input.type);
+const isTextNode = (input?: SingleNode): input is TextNode => !!input && plainTypes.includes(input.type);
 
 type DeepArrayOrOne<T> = T | Array<T | DeepArrayOrOne<T>>;
 export const flatten = <T extends any>(input: DeepArrayOrOne<T>): T[] => {

@@ -1,5 +1,3 @@
-/// <reference path="../../smst/types/intrinsicElements.d.ts" />
-/// <reference path="../../smst/types/unistTestLine.d.ts" />
 import {jsx} from '@suitest/smst/commonjs/jsxFactory';
 import {
 	AppConfiguration,
@@ -24,16 +22,17 @@ import {
 	TestLine,
 	WaitUntilTestLine,
 } from '@suitest/types';
+import {TestLineResult} from '@suitest/types/lib';
+import {TestLineNode} from '@suitest/smst/types/unistTestLine';
+import {translateComparator} from './comparator';
 import {translateCondition} from './condition';
-import {/*formatVariables, */
+import {
 	formatTimeout,
 	formatVariables,
 	mapStatus,
 	translateCodeProp,
 	formatCount,
 } from './utils';
-import {TestLineResult} from '@suitest/types/lib';
-import {translateComparator} from './comparator';
 
 const getConditionInfo = (
 	testLine: TestLine,
