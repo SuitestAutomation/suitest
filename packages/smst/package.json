@@ -23,7 +23,7 @@
   ],
   "scripts": {
     "build": "npm run build:umd && npm run build:commonjs",
-    "build:umd": "rimraf umd && rollup -c --environment FORMAT:umd",
+    "build:umd": "rimraf umd && tsc --module umd --outDir umd",
     "build:commonjs": "rimraf commonjs && tsc",
     "test": "jest",
     "coverage": "jest --coverage",

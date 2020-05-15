@@ -38,7 +38,7 @@ describe('AST renderers', () => {
 			name={<text>JavaScript expression</text>}
 			expectedValue={longCodeBlock}
 			comparator=""
-			status="fail"
+			status="success"
 		/>
 	</props>;
 
@@ -89,6 +89,63 @@ describe('AST renderers', () => {
 		/>
 	</test-line-result>;
 
+	function runTests(formatted = false): void {
+		it('should handle code blocks', () => {
+			expect(toText(simpleCodeBlock, formatted)).toMatchSnapshot();
+			expect(toText(longCodeBlock, formatted)).toMatchSnapshot();
+		});
+
+		it('should handle props', () => {
+			expect(toText(simpleProps, formatted)).toMatchSnapshot();
+			expect(toText(longProps, formatted)).toMatchSnapshot();
+			expect(toText(<props>
+				<prop
+					name={<text>test</text>}
+					expectedValue={<text>short</text>}
+					actualValue="long long long"
+				/>
+			</props>, formatted)).toMatchSnapshot();
+			expect(toText(<props>
+				<prop
+					name={<text>Empty string</text>}
+					expectedValue={<text>{''}</text>}
+					actualValue={''}
+				/>
+				<prop
+					name={<text>Empty number</text>}
+					expectedValue={<text>0</text>}
+					actualValue={NaN}
+				/>
+				<prop
+					name={<text>Empty code block</text>}
+					expectedValue={<code-block>{''}</code-block>}
+				/>
+			</props>)).toMatchSnapshot();
+		});
+
+		it('should throw if trying to render a single prop', () => {
+			expect(() => toText(<prop name={<text>prop</text>} expectedValue={<text>test</text>} />)).toThrow();
+		});
+
+		it('should render condition', () => {
+			expect(toText(simpleCondition, formatted)).toMatchSnapshot();
+			expect(toText(longCondition, formatted)).toMatchSnapshot();
+		});
+
+		it('should render test line', () => {
+			expect(toText(simpleLine, formatted)).toMatchSnapshot();
+			expect(toText(longLine, formatted)).toMatchSnapshot();
+		});
+
+		it('should render test line results', () => {
+			expect(toText(failResult, formatted)).toMatchSnapshot();
+			expect(toText(warningResult, formatted)).toMatchSnapshot();
+			expect(toText(exitResult, formatted)).toMatchSnapshot();
+			expect(toText(excludedResult, formatted)).toMatchSnapshot();
+			expect(toText(fatalResult, formatted)).toMatchSnapshot();
+		});
+	}
+
 	describe('plain text renderer', () => {
 		it('should handle textual nodes', () => {
 			expect(toText(plainText, false)).toEqual('TEXT');
@@ -99,33 +156,7 @@ describe('AST renderers', () => {
 			expect(toText(emptyText, false)).toEqual('');
 		});
 
-		it('should handle code blocks', () => {
-			expect(toText(simpleCodeBlock, false)).toMatchSnapshot();
-			expect(toText(longCodeBlock, false)).toMatchSnapshot();
-		});
-
-		it('should handle props', () => {
-			expect(toText(simpleProps, false)).toMatchSnapshot();
-			expect(toText(longProps, false)).toMatchSnapshot();
-		});
-
-		it('should render condition', () => {
-			expect(toText(simpleCondition, false)).toMatchSnapshot();
-			expect(toText(longCondition, false)).toMatchSnapshot();
-		});
-
-		it('should render test line', () => {
-			expect(toText(simpleLine, false)).toMatchSnapshot();
-			expect(toText(longLine, false)).toMatchSnapshot();
-		});
-
-		it('should render test line results', () => {
-			expect(toText(failResult, false)).toMatchSnapshot();
-			expect(toText(warningResult, false)).toMatchSnapshot();
-			expect(toText(exitResult, false)).toMatchSnapshot();
-			expect(toText(excludedResult, false)).toMatchSnapshot();
-			expect(toText(fatalResult, false)).toMatchSnapshot();
-		});
+		runTests(false);
 	});
 
 	describe('formatted text renderer', () => {
@@ -138,32 +169,6 @@ describe('AST renderers', () => {
 			expect(toText(emptyText, true)).toEqual('');
 		});
 
-		it('should handle code blocks', () => {
-			expect(toText(simpleCodeBlock, true)).toMatchSnapshot();
-			expect(toText(longCodeBlock, true)).toMatchSnapshot();
-		});
-
-		it('should handle tables', () => {
-			expect(toText(simpleProps, true)).toMatchSnapshot();
-			expect(toText(longProps, true)).toMatchSnapshot();
-		});
-
-		it('should render condition', () => {
-			expect(toText(simpleCondition, true)).toMatchSnapshot();
-			expect(toText(longCondition, true)).toMatchSnapshot();
-		});
-
-		it('should render test line', () => {
-			expect(toText(simpleLine, true)).toMatchSnapshot();
-			expect(toText(longLine, true)).toMatchSnapshot();
-		});
-
-		it('should render test line results', () => {
-			expect(toText(failResult, true)).toMatchSnapshot();
-			expect(toText(warningResult, true)).toMatchSnapshot();
-			expect(toText(exitResult, true)).toMatchSnapshot();
-			expect(toText(excludedResult, true)).toMatchSnapshot();
-			expect(toText(fatalResult, true)).toMatchSnapshot();
-		});
+		runTests(true);
 	});
 });

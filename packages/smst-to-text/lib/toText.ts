@@ -1,6 +1,11 @@
-/// <reference path="../../smst/types/unistTestLine.d.ts" />
-
-import {assertUnknownSectionNode} from '@suitest/smst/commonjs/jsxFactory';
+import {assertUnknownSectionNode} from '@suitest/smst';
+import {
+	ConditionNode,
+	InlineTextNode,
+	PropertiesNode,
+	TestLineNode,
+	TestLineResultNode,
+} from '@suitest/smst/types/unistTestLine';
 
 type RenderTextFunc = (node: ExtendedInlineNodes) => string;
 
@@ -11,6 +16,20 @@ type ExtendedInlineNodes = InlineTextNode | {
 
 const nl = '\n';
 const tab = '  ';
+const emptyString = '[EMPTY STRING]';
+const notDefined = '[NOT DEFINED]';
+
+const formatNotDefined = <T>(val?: T, formatter: (val: T) => string = String): string => {
+	if (typeof val === 'undefined' || val === null) {
+		return notDefined;
+	}
+
+	if (val as unknown as string === '') {
+		return emptyString;
+	}
+
+	return formatter(val);
+};
 
 const format = {
 	cancel: 	'\u001b[0m',
@@ -163,16 +182,22 @@ const renderProps = (node: PropertiesNode, renderTextNode: RenderTextFunc, prefi
 			currentRow.push(renderNode(prop.expectedValue, renderTextNode, tab).split(nl));
 		} else {
 			// Render non-code block value
-			const [valueCellLength, valueColumnContent] = wrapTextNodes(prop.expectedValue, renderTextNode);
-			currentRow.push(valueColumnContent);
+			const val = wrapTextNodes(prop.expectedValue, renderTextNode);
+			if (val[0] === 0) {
+				currentRow.push([emptyString]);
+				val[0] = emptyString.length;
+			} else {
+				currentRow.push(val[1]);
+			}
 
-			if (valueCellLength > columnsLength[2]) {
-				columnsLength[2] = valueCellLength;
+
+			if (val[0] > columnsLength[2]) {
+				columnsLength[2] = val[0];
 			}
 		}
 
 		// Add actual value to the mix as a separate row
-		if (prop.contentType === 'inline' && prop.actualValue) {
+		if (prop.contentType === 'inline' && typeof prop.actualValue !== 'undefined') {
 			// Add new row
 			currentRow = [];
 			table.push(currentRow);
@@ -189,7 +214,7 @@ const renderProps = (node: PropertiesNode, renderTextNode: RenderTextFunc, prefi
 			// Render the actual value
 			const [valueCellLength, valueColumnContent] = wrapTextNodes([{
 				type: 'text' as const,
-				value: String(prop.actualValue),
+				value: formatNotDefined(prop.actualValue),
 			}], renderTextNode);
 			currentRow.push(valueColumnContent);
 
@@ -231,7 +256,10 @@ const renderNode = (node: SingleNode, renderTextNode: RenderTextFunc, prefix = '
 		case 'prop':
 			throw new Error('Prop node can only be rendered as part of Props');
 		case 'code-block':
-			return node.value.split(nl).map(line => prefix + '> ' + line).join(nl);
+			return formatNotDefined(
+				node.value,
+				val => val.split(nl).map(line => prefix + '> ' + line).join(nl)
+			);
 		case 'test-line':
 			return renderTestLineOrCondition(node, renderTextNode);
 		case 'condition':

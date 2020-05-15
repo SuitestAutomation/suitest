@@ -42,6 +42,33 @@ Object {
 }
 `;
 
+exports[`jsxFactory should create correct Props element 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "actualValue": undefined,
+      "comparator": undefined,
+      "contentType": "inline",
+      "expectedValue": Array [
+        Object {
+          "type": "text",
+          "value": "test",
+        },
+      ],
+      "name": Array [
+        Object {
+          "type": "text",
+          "value": "test",
+        },
+      ],
+      "status": undefined,
+      "type": "prop",
+    },
+  ],
+  "type": "props",
+}
+`;
+
 exports[`jsxFactory should create correct props element 1`] = `
 Object {
   "children": Array [

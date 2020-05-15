@@ -1,5 +1,15 @@
+// Reference is needed so that whenever this file is imported by consumer, intrinsic types are
+// always included
 /// <reference path="../types/intrinsicElements.d.ts" />
-/// <reference path="../types/unistTestLine.d.ts" />
+import {
+	CodeBlockNode, ConditionNode,
+	InlineTextNode,
+	Node,
+	PropertyNode,
+	SingleNode,
+	TestLineNode,
+	TextNode,
+} from '../types/unistTestLine';
 import ub from 'unist-builder';
 
 const plainTypes = ['text', 'code', 'subject', 'input'];
@@ -43,19 +53,10 @@ const normalizePlainChildren = (
 		return output;
 	}, []);
 
-const processLabel = (label?: string | SingleNode | Array<string | SingleNode>): SingleNode[] | undefined => {
-	if (typeof label !== 'undefined') {
-		return normalizePlainChildren(flatten([label]), 'text');
-	}
+const processLabel = (label: string | SingleNode | Array<string | SingleNode>): SingleNode[] | undefined =>
+	normalizePlainChildren(flatten([label]), 'text');
 
-	return undefined;
-};
-
-const processPropertyNode = (props: {[key: string]: any} | null): PropertyNode => {
-	if (!props) {
-		throw new Error('Missing Prop parameters');
-	}
-
+const processPropertyNode = (props: {[key: string]: any}): PropertyNode => {
 	const name = processLabel(props.name) as InlineTextNode[];
 
 	if (isCodeBlockNode(props.expectedValue)) {
@@ -133,7 +134,8 @@ export const jsx = (
 			// Type casting because IntrinsicElements definition would not allow anything other then string
 			return ub('code-block', {language}, (processedChildren[0] as TextNode).value);
 		case 'prop':
-			return processPropertyNode(props);
+			// props can't be null because it's defined in intrinsicElements
+			return processPropertyNode(props as {[key: string]: any});
 		case 'props':
 			if (isPropChildren(processedChildren)) {
 				return ub('props', processedChildren);
@@ -153,7 +155,7 @@ export const jsx = (
 
 			return ub(type, params, processedChildren) as ConditionNode | TestLineNode;
 		case 'test-line-result':
-			if (isTestLineNodeArray(processedChildren) || processedChildren.length === 1) {
+			if (isTestLineNodeArray(processedChildren) && processedChildren.length === 1) {
 				return ub('test-line-result', {
 					status: props?.status,
 					message: processLabel(props?.message) as InlineTextNode[],

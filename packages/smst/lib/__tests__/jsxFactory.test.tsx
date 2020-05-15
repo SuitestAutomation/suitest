@@ -1,5 +1,4 @@
-/// <reference path="../../types/intrinsicElements.d.ts" />
-/// <reference path="../../types/unistTestLine.d.ts" />
+import {CodeBlockNode, CodeNode, InputNode, Node, SubjectNode, TextNode} from '../../types/unistTestLine';
 import {jsx, flatten} from '../jsxFactory';
 
 describe('jsxFactory', () => {
@@ -122,7 +121,7 @@ describe('jsxFactory', () => {
 		/>).toMatchSnapshot();
 	});
 
-	it('should create correct props element', () => {
+	it('should create correct Props element', () => {
 		expect(<props><prop name={<text>test</text>} expectedValue={<text>test</text>}/></props>)
 			.toMatchSnapshot();
 	});
@@ -188,6 +187,14 @@ describe('jsxFactory', () => {
 		>
 			<test-line title={<text>Some title</text>}/>
 		</test-line-result>).toMatchSnapshot();
+	});
+
+	it('should throw error if test result get anything other then a single test line', () => {
+		expect(() => <test-line-result status="success"><text>test</text></test-line-result>).toThrowError();
+		expect(() => <test-line-result status="success">
+			<test-line title={<text>test</text>}/>
+			<test-line title={<text>test</text>}/>
+		</test-line-result>).toThrowError();
 	});
 
 	describe('flatten util', () => {

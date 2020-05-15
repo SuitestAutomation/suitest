@@ -1,36 +1,36 @@
-declare type TextNode = {
+export type TextNode = {
 	type: 'text',
 	value: string,
 };
 
-declare type SubjectNode = {
+export type SubjectNode = {
 	type: 'subject',
 	value: string,
 };
 
-declare type InputNode = {
+export type InputNode = {
 	type: 'input',
 	value: string,
 };
 
-declare type CodeNode = {
+export type CodeNode = {
 	type: 'code',
 	value: string,
 };
 
-declare type InlineTextNode = TextNode | SubjectNode | InputNode | CodeNode;
+export type InlineTextNode = TextNode | SubjectNode | InputNode | CodeNode;
 
-declare type CodeBlockLanguage = 'javascript' | 'brightscript';
+export type CodeBlockLanguage = 'javascript' | 'brightscript';
 
-declare type CodeBlockNode = {
+export type CodeBlockNode = {
 	type: 'code-block',
 	language?: CodeBlockLanguage,
 	value: string,
 };
 
-declare type SingleEntryStatus = 'success' | 'fail';
+export type SingleEntryStatus = 'success' | 'fail';
 
-declare type InlinePropertyNode = {
+export type InlinePropertyNode = {
 	type: 'prop',
 	contentType: 'inline',
 	name: InlineTextNode[],
@@ -40,7 +40,7 @@ declare type InlinePropertyNode = {
 	status?: SingleEntryStatus,
 };
 
-declare type CodePropertyNode = {
+export type CodePropertyNode = {
 	type: 'prop',
 	contentType: 'block',
 	name: InlineTextNode[],
@@ -49,37 +49,37 @@ declare type CodePropertyNode = {
 	status?: SingleEntryStatus,
 };
 
-declare type PropertyNode = InlinePropertyNode | CodePropertyNode;
+export type PropertyNode = InlinePropertyNode | CodePropertyNode;
 
-declare type PropertiesNode = {
+export type PropertiesNode = {
 	type: 'props',
 	children: PropertyNode[],
 };
 
-declare type ConditionNode = {
+export type ConditionNode = {
 	type: 'condition',
 	title: InlineTextNode[],
 	children: Array<PropertiesNode | ConditionNode>,
 	status?: SingleEntryStatus,
 };
 
-declare type TestLineResultStatus = 'success' | 'fatal' | 'fail' | 'warning' | 'exit' | 'excluded';
+export type TestLineResultStatus = 'success' | 'fatal' | 'fail' | 'warning' | 'exit' | 'excluded';
 
-declare type TestLineNode = {
+export type TestLineNode = {
 	type: 'test-line',
 	title: InlineTextNode[],
 	children: Array<PropertiesNode | ConditionNode>,
 	status?: TestLineResultStatus,
 };
 
-declare type TestLineResultNode = {
+export type TestLineResultNode = {
 	type: 'test-line-result',
 	status: TestLineResultStatus,
 	children: TestLineNode[],
 	message?: InlineTextNode[],
 };
 
-declare type SingleNode = InlineTextNode
+export type SingleNode = InlineTextNode
 	| CodeBlockNode
 	| PropertyNode
 	| PropertiesNode
@@ -87,4 +87,4 @@ declare type SingleNode = InlineTextNode
 	| TestLineNode
 	| TestLineResultNode;
 
-declare type Node =  SingleNode | SingleNode[];
+export type Node =  SingleNode | SingleNode[];

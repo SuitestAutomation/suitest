@@ -6,7 +6,8 @@
     "moduleResolution": "node"
   },
   "include": [
-    "lib"
+    "lib",
+    "types"
   ],
   "exclude": [
     "node_modules",

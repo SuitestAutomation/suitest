@@ -1,5 +1,8 @@
-/// <reference path="./unistTestLine.d.ts" />
-
+type SingleNode = import('./unistTestLine').SingleNode;
+type Node = import('./unistTestLine').Node;
+type CodeBlockLanguage = import('./unistTestLine').CodeBlockLanguage;
+type SingleEntryStatus = import('./unistTestLine').SingleEntryStatus;
+type TestLineResultStatus = import('./unistTestLine').TestLineResultStatus;
 type ElementOrTextChildren = string | SingleNode | undefined | ElementOrTextChildren[];
 type ElementChildren = SingleNode | undefined | ElementChildren[];
 type StringOrStrings = string | string[];
