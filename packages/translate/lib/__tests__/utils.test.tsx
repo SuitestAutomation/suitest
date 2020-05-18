@@ -1,7 +1,7 @@
-/// <reference path="../../types/intrinsicElements.d.ts" />
-import {jsx} from '../jsxFactory';
+/// <reference path="../../../smst/types/intrinsicElements.d.ts" />
+import {jsx} from '@suitest/smst';
 import {AppConfiguration} from '@suitest/types';
-import {escapeHtml, formatCount, formatTimeout, formatVariables, replaceVariables} from '../utils';
+import {formatCount, formatTimeout, formatVariables, replaceVariables} from '../utils';
 
 describe('Translation utils', () => {
 	const vars: AppConfiguration['configVariables'] = [
@@ -34,66 +34,56 @@ describe('Translation utils', () => {
 	describe('formatVariables util', () => {
 		it('should format variables in string', () => {
 			expect(formatVariables('<%var1%>', vars))
-				.toEqual(<fragment><bold>123</bold> (<code>{'<%var1%>'}</code>)</fragment>);
+				.toEqual(<fragment><input>123</input> (<code>{'<%var1%>'}</code>)</fragment>);
 			expect(formatVariables('<%var1%> <%var2%>', vars))
-				.toEqual(<fragment><bold>123 456</bold> (<code>{'<%var1%> <%var2%>'}</code>)</fragment>);
+				.toEqual(<fragment><input>123 456</input> (<code>{'<%var1%> <%var2%>'}</code>)</fragment>);
 		});
 
 		it('should leave text without variables untouched', () => {
-			expect(formatVariables('no vars: var1, var2', vars)).toEqual(<bold>no vars: var1, var2</bold>);
-			expect(formatVariables('<%var1> <var2%>', vars)).toEqual(<bold>{'<%var1> <var2%>'}</bold>);
+			expect(formatVariables('no vars: var1, var2', vars)).toEqual(<input>no vars: var1, var2</input>);
+			expect(formatVariables('<%var1> <var2%>', vars)).toEqual(<input>{'<%var1> <var2%>'}</input>);
 		});
 
 		it('should leave unknown variables untouched', () => {
-			expect(formatVariables('<%unknown%>', vars)).toEqual(<bold>{'<%unknown%>'}</bold>);
+			expect(formatVariables('<%unknown%>', vars)).toEqual(<input>{'<%unknown%>'}</input>);
 		});
 	});
 
 	describe('formatTimeout util', () => {
 		it('should format timeout with variables', () => {
 			expect(formatTimeout('<%var1%>', vars))
-				.toEqual(<fragment><bold>0.123s</bold> (<code>{'<%var1%>'}</code>)</fragment>);
+				.toEqual(<fragment><input>0.123s</input> (<code>{'<%var1%>'}</code>)</fragment>);
 			expect(formatTimeout('<%var1%><%var2%>', vars))
-				.toEqual(<fragment><bold>123.456s</bold> (<code>{'<%var1%><%var2%>'}</code>)</fragment>);
+				.toEqual(<fragment><input>123.456s</input> (<code>{'<%var1%><%var2%>'}</code>)</fragment>);
 		});
 
 		it('should leave numbers without variables untouched', () => {
-			expect(formatTimeout(1500, vars)).toEqual(<bold>1.5s</bold>);
-			expect(formatTimeout(2000, vars)).toEqual(<bold>2s</bold>);
+			expect(formatTimeout(1500, vars)).toEqual(<input>1.5s</input>);
+			expect(formatTimeout(2000, vars)).toEqual(<input>2s</input>);
 		});
 
 		it('should display invalid values as is', () => {
-			expect(formatTimeout('<%unknown%>', vars)).toEqual(<bold>{'<%unknown%>'}</bold>);
-			expect(formatTimeout('abc', vars)).toEqual(<bold>abc</bold>);
+			expect(formatTimeout('<%unknown%>', vars)).toEqual(<input>{'<%unknown%>'}</input>);
+			expect(formatTimeout('abc', vars)).toEqual(<input>abc</input>);
 		});
 	});
 
 	describe('formatCount util', () => {
 		it('should format count with variables', () => {
 			expect(formatCount('<%var1%>', vars))
-				.toEqual(<fragment><bold>123</bold>x (<code>{'<%var1%>'}</code>)</fragment>);
+				.toEqual(<fragment><input>123</input>x (<code>{'<%var1%>'}</code>)</fragment>);
 			expect(formatCount('<%var1%><%var2%>', vars))
-				.toEqual(<fragment><bold>123456</bold>x (<code>{'<%var1%><%var2%>'}</code>)</fragment>);
+				.toEqual(<fragment><input>123456</input>x (<code>{'<%var1%><%var2%>'}</code>)</fragment>);
 		});
 
 		it('should leave numbers without variables untouched', () => {
-			expect(formatCount(15, vars)).toEqual(<fragment><bold>15</bold>x</fragment>);
-			expect(formatCount(2, vars)).toEqual(<fragment><bold>2</bold>x</fragment>);
+			expect(formatCount(15, vars)).toEqual(<fragment><input>15</input>x</fragment>);
+			expect(formatCount(2, vars)).toEqual(<fragment><input>2</input>x</fragment>);
 		});
 
 		it('should display invalid values as is', () => {
-			expect(formatCount('<%unknown%>', vars)).toEqual(<bold>{'<%unknown%>'}</bold>);
-			expect(formatCount('abc', vars)).toEqual(<bold>abc</bold>);
-		});
-	});
-
-	describe('escapeHtml util', () => {
-		it('should escape special characters', () => {
-			expect(escapeHtml('& < " \'')).toEqual('&amp; &lt; &quot; &#039;');
-		});
-
-		it('should replace entities even if they repeat', () => {
-			expect(escapeHtml('&&&')).toEqual('&amp;&amp;&amp;');
+			expect(formatCount('<%unknown%>', vars)).toEqual(<input>{'<%unknown%>'}</input>);
+			expect(formatCount('abc', vars)).toEqual(<input>abc</input>);
 		});
 	});
 });

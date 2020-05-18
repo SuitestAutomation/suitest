@@ -1,5 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Interactive progress explanation. Should translate "actionFailed" status 1`] = `
+Object {
+  "title": "",
+}
+`;
+
 exports[`Interactive progress explanation. Should translate "bootingDevice" status 1`] = `
 Object {
   "title": "Running the boot sequence defined for the device…",

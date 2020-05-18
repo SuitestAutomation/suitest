@@ -1,0 +1,35 @@
+{
+  "name": "@suitest/smst",
+  "version": "2.1.1",
+  "description": "UNIST definition and JSX factory for Suitest test lines rendering",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SuitestAutomation/suitest.git",
+    "directory": "packages/smst"
+  },
+  "kywords": [
+    "suitest", "unist"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SuitestAutomation/suitest/issues"
+  },
+  "homepage": "https://suite.st/",
+  "main": "umd/jsxFactory.js",
+  "files": [
+    "umd/",
+    "commonjs/",
+    "types/"
+  ],
+  "scripts": {
+    "build": "npm run build:umd && npm run build:commonjs",
+    "build:umd": "rimraf umd && tsc --module umd --outDir umd",
+    "build:commonjs": "rimraf commonjs && tsc",
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "prepublishOnly": "npm run coverage && npm run build"
+  },
+  "dependencies": {
+    "unist-builder": "^2.0.3"
+  }
+}

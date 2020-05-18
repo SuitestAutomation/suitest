@@ -4,6 +4,10 @@
   "description": "TypeScript definitions for common data structures",
   "homepage": "https://github.com/SuitestAutomation/suitest#readme",
   "license": "MIT",
+  "main": "lib/index.d.ts",
+  "files": [
+    "lib/"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SuitestAutomation/suitest.git"

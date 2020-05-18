@@ -5,6 +5,7 @@ export default {
 	input: './lib/index.ts',
 	external: [
 		'unist-builder',
+		'@suitest/smst',
 	],
 	plugins: [
 		uglify(),

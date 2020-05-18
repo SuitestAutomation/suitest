@@ -5,8 +5,9 @@ import {
 	ElementSubject,
 	JavaScriptExpressionSubject,
 	NetworkRequestSubject,
+	PSVideoSubject,
 } from './subject';
-import {Comparator, StringComparator} from './comparator';
+import {Comparator, StringComparator, JavaScriptComparator, ExistComparator} from './comparator';
 
 export type ApplicationExitedCondition = {
 	subject: ApplicationSubject,
@@ -15,13 +16,13 @@ export type ApplicationExitedCondition = {
 
 export type CurrentLocationCondition = {
 	subject: CurrentLocationSubject,
-	type: StringComparator,
+	type: StringComparator | JavaScriptComparator,
 	val: string,
 };
 
 export type CookieCondition = {
 	subject: CookieSubject,
-	type: StringComparator,
+	type: StringComparator | JavaScriptComparator | ExistComparator,
 	val: string,
 };
 
@@ -47,14 +48,16 @@ export type ElementMatchesJavaScriptCondition = {
 };
 
 export type ElementPropertiesCondition = {
-	subject: ElementSubject,
+	subject: ElementSubject | PSVideoSubject,
 	type: 'has',
-	expression: Array<{
-		property: string,
-		type: Comparator,
-		val: string | number,
-		deviation?: number,
-	}>,
+	expression: ElementProperty[],
+};
+
+export type ElementProperty = {
+	property: string,
+	type: Comparator,
+	val: string | number,
+	deviation?: number,
 };
 
 export type ElementCondition = ElementExistsCondition
@@ -63,10 +66,16 @@ export type ElementCondition = ElementExistsCondition
 	| ElementMatchesJavaScriptCondition
 	| ElementPropertiesCondition;
 
+export type PSVideoHadNoErrorCondition = {
+	subject: PSVideoSubject,
+	type: 'hadNoError',
+	searchStrategy: 'all' | 'currentUrl',
+};
+
 export type JavaScriptExpressionCondition = {
 	subject: JavaScriptExpressionSubject,
 	type: StringComparator,
-	val: string,
+	val?: string,
 };
 
 export type NetworkRequestCondition = {
@@ -79,5 +88,6 @@ export type Condition = ApplicationExitedCondition
 	| CurrentLocationCondition
 	| CookieCondition
 	| ElementCondition
+	| PSVideoHadNoErrorCondition
 	| JavaScriptExpressionCondition
 	| NetworkRequestCondition;

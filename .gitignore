@@ -66,3 +66,4 @@ packages/**/umd
 packages/**/commonjs
 
 .idea
+.DS_Store

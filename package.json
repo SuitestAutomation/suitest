@@ -2,28 +2,29 @@
   "name": "suitest",
   "private": true,
   "scripts": {
+    "build": "lerna run build",
     "test": "lerna run test",
-    "lint": "eslint --ext .jsx,.js packages/*/lib/**/*.{ts,tsx}",
+    "lint": "eslint packages/*/lib/**/*.{ts,tsx}",
     "coverage": "lerna run coverage",
     "postinstall": "lerna bootstrap --hoist"
   },
   "devDependencies": {
-    "@types/jest": "24.0.18",
+    "@types/jest": "25.1.4",
     "@types/unist": "^2.0.3",
     "@typescript-eslint/eslint-plugin": "^2.21.0",
     "@typescript-eslint/eslint-plugin-tslint": "^2.21.0",
     "@typescript-eslint/parser": "^2.21.0",
     "eslint": "^6.8.0",
     "husky": "3.0.3",
-    "jest": "24.9.0",
+    "jest": "25.1.0",
     "lerna": "^3.20.2",
     "rimraf": "3.0.0",
     "rollup": "^1.21.4",
     "rollup-plugin-typescript2": "^0.24.2",
     "rollup-plugin-uglify": "^6.0.3",
-    "ts-jest": "24.0.2",
+    "ts-jest": "25.2.1",
     "tslint": "^6.0.0",
-    "typescript": "^3.7.5"
+    "typescript": "^3.9.2"
   },
   "husky": {
     "hooks": {
