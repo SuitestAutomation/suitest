@@ -56,7 +56,7 @@ export type SleepTestLine = BaseTestLine & {
 };
 
 export type PressButtonTestLine = BaseTestLine & {
-	type: 'press',
+	type: 'button',
 	ids: string[],
 	count?: number | string,
 	delay?: number | string,
