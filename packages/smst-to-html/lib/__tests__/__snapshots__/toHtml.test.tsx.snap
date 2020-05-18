@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AST renderers html renderer should handle code blocks 1`] = `"<div class=\\"suitest-test-line__code-block\\"><pre><code class=\\"language-javascript\\">someJS();</code></pre></div>"`;
+
+exports[`AST renderers html renderer should handle code blocks 2`] = `
+"<div class=\\"suitest-test-line__code-block\\"><pre><code class=\\"language-javascript\\">someJS(); someJS(); someJS(); someJS();
+someJS(); someJS(); someJS();
+someJS(); someJS(); someJS();</code></pre></div>"
+`;
+
+exports[`AST renderers html renderer should handle tables 1`] = `"<div class=\\"suitest-test-line__props\\"><table><tr class=\\"suitest-test-line__props__prop--undefined\\"><td>prop name</td><td>=</td><td>expected value</td></tr><tr class=\\"suitest-test-line__props__prop--undefined\\"><td>prop name</td><td></td><td/></tr><tr><td class=\\"suitest-test-line__code-block-prop\\" colspan=\\"3\\"><div class=\\"suitest-test-line__code-block\\"><pre><code class=\\"language-javascript\\">someJS();</code></pre></div></td></tr></table></div>"`;
+
+exports[`AST renderers html renderer should handle tables 2`] = `
+"<div class=\\"suitest-test-line__props\\"><table><tr class=\\"suitest-test-line__props__prop--fail\\"><td>prop name prop name prop name prop name prop name</td><td>~</td><td>expected value expected value expected value expected value expected value</td></tr><tr><td/><td>→</td><td>expected value expected value expected value expected value expected value</td></tr><tr class=\\"suitest-test-line__props__prop--fail\\"><td>JavaScript expression</td><td></td><td/></tr><tr><td class=\\"suitest-test-line__code-block-prop\\" colspan=\\"3\\"><div class=\\"suitest-test-line__code-block\\"><pre><code class=\\"language-javascript\\">someJS(); someJS(); someJS(); someJS();
+someJS(); someJS(); someJS();
+someJS(); someJS(); someJS();</code></pre></div></td></tr></table></div>"
+`;
+
+exports[`AST renderers html renderer should render alerts 1`] = `"<div class=\\"suitest-test-line__result suitest-test-line__result--fail\\"><div class=\\"suitest-test-line suitest-test-line--fail\\"><div class=\\"suitest-test-line__title\\">Assert application has exited</div></div><div class=\\"suitest-test-line__result__message\\">Condition was not met</div></div>"`;
+
+exports[`AST renderers html renderer should render alerts 2`] = `"<div class=\\"suitest-test-line__result suitest-test-line__result--warning\\"><div class=\\"suitest-test-line suitest-test-line--warning\\"><div class=\\"suitest-test-line__title\\">Assert application has exited</div></div></div>"`;
+
+exports[`AST renderers html renderer should render alerts 3`] = `"<div class=\\"suitest-test-line__result suitest-test-line__result--exit\\"><div class=\\"suitest-test-line suitest-test-line--exit\\"><div class=\\"suitest-test-line__title\\">Assert application has exited</div></div></div>"`;
+
+exports[`AST renderers html renderer should render alerts 4`] = `"<div class=\\"suitest-test-line__result suitest-test-line__result--excluded\\"><div class=\\"suitest-test-line suitest-test-line--excluded\\"><div class=\\"suitest-test-line__title\\">Assert application has exited</div></div></div>"`;
+
+exports[`AST renderers html renderer should render alerts 5`] = `"<div class=\\"suitest-test-line__result suitest-test-line__result--fatal\\"><div class=\\"suitest-test-line suitest-test-line--fatal\\"><div class=\\"suitest-test-line__title\\">Assert application has exited</div></div></div>"`;
+
+exports[`AST renderers html renderer should render condition 1`] = `"<div class=\\"suitest-test-line__condition suitest-test-line__condition--undefined\\"><div class=\\"suitest-test-line__condition suitest-test-line__condition--undefined__header\\">condition: condition: element <span class=\\"suitest-test-line__text--subject\\">My element</span> exists</div></div>"`;
+
+exports[`AST renderers html renderer should render condition 2`] = `
+"<div class=\\"suitest-test-line__condition suitest-test-line__condition--undefined\\"><div class=\\"suitest-test-line__condition suitest-test-line__condition--undefined__header\\">condition: condition: element <span class=\\"suitest-test-line__text--subject\\">My element</span> exists</div><div class=\\"suitest-test-line__props\\"><table><tr class=\\"suitest-test-line__props__prop--fail\\"><td>prop name prop name prop name prop name prop name</td><td>~</td><td>expected value expected value expected value expected value expected value</td></tr><tr><td/><td>→</td><td>expected value expected value expected value expected value expected value</td></tr><tr class=\\"suitest-test-line__props__prop--fail\\"><td>JavaScript expression</td><td></td><td/></tr><tr><td class=\\"suitest-test-line__code-block-prop\\" colspan=\\"3\\"><div class=\\"suitest-test-line__code-block\\"><pre><code class=\\"language-javascript\\">someJS(); someJS(); someJS(); someJS();
+someJS(); someJS(); someJS();
+someJS(); someJS(); someJS();</code></pre></div></td></tr></table></div></div>"
+`;
+
+exports[`AST renderers html renderer should render test line 1`] = `"<div class=\\"suitest-test-line suitest-test-line--undefined\\"><div class=\\"suitest-test-line__title\\">Assert element <span class=\\"suitest-test-line__text--subject\\">My element</span> is visible</div></div>"`;
+
+exports[`AST renderers html renderer should render test line 2`] = `"<div class=\\"suitest-test-line suitest-test-line--undefined\\"><div class=\\"suitest-test-line__title\\">Assert element <span class=\\"suitest-test-line__text--subject\\">My element</span></div><div class=\\"suitest-test-line__condition suitest-test-line__condition--undefined\\"><div class=\\"suitest-test-line__condition suitest-test-line__condition--undefined__header\\">condition: condition: element <span class=\\"suitest-test-line__text--subject\\">My element</span> exists</div></div></div>"`;

@@ -1,7 +1,7 @@
 module.exports = {
     "preset": "ts-jest",
     "transform": {
-        "^.+\\.(j|t)sx?$": "ts-jest"
+        "^.+\\.tsx?$": "ts-jest"
     },
     "testMatch": [
         "<rootDir>/lib/__tests__/*.test.ts",

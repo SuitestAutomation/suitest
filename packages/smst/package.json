@@ -31,8 +31,5 @@
   },
   "dependencies": {
     "unist-builder": "^2.0.3"
-  },
-  "peerDependencies": {
-    "unist-builder": "^2.0.3"
   }
 }

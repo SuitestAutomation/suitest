@@ -5,10 +5,7 @@ exports[`Test line results translation Translate assert lines translate "assert 
   fail: App is still running"
 `;
 
-exports[`Test line results translation Translate assert lines translate "assert application has exited" render without result 1`] = `
-"Assert: Application has exited 
-  success: "
-`;
+exports[`Test line results translation Translate assert lines translate "assert application has exited" render without result 1`] = `"Assert: Application has exited "`;
 
 exports[`Test line results translation Translate assert lines translate "assert cookie" existingSubject error 1`] = `
 "✖ Assert: cookie cookie-name does not exist 
@@ -46,8 +43,7 @@ exports[`Test line results translation Translate assert lines translate "assert 
 
 exports[`Test line results translation Translate assert lines translate "assert cookie" without result 1`] = `
 "Assert: cookie suitest-cookie 
-  suitest-cookie = suitest
-  success: "
+  suitest-cookie = suitest"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert current location" errorType: "queryFailed" matchjs failed 1`] = `
@@ -81,14 +77,12 @@ exports[`Test line results translation Translate assert lines translate "assert 
 
 exports[`Test line results translation Translate assert lines translate "assert current location" with success result 1`] = `
 "✔ Assert: Current location 
-  ✔ current location contains http://some.url
-  success: "
+  ✔ current location contains http://some.url"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert current location" without result 1`] = `
 "Assert: Current location 
-  current location contains http://some.url
-  success: "
+  current location contains http://some.url"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert element" invalidRepositoryReference results general error 1`] = `
@@ -210,43 +204,31 @@ exports[`Test line results translation Translate assert lines translate "assert 
   fail: Subject does not exist."
 `;
 
-exports[`Test line results translation Translate assert lines translate "assert element" without error "element ... does not exist" 1`] = `
-"Assert: Element 1 does not exist 
-  success: "
-`;
+exports[`Test line results translation Translate assert lines translate "assert element" without error "element ... does not exist" 1`] = `"Assert: Element 1 does not exist "`;
 
-exports[`Test line results translation Translate assert lines translate "assert element" without error "element ... exist" 1`] = `
-"Assert: Element 1 exists 
-  success: "
-`;
+exports[`Test line results translation Translate assert lines translate "assert element" without error "element ... exist" 1`] = `"Assert: Element 1 exists "`;
 
-exports[`Test line results translation Translate assert lines translate "assert element" without error "element ... is visible" 1`] = `
-"Assert: My element is visible 
-  success: "
-`;
+exports[`Test line results translation Translate assert lines translate "assert element" without error "element ... is visible" 1`] = `"Assert: My element is visible "`;
 
 exports[`Test line results translation Translate assert lines translate "assert element" without error "element matches JS with vars" 1`] = `
 "Assert: {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JavaScript 
   {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JS
     > someJS(\\"123\\");                             
   (with variables)                                          
-    > someJS(\\"<%var1%>\\");                        
-  success: "
+    > someJS(\\"<%var1%>\\");                        "
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert element" without error "element matches JS" 1`] = `
 "Assert: {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JavaScript 
   {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JS
-    > someJS();                                  
-  success: "
+    > someJS();                                  "
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert element" without error "element properties" 1`] = `
 "Assert: Unknown element (unknown-id) 
   video position >=       123                       
   height         =        123 ± 3v5 (123 ± <%var3%>)
-  text           contains expected text             
-  success: "
+  text           contains expected text             "
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert javascript expression" errorType: "queryFailed" expression matching failed 1`] = `
@@ -303,8 +285,7 @@ exports[`Test line results translation Translate assert lines translate "assert 
 "Assert: JavaScript expression 
   expression         
     > someJS()     
-  expression result = returned value
-  success: "
+  expression result = returned value"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert javascript expression" render without result 2`] = `
@@ -313,8 +294,7 @@ exports[`Test line results translation Translate assert lines translate "assert 
     > someJS(\\"123\\")
   (with variables)   
     > someJS(\\"<%var1%>\\")
-  expression result = returned value
-  success: "
+  expression result = returned value"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert network" render fail results request/response headers not matched 1`] = `
@@ -394,8 +374,7 @@ exports[`Test line results translation Translate assert lines translate "assert 
 
 exports[`Test line results translation Translate assert lines translate "assert network" render without result 1`] = `
 "Assert: network request was made in entire network log 
-  URL = http://suite.st/123 (http://suite.st/<%var1%>)
-  success: "
+  URL = http://suite.st/123 (http://suite.st/<%var1%>)"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert network" render without result 2`] = `
@@ -406,8 +385,7 @@ exports[`Test line results translation Translate assert lines translate "assert 
   request body                                   =         request val2 body (request <%var2%> body)                 
   response status                                >         123                                                       
   response header Content-123 (Content-<%var1%>) ends with val2/javascript (<%var2%>/javascript)                     
-  response body                                  =         response <%non_existing_var%> <%kind-of|var but not%> body
-  success: "
+  response body                                  =         response <%non_existing_var%> <%kind-of|var but not%> body"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert ps video" render with fail result 1`] = `
@@ -415,15 +393,9 @@ exports[`Test line results translation Translate assert lines translate "assert 
   fail: Please make sure that you have the PlayStation SDK installed. https://suite.st/docs/troubleshooting/playstation/#playstation-sdk-not-installed"
 `;
 
-exports[`Test line results translation Translate assert lines translate "assert ps video" render without result 1`] = `
-"Assert: PlayStation 4 video had no error for current source 
-  success: "
-`;
+exports[`Test line results translation Translate assert lines translate "assert ps video" render without result 1`] = `"Assert: PlayStation 4 video had no error for current source "`;
 
-exports[`Test line results translation Translate assert lines translate "assert ps video" render without result 2`] = `
-"Assert: PlayStation 4 video had no error for any source 
-  success: "
-`;
+exports[`Test line results translation Translate assert lines translate "assert ps video" render without result 2`] = `"Assert: PlayStation 4 video had no error for any source "`;
 
 exports[`Test line results translation should translate "ActionNotAvailable" error 1`] = `
 Object {

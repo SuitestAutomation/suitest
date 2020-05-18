@@ -1,185 +1,37 @@
-# SMST
+# SMST 2 HTML
 
-**S**uitest **m**essage **s**yntax **t**ree.
+A library to convert smst to HTML fragment.
 
-Suitest flavour of the [unist][ext-unist] domain-specific syntax tree, designed
-to express test line definitions, results and other user-facing messages. SMST can
-be used to render messages in plain text, text with ANSI styling and HTML.
+For a complete demo on library usage check out [SuitestAutomation/translate-demo] repo.
 
-## Nodes
+Usage example:
 
-### `Text`
+```javascript
+import {translateTestLineResult} from '@suitest/translate';
+import {toHtml} from '@suitest/smst-to-html';
 
-Inline plain text.
+// Fetch data you need to translate, e.g. using Suitest Network API
+const testLineDefinition = {/* get line definition somehow */};
+const testLineResult = {/* get line definition somehow */};
+const appConfig = {/* get app configuration somehow */};
 
-```idl
-interface Text {
-    type: "text"
-    value: string
-}
+const smst = translateTestLineResult({
+    testLine: testLineDefinition,
+    lineResult: testLineResult,
+    appConfig,
+});
+
+const htmlFragmentLine = toHtml(smst);
 ```
 
-### `Subject`
+## Output examples
 
-Inline text, that represents test line subject name
+<div class="suitest-test-line__result suitest-test-line__result--warning"><div class="suitest-test-line suitest-test-line--warning"><div class="suitest-test-line__title">Open application at relative URL</div><div class="suitest-test-line__props"><table><tr class="suitest-test-line__props__prop--undefined"><td>relative path</td><td>=</td><td><span class="suitest-test-line__text--input">/docs</span></td></tr></table></div></div><div class="suitest-test-line__result__message">Condition was not met.</div></div>
+<div class="suitest-test-line__result suitest-test-line__result--success"><div class="suitest-test-line suitest-test-line--success"><div class="suitest-test-line__title">Run test <span class="suitest-test-line__text--subject">Docs page is open</span></div></div></div>
+<div class="suitest-test-line__result suitest-test-line__result--success"><div class="suitest-test-line suitest-test-line--success"><div class="suitest-test-line__title">Assert: Current location timeout <span class="suitest-test-line__text--input">10s</span> </div><div class="suitest-test-line__props"><table><tr class="suitest-test-line__props__prop--success"><td>current location</td><td>=</td><td><span class="suitest-test-line__text--input">https://suite.st/docs/</span></td></tr></table></div></div></div>
+<div class="suitest-test-line__result suitest-test-line__result--success"><div class="suitest-test-line suitest-test-line--success"><div class="suitest-test-line__title">Assert: <span class="suitest-test-line__text--subject">Logo</span> timeout <span class="suitest-test-line__text--input">5s</span> </div><div class="suitest-test-line__props"><table><tr class="suitest-test-line__props__prop--success"><td>image</td><td>=</td><td><span class="suitest-test-line__text--input">./../img/suitest-logo-mobile.svg</span></td></tr><tr class="suitest-test-line__props__prop--success"><td>image load state</td><td>=</td><td><span class="suitest-test-line__text--input">loaded</span></td></tr></table></div></div></div>
+<div class="suitest-test-line__result suitest-test-line__result--success"><div class="suitest-test-line suitest-test-line--success"><div class="suitest-test-line__title">Send text <span class="suitest-test-line__text--input">test</span> to <span class="suitest-test-line__text--subject">element</span></div></div></div>
+<div class="suitest-test-line__result suitest-test-line__result--success"><div class="suitest-test-line suitest-test-line--success"><div class="suitest-test-line__title">Send text <span class="suitest-test-line__text--input">[[Enter]]</span> to <span class="suitest-test-line__text--subject">window</span> until condition is met max <span class="suitest-test-line__text--input">5</span>x every <span class="suitest-test-line__text--input">1s</span></div><div class="suitest-test-line__condition suitest-test-line__condition--success"><div class="suitest-test-line__condition suitest-test-line__condition--success__header">condition: <span class="suitest-test-line__text--subject">Search results container</span> is visible</div></div></div></div>
+<div class="suitest-test-line__result suitest-test-line__result--fail"><div class="suitest-test-line suitest-test-line--fail"><div class="suitest-test-line__title">Assert: <span class="suitest-test-line__text--subject">First search result</span> </div><div class="suitest-test-line__props"><table><tr class="suitest-test-line__props__prop--success"><td>text</td><td>contains</td><td><span class="suitest-test-line__text--input">test</span></td></tr><tr class="suitest-test-line__props__prop--fail"><td>text color</td><td>=</td><td><span class="suitest-test-line__text--input">rgb(200, 96, 96)</span></td></tr><tr><td/><td>→</td><td>rgb(240, 96, 96)</td></tr></table></div></div><div class="suitest-test-line__result__message">Condition was not met.</div></div>
 
-```idl
-interface Subject <: Text {
-    type: "subject"
-}
-```
-
-See [Text][dfn-text].
-
-### `Input`
-
-Inline text, that represents user-defined values in test lines, e.g. expectations.
-
-```idl
-interface Input <: Text {
-    type: "input"
-}
-```
-
-See [Text][dfn-text].
-
-### `Code`
-
-Inline code.
-
-```idl
-interface Code <: Text {
-    type: "code"
-}
-```
-
-See [Text][dfn-text].
-
-### `Paragraph`
-
-A collection of simple text nodes.
-
-```idl
-interface Paragraph {
-    type: "paragraph"
-    children: InlineText[]
-}
-```
-
-See [InlineText][dfn-inline-text]
-
-### `CodeBlock`
-
-A block of code.
-
-```idl
-interface CodeBlock {
-    type: "code-block"
-    language: "javascript" | "brightscript"
-    value: string
-}
-```
-
-See [Paragraph][dfn-paragraph].
-
-### `Property`
-
-A single prop in the [properties table][dfn-properties].
-
-```idl
-interface Property {
-    type: "prop"
-    prop: Paragraph
-    comparator: string
-    expectedValue: Paragraph
-    actualValue: [Paragraph | CodeBlock]
-    status: ["success" | "failure"]
-}
-``` 
-
-See [Paragraph][dfn-paragraph] and [CodeBlock][dfn-code-block].
-
-### `Properties`
-
-A simple table, where each row represents a property  
-
-```idl
-interface Properties {
-    type: "props"
-    children: Property[]
-}
-```
-
-See [Property][dfn-property].
-
-### `Condition`
-
-A test line condition. Could be used in assertions or as a part of conditional line.
-For example, `element [my element] exists` is a condition and can be used in such lines:
-
-* `Assert element [my element] exists timeout 2s`
-* `Press button OK only if element [my element] exists`
-
-Condition consists of title and optional [Properties][dfn-properties] table. Could
-also include result status when rendering test line result. 
-
-```idl
-interface Condition {
-    type: "condition"
-    title: Paragraph
-    children: [Properties]
-    status: ["success" | "fail"]
-}
-```
-
-See [Paragraph][dfn-paragraph] and [Properties][dfn-properties].
-
-### `TestLine`
-
-Represent a single Suitest test line.
-
-```idl
-interface TestLine {
-    type: "test-line"
-    title: Paragraph
-    children: [(Properties | Condition)[]]
-    status: ["success" | "fail"]
-}
-```
-
-See [Paragraph][dfn-paragraph], [Properties][dfn-properties] and [Condition][dfn-condition]
-
-### `TestLineResult`
-
-Test line result is a wrapper around [TestLine][dfn-test-line], that also includes execution results
-for that line.
-
-```idl
-interface TestLineResult {
-    type: "test-line-result"
-    level: "success" | "fatal" | "fail" | "warning" | "exit" | "excluded"
-    children: TestLine
-    message: [Paragraph]
-}
-```
-
-See [Paragraph][dfn-paragraph] and [TestLine][dfn-test-line]
-
-## Enumeration
-
-### `InlineText`
-
-Any inline text node.
-
-```idl
-type InlineText = Text | Subject | Input | Code
-```
-
-[ext-unist]: https://github.com/syntax-tree/unist
-[dfn-text]: #text
-[dfn-paragraph]: #paragraph
-[dfn-code-block]: #codeblock
-[dfn-inline-text]: #inlinetext
-[dfn-test-line]: #testline
-[dfn-property]: #property
-[dfn-properties]: #properties
+[SuitestAutomation/translate-demo]: https://github.com/SuitestAutomation/translate-demo

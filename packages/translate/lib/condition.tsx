@@ -1,4 +1,5 @@
-import {jsx} from '@suitest/smst/commonjs/jsxFactory';
+import {jsx} from '@suitest/smst';
+import {ConditionNode, InlinePropertyNode} from '@suitest/smst/types/unistTestLine';
 import {
 	Condition,
 	CookieCondition,
@@ -9,16 +10,15 @@ import {
 	Comparator,
 	NetworkRequestInfo,
 	AppConfiguration,
-	Elements, ElementSubject, CustomElementSubject,
-} from '@suitest/types';
-import {
+	Elements,
+	ElementSubject,
+	CustomElementSubject,
 	ElementPropertiesCondition,
 	PSVideoHadNoErrorCondition,
 	PSVideoSubject,
 	QueryFailedNetworkError,
 	TestLineResult,
-} from '@suitest/types/lib';
-import {ConditionNode, InlinePropertyNode} from '@suitest/smst/types/unistTestLine';
+} from '@suitest/types';
 import {formatVariables, mapStatus, translateCodeProp} from './utils';
 import {translateComparator} from './comparator';
 

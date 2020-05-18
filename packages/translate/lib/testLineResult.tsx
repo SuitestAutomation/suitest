@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
-import {jsx} from '@suitest/smst/commonjs/jsxFactory';
+import {jsx} from '@suitest/smst';
+import {TestLineResultNode, TextNode} from '@suitest/smst/types/unistTestLine';
 import {
 	TestLineResult,
 	QueryFailedWithCode,
@@ -20,7 +21,6 @@ import {
 	TestLineErrorResult,
 	TestLine, AppConfiguration, Elements, Snippets,
 } from '@suitest/types';
-import {TestLineResultNode, TextNode} from '@suitest/smst/types/unistTestLine';
 import {translateTestLine} from './testLine';
 import {translateElementProperty} from './condition';
 
@@ -423,6 +423,7 @@ export const translateTestLineResult = (options: {
 	const {lineResult} = options;
 
 	if (!lineResult || lineResult.result === 'success') {
+		// TODO - message for inverse "then" condition
 		return <test-line-result
 			status="success"
 		>{testLineTranslation}</test-line-result> as TestLineResultNode;

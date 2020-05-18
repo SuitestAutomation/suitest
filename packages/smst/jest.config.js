@@ -13,7 +13,7 @@ module.exports = {
     ],
     "coverageThreshold": {
         "global": {
-            "branches": 80, // Branches coverage is decreased because of issue with switch/case fallthrough invalid marked as not covered
+            "branches": 90,
             "functions": 95,
             "lines": 95,
             "statements": 95

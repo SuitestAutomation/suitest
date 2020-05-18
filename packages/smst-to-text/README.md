@@ -1,185 +1,72 @@
-# SMST
+# SMST 2 TEXT
 
-**S**uitest **m**essage **s**yntax **t**ree.
+A library to convert smst to plain text and formatted text.
 
-Suitest flavour of the [unist][ext-unist] domain-specific syntax tree, designed
-to express test line definitions, results and other user-facing messages. SMST can
-be used to render messages in plain text, text with ANSI styling and HTML.
+For a complete demo on library usage check out [SuitestAutomation/translate-demo] repo.
 
-## Nodes
+Usage example:
 
-### `Text`
+```javascript
+import {translateTestLineResult} from '@suitest/translate';
+import {toText} from '@suitest/smst-to-text';
 
-Inline plain text.
+// Fetch data you need to translate, e.g. using Suitest Network API
+const testLineDefinition = {/* get line definition somehow */};
+const testLineResult = {/* get line definition somehow */};
+const appConfig = {/* get app configuration somehow */};
 
-```idl
-interface Text {
-    type: "text"
-    value: string
-}
+const smst = translateTestLineResult({
+    testLine: testLineDefinition,
+    lineResult: testLineResult,
+    appConfig,
+});
+
+const plainTextLine = toText(smst);
+
+// Or if you want a text with ANSI formatting
+const formattedTextLine = toText(smst, true);
 ```
 
-### `Subject`
+## Output examples
 
-Inline text, that represents test line subject name
+### Plain text
 
-```idl
-interface Subject <: Text {
-    type: "subject"
-}
-```
+<pre>‼ Open application at relative URL
+relative path = /docs
+warning: Condition was not met.</pre>
+<pre>✔ Run test Docs page is open</pre>
+<pre>✔ Assert: Current location timeout 10s 
+✔ current location = https://suite.st/docs/</pre>     
+<pre>✔ Assert: Logo timeout 5s 
+✔ image            = ./../img/suitest-logo-mobile.svg
+✔ image load state = loaded                          </pre>
+<pre>✔ Send text test to element</pre>
+<pre>✔ Send text [[Enter]] to window until condition is met max 5x every 1s
+✔ Search results container is visible</pre>
+<pre>✖ Assert: First search result 
+✔ text       contains test            
+✖ text color =        rgb(200, 96, 96)
+       →        rgb(240, 96, 96)
+fail: Condition was not met.</pre>
 
-See [Text][dfn-text].
+### Formatted text
 
-### `Input`
+<pre><span style="color: darkorange">‼ </span>Open application at relative URL
+relative path = <span style="text-decoration: underline">/docs</span>
+<span style="color: darkorange">warning: </span>Condition was not met.</pre>
+<pre><span style="color: green">✔ </span>Run test <span style="color: green">Docs page is open</span></pre>
+<pre><span style="color: green">✔ </span>Assert: Current location timeout <span style="text-decoration: underline">10s</span> 
+<span style="color: green">✔ </span>current location = <span style="text-decoration: underline">https://suite.st/docs/</span></pre>
+<pre><span style="color: green">✔ </span>Assert: <span style="color: green">Logo</span> timeout <span style="text-decoration: underline">5s</span> 
+<span style="color: green">✔ </span>image   = <span style="text-decoration: underline">./../img/suitest-logo-mobile.svg</span>
+<span style="color: green">✔ </span>image load state = <span style="text-decoration: underline">loaded</span>                  </pre>
+<pre><span style="color: green">✔ </span>Send text <span style="text-decoration: underline">test</span> to <span style="color: green">element</span></pre>
+<pre><span style="color: green">✔ </span>Send text <span style="text-decoration: underline">[[Enter]]</span> to <span style="color: green">window</span> until condition is met max <span style="text-decoration: underline">5</span>x every <span style="text-decoration: underline">1s</span>
+<span style="color: green">✔ </span><span style="color: green">Search results container</span> is visible</pre>
+<pre><span style="color: darkred">✖ </span>Assert: <span style="color: green">First search result</span> 
+<span style="color: green">✔ </span>text contains <span style="text-decoration: underline">test</span>    
+<span style="color: darkred">✖ </span>text color =        <span style="text-decoration: underline">rgb(200, 96, 96)</span>
+       →        rgb(240, 96, 96)
+<span style="color: darkred">fail: </span>Condition was not met.</pre>
 
-Inline text, that represents user-defined values in test lines, e.g. expectations.
-
-```idl
-interface Input <: Text {
-    type: "input"
-}
-```
-
-See [Text][dfn-text].
-
-### `Code`
-
-Inline code.
-
-```idl
-interface Code <: Text {
-    type: "code"
-}
-```
-
-See [Text][dfn-text].
-
-### `Paragraph`
-
-A collection of simple text nodes.
-
-```idl
-interface Paragraph {
-    type: "paragraph"
-    children: InlineText[]
-}
-```
-
-See [InlineText][dfn-inline-text]
-
-### `CodeBlock`
-
-A block of code.
-
-```idl
-interface CodeBlock {
-    type: "code-block"
-    language: "javascript" | "brightscript"
-    value: string
-}
-```
-
-See [Paragraph][dfn-paragraph].
-
-### `Property`
-
-A single prop in the [properties table][dfn-properties].
-
-```idl
-interface Property {
-    type: "prop"
-    prop: Paragraph
-    comparator: string
-    expectedValue: Paragraph
-    actualValue: [Paragraph | CodeBlock]
-    status: ["success" | "failure"]
-}
-``` 
-
-See [Paragraph][dfn-paragraph] and [CodeBlock][dfn-code-block].
-
-### `Properties`
-
-A simple table, where each row represents a property  
-
-```idl
-interface Properties {
-    type: "props"
-    children: Property[]
-}
-```
-
-See [Property][dfn-property].
-
-### `Condition`
-
-A test line condition. Could be used in assertions or as a part of conditional line.
-For example, `element [my element] exists` is a condition and can be used in such lines:
-
-* `Assert element [my element] exists timeout 2s`
-* `Press button OK only if element [my element] exists`
-
-Condition consists of title and optional [Properties][dfn-properties] table. Could
-also include result status when rendering test line result. 
-
-```idl
-interface Condition {
-    type: "condition"
-    title: Paragraph
-    children: [Properties]
-    status: ["success" | "fail"]
-}
-```
-
-See [Paragraph][dfn-paragraph] and [Properties][dfn-properties].
-
-### `TestLine`
-
-Represent a single Suitest test line.
-
-```idl
-interface TestLine {
-    type: "test-line"
-    title: Paragraph
-    children: [(Properties | Condition)[]]
-    status: ["success" | "fail"]
-}
-```
-
-See [Paragraph][dfn-paragraph], [Properties][dfn-properties] and [Condition][dfn-condition]
-
-### `TestLineResult`
-
-Test line result is a wrapper around [TestLine][dfn-test-line], that also includes execution results
-for that line.
-
-```idl
-interface TestLineResult {
-    type: "test-line-result"
-    level: "success" | "fatal" | "fail" | "warning" | "exit" | "excluded"
-    children: TestLine
-    message: [Paragraph]
-}
-```
-
-See [Paragraph][dfn-paragraph] and [TestLine][dfn-test-line]
-
-## Enumeration
-
-### `InlineText`
-
-Any inline text node.
-
-```idl
-type InlineText = Text | Subject | Input | Code
-```
-
-[ext-unist]: https://github.com/syntax-tree/unist
-[dfn-text]: #text
-[dfn-paragraph]: #paragraph
-[dfn-code-block]: #codeblock
-[dfn-inline-text]: #inlinetext
-[dfn-test-line]: #testline
-[dfn-property]: #property
-[dfn-properties]: #properties
+[SuitestAutomation/translate-demo]: https://github.com/SuitestAutomation/translate-demo

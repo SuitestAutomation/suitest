@@ -15,23 +15,21 @@
     "url": "https://github.com/SuitestAutomation/suitest/issues"
   },
   "homepage": "https://suite.st/",
-  "main": "umd/index.js",
+  "main": "umd/toHtml.js",
   "files": [
     "umd/",
-    "commonjs/"
+    "commonjs/",
+    "suitest-test-line.css"
   ],
   "scripts": {
-    "build": "npm run build:umd && npm run build:commonjs",
-    "build:umd": "rimraf umd && rollup -c --environment FORMAT:umd",
+    "build": "npm run build:umd && npm run build:commonjs&& cp ./lib/suitest-test-line.css ./",
+    "build:umd": "rimraf umd && tsc --module umd --outDir umd",
     "build:commonjs": "rimraf commonjs && tsc",
     "test": "jest",
     "coverage": "jest --coverage",
     "prepublishOnly": "npm run coverage && npm run build"
   },
-  "devDependencies": {
-    "@suitest/smst": "2.1.1"
-  },
-  "peerDependencies": {
+  "dependencies": {
     "@suitest/smst": "2.1.1"
   }
 }

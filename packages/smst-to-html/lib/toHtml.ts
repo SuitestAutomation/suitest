@@ -1,6 +1,26 @@
-/// <reference path="../../smst/types/unistTestLine.d.ts" />
-import {assertUnknownSectionNode} from '@suitest/smst/commonjs/jsxFactory';
-import {escapeHtml} from './utils';
+import {assertUnknownSectionNode} from '@suitest/smst';
+import {
+	CodeBlockNode,
+	ConditionNode,
+	InlineTextNode,
+	PropertiesNode,
+	TestLineNode,
+	TestLineResultNode,
+} from '@suitest/smst/types/unistTestLine';
+
+export const escapeHtml = (text: string): string => text.replace(/[&<"']/g, m => {
+	switch (m) {
+		case '&':
+			return '&amp;';
+		case '<':
+			return '&lt;';
+		case '"':
+			return '&quot;';
+		default: // single quote
+			return '&#039;';
+	}
+});
+
 
 /**
  * Helper function to build HTML figure element
@@ -8,51 +28,109 @@ import {escapeHtml} from './utils';
  * @param content - body content of the figure, already renderer to string
  * @param titleNodes - optional figcaption
  * @param prefix - text to insert before figcaption
+ * @param titleLast - render title at the end
  */
-const renderFigure = (className: string, content: string, titleNodes?: InlineTextNode[], prefix = ''): string => {
-	const output = [`<figure class="${className}">`];
+const renderFigure = (
+	className: string,
+	content: string,
+	titleNodes?: Array<InlineTextNode | undefined>,
+	prefix = '',
+	titleLast = false
+): string => {
+	const output = [`<div class="${className}">`];
 
-	if (titleNodes?.length) {
-		output.push(`<figcaption>${prefix + titleNodes.map(renderNode).join('')}</figcaption>`);
+	const filteredNodes = titleNodes?.filter(node => typeof node !== 'undefined') as InlineTextNode[];
+	if (filteredNodes?.length) {
+		output.push(`<div class="${className}__header">${prefix + filteredNodes.map(renderNode).join('')}</div>`);
 	}
 
-	output.push(content, '</figure>');
+	output[titleLast ? 'unshift' : 'push'](content);
+	output.push('</div>');
 
 	return output.join('');
 };
 
 const renderHtmlCodeBlockNode = (node: CodeBlockNode): string => renderFigure(
 	'suitest-test-line__code-block',
-	`<pre><code>${node.value}</code></pre>`
+	`<pre><code class="language-${node.language}">${node.value}</code></pre>`
 );
 
 const renderHtmlPropsNode = (node: PropertiesNode): string => renderFigure(
-	'suitest-test-line__table',
+	'suitest-test-line__props',
 	[
 		'<table>',
-		...node.children.map(prop => ([
-			'<tr>',
-				'<td>' + prop.name.map(renderNode).join('') + '</td>',
-				'<td>' + prop.comparator + '</td>',
-				'<td>' + toHtml(prop.expectedValue) + '</td>',
-			'</tr>',
-		].join(''))),
+		...node.children.map(prop => {
+			const row = [`<tr class="suitest-test-line__props__prop--${prop.status}">`];
+
+			// Add name
+			row.push(`<td>${toHtml(prop.name)}</td>`);
+
+			// Add comparator
+			row.push(`<td>${prop.comparator}</td>`);
+
+			// Add expected value
+			if (prop.contentType === 'inline') {
+				// Render inline content
+				row.push(`<td>${toHtml(prop.expectedValue)}</td>`);
+			} else {
+				// Add whole another row
+				row.push(`<td/></tr><tr><td class="suitest-test-line__code-block-prop" colspan="3">${
+					toHtml(prop.expectedValue)
+				}</td>`);
+			}
+
+			// Add actual value
+			if (prop.contentType === 'inline' && typeof prop.actualValue !== 'undefined') {
+				// On a new row
+				row.push(`</tr><tr><td/><td>→</td><td>${prop.actualValue}</td>`);
+			}
+
+			row.push('</tr>');
+
+			return row.join('');
+		}),
 		'</table>',
 	].join('')
 );
 
 const renderHtmlConditionNode = (node: ConditionNode): string => renderFigure(
-	'suitest-test-line__condition',
+	['suitest-test-line__condition', `suitest-test-line__condition--${node.status}`].join(' '),
 	node.children.map(renderNode).join(''),
 	node.title,
 	'condition: '
 );
 
-const renderHtmlTestLineNode = (node: TestLineNode): string => renderFigure(
-	'suitest-test-line',
-	node.children.map(renderNode).join(''),
-	node.title
-);
+const renderHtmlTestLineNode = (node: TestLineNode): string => {
+	const out = [`<div class="suitest-test-line suitest-test-line--${node.status}">`];
+
+	// Line title
+	const title = toHtml(node.title ?? []);
+	out.push(`<div class="suitest-test-line__title">${title}</div>`);
+
+	// Line extra details
+	out.push(toHtml(node.children));
+
+	out.push('</div>');
+
+	return out.join('');
+};
+
+const renderHtmlTestLineResultNode = (node: TestLineResultNode): string => {
+	const out = [`<div class="suitest-test-line__result suitest-test-line__result--${node.status}">`];
+
+	// Body
+	out.push(node.children.map(renderNode).join(''));
+
+	// Status
+	const message = toHtml(node.message ?? []);
+	if (message) {
+		out.push(`<div class="suitest-test-line__result__message">${message}</div>`);
+	}
+
+	out.push('</div>');
+
+	return out.join('');
+};
 
 const renderNode = (node: SingleNode): string => {
 	switch (node.type) {
@@ -74,7 +152,7 @@ const renderNode = (node: SingleNode): string => {
 		case 'condition':
 			return renderHtmlConditionNode(node);
 		case 'test-line-result':
-			return '';
+			return renderHtmlTestLineResultNode(node);
 		default:
 			/* istanbul ignore next */
 			return assertUnknownSectionNode(node);
@@ -86,5 +164,5 @@ export const toHtml = (node: Node): string => {
 		node = [node];
 	}
 
-	return node.map(renderNode).join('');
+	return node.filter(Boolean).map(renderNode).join('');
 };

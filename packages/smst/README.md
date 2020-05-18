@@ -143,7 +143,7 @@ interface TestLine {
     type: "test-line"
     title: Paragraph
     children: [(Properties | Condition)[]]
-    status: ["success" | "fail"]
+    status: ["success" | "fatal" | "fail" | "warning" | "exit" | "excluded"]
 }
 ```
 

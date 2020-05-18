@@ -1,5 +1,5 @@
-import {jsx} from '@suitest/smst/commonjs/jsxFactory';
-import {toHtml} from '../toHtml';
+import {jsx} from '@suitest/smst';
+import {toHtml, escapeHtml} from '../toHtml';
 
 describe('AST renderers', () => {
 	const plainText = <fragment>TEXT</fragment>;
@@ -87,8 +87,8 @@ describe('AST renderers', () => {
 	describe('html renderer', () => {
 		it('should handle textual nodes', () => {
 			expect(toHtml(plainText)).toEqual('TEXT');
-			expect(toHtml(subjectText)).toEqual('<span class="suitest-test-line__text--bold">SUBJECT</span>');
-			expect(toHtml(inputText)).toEqual('<span class="suitest-test-line__text--emphasis">INPUT</span>');
+			expect(toHtml(subjectText)).toEqual('<span class="suitest-test-line__text--subject">SUBJECT</span>');
+			expect(toHtml(inputText)).toEqual('<span class="suitest-test-line__text--input">INPUT</span>');
 			expect(toHtml(codeText)).toEqual('<code class="suitest-test-line__text--code">CODE</code>');
 		});
 
@@ -118,6 +118,18 @@ describe('AST renderers', () => {
 			expect(toHtml(exitResult)).toMatchSnapshot();
 			expect(toHtml(excludedResult)).toMatchSnapshot();
 			expect(toHtml(fatalResult)).toMatchSnapshot();
+		});
+	});
+
+	describe('Translation utils', () => {
+		describe('escapeHtml util', () => {
+			it('should escape special characters', () => {
+				expect(escapeHtml('& < " \'')).toEqual('&amp; &lt; &quot; &#039;');
+			});
+
+			it('should replace entities even if they repeat', () => {
+				expect(escapeHtml('&&&')).toEqual('&amp;&amp;&amp;');
+			});
 		});
 	});
 });

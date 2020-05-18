@@ -8,7 +8,7 @@
     "directory": "packages/smst-to-text"
   },
   "kywords": [
-    "suitest", "unist"
+    "suitest", "unist", "smst"
   ],
   "license": "MIT",
   "bugs": {
@@ -28,10 +28,7 @@
     "coverage": "jest --coverage",
     "prepublishOnly": "npm run coverage && npm run build"
   },
-  "devDependencies": {
-    "@suitest/smst": "2.1.1"
-  },
-  "peerDependencies": {
+  "dependencies": {
     "@suitest/smst": "2.1.1"
   }
 }

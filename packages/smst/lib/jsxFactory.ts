@@ -1,6 +1,6 @@
-// Reference is needed so that whenever this file is imported by consumer, intrinsic types are
-// always included
+// Reference is needed so that whenever this file is imported by consumer, intrinsic types are always included
 /// <reference path="../types/intrinsicElements.d.ts" />
+import ub from 'unist-builder';
 import {
 	CodeBlockNode, ConditionNode,
 	InlineTextNode,
@@ -10,7 +10,6 @@ import {
 	TestLineNode,
 	TextNode,
 } from '../types/unistTestLine';
-import ub from 'unist-builder';
 
 const plainTypes = ['text', 'code', 'subject', 'input'];
 const isTextNode = (input?: SingleNode): input is TextNode => !!input && plainTypes.includes(input.type);
@@ -121,7 +120,7 @@ export const jsx = (
 	), type);
 
 	switch (type) {
-		case 'text': // TODO nyc for some reason reports an uncovered branch here
+		case 'text':
 		case 'subject':
 		case 'input':
 		case 'code':

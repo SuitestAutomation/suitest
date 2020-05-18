@@ -1,4 +1,4 @@
-import {jsx} from '@suitest/smst/commonjs/jsxFactory';
+import {jsx} from '@suitest/smst';
 import {toText} from '../toText';
 
 describe('AST renderers', () => {

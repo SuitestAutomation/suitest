@@ -1,4 +1,4 @@
-import {jsx} from '@suitest/smst/commonjs/jsxFactory';
+import {jsx} from '@suitest/smst';
 import {AppConfiguration} from '@suitest/types';
 
 /**

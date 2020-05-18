@@ -1,4 +1,5 @@
-import {jsx} from '@suitest/smst/commonjs/jsxFactory';
+import {jsx} from '@suitest/smst';
+import {TestLineNode} from '@suitest/smst/types/unistTestLine';
 import {
 	AppConfiguration,
 	AssertTestLine,
@@ -21,9 +22,8 @@ import {
 	Target,
 	TestLine,
 	WaitUntilTestLine,
+	TestLineResult,
 } from '@suitest/types';
-import {TestLineResult} from '@suitest/types/lib';
-import {TestLineNode} from '@suitest/smst/types/unistTestLine';
 import {translateComparator} from './comparator';
 import {translateCondition} from './condition';
 import {
@@ -82,11 +82,6 @@ const translateAssertThen = (then: AssertThen): string => {
 			return assertAssertThen(then);
 	}
 };
-
-// const getAlertNode = (lineResult?: TestLineResult): AlertNode | undefined =>
-// 	lineResult && lineResult.result !== 'success' ?
-// 		<alert level={lineResult.result}>{translateTestLineResult(lineResult)}</alert> as AlertNode :
-// 		undefined;
 
 const translateAssertTestLine = (
 	testLine: AssertTestLine | WaitUntilTestLine,
@@ -281,7 +276,7 @@ const translateSendTextTestLine = (
 	const titleFragment = getConditionInfo(testLine, appConfig);
 	const title = <fragment>Send text {text} to {translateTarget(testLine.target)}{titleFragment}</fragment>;
 
-	return <test-line title={title}>
+	return <test-line title={title} status={lineResult?.result}>
 		{testLine.condition ? translateCondition(testLine.condition, appConfig, elements, lineResult) : undefined}
 	</test-line> as TestLineNode;
 };
@@ -296,7 +291,7 @@ const translateSetTextTestLine = (
 	const titleFragment = getConditionInfo(testLine, appConfig);
 	const title = <fragment>Set text {text} to {translateTarget(testLine.target)}{titleFragment}</fragment>;
 
-	return <test-line title={title}>
+	return <test-line title={title} status={lineResult?.result}>
 		{testLine.condition ? translateCondition(testLine.condition, appConfig, elements, lineResult) : undefined}
 	</test-line> as TestLineNode;
 };
@@ -391,7 +386,7 @@ const translateMoveToTestLine = (
 	const titleFragment = getConditionInfo(testLine, appConfig);
 	const title = <fragment>Move pointer to {translateTarget(testLine.target)}{titleFragment}</fragment>;
 
-	return <test-line title={title}>
+	return <test-line title={title} status={lineResult?.result}>
 		{testLine.condition ? translateCondition(testLine.condition, appConfig, elements, lineResult) : undefined}
 	</test-line> as TestLineNode;
 };

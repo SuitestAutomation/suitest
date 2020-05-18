@@ -61,7 +61,7 @@ const renderPlainTextNode: RenderTextFunc = (node?: ExtendedInlineNodes): string
  * Render a single text node with ANSI styling
  */
 const renderFormattedTextNode: RenderTextFunc = (node: ExtendedInlineNodes): string =>
-	formatString(node.value ?? '', node.type);
+	formatString(node?.value ?? '', node?.type);
 
 const renderStatus = (type: TestLineResultStatus | SingleEntryStatus): ExtendedInlineNodes => {
 	let value = '';
@@ -285,8 +285,9 @@ const renderTestLineOrCondition = (
 };
 
 const renderTestLineResult = (node: TestLineResultNode, renderTextNode: RenderTextFunc, prefix = ''): string => {
-	const message = node.message
-		? tab + renderTextNode({type: node.status, value: node.status + ': '}) + node.message.map(renderTextNode).join('')
+	const nodeMessage = node.message?.map(renderTextNode).join('');
+	const message = nodeMessage
+		? tab + renderTextNode({type: node.status, value: node.status + ': '}) + nodeMessage
 		: '';
 	const body = renderTestLineOrCondition(node.children[0], renderTextNode, prefix);
 

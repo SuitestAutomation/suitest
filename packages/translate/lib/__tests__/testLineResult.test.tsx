@@ -121,12 +121,8 @@ describe('Test line results translation', () => {
 			...err,
 		});
 		const assertLine = testLinesExamples['Assert ... then continue'];
-		const testLineToFormattedText = (...args: Parameters<typeof translateTestLineResult>) => {
-			const translation = translateTestLineResult(...args);
-
-			// return JSON.stringify(translation, null, 2);
-			return toText(translation, false);
-		};
+		const testLineToFormattedText = (...args: Parameters<typeof translateTestLineResult>): string =>
+			toText(translateTestLineResult(...args), false);
 		const successLineResult: TestLineSuccessResult = {
 			result: 'success',
 			lineId: 'a625a00e-50b8-4a4c-a24f-b7e206e72199',
