@@ -1,6 +1,4 @@
-/// <reference path="../types/intrinsicElements.d.ts" />
-/// <reference path="../types/unistTestLine.d.ts" />
-import {jsx} from './jsxFactory';
+import {jsx} from '@suitest/smst';
 import {AppConfiguration} from '@suitest/types';
 
 /**
@@ -23,10 +21,10 @@ export const formatVariables = (text: string, variables: AppConfiguration['confi
 
 	if (resultText !== text) {
 		// There was some replacing done
-		return <fragment><bold>{resultText}</bold> (<code>{text}</code>)</fragment>;
+		return <fragment><input>{resultText}</input> (<code>{text}</code>)</fragment>;
 	}
 
-	return <bold>{text}</bold>;
+	return <input>{text}</input>;
 };
 
 /**
@@ -41,7 +39,7 @@ export const formatTimeout = (timeout: number | string, variables: AppConfigurat
 	if (isNaN(ms)) {
 		// Wrong variable or other invalid value
 		// Just display it as is
-		return <bold>{String(timeout)}</bold>;
+		return <input>{String(timeout)}</input>;
 	}
 
 	// Value to display to user, as string, in seconds
@@ -49,11 +47,11 @@ export const formatTimeout = (timeout: number | string, variables: AppConfigurat
 
 	if (String(timeout) !== t) {
 		// Variable is used
-		return <fragment><bold>{s}</bold> (<code>{String(timeout)}</code>)</fragment>;
+		return <fragment><input>{s}</input> (<code>{String(timeout)}</code>)</fragment>;
 	}
 
 	// Not a variable
-	return <bold>{s}</bold>;
+	return <input>{s}</input>;
 };
 
 export const formatCount = (count: number | string, variables: AppConfiguration['configVariables']): Node => {
@@ -65,27 +63,58 @@ export const formatCount = (count: number | string, variables: AppConfiguration[
 	if (isNaN(countAsNumberWithReplacedVars)) {
 		// Wrong variable or other invalid value
 		// Just display it as is
-		return <bold>{countAsString}</bold>;
+		return <input>{countAsString}</input>;
 	}
 
 	if (countAsString !== countAsStringWithReplacedVars) {
 		// Variable is used
-		return <fragment><bold>{countAsStringWithReplacedVars}</bold>x (<code>{countAsString}</code>)</fragment>;
+		return <fragment><input>{countAsStringWithReplacedVars}</input>x (<code>{countAsString}</code>)</fragment>;
 	}
 
 	// Not a variable
-	return <fragment><bold>{countAsString}</bold>x</fragment>;
+	return <fragment><input>{countAsString}</input>x</fragment>;
 };
 
-export const escapeHtml = (text: string): string => text.replace(/[&<"']/g, function(m) {
-	switch (m) {
-		case '&':
-			return '&amp;';
-		case '<':
-			return '&lt;';
-		case '"':
-			return '&quot;';
-		default:
-			return '&#039;';
+export const translateCodeProp = (
+	name: Node,
+	code: string,
+	appConfig: AppConfiguration,
+	comparator?: string,
+	status?: SingleEntryStatus
+): Node[] => {
+	const codeWithVars = replaceVariables(code, appConfig.configVariables);
+
+	const out: Node[] = [
+		<prop
+			name={name}
+			expectedValue={<code-block>{codeWithVars}</code-block>}
+			comparator={comparator}
+			status={status}
+		/>,
+	];
+
+	if (code !== codeWithVars) {
+		out.push(<prop
+			name={<text>(with variables)</text>}
+			expectedValue={<code-block>{code}</code-block>}
+			status={status}
+		/>);
 	}
-});
+
+	return out;
+};
+
+export const mapStatus = (status?: TestLineResultStatus): SingleEntryStatus | undefined => {
+	switch (status) {
+		case 'success':
+		case 'warning':
+			return 'success';
+		case 'fail':
+		case 'fatal':
+			return 'fail';
+		case 'excluded':
+		case 'exit':
+		default:
+			return undefined;
+	}
+};

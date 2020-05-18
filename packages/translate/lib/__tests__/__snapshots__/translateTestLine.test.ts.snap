@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`translateTestLine module testLineToHtml function should connect AST builder function with HTML renderer 1`] = `"<figure class=\\"suitest-test-line\\"><figcaption>Clear application data</figcaption></figure>"`;

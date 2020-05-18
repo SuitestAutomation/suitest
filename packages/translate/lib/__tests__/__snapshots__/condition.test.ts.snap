@@ -1,0 +1,868 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`conditions translation should translate "JavaScript expression ... equals ..." line 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "comparator": "",
+          "contentType": "block",
+          "expectedValue": Object {
+            "language": "javascript",
+            "type": "code-block",
+            "value": "someJS()",
+          },
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "expression",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+        Object {
+          "actualValue": undefined,
+          "comparator": "=",
+          "contentType": "inline",
+          "expectedValue": Array [
+            Object {
+              "type": "input",
+              "value": "returned value",
+            },
+          ],
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "expression result",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+      ],
+      "type": "props",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "JavaScript expression",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "JavaScript expression with variables ... equals ..." line 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "comparator": "",
+          "contentType": "block",
+          "expectedValue": Object {
+            "language": "javascript",
+            "type": "code-block",
+            "value": "someJS(\\"123\\")",
+          },
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "expression",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+        Object {
+          "comparator": undefined,
+          "contentType": "block",
+          "expectedValue": Object {
+            "language": "javascript",
+            "type": "code-block",
+            "value": "someJS(\\"<%var1%>\\")",
+          },
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "(with variables)",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+        Object {
+          "actualValue": undefined,
+          "comparator": "=",
+          "contentType": "inline",
+          "expectedValue": Array [
+            Object {
+              "type": "input",
+              "value": "returned value",
+            },
+          ],
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "expression result",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+      ],
+      "type": "props",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "JavaScript expression",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "PS4 video for current had no error" line 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "PlayStation 4 video had no error for current source",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "PS4 video had no error" line 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "PlayStation 4 video had no error for any source",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "PS4 video has props" line 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "actualValue": undefined,
+          "comparator": "=",
+          "contentType": "inline",
+          "expectedValue": Array [
+            Object {
+              "type": "input",
+              "value": "123",
+            },
+          ],
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "width",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+      ],
+      "type": "props",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "subject",
+      "value": "PlayStation 4 video",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "application has exited" line 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Application has exited",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "cookie" line 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "actualValue": undefined,
+          "comparator": "!=",
+          "contentType": "inline",
+          "expectedValue": Array [
+            Object {
+              "type": "input",
+              "value": "expect value",
+            },
+          ],
+          "name": Array [
+            Object {
+              "type": "subject",
+              "value": "my-cookie",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+      ],
+      "type": "props",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "cookie ",
+    },
+    Object {
+      "type": "subject",
+      "value": "my-cookie",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "current location" line 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "actualValue": undefined,
+          "comparator": "contains",
+          "contentType": "inline",
+          "expectedValue": Array [
+            Object {
+              "type": "input",
+              "value": "expected value",
+            },
+          ],
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "current location",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+      ],
+      "type": "props",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Current location",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "element ... does not exist" line 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "subject",
+      "value": "Element 1",
+    },
+    Object {
+      "type": "text",
+      "value": " does not exist",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "element ... exist" line 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "subject",
+      "value": "Element 1",
+    },
+    Object {
+      "type": "text",
+      "value": " exists",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "element ... is visible" line 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "subject",
+      "value": "My element",
+    },
+    Object {
+      "type": "text",
+      "value": " is visible",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "element matches JS with vars" line 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "comparator": "matches JS",
+          "contentType": "block",
+          "expectedValue": Object {
+            "language": "javascript",
+            "type": "code-block",
+            "value": "someJS(\\"123\\");",
+          },
+          "name": Array [
+            Object {
+              "type": "subject",
+              "value": "{\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1}",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+        Object {
+          "comparator": undefined,
+          "contentType": "block",
+          "expectedValue": Object {
+            "language": "javascript",
+            "type": "code-block",
+            "value": "someJS(\\"<%var1%>\\");",
+          },
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "(with variables)",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+      ],
+      "type": "props",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "subject",
+      "value": "{\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1}",
+    },
+    Object {
+      "type": "text",
+      "value": " matches JavaScript",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "element matches JS" line 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "comparator": "matches JS",
+          "contentType": "block",
+          "expectedValue": Object {
+            "language": "javascript",
+            "type": "code-block",
+            "value": "someJS();",
+          },
+          "name": Array [
+            Object {
+              "type": "subject",
+              "value": "{\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1}",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+      ],
+      "type": "props",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "subject",
+      "value": "{\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1}",
+    },
+    Object {
+      "type": "text",
+      "value": " matches JavaScript",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "element properties" line 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "actualValue": undefined,
+          "comparator": ">=",
+          "contentType": "inline",
+          "expectedValue": Array [
+            Object {
+              "type": "input",
+              "value": "123",
+            },
+          ],
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "video position",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+        Object {
+          "actualValue": undefined,
+          "comparator": "=",
+          "contentType": "inline",
+          "expectedValue": Array [
+            Object {
+              "type": "input",
+              "value": "123 ± 3v5",
+            },
+            Object {
+              "type": "text",
+              "value": " (",
+            },
+            Object {
+              "type": "code",
+              "value": "123 ± <%var3%>",
+            },
+            Object {
+              "type": "text",
+              "value": ")",
+            },
+          ],
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "height",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+        Object {
+          "actualValue": undefined,
+          "comparator": "contains",
+          "contentType": "inline",
+          "expectedValue": Array [
+            Object {
+              "type": "input",
+              "value": "expected text",
+            },
+          ],
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "text",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+      ],
+      "type": "props",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Unknown element (",
+    },
+    Object {
+      "type": "subject",
+      "value": "unknown-id",
+    },
+    Object {
+      "type": "text",
+      "value": ")",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "element with legacy name exists" line 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "subject",
+      "value": "Foo Bar",
+    },
+    Object {
+      "type": "text",
+      "value": " exists",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "element with name hint exists" line 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "subject",
+      "value": "Foo Bar",
+    },
+    Object {
+      "type": "text",
+      "value": " exists",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "element with single selector exists" line 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "subject",
+      "value": "#fooBar",
+    },
+    Object {
+      "type": "text",
+      "value": " exists",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "network request matching URL was not made excluding previously matched" line 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "actualValue": undefined,
+          "comparator": "contains",
+          "contentType": "inline",
+          "expectedValue": Array [
+            Object {
+              "type": "input",
+              "value": "/partial/url/123",
+            },
+            Object {
+              "type": "text",
+              "value": " (",
+            },
+            Object {
+              "type": "code",
+              "value": "/partial/url/<%var1%>",
+            },
+            Object {
+              "type": "text",
+              "value": ")",
+            },
+          ],
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "URL",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+        Object {
+          "actualValue": undefined,
+          "comparator": "=",
+          "contentType": "inline",
+          "expectedValue": Array [
+            Object {
+              "type": "input",
+              "value": "GET",
+            },
+          ],
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "request method",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+        Object {
+          "actualValue": undefined,
+          "comparator": "contains",
+          "contentType": "inline",
+          "expectedValue": Array [
+            Object {
+              "type": "input",
+              "value": "text/javascript",
+            },
+          ],
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "request header ",
+            },
+            Object {
+              "type": "input",
+              "value": "Accept-Type",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+        Object {
+          "actualValue": undefined,
+          "comparator": "=",
+          "contentType": "inline",
+          "expectedValue": Array [
+            Object {
+              "type": "input",
+              "value": "request val2 body",
+            },
+            Object {
+              "type": "text",
+              "value": " (",
+            },
+            Object {
+              "type": "code",
+              "value": "request <%var2%> body",
+            },
+            Object {
+              "type": "text",
+              "value": ")",
+            },
+          ],
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "request body",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+        Object {
+          "actualValue": undefined,
+          "comparator": ">",
+          "contentType": "inline",
+          "expectedValue": Array [
+            Object {
+              "type": "input",
+              "value": "123",
+            },
+          ],
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "response status",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+        Object {
+          "actualValue": undefined,
+          "comparator": "ends with",
+          "contentType": "inline",
+          "expectedValue": Array [
+            Object {
+              "type": "input",
+              "value": "val2/javascript",
+            },
+            Object {
+              "type": "text",
+              "value": " (",
+            },
+            Object {
+              "type": "code",
+              "value": "<%var2%>/javascript",
+            },
+            Object {
+              "type": "text",
+              "value": ")",
+            },
+          ],
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "response header ",
+            },
+            Object {
+              "type": "input",
+              "value": "Content-123",
+            },
+            Object {
+              "type": "text",
+              "value": " (",
+            },
+            Object {
+              "type": "code",
+              "value": "Content-<%var1%>",
+            },
+            Object {
+              "type": "text",
+              "value": ")",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+        Object {
+          "actualValue": undefined,
+          "comparator": "=",
+          "contentType": "inline",
+          "expectedValue": Array [
+            Object {
+              "type": "input",
+              "value": "response <%non_existing_var%> <%kind-of|var but not%> body",
+            },
+          ],
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "response body",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+      ],
+      "type": "props",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "network request was not made excluding previously matched requests",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "network request to URL was made including matched" line 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "actualValue": undefined,
+          "comparator": "=",
+          "contentType": "inline",
+          "expectedValue": Array [
+            Object {
+              "type": "input",
+              "value": "http://suite.st/123",
+            },
+            Object {
+              "type": "text",
+              "value": " (",
+            },
+            Object {
+              "type": "code",
+              "value": "http://suite.st/<%var1%>",
+            },
+            Object {
+              "type": "text",
+              "value": ")",
+            },
+          ],
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "URL",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+      ],
+      "type": "props",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "network request was made in entire network log",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "ps video had not error" line 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "PlayStation 4 video had no error for current source",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "video exists" line 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "subject",
+      "value": "video",
+    },
+    Object {
+      "type": "text",
+      "value": " exists",
+    },
+  ],
+  "type": "condition",
+}
+`;

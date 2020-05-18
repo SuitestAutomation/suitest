@@ -1,0 +1,85 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.suitest-test-line__result {
+    margin: 10px 0 15px 0;
+}
+
+.suitest-test-line__result__message {
+    margin-left: 20px;
+}
+
+.suitest-test-line__result--success .suitest-test-line__result__message:before {
+    content: 'success: ';
+    color: darkgreen;
+}
+
+.suitest-test-line__result--warning .suitest-test-line__result__message:before {
+    content: 'warning: ';
+    color: orange;
+}
+
+.suitest-test-line__result--fail .suitest-test-line__result__message:before {
+    content: 'fail: ';
+    color: darkred;
+}
+
+.suitest-test-line__result--fatal .suitest-test-line__result__message:before {
+    content: 'fatal: ';
+    color: darkred;
+}
+
+.suitest-test-line__result--exit .suitest-test-line__result__message:before {
+    content: 'exit: ';
+    color: darkblue;
+}
+
+.suitest-test-line__result--excluded .suitest-test-line__result__message:before {
+    content: 'excluded: ';
+    color: darkblue;
+}
+
+.suitest-test-line--success .suitest-test-line__title:before {
+    content: '✔ ';
+    color: darkgreen;
+}
+
+.suitest-test-line--warning .suitest-test-line__title:before {
+    content: '‼ ';
+    color: orange;
+}
+
+.suitest-test-line--fail .suitest-test-line__title:before {
+    content: '✖ ';
+    color: darkred;
+}
+
+.suitest-test-line--fatal .suitest-test-line__title:before {
+    content: '✖ ';
+    color: darkred;
+}
+
+.suitest-test-line>:not(.suitest-test-line__title) {
+    margin-left: 20px;
+}
+
+.suitest-test-line__props__prop--success td:first-child:before {
+    content: '✔ ';
+    color: darkgreen;
+}
+
+.suitest-test-line__props__prop--fail td:first-child:before {
+    content: '✖ ';
+    color: darkred;
+}
+
+.suitest-test-line__text--subject {
+    font-weight: bold;
+}
+
+.suitest-test-line__text--input {
+    text-decoration: underline;
+}

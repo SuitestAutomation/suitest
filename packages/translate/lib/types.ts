@@ -1,5 +1,6 @@
 export type LineDefinition = TestLineDefinitionType;
 // COPIED from TestResultLineType
+// TODO: should it be replaced by TestLineResult?
 export type LineResult = {
 	lineId: string,
 	result: 'success' | 'warning' | 'fail' | 'fatal' | 'exit',

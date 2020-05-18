@@ -1,5 +1,6 @@
 import {LineId} from './testLine';
 import {ElementId} from './element';
+import {ElementProperty} from './condition';
 
 export type TestLineResultType = 'success' | 'fail' | 'fatal' | 'warning' | 'exit' | 'excluded';
 
@@ -12,31 +13,37 @@ export type BaseResult = {
 	result: TestLineResultType,
 	results?: TestLineResult[], // Results for child snippet lines
 	actualValue?: string | number, // TODO it probably appears only in query failed errors
-	expression?: Array<{ // Error description for lines like "element matches props"
-		result: 'success',
-	} | {
-		result: 'failure',
-		actualValue?: string | number,
-	} | {
-		result: 'failure',
-		actualValue?: string | number,
-		errorType: 'invalidInput',
-		message: {
-			code: 'wrongExpression' | 'missingProperty',
-		},
-	}>,
-	errors?: Array<{
-		reason: 'notMatched',
-		message: 'response' | 'request',
-		type: 'noUriFound' | 'header' | 'status',
-		name?: string,
-		actualValue?: string,
-	}>,
 	loopResults?: TestLineResult[], // snippet until loops and lines results
 };
 
-export type SuccessResult = BaseResult & {
-	result: 'success' | 'exit' | 'excluded',
+export type ResultExpression = ResultExpressionItem[];
+// TODO investigate that here described all possible cases.
+export type ResultExpressionItem = { // Error description for lines like "element matches props"
+	result: 'success',
+} | {
+	result: 'fail',
+	errorType: 'invalidInput',
+	message: {
+		code: 'missingProperty',
+	},
+} | {
+	result: 'fail',
+	errorType: 'invalidInput',
+	message: {
+		code: 'wrongExpression',
+		info: ElementProperty,
+	},
+} | {
+	result: 'fail',
+	errorType: 'queryFailed',
+	message: {
+		code: 'missingProperty',
+	},
+}  | {
+	errorType: 'queryFailed',
+	actualValue: string | number,
+	expectedValue: string | number,
+	result: 'fail',
 };
 
 /**
@@ -71,6 +78,7 @@ export type SimpleError = BaseResult & {
 		| 'noConnection'
 		| 'lateManualLaunch'
 		| 'launchExpired'
+		| 'deviceIsBusy'
 		| 'notActiveDeveloperMode'
 		| 'invalidUrl'
 		| 'invalidOpenAppOverrideReference'
@@ -81,6 +89,7 @@ export type SimpleError = BaseResult & {
 		| 'StaleElementReference'
 		| 'ElementNotVisible'
 		| 'InvalidElementState'
+		| 'UnknownError'
 		| 'ElementIsNotSelectable'
 		| 'XPathLookupError'
 		| 'Timeout'
@@ -95,6 +104,7 @@ export type SimpleError = BaseResult & {
 		| 'IMEEngineActivationFailed'
 		| 'InvalidSelector'
 		| 'ElementNotInteractable'
+		| 'JavaScriptError'
 		| 'unknownWebDriverKey'
 		| 'unfocusableElement'
 		| 'unclickableElement'
@@ -141,13 +151,17 @@ export type SyntaxError = BaseResult & {
 	},
 };
 
-export type InvalidInputError = BaseResult & {
+export type InvalidInputError = BaseResult & ({
 	errorType: 'invalidInput',
 	message?: {
 		code: 'lineTypeNotSupported' // Line is not supported by platform
-			| 'elementNotSupported', // Command is unsupported by element
+			| 'elementNotSupported' // Command is unsupported by element
+			| 'wrongExpression', // Faced when javascript expression subject value is undefined
 	},
-};
+} | {
+	errorType: 'invalidInput',
+	expression: ResultExpression,
+});
 
 export type DeviceError = BaseResult & {
 	errorType: 'deviceError',
@@ -187,7 +201,36 @@ export type AbortedError = BaseResult & {
 	},
 };
 
-export type QueryFailedError = BaseResult & {
+export type QueryFailedNetworkError = {
+	errorType: 'queryFailed',
+	// TODO for what this needed?
+	failingRequestCount: number,
+	// TODO clarify
+	errors: Array<
+		{type: 'noUriFound'}
+		| NetworkNotMatchedError
+		| NetworkNotFoundError
+	>,
+};
+
+export type NetworkNotMatchedError = {
+	actualValue: string | number, // TODO: probably number can be only for status header
+	reason: 'notMatched',
+} & NetworkErrorItemBase;
+export type NetworkNotFoundError = { reason: 'notFound' } & NetworkErrorItemBase;
+export type NetworkErrorItemBase = {
+	message: 'response',
+	type: 'status' | 'body',
+} | {
+	message: 'request',
+	type: 'method' | 'body',
+} | {
+	message: 'response' | 'request',
+	type: 'header',
+	name: string,
+};
+
+export type QueryFailedWithCode = {
 	errorType: 'queryFailed',
 	message: {
 		code: 'invalidApp'
@@ -201,16 +244,27 @@ export type QueryFailedError = BaseResult & {
 			| 'psImplicitVideo',
 	},
 } | {
-	errorType: 'invalidUrl',
-	actualValue: string,
-	expectedValue: string,
-} | {
-	errorType: 'exprException',
-	message?: {
+	errorType: 'queryFailed',
+	message: {
+		code: 'exprException',
 		info: {
 			exception: string,
 		},
 	},
+};
+export type QueryFailedError = BaseResult & (QueryFailedWithCode | {
+	errorType: 'queryFailed',
+	actualValue: string,
+	expectedValue: string,
+} | {
+	errorType: 'queryFailed',
+	expression: ResultExpression,
+} | QueryFailedNetworkError);
+
+export type InvalidUrlError = BaseResult & {
+	errorType: 'invalidUrl',
+	actualValue: string,
+	expectedValue: string,
 };
 
 export type InvalidValueError = BaseResult & {
@@ -227,7 +281,7 @@ export type InvalidVariableError = BaseResult & {
 	},
 };
 
-export type InvalidResponseError = BaseResult & {
+export type InvalidResultError = BaseResult & {
 	errorType: 'invalidResult',
 	message?: {
 		code: 'resultTooLong',
@@ -265,7 +319,29 @@ export type InvalidPackageError = BaseResult & {
 	},
 };
 
-export type TestLineResult = SuccessResult
+// TODO: clarify response
+export type InvalidReferenceError = BaseResult & {
+	errorType: 'invalidReference',
+	snippetLineNumber?: unknown,
+};
+
+export type ADBError = BaseResult & {
+	errorType: 'adbError',
+	message?: {
+		info: {
+			reason: string,
+		},
+	},
+};
+
+export type TestLineSuccessResult = BaseResult & {
+	result: 'success',
+	errorType?: undefined,
+};
+
+export type TestLineErrorResult = Exclude<TestLineResult, TestLineSuccessResult>;
+
+export type TestLineResult = TestLineSuccessResult
 	| SimpleError
 	| OutdatedInstrumentationLibraryError
 	| QueryTimeoutError
@@ -275,9 +351,12 @@ export type TestLineResult = SuccessResult
 	| UnsupportedButtonError
 	| AbortedError
 	| QueryFailedError
+	| InvalidUrlError
 	| InvalidValueError
 	| InvalidVariableError
-	| InvalidResponseError
+	| InvalidResultError
 	| InvalidRepositoryReferenceError
+	| InvalidReferenceError
 	| OpenAppOverrideFailedError
-	| InvalidPackageError;
+	| InvalidPackageError
+	| ADBError;

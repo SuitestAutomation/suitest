@@ -1,0 +1,881 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test line results translation Translate assert lines translate "assert application has exited" render with fail result 1`] = `
+"✖ Assert: Application has exited 
+  fail: App is still running"
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert application has exited" render without result 1`] = `"Assert: Application has exited "`;
+
+exports[`Test line results translation Translate assert lines translate "assert cookie" existingSubject error 1`] = `
+"✖ Assert: cookie cookie-name does not exist 
+  fail: Subject expected not to exist."
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert cookie" exprException error 1`] = `
+"✖ Assert: cookie cookieName 
+  ✖ cookieName matches
+    > cookieValue
+  fail: Exception was thrown: \\"cookieValue is not defined\\"."
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert cookie" missingSubject error 1`] = `
+"✖ Assert: cookie suitest-cookie 
+  ✖ suitest-cookie = suitest
+  fail: Subject does not exist."
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert cookie" queryFailed (cookie value not matched) error 1`] = `
+"✖ Assert: cookie suitest-cookie 
+  ✖ suitest-cookie = suitest          
+                   → some cookie value
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert cookie" queryFailed match js failed 1`] = `
+"✖ Assert: cookie suitest-cookie 
+  ✖ suitest-cookie matches
+    > function somePredicate(val) {
+    > 	return false;
+    > }           
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert cookie" without result 1`] = `
+"Assert: cookie suitest-cookie 
+  suitest-cookie = suitest"
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert current location" errorType: "queryFailed" matchjs failed 1`] = `
+"✖ Assert: Current location 
+  ✖ current location matches JS
+    > function somePredicate(location) {
+    > 	return false;
+    > }             
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert current location" errorType: "queryFailed" matchjs failed 2`] = `
+"✖ Assert: Current location 
+  ✖ current location matches JS
+    > something     
+  fail: Exception was thrown: \\"something is not defined\\"."
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert current location" errorType: "queryFailed" with message.code 1`] = `
+"✖ Assert: Current location 
+  ✖ current location contains http://some.url
+  fail: Wrong app ID detected"
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert current location" errorType: "queryFailed", location value not matched 1`] = `
+"✖ Assert: Current location 
+  ✖ current location contains http://some.url                                        
+                     →        http://file.suite.st/sampleapp_staging/index-hbbtv.html
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert current location" with success result 1`] = `
+"✔ Assert: Current location 
+  ✔ current location contains http://some.url"
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert current location" without result 1`] = `
+"Assert: Current location 
+  current location contains http://some.url"
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert element" invalidRepositoryReference results general error 1`] = `
+"✖ Assert: Unknown element (some-id) exists 
+  fail: Element was not found in repository"
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert element" invalidRepositoryReference results notExistingElement message code 1`] = `
+"✖ Assert: Unknown element (some-id) exists 
+  fail: Element was not found in repository"
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert element" invalidRepositoryReference results notExistingPlatform message code 1`] = `
+"✖ Assert: Element 1 exists 
+  fail: Element is not defined for selected platform"
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert element" queryFailed results element visible fail 1`] = `
+"✖ Assert: My element is visible 
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert element" queryFailed results existingSubject 1`] = `
+"✖ Assert: Element 1 does not exist 
+  fail: Subject expected not to exist."
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert element" queryFailed results expression error 1`] = `
+"✖ Assert: Unknown element (unknown-id) 
+  ✔ background color = rgba(0, 0, 0, 0)                                            
+  ✔ border color     = rgb(255, 255, 255)                                          
+  ✔ border style     = none                                                        
+  ✔ border width     = 0px                                                         
+  ✖ class            = componentcontainer container widget                         
+                     → active componentcontainer container widget                  
+  ✔ height           = 720                                                         
+  ✔ href             = [EMPTY STRING]                                              
+  ✔ id               = maincontainer                                               
+  ✔ image            = [EMPTY STRING]                                              
+  ✔ left             = 0                                                           
+  ✔ opacity          = 1                                                           
+  ✔ text color       = rgba(255, 255, 255, 1)                                      
+  ✖ text             = Some short text                                             
+                     → WatchMe New Pictures Videos Music More All Files Candies Che
+                       rries strawberry-cake Big Buck Bunny (trailer).mp4 boiled-sw
+                       eets.jpg cakes_tarts_desserts_sweets_berries_strawberries_bl
+                       ackberries_blueberries_currants_75280_1400x1050.jpg DSC_0159
+                       .JPG 7 Images 1 folder folder Cherries strawberry-cake boile
+                       d-sweets.jpg cakes_tarts_desserts_sweets_berries_strawberrie
+                       s_blackberries_blueberries_currants_75280_1400x1050.jpg DSC_
+                       0159.JPG 0 Music 6 Videos SINTEL.mp4 Big Buck Bunny (trailer
+                       ).mp4                                                       
+  ✔ top              = 0                                                           
+  ✔ width            = 1280                                                        
+  ✖ z-index          < 0                                                           
+                     → 0                                                           
+  ✖ visibility       = invisible                                                   
+                     → property missing                                            
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert element" queryFailed results expression error 2`] = `
+"✖ Assert: Unknown element (unknown-id) 
+  ✔ background color =        rgba(0, 0, 0, 0)                                            
+  ✔ border color     =        rgb(255, 255, 255)                                          
+  ✔ border style     =        none                                                        
+  ✔ border width     =        0px                                                         
+  ✖ class            =        componentcontainer container widget                         
+                     →        active componentcontainer container widget                  
+  ✔ height           =        720                                                         
+  ✔ href             =        [EMPTY STRING]                                              
+  ✔ id               =        maincontainer                                               
+  ✔ image            =        [EMPTY STRING]                                              
+  ✔ left             =        0                                                           
+  ✔ opacity          =        1                                                           
+  ✔ text color       =        rgba(255, 255, 255, 1)                                      
+  ✖ text             =        [EMPTY STRING]                                              
+                     →        WatchMe New Pictures Videos Music More All Files Candies Che
+                              rries strawberry-cake Big Buck Bunny (trailer).mp4 boiled-sw
+                              eets.jpg cakes_tarts_desserts_sweets_berries_strawberries_bl
+                              ackberries_blueberries_currants_75280_1400x1050.jpg DSC_0159
+                              .JPG 7 Images 1 folder folder Cherries strawberry-cake boile
+                              d-sweets.jpg cakes_tarts_desserts_sweets_berries_strawberrie
+                              s_blackberries_blueberries_currants_75280_1400x1050.jpg DSC_
+                              0159.JPG 0 Music 6 Videos SINTEL.mp4 Big Buck Bunny (trailer
+                              ).mp4                                                       
+  ✔ top              =        0                                                           
+  ✔ width            =        1280                                                        
+  ✖ z-index          <        0                                                           
+                     →        0                                                           
+  ✖ visibility       =        invisible                                                   
+                     →        property missing                                            
+  ✖ z-index          contains 0                                                           
+                     →        wrong format                                                
+  ✖ text color       =        rgba(255, dddd, 255, 1)                                     
+                     →        wrong format                                                
+  fail: Test command received invalid input."
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert element" queryFailed results handle error because of js error for match js 1`] = `
+"✖ Assert: {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JavaScript 
+  ✖ {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JS
+    > function(((testSubject) {                    
+    > 	console.log(testSubject);                   
+    > 	return true;                                
+    > }                                            
+  fail: Exception was thrown: \\"Unexpected token '('\\"."
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert element" queryFailed results match js fail 1`] = `
+"✖ Assert: {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JavaScript 
+  ✖ {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JS
+    > someJS();                                    
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert element" queryFailed results missingSubject 1`] = `
+"✖ Assert: Element 1 exists 
+  fail: Subject does not exist."
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert element" without error "element ... does not exist" 1`] = `"Assert: Element 1 does not exist "`;
+
+exports[`Test line results translation Translate assert lines translate "assert element" without error "element ... exist" 1`] = `"Assert: Element 1 exists "`;
+
+exports[`Test line results translation Translate assert lines translate "assert element" without error "element ... is visible" 1`] = `"Assert: My element is visible "`;
+
+exports[`Test line results translation Translate assert lines translate "assert element" without error "element matches JS with vars" 1`] = `
+"Assert: {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JavaScript 
+  {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JS
+    > someJS(\\"123\\");                             
+  (with variables)                                          
+    > someJS(\\"<%var1%>\\");                        "
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert element" without error "element matches JS" 1`] = `
+"Assert: {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JavaScript 
+  {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JS
+    > someJS();                                  "
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert element" without error "element properties" 1`] = `
+"Assert: Unknown element (unknown-id) 
+  video position >=       123                       
+  height         =        123 ± 3v5 (123 ± <%var3%>)
+  text           contains expected text             "
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert javascript expression" errorType: "queryFailed" expression matching failed 1`] = `
+"✖ Assert: JavaScript expression 
+  ✖ expression         
+    > 1 + 1          
+  ✖ expression result = 3
+                      → 2
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert javascript expression" errorType: "queryFailed" expression matching failed 2`] = `
+"✖ Assert: JavaScript expression 
+  ✖ expression                  
+    > 120 + 3        
+  ✖ expression result ! contains 12 
+                      →          123
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert javascript expression" errorType: "queryFailed" handle javascript exception 1`] = `
+"✖ Assert: JavaScript expression 
+  ✖ expression         
+    > function test() { return 123
+  ✖ expression result = 123
+  fail: Exception was thrown: \\"Unexpected end of input\\"."
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert javascript expression" render error when javascript expression missed 1`] = `
+"✖ Assert: JavaScript expression 
+  ✖ expression         
+    > [NOT SPECIFIED]
+  ✖ expression result = [NOT SPECIFIED]
+  fatal: Internal error occurred"
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert javascript expression" render error when javascript expression missed 2`] = `
+"✖ Assert: JavaScript expression 
+  ✖ expression         
+    > [NOT SPECIFIED]
+  ✖ expression result = 1
+  fatal: Internal error occurred"
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert javascript expression" render error when js expression specified but comparing value is empty 1`] = `
+"✖ Assert: JavaScript expression 
+  ✖ expression         
+    > 1              
+  ✖ expression result = [NOT SPECIFIED]
+  fail: Test command received invalid input."
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert javascript expression" render without result 1`] = `
+"Assert: JavaScript expression 
+  expression         
+    > someJS()     
+  expression result = returned value"
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert javascript expression" render without result 2`] = `
+"Assert: JavaScript expression 
+  expression         
+    > someJS(\\"123\\")
+  (with variables)   
+    > someJS(\\"<%var1%>\\")
+  expression result = returned value"
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert network" render fail results request/response headers not matched 1`] = `
+"✖ Assert: network request was made in entire network log 
+  URL                                        =  http://suite.st/123 (http://suite.st/<%var1%>)              
+  ✖ request method                           != GET                                                         
+                                             →  GET                                                         
+  ✔ request header Accept                    =  text/html,application/xhtml+xml,application/xml;q=0.9,image/
+                                                webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q
+                                                =0.9                                                        
+  ✔ request header Accept-Language           =  en-US,en;q=0.9                                              
+  ✔ request header Content-Length            =  0                                                           
+  ✔ request header Host                      =  file.suite.st                                               
+  ✖ request header If-Modified-Since         =  Fri, 25 Jan 2019 16:33:31 GMT                               
+                                             →  not found                                                   
+  ✖ request header If-None-Match             =  W/\\"5c4b3a5b-19e2\\"                                           
+                                             →  not found                                                   
+  ✔ request header Upgrade-Insecure-Requests =  1                                                           
+  ✔ request header User-Agent                =  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+                                                 (KHTML, like Gecko) Chrome/81.0.4044.122 Safari/537.36     
+  ✔ request header Via                       =  1.1 suitestify                                              
+  ✖ request body                             =  asdfs                                                       
+                                             →  [EMPTY STRING]                                              
+  ✖ response status                          =  303                                                         
+                                             →  200                                                         
+  ✔ response header Cache-Control            =  max-age=300                                                 
+  ✔ response header Connection               =  keep-alive                                                  
+  ✖ response header Date                     =  Mon, 27 Apr 2020 13:08:59 GMT                               
+                                             →  Tue, 28 Apr 2020 09:58:10 GMT                               
+  ✔ response header Etag                     =  \\"5c4b3a5b-19e2\\"                                             
+  ✖ response header Expires                  =  Mon, 27 Apr 2020 13:13:59 GMT                               
+                                             →  Tue, 28 Apr 2020 10:03:10 GMT                               
+  ✔ response header Last-Modified            =  Fri, 25 Jan 2019 16:33:31 GMT                               
+  ✔ response header Server                   =  nginx                                                       
+  ✖ response body                            =  asdfasdddddd                                                
+                                             →  <!DOCTYPE html PUBLIC \\"-//HbbTV//1.1.1//EN\\" \\"http://www.hbbt
+                                                v.org/dtd/HbbTV-1.1.1.dtd\\">
+<html xmlns=\\"http://www.w3.org/1
+                                                999/xhtml\\">
+<head>
+    <title>HbbTv App</title>
+    <link re
+                                                l=\\"stylesheet\\" href=\\"css/base.css\\" />
+</head>
+<body>
+    <di
+                                                v id=\\"content\\"></div>
+</body>
+</html>                       
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert network" render fail results syntax error when status compare type is "CONTAINS" 1`] = `
+"✖ Assert: network request was made in entire network log 
+  URL             =        http://suite.st/123 (http://suite.st/<%var1%>)
+  response status contains 303                                           
+  fatal: Test command received invalid input."
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert network" render fail results url not matched 1`] = `
+"✖ Assert: network request was made in entire network log 
+  ✖ URL = http://suite.st/123 (http://suite.st/<%var1%>)
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert network" render fail results url not matched 2`] = `
+"✖ Assert: network request was not made excluding previously matched requests 
+  ✖ URL                                          contains  /partial/url/123 (/partial/url/<%var1%>)                  
+  request method                                 =         GET                                                       
+  request header Accept-Type                     contains  text/javascript                                           
+  request body                                   =         request val2 body (request <%var2%> body)                 
+  response status                                >         123                                                       
+  response header Content-123 (Content-<%var1%>) ends with val2/javascript (<%var2%>/javascript)                     
+  response body                                  =         response <%non_existing_var%> <%kind-of|var but not%> body
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert network" render without result 1`] = `
+"Assert: network request was made in entire network log 
+  URL = http://suite.st/123 (http://suite.st/<%var1%>)"
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert network" render without result 2`] = `
+"Assert: network request was not made excluding previously matched requests 
+  URL                                            contains  /partial/url/123 (/partial/url/<%var1%>)                  
+  request method                                 =         GET                                                       
+  request header Accept-Type                     contains  text/javascript                                           
+  request body                                   =         request val2 body (request <%var2%> body)                 
+  response status                                >         123                                                       
+  response header Content-123 (Content-<%var1%>) ends with val2/javascript (<%var2%>/javascript)                     
+  response body                                  =         response <%non_existing_var%> <%kind-of|var but not%> body"
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert ps video" render with fail result 1`] = `
+"✖ Assert: PlayStation 4 video had no error for any source 
+  fail: Please make sure that you have the PlayStation SDK installed. https://suite.st/docs/troubleshooting/playstation/#playstation-sdk-not-installed"
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert ps video" render without result 1`] = `"Assert: PlayStation 4 video had no error for current source "`;
+
+exports[`Test line results translation Translate assert lines translate "assert ps video" render without result 2`] = `"Assert: PlayStation 4 video had no error for any source "`;
+
+exports[`Test line results translation should translate "ActionNotAvailable" error 1`] = `
+Object {
+  "type": "text",
+  "value": "This test command is not supported by the current app configuration",
+}
+`;
+
+exports[`Test line results translation should translate "ElementIsNotSelectable" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Element is not selectable",
+}
+`;
+
+exports[`Test line results translation should translate "ElementNotInteractable" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Element is not currently interactable and may not be manipulated",
+}
+`;
+
+exports[`Test line results translation should translate "ElementNotVisible" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Element is not currently visible",
+}
+`;
+
+exports[`Test line results translation should translate "ILInternalError" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Internal error occurred",
+}
+`;
+
+exports[`Test line results translation should translate "IMEEngineActivationFailed" error 1`] = `
+Object {
+  "type": "text",
+  "value": "An IME engine could not be started",
+}
+`;
+
+exports[`Test line results translation should translate "IMENotAvailable" error 1`] = `
+Object {
+  "type": "text",
+  "value": "IME was not available",
+}
+`;
+
+exports[`Test line results translation should translate "InvalidCookieDomain" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Cannot set a cookie on a domain different from the current page",
+}
+`;
+
+exports[`Test line results translation should translate "InvalidElementCoordinates" error 1`] = `
+Object {
+  "type": "text",
+  "value": "The coordinates provided to an interactions operation are invalid",
+}
+`;
+
+exports[`Test line results translation should translate "InvalidElementState" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Cannot perform operation with element because this element is in an invalid state (e.g. attempting to click a disabled element)",
+}
+`;
+
+exports[`Test line results translation should translate "InvalidSelector" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Element selector is malformed",
+}
+`;
+
+exports[`Test line results translation should translate "NoAlertOpenError" error 1`] = `
+Object {
+  "type": "text",
+  "value": "There was no modal dialog on page",
+}
+`;
+
+exports[`Test line results translation should translate "NoSuchElement" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Element was not found",
+}
+`;
+
+exports[`Test line results translation should translate "NoSuchFrame" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Cannot switch to frame",
+}
+`;
+
+exports[`Test line results translation should translate "NoSuchWindow" error 1`] = `
+Object {
+  "type": "text",
+  "value": "A request to switch to a different window could not be satisfied because the window could not be found",
+}
+`;
+
+exports[`Test line results translation should translate "ScriptTimeout" error 1`] = `
+Object {
+  "type": "text",
+  "value": "A script takes too long to execute",
+}
+`;
+
+exports[`Test line results translation should translate "StaleElementReference" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Element is no longer inside DOM",
+}
+`;
+
+exports[`Test line results translation should translate "Success" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Command executed successfully",
+}
+`;
+
+exports[`Test line results translation should translate "Timeout" error 1`] = `
+Object {
+  "type": "text",
+  "value": "This command takes too long to execute",
+}
+`;
+
+exports[`Test line results translation should translate "UnableToSetCookie" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Cannot set the specified cookie value",
+}
+`;
+
+exports[`Test line results translation should translate "UnexpectedAlertOpen" error 1`] = `
+Object {
+  "type": "text",
+  "value": "A modal dialog was open, blocking this operation",
+}
+`;
+
+exports[`Test line results translation should translate "UnknownCommand" error 1`] = `
+Object {
+  "type": "text",
+  "value": "The requested resource could not be found, or a request was received using an HTTP method that is not supported by the mapped resource",
+}
+`;
+
+exports[`Test line results translation should translate "XPathLookupError" error 1`] = `
+Object {
+  "type": "text",
+  "value": "An error occurred while searching for an element by XPath",
+}
+`;
+
+exports[`Test line results translation should translate "activationExpired" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Could not open the app because the DevKit/TestKit expired",
+}
+`;
+
+exports[`Test line results translation should translate "appCrashed" error 1`] = `
+Object {
+  "type": "text",
+  "value": "App seems to have crashed",
+}
+`;
+
+exports[`Test line results translation should translate "appNotRunning" error 1`] = `
+Object {
+  "type": "text",
+  "value": "App is not running",
+}
+`;
+
+exports[`Test line results translation should translate "appRunning" error 1`] = `
+Object {
+  "type": "text",
+  "value": "App is still running",
+}
+`;
+
+exports[`Test line results translation should translate "appleAppSignError" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Failed to launch app: App code sign error. https://suite.st/docs/devices/apple-tv/#app-code-sign-error",
+}
+`;
+
+exports[`Test line results translation should translate "appleError65" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Failed to launch app: Apple ID account error. https://suite.st/docs/devices/apple-tv/#apple-id-account-error",
+}
+`;
+
+exports[`Test line results translation should translate "appleError70" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Failed to launch app: Xcode error. https://suite.st/docs/devices/apple-tv/#xcode-error",
+}
+`;
+
+exports[`Test line results translation should translate "bootstrapAppNotDetected" error 1`] = `
+Object {
+  "type": "text",
+  "value": "The Suitest bootstrap application was not detected",
+}
+`;
+
+exports[`Test line results translation should translate "bootstrapPageNotDetected" error 1`] = `
+Object {
+  "type": "text",
+  "value": "App seems to have exited correctly but something went wrong when loading the Suitest channel autostart application",
+}
+`;
+
+exports[`Test line results translation should translate "conditionNotSatisfied" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Maximum amount of key presses reached. Condition was not satisfied",
+}
+`;
+
+exports[`Test line results translation should translate "connectionNotAuthorized" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Connection not authorized. Debug mode is not allowed on the device, please make sure it is enabled",
+}
+`;
+
+exports[`Test line results translation should translate "deviceConnectionError" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Failed to initialize device control",
+}
+`;
+
+exports[`Test line results translation should translate "driverException" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Unexpected exception occurred on connected device. Please, contact support@suite.st if you see this often",
+}
+`;
+
+exports[`Test line results translation should translate "failedStart" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Failed to open application",
+}
+`;
+
+exports[`Test line results translation should translate "higherOSVersionRequired" error 1`] = `
+Object {
+  "type": "text",
+  "value": "The app package requires higher OS version",
+}
+`;
+
+exports[`Test line results translation should translate "initPlatformFailed" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Failed to start Suitest bootstrap application on this device",
+}
+`;
+
+exports[`Test line results translation should translate "internalError" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Internal error occurred",
+}
+`;
+
+exports[`Test line results translation should translate "invalidCredentials" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Credentials for this device were changed",
+}
+`;
+
+exports[`Test line results translation should translate "invalidOpenAppOverrideReference" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Could not start execution, please check open app override setting. https://suite.st/docs/application/more-configuration-options/#open-app-override-test",
+}
+`;
+
+exports[`Test line results translation should translate "invalidUrl" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Application could not be launched. Please verify you have provided URL for this configuration",
+}
+`;
+
+exports[`Test line results translation should translate "lateManualLaunch" error 1`] = `
+Object {
+  "type": "text",
+  "value": "In this configuration the \\"open app\\" commands inside the test are not supported. You may however start the test with \\"open app\\" command",
+}
+`;
+
+exports[`Test line results translation should translate "launchExpired" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Identical scheduling aborted",
+}
+`;
+
+exports[`Test line results translation should translate "missingApp" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Application is not installed on the device",
+}
+`;
+
+exports[`Test line results translation should translate "missingCpp" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Make sure you have Microsoft Visual C++ Redistributable installed. https://suite.st/docs/devices/playstation",
+}
+`;
+
+exports[`Test line results translation should translate "missingDotNet" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Please make sure you have the .NET Framework installed. https://suite.st/docs/troubleshooting/playstation/#net-framework-not-installed",
+}
+`;
+
+exports[`Test line results translation should translate "missingPSSDK" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Please make sure that you have the PlayStation SDK installed. https://suite.st/docs/troubleshooting/playstation/#playstation-sdk-not-installed",
+}
+`;
+
+exports[`Test line results translation should translate "missingPackage" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Application package was not found on the target device",
+}
+`;
+
+exports[`Test line results translation should translate "noConnection" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Could not connect to server while polling URL",
+}
+`;
+
+exports[`Test line results translation should translate "noHasLines" error 1`] = `
+Object {
+  "type": "text",
+  "value": "No assertion properties defined",
+}
+`;
+
+exports[`Test line results translation should translate "notActiveDeveloperMode" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Failed to launch application. Is \\"developer mode\\" turned on? https://suite.st/docs/devices/lg-webos/#enable-developer-mode-on-the-device",
+}
+`;
+
+exports[`Test line results translation should translate "notExpectedResponse" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Unexpected response received while polling URL",
+}
+`;
+
+exports[`Test line results translation should translate "notResponding" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Device stopped responding",
+}
+`;
+
+exports[`Test line results translation should translate "outOfMemory" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Failed to open the app. Device is out of memory, please restart the device",
+}
+`;
+
+exports[`Test line results translation should translate "packageNotFound" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Selected configuration does not contain an app package. Upload a package on your app\`s configuration page before continuing",
+}
+`;
+
+exports[`Test line results translation should translate "serverError" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Internal error occurred",
+}
+`;
+
+exports[`Test line results translation should translate "signInRequired" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Account needs to be signed in on target device",
+}
+`;
+
+exports[`Test line results translation should translate "suitestifyError" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Suitestify failed to start. Check your Suitestify settings",
+}
+`;
+
+exports[`Test line results translation should translate "suitestifyRequired" error 1`] = `
+Object {
+  "type": "text",
+  "value": "This assertion only works with Suitestify. You can configure your app to use Suitestify in the app settings. Please note that Suitestify is not available for all platforms",
+}
+`;
+
+exports[`Test line results translation should translate "targetManagerBusy" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Please try again in a few minutes",
+}
+`;
+
+exports[`Test line results translation should translate "testIsNotStarted" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Cannot continue with the current test anymore because of previous errors or bad initialization",
+}
+`;
+
+exports[`Test line results translation should translate "timeLimitExceeded" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Test execution limit exceeded (based on your subscription)",
+}
+`;
+
+exports[`Test line results translation should translate "unclickableElement" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Element click is obstructed by different element",
+}
+`;
+
+exports[`Test line results translation should translate "unfocusableElement" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Element can't receive focus to enter text",
+}
+`;
+
+exports[`Test line results translation should translate "unknownWebDriverKey" error 1`] = `
+Object {
+  "type": "text",
+  "value": "This key is not supported on the target device",
+}
+`;
+
+exports[`Test line results translation should translate "wrongApp" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Wrong app ID detected",
+}
+`;
+
+exports[`Test line results translation should translate "wrongAppDetected" error 1`] = `
+Object {
+  "type": "text",
+  "value": "App seems to have exited correctly, however another app has been opened",
+}
+`;

@@ -16,7 +16,6 @@ Error translations support small subset of Markdown text formatting:
 Messages are split into following categories:
 
 * [Test bootstrap](/packages/translate/docs/bootstrap.md)
-* [Test line translations](/packages/translate/docs/testLines.md)
 
 ## Using the library
 
@@ -29,3 +28,18 @@ The UMD build is isomorphic and already minified. It has one peer dependency - "
 Make sure it's either available is node_modules (when running in NodeJS), or as a global "ub" variable in browser.
 
 CommonJS build is not minified and meant to be used with NodeJS (or with bundler).
+
+## Lines and line result translation
+
+`@suitest/translate` can translate a line (optionally with line result) into a [smst] format. Then, you can use
+one of the following libs to convert smst into human readable language:
+
+* [@suitest/smst-to-text] - to convert it to the plain text format
+* [@suitest/smst-to-html] - to convert it to HTML fragment
+
+For a complete demo on library usage check out [SuitestAutomation/translate-demo] repo.
+
+[smst]: https://github.com/SuitestAutomation/suitest/tree/master/packages/smst
+[@suitest/smst-to-text]: https://github.com/SuitestAutomation/suitest/tree/master/packages/smst-to-text
+[@suitest/smst-to-html]: https://github.com/SuitestAutomation/suitest/tree/master/packages/smst-to-html
+[SuitestAutomation/translate-demo]: https://github.com/SuitestAutomation/translate-demo
