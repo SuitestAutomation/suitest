@@ -23,5 +23,6 @@ jobs:
       - run:
           name: Run Linters and Unit Tests
           command: |
+            npm run build
             npm run lint
             npm run coverage
