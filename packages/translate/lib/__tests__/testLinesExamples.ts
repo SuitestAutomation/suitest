@@ -400,12 +400,12 @@ export const testLinesExamples = {
 	// Press button
 	'Press ... once': (ids = ['LEFT']): TestLine => ({
 		...baseTestLine,
-		type: 'press',
+		type: 'button',
 		ids,
 	}),
 	'Press ... only if ...': (ids = ['LEFT'], condition: Condition = appExitedCondition): TestLine => ({
 		...baseTestLine,
-		type: 'press',
+		type: 'button',
 		ids,
 		condition,
 		negateCondition: true,
@@ -417,7 +417,7 @@ export const testLinesExamples = {
 		delay: number | string = 3000
 	): TestLine => ({
 		...baseTestLine,
-		type: 'press',
+		type: 'button',
 		ids,
 		condition,
 		negateCondition: false,
@@ -430,7 +430,7 @@ export const testLinesExamples = {
 		delay: number | string = 3000
 	): TestLine => ({
 		...baseTestLine,
-		type: 'press',
+		type: 'button',
 		ids,
 		count,
 		delay,

@@ -424,7 +424,7 @@ export const translateTestLine = ({
 			return translateSleepTestLine(testLine, appConfig, lineResult);
 		case 'pollUrl':
 			return translatePollUrlTestLine(testLine, appConfig, lineResult);
-		case 'press':
+		case 'button':
 			return translatePressButtonTestLine(testLine, appConfig, elements, lineResult);
 		case 'runSnippet':
 			return translateRunTestTestLine(testLine, appConfig, elements, snippets, lineResult);
