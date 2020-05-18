@@ -1,6 +1,6 @@
 {
   "name": "@suitest/smst-to-html",
-  "version": "2.1.1",
+  "version": "3.0.0",
   "description": "Utility to convert SMST to HTML",
   "repository": {
     "type": "git",
@@ -8,7 +8,8 @@
     "directory": "packages/smst-to-html"
   },
   "kywords": [
-    "suitest", "unist"
+    "suitest",
+    "unist"
   ],
   "license": "MIT",
   "bugs": {
@@ -19,7 +20,8 @@
   "files": [
     "umd/",
     "commonjs/",
-    "suitest-test-line.css"
+    "suitest-test-line.css",
+    "docs/"
   ],
   "scripts": {
     "build": "npm run build:umd && npm run build:commonjs&& cp ./lib/suitest-test-line.css ./",
@@ -30,6 +32,6 @@
     "prepublishOnly": "npm run coverage && npm run build"
   },
   "dependencies": {
-    "@suitest/smst": "2.1.1"
+    "@suitest/smst": "^3.0.0"
   }
 }

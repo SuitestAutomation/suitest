@@ -1,6 +1,6 @@
 {
   "name": "@suitest/smst-to-text",
-  "version": "2.1.1",
+  "version": "3.0.0",
   "description": "Utility to convert SMST to plain text or ANSI-styled text",
   "repository": {
     "type": "git",
@@ -8,7 +8,9 @@
     "directory": "packages/smst-to-text"
   },
   "kywords": [
-    "suitest", "unist", "smst"
+    "suitest",
+    "unist",
+    "smst"
   ],
   "license": "MIT",
   "bugs": {
@@ -18,7 +20,8 @@
   "main": "umd/toText.js",
   "files": [
     "umd/",
-    "commonjs/"
+    "commonjs/",
+    "docs/"
   ],
   "scripts": {
     "build": "npm run build:umd && npm run build:commonjs",
@@ -29,6 +32,6 @@
     "prepublishOnly": "npm run coverage && npm run build"
   },
   "dependencies": {
-    "@suitest/smst": "2.1.1"
+    "@suitest/smst": "^3.0.0"
   }
 }
