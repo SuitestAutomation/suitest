@@ -23,8 +23,8 @@ import {
 } from '@suitest/types';
 import {translateTestLine} from './testLine';
 import {translateElementProperty} from './condition';
-import {AssertTestLine} from "@suitest/types/lib";
-import {mapStatus} from "./utils";
+import {AssertTestLine} from '@suitest/types/lib';
+import {mapStatus} from './utils';
 
 const simpleErrorMap: {[key: string]: string} = {
 	failedStart: 'Failed to open application',
