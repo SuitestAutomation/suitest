@@ -29,6 +29,7 @@ Object {
 exports[`Test Lines translation Should translate test line "Assert ... then fail" 1`] = `
 Object {
   "children": Array [],
+  "status": "success",
   "title": Array [
     Object {
       "type": "text",

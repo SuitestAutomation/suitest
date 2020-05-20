@@ -23,6 +23,8 @@ import {
 } from '@suitest/types';
 import {translateTestLine} from './testLine';
 import {translateElementProperty} from './condition';
+import {AssertTestLine} from "@suitest/types/lib";
+import {mapStatus} from "./utils";
 
 const simpleErrorMap: {[key: string]: string} = {
 	failedStart: 'Failed to open application',
@@ -421,9 +423,21 @@ export const translateTestLineResult = (options: {
 }): TestLineResultNode => {
 	const testLineTranslation = translateTestLine(options);
 	const {lineResult} = options;
+	const {then} = options.testLine as AssertTestLine;
+
+	if (lineResult && then === 'fail') {
+		const status = mapStatus(lineResult?.result) === 'fail' ? 'fail' : 'success';
+		const messege = mapStatus(lineResult?.result) === 'fail'
+			? <text>Condition was not met.</text>
+			: <text>Condition was met.</text>;
+
+		return <test-line-result
+			status={status}
+			message={messege}
+		>{testLineTranslation}</test-line-result> as TestLineResultNode;
+	}
 
 	if (!lineResult || lineResult.result === 'success') {
-		// TODO - message for inverse "then" condition
 		return <test-line-result
 			status="success"
 		>{testLineTranslation}</test-line-result> as TestLineResultNode;

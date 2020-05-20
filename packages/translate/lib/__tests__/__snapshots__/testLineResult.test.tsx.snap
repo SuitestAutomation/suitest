@@ -397,6 +397,487 @@ exports[`Test line results translation Translate assert lines translate "assert 
 
 exports[`Test line results translation Translate assert lines translate "assert ps video" render without result 2`] = `"Assert: PlayStation 4 video had no error for any source "`;
 
+exports[`Test line results translation Translate assert lines with then fail translate "assert application has exited" render with fail result 1`] = `
+"✔ Assert: Application has exited  then fail
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert application has exited" render with success result 1`] = `
+"✖ Assert: Application has exited  then fail
+  success: Condition was met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert application has exited" render without result 1`] = `"✔ Assert: Application has exited  then fail"`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert cookie" existingSubject error 1`] = `
+"✔ Assert: cookie cookie-name does not exist  then fail
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert cookie" exprException error 1`] = `
+"✔ Assert: cookie cookieName  then fail
+  ✖ cookieName matches
+    > cookieValue
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert cookie" missingSubject error 1`] = `
+"✔ Assert: cookie suitest-cookie  then fail
+  ✖ suitest-cookie = suitest
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert cookie" queryFailed (cookie value not matched) error 1`] = `
+"✔ Assert: cookie suitest-cookie  then fail
+  ✖ suitest-cookie = suitest          
+                   → some cookie value
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert cookie" queryFailed match js failed 1`] = `
+"✔ Assert: cookie suitest-cookie  then fail
+  ✖ suitest-cookie matches
+    > function somePredicate(val) {
+    > 	return false;
+    > }           
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert cookie" with success result 1`] = `
+"✖ Assert: cookie suitest-cookie  then fail
+  ✔ suitest-cookie = suitest
+  success: Condition was met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert cookie" without result 1`] = `
+"✔ Assert: cookie suitest-cookie  then fail
+  suitest-cookie = suitest"
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert current location" success errorType: "queryFailed" matchjs failed 1`] = `
+"✔ Assert: Current location  then fail
+  ✖ current location matches JS
+    > function somePredicate(location) {
+    > 	return false;
+    > }             
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert current location" success errorType: "queryFailed" matchjs failed 2`] = `
+"✔ Assert: Current location  then fail
+  ✖ current location matches JS
+    > something     
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert current location" success errorType: "queryFailed" with message.code 1`] = `
+"✔ Assert: Current location  then fail
+  ✖ current location contains http://some.url
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert current location" success errorType: "queryFailed", location value not matched 1`] = `
+"✔ Assert: Current location  then fail
+  ✖ current location contains http://some.url                                        
+                     →        http://file.suite.st/sampleapp_staging/index-hbbtv.html
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert current location" success with success result 1`] = `
+"✖ Assert: Current location  then fail
+  ✔ current location contains http://some.url
+  success: Condition was met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert current location" success without result 1`] = `
+"✔ Assert: Current location  then fail
+  current location contains http://some.url"
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert element" invalidRepositoryReference results general error 1`] = `
+"✔ Assert: Unknown element (some-id) exists  then fail
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert element" invalidRepositoryReference results notExistingElement message code 1`] = `
+"✔ Assert: Unknown element (some-id) exists  then fail
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert element" invalidRepositoryReference results notExistingPlatform message code 1`] = `
+"✔ Assert: Element 1 exists  then fail
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert element" queryFailed results element visible fail 1`] = `
+"✔ Assert: My element is visible  then fail
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert element" queryFailed results existingSubject 1`] = `
+"✔ Assert: Element 1 does not exist  then fail
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert element" queryFailed results expression error 1`] = `
+"✔ Assert: Unknown element (unknown-id)  then fail
+  ✔ background color = rgba(0, 0, 0, 0)                                            
+  ✔ border color     = rgb(255, 255, 255)                                          
+  ✔ border style     = none                                                        
+  ✔ border width     = 0px                                                         
+  ✖ class            = componentcontainer container widget                         
+                     → active componentcontainer container widget                  
+  ✔ height           = 720                                                         
+  ✔ href             = [EMPTY STRING]                                              
+  ✔ id               = maincontainer                                               
+  ✔ image            = [EMPTY STRING]                                              
+  ✔ left             = 0                                                           
+  ✔ opacity          = 1                                                           
+  ✔ text color       = rgba(255, 255, 255, 1)                                      
+  ✖ text             = Some short text                                             
+                     → WatchMe New Pictures Videos Music More All Files Candies Che
+                       rries strawberry-cake Big Buck Bunny (trailer).mp4 boiled-sw
+                       eets.jpg cakes_tarts_desserts_sweets_berries_strawberries_bl
+                       ackberries_blueberries_currants_75280_1400x1050.jpg DSC_0159
+                       .JPG 7 Images 1 folder folder Cherries strawberry-cake boile
+                       d-sweets.jpg cakes_tarts_desserts_sweets_berries_strawberrie
+                       s_blackberries_blueberries_currants_75280_1400x1050.jpg DSC_
+                       0159.JPG 0 Music 6 Videos SINTEL.mp4 Big Buck Bunny (trailer
+                       ).mp4                                                       
+  ✔ top              = 0                                                           
+  ✔ width            = 1280                                                        
+  ✖ z-index          < 0                                                           
+                     → 0                                                           
+  ✖ visibility       = invisible                                                   
+                     → property missing                                            
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert element" queryFailed results expression error 2`] = `
+"✔ Assert: Unknown element (unknown-id)  then fail
+  ✔ background color =        rgba(0, 0, 0, 0)                                            
+  ✔ border color     =        rgb(255, 255, 255)                                          
+  ✔ border style     =        none                                                        
+  ✔ border width     =        0px                                                         
+  ✖ class            =        componentcontainer container widget                         
+                     →        active componentcontainer container widget                  
+  ✔ height           =        720                                                         
+  ✔ href             =        [EMPTY STRING]                                              
+  ✔ id               =        maincontainer                                               
+  ✔ image            =        [EMPTY STRING]                                              
+  ✔ left             =        0                                                           
+  ✔ opacity          =        1                                                           
+  ✔ text color       =        rgba(255, 255, 255, 1)                                      
+  ✖ text             =        [EMPTY STRING]                                              
+                     →        WatchMe New Pictures Videos Music More All Files Candies Che
+                              rries strawberry-cake Big Buck Bunny (trailer).mp4 boiled-sw
+                              eets.jpg cakes_tarts_desserts_sweets_berries_strawberries_bl
+                              ackberries_blueberries_currants_75280_1400x1050.jpg DSC_0159
+                              .JPG 7 Images 1 folder folder Cherries strawberry-cake boile
+                              d-sweets.jpg cakes_tarts_desserts_sweets_berries_strawberrie
+                              s_blackberries_blueberries_currants_75280_1400x1050.jpg DSC_
+                              0159.JPG 0 Music 6 Videos SINTEL.mp4 Big Buck Bunny (trailer
+                              ).mp4                                                       
+  ✔ top              =        0                                                           
+  ✔ width            =        1280                                                        
+  ✖ z-index          <        0                                                           
+                     →        0                                                           
+  ✖ visibility       =        invisible                                                   
+                     →        property missing                                            
+  ✖ z-index          contains 0                                                           
+                     →        wrong format                                                
+  ✖ text color       =        rgba(255, dddd, 255, 1)                                     
+                     →        wrong format                                                
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert element" queryFailed results handle error because of js error for match js 1`] = `
+"✔ Assert: {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JavaScript  then fail
+  ✖ {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JS
+    > function(((testSubject) {                    
+    > 	console.log(testSubject);                   
+    > 	return true;                                
+    > }                                            
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert element" queryFailed results match js fail 1`] = `
+"✔ Assert: {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JavaScript  then fail
+  ✖ {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JS
+    > someJS();                                    
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert element" queryFailed results missingSubject 1`] = `
+"✔ Assert: Element 1 exists  then fail
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert element" without error "element ... does not exist" 1`] = `"✔ Assert: Element 1 does not exist  then fail"`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert element" without error "element ... does not exist" with success 1`] = `
+"✖ Assert: Element 1 does not exist  then fail
+  success: Condition was met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert element" without error "element ... exist" 1`] = `"✔ Assert: Element 1 exists  then fail"`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert element" without error "element ... exist" with success 1`] = `
+"✖ Assert: Element 1 exists  then fail
+  success: Condition was met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert element" without error "element ... is visible" 1`] = `"✔ Assert: My element is visible  then fail"`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert element" without error "element ... is visible" with success 1`] = `
+"✖ Assert: My element is visible  then fail
+  success: Condition was met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert element" without error "element matches JS with vars" 1`] = `
+"✔ Assert: {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JavaScript  then fail
+  {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JS
+    > someJS(\\"123\\");                             
+  (with variables)                                          
+    > someJS(\\"<%var1%>\\");                        "
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert element" without error "element matches JS with vars" with success 1`] = `
+"✖ Assert: {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JavaScript  then fail
+  ✔ {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JS
+    > someJS(\\"123\\");                               
+  ✔ (with variables)                                          
+    > someJS(\\"<%var1%>\\");                          
+  success: Condition was met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert element" without error "element matches JS" 1`] = `
+"✔ Assert: {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JavaScript  then fail
+  {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JS
+    > someJS();                                  "
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert element" without error "element matches JS" with success 1`] = `
+"✖ Assert: {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JavaScript  then fail
+  ✔ {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JS
+    > someJS();                                    
+  success: Condition was met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert element" without error "element properties" 1`] = `
+"✔ Assert: Unknown element (unknown-id)  then fail
+  video position >=       123                       
+  height         =        123 ± 3v5 (123 ± <%var3%>)
+  text           contains expected text             "
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert javascript expression" errorType: "queryFailed" expression matching failed 1`] = `
+"✔ Assert: JavaScript expression  then fail
+  ✖ expression         
+    > 1 + 1          
+  ✖ expression result = 3
+                      → 2
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert javascript expression" errorType: "queryFailed" expression matching failed 2`] = `
+"✔ Assert: JavaScript expression  then fail
+  ✖ expression                  
+    > 120 + 3        
+  ✖ expression result ! contains 12 
+                      →          123
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert javascript expression" errorType: "queryFailed" handle javascript exception 1`] = `
+"✔ Assert: JavaScript expression  then fail
+  ✖ expression         
+    > function test() { return 123
+  ✖ expression result = 123
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert javascript expression" render error when javascript expression missed 1`] = `
+"✔ Assert: JavaScript expression  then fail
+  ✖ expression         
+    > [NOT SPECIFIED]
+  ✖ expression result = [NOT SPECIFIED]
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert javascript expression" render error when javascript expression missed 2`] = `
+"✔ Assert: JavaScript expression  then fail
+  ✖ expression         
+    > [NOT SPECIFIED]
+  ✖ expression result = 1
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert javascript expression" render error when js expression specified but comparing value is empty 1`] = `
+"✔ Assert: JavaScript expression  then fail
+  ✖ expression         
+    > 1              
+  ✖ expression result = [NOT SPECIFIED]
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert javascript expression" render with success result 1`] = `
+"✖ Assert: JavaScript expression  then fail
+  ✔ expression         
+    > someJS()       
+  ✔ expression result = returned value
+  success: Condition was met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert javascript expression" render with success result 2`] = `
+"✖ Assert: JavaScript expression  then fail
+  ✔ expression         
+    > someJS(\\"123\\")  
+  ✔ (with variables)   
+    > someJS(\\"<%var1%>\\")
+  ✔ expression result = returned value
+  success: Condition was met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert javascript expression" render without result 1`] = `
+"✔ Assert: JavaScript expression  then fail
+  expression         
+    > someJS()     
+  expression result = returned value"
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert javascript expression" render without result 2`] = `
+"✔ Assert: JavaScript expression  then fail
+  expression         
+    > someJS(\\"123\\")
+  (with variables)   
+    > someJS(\\"<%var1%>\\")
+  expression result = returned value"
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert network" render fail results request/response headers not matched 1`] = `
+"✔ Assert: network request was made in entire network log  then fail
+  URL                                        =  http://suite.st/123 (http://suite.st/<%var1%>)              
+  ✖ request method                           != GET                                                         
+                                             →  GET                                                         
+  ✔ request header Accept                    =  text/html,application/xhtml+xml,application/xml;q=0.9,image/
+                                                webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q
+                                                =0.9                                                        
+  ✔ request header Accept-Language           =  en-US,en;q=0.9                                              
+  ✔ request header Content-Length            =  0                                                           
+  ✔ request header Host                      =  file.suite.st                                               
+  ✖ request header If-Modified-Since         =  Fri, 25 Jan 2019 16:33:31 GMT                               
+                                             →  not found                                                   
+  ✖ request header If-None-Match             =  W/\\"5c4b3a5b-19e2\\"                                           
+                                             →  not found                                                   
+  ✔ request header Upgrade-Insecure-Requests =  1                                                           
+  ✔ request header User-Agent                =  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+                                                 (KHTML, like Gecko) Chrome/81.0.4044.122 Safari/537.36     
+  ✔ request header Via                       =  1.1 suitestify                                              
+  ✖ request body                             =  asdfs                                                       
+                                             →  [EMPTY STRING]                                              
+  ✖ response status                          =  303                                                         
+                                             →  200                                                         
+  ✔ response header Cache-Control            =  max-age=300                                                 
+  ✔ response header Connection               =  keep-alive                                                  
+  ✖ response header Date                     =  Mon, 27 Apr 2020 13:08:59 GMT                               
+                                             →  Tue, 28 Apr 2020 09:58:10 GMT                               
+  ✔ response header Etag                     =  \\"5c4b3a5b-19e2\\"                                             
+  ✖ response header Expires                  =  Mon, 27 Apr 2020 13:13:59 GMT                               
+                                             →  Tue, 28 Apr 2020 10:03:10 GMT                               
+  ✔ response header Last-Modified            =  Fri, 25 Jan 2019 16:33:31 GMT                               
+  ✔ response header Server                   =  nginx                                                       
+  ✖ response body                            =  asdfasdddddd                                                
+                                             →  <!DOCTYPE html PUBLIC \\"-//HbbTV//1.1.1//EN\\" \\"http://www.hbbt
+                                                v.org/dtd/HbbTV-1.1.1.dtd\\">
+<html xmlns=\\"http://www.w3.org/1
+                                                999/xhtml\\">
+<head>
+    <title>HbbTv App</title>
+    <link re
+                                                l=\\"stylesheet\\" href=\\"css/base.css\\" />
+</head>
+<body>
+    <di
+                                                v id=\\"content\\"></div>
+</body>
+</html>                       
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert network" render fail results syntax error when status compare type is "CONTAINS" 1`] = `
+"✔ Assert: network request was made in entire network log  then fail
+  URL             =        http://suite.st/123 (http://suite.st/<%var1%>)
+  response status contains 303                                           
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert network" render fail results url not matched 1`] = `
+"✔ Assert: network request was made in entire network log  then fail
+  ✖ URL = http://suite.st/123 (http://suite.st/<%var1%>)
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert network" render fail results url not matched 2`] = `
+"✔ Assert: network request was not made excluding previously matched requests  then fail
+  ✖ URL                                          contains  /partial/url/123 (/partial/url/<%var1%>)                  
+  request method                                 =         GET                                                       
+  request header Accept-Type                     contains  text/javascript                                           
+  request body                                   =         request val2 body (request <%var2%> body)                 
+  response status                                >         123                                                       
+  response header Content-123 (Content-<%var1%>) ends with val2/javascript (<%var2%>/javascript)                     
+  response body                                  =         response <%non_existing_var%> <%kind-of|var but not%> body
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert network" render with success result 1`] = `
+"✖ Assert: network request was made in entire network log  then fail
+  URL = http://suite.st/123 (http://suite.st/<%var1%>)
+  success: Condition was met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert network" render with success result 2`] = `
+"✖ Assert: network request was not made excluding previously matched requests  then fail
+  URL                                            contains  /partial/url/123 (/partial/url/<%var1%>)                  
+  request method                                 =         GET                                                       
+  request header Accept-Type                     contains  text/javascript                                           
+  request body                                   =         request val2 body (request <%var2%> body)                 
+  response status                                >         123                                                       
+  response header Content-123 (Content-<%var1%>) ends with val2/javascript (<%var2%>/javascript)                     
+  response body                                  =         response <%non_existing_var%> <%kind-of|var but not%> body
+  success: Condition was met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert network" render without result 1`] = `
+"✔ Assert: network request was made in entire network log  then fail
+  URL = http://suite.st/123 (http://suite.st/<%var1%>)"
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert network" render without result 2`] = `
+"✔ Assert: network request was not made excluding previously matched requests  then fail
+  URL                                            contains  /partial/url/123 (/partial/url/<%var1%>)                  
+  request method                                 =         GET                                                       
+  request header Accept-Type                     contains  text/javascript                                           
+  request body                                   =         request val2 body (request <%var2%> body)                 
+  response status                                >         123                                                       
+  response header Content-123 (Content-<%var1%>) ends with val2/javascript (<%var2%>/javascript)                     
+  response body                                  =         response <%non_existing_var%> <%kind-of|var but not%> body"
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert ps video" render with fail result 1`] = `
+"✔ Assert: PlayStation 4 video had no error for any source  then fail
+  fail: Condition was not met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert ps video" render with success result 1`] = `
+"✖ Assert: PlayStation 4 video had no error for any source  then fail
+  success: Condition was met."
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert ps video" render without result 1`] = `"✔ Assert: PlayStation 4 video had no error for current source  then fail"`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "assert ps video" render without result 2`] = `"✔ Assert: PlayStation 4 video had no error for any source  then fail"`;
+
 exports[`Test line results translation should translate "ActionNotAvailable" error 1`] = `
 Object {
   "type": "text",
