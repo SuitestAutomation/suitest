@@ -948,5 +948,5 @@ exports[`Test line results translation translate "openAppOverrideFailed" render 
 
 exports[`Test line results translation translate "openAppOverrideFailed" render with lineId 1`] = `
 "✖ Open application
-  fail: Open app override failed on line line-id-1"
+  fail: Open app override failed"
 `;

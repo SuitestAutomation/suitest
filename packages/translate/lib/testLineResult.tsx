@@ -20,7 +20,6 @@ import {
 	InvalidRepositoryReferenceError,
 	TestLineErrorResult,
 	QueryFailedInvalidUrl,
-	OpenAppOverrideFailedError,
 	TestLine, AppConfiguration, Elements, Snippets,
 } from '@suitest/types';
 import {translateTestLine} from './testLine';
@@ -282,10 +281,8 @@ const translateInvalidResultError = (result: InvalidResultError): TextNode => {
 };
 
 // TODO: investigate possible additional errorType's, and "message" is completely valid result.
-const translateOpenAppOverrideFailedError = (result: OpenAppOverrideFailedError): Node =>
-	'lineId' in result.message ?
-		<text>Open app override failed on line {result.message.lineId}</text> as TextNode :
-		<text>Open app override failed</text>;
+const translateOpenAppOverrideFailedError = (): Node =>
+	<text>Open app override failed</text>;
 
 
 const translateInvalidReferenceError = (result: InvalidReferenceError): TextNode => {
@@ -398,7 +395,7 @@ export const translateResultMessage = (result: TestLineErrorResult): Node => {
 		return translateInvalidResultError(result);
 	}
 	if (result.errorType === 'openAppOverrideFailed') {
-		return translateOpenAppOverrideFailedError(result);
+		return translateOpenAppOverrideFailedError();
 	}
 	if (result.errorType === 'invalidReference') {
 		return translateInvalidReferenceError(result);
