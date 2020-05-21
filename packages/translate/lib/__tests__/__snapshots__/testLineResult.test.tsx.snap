@@ -398,129 +398,129 @@ exports[`Test line results translation Translate assert lines translate "assert 
 exports[`Test line results translation Translate assert lines translate "assert ps video" render without result 2`] = `"Assert: PlayStation 4 video had no error for any source "`;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert application has exited" render with fail result 1`] = `
-"✔ Assert: Application has exited  then fail
-  fail: Condition was not met."
+"✔ Assert: Application has exited then fail
+  success: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert application has exited" render with success result 1`] = `
-"✖ Assert: Application has exited  then fail
-  success: Condition was met."
+"✖ Assert: Application has exited then fail
+  fail: Condition was met"
 `;
 
-exports[`Test line results translation Translate assert lines with then fail translate "assert application has exited" render without result 1`] = `"✔ Assert: Application has exited  then fail"`;
+exports[`Test line results translation Translate assert lines with then fail translate "assert application has exited" render without result 1`] = `"Assert: Application has exited then fail"`;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert cookie" existingSubject error 1`] = `
-"✔ Assert: cookie cookie-name does not exist  then fail
-  fail: Condition was not met."
+"✔ Assert: cookie cookie-name does not exist then fail
+  success: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert cookie" exprException error 1`] = `
-"✔ Assert: cookie cookieName  then fail
+"✔ Assert: cookie cookieName then fail
   ✖ cookieName matches
     > cookieValue
-  fail: Condition was not met."
+  success: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert cookie" missingSubject error 1`] = `
-"✔ Assert: cookie suitest-cookie  then fail
+"✔ Assert: cookie suitest-cookie then fail
   ✖ suitest-cookie = suitest
-  fail: Condition was not met."
+  success: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert cookie" queryFailed (cookie value not matched) error 1`] = `
-"✔ Assert: cookie suitest-cookie  then fail
+"✔ Assert: cookie suitest-cookie then fail
   ✖ suitest-cookie = suitest          
                    → some cookie value
-  fail: Condition was not met."
+  success: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert cookie" queryFailed match js failed 1`] = `
-"✔ Assert: cookie suitest-cookie  then fail
+"✔ Assert: cookie suitest-cookie then fail
   ✖ suitest-cookie matches
     > function somePredicate(val) {
     > 	return false;
     > }           
-  fail: Condition was not met."
+  success: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert cookie" with success result 1`] = `
-"✖ Assert: cookie suitest-cookie  then fail
+"✖ Assert: cookie suitest-cookie then fail
   ✔ suitest-cookie = suitest
-  success: Condition was met."
+  fail: Condition was met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert cookie" without result 1`] = `
-"✔ Assert: cookie suitest-cookie  then fail
+"Assert: cookie suitest-cookie then fail
   suitest-cookie = suitest"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert current location" success errorType: "queryFailed" matchjs failed 1`] = `
-"✔ Assert: Current location  then fail
+"✔ Assert: Current location then fail
   ✖ current location matches JS
     > function somePredicate(location) {
     > 	return false;
     > }             
-  fail: Condition was not met."
+  success: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert current location" success errorType: "queryFailed" matchjs failed 2`] = `
-"✔ Assert: Current location  then fail
+"✔ Assert: Current location then fail
   ✖ current location matches JS
     > something     
-  fail: Condition was not met."
+  success: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert current location" success errorType: "queryFailed" with message.code 1`] = `
-"✔ Assert: Current location  then fail
+"✔ Assert: Current location then fail
   ✖ current location contains http://some.url
-  fail: Condition was not met."
+  success: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert current location" success errorType: "queryFailed", location value not matched 1`] = `
-"✔ Assert: Current location  then fail
+"✔ Assert: Current location then fail
   ✖ current location contains http://some.url                                        
                      →        http://file.suite.st/sampleapp_staging/index-hbbtv.html
-  fail: Condition was not met."
+  success: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert current location" success with success result 1`] = `
-"✖ Assert: Current location  then fail
+"✖ Assert: Current location then fail
   ✔ current location contains http://some.url
-  success: Condition was met."
+  fail: Condition was met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert current location" success without result 1`] = `
-"✔ Assert: Current location  then fail
+"Assert: Current location then fail
   current location contains http://some.url"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert element" invalidRepositoryReference results general error 1`] = `
-"✔ Assert: Unknown element (some-id) exists  then fail
-  fail: Condition was not met."
+"✔ Assert: Unknown element (some-id) exists then fail
+  success: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert element" invalidRepositoryReference results notExistingElement message code 1`] = `
-"✔ Assert: Unknown element (some-id) exists  then fail
-  fail: Condition was not met."
+"✔ Assert: Unknown element (some-id) exists then fail
+  success: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert element" invalidRepositoryReference results notExistingPlatform message code 1`] = `
-"✔ Assert: Element 1 exists  then fail
-  fail: Condition was not met."
+"✔ Assert: Element 1 exists then fail
+  success: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert element" queryFailed results element visible fail 1`] = `
-"✔ Assert: My element is visible  then fail
-  fail: Condition was not met."
+"✔ Assert: My element is visible then fail
+  success: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert element" queryFailed results existingSubject 1`] = `
-"✔ Assert: Element 1 does not exist  then fail
-  fail: Condition was not met."
+"✔ Assert: Element 1 does not exist then fail
+  success: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert element" queryFailed results expression error 1`] = `
-"✔ Assert: Unknown element (unknown-id)  then fail
+"✔ Assert: Unknown element (unknown-id) then fail
   ✔ background color = rgba(0, 0, 0, 0)                                            
   ✔ border color     = rgb(255, 255, 255)                                          
   ✔ border style     = none                                                        
@@ -550,11 +550,11 @@ exports[`Test line results translation Translate assert lines with then fail tra
                      → 0                                                           
   ✖ visibility       = invisible                                                   
                      → property missing                                            
-  fail: Condition was not met."
+  success: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert element" queryFailed results expression error 2`] = `
-"✔ Assert: Unknown element (unknown-id)  then fail
+"✔ Assert: Unknown element (unknown-id) then fail
   ✔ background color =        rgba(0, 0, 0, 0)                                            
   ✔ border color     =        rgb(255, 255, 255)                                          
   ✔ border style     =        none                                                        
@@ -588,54 +588,54 @@ exports[`Test line results translation Translate assert lines with then fail tra
                      →        wrong format                                                
   ✖ text color       =        rgba(255, dddd, 255, 1)                                     
                      →        wrong format                                                
-  fail: Condition was not met."
+  success: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert element" queryFailed results handle error because of js error for match js 1`] = `
-"✔ Assert: {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JavaScript  then fail
+"✔ Assert: {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JavaScript then fail
   ✖ {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JS
     > function(((testSubject) {                    
     > 	console.log(testSubject);                   
     > 	return true;                                
     > }                                            
-  fail: Condition was not met."
+  success: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert element" queryFailed results match js fail 1`] = `
-"✔ Assert: {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JavaScript  then fail
+"✔ Assert: {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JavaScript then fail
   ✖ {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JS
     > someJS();                                    
-  fail: Condition was not met."
+  success: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert element" queryFailed results missingSubject 1`] = `
-"✔ Assert: Element 1 exists  then fail
-  fail: Condition was not met."
+"✔ Assert: Element 1 exists then fail
+  success: Condition was not met"
 `;
 
-exports[`Test line results translation Translate assert lines with then fail translate "assert element" without error "element ... does not exist" 1`] = `"✔ Assert: Element 1 does not exist  then fail"`;
+exports[`Test line results translation Translate assert lines with then fail translate "assert element" without error "element ... does not exist" 1`] = `"Assert: Element 1 does not exist then fail"`;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert element" without error "element ... does not exist" with success 1`] = `
-"✖ Assert: Element 1 does not exist  then fail
-  success: Condition was met."
+"✖ Assert: Element 1 does not exist then fail
+  fail: Condition was met"
 `;
 
-exports[`Test line results translation Translate assert lines with then fail translate "assert element" without error "element ... exist" 1`] = `"✔ Assert: Element 1 exists  then fail"`;
+exports[`Test line results translation Translate assert lines with then fail translate "assert element" without error "element ... exist" 1`] = `"Assert: Element 1 exists then fail"`;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert element" without error "element ... exist" with success 1`] = `
-"✖ Assert: Element 1 exists  then fail
-  success: Condition was met."
+"✖ Assert: Element 1 exists then fail
+  fail: Condition was met"
 `;
 
-exports[`Test line results translation Translate assert lines with then fail translate "assert element" without error "element ... is visible" 1`] = `"✔ Assert: My element is visible  then fail"`;
+exports[`Test line results translation Translate assert lines with then fail translate "assert element" without error "element ... is visible" 1`] = `"Assert: My element is visible then fail"`;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert element" without error "element ... is visible" with success 1`] = `
-"✖ Assert: My element is visible  then fail
-  success: Condition was met."
+"✖ Assert: My element is visible then fail
+  fail: Condition was met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert element" without error "element matches JS with vars" 1`] = `
-"✔ Assert: {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JavaScript  then fail
+"Assert: {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JavaScript then fail
   {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JS
     > someJS(\\"123\\");                             
   (with variables)                                          
@@ -643,111 +643,111 @@ exports[`Test line results translation Translate assert lines with then fail tra
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert element" without error "element matches JS with vars" with success 1`] = `
-"✖ Assert: {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JavaScript  then fail
+"✖ Assert: {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JavaScript then fail
   ✔ {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JS
     > someJS(\\"123\\");                               
   ✔ (with variables)                                          
     > someJS(\\"<%var1%>\\");                          
-  success: Condition was met."
+  fail: Condition was met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert element" without error "element matches JS" 1`] = `
-"✔ Assert: {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JavaScript  then fail
+"Assert: {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JavaScript then fail
   {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JS
     > someJS();                                  "
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert element" without error "element matches JS" with success 1`] = `
-"✖ Assert: {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JavaScript  then fail
+"✖ Assert: {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JavaScript then fail
   ✔ {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JS
     > someJS();                                    
-  success: Condition was met."
+  fail: Condition was met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert element" without error "element properties" 1`] = `
-"✔ Assert: Unknown element (unknown-id)  then fail
+"Assert: Unknown element (unknown-id) then fail
   video position >=       123                       
   height         =        123 ± 3v5 (123 ± <%var3%>)
   text           contains expected text             "
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert javascript expression" errorType: "queryFailed" expression matching failed 1`] = `
-"✔ Assert: JavaScript expression  then fail
+"✔ Assert: JavaScript expression then fail
   ✖ expression         
     > 1 + 1          
   ✖ expression result = 3
                       → 2
-  fail: Condition was not met."
+  success: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert javascript expression" errorType: "queryFailed" expression matching failed 2`] = `
-"✔ Assert: JavaScript expression  then fail
+"✔ Assert: JavaScript expression then fail
   ✖ expression                  
     > 120 + 3        
   ✖ expression result ! contains 12 
                       →          123
-  fail: Condition was not met."
+  success: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert javascript expression" errorType: "queryFailed" handle javascript exception 1`] = `
-"✔ Assert: JavaScript expression  then fail
+"✔ Assert: JavaScript expression then fail
   ✖ expression         
     > function test() { return 123
   ✖ expression result = 123
-  fail: Condition was not met."
+  success: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert javascript expression" render error when javascript expression missed 1`] = `
-"✔ Assert: JavaScript expression  then fail
+"✔ Assert: JavaScript expression then fail
   ✖ expression         
     > [NOT SPECIFIED]
   ✖ expression result = [NOT SPECIFIED]
-  fail: Condition was not met."
+  success: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert javascript expression" render error when javascript expression missed 2`] = `
-"✔ Assert: JavaScript expression  then fail
+"✔ Assert: JavaScript expression then fail
   ✖ expression         
     > [NOT SPECIFIED]
   ✖ expression result = 1
-  fail: Condition was not met."
+  success: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert javascript expression" render error when js expression specified but comparing value is empty 1`] = `
-"✔ Assert: JavaScript expression  then fail
+"✔ Assert: JavaScript expression then fail
   ✖ expression         
     > 1              
   ✖ expression result = [NOT SPECIFIED]
-  fail: Condition was not met."
+  success: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert javascript expression" render with success result 1`] = `
-"✖ Assert: JavaScript expression  then fail
+"✖ Assert: JavaScript expression then fail
   ✔ expression         
     > someJS()       
   ✔ expression result = returned value
-  success: Condition was met."
+  fail: Condition was met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert javascript expression" render with success result 2`] = `
-"✖ Assert: JavaScript expression  then fail
+"✖ Assert: JavaScript expression then fail
   ✔ expression         
     > someJS(\\"123\\")  
   ✔ (with variables)   
     > someJS(\\"<%var1%>\\")
   ✔ expression result = returned value
-  success: Condition was met."
+  fail: Condition was met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert javascript expression" render without result 1`] = `
-"✔ Assert: JavaScript expression  then fail
+"Assert: JavaScript expression then fail
   expression         
     > someJS()     
   expression result = returned value"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert javascript expression" render without result 2`] = `
-"✔ Assert: JavaScript expression  then fail
+"Assert: JavaScript expression then fail
   expression         
     > someJS(\\"123\\")
   (with variables)   
@@ -756,7 +756,7 @@ exports[`Test line results translation Translate assert lines with then fail tra
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert network" render fail results request/response headers not matched 1`] = `
-"✔ Assert: network request was made in entire network log  then fail
+"✔ Assert: network request was made in entire network log then fail
   URL                                        =  http://suite.st/123 (http://suite.st/<%var1%>)              
   ✖ request method                           != GET                                                         
                                              →  GET                                                         
@@ -802,24 +802,24 @@ exports[`Test line results translation Translate assert lines with then fail tra
                                                 v id=\\"content\\"></div>
 </body>
 </html>                       
-  fail: Condition was not met."
+  success: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert network" render fail results syntax error when status compare type is "CONTAINS" 1`] = `
-"✔ Assert: network request was made in entire network log  then fail
+"✔ Assert: network request was made in entire network log then fail
   URL             =        http://suite.st/123 (http://suite.st/<%var1%>)
   response status contains 303                                           
-  fail: Condition was not met."
+  success: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert network" render fail results url not matched 1`] = `
-"✔ Assert: network request was made in entire network log  then fail
+"✔ Assert: network request was made in entire network log then fail
   ✖ URL = http://suite.st/123 (http://suite.st/<%var1%>)
-  fail: Condition was not met."
+  success: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert network" render fail results url not matched 2`] = `
-"✔ Assert: network request was not made excluding previously matched requests  then fail
+"✔ Assert: network request was not made excluding previously matched requests then fail
   ✖ URL                                          contains  /partial/url/123 (/partial/url/<%var1%>)                  
   request method                                 =         GET                                                       
   request header Accept-Type                     contains  text/javascript                                           
@@ -827,17 +827,17 @@ exports[`Test line results translation Translate assert lines with then fail tra
   response status                                >         123                                                       
   response header Content-123 (Content-<%var1%>) ends with val2/javascript (<%var2%>/javascript)                     
   response body                                  =         response <%non_existing_var%> <%kind-of|var but not%> body
-  fail: Condition was not met."
+  success: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert network" render with success result 1`] = `
-"✖ Assert: network request was made in entire network log  then fail
+"✖ Assert: network request was made in entire network log then fail
   URL = http://suite.st/123 (http://suite.st/<%var1%>)
-  success: Condition was met."
+  fail: Condition was met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert network" render with success result 2`] = `
-"✖ Assert: network request was not made excluding previously matched requests  then fail
+"✖ Assert: network request was not made excluding previously matched requests then fail
   URL                                            contains  /partial/url/123 (/partial/url/<%var1%>)                  
   request method                                 =         GET                                                       
   request header Accept-Type                     contains  text/javascript                                           
@@ -845,16 +845,16 @@ exports[`Test line results translation Translate assert lines with then fail tra
   response status                                >         123                                                       
   response header Content-123 (Content-<%var1%>) ends with val2/javascript (<%var2%>/javascript)                     
   response body                                  =         response <%non_existing_var%> <%kind-of|var but not%> body
-  success: Condition was met."
+  fail: Condition was met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert network" render without result 1`] = `
-"✔ Assert: network request was made in entire network log  then fail
+"Assert: network request was made in entire network log then fail
   URL = http://suite.st/123 (http://suite.st/<%var1%>)"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert network" render without result 2`] = `
-"✔ Assert: network request was not made excluding previously matched requests  then fail
+"Assert: network request was not made excluding previously matched requests then fail
   URL                                            contains  /partial/url/123 (/partial/url/<%var1%>)                  
   request method                                 =         GET                                                       
   request header Accept-Type                     contains  text/javascript                                           
@@ -865,18 +865,18 @@ exports[`Test line results translation Translate assert lines with then fail tra
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert ps video" render with fail result 1`] = `
-"✔ Assert: PlayStation 4 video had no error for any source  then fail
-  fail: Condition was not met."
+"✔ Assert: PlayStation 4 video had no error for any source then fail
+  success: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert ps video" render with success result 1`] = `
-"✖ Assert: PlayStation 4 video had no error for any source  then fail
-  success: Condition was met."
+"✖ Assert: PlayStation 4 video had no error for any source then fail
+  fail: Condition was met"
 `;
 
-exports[`Test line results translation Translate assert lines with then fail translate "assert ps video" render without result 1`] = `"✔ Assert: PlayStation 4 video had no error for current source  then fail"`;
+exports[`Test line results translation Translate assert lines with then fail translate "assert ps video" render without result 1`] = `"Assert: PlayStation 4 video had no error for current source then fail"`;
 
-exports[`Test line results translation Translate assert lines with then fail translate "assert ps video" render without result 2`] = `"✔ Assert: PlayStation 4 video had no error for any source  then fail"`;
+exports[`Test line results translation Translate assert lines with then fail translate "assert ps video" render without result 2`] = `"Assert: PlayStation 4 video had no error for any source then fail"`;
 
 exports[`Test line results translation should translate "ActionNotAvailable" error 1`] = `
 Object {

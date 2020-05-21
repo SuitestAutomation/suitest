@@ -89,13 +89,14 @@ const translateAssertTestLine = (
 	elements?: Elements,
 	lineResult?: TestLineResult,
 ): TestLineNode => {
-	const status = testLine.then === 'fail'
-		? mapStatus(lineResult?.result) === 'success' ? 'fail' : 'success'
-		: lineResult?.result;
+	let status = lineResult?.result;
+	if (testLine.then === 'fail' && status) {
+		status = mapStatus(lineResult?.result) === 'success' ? 'fail' : 'success'
+	}
 	const condition = translateCondition(testLine.condition, appConfig, elements, lineResult);
 
 	return <test-line
-		title={<fragment>Assert: {condition.title}{testLine.timeout ? <fragment> timeout {formatTimeout(testLine.timeout, appConfig.configVariables)}</fragment> : undefined} {testLine.then !== 'success' ? <fragment> then {translateAssertThen(testLine.then)}</fragment> : undefined}</fragment>}
+		title={<fragment>Assert: {condition.title}{testLine.timeout ? <fragment> timeout {formatTimeout(testLine.timeout, appConfig.configVariables)}</fragment> : undefined} {testLine.then !== 'success' ? <fragment>then {translateAssertThen(testLine.then)}</fragment> : undefined}</fragment>}
 		status={status}
 	>
 		{condition.children}

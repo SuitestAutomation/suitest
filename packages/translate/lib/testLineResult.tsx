@@ -426,10 +426,10 @@ export const translateTestLineResult = (options: {
 	const {then} = options.testLine as AssertTestLine;
 
 	if (lineResult && then === 'fail') {
-		const status = mapStatus(lineResult?.result) === 'fail' ? 'fail' : 'success';
+		const status = mapStatus(lineResult?.result) === 'fail' ? 'success' : 'fail';
 		const messege = mapStatus(lineResult?.result) === 'fail'
-			? <text>Condition was not met.</text>
-			: <text>Condition was met.</text>;
+			? <text>Condition was not met</text>
+			: <text>Condition was met</text>;
 
 		return <test-line-result
 			status={status}
