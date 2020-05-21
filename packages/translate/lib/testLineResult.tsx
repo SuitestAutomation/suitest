@@ -19,11 +19,12 @@ import {
 	OutdatedInstrumentationLibraryError,
 	InvalidRepositoryReferenceError,
 	TestLineErrorResult,
+	QueryFailedInvalidUrl,
+	OpenAppOverrideFailedError,
 	TestLine, AppConfiguration, Elements, Snippets,
 } from '@suitest/types';
 import {translateTestLine} from './testLine';
 import {translateElementProperty} from './condition';
-import {QueryFailedInvalidUrl, OpenAppOverrideFailedError} from '@suitest/types/lib';
 
 const simpleErrorMap: {[key: string]: string} = {
 	failedStart: 'Failed to open application',
