@@ -122,7 +122,15 @@ export type SimpleError = BaseResult & {
 		| 'bootstrapAppNotDetected'
 		| 'activationExpired'
 		| 'missingCpp'
-		| 'outOfMemory',
+		| 'outOfMemory'
+		| 'networkError'
+		| 'instrumentationFailed'
+		| 'packageCorrupted'
+		| 'unknownElementProperty'
+		| 'configuratorError'
+		| 'appStoreBuild'
+		| 'outdatedLibraryWarning'
+		| 'cyclicReference',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {
@@ -230,7 +238,7 @@ export type NetworkErrorItemBase = {
 	name: string,
 };
 
-export type QueryFailedWithCode = {
+export type QueryFailedWithCode = QueryFailedInvalidUrl | {
 	errorType: 'queryFailed',
 	message: {
 		code: 'invalidApp'
@@ -252,6 +260,16 @@ export type QueryFailedWithCode = {
 		},
 	},
 };
+
+export type QueryFailedInvalidUrl = {
+	errorType: 'queryFailed',
+	message: {
+		code: 'invalidUrl',
+	},
+	actualValue: string,
+	expectedValue: string,
+};
+
 export type QueryFailedError = BaseResult & (QueryFailedWithCode | {
 	errorType: 'queryFailed',
 	actualValue: string,
@@ -310,6 +328,7 @@ export type OpenAppOverrideFailedError = BaseResult & {
 		errorType: string, // TODO - any other error type potentially
 		// TODO any other error data potentially
 	},
+	definitionId: string,
 };
 
 export type InvalidPackageError = BaseResult & {

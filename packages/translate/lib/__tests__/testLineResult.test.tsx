@@ -88,6 +88,14 @@ describe('Test line results translation', () => {
 		'activationExpired',
 		'missingCpp',
 		'outOfMemory',
+		'networkError',
+		'instrumentationFailed',
+		'packageCorrupted',
+		'unknownElementProperty',
+		'configuratorError',
+		'appStoreBuild',
+		'outdatedLibraryWarning',
+		'cyclicReference',
 	];
 
 	// it('should translate success results', () => {
@@ -104,25 +112,71 @@ describe('Test line results translation', () => {
 		});
 	}
 
-	describe('Translate assert lines', () => {
-		const extendBaseError = (err: any): TestLineResult => ({
-			result: 'fail',
-			lineId: 'a625a00e-50b8-4a4c-a24f-b7e206e72199',
-			timeStarted: 1587127670927,
-			timeFinished: 1587127670981,
-			timeHrDiff: [
-				0,
-				53647599,
-			],
-			timeScreenshotHr: [
-				0,
-				0,
-			],
-			...err,
+	const extendBaseError = (err: any): TestLineResult => ({
+		result: 'fail',
+		lineId: 'a625a00e-50b8-4a4c-a24f-b7e206e72199',
+		timeStarted: 1587127670927,
+		timeFinished: 1587127670981,
+		timeHrDiff: [
+			0,
+			53647599,
+		],
+		timeScreenshotHr: [
+			0,
+			0,
+		],
+		...err,
+	});
+	const testLineToFormattedText = (...args: Parameters<typeof translateTestLineResult>): string =>
+		toText(translateTestLineResult(...args), false);
+
+	describe('translate "openAppOverrideFailed"', () => {
+		const openAppCommand = testLinesExamples['Open app at homepage']();
+
+		it('render with lineId', () => {
+			expect(testLineToFormattedText({
+				testLine: openAppCommand,
+				appConfig,
+				lineResult: extendBaseError({
+					errorType: 'openAppOverrideFailed',
+					message: {
+						errorType: 'queryFailed',
+						lineId: 'line-id-1',
+					},
+				}),
+			})).toMatchSnapshot();
 		});
+
+		it('render with addition errorType', () => {
+			expect(testLineToFormattedText({
+				testLine: openAppCommand,
+				appConfig,
+				lineResult: extendBaseError({
+					errorType: 'openAppOverrideFailed',
+					message: {
+						errorType: 'queryFailed',
+					},
+				}),
+			})).toMatchSnapshot();
+			expect(testLineToFormattedText({
+				testLine: openAppCommand,
+				appConfig,
+				lineResult: extendBaseError({
+					errorType: 'openAppOverrideFailed',
+					message: {
+						errorType: 'invalidInput',
+						message: {
+							code: 'lineTypeNotSupported',
+						},
+					},
+				}),
+			})).toMatchSnapshot();
+		});
+	});
+
+	describe('Translate assert lines', () => {
 		const assertLine = testLinesExamples['Assert ... then continue'];
-		const testLineToFormattedText = (...args: Parameters<typeof translateTestLineResult>): string =>
-			toText(translateTestLineResult(...args), false);
+
 		const successLineResult: TestLineSuccessResult = {
 			result: 'success',
 			lineId: 'a625a00e-50b8-4a4c-a24f-b7e206e72199',
