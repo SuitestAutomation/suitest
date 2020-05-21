@@ -91,7 +91,7 @@ const translateAssertTestLine = (
 ): TestLineNode => {
 	let status = lineResult?.result;
 	if (testLine.then === 'fail' && status) {
-		status = mapStatus(lineResult?.result) === 'success' ? 'fail' : 'success'
+		status = mapStatus(lineResult?.result) === 'success' ? 'fail' : 'success';
 	}
 	const condition = translateCondition(testLine.condition, appConfig, elements, lineResult);
 
