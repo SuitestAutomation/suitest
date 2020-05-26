@@ -1026,4 +1026,94 @@ describe('Test line results translation', () => {
 		});
 		// ---- end of "translate "assert network"" ----
 	});
+
+	describe('translate line with screenshot', () => {
+		it('should render line without screenshot', () => {
+			expect(testLineToFormattedText({
+				testLine: {
+					type: 'button',
+					ids: ['OK'],
+					screenshot: false,
+					lineId: '123',
+					excluded: false,
+					fatal: false,
+				},
+				appConfig,
+				lineResult: {
+					lineId: '123',
+					result: 'success',
+					timeStarted: 0,
+					timeFinished: 0,
+					timeHrDiff: [0, 0],
+					timeScreenshotHr: [0, 0],
+				},
+			})).toMatchSnapshot();
+
+			expect(testLineToFormattedText({
+				testLine: {
+					type: 'button',
+					ids: ['OK'],
+					screenshot: false,
+					lineId: '123',
+					excluded: false,
+					fatal: false,
+				},
+				appConfig,
+				lineResult: {
+					lineId: '123',
+					result: 'fail',
+					errorType: 'adbError',
+					timeStarted: 0,
+					timeFinished: 0,
+					timeHrDiff: [0, 0],
+					timeScreenshotHr: [0, 0],
+				},
+			})).toMatchSnapshot();
+		});
+
+		it('should render line with screenshot', () => {
+			expect(testLineToFormattedText({
+				testLine: {
+					type: 'button',
+					ids: ['OK'],
+					screenshot: true,
+					lineId: '123',
+					excluded: false,
+					fatal: false,
+				},
+				appConfig,
+				lineResult: {
+					lineId: '123',
+					result: 'success',
+					timeStarted: 0,
+					timeFinished: 0,
+					timeHrDiff: [0, 0],
+					timeScreenshotHr: [0, 0],
+					screenshot: '/path/to/file.png',
+				},
+			})).toMatchSnapshot();
+
+			expect(testLineToFormattedText({
+				testLine: {
+					type: 'button',
+					ids: ['OK'],
+					screenshot: true,
+					lineId: '123',
+					excluded: false,
+					fatal: false,
+				},
+				appConfig,
+				lineResult: {
+					lineId: '123',
+					result: 'fail',
+					errorType: 'adbError',
+					timeStarted: 0,
+					timeFinished: 0,
+					timeHrDiff: [0, 0],
+					timeScreenshotHr: [0, 0],
+					screenshot: '/path/to/file.png',
+				},
+			})).toMatchSnapshot();
+		});
+	});
 });

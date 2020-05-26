@@ -10,6 +10,7 @@ export type BaseResult = {
 	timeFinished: number,
 	timeHrDiff: [number, number],
 	timeScreenshotHr: [number, number],
+	screenshot?: string,
 	result: TestLineResultType,
 	results?: TestLineResult[], // Results for child snippet lines
 	actualValue?: string | number, // TODO it probably appears only in query failed errors

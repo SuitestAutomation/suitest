@@ -11,6 +11,9 @@ html, body {
 .suitest-test-line__result__message {
     margin-left: 20px;
 }
+.suitest-test-line__result__screenshot {
+    margin-left: 20px;
+}
 
 .suitest-test-line__result--success .suitest-test-line__result__message:before {
     content: 'success: ';

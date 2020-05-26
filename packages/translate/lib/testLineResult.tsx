@@ -25,6 +25,8 @@ import {
 import {translateTestLine} from './testLine';
 import {translateElementProperty} from './condition';
 
+const baseScreenshotPath = 'https://the.suite.st';
+
 const simpleErrorMap: {[key: string]: string} = {
 	failedStart: 'Failed to open application',
 	appRunning: 'App is still running',
@@ -418,6 +420,10 @@ export const translateResultMessage = (result: TestLineErrorResult): Node => {
 	return <text>Unknown error occurred</text>;
 };
 
+const getScreenshotUrl = (screenshotPath?: string): string | undefined => screenshotPath
+	? baseScreenshotPath + screenshotPath
+	: undefined;
+
 export const translateTestLineResult = (options: {
 	testLine: TestLine,
 	appConfig: AppConfiguration,
@@ -432,11 +438,13 @@ export const translateTestLineResult = (options: {
 		// TODO - message for inverse "then" condition
 		return <test-line-result
 			status="success"
+			screenshot={getScreenshotUrl(lineResult?.screenshot)}
 		>{testLineTranslation}</test-line-result> as TestLineResultNode;
 	}
 
 	return <test-line-result
 		status={lineResult.result}
 		message={translateResultMessage(lineResult)}
+		screenshot={getScreenshotUrl(lineResult.screenshot)}
 	>{testLineTranslation}</test-line-result> as TestLineResultNode;
 };

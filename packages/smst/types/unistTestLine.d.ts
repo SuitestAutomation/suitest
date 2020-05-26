@@ -77,6 +77,7 @@ export type TestLineResultNode = {
 	status: TestLineResultStatus,
 	children: TestLineNode[],
 	message?: InlineTextNode[],
+	screenshot?: string,
 };
 
 export type SingleNode = InlineTextNode

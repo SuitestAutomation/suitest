@@ -126,6 +126,10 @@ const renderHtmlTestLineResultNode = (node: TestLineResultNode): string => {
 	if (message) {
 		out.push(`<div class="suitest-test-line__result__message">${message}</div>`);
 	}
+	// Screenshot
+	if (node.screenshot) {
+		out.push(`<div class="suitest-test-line__result__screenshot">screenshot: <a href="${node.screenshot}" target="_blank">${node.screenshot}</a></div>`);
+	}
 
 	out.push('</div>');
 

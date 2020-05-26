@@ -58,34 +58,63 @@ describe('AST renderers', () => {
 		{simpleCondition}
 	</test-line>;
 
-	const failResult = <test-line-result status="fail" message={<text>Condition was not met</text>}>
+	const failResult = (screenshot?: string): JSX.Element => <test-line-result
+		status="fail"
+		message={<text>Condition was not met</text>}
+		screenshot={screenshot}
+	>
 		<test-line
 			title={<fragment>Run test <subject>My test</subject> until condition is met max 5x every 5s</fragment>}
 			status="fail"
 		>{longCondition}</test-line>
 	</test-line-result>;
-	const warningResult = <test-line-result status="warning" message={<text>Some warning message</text>}>
+	const warningResult = (screenshot?: string): JSX.Element => <test-line-result
+		status="warning"
+		message={<text>Some warning message</text>}
+		screenshot={screenshot}
+	>
 		<test-line
 			title={<text>Assert application has exited</text>}
 			status="warning"
 		/>
 	</test-line-result>;
-	const exitResult = <test-line-result status="exit" message={<text>Condition was met</text>}>
+	const exitResult = (screenshot?: string): JSX.Element => <test-line-result
+		status="exit"
+		message={<text>Condition was met</text>}
+		screenshot={screenshot}
+	>
 		<test-line
 			title={<text>Assert application has exited</text>}
 			status="exit"
 		/>
 	</test-line-result>;
-	const excludedResult = <test-line-result status="excluded" message={<text>Line was not executed</text>}>
+	const excludedResult = (screenshot?: string): JSX.Element => <test-line-result
+		status="excluded"
+		message={<text>Line was not executed</text>}
+		screenshot={screenshot}
+	>
 		<test-line
 			title={<fragment>Press <input>OK</input> only if condition is met</fragment>}
 			status="excluded"
 		>{simpleCondition}</test-line>
 	</test-line-result>;
-	const fatalResult = <test-line-result status="fatal" message={<text>Some generic error message</text>}>
+	const fatalResult = (screenshot?: string): JSX.Element => <test-line-result
+		status="fatal"
+		message={<text>Some generic error message</text>}
+		screenshot={screenshot}
+	>
 		<test-line
 			title={<text>Assert application has exited</text>}
 			status="fatal"
+		/>
+	</test-line-result>;
+	const successResultWithScreenshot = (screenshot?: string): JSX.Element => <test-line-result
+		status="success"
+		screenshot={screenshot}
+	>
+		<test-line
+			title={<text>Assert application has exited</text>}
+			status="success"
 		/>
 	</test-line-result>;
 
@@ -138,11 +167,22 @@ describe('AST renderers', () => {
 		});
 
 		it('should render test line results', () => {
-			expect(toText(failResult, formatted)).toMatchSnapshot();
-			expect(toText(warningResult, formatted)).toMatchSnapshot();
-			expect(toText(exitResult, formatted)).toMatchSnapshot();
-			expect(toText(excludedResult, formatted)).toMatchSnapshot();
-			expect(toText(fatalResult, formatted)).toMatchSnapshot();
+			expect(toText(failResult(), formatted)).toMatchSnapshot();
+			expect(toText(warningResult(), formatted)).toMatchSnapshot();
+			expect(toText(exitResult(), formatted)).toMatchSnapshot();
+			expect(toText(excludedResult(), formatted)).toMatchSnapshot();
+			expect(toText(fatalResult(), formatted)).toMatchSnapshot();
+			expect(toText(successResultWithScreenshot(), formatted)).toMatchSnapshot();
+		});
+
+		it('should render test line results with screenshots', () => {
+			const screenshot = 'path/to/screenshot.png';
+			expect(toText(failResult(screenshot), formatted)).toMatchSnapshot();
+			expect(toText(warningResult(screenshot), formatted)).toMatchSnapshot();
+			expect(toText(exitResult(screenshot), formatted)).toMatchSnapshot();
+			expect(toText(excludedResult(screenshot), formatted)).toMatchSnapshot();
+			expect(toText(fatalResult(screenshot), formatted)).toMatchSnapshot();
+			expect(toText(successResultWithScreenshot(screenshot), formatted)).toMatchSnapshot();
 		});
 	}
 

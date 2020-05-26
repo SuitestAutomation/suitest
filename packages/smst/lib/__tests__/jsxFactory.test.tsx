@@ -187,6 +187,13 @@ describe('jsxFactory', () => {
 		>
 			<test-line title={<text>Some title</text>}/>
 		</test-line-result>).toMatchSnapshot();
+		expect(<test-line-result
+			status="fail"
+			message={<text>Some text</text>}
+			screenshot="some/path/to/screenshot.png"
+		>
+			<test-line title={<text>Some title</text>}/>
+		</test-line-result>).toMatchSnapshot();
 	});
 
 	it('should throw error if test result get anything other then a single test line', () => {
