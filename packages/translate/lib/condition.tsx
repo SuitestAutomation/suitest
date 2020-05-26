@@ -139,7 +139,7 @@ const assertUnknownElementCondition = (condition: never): never => {
 	throw new Error(`Unknown element condition type: ${JSON.stringify(condition)}`);
 };
 
-const translateElementName = (subject: ElementSubject | PSVideoSubject, elements?: Elements): Node | Node[] => {
+const translateElementName = (subject: ElementSubject | PSVideoSubject, elements?: Elements): JSX.Element => {
 	if (subject.type === 'video' || (subject as CustomElementSubject).val?.video) {
 		return <subject>video</subject>;
 	}
@@ -306,7 +306,7 @@ const translateNetworkInfo = (
 	isRequest: boolean, appConfig: AppConfiguration, errors: QueryFailedNetworkError['errors'] = []
 ) => (
 	{ name, compare, val }: { name: string, compare: Comparator, val: string | number },
-): Node => {
+): InlinePropertyNode => {
 	const error = errors.find(err => {
 		if (err.type === 'noUriFound') { return false; }
 		if (err.message !== (isRequest ? 'request' : 'response')) { return false; }

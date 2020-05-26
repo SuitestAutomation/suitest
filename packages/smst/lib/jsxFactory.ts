@@ -2,17 +2,21 @@
 /// <reference path="../types/intrinsicElements.d.ts" />
 import ub from 'unist-builder';
 import {
-	CodeBlockNode, ConditionNode,
+	CodeBlockNode,
+	ConditionNode,
 	InlineTextNode,
 	Node,
 	PropertyNode,
 	SingleNode,
 	TestLineNode,
 	TextNode,
+	InlinePropertyNode,
+	CodePropertyNode,
 } from '../types/unistTestLine';
 
 const plainTypes = ['text', 'code', 'subject', 'input'];
-const isTextNode = (input?: SingleNode): input is TextNode => !!input && plainTypes.includes(input.type);
+const isTextNode = (input?: JSX.SmstFlatNode): input is TextNode =>
+	typeof input === 'object' && input !== null && plainTypes.includes(input.type);
 
 type DeepArrayOrOne<T> = T | Array<T | DeepArrayOrOne<T>>;
 export const flatten = <T extends any>(input: DeepArrayOrOne<T>): T[] => {
@@ -26,14 +30,21 @@ export const flatten = <T extends any>(input: DeepArrayOrOne<T>): T[] => {
 /**
  * Normalize textual children - make them flat and merge sequential text items of same type
  */
-const normalizePlainChildren = (
-	children: Array<SingleNode | string>,
+function normalizePlainChildren
+	<R extends SingleNode, K extends keyof JSX.IntrinsicElements = R['type']>
+	(children: JSX.SmstFlatNode[], parentType: K): R[];
+function normalizePlainChildren(
+	children: JSX.SmstFlatNode[],
 	parentType: keyof JSX.IntrinsicElements
-): SingleNode[] =>
-	children.reduce((output: SingleNode[], child: SingleNode | string) => {
-		if (typeof child === 'string') {
+): SingleNode[] {
+	return children.reduce((output: SingleNode[], child) => {
+		if (child === undefined || child === null) {
+			return output;
+		}
+
+		if (typeof child === 'string' || typeof child === 'boolean' || typeof child === 'number') {
 			// Wrap plain strings into text nodes
-			child = ub(plainTypes.includes(parentType) ? parentType : 'text', child) as TextNode;
+			child = ub(plainTypes.includes(parentType) ? parentType : 'text', String(child)) as InlineTextNode;
 		}
 
 		// Nested child is a textual node
@@ -51,12 +62,13 @@ const normalizePlainChildren = (
 
 		return output;
 	}, []);
+}
 
-const processLabel = (label: string | SingleNode | Array<string | SingleNode>): SingleNode[] | undefined =>
-	normalizePlainChildren(flatten([label]), 'text');
+const processTextNode = (label: JSX.SmstNode): TextNode[] =>
+	normalizePlainChildren<TextNode>(flatten([label]), 'text');
 
-const processPropertyNode = (props: {[key: string]: any}): PropertyNode => {
-	const name = processLabel(props.name) as InlineTextNode[];
+const processPropertyNode = (props: JSX.ElementsProps['prop']): InlinePropertyNode | CodePropertyNode => {
+	const name = processTextNode(props.name);
 
 	if (isCodeBlockNode(props.expectedValue)) {
 		return ub('prop', {
@@ -71,7 +83,7 @@ const processPropertyNode = (props: {[key: string]: any}): PropertyNode => {
 	return ub('prop', {
 		name,
 		contentType: 'inline',
-		expectedValue: processLabel(props.expectedValue) as InlineTextNode[],
+		expectedValue: processTextNode(props.expectedValue),
 		actualValue: props.actualValue,
 		comparator: props.comparator,
 		status: props.status,
@@ -81,8 +93,8 @@ const processPropertyNode = (props: {[key: string]: any}): PropertyNode => {
 const isPropChildren = (children: SingleNode[]): children is PropertyNode[] =>
 	children.every(child => child.type === 'prop');
 
-const isCodeBlockNode = (item: SingleNode | undefined): item is CodeBlockNode =>
-	item?.type === 'code-block';
+const isCodeBlockNode = (item: JSX.SmstNode): item is CodeBlockNode =>
+	!Array.isArray(item) && typeof item === 'object' && item !== null && item.type === 'code-block';
 
 const isTestLineNodeArray = (children: SingleNode[]): children is TestLineNode[] =>
 	children.every(child => child.type === 'test-line');
@@ -108,16 +120,17 @@ export const assertUnknownTextNode = (node: never): never => {
  * anyway and always returns whatever is provided in JSX.Element type/interface.
  * Some validation is added to ensure correct data at least runtime.
  */
-export const jsx = (
-	type: keyof JSX.IntrinsicElements,
-	props: {[key: string]: any} | null,
-	...children: Array<Node | string>
-): Node => {
+export function jsx
+	<K extends keyof JSX.ElementsProps>
+	(type: K, props: JSX.ElementsProps[K], ...children: Array<JSX.ElementsChildren[K]>): Node;
+export function jsx(
+	type: keyof JSX.ElementsProps,
+	props: JSX.ElementsProps[keyof JSX.ElementsProps],
+	...children: JSX.SmstNode[]
+): Node {
 	// Do not include empty children, to allow for ternary operations in JSX
 	// Flatten the children - to support nested arrays in JSX and manage fragments
-	const processedChildren = normalizePlainChildren(flatten(
-		children.filter(child => typeof child !== 'undefined' && child !== null)
-	), type);
+	const processedChildren = normalizePlainChildren(flatten(children), type);
 
 	switch (type) {
 		case 'text':
@@ -128,13 +141,15 @@ export const jsx = (
 		case 'fragment':
 			return processedChildren;
 		case 'code-block':
-			const language = (props as {language: 'javascript' | 'brightscript'})?.language ?? 'javascript';
+			const codeBlockProps = props as JSX.ElementsProps['code-block'];
+			const codeBlockChildren = processedChildren[0] as CodeBlockNode;
+			const language = codeBlockProps?.language ?? 'javascript';
 
 			// Type casting because IntrinsicElements definition would not allow anything other then string
-			return ub('code-block', {language}, (processedChildren[0] as TextNode).value);
+			return ub('code-block', {language}, codeBlockChildren.value) as CodeBlockNode;
 		case 'prop':
 			// props can't be null because it's defined in intrinsicElements
-			return processPropertyNode(props as {[key: string]: any});
+			return processPropertyNode(props as JSX.ElementsProps['prop']);
 		case 'props':
 			if (isPropChildren(processedChildren)) {
 				return ub('props', processedChildren);
@@ -143,22 +158,24 @@ export const jsx = (
 			throw new TypeError('Props can only accept Prop as its child');
 		case 'condition':
 		case 'test-line':
+			const testLineProps = props as JSX.ElementsProps['test-line'];
 			// Type casting for props because of IntrinsicElements definition
 			const params: Omit<TestLineNode, 'type' | 'children'> = {
-				title: processLabel((props as {title: any}).title) as InlineTextNode[],
+				title: processTextNode(testLineProps.title),
 			};
 
-			if (props?.status) {
-				params.status = props.status;
+			if (testLineProps.status) {
+				params.status = testLineProps.status;
 			}
 
 			return ub(type, params, processedChildren) as ConditionNode | TestLineNode;
 		case 'test-line-result':
+			const testLineResultProps = props as JSX.ElementsProps['test-line-result'];
 			if (isTestLineNodeArray(processedChildren) && processedChildren.length === 1) {
 				return ub('test-line-result', {
-					status: props?.status,
-					message: processLabel(props?.message) as InlineTextNode[],
-				}, processedChildren as TestLineNode[]);
+					status: testLineResultProps.status,
+					message: processTextNode(testLineResultProps.message),
+				}, processedChildren);
 			}
 
 			throw new TypeError('TestLineResult expects a single child of type TestLine');
@@ -166,4 +183,4 @@ export const jsx = (
 			/* istanbul ignore next */
 			return assertUnknownIntrinsicElementType(type);
 	}
-};
+}
