@@ -1,6 +1,6 @@
 {
   "name": "@suitest/smst-to-text",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Utility to convert SMST to plain text or ANSI-styled text",
   "repository": {
     "type": "git",
@@ -32,6 +32,6 @@
     "prepublishOnly": "npm run coverage && npm run build"
   },
   "dependencies": {
-    "@suitest/smst": "^3.0.1"
+    "@suitest/smst": "^3.0.2"
   }
 }
