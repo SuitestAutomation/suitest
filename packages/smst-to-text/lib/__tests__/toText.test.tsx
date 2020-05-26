@@ -58,7 +58,7 @@ describe('AST renderers', () => {
 		{simpleCondition}
 	</test-line>;
 
-	const failResult = (screenshot?: string) => <test-line-result
+	const failResult = (screenshot?: string): JSX.Element => <test-line-result
 		status="fail"
 		message={<text>Condition was not met</text>}
 		screenshot={screenshot}
@@ -68,7 +68,7 @@ describe('AST renderers', () => {
 			status="fail"
 		>{longCondition}</test-line>
 	</test-line-result>;
-	const warningResult = (screenshot?: string) => <test-line-result
+	const warningResult = (screenshot?: string): JSX.Element => <test-line-result
 		status="warning"
 		message={<text>Some warning message</text>}
 		screenshot={screenshot}
@@ -78,7 +78,7 @@ describe('AST renderers', () => {
 			status="warning"
 		/>
 	</test-line-result>;
-	const exitResult = (screenshot?: string) => <test-line-result
+	const exitResult = (screenshot?: string): JSX.Element => <test-line-result
 		status="exit"
 		message={<text>Condition was met</text>}
 		screenshot={screenshot}
@@ -88,7 +88,7 @@ describe('AST renderers', () => {
 			status="exit"
 		/>
 	</test-line-result>;
-	const excludedResult = (screenshot?: string) => <test-line-result
+	const excludedResult = (screenshot?: string): JSX.Element => <test-line-result
 		status="excluded"
 		message={<text>Line was not executed</text>}
 		screenshot={screenshot}
@@ -98,7 +98,7 @@ describe('AST renderers', () => {
 			status="excluded"
 		>{simpleCondition}</test-line>
 	</test-line-result>;
-	const fatalResult = (screenshot?: string) => <test-line-result
+	const fatalResult = (screenshot?: string): JSX.Element => <test-line-result
 		status="fatal"
 		message={<text>Some generic error message</text>}
 		screenshot={screenshot}
@@ -108,7 +108,7 @@ describe('AST renderers', () => {
 			status="fatal"
 		/>
 	</test-line-result>;
-	const successResultWithScreenshot = (screenshot?: string) => <test-line-result
+	const successResultWithScreenshot = (screenshot?: string): JSX.Element => <test-line-result
 		status="success"
 		screenshot={screenshot}
 	>

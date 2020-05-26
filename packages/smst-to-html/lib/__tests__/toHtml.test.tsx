@@ -53,7 +53,7 @@ describe('AST renderers', () => {
 		{simpleCondition}
 	</test-line>;
 
-	const failResult = (screenshot?: string) => <test-line-result
+	const failResult = (screenshot?: string): JSX.Element => <test-line-result
 		status="fail"
 		message={<text>Condition was not met</text>}
 		screenshot={screenshot}
@@ -63,7 +63,7 @@ describe('AST renderers', () => {
 			status="fail"
 		/>
 	</test-line-result>;
-	const warningResult = (screenshot?: string) => <test-line-result
+	const warningResult = (screenshot?: string): JSX.Element => <test-line-result
 		status="warning"
 		screenshot={screenshot}
 	>
@@ -72,7 +72,7 @@ describe('AST renderers', () => {
 			status="warning"
 		/>
 	</test-line-result>;
-	const exitResult = (screenshot?: string) => <test-line-result
+	const exitResult = (screenshot?: string): JSX.Element => <test-line-result
 		status="exit"
 		screenshot={screenshot}
 	>
@@ -81,7 +81,7 @@ describe('AST renderers', () => {
 			status="exit"
 		/>
 	</test-line-result>;
-	const excludedResult = (screenshot?: string) => <test-line-result
+	const excludedResult = (screenshot?: string): JSX.Element => <test-line-result
 		status="excluded"
 		screenshot={screenshot}
 	>
@@ -90,7 +90,7 @@ describe('AST renderers', () => {
 			status="excluded"
 		/>
 	</test-line-result>;
-	const fatalResult = (screenshot?: string) => <test-line-result
+	const fatalResult = (screenshot?: string): JSX.Element => <test-line-result
 		status="fatal"
 		screenshot={screenshot}
 	>

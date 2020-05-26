@@ -175,7 +175,7 @@ export function jsx(
 				return ub('test-line-result', {
 					status: testLineResultProps.status,
 					message: processTextNode(testLineResultProps.message),
-					screenshot: props?.screenshot,
+					screenshot: testLineResultProps.screenshot,
 				}, processedChildren);
 			}
 
