@@ -950,3 +950,21 @@ exports[`Test line results translation translate "openAppOverrideFailed" render 
 "✖ Open application
   fail: Open app override failed"
 `;
+
+exports[`Test line results translation translate line with screenshot should render line with screenshot 1`] = `
+"✔ Press button OK
+  screenshot: https://the.suite.st/path/to/file.png"
+`;
+
+exports[`Test line results translation translate line with screenshot should render line with screenshot 2`] = `
+"✖ Press button OK
+  fail: ADB communication with the device has failed. Make sure your device is set up correctly and it can be connected to using ADB
+  screenshot: https://the.suite.st/path/to/file.png"
+`;
+
+exports[`Test line results translation translate line with screenshot should render line without screenshot 1`] = `"✔ Press button OK"`;
+
+exports[`Test line results translation translate line with screenshot should render line without screenshot 2`] = `
+"✖ Press button OK
+  fail: ADB communication with the device has failed. Make sure your device is set up correctly and it can be connected to using ADB"
+`;
