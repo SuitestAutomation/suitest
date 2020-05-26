@@ -159,7 +159,8 @@ interface TestLineResult {
     type: "test-line-result"
     level: "success" | "fatal" | "fail" | "warning" | "exit" | "excluded"
     children: TestLine
-    message: [Paragraph]
+    message: [Paragraph],
+    screenhost: [string],
 }
 ```
 

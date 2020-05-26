@@ -432,11 +432,13 @@ export const translateTestLineResult = (options: {
 		// TODO - message for inverse "then" condition
 		return <test-line-result
 			status="success"
+			screenshot={lineResult?.screenshot}
 		>{testLineTranslation}</test-line-result> as TestLineResultNode;
 	}
 
 	return <test-line-result
 		status={lineResult.result}
 		message={translateResultMessage(lineResult)}
+		screenshot={lineResult.screenshot}
 	>{testLineTranslation}</test-line-result> as TestLineResultNode;
 };

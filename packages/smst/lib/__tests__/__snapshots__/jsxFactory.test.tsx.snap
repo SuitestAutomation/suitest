@@ -89,6 +89,33 @@ Object {
       "value": "Some text",
     },
   ],
+  "screenshot": undefined,
+  "status": "fail",
+  "type": "test-line-result",
+}
+`;
+
+exports[`jsxFactory should translate test line result line correctly 2`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Some title",
+        },
+      ],
+      "type": "test-line",
+    },
+  ],
+  "message": Array [
+    Object {
+      "type": "text",
+      "value": "Some text",
+    },
+  ],
+  "screenshot": "some/path/to/screenshot.png",
   "status": "fail",
   "type": "test-line-result",
 }

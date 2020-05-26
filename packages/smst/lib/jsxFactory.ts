@@ -158,6 +158,7 @@ export const jsx = (
 				return ub('test-line-result', {
 					status: props?.status,
 					message: processLabel(props?.message) as InlineTextNode[],
+					screenshot: props?.screenshot,
 				}, processedChildren as TestLineNode[]);
 			}
 

@@ -52,6 +52,7 @@ declare namespace JSX {
 			status: TestLineResultStatus,
 			children: ElementChildren,
 			message?: ElementChildren,
+			screenshot?: string,
 		},
 	}
 }
