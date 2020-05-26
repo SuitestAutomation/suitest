@@ -16,7 +16,7 @@ export const replaceVariables = (text: string, variables: AppConfiguration['conf
 /**
  * Replace variables and format the output to display both replaced and not replaced strings
  */
-export const formatVariables = (text: string, variables: AppConfiguration['configVariables']): Node => {
+export const formatVariables = (text: string, variables: AppConfiguration['configVariables']): JSX.Element => {
 	const resultText = replaceVariables(text, variables);
 
 	if (resultText !== text) {
@@ -30,7 +30,7 @@ export const formatVariables = (text: string, variables: AppConfiguration['confi
 /**
  * Replace variable and output timeout value as unist node
  */
-export const formatTimeout = (timeout: number | string, variables: AppConfiguration['configVariables']): Node => {
+export const formatTimeout = (timeout: number | string, variables: AppConfiguration['configVariables']): JSX.Element => {
 	// Replace variables (if any) in timeout
 	const t = typeof timeout === 'string' ? replaceVariables(timeout, variables) : String(timeout);
 	// Get final value in ms as a number
@@ -54,7 +54,7 @@ export const formatTimeout = (timeout: number | string, variables: AppConfigurat
 	return <input>{s}</input>;
 };
 
-export const formatCount = (count: number | string, variables: AppConfiguration['configVariables']): Node => {
+export const formatCount = (count: number | string, variables: AppConfiguration['configVariables']): JSX.Element => {
 	const countAsString = String(count);
 	const countAsStringWithReplacedVars = typeof count === 'string' ? replaceVariables(count, variables) : countAsString;
 	// Get final value in ms as a number
@@ -81,10 +81,10 @@ export const translateCodeProp = (
 	appConfig: AppConfiguration,
 	comparator?: string,
 	status?: SingleEntryStatus
-): Node[] => {
+): JSX.Element[] => {
 	const codeWithVars = replaceVariables(code, appConfig.configVariables);
 
-	const out: Node[] = [
+	const out = [
 		<prop
 			name={name}
 			expectedValue={<code-block>{codeWithVars}</code-block>}
