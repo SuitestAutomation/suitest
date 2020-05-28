@@ -6,7 +6,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Assert: Application has exited ",
+      "value": "Assert: Application has exited",
     },
   ],
   "type": "test-line",
@@ -63,10 +63,6 @@ Object {
     Object {
       "type": "input",
       "value": "1s",
-    },
-    Object {
-      "type": "text",
-      "value": " ",
     },
   ],
   "type": "test-line",
@@ -1339,10 +1335,6 @@ Object {
     Object {
       "type": "input",
       "value": "1s",
-    },
-    Object {
-      "type": "text",
-      "value": " ",
     },
   ],
   "type": "test-line",
