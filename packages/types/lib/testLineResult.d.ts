@@ -362,7 +362,7 @@ export type TestLineSuccessResult = BaseResult & {
 export type TestLineExcludedResult = BaseResult & {
 	result: 'excluded',
 	errorType?: undefined,
-}
+};
 
 export type TestLineErrorResult = Exclude<TestLineResult, TestLineSuccessResult | TestLineExcludedResult>;
 
