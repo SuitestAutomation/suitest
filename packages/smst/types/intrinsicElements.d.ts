@@ -14,12 +14,10 @@ declare namespace JSX {
 	// TypeScript can't infer correct type, unfortunately,
 	// so will simply put it to any node at all
 	// https://www.typescriptlang.org/docs/handbook/jsx.html#the-jsx-result-type
-	// type Element = SingleElement | Element[];
 	type Element = SingleNode;
 
 	type SmstText = string | number;
-	type SmstChild = Node | string | number;
-	type SmstElement = SmstChild | boolean | null | undefined;
+	type SmstElement = Node | SmstText | boolean | null | undefined;
 	type SmstNode = SmstElement | SmstElement[];
 	type SmstFlatNode = SingleNode | SmstText | boolean | null | undefined;
 
@@ -59,6 +57,10 @@ declare namespace JSX {
 			message?: SmstNode,
 			screenshot?: string,
 		},
+		link: {
+			href: string,
+			children: StringOrStrings,
+		},
 	}
 
 	type ElementsProps = {
@@ -73,6 +75,7 @@ declare namespace JSX {
 		condition: Omit<IntrinsicElements['condition'], 'children'>,
 		'test-line': Omit<IntrinsicElements['test-line'], 'children'>,
 		'test-line-result': Omit<IntrinsicElements['test-line-result'], 'children'>,
+		link: Omit<IntrinsicElements['link'], 'children'>,
 	};
 
 	type ElementsChildren = {
@@ -87,5 +90,6 @@ declare namespace JSX {
 		condition: IntrinsicElements['condition']['children'],
 		'test-line': IntrinsicElements['test-line']['children'],
 		'test-line-result': IntrinsicElements['test-line-result']['children'],
+		link: IntrinsicElements['link']['children'],
 	};
 }

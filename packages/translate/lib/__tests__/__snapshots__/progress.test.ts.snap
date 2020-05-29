@@ -1,66 +1,293 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Interactive progress explanation. Should handle unknown statuses/codes 1`] = `
+Object {
+  "title": Object {
+    "type": "text",
+    "value": "Trying to open app…",
+  },
+}
+`;
+
+exports[`Interactive progress explanation. Should handle unknown statuses/codes 2`] = `
+Object {
+  "description": Object {
+    "type": "text",
+    "value": "Check that the cable plugged into the CandyBox delivers Internet connection or reboot the CandyBox and allow about 5 minutes for it to initialize",
+  },
+  "title": Object {
+    "type": "text",
+    "value": "Cannot continue: CandyBox controlling this device is offline",
+  },
+}
+`;
+
+exports[`Interactive progress explanation. Should return translation if code is valid 1`] = `
+Object {
+  "description": Array [
+    Object {
+      "type": "text",
+      "value": "Your subscription has expired, to continue using Suitest please ",
+    },
+    Object {
+      "href": "https://the.suite.st/preferences/billing",
+      "type": "link",
+      "value": "renew your subscription",
+    },
+  ],
+  "title": Object {
+    "type": "text",
+    "value": "Cannot continue: Your subscription has expired",
+  },
+}
+`;
+
+exports[`Interactive progress explanation. Should return translation if code is valid 2`] = `
+Object {
+  "description": Array [
+    Object {
+      "type": "text",
+      "value": "Your subscription has expired, to continue using Suitest please ",
+    },
+    Object {
+      "href": "https://the.suite.st/preferences/billing",
+      "type": "link",
+      "value": "renew your subscription",
+    },
+  ],
+  "title": Object {
+    "type": "text",
+    "value": "Cannot continue: Your subscription has expired",
+  },
+}
+`;
+
 exports[`Interactive progress explanation. Should translate "actionFailed" status 1`] = `
 Object {
-  "title": "",
+  "title": Object {
+    "type": "text",
+    "value": "",
+  },
 }
 `;
 
 exports[`Interactive progress explanation. Should translate "bootingDevice" status 1`] = `
 Object {
-  "title": "Running the boot sequence defined for the device…",
+  "title": Object {
+    "type": "text",
+    "value": "Running the boot sequence defined for the device…",
+  },
 }
 `;
 
 exports[`Interactive progress explanation. Should translate "closingApp" status 1`] = `
 Object {
-  "title": "Trying to close app…",
+  "title": Object {
+    "type": "text",
+    "value": "Trying to close app…",
+  },
 }
 `;
 
 exports[`Interactive progress explanation. Should translate "needManual" status 1`] = `
 Object {
-  "title": "Paused. For this platform, install and open the application manually.",
+  "title": Object {
+    "type": "text",
+    "value": "Paused. For this platform, install and open the application manually.",
+  },
 }
 `;
 
 exports[`Interactive progress explanation. Should translate "nothing" status 1`] = `
 Object {
-  "title": "",
+  "title": Object {
+    "type": "text",
+    "value": "",
+  },
 }
 `;
 
 exports[`Interactive progress explanation. Should translate "openingApp" status 1`] = `
 Object {
-  "title": "Trying to open app…",
+  "title": Object {
+    "type": "text",
+    "value": "Trying to open app…",
+  },
 }
 `;
 
 exports[`Interactive progress explanation. Should translate "recoveringID" status 1`] = `
 Object {
-  "title": "Trying to recover Suitest device ID…",
+  "title": Object {
+    "type": "text",
+    "value": "Trying to recover Suitest device ID…",
+  },
 }
 `;
 
 exports[`Interactive progress explanation. Should translate "unistallingApp" status 1`] = `
 Object {
-  "title": "Uninstalling app…",
+  "title": Object {
+    "type": "text",
+    "value": "Uninstalling app…",
+  },
 }
 `;
 
 exports[`Interactive progress explanation. Should translate "uploadingAndInstallingApp" status 1`] = `
 Object {
-  "title": "Uploading and installing app…",
+  "title": Object {
+    "type": "text",
+    "value": "Uploading and installing app…",
+  },
 }
 `;
 
 exports[`Interactive progress explanation. Should translate "waitingForConnectionFromBootstrap" status 1`] = `
 Object {
-  "title": "Waiting for connection from the Suitest app on device…",
+  "title": Object {
+    "type": "text",
+    "value": "Waiting for connection from the Suitest app on device…",
+  },
 }
 `;
 
 exports[`Interactive progress explanation. Should translate "waitingForConnectionFromIL" status 1`] = `
+Object {
+  "title": Object {
+    "type": "text",
+    "value": "Waiting for connection from the instrumentation library…",
+  },
+}
+`;
+
+exports[`Interactive progress explanation. Translate progress to html:  "actionFailed" 1`] = `
+Object {
+  "title": "",
+}
+`;
+
+exports[`Interactive progress explanation. Translate progress to html:  "bootingDevice" 1`] = `
+Object {
+  "title": "Running the boot sequence defined for the device…",
+}
+`;
+
+exports[`Interactive progress explanation. Translate progress to html:  "closingApp" 1`] = `
+Object {
+  "title": "Trying to close app…",
+}
+`;
+
+exports[`Interactive progress explanation. Translate progress to html:  "needManual" 1`] = `
+Object {
+  "title": "Paused. For this platform, install and open the application manually.",
+}
+`;
+
+exports[`Interactive progress explanation. Translate progress to html:  "nothing" 1`] = `
+Object {
+  "title": "",
+}
+`;
+
+exports[`Interactive progress explanation. Translate progress to html:  "openingApp" 1`] = `
+Object {
+  "title": "Trying to open app…",
+}
+`;
+
+exports[`Interactive progress explanation. Translate progress to html:  "recoveringID" 1`] = `
+Object {
+  "title": "Trying to recover Suitest device ID…",
+}
+`;
+
+exports[`Interactive progress explanation. Translate progress to html:  "unistallingApp" 1`] = `
+Object {
+  "title": "Uninstalling app…",
+}
+`;
+
+exports[`Interactive progress explanation. Translate progress to html:  "uploadingAndInstallingApp" 1`] = `
+Object {
+  "title": "Uploading and installing app…",
+}
+`;
+
+exports[`Interactive progress explanation. Translate progress to html:  "waitingForConnectionFromBootstrap" 1`] = `
+Object {
+  "title": "Waiting for connection from the Suitest app on device…",
+}
+`;
+
+exports[`Interactive progress explanation. Translate progress to html:  "waitingForConnectionFromIL" 1`] = `
+Object {
+  "title": "Waiting for connection from the instrumentation library…",
+}
+`;
+
+exports[`Interactive progress explanation. Translate progress to text:  "actionFailed" 1`] = `
+Object {
+  "title": "",
+}
+`;
+
+exports[`Interactive progress explanation. Translate progress to text:  "bootingDevice" 1`] = `
+Object {
+  "title": "Running the boot sequence defined for the device…",
+}
+`;
+
+exports[`Interactive progress explanation. Translate progress to text:  "closingApp" 1`] = `
+Object {
+  "title": "Trying to close app…",
+}
+`;
+
+exports[`Interactive progress explanation. Translate progress to text:  "needManual" 1`] = `
+Object {
+  "title": "Paused. For this platform, install and open the application manually.",
+}
+`;
+
+exports[`Interactive progress explanation. Translate progress to text:  "nothing" 1`] = `
+Object {
+  "title": "",
+}
+`;
+
+exports[`Interactive progress explanation. Translate progress to text:  "openingApp" 1`] = `
+Object {
+  "title": "Trying to open app…",
+}
+`;
+
+exports[`Interactive progress explanation. Translate progress to text:  "recoveringID" 1`] = `
+Object {
+  "title": "Trying to recover Suitest device ID…",
+}
+`;
+
+exports[`Interactive progress explanation. Translate progress to text:  "unistallingApp" 1`] = `
+Object {
+  "title": "Uninstalling app…",
+}
+`;
+
+exports[`Interactive progress explanation. Translate progress to text:  "uploadingAndInstallingApp" 1`] = `
+Object {
+  "title": "Uploading and installing app…",
+}
+`;
+
+exports[`Interactive progress explanation. Translate progress to text:  "waitingForConnectionFromBootstrap" 1`] = `
+Object {
+  "title": "Waiting for connection from the Suitest app on device…",
+}
+`;
+
+exports[`Interactive progress explanation. Translate progress to text:  "waitingForConnectionFromIL" 1`] = `
 Object {
   "title": "Waiting for connection from the instrumentation library…",
 }

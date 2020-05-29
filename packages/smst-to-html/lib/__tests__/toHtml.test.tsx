@@ -144,6 +144,10 @@ describe('AST renderers', () => {
 			expect(toHtml(excludedResult(screenshot))).toMatchSnapshot();
 			expect(toHtml(fatalResult(screenshot))).toMatchSnapshot();
 		});
+
+		it('should render link', () => {
+			expect(toHtml(<link href="http://some.url">Some URL</link>)).toMatchSnapshot();
+		});
 	});
 
 	describe('Translation utils', () => {

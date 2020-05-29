@@ -266,6 +266,8 @@ const renderNode = (node: SingleNode, renderTextNode: RenderTextFunc, prefix = '
 			return renderTestLineOrCondition(node, renderTextNode, prefix);
 		case 'test-line-result':
 			return renderTestLineResult(node, renderTextNode, prefix);
+		case 'link':
+			return `${node.value} (${node.href})`;
 		default:
 			/* istanbul ignore next */
 			return assertUnknownSectionNode(node);

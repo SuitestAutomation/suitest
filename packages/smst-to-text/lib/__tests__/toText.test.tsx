@@ -211,4 +211,8 @@ describe('AST renderers', () => {
 
 		runTests(true);
 	});
+
+	it('render link', () => {
+		expect(toText(<link href="http://some.url">Some URL</link>)).toEqual('Some URL (http://some.url)');
+	});
 });

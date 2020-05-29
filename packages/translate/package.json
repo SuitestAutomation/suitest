@@ -34,6 +34,7 @@
     "@suitest/types": "^3.0.2"
   },
   "devDependencies": {
-    "@suitest/smst-to-text": "^3.0.2"
+    "@suitest/smst-to-text": "^3.0.2",
+    "@suitest/smst-to-html": "^3.0.2"
   }
 }

@@ -196,6 +196,10 @@ describe('jsxFactory', () => {
 		</test-line-result>).toMatchSnapshot();
 	});
 
+	it('should translate link correctly', () => {
+		expect(<link href="http://some.url">link to some url</link>).toMatchSnapshot();
+	});
+
 	it('should throw error if test result get anything other then a single test line', () => {
 		expect(() => <test-line-result status="success"><text>test</text></test-line-result>).toThrowError();
 		expect(() => <test-line-result status="success">
