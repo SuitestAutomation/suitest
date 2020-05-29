@@ -434,10 +434,10 @@ export const translateTestLineResult = (options: {
 	const testLineTranslation = translateTestLine(options);
 	const {lineResult} = options;
 
-	if (!lineResult || lineResult.result === 'success') {
+	if (!lineResult || lineResult.result === 'success' || lineResult.result === 'excluded') {
 		// TODO - message for inverse "then" condition
 		return <test-line-result
-			status="success"
+			status={lineResult?.result ?? 'success'}
 			screenshot={getScreenshotUrl(lineResult?.screenshot)}
 		>{testLineTranslation}</test-line-result> as TestLineResultNode;
 	}

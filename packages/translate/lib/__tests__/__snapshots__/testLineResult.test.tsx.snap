@@ -951,6 +951,8 @@ exports[`Test line results translation translate "openAppOverrideFailed" render 
   fail: Open app override failed"
 `;
 
+exports[`Test line results translation translate line with screenshot should render excluded lines 1`] = `"» Press button OK"`;
+
 exports[`Test line results translation translate line with screenshot should render line with screenshot 1`] = `
 "✔ Press button OK
   screenshot: https://the.suite.st/path/to/file.png"

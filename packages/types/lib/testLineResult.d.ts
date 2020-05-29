@@ -359,9 +359,15 @@ export type TestLineSuccessResult = BaseResult & {
 	errorType?: undefined,
 };
 
-export type TestLineErrorResult = Exclude<TestLineResult, TestLineSuccessResult>;
+export type TestLineExcludedResult = BaseResult & {
+	result: 'excluded',
+	errorType?: undefined,
+}
+
+export type TestLineErrorResult = Exclude<TestLineResult, TestLineSuccessResult | TestLineExcludedResult>;
 
 export type TestLineResult = TestLineSuccessResult
+	| TestLineExcludedResult
 	| SimpleError
 	| OutdatedInstrumentationLibraryError
 	| QueryTimeoutError

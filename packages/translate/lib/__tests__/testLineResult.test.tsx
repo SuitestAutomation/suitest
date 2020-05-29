@@ -1115,5 +1115,27 @@ describe('Test line results translation', () => {
 				},
 			})).toMatchSnapshot();
 		});
+
+		it('should render excluded lines', () => {
+			expect(testLineToFormattedText({
+				testLine: {
+					type: 'button',
+					ids: ['OK'],
+					screenshot: false,
+					lineId: '123',
+					excluded: true,
+					fatal: false,
+				},
+				appConfig,
+				lineResult: {
+					lineId: '123',
+					result: 'excluded',
+					timeStarted: 0,
+					timeFinished: 0,
+					timeHrDiff: [0, 0],
+					timeScreenshotHr: [0, 0],
+				},
+			})).toMatchSnapshot();
+		});
 	});
 });
