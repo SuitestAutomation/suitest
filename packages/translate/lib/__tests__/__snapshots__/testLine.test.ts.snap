@@ -6,7 +6,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Assert: Application has exited ",
+      "value": "Assert: Application has exited",
     },
   ],
   "type": "test-line",
@@ -19,7 +19,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Assert: Application has exited  then stop test",
+      "value": "Assert: Application has exited then stop test",
     },
   ],
   "type": "test-line",
@@ -32,7 +32,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Assert: Application has exited  then fail",
+      "value": "Assert: Application has exited then fail",
     },
   ],
   "type": "test-line",
@@ -45,7 +45,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Assert: Application has exited  then warn",
+      "value": "Assert: Application has exited then warn",
     },
   ],
   "type": "test-line",
@@ -63,10 +63,6 @@ Object {
     Object {
       "type": "input",
       "value": "1s",
-    },
-    Object {
-      "type": "text",
-      "value": " ",
     },
   ],
   "type": "test-line",
@@ -1339,10 +1335,6 @@ Object {
     Object {
       "type": "input",
       "value": "1s",
-    },
-    Object {
-      "type": "text",
-      "value": " ",
     },
   ],
   "type": "test-line",
