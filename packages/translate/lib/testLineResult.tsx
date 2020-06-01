@@ -434,8 +434,9 @@ export const translateTestLineResult = (options: {
 	const testLineTranslation = translateTestLine(options);
 	const {lineResult} = options;
 
-	if (!lineResult || lineResult.result === 'success' || lineResult.result === 'excluded') {
+	if (!lineResult || lineResult.result === 'success' || lineResult.result === 'excluded' || !('errorType' in lineResult)) {
 		// TODO - message for inverse "then" condition
+		// TODO: not pass "success" to status if lineResult is undefined
 		return <test-line-result
 			status={lineResult?.result ?? 'success'}
 			screenshot={getScreenshotUrl(lineResult?.screenshot)}
