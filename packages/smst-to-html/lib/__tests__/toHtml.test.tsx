@@ -53,31 +53,47 @@ describe('AST renderers', () => {
 		{simpleCondition}
 	</test-line>;
 
-	const failResult = <test-line-result status="fail" message={<text>Condition was not met</text>}>
+	const failResult = (screenshot?: string): JSX.Element => <test-line-result
+		status="fail"
+		message={<text>Condition was not met</text>}
+		screenshot={screenshot}
+	>
 		<test-line
 			title={<text>Assert application has exited</text>}
 			status="fail"
 		/>
 	</test-line-result>;
-	const warningResult = <test-line-result status="warning">
+	const warningResult = (screenshot?: string): JSX.Element => <test-line-result
+		status="warning"
+		screenshot={screenshot}
+	>
 		<test-line
 			title={<text>Assert application has exited</text>}
 			status="warning"
 		/>
 	</test-line-result>;
-	const exitResult = <test-line-result status="exit">
+	const exitResult = (screenshot?: string): JSX.Element => <test-line-result
+		status="exit"
+		screenshot={screenshot}
+	>
 		<test-line
 			title={<text>Assert application has exited</text>}
 			status="exit"
 		/>
 	</test-line-result>;
-	const excludedResult = <test-line-result status="excluded">
+	const excludedResult = (screenshot?: string): JSX.Element => <test-line-result
+		status="excluded"
+		screenshot={screenshot}
+	>
 		<test-line
 			title={<text>Assert application has exited</text>}
 			status="excluded"
 		/>
 	</test-line-result>;
-	const fatalResult = <test-line-result status="fatal">
+	const fatalResult = (screenshot?: string): JSX.Element => <test-line-result
+		status="fatal"
+		screenshot={screenshot}
+	>
 		<test-line
 			title={<text>Assert application has exited</text>}
 			status="fatal"
@@ -113,11 +129,20 @@ describe('AST renderers', () => {
 		});
 
 		it('should render alerts', () => {
-			expect(toHtml(failResult)).toMatchSnapshot();
-			expect(toHtml(warningResult)).toMatchSnapshot();
-			expect(toHtml(exitResult)).toMatchSnapshot();
-			expect(toHtml(excludedResult)).toMatchSnapshot();
-			expect(toHtml(fatalResult)).toMatchSnapshot();
+			expect(toHtml(failResult())).toMatchSnapshot();
+			expect(toHtml(warningResult())).toMatchSnapshot();
+			expect(toHtml(exitResult())).toMatchSnapshot();
+			expect(toHtml(excludedResult())).toMatchSnapshot();
+			expect(toHtml(fatalResult())).toMatchSnapshot();
+		});
+
+		it('should render results with screenshots', () => {
+			const screenshot = 'path/to/screenshot.png';
+			expect(toHtml(failResult(screenshot))).toMatchSnapshot();
+			expect(toHtml(warningResult(screenshot))).toMatchSnapshot();
+			expect(toHtml(exitResult(screenshot))).toMatchSnapshot();
+			expect(toHtml(excludedResult(screenshot))).toMatchSnapshot();
+			expect(toHtml(fatalResult(screenshot))).toMatchSnapshot();
 		});
 	});
 

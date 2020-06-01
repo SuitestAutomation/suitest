@@ -10,6 +10,7 @@ export type BaseResult = {
 	timeFinished: number,
 	timeHrDiff: [number, number],
 	timeScreenshotHr: [number, number],
+	screenshot?: string,
 	result: TestLineResultType,
 	results?: TestLineResult[], // Results for child snippet lines
 	actualValue?: string | number, // TODO it probably appears only in query failed errors
@@ -122,7 +123,15 @@ export type SimpleError = BaseResult & {
 		| 'bootstrapAppNotDetected'
 		| 'activationExpired'
 		| 'missingCpp'
-		| 'outOfMemory',
+		| 'outOfMemory'
+		| 'networkError'
+		| 'instrumentationFailed'
+		| 'packageCorrupted'
+		| 'unknownElementProperty'
+		| 'configuratorError'
+		| 'appStoreBuild'
+		| 'outdatedLibraryWarning'
+		| 'cyclicReference',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {
@@ -230,7 +239,7 @@ export type NetworkErrorItemBase = {
 	name: string,
 };
 
-export type QueryFailedWithCode = {
+export type QueryFailedWithCode = QueryFailedInvalidUrl | {
 	errorType: 'queryFailed',
 	message: {
 		code: 'invalidApp'
@@ -252,6 +261,16 @@ export type QueryFailedWithCode = {
 		},
 	},
 };
+
+export type QueryFailedInvalidUrl = {
+	errorType: 'queryFailed',
+	message: {
+		code: 'invalidUrl',
+	},
+	actualValue: string,
+	expectedValue: string,
+};
+
 export type QueryFailedError = BaseResult & (QueryFailedWithCode | {
 	errorType: 'queryFailed',
 	actualValue: string,
@@ -310,6 +329,7 @@ export type OpenAppOverrideFailedError = BaseResult & {
 		errorType: string, // TODO - any other error type potentially
 		// TODO any other error data potentially
 	},
+	definitionId: string,
 };
 
 export type InvalidPackageError = BaseResult & {
@@ -339,9 +359,15 @@ export type TestLineSuccessResult = BaseResult & {
 	errorType?: undefined,
 };
 
-export type TestLineErrorResult = Exclude<TestLineResult, TestLineSuccessResult>;
+export type TestLineExcludedResult = BaseResult & {
+	result: 'excluded',
+	errorType?: undefined,
+};
+
+export type TestLineErrorResult = Exclude<TestLineResult, TestLineSuccessResult | TestLineExcludedResult>;
 
 export type TestLineResult = TestLineSuccessResult
+	| TestLineExcludedResult
 	| SimpleError
 	| OutdatedInstrumentationLibraryError
 	| QueryTimeoutError

@@ -3,8 +3,6 @@ type Node = import('./unistTestLine').Node;
 type CodeBlockLanguage = import('./unistTestLine').CodeBlockLanguage;
 type SingleEntryStatus = import('./unistTestLine').SingleEntryStatus;
 type TestLineResultStatus = import('./unistTestLine').TestLineResultStatus;
-type ElementOrTextChildren = string | SingleNode | undefined | ElementOrTextChildren[];
-type ElementChildren = SingleNode | undefined | ElementChildren[];
 type StringOrStrings = string | string[];
 
 declare namespace JSX {
@@ -16,7 +14,14 @@ declare namespace JSX {
 	// TypeScript can't infer correct type, unfortunately,
 	// so will simply put it to any node at all
 	// https://www.typescriptlang.org/docs/handbook/jsx.html#the-jsx-result-type
-	type Element = Node;
+	// type Element = SingleElement | Element[];
+	type Element = SingleNode;
+
+	type SmstText = string | number;
+	type SmstChild = Node | string | number;
+	type SmstElement = SmstChild | boolean | null | undefined;
+	type SmstNode = SmstElement | SmstElement[];
+	type SmstFlatNode = SingleNode | SmstText | boolean | null | undefined;
 
 	interface IntrinsicElements {
 		// Plain text, should accept only string or other textual elements to make
@@ -25,33 +30,62 @@ declare namespace JSX {
 		subject: {children: StringOrStrings},
 		input: {children: StringOrStrings},
 		code: {children: StringOrStrings},
-		fragment: {children: ElementOrTextChildren},
+		fragment: {children: SmstNode},
 		'code-block': {
 			children: StringOrStrings,
 			language?: CodeBlockLanguage,
 		},
 		prop: {
-			name: ElementChildren,
+			name: SmstNode,
 			comparator?: string,
-			expectedValue: ElementChildren,
+			expectedValue: SmstNode,
 			actualValue?: string | number,
 			status?: SingleEntryStatus,
 		},
-		props: {children: ElementChildren},
+		props: {children: SmstNode},
 		condition: {
-			title: ElementChildren,
-			children?: ElementChildren,
+			title: SmstNode,
+			children?: SmstNode,
 			status?: SingleEntryStatus,
 		},
 		'test-line': {
-			title: ElementChildren,
-			children?: ElementChildren,
+			title: SmstNode,
+			children?: SmstNode,
 			status?: TestLineResultStatus,
 		},
 		'test-line-result': {
 			status: TestLineResultStatus,
-			children: ElementChildren,
-			message?: ElementChildren,
+			children: SmstNode,
+			message?: SmstNode,
+			screenshot?: string,
 		},
 	}
+
+	type ElementsProps = {
+		text: Omit<IntrinsicElements['text'], 'children'>,
+		subject: Omit<IntrinsicElements['subject'], 'children'>,
+		input: Omit<IntrinsicElements['input'], 'children'>,
+		code: Omit<IntrinsicElements['code'], 'children'>,
+		fragment: Omit<IntrinsicElements['fragment'], 'children'>,
+		'code-block': Omit<IntrinsicElements['code-block'], 'children'> | null,
+		prop: IntrinsicElements['prop'],
+		props: Omit<IntrinsicElements['props'], 'children'>,
+		condition: Omit<IntrinsicElements['condition'], 'children'>,
+		'test-line': Omit<IntrinsicElements['test-line'], 'children'>,
+		'test-line-result': Omit<IntrinsicElements['test-line-result'], 'children'>,
+	};
+
+	type ElementsChildren = {
+		text: IntrinsicElements['text']['children'],
+		subject: IntrinsicElements['subject']['children'],
+		input: IntrinsicElements['input']['children'],
+		code: IntrinsicElements['code']['children'],
+		fragment: IntrinsicElements['fragment']['children'],
+		'code-block': IntrinsicElements['code-block']['children'],
+		prop: void,
+		props: IntrinsicElements['props']['children'],
+		condition: IntrinsicElements['condition']['children'],
+		'test-line': IntrinsicElements['test-line']['children'],
+		'test-line-result': IntrinsicElements['test-line-result']['children'],
+	};
 }

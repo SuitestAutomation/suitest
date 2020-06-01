@@ -1,6 +1,6 @@
 {
   "name": "@suitest/smst-to-html",
-  "version": "3.0.0",
+  "version": "3.0.2",
   "description": "Utility to convert SMST to HTML",
   "repository": {
     "type": "git",
@@ -32,6 +32,6 @@
     "prepublishOnly": "npm run coverage && npm run build"
   },
   "dependencies": {
-    "@suitest/smst": "^3.0.0"
+    "@suitest/smst": "^3.0.2"
   }
 }

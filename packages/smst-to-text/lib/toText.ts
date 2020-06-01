@@ -290,8 +290,11 @@ const renderTestLineResult = (node: TestLineResultNode, renderTextNode: RenderTe
 		? tab + renderTextNode({type: node.status, value: node.status + ': '}) + nodeMessage
 		: '';
 	const body = renderTestLineOrCondition(node.children[0], renderTextNode, prefix);
+	const screenshot = node.screenshot
+		? tab + 'screenshot: ' + node.screenshot
+		: '';
 
-	return [body, message].filter(Boolean).join(nl);
+	return [body, message, screenshot].filter(Boolean).join(nl);
 };
 
 export const toText = (node: Node, format = true): string => {

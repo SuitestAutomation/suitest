@@ -9,27 +9,27 @@ exports[`Test line results translation Translate assert lines with then continue
 
 exports[`Test line results translation Translate assert lines with then continue translate "assert cookie" existingSubject error 1`] = `
 "✖ Assert: cookie cookie-name does not exist
-  fail: Subject expected not to exist."
+  fail: Subject expected not to exist"
 `;
 
 exports[`Test line results translation Translate assert lines with then continue translate "assert cookie" exprException error 1`] = `
 "✖ Assert: cookie cookieName
   ✖ cookieName matches
     > cookieValue
-  fail: Exception was thrown: \\"cookieValue is not defined\\"."
+  fail: Exception was thrown: \\"cookieValue is not defined\\""
 `;
 
 exports[`Test line results translation Translate assert lines with then continue translate "assert cookie" missingSubject error 1`] = `
 "✖ Assert: cookie suitest-cookie
   ✖ suitest-cookie = suitest
-  fail: Subject does not exist."
+  fail: Subject does not exist"
 `;
 
 exports[`Test line results translation Translate assert lines with then continue translate "assert cookie" queryFailed (cookie value not matched) error 1`] = `
 "✖ Assert: cookie suitest-cookie
   ✖ suitest-cookie = suitest          
                    → some cookie value
-  fail: Condition was not met."
+  fail: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then continue translate "assert cookie" queryFailed match js failed 1`] = `
@@ -38,7 +38,7 @@ exports[`Test line results translation Translate assert lines with then continue
     > function somePredicate(val) {
     > 	return false;
     > }           
-  fail: Condition was not met."
+  fail: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then continue translate "assert cookie" without result 1`] = `
@@ -52,14 +52,14 @@ exports[`Test line results translation Translate assert lines with then continue
     > function somePredicate(location) {
     > 	return false;
     > }             
-  fail: Condition was not met."
+  fail: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then continue translate "assert current location" errorType: "queryFailed" matchjs failed 2`] = `
 "✖ Assert: Current location
   ✖ current location matches JS
     > something     
-  fail: Exception was thrown: \\"something is not defined\\"."
+  fail: Exception was thrown: \\"something is not defined\\""
 `;
 
 exports[`Test line results translation Translate assert lines with then continue translate "assert current location" errorType: "queryFailed" with message.code 1`] = `
@@ -72,7 +72,7 @@ exports[`Test line results translation Translate assert lines with then continue
 "✖ Assert: Current location
   ✖ current location contains http://some.url                                        
                      →        http://file.suite.st/sampleapp_staging/index-hbbtv.html
-  fail: Condition was not met."
+  fail: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then continue translate "assert current location" with success result 1`] = `
@@ -102,12 +102,12 @@ exports[`Test line results translation Translate assert lines with then continue
 
 exports[`Test line results translation Translate assert lines with then continue translate "assert element" queryFailed results element visible fail 1`] = `
 "✖ Assert: My element is visible
-  fail: Condition was not met."
+  fail: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then continue translate "assert element" queryFailed results existingSubject 1`] = `
 "✖ Assert: Element 1 does not exist
-  fail: Subject expected not to exist."
+  fail: Subject expected not to exist"
 `;
 
 exports[`Test line results translation Translate assert lines with then continue translate "assert element" queryFailed results expression error 1`] = `
@@ -141,7 +141,7 @@ exports[`Test line results translation Translate assert lines with then continue
                      → 0                                                           
   ✖ visibility       = invisible                                                   
                      → property missing                                            
-  fail: Condition was not met."
+  fail: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then continue translate "assert element" queryFailed results expression error 2`] = `
@@ -179,7 +179,7 @@ exports[`Test line results translation Translate assert lines with then continue
                      →        wrong format                                                
   ✖ text color       =        rgba(255, dddd, 255, 1)                                     
                      →        wrong format                                                
-  fail: Test command received invalid input."
+  fail: Test command received invalid input"
 `;
 
 exports[`Test line results translation Translate assert lines with then continue translate "assert element" queryFailed results handle error because of js error for match js 1`] = `
@@ -189,19 +189,19 @@ exports[`Test line results translation Translate assert lines with then continue
     > 	console.log(testSubject);                   
     > 	return true;                                
     > }                                            
-  fail: Exception was thrown: \\"Unexpected token '('\\"."
+  fail: Exception was thrown: \\"Unexpected token '('\\""
 `;
 
 exports[`Test line results translation Translate assert lines with then continue translate "assert element" queryFailed results match js fail 1`] = `
 "✖ Assert: {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JavaScript
   ✖ {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JS
     > someJS();                                    
-  fail: Condition was not met."
+  fail: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then continue translate "assert element" queryFailed results missingSubject 1`] = `
 "✖ Assert: Element 1 exists
-  fail: Subject does not exist."
+  fail: Subject does not exist"
 `;
 
 exports[`Test line results translation Translate assert lines with then continue translate "assert element" without error "element ... does not exist" 1`] = `"Assert: Element 1 does not exist"`;
@@ -237,7 +237,7 @@ exports[`Test line results translation Translate assert lines with then continue
     > 1 + 1          
   ✖ expression result = 3
                       → 2
-  fail: Condition was not met."
+  fail: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then continue translate "assert javascript expression" errorType: "queryFailed" expression matching failed 2`] = `
@@ -246,7 +246,7 @@ exports[`Test line results translation Translate assert lines with then continue
     > 120 + 3        
   ✖ expression result ! contains 12 
                       →          123
-  fail: Condition was not met."
+  fail: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then continue translate "assert javascript expression" errorType: "queryFailed" handle javascript exception 1`] = `
@@ -254,7 +254,7 @@ exports[`Test line results translation Translate assert lines with then continue
   ✖ expression         
     > function test() { return 123
   ✖ expression result = 123
-  fail: Exception was thrown: \\"Unexpected end of input\\"."
+  fail: Exception was thrown: \\"Unexpected end of input\\""
 `;
 
 exports[`Test line results translation Translate assert lines with then continue translate "assert javascript expression" render error when javascript expression missed 1`] = `
@@ -278,7 +278,7 @@ exports[`Test line results translation Translate assert lines with then continue
   ✖ expression         
     > 1              
   ✖ expression result = [NOT SPECIFIED]
-  fail: Test command received invalid input."
+  fail: Test command received invalid input"
 `;
 
 exports[`Test line results translation Translate assert lines with then continue translate "assert javascript expression" render without result 1`] = `
@@ -344,20 +344,20 @@ exports[`Test line results translation Translate assert lines with then continue
                                                 v id=\\"content\\"></div>
 </body>
 </html>                       
-  fail: Condition was not met."
+  fail: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then continue translate "assert network" render fail results syntax error when status compare type is "CONTAINS" 1`] = `
 "✖ Assert: network request was made in entire network log
   URL             =        http://suite.st/123 (http://suite.st/<%var1%>)
   response status contains 303                                           
-  fatal: Test command received invalid input."
+  fatal: Test command received invalid input"
 `;
 
 exports[`Test line results translation Translate assert lines with then continue translate "assert network" render fail results url not matched 1`] = `
 "✖ Assert: network request was made in entire network log
   ✖ URL = http://suite.st/123 (http://suite.st/<%var1%>)
-  fail: Condition was not met."
+  fail: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then continue translate "assert network" render fail results url not matched 2`] = `
@@ -369,7 +369,7 @@ exports[`Test line results translation Translate assert lines with then continue
   response status                                >         123                                                       
   response header Content-123 (Content-<%var1%>) ends with val2/javascript (<%var2%>/javascript)                     
   response body                                  =         response <%non_existing_var%> <%kind-of|var but not%> body
-  fail: Condition was not met."
+  fail: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines with then continue translate "assert network" render without result 1`] = `
@@ -396,6 +396,46 @@ exports[`Test line results translation Translate assert lines with then continue
 exports[`Test line results translation Translate assert lines with then continue translate "assert ps video" render without result 1`] = `"Assert: PlayStation 4 video had no error for current source"`;
 
 exports[`Test line results translation Translate assert lines with then continue translate "assert ps video" render without result 2`] = `"Assert: PlayStation 4 video had no error for any source"`;
+
+exports[`Test line results translation Translate assert lines with then continue translate "openAppOverrideFailed" render with addition errorType 1`] = `
+"✖ Open application
+  success: Condition was not met"
+`;
+
+exports[`Test line results translation Translate assert lines with then continue translate "openAppOverrideFailed" render with addition errorType 2`] = `
+"✖ Open application
+  success: Condition was not met"
+`;
+
+exports[`Test line results translation Translate assert lines with then continue translate "openAppOverrideFailed" render with lineId 1`] = `
+"✖ Open application
+  success: Condition was not met"
+`;
+
+exports[`Test line results translation Translate assert lines with then continue translate line with screenshot should render excluded lines 1`] = `
+"» Press button OK
+  success: Condition was met"
+`;
+
+exports[`Test line results translation Translate assert lines with then continue translate line with screenshot should render line with screenshot 1`] = `
+"✔ Press button OK
+  undefined: Condition was met"
+`;
+
+exports[`Test line results translation Translate assert lines with then continue translate line with screenshot should render line with screenshot 2`] = `
+"✖ Press button OK
+  success: Condition was not met"
+`;
+
+exports[`Test line results translation Translate assert lines with then continue translate line with screenshot should render line without screenshot 1`] = `
+"✔ Press button OK
+  undefined: Condition was met"
+`;
+
+exports[`Test line results translation Translate assert lines with then continue translate line with screenshot should render line without screenshot 2`] = `
+"✖ Press button OK
+  success: Condition was not met"
+`;
 
 exports[`Test line results translation Translate assert lines with then exit translate "assert application has exited" render with fail result 1`] = `
 "✔ Assert: Application has exited then stop test
@@ -795,6 +835,46 @@ exports[`Test line results translation Translate assert lines with then exit tra
 
 exports[`Test line results translation Translate assert lines with then exit translate "assert ps video" render without result 2`] = `"Assert: PlayStation 4 video had no error for any source then stop test"`;
 
+exports[`Test line results translation Translate assert lines with then exit translate "openAppOverrideFailed" render with addition errorType 1`] = `
+"✖ Open application
+  success: Condition was not met"
+`;
+
+exports[`Test line results translation Translate assert lines with then exit translate "openAppOverrideFailed" render with addition errorType 2`] = `
+"✖ Open application
+  success: Condition was not met"
+`;
+
+exports[`Test line results translation Translate assert lines with then exit translate "openAppOverrideFailed" render with lineId 1`] = `
+"✖ Open application
+  success: Condition was not met"
+`;
+
+exports[`Test line results translation Translate assert lines with then exit translate line with screenshot should render excluded lines 1`] = `
+"» Press button OK
+  success: Condition was met"
+`;
+
+exports[`Test line results translation Translate assert lines with then exit translate line with screenshot should render line with screenshot 1`] = `
+"✔ Press button OK
+  undefined: Condition was met"
+`;
+
+exports[`Test line results translation Translate assert lines with then exit translate line with screenshot should render line with screenshot 2`] = `
+"✖ Press button OK
+  success: Condition was not met"
+`;
+
+exports[`Test line results translation Translate assert lines with then exit translate line with screenshot should render line without screenshot 1`] = `
+"✔ Press button OK
+  undefined: Condition was met"
+`;
+
+exports[`Test line results translation Translate assert lines with then exit translate line with screenshot should render line without screenshot 2`] = `
+"✖ Press button OK
+  success: Condition was not met"
+`;
+
 exports[`Test line results translation Translate assert lines with then fail translate "assert application has exited" render with fail result 1`] = `
 "✔ Assert: Application has exited then fail
   success: Condition was not met"
@@ -1192,6 +1272,46 @@ exports[`Test line results translation Translate assert lines with then fail tra
 exports[`Test line results translation Translate assert lines with then fail translate "assert ps video" render without result 1`] = `"Assert: PlayStation 4 video had no error for current source then fail"`;
 
 exports[`Test line results translation Translate assert lines with then fail translate "assert ps video" render without result 2`] = `"Assert: PlayStation 4 video had no error for any source then fail"`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "openAppOverrideFailed" render with addition errorType 1`] = `
+"✖ Open application
+  success: Condition was not met"
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "openAppOverrideFailed" render with addition errorType 2`] = `
+"✖ Open application
+  success: Condition was not met"
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate "openAppOverrideFailed" render with lineId 1`] = `
+"✖ Open application
+  success: Condition was not met"
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate line with screenshot should render excluded lines 1`] = `
+"» Press button OK
+  success: Condition was met"
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate line with screenshot should render line with screenshot 1`] = `
+"✔ Press button OK
+  undefined: Condition was met"
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate line with screenshot should render line with screenshot 2`] = `
+"✖ Press button OK
+  success: Condition was not met"
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate line with screenshot should render line without screenshot 1`] = `
+"✔ Press button OK
+  undefined: Condition was met"
+`;
+
+exports[`Test line results translation Translate assert lines with then fail translate line with screenshot should render line without screenshot 2`] = `
+"✖ Press button OK
+  success: Condition was not met"
+`;
 
 exports[`Test line results translation Translate assert lines with then warn translate "assert application has exited" render with fail result 1`] = `
 "✔ Assert: Application has exited then warn
@@ -1591,6 +1711,46 @@ exports[`Test line results translation Translate assert lines with then warn tra
 
 exports[`Test line results translation Translate assert lines with then warn translate "assert ps video" render without result 2`] = `"Assert: PlayStation 4 video had no error for any source then warn"`;
 
+exports[`Test line results translation Translate assert lines with then warn translate "openAppOverrideFailed" render with addition errorType 1`] = `
+"✖ Open application
+  success: Condition was not met"
+`;
+
+exports[`Test line results translation Translate assert lines with then warn translate "openAppOverrideFailed" render with addition errorType 2`] = `
+"✖ Open application
+  success: Condition was not met"
+`;
+
+exports[`Test line results translation Translate assert lines with then warn translate "openAppOverrideFailed" render with lineId 1`] = `
+"✖ Open application
+  success: Condition was not met"
+`;
+
+exports[`Test line results translation Translate assert lines with then warn translate line with screenshot should render excluded lines 1`] = `
+"» Press button OK
+  success: Condition was met"
+`;
+
+exports[`Test line results translation Translate assert lines with then warn translate line with screenshot should render line with screenshot 1`] = `
+"✔ Press button OK
+  undefined: Condition was met"
+`;
+
+exports[`Test line results translation Translate assert lines with then warn translate line with screenshot should render line with screenshot 2`] = `
+"✖ Press button OK
+  success: Condition was not met"
+`;
+
+exports[`Test line results translation Translate assert lines with then warn translate line with screenshot should render line without screenshot 1`] = `
+"✔ Press button OK
+  undefined: Condition was met"
+`;
+
+exports[`Test line results translation Translate assert lines with then warn translate line with screenshot should render line without screenshot 2`] = `
+"✖ Press button OK
+  success: Condition was not met"
+`;
+
 exports[`Test line results translation should translate "ActionNotAvailable" error 1`] = `
 Object {
   "type": "text",
@@ -1780,6 +1940,13 @@ Object {
 }
 `;
 
+exports[`Test line results translation should translate "appStoreBuild" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Can’t install App Store distribution build",
+}
+`;
+
 exports[`Test line results translation should translate "appleAppSignError" error 1`] = `
 Object {
   "type": "text",
@@ -1822,10 +1989,24 @@ Object {
 }
 `;
 
+exports[`Test line results translation should translate "configuratorError" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Make sure that Apple Configurator 2 and Automation Tools are installed. https://suite.st/docs/devices/apple-tv/#installing-apple-configurator-2",
+}
+`;
+
 exports[`Test line results translation should translate "connectionNotAuthorized" error 1`] = `
 Object {
   "type": "text",
   "value": "Connection not authorized. Debug mode is not allowed on the device, please make sure it is enabled",
+}
+`;
+
+exports[`Test line results translation should translate "cyclicReference" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Cyclic reference detected",
 }
 `;
 
@@ -1861,6 +2042,13 @@ exports[`Test line results translation should translate "initPlatformFailed" err
 Object {
   "type": "text",
   "value": "Failed to start Suitest bootstrap application on this device",
+}
+`;
+
+exports[`Test line results translation should translate "instrumentationFailed" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Suitest was unable to automatically insert the instrumentation library",
 }
 `;
 
@@ -1941,6 +2129,13 @@ Object {
 }
 `;
 
+exports[`Test line results translation should translate "networkError" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Network request matching given conditions was not made. https://suite.st/docs/faq/surprises/#network-request-condition-never-matches",
+}
+`;
+
 exports[`Test line results translation should translate "noConnection" error 1`] = `
 Object {
   "type": "text",
@@ -1980,6 +2175,20 @@ exports[`Test line results translation should translate "outOfMemory" error 1`] 
 Object {
   "type": "text",
   "value": "Failed to open the app. Device is out of memory, please restart the device",
+}
+`;
+
+exports[`Test line results translation should translate "outdatedLibraryWarning" error 1`] = `
+Object {
+  "type": "text",
+  "value": "We have detected that your instrumentation library is outdated, the package can still be opened. Consider updating",
+}
+`;
+
+exports[`Test line results translation should translate "packageCorrupted" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Failed to open the app. Please make sure that your app is working correctly",
 }
 `;
 
@@ -2050,6 +2259,13 @@ exports[`Test line results translation should translate "unfocusableElement" err
 Object {
   "type": "text",
   "value": "Element can't receive focus to enter text",
+}
+`;
+
+exports[`Test line results translation should translate "unknownElementProperty" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Unknown element property",
 }
 `;
 

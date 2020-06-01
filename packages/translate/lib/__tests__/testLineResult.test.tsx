@@ -88,6 +88,14 @@ describe('Test line results translation', () => {
 		'activationExpired',
 		'missingCpp',
 		'outOfMemory',
+		'networkError',
+		'instrumentationFailed',
+		'packageCorrupted',
+		'unknownElementProperty',
+		'configuratorError',
+		'appStoreBuild',
+		'outdatedLibraryWarning',
+		'cyclicReference',
 	];
 
 	// it('should translate success results', () => {
@@ -137,6 +145,50 @@ describe('Test line results translation', () => {
 					0,
 				],
 			};
+
+			describe('translate "openAppOverrideFailed"', () => {
+				const openAppCommand = testLinesExamples['Open app at homepage']();
+
+				it('render with lineId', () => {
+					expect(testLineToFormattedText({
+						testLine: openAppCommand,
+						appConfig,
+						lineResult: extendBaseError({
+							errorType: 'openAppOverrideFailed',
+							message: {
+								errorType: 'queryFailed',
+								lineId: 'line-id-1',
+							},
+						}),
+					})).toMatchSnapshot();
+				});
+
+				it('render with addition errorType', () => {
+					expect(testLineToFormattedText({
+						testLine: openAppCommand,
+						appConfig,
+						lineResult: extendBaseError({
+							errorType: 'openAppOverrideFailed',
+							message: {
+								errorType: 'queryFailed',
+							},
+						}),
+					})).toMatchSnapshot();
+					expect(testLineToFormattedText({
+						testLine: openAppCommand,
+						appConfig,
+						lineResult: extendBaseError({
+							errorType: 'openAppOverrideFailed',
+							message: {
+								errorType: 'invalidInput',
+								message: {
+									code: 'lineTypeNotSupported',
+								},
+							},
+						}),
+					})).toMatchSnapshot();
+				});
+			});
 
 			describe('translate "assert current location"', () => {
 				const assertLocation = assertLine(conditions['current location']('~', 'http://some.url'));
@@ -971,6 +1023,117 @@ describe('Test line results translation', () => {
 				});
 			});
 			// ---- end of "translate "assert network"" ----
+			describe('translate line with screenshot', () => {
+				it('should render line without screenshot', () => {
+					expect(testLineToFormattedText({
+						testLine: {
+							type: 'button',
+							ids: ['OK'],
+							screenshot: false,
+							lineId: '123',
+							excluded: false,
+							fatal: false,
+						},
+						appConfig,
+						lineResult: {
+							lineId: '123',
+							result: 'success',
+							timeStarted: 0,
+							timeFinished: 0,
+							timeHrDiff: [0, 0],
+							timeScreenshotHr: [0, 0],
+						},
+					})).toMatchSnapshot();
+
+					expect(testLineToFormattedText({
+						testLine: {
+							type: 'button',
+							ids: ['OK'],
+							screenshot: false,
+							lineId: '123',
+							excluded: false,
+							fatal: false,
+						},
+						appConfig,
+						lineResult: {
+							lineId: '123',
+							result: 'fail',
+							errorType: 'adbError',
+							timeStarted: 0,
+							timeFinished: 0,
+							timeHrDiff: [0, 0],
+							timeScreenshotHr: [0, 0],
+						},
+					})).toMatchSnapshot();
+				});
+
+				it('should render line with screenshot', () => {
+					expect(testLineToFormattedText({
+						testLine: {
+							type: 'button',
+							ids: ['OK'],
+							screenshot: true,
+							lineId: '123',
+							excluded: false,
+							fatal: false,
+						},
+						appConfig,
+						lineResult: {
+							lineId: '123',
+							result: 'success',
+							timeStarted: 0,
+							timeFinished: 0,
+							timeHrDiff: [0, 0],
+							timeScreenshotHr: [0, 0],
+							screenshot: '/path/to/file.png',
+						},
+					})).toMatchSnapshot();
+
+					expect(testLineToFormattedText({
+						testLine: {
+							type: 'button',
+							ids: ['OK'],
+							screenshot: true,
+							lineId: '123',
+							excluded: false,
+							fatal: false,
+						},
+						appConfig,
+						lineResult: {
+							lineId: '123',
+							result: 'fail',
+							errorType: 'adbError',
+							timeStarted: 0,
+							timeFinished: 0,
+							timeHrDiff: [0, 0],
+							timeScreenshotHr: [0, 0],
+							screenshot: '/path/to/file.png',
+						},
+					})).toMatchSnapshot();
+				});
+
+				it('should render excluded lines', () => {
+					expect(testLineToFormattedText({
+						testLine: {
+							type: 'button',
+							ids: ['OK'],
+							screenshot: false,
+							lineId: '123',
+							excluded: true,
+							fatal: false,
+						},
+						appConfig,
+						lineResult: {
+							lineId: '123',
+							result: 'excluded',
+							timeStarted: 0,
+							timeFinished: 0,
+							timeHrDiff: [0, 0],
+							timeScreenshotHr: [0, 0],
+						},
+					})).toMatchSnapshot();
+				});
+			});
 		});
 	});
 });

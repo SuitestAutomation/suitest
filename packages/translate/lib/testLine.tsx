@@ -224,7 +224,7 @@ const translatePressButtonTestLine = (
 	</test-line> as TestLineNode;
 };
 
-const translateTestName = (testId: string, snippets?: Snippets): Node | Node[] => {
+const translateTestName = (testId: string, snippets?: Snippets): JSX.Element => {
 	if (snippets && snippets[testId]) {
 		return <subject>{snippets[testId].name}</subject>;
 	}
@@ -256,7 +256,7 @@ const assertUnknownTarget = (target: never): never => {
 	throw new Error('Unknown target: ' + JSON.stringify(target));
 };
 
-const translateTarget = (target: Target): Node | Node[] => {
+const translateTarget = (target: Target): JSX.Element => {
 	switch (target.type) {
 		case 'element': // TODO nyc for some reason reports an uncovered branch here
 			return <subject>element</subject>;
