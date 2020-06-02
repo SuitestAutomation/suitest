@@ -148,7 +148,6 @@ describe('AST renderers', () => {
 
 	describe('escape html tags', () => {
 		const script = '<script>alert("xss")</script>';
-		console.log(toHtml(<input>{script}</input>));
 		expect(toHtml(<fragment>{script}</fragment>)).toMatchSnapshot();
 		expect(toHtml(<subject>{script}</subject>)).toMatchSnapshot();
 		expect(toHtml(<input>{script}</input>)).toMatchSnapshot();
