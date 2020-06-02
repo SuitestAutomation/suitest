@@ -69,6 +69,14 @@ Object {
 }
 `;
 
+exports[`jsxFactory should translate link correctly 1`] = `
+Object {
+  "href": "http://some.url",
+  "type": "link",
+  "value": "link to some url",
+}
+`;
+
 exports[`jsxFactory should translate test line result line correctly 1`] = `
 Object {
   "children": Array [

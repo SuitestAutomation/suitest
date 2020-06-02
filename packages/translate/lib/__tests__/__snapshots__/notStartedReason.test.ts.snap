@@ -2,159 +2,669 @@
 
 exports[`Testing not started reason translation. Should translate "androidPlatformError" code 1`] = `
 Object {
+  "description": Object {
+    "type": "text",
+    "value": "Android driver has misbehaved. Please verify that the device is online and it's current IP address is correctly specified in Suitest. If nothing helps try rebooting the device and restarting SuitestDrive",
+  },
+  "title": Object {
+    "type": "text",
+    "value": "Cannot continue: Android driver has failed",
+  },
+}
+`;
+
+exports[`Testing not started reason translation. Should translate "applePlatformError" code 1`] = `
+Object {
+  "description": Object {
+    "type": "text",
+    "value": "Apple driver has misbehaved. Please verify that the device is paired with Mac that is running SuitestDrive. Make sure that application build is installable on that device. If nothing helps try rebooting the device and restarting SuitestDrive",
+  },
+  "title": Object {
+    "type": "text",
+    "value": "Cannot continue: Apple TV driver has failed",
+  },
+}
+`;
+
+exports[`Testing not started reason translation. Should translate "blasterError" code 1`] = `
+Object {
+  "description": Object {
+    "type": "text",
+    "value": "Infrared blaster assigned to the device is missing or malfunctioning. Check the wiring, replace the blaster or assign another working CandyBox port to this device",
+  },
+  "title": Object {
+    "type": "text",
+    "value": "Cannot continue: IR blaster missing or incorrectly attached",
+  },
+}
+`;
+
+exports[`Testing not started reason translation. Should translate "bootstrappedPlatformError" code 1`] = `
+Object {
+  "description": Object {
+    "type": "text",
+    "value": "Suitest tried to start the bootstrap application on this device but failed several times and will try no more. Please connect to the device and start the bootstrap app manually, then disconnect and the scheduled test will continue. If you have configured the Suitest channel, tune the TV to this channel and verify that Suitest badge is displayed on TV in the top right corner. If you have not configured the Suitest channel, please contact support",
+  },
+  "title": Object {
+    "type": "text",
+    "value": "Cannot continue: Suitest bootstrap app is not running",
+  },
+}
+`;
+
+exports[`Testing not started reason translation. Should translate "candyBoxOffline" code 1`] = `
+Object {
+  "description": Object {
+    "type": "text",
+    "value": "Check that the cable plugged into the CandyBox delivers Internet connection or reboot the CandyBox and allow about 5 minutes for it to initialize",
+  },
+  "title": Object {
+    "type": "text",
+    "value": "Cannot continue: CandyBox controlling this device is offline",
+  },
+}
+`;
+
+exports[`Testing not started reason translation. Should translate "configuratorError" code 1`] = `
+Object {
+  "description": Array [
+    Object {
+      "type": "text",
+      "value": "Please see ",
+    },
+    Object {
+      "href": "https://suite.st/docs/devices/apple-tv/#installing-apple-configurator-2",
+      "type": "link",
+      "value": "our docs",
+    },
+    Object {
+      "type": "text",
+      "value": ".",
+    },
+  ],
+  "title": Object {
+    "type": "text",
+    "value": "Make sure that Apple Configurator 2 and Automation Tools are installed",
+  },
+}
+`;
+
+exports[`Testing not started reason translation. Should translate "deviceDeleted" code 1`] = `
+Object {
+  "description": Object {
+    "type": "text",
+    "value": "The device on which the execution was scheduled has been deleted. Please cancel the test and schedule it on another available device",
+  },
+  "title": Object {
+    "type": "text",
+    "value": "Cannot continue: Device is deleted",
+  },
+}
+`;
+
+exports[`Testing not started reason translation. Should translate "deviceDisabled" code 1`] = `
+Object {
+  "description": Object {
+    "type": "text",
+    "value": "For the execution to continue please enable the device",
+  },
+  "title": Object {
+    "type": "text",
+    "value": "This device is disabled",
+  },
+}
+`;
+
+exports[`Testing not started reason translation. Should translate "deviceInUse" code 1`] = `
+Object {
+  "description": Object {
+    "type": "text",
+    "value": "Execution will continue after the user disconnects",
+  },
+  "title": Object {
+    "type": "text",
+    "value": "A user is currently connected to this device",
+  },
+}
+`;
+
+exports[`Testing not started reason translation. Should translate "internalError" code 1`] = `
+Object {
+  "description": Object {
+    "type": "text",
+    "value": "We are very sorry, but some fishy error occurred when Suitest was trying to execute your test. Our developers have been notified and are already working hard to resolve the problem",
+  },
+  "title": Object {
+    "type": "text",
+    "value": "Cannot continue: Internal error occurred",
+  },
+}
+`;
+
+exports[`Testing not started reason translation. Should translate "lgWebosPlatformError" code 1`] = `
+Object {
+  "description": Object {
+    "type": "text",
+    "value": "LG WebOS driver has misbehaved. Please verify that the device is online and it's current IP address is correctly specified in Suitest. Then double check if the Development mode is enabled on the device. If nothing helps try rebooting the device",
+  },
+  "title": Object {
+    "type": "text",
+    "value": "Cannot continue: LG WebOS driver has failed",
+  },
+}
+`;
+
+exports[`Testing not started reason translation. Should translate "noActivePlan" code 1`] = `
+Object {
+  "description": Array [
+    Object {
+      "type": "text",
+      "value": "Your subscription has expired, to continue using Suitest please ",
+    },
+    Object {
+      "href": "https://the.suite.st/preferences/billing",
+      "type": "link",
+      "value": "renew your subscription",
+    },
+  ],
+  "title": Object {
+    "type": "text",
+    "value": "Cannot continue: Your subscription has expired",
+  },
+}
+`;
+
+exports[`Testing not started reason translation. Should translate "noAvailableAutomatedMinutes" code 1`] = `
+Object {
+  "description": Array [
+    Object {
+      "type": "text",
+      "value": "You testing a lot! How about ",
+    },
+    Object {
+      "href": "https://the.suite.st/preferences/billing",
+      "type": "link",
+      "value": "getting a bigger subscription",
+    },
+    Object {
+      "type": "text",
+      "value": "? Or, if you would like to purchase more testing minutes for the current billing cycle, please contact ",
+    },
+    Object {
+      "href": "mailto:sales@suite.st",
+      "type": "link",
+      "value": "sales@suite.st",
+    },
+    Object {
+      "type": "text",
+      "value": ". Your testing minutes will renew",
+    },
+  ],
+  "title": Object {
+    "type": "text",
+    "value": "Cannot continue: you've used up all of your testing minutes",
+  },
+}
+`;
+
+exports[`Testing not started reason translation. Should translate "notDefinedPlatform" code 1`] = `
+Object {
+  "description": Object {
+    "type": "text",
+    "value": "You have scheduled the test execution with a configuration that depends on a platform, which this device does not currently support. You should either configure the platform on the device or cancel the test run",
+  },
+  "title": Object {
+    "type": "text",
+    "value": "Cannot continue: Device does not support this platform",
+  },
+}
+`;
+
+exports[`Testing not started reason translation. Should translate "packageCorrupted" code 1`] = `
+Object {
+  "title": Object {
+    "type": "text",
+    "value": "Failed to open the app. Please make sure that your app is working correctly.",
+  },
+}
+`;
+
+exports[`Testing not started reason translation. Should translate "planLimitExceeded" code 1`] = `
+Object {
+  "description": Array [
+    Object {
+      "type": "text",
+      "value": "Looks like you have reached the limit of applications or users, check your ",
+    },
+    Object {
+      "href": "https://the.suite.st/preferences/billing",
+      "type": "link",
+      "value": "billing section",
+    },
+    Object {
+      "type": "text",
+      "value": " to increase your plan. Please contact ",
+    },
+    Object {
+      "href": "sales@suite.st",
+      "type": "link",
+      "value": "sales@suite.st",
+    },
+    Object {
+      "type": "text",
+      "value": " if you require help with your plan.",
+    },
+  ],
+  "title": Object {
+    "type": "text",
+    "value": "Application or user limit has been exceeded",
+  },
+}
+`;
+
+exports[`Testing not started reason translation. Should translate "playstationPlatformError" code 1`] = `
+Object {
+  "description": Object {
+    "type": "text",
+    "value": "PlayStation 4 driver has misbehaved. Please verify that the device is online and it's current IP address is correctly specified in Suitest. If nothing helps try rebooting the device and restarting SuitestDrive. If the local IP of the device changes, make sure to set up a static IP for the device.",
+  },
+  "title": Object {
+    "type": "text",
+    "value": "Cannot continue: PlayStation 4 driver has failed",
+  },
+}
+`;
+
+exports[`Testing not started reason translation. Should translate "rokuPlatformError" code 1`] = `
+Object {
+  "description": Object {
+    "type": "text",
+    "value": "Roku driver has misbehaved. Please verify that the device is online and it's current IP address and developer credentials are correctly specified in Suitest. Then double check if the Development mode is enabled on the device and your channel/application is valid. If the local IP of the device changes, make sure to set up a static IP for the device",
+  },
+  "title": Object {
+    "type": "text",
+    "value": "Cannot continue: Roku driver has failed",
+  },
+}
+`;
+
+exports[`Testing not started reason translation. Should translate "runningBootSequence" code 1`] = `
+Object {
+  "description": Object {
+    "type": "text",
+    "value": "Test will start after the Suitest bootstrap application will open. Suitest will attempt to open the app in a number of ways. After each attempt it will wait for 60 seconds for the app to respond. If it will not, Suitest will try the next available method. Current methods are: 1) Sending EXIT key to the device, 2) Executing user defined boot sequence, 3) turning the TV on and off 4) Turning the TV on again. If starting the test takes a long time, you should configure a better boot sequence",
+  },
+  "title": Object {
+    "type": "text",
+    "value": "Trying to open Suitest bootstrap application",
+  },
+}
+`;
+
+exports[`Testing not started reason translation. Should translate "suitestDriveOffline" code 1`] = `
+Object {
+  "description": Object {
+    "type": "text",
+    "value": "SuitestDrive controlling this device is not currently running or is offline. Please verify that the host computer has Internet connection and that SuitestDrive is running",
+  },
+  "title": Object {
+    "type": "text",
+    "value": "Cannot continue: SuitestDrive controlling this device is offline",
+  },
+}
+`;
+
+exports[`Testing not started reason translation. Should translate "suitestDriveServiceOffline" code 1`] = `
+Object {
+  "title": Object {
+    "type": "text",
+    "value": "The SuitestDrive is not running on the CandyBox",
+  },
+}
+`;
+
+exports[`Testing not started reason translation. Should translate "testQueued" code 1`] = `
+Object {
+  "description": Object {
+    "type": "text",
+    "value": "Execution will start as soon as other tests queued on this device will finish execution",
+  },
+  "title": Object {
+    "type": "text",
+    "value": "Test is added to queue",
+  },
+}
+`;
+
+exports[`Testing not started reason translation. Should translate "xboxPlatformError" code 1`] = `
+Object {
+  "description": Object {
+    "type": "text",
+    "value": "Xbox driver has misbehaved. Please verify that the device is online and it's current IP address and developer credentials are correctly specified in Suitest. If nothing helps try rebooting the device and restarting SuitestDrive",
+  },
+  "title": Object {
+    "type": "text",
+    "value": "Cannot continue: Xbox driver has failed",
+  },
+}
+`;
+
+exports[`Testing not started reason translation. Translate to html:  "androidPlatformError" 1`] = `
+Object {
+  "description": "Cannot continue: Android driver has failed",
+  "title": "Cannot continue: Android driver has failed",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to html:  "applePlatformError" 1`] = `
+Object {
+  "description": "Cannot continue: Apple TV driver has failed",
+  "title": "Cannot continue: Apple TV driver has failed",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to html:  "blasterError" 1`] = `
+Object {
+  "description": "Cannot continue: IR blaster missing or incorrectly attached",
+  "title": "Cannot continue: IR blaster missing or incorrectly attached",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to html:  "bootstrappedPlatformError" 1`] = `
+Object {
+  "description": "Cannot continue: Suitest bootstrap app is not running",
+  "title": "Cannot continue: Suitest bootstrap app is not running",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to html:  "candyBoxOffline" 1`] = `
+Object {
+  "description": "Cannot continue: CandyBox controlling this device is offline",
+  "title": "Cannot continue: CandyBox controlling this device is offline",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to html:  "configuratorError" 1`] = `
+Object {
+  "description": "Make sure that Apple Configurator 2 and Automation Tools are installed",
+  "title": "Make sure that Apple Configurator 2 and Automation Tools are installed",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to html:  "deviceDeleted" 1`] = `
+Object {
+  "description": "Cannot continue: Device is deleted",
+  "title": "Cannot continue: Device is deleted",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to html:  "deviceDisabled" 1`] = `
+Object {
+  "description": "This device is disabled",
+  "title": "This device is disabled",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to html:  "deviceInUse" 1`] = `
+Object {
+  "description": "A user is currently connected to this device",
+  "title": "A user is currently connected to this device",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to html:  "internalError" 1`] = `
+Object {
+  "description": "Cannot continue: Internal error occurred",
+  "title": "Cannot continue: Internal error occurred",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to html:  "lgWebosPlatformError" 1`] = `
+Object {
+  "description": "Cannot continue: LG WebOS driver has failed",
+  "title": "Cannot continue: LG WebOS driver has failed",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to html:  "noActivePlan" 1`] = `
+Object {
+  "description": "Cannot continue: Your subscription has expired",
+  "title": "Cannot continue: Your subscription has expired",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to html:  "noAvailableAutomatedMinutes" 1`] = `
+Object {
+  "description": "Cannot continue: you&#039;ve used up all of your testing minutes",
+  "title": "Cannot continue: you&#039;ve used up all of your testing minutes",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to html:  "notDefinedPlatform" 1`] = `
+Object {
+  "description": "Cannot continue: Device does not support this platform",
+  "title": "Cannot continue: Device does not support this platform",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to html:  "packageCorrupted" 1`] = `
+Object {
+  "description": "Failed to open the app. Please make sure that your app is working correctly.",
+  "title": "Failed to open the app. Please make sure that your app is working correctly.",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to html:  "planLimitExceeded" 1`] = `
+Object {
+  "description": "Application or user limit has been exceeded",
+  "title": "Application or user limit has been exceeded",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to html:  "playstationPlatformError" 1`] = `
+Object {
+  "description": "Cannot continue: PlayStation 4 driver has failed",
+  "title": "Cannot continue: PlayStation 4 driver has failed",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to html:  "rokuPlatformError" 1`] = `
+Object {
+  "description": "Cannot continue: Roku driver has failed",
+  "title": "Cannot continue: Roku driver has failed",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to html:  "runningBootSequence" 1`] = `
+Object {
+  "description": "Trying to open Suitest bootstrap application",
+  "title": "Trying to open Suitest bootstrap application",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to html:  "suitestDriveOffline" 1`] = `
+Object {
+  "description": "Cannot continue: SuitestDrive controlling this device is offline",
+  "title": "Cannot continue: SuitestDrive controlling this device is offline",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to html:  "suitestDriveServiceOffline" 1`] = `
+Object {
+  "description": "The SuitestDrive is not running on the CandyBox",
+  "title": "The SuitestDrive is not running on the CandyBox",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to html:  "testQueued" 1`] = `
+Object {
+  "description": "Test is added to queue",
+  "title": "Test is added to queue",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to html:  "xboxPlatformError" 1`] = `
+Object {
+  "description": "Cannot continue: Xbox driver has failed",
+  "title": "Cannot continue: Xbox driver has failed",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to plain text:  "androidPlatformError" 1`] = `
+Object {
   "description": "Android driver has misbehaved. Please verify that the device is online and it's current IP address is correctly specified in Suitest. If nothing helps try rebooting the device and restarting SuitestDrive",
   "title": "Cannot continue: Android driver has failed",
 }
 `;
 
-exports[`Testing not started reason translation. Should translate "applePlatformError" code 1`] = `
+exports[`Testing not started reason translation. Translate to plain text:  "applePlatformError" 1`] = `
 Object {
   "description": "Apple driver has misbehaved. Please verify that the device is paired with Mac that is running SuitestDrive. Make sure that application build is installable on that device. If nothing helps try rebooting the device and restarting SuitestDrive",
   "title": "Cannot continue: Apple TV driver has failed",
 }
 `;
 
-exports[`Testing not started reason translation. Should translate "blasterError" code 1`] = `
+exports[`Testing not started reason translation. Translate to plain text:  "blasterError" 1`] = `
 Object {
   "description": "Infrared blaster assigned to the device is missing or malfunctioning. Check the wiring, replace the blaster or assign another working CandyBox port to this device",
   "title": "Cannot continue: IR blaster missing or incorrectly attached",
 }
 `;
 
-exports[`Testing not started reason translation. Should translate "bootstrappedPlatformError" code 1`] = `
+exports[`Testing not started reason translation. Translate to plain text:  "bootstrappedPlatformError" 1`] = `
 Object {
   "description": "Suitest tried to start the bootstrap application on this device but failed several times and will try no more. Please connect to the device and start the bootstrap app manually, then disconnect and the scheduled test will continue. If you have configured the Suitest channel, tune the TV to this channel and verify that Suitest badge is displayed on TV in the top right corner. If you have not configured the Suitest channel, please contact support",
   "title": "Cannot continue: Suitest bootstrap app is not running",
 }
 `;
 
-exports[`Testing not started reason translation. Should translate "candyBoxOffline" code 1`] = `
+exports[`Testing not started reason translation. Translate to plain text:  "candyBoxOffline" 1`] = `
 Object {
   "description": "Check that the cable plugged into the CandyBox delivers Internet connection or reboot the CandyBox and allow about 5 minutes for it to initialize",
   "title": "Cannot continue: CandyBox controlling this device is offline",
 }
 `;
 
-exports[`Testing not started reason translation. Should translate "configuratorError" code 1`] = `
+exports[`Testing not started reason translation. Translate to plain text:  "configuratorError" 1`] = `
 Object {
-  "description": "Please see [our docs](https://suite.st/docs/devices/apple-tv/#installing-apple-configurator-2).",
+  "description": "Please see our docs (https://suite.st/docs/devices/apple-tv/#installing-apple-configurator-2).",
   "title": "Make sure that Apple Configurator 2 and Automation Tools are installed",
 }
 `;
 
-exports[`Testing not started reason translation. Should translate "deviceDeleted" code 1`] = `
+exports[`Testing not started reason translation. Translate to plain text:  "deviceDeleted" 1`] = `
 Object {
   "description": "The device on which the execution was scheduled has been deleted. Please cancel the test and schedule it on another available device",
   "title": "Cannot continue: Device is deleted",
 }
 `;
 
-exports[`Testing not started reason translation. Should translate "deviceDisabled" code 1`] = `
+exports[`Testing not started reason translation. Translate to plain text:  "deviceDisabled" 1`] = `
 Object {
   "description": "For the execution to continue please enable the device",
   "title": "This device is disabled",
 }
 `;
 
-exports[`Testing not started reason translation. Should translate "deviceInUse" code 1`] = `
+exports[`Testing not started reason translation. Translate to plain text:  "deviceInUse" 1`] = `
 Object {
   "description": "Execution will continue after the user disconnects",
   "title": "A user is currently connected to this device",
 }
 `;
 
-exports[`Testing not started reason translation. Should translate "internalError" code 1`] = `
+exports[`Testing not started reason translation. Translate to plain text:  "internalError" 1`] = `
 Object {
   "description": "We are very sorry, but some fishy error occurred when Suitest was trying to execute your test. Our developers have been notified and are already working hard to resolve the problem",
   "title": "Cannot continue: Internal error occurred",
 }
 `;
 
-exports[`Testing not started reason translation. Should translate "lgWebosPlatformError" code 1`] = `
+exports[`Testing not started reason translation. Translate to plain text:  "lgWebosPlatformError" 1`] = `
 Object {
   "description": "LG WebOS driver has misbehaved. Please verify that the device is online and it's current IP address is correctly specified in Suitest. Then double check if the Development mode is enabled on the device. If nothing helps try rebooting the device",
   "title": "Cannot continue: LG WebOS driver has failed",
 }
 `;
 
-exports[`Testing not started reason translation. Should translate "noActivePlan" code 1`] = `
+exports[`Testing not started reason translation. Translate to plain text:  "noActivePlan" 1`] = `
 Object {
-  "description": "Your subscription has expired, to continue using Suitest please [renew your subscription](https://the.suite.st/preferences/billing)",
+  "description": "Your subscription has expired, to continue using Suitest please renew your subscription (https://the.suite.st/preferences/billing)",
   "title": "Cannot continue: Your subscription has expired",
 }
 `;
 
-exports[`Testing not started reason translation. Should translate "noAvailableAutomatedMinutes" code 1`] = `
+exports[`Testing not started reason translation. Translate to plain text:  "noAvailableAutomatedMinutes" 1`] = `
 Object {
-  "description": "You testing a lot! How about [getting a bigger subscription](https://the.suite.st/preferences/billing)? Or, if you would like to purchase more testing minutes for the current billing cycle, please contact [sales@suite.st](mailto:sales@suite.st). Your testing minutes will renew",
+  "description": "You testing a lot! How about getting a bigger subscription (https://the.suite.st/preferences/billing)? Or, if you would like to purchase more testing minutes for the current billing cycle, please contact sales@suite.st (mailto:sales@suite.st). Your testing minutes will renew",
   "title": "Cannot continue: you've used up all of your testing minutes",
 }
 `;
 
-exports[`Testing not started reason translation. Should translate "notDefinedPlatform" code 1`] = `
+exports[`Testing not started reason translation. Translate to plain text:  "notDefinedPlatform" 1`] = `
 Object {
   "description": "You have scheduled the test execution with a configuration that depends on a platform, which this device does not currently support. You should either configure the platform on the device or cancel the test run",
   "title": "Cannot continue: Device does not support this platform",
 }
 `;
 
-exports[`Testing not started reason translation. Should translate "packageCorrupted" code 1`] = `
+exports[`Testing not started reason translation. Translate to plain text:  "packageCorrupted" 1`] = `
 Object {
-  "description": "",
+  "description": undefined,
   "title": "Failed to open the app. Please make sure that your app is working correctly.",
 }
 `;
 
-exports[`Testing not started reason translation. Should translate "planLimitExceeded" code 1`] = `
+exports[`Testing not started reason translation. Translate to plain text:  "planLimitExceeded" 1`] = `
 Object {
-  "description": "Looks like you have reached the limit of applications or users, check your [billing section](https://the.suite.st/preferences/billing) to increase your plan. Please contact [sales@suite.st](sales@suite.st) if you require help with your plan.",
+  "description": "Looks like you have reached the limit of applications or users, check your billing section (https://the.suite.st/preferences/billing) to increase your plan. Please contact sales@suite.st if you require help with your plan.",
   "title": "Application or user limit has been exceeded",
 }
 `;
 
-exports[`Testing not started reason translation. Should translate "playstationPlatformError" code 1`] = `
+exports[`Testing not started reason translation. Translate to plain text:  "playstationPlatformError" 1`] = `
 Object {
   "description": "PlayStation 4 driver has misbehaved. Please verify that the device is online and it's current IP address is correctly specified in Suitest. If nothing helps try rebooting the device and restarting SuitestDrive. If the local IP of the device changes, make sure to set up a static IP for the device.",
   "title": "Cannot continue: PlayStation 4 driver has failed",
 }
 `;
 
-exports[`Testing not started reason translation. Should translate "rokuPlatformError" code 1`] = `
+exports[`Testing not started reason translation. Translate to plain text:  "rokuPlatformError" 1`] = `
 Object {
   "description": "Roku driver has misbehaved. Please verify that the device is online and it's current IP address and developer credentials are correctly specified in Suitest. Then double check if the Development mode is enabled on the device and your channel/application is valid. If the local IP of the device changes, make sure to set up a static IP for the device",
   "title": "Cannot continue: Roku driver has failed",
 }
 `;
 
-exports[`Testing not started reason translation. Should translate "runningBootSequence" code 1`] = `
+exports[`Testing not started reason translation. Translate to plain text:  "runningBootSequence" 1`] = `
 Object {
   "description": "Test will start after the Suitest bootstrap application will open. Suitest will attempt to open the app in a number of ways. After each attempt it will wait for 60 seconds for the app to respond. If it will not, Suitest will try the next available method. Current methods are: 1) Sending EXIT key to the device, 2) Executing user defined boot sequence, 3) turning the TV on and off 4) Turning the TV on again. If starting the test takes a long time, you should configure a better boot sequence",
   "title": "Trying to open Suitest bootstrap application",
 }
 `;
 
-exports[`Testing not started reason translation. Should translate "suitestDriveOffline" code 1`] = `
+exports[`Testing not started reason translation. Translate to plain text:  "suitestDriveOffline" 1`] = `
 Object {
   "description": "SuitestDrive controlling this device is not currently running or is offline. Please verify that the host computer has Internet connection and that SuitestDrive is running",
   "title": "Cannot continue: SuitestDrive controlling this device is offline",
 }
 `;
 
-exports[`Testing not started reason translation. Should translate "suitestDriveServiceOffline" code 1`] = `
+exports[`Testing not started reason translation. Translate to plain text:  "suitestDriveServiceOffline" 1`] = `
 Object {
-  "description": "",
+  "description": undefined,
   "title": "The SuitestDrive is not running on the CandyBox",
 }
 `;
 
-exports[`Testing not started reason translation. Should translate "testQueued" code 1`] = `
+exports[`Testing not started reason translation. Translate to plain text:  "testQueued" 1`] = `
 Object {
   "description": "Execution will start as soon as other tests queued on this device will finish execution",
   "title": "Test is added to queue",
 }
 `;
 
-exports[`Testing not started reason translation. Should translate "xboxPlatformError" code 1`] = `
+exports[`Testing not started reason translation. Translate to plain text:  "xboxPlatformError" 1`] = `
 Object {
   "description": "Xbox driver has misbehaved. Please verify that the device is online and it's current IP address and developer credentials are correctly specified in Suitest. If nothing helps try rebooting the device and restarting SuitestDrive",
   "title": "Cannot continue: Xbox driver has failed",

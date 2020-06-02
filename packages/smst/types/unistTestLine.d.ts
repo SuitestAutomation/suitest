@@ -80,12 +80,19 @@ export type TestLineResultNode = {
 	screenshot?: string,
 };
 
+export type LinkNode = {
+	type: 'link',
+	href: string,
+	value: string,
+};
+
 export type SingleNode = InlineTextNode
 	| CodeBlockNode
 	| PropertyNode
 	| PropertiesNode
 	| ConditionNode
 	| TestLineNode
-	| TestLineResultNode;
+	| TestLineResultNode
+	| LinkNode;
 
 export type Node =  SingleNode | SingleNode[];

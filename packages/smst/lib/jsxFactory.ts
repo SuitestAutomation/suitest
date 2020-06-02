@@ -12,6 +12,7 @@ import {
 	TextNode,
 	InlinePropertyNode,
 	CodePropertyNode,
+	LinkNode,
 } from '../types/unistTestLine';
 
 const plainTypes = ['text', 'code', 'subject', 'input'];
@@ -140,6 +141,11 @@ export function jsx(
 			return processedChildren[0];
 		case 'fragment':
 			return processedChildren;
+		case 'link':
+			const { href } = props as JSX.ElementsProps['link'];
+			const linkChildren = processedChildren[0] as TextNode | undefined;
+
+			return ub('link', { href }, linkChildren?.value ?? '') as LinkNode;
 		case 'code-block':
 			const codeBlockProps = props as JSX.ElementsProps['code-block'];
 			const codeBlockChildren = processedChildren[0] as CodeBlockNode;
