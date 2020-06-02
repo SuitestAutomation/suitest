@@ -540,7 +540,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "This is a comment",
+      "value": "# This is a comment",
     },
   ],
   "type": "test-line",

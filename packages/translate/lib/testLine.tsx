@@ -396,7 +396,15 @@ const translateMoveToTestLine = (
 };
 
 const translateCommentTestLine = (testLine: CommentTestLine): TestLineNode =>
-	<test-line title={<text>{testLine.val}</text>} /> as TestLineNode;
+	<test-line title={
+		<text>{
+			testLine.val
+				.split('\n')
+				.map(l => l.trim() ? `# ${l}` : false)
+				.filter(Boolean)
+				.join('\n')
+		}</text>
+	} /> as TestLineNode;
 
 /* istanbul ignore next */
 const assertUnknownLineType = (testLine: never): never => {
