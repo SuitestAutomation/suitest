@@ -58,8 +58,8 @@ export type LineResultDetail = {
 };
 
 export type Translation = {
-	title: FormattedString,
-	description?: FormattedString,
+	title: JSX.Element,
+	description?: JSX.Element,
 };
 // A structure with line result translation
 export type LineResultTranslated = {
