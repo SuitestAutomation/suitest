@@ -1,5 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[` 1`] = `"&lt;script>alert(&quot;xss&quot;)&lt;/script>"`;
+
+exports[` 2`] = `"<span class=\\"suitest-test-line__text--subject\\">&lt;script>alert(&quot;xss&quot;)&lt;/script></span>"`;
+
+exports[` 3`] = `"<span class=\\"suitest-test-line__text--input\\">&lt;script>alert(&quot;xss&quot;)&lt;/script></span>"`;
+
+exports[` 4`] = `"<code class=\\"suitest-test-line__text--code\\">&lt;script>alert(&quot;xss&quot;)&lt;/script></code>"`;
+
+exports[` 5`] = `"<div class=\\"suitest-test-line__code-block\\"><pre><code class=\\"language-javascript\\">&lt;script>alert(&quot;xss&quot;)&lt;/script></code></pre></div>"`;
+
+exports[` 6`] = `"&lt;script>alert(&quot;xss&quot;)&lt;/script>"`;
+
 exports[`AST renderers html renderer should handle code blocks 1`] = `"<div class=\\"suitest-test-line__code-block\\"><pre><code class=\\"language-javascript\\">someJS();</code></pre></div>"`;
 
 exports[`AST renderers html renderer should handle code blocks 2`] = `

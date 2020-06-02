@@ -52,7 +52,7 @@ const renderFigure = (
 
 const renderHtmlCodeBlockNode = (node: CodeBlockNode): string => renderFigure(
 	'suitest-test-line__code-block',
-	`<pre><code class="language-${node.language}">${node.value}</code></pre>`
+	`<pre><code class="language-${node.language}">${escapeHtml(node.value ?? '')}</code></pre>`
 );
 
 const renderHtmlPropsNode = (node: PropertiesNode): string => renderFigure(
@@ -82,7 +82,7 @@ const renderHtmlPropsNode = (node: PropertiesNode): string => renderFigure(
 			// Add actual value
 			if (prop.contentType === 'inline' && typeof prop.actualValue !== 'undefined') {
 				// On a new row
-				row.push(`</tr><tr><td/><td>→</td><td>${prop.actualValue}</td>`);
+				row.push(`</tr><tr><td/><td>→</td><td>${escapeHtml(prop.actualValue.toString())}</td>`);
 			}
 
 			row.push('</tr>');
@@ -141,7 +141,7 @@ const renderNode = (node: SingleNode): string => {
 		case 'text':
 			return escapeHtml(node.value ?? '');
 		case 'code':
-			return `<code class="suitest-test-line__text--code">${node.value ?? ''}</code>`;
+			return `<code class="suitest-test-line__text--code">${escapeHtml(node.value ?? '')}</code>`;
 		case 'subject':
 		case 'input':
 			return `<span class="suitest-test-line__text--${node.type}">${escapeHtml(node.value ?? '')}</span>`;

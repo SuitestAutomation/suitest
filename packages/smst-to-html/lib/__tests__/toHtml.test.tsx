@@ -152,6 +152,16 @@ describe('AST renderers', () => {
 		});
 	});
 
+	describe('escape html tags', () => {
+		const script = '<script>alert("xss")</script>';
+		expect(toHtml(<fragment>{script}</fragment>)).toMatchSnapshot();
+		expect(toHtml(<subject>{script}</subject>)).toMatchSnapshot();
+		expect(toHtml(<input>{script}</input>)).toMatchSnapshot();
+		expect(toHtml(<code>{script}</code>)).toMatchSnapshot();
+		expect(toHtml(<code-block>{script}</code-block>)).toMatchSnapshot();
+		expect(toHtml(<text>{script}</text>)).toMatchSnapshot();
+	});
+
 	describe('Translation utils', () => {
 		describe('escapeHtml util', () => {
 			it('should escape special characters', () => {
