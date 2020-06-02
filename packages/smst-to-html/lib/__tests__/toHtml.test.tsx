@@ -147,6 +147,8 @@ describe('AST renderers', () => {
 
 		it('should render link', () => {
 			expect(toHtml(<link href="http://some.url">Some URL</link>)).toMatchSnapshot();
+			expect(toHtml(<link href="http://some.url">http://some.url</link>)).toMatchSnapshot();
+			expect(toHtml(<link href="http://some.url"/>)).toMatchSnapshot();
 		});
 	});
 

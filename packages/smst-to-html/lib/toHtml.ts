@@ -159,7 +159,9 @@ const renderNode = (node: SingleNode): string => {
 			return renderHtmlTestLineResultNode(node);
 		case 'link':
 			// TODO: should we create special class for link?
-			return `<a href="${node.href}">${node.value}</a>`;
+			return !node.value ?
+				`<a href="${node.href}">${node.href}</a>` :
+				`<a href="${node.href}">${node.value}</a>`;
 		default:
 			/* istanbul ignore next */
 			return assertUnknownSectionNode(node);

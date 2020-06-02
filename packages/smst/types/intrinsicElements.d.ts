@@ -59,7 +59,7 @@ declare namespace JSX {
 		},
 		link: {
 			href: string,
-			children: StringOrStrings,
+			children?: StringOrStrings,
 		},
 	}
 

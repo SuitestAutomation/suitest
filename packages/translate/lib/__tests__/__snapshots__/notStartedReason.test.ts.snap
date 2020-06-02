@@ -617,7 +617,7 @@ Object {
 
 exports[`Testing not started reason translation. Translate to plain text:  "planLimitExceeded" 1`] = `
 Object {
-  "description": "Looks like you have reached the limit of applications or users, check your billing section (https://the.suite.st/preferences/billing) to increase your plan. Please contact sales@suite.st (sales@suite.st) if you require help with your plan.",
+  "description": "Looks like you have reached the limit of applications or users, check your billing section (https://the.suite.st/preferences/billing) to increase your plan. Please contact sales@suite.st if you require help with your plan.",
   "title": "Application or user limit has been exceeded",
 }
 `;

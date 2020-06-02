@@ -36,6 +36,10 @@ someJS(); someJS(); someJS();</code></pre></div></td></tr></table></div></div>"
 
 exports[`AST renderers html renderer should render link 1`] = `"<a href=\\"http://some.url\\">Some URL</a>"`;
 
+exports[`AST renderers html renderer should render link 2`] = `"<a href=\\"http://some.url\\">http://some.url</a>"`;
+
+exports[`AST renderers html renderer should render link 3`] = `"<a href=\\"http://some.url\\">http://some.url</a>"`;
+
 exports[`AST renderers html renderer should render results with screenshots 1`] = `"<div class=\\"suitest-test-line__result suitest-test-line__result--fail\\"><div class=\\"suitest-test-line suitest-test-line--fail\\"><div class=\\"suitest-test-line__title\\">Assert application has exited</div></div><div class=\\"suitest-test-line__result__message\\">Condition was not met</div><div class=\\"suitest-test-line__result__screenshot\\">screenshot: <a href=\\"path/to/screenshot.png\\" target=\\"_blank\\">path/to/screenshot.png</a></div></div>"`;
 
 exports[`AST renderers html renderer should render results with screenshots 2`] = `"<div class=\\"suitest-test-line__result suitest-test-line__result--warning\\"><div class=\\"suitest-test-line suitest-test-line--warning\\"><div class=\\"suitest-test-line__title\\">Assert application has exited</div></div><div class=\\"suitest-test-line__result__screenshot\\">screenshot: <a href=\\"path/to/screenshot.png\\" target=\\"_blank\\">path/to/screenshot.png</a></div></div>"`;

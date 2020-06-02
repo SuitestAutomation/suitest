@@ -143,9 +143,9 @@ export function jsx(
 			return processedChildren;
 		case 'link':
 			const { href } = props as JSX.ElementsProps['link'];
-			const linkChildren = processedChildren[0] as TextNode;
+			const linkChildren = processedChildren[0] as TextNode | undefined;
 
-			return ub('link', { href }, linkChildren.value) as LinkNode;
+			return ub('link', { href }, linkChildren?.value ?? '') as LinkNode;
 		case 'code-block':
 			const codeBlockProps = props as JSX.ElementsProps['code-block'];
 			const codeBlockChildren = processedChildren[0] as CodeBlockNode;
