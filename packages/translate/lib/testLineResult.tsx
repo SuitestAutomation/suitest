@@ -24,6 +24,8 @@ import {
 } from '@suitest/types';
 import {translateTestLine} from './testLine';
 import {translateElementProperty} from './condition';
+import {AssertTestLine} from '@suitest/types/lib';
+import {mapStatus} from './utils';
 
 const baseScreenshotPath = 'https://the.suite.st';
 
@@ -433,11 +435,24 @@ export const translateTestLineResult = (options: {
 }): TestLineResultNode => {
 	const testLineTranslation = translateTestLine(options);
 	const {lineResult} = options;
+	const {then} = options.testLine as AssertTestLine;
 
-	if (!lineResult || lineResult.result === 'success') {
-		// TODO - message for inverse "then" condition
+	if (lineResult && then !== 'success') {
+		const status = mapStatus(lineResult?.result) === 'success' ? then : 'success';
+		const messege = mapStatus(lineResult?.result) === 'fail'
+			? <text>Condition was not met</text>
+			: <text>Condition was met</text>;
+
 		return <test-line-result
-			status="success"
+			status={status}
+			message={messege}
+		>{testLineTranslation}</test-line-result> as TestLineResultNode;
+	}
+
+	if (!lineResult || lineResult.result === 'success' || lineResult.result === 'excluded' || !('errorType' in lineResult)) {
+		// TODO: not pass "success" to status if lineResult is undefined
+		return <test-line-result
+			status={lineResult?.result ?? 'success'}
 			screenshot={getScreenshotUrl(lineResult?.screenshot)}
 		>{testLineTranslation}</test-line-result> as TestLineResultNode;
 	}
