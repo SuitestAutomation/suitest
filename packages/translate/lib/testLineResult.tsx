@@ -20,11 +20,14 @@ import {
 	InvalidRepositoryReferenceError,
 	TestLineErrorResult,
 	QueryFailedInvalidUrl,
-	TestLine, AppConfiguration, Elements, Snippets,
+	TestLine,
+	AppConfiguration,
+	Elements,
+	Snippets,
+	AssertTestLine,
 } from '@suitest/types';
 import {translateTestLine} from './testLine';
 import {translateElementProperty} from './condition';
-import {AssertTestLine} from '@suitest/types/lib';
 import {mapStatus} from './utils';
 
 const baseScreenshotPath = 'https://the.suite.st';
