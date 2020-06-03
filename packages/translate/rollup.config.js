@@ -5,8 +5,8 @@ import fs from 'fs';
 const getConfig = (file, dir, format) => ({
 	input: './lib/' + file,
 	external: [
-		'unist-builder',
 		'@suitest/smst',
+		'unist-builder',
 	],
 	plugins: [
 		typescript({tsconfigOverride: {compilerOptions: {module: 'ES2015'}}}),
@@ -18,8 +18,8 @@ const getConfig = (file, dir, format) => ({
 		format: format,
 		compact: true,
 		globals: {
-			'unist-builder': 'ub',
 			'@suitest/smst': '@suitest/smst',
+			'unist-builder': 'ub',
 		},
 	},
 })

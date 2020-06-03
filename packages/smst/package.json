@@ -16,7 +16,7 @@
     "url": "https://github.com/SuitestAutomation/suitest/issues"
   },
   "homepage": "https://suite.st/",
-  "main": "umd/jsxFactory.js",
+  "main": "lib/jsxFactory.js",
   "files": [
     "umd/",
     "commonjs/",
