@@ -24,7 +24,7 @@
     "docs/"
   ],
   "scripts": {
-    "build": "npm run build:umd && npm run build:commonjs&& cp ./lib/suitest-test-line.css ./",
+    "build": "npm run build:umd && npm run build:commonjs && cp ./lib/suitest-test-line.css ./",
     "build:umd": "rimraf umd && rollup -c --environment FORMAT:umd",
     "build:commonjs": "rimraf commonjs && rollup -c --environment FORMAT:commonjs",
     "test": "jest",
