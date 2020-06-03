@@ -25,13 +25,17 @@
   ],
   "scripts": {
     "build": "npm run build:umd && npm run build:commonjs",
-    "build:umd": "rimraf umd && tsc --module umd --outDir umd",
-    "build:commonjs": "rimraf commonjs && tsc",
+    "build:umd": "rimraf umd && rollup -c --environment FORMAT:umd",
+    "build:commonjs": "rimraf commonjs && rollup -c --environment FORMAT:commonjs",
     "test": "jest",
     "coverage": "jest --coverage",
     "prepublishOnly": "npm run coverage && npm run build"
   },
   "dependencies": {
     "@suitest/smst": "^3.0.2"
+  },
+  "devDependencies": {
+    "rimraf": "3.0.0",
+    "rollup": "^1.21.4"
   }
 }
