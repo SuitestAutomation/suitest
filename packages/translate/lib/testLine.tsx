@@ -89,7 +89,7 @@ const translateAssertTestLine = (
 	elements?: Elements,
 	lineResult?: TestLineResult,
 ): TestLineNode => {
-	const condition = translateCondition(testLine.condition, appConfig, elements, lineResult);
+	const condition = translateCondition(testLine.condition, testLine.then !== 'success', appConfig, elements, lineResult);
 
 	return <test-line
 		title={<fragment>Assert: {condition.title}{testLine.timeout ? <fragment> timeout {formatTimeout(testLine.timeout, appConfig.configVariables)}</fragment> : undefined}{testLine.then !== 'success' ? <fragment> then {translateAssertThen(testLine.then)}</fragment> : undefined}</fragment>}
@@ -216,7 +216,7 @@ const translatePressButtonTestLine = (
 		title={<fragment>Press button {ids}{titleFragment}</fragment>}
 		status={lineResult?.result}
 	>
-		{testLine.condition ? translateCondition(testLine.condition, appConfig, elements, lineResult) : undefined}
+		{testLine.condition ? translateCondition(testLine.condition, false, appConfig, elements, lineResult) : undefined}
 	</test-line> as TestLineNode;
 };
 
@@ -243,7 +243,7 @@ const translateRunTestTestLine = (
 		title={<fragment>Run test {testName}{titleFragment}</fragment>}
 		status={lineResult?.result}
 	>
-		{testLine.condition ? translateCondition(testLine.condition, appConfig, elements, lineResult) : undefined}
+		{testLine.condition ? translateCondition(testLine.condition, false, appConfig, elements, lineResult) : undefined}
 	</test-line> as TestLineNode;
 };
 
@@ -277,7 +277,7 @@ const translateSendTextTestLine = (
 	const title = <fragment>Send text {text} to {translateTarget(testLine.target)}{titleFragment}</fragment>;
 
 	return <test-line title={title} status={lineResult?.result}>
-		{testLine.condition ? translateCondition(testLine.condition, appConfig, elements, lineResult) : undefined}
+		{testLine.condition ? translateCondition(testLine.condition, false, appConfig, elements, lineResult) : undefined}
 	</test-line> as TestLineNode;
 };
 
@@ -292,7 +292,7 @@ const translateSetTextTestLine = (
 	const title = <fragment>Set text {text} to {translateTarget(testLine.target)}{titleFragment}</fragment>;
 
 	return <test-line title={title} status={lineResult?.result}>
-		{testLine.condition ? translateCondition(testLine.condition, appConfig, elements, lineResult) : undefined}
+		{testLine.condition ? translateCondition(testLine.condition, false, appConfig, elements, lineResult) : undefined}
 	</test-line> as TestLineNode;
 };
 
@@ -308,7 +308,7 @@ const translateBrowserCommandTestLine = (
 	lineResult?: TestLineResult,
 ): TestLineNode => {
 	const condition = testLine.condition
-		? translateCondition(testLine.condition, appConfig, elements, lineResult)
+		? translateCondition(testLine.condition, false, appConfig, elements, lineResult)
 		: undefined;
 
 	switch (testLine.browserCommand.type) {
@@ -373,7 +373,7 @@ const translateClickTestLine = (
 	const title = <fragment>Click on {translateTarget(testLine.target)}{titleFragment}</fragment>;
 
 	return <test-line title={title}>
-		{testLine.condition ? translateCondition(testLine.condition, appConfig, elements, lineResult) : undefined}
+		{testLine.condition ? translateCondition(testLine.condition, false, appConfig, elements, lineResult) : undefined}
 	</test-line> as TestLineNode;
 };
 
@@ -387,7 +387,7 @@ const translateMoveToTestLine = (
 	const title = <fragment>Move pointer to {translateTarget(testLine.target)}{titleFragment}</fragment>;
 
 	return <test-line title={title} status={lineResult?.result}>
-		{testLine.condition ? translateCondition(testLine.condition, appConfig, elements, lineResult) : undefined}
+		{testLine.condition ? translateCondition(testLine.condition, false, appConfig, elements, lineResult) : undefined}
 	</test-line> as TestLineNode;
 };
 

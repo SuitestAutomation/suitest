@@ -1136,7 +1136,7 @@ return true;
 		});
 	});
 
-	(['fail', 'warn', 'exit'] as const).forEach((then) => {
+	(['fail', 'warning', 'exit'] as const).forEach((then) => {
 		describe('assert then ' + then, () => {
 			const extendBaseError = (err: any): TestLineResult => ({
 				result: 'fail',
@@ -1153,7 +1153,8 @@ return true;
 				],
 				...err,
 			});
-			const assertLine = testLinesExamples[`Assert ... then ${then}` as 'Assert ... then fail'];
+			const testLinesExampleKey = then === 'warning' ? 'Assert ... then warn' : `Assert ... then ${then}` as 'Assert ... then fail';
+			const assertLine = testLinesExamples[testLinesExampleKey];
 			const testLineToFormattedText = (...args: Parameters<typeof translateTestLineResult>): string =>
 				toText(translateTestLineResult(...args), false);
 			const successLineResult: TestLineSuccessResult = {
@@ -1499,4 +1500,6 @@ return true;
 			});
 		});
 	});
+
+
 });

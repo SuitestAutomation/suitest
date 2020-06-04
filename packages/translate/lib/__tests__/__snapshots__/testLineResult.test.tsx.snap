@@ -439,13 +439,13 @@ exports[`Test line results translation Translate assert lines translate line wit
 
 exports[`Test line results translation assert then exit translate "assert network" render exit result 1`] = `
 "» Assert: network request was made in entire network log then stop test
-  ✖ URL = http://suite.st/123 (http://suite.st/<%var1%>)
+  ✔ URL = http://suite.st/123 (http://suite.st/<%var1%>)
   exit: Condition was met"
 `;
 
 exports[`Test line results translation assert then exit translate "assert network" render success result 1`] = `
 "✔ Assert: network request was made in entire network log then stop test
-  ✖ URL = http://suite.st/123 (http://suite.st/<%var1%>)
+  ✔ URL = http://suite.st/123 (http://suite.st/<%var1%>)
   success: Condition was not met"
 `;
 
@@ -478,14 +478,14 @@ exports[`Test line results translation assert then exit translate then exit "ass
 
 exports[`Test line results translation assert then exit translate then exit and "assert cookie" with exit result 1`] = `
 "» Assert: cookie suitest-cookie then stop test
-  suitest-cookie = suitest-cookie
-                 → false         
+  ✔ suitest-cookie = suitest-cookie
+                   → false         
   exit: Condition was met"
 `;
 
 exports[`Test line results translation assert then exit translate then exit and "assert cookie" with success result 1`] = `
 "✔ Assert: cookie suitest-cookie then stop test
-  ✔ suitest-cookie = cookie
+  ✖ suitest-cookie = cookie
                    → false 
   success: Condition was not met"
 `;
@@ -497,20 +497,20 @@ exports[`Test line results translation assert then exit translate then exit and 
 
 exports[`Test line results translation assert then exit translate then exit and "assert current location" then exit with "queryFailed" 1`] = `
 "» Assert: Current location then stop test
-  current location contains http://some.url                                        
-                   →        http://file.suite.st/sampleapp_staging/index-hbbtv.html
+  ✔ current location contains http://some.url                                        
+                     →        http://file.suite.st/sampleapp_staging/index-hbbtv.html
   exit: Condition was met"
 `;
 
 exports[`Test line results translation assert then exit translate then exit and "assert current location" with exit result 1`] = `
 "» Assert: Current location then stop test
-  current location contains http://some.url
+  ✔ current location contains http://some.url
   exit: Condition was met"
 `;
 
 exports[`Test line results translation assert then exit translate then exit and "assert current location" with success result 1`] = `
 "✔ Assert: Current location then stop test
-  ✔ current location contains http://some.url
+  ✖ current location contains http://some.url
   success: Condition was not met"
 `;
 
@@ -546,10 +546,10 @@ exports[`Test line results translation assert then exit translate then exit and 
 
 exports[`Test line results translation assert then exit translate then exit and "assert javascript expression" render with exit result 1`] = `
 "» Assert: JavaScript expression then stop test
-  expression         
-    > 1 + 1        
-  expression result = 3
-                    → 2
+  expression           
+    > 1 + 1          
+  ✔ expression result = 3
+                      → 2
   exit: Condition was met"
 `;
 
@@ -557,7 +557,7 @@ exports[`Test line results translation assert then exit translate then exit and 
 "✔ Assert: JavaScript expression then stop test
   ✔ expression         
     > 1 + 1          
-  ✔ expression result = 3
+  ✖ expression result = 3
                       → 2
   success: Condition was not met"
 `;
@@ -585,13 +585,13 @@ exports[`Test line results translation assert then exit translate then exit and 
 
 exports[`Test line results translation assert then fail translate "assert network" render fail result 1`] = `
 "✖ Assert: network request was made in entire network log then fail
-  ✖ URL = http://suite.st/123 (http://suite.st/<%var1%>)
+  ✔ URL = http://suite.st/123 (http://suite.st/<%var1%>)
   fail: Condition was met"
 `;
 
 exports[`Test line results translation assert then fail translate "assert network" render success result 1`] = `
 "✔ Assert: network request was made in entire network log then fail
-  ✖ URL = http://suite.st/123 (http://suite.st/<%var1%>)
+  ✔ URL = http://suite.st/123 (http://suite.st/<%var1%>)
   success: Condition was not met"
 `;
 
@@ -624,14 +624,14 @@ exports[`Test line results translation assert then fail translate then fail "ass
 
 exports[`Test line results translation assert then fail translate then fail and "assert cookie" with fail result 1`] = `
 "✖ Assert: cookie suitest-cookie then fail
-  ✖ suitest-cookie = suitest-cookie
+  ✔ suitest-cookie = suitest-cookie
                    → false         
   fail: Condition was met"
 `;
 
 exports[`Test line results translation assert then fail translate then fail and "assert cookie" with success result 1`] = `
 "✔ Assert: cookie suitest-cookie then fail
-  ✔ suitest-cookie = cookie
+  ✖ suitest-cookie = cookie
                    → false 
   success: Condition was not met"
 `;
@@ -643,20 +643,20 @@ exports[`Test line results translation assert then fail translate then fail and 
 
 exports[`Test line results translation assert then fail translate then fail and "assert current location" then fail with "queryFailed" 1`] = `
 "✖ Assert: Current location then fail
-  ✖ current location contains http://some.url                                        
+  ✔ current location contains http://some.url                                        
                      →        http://file.suite.st/sampleapp_staging/index-hbbtv.html
   fail: Condition was met"
 `;
 
 exports[`Test line results translation assert then fail translate then fail and "assert current location" with fail result 1`] = `
 "✖ Assert: Current location then fail
-  ✖ current location contains http://some.url
+  ✔ current location contains http://some.url
   fail: Condition was met"
 `;
 
 exports[`Test line results translation assert then fail translate then fail and "assert current location" with success result 1`] = `
 "✔ Assert: Current location then fail
-  ✔ current location contains http://some.url
+  ✖ current location contains http://some.url
   success: Condition was not met"
 `;
 
@@ -694,7 +694,7 @@ exports[`Test line results translation assert then fail translate then fail and 
 "✖ Assert: JavaScript expression then fail
   ✖ expression         
     > 1 + 1          
-  ✖ expression result = 3
+  ✔ expression result = 3
                       → 2
   fail: Condition was met"
 `;
@@ -703,7 +703,7 @@ exports[`Test line results translation assert then fail translate then fail and 
 "✔ Assert: JavaScript expression then fail
   ✔ expression         
     > 1 + 1          
-  ✔ expression result = 3
+  ✖ expression result = 3
                       → 2
   success: Condition was not met"
 `;
@@ -729,151 +729,151 @@ exports[`Test line results translation assert then fail translate then fail and 
 
 exports[`Test line results translation assert then fail translate then fail and "assert ps video" render without result 2`] = `"Assert: PlayStation 4 video had no error for any source then fail"`;
 
-exports[`Test line results translation assert then warn translate "assert network" render success result 1`] = `
+exports[`Test line results translation assert then warning translate "assert network" render success result 1`] = `
 "✔ Assert: network request was made in entire network log then warn
-  ✖ URL = http://suite.st/123 (http://suite.st/<%var1%>)
+  ✔ URL = http://suite.st/123 (http://suite.st/<%var1%>)
   success: Condition was not met"
 `;
 
-exports[`Test line results translation assert then warn translate "assert network" render warn result 1`] = `
-"Assert: network request was made in entire network log then warn
-  ✖ URL = http://suite.st/123 (http://suite.st/<%var1%>)
-  warn: Condition was met"
+exports[`Test line results translation assert then warning translate "assert network" render warning result 1`] = `
+"‼ Assert: network request was made in entire network log then warn
+  ✔ URL = http://suite.st/123 (http://suite.st/<%var1%>)
+  warning: Condition was met"
 `;
 
-exports[`Test line results translation assert then warn translate "assert network" render without result 1`] = `
+exports[`Test line results translation assert then warning translate "assert network" render without result 1`] = `
 "Assert: network request was made in entire network log then warn
   URL = http://suite.st/123 (http://suite.st/<%var1%>)"
 `;
 
-exports[`Test line results translation assert then warn translate "openAppOverrideFailed" with then warn render with addition errorType 1`] = `
+exports[`Test line results translation assert then warning translate "openAppOverrideFailed" with then warning render with addition errorType 1`] = `
 "✖ Open application
   fail: Open app override failed"
 `;
 
-exports[`Test line results translation assert then warn translate "openAppOverrideFailed" with then warn render with addition errorType 2`] = `
+exports[`Test line results translation assert then warning translate "openAppOverrideFailed" with then warning render with addition errorType 2`] = `
 "✖ Open application
   fail: Open app override failed"
 `;
 
-exports[`Test line results translation assert then warn translate then warn "assert application has exited" render with success result 1`] = `
+exports[`Test line results translation assert then warning translate then warning "assert application has exited" render with success result 1`] = `
 "✔ Assert: Application has exited then warn
   success: Condition was not met"
 `;
 
-exports[`Test line results translation assert then warn translate then warn "assert application has exited" render with warn result 1`] = `
-"Assert: Application has exited then warn
-  warn: Condition was met"
+exports[`Test line results translation assert then warning translate then warning "assert application has exited" render with warning result 1`] = `
+"‼ Assert: Application has exited then warn
+  warning: Condition was met"
 `;
 
-exports[`Test line results translation assert then warn translate then warn "assert application has exited" render without result 1`] = `"Assert: Application has exited then warn"`;
+exports[`Test line results translation assert then warning translate then warning "assert application has exited" render without result 1`] = `"Assert: Application has exited then warn"`;
 
-exports[`Test line results translation assert then warn translate then warn and "assert cookie" with success result 1`] = `
+exports[`Test line results translation assert then warning translate then warning and "assert cookie" with success result 1`] = `
 "✔ Assert: cookie suitest-cookie then warn
-  ✔ suitest-cookie = cookie
+  ✖ suitest-cookie = cookie
                    → false 
   success: Condition was not met"
 `;
 
-exports[`Test line results translation assert then warn translate then warn and "assert cookie" with warn result 1`] = `
-"Assert: cookie suitest-cookie then warn
-  suitest-cookie = suitest-cookie
-                 → false         
-  warn: Condition was met"
+exports[`Test line results translation assert then warning translate then warning and "assert cookie" with warning result 1`] = `
+"‼ Assert: cookie suitest-cookie then warn
+  ✔ suitest-cookie = suitest-cookie
+                   → false         
+  warning: Condition was met"
 `;
 
-exports[`Test line results translation assert then warn translate then warn and "assert cookie" without result 1`] = `
+exports[`Test line results translation assert then warning translate then warning and "assert cookie" without result 1`] = `
 "Assert: cookie suitest-cookie then warn
   suitest-cookie = suitest"
 `;
 
-exports[`Test line results translation assert then warn translate then warn and "assert current location" then warn with "queryFailed" 1`] = `
-"Assert: Current location then warn
-  current location contains http://some.url                                        
-                   →        http://file.suite.st/sampleapp_staging/index-hbbtv.html
-  warn: Condition was met"
+exports[`Test line results translation assert then warning translate then warning and "assert current location" then warning with "queryFailed" 1`] = `
+"‼ Assert: Current location then warn
+  ✔ current location contains http://some.url                                        
+                     →        http://file.suite.st/sampleapp_staging/index-hbbtv.html
+  warning: Condition was met"
 `;
 
-exports[`Test line results translation assert then warn translate then warn and "assert current location" with success result 1`] = `
+exports[`Test line results translation assert then warning translate then warning and "assert current location" with success result 1`] = `
 "✔ Assert: Current location then warn
-  ✔ current location contains http://some.url
+  ✖ current location contains http://some.url
   success: Condition was not met"
 `;
 
-exports[`Test line results translation assert then warn translate then warn and "assert current location" with warn result 1`] = `
-"Assert: Current location then warn
-  current location contains http://some.url
-  warn: Condition was met"
+exports[`Test line results translation assert then warning translate then warning and "assert current location" with warning result 1`] = `
+"‼ Assert: Current location then warn
+  ✔ current location contains http://some.url
+  warning: Condition was met"
 `;
 
-exports[`Test line results translation assert then warn translate then warn and "assert current location" without result 1`] = `
+exports[`Test line results translation assert then warning translate then warning and "assert current location" without result 1`] = `
 "Assert: Current location then warn
   current location contains http://some.url"
 `;
 
-exports[`Test line results translation assert then warn translate then warn and "assert element" "element ... exist" success 1`] = `
+exports[`Test line results translation assert then warning translate then warning and "assert element" "element ... exist" success 1`] = `
 "✔ Assert: Element 1 exists then warn
   success: Condition was not met"
 `;
 
-exports[`Test line results translation assert then warn translate then warn and "assert element" "element ... exist" warn 1`] = `
-"Assert: Element 1 exists then warn
-  warn: Condition was met"
+exports[`Test line results translation assert then warning translate then warning and "assert element" "element ... exist" warning 1`] = `
+"‼ Assert: Element 1 exists then warn
+  warning: Condition was met"
 `;
 
-exports[`Test line results translation assert then warn translate then warn and "assert element" translate not queryFailed errors general error 1`] = `
+exports[`Test line results translation assert then warning translate then warning and "assert element" translate not queryFailed errors general error 1`] = `
 "✖ Assert: Unknown element (some-id) exists then warn
   fail: Element was not found in repository"
 `;
 
-exports[`Test line results translation assert then warn translate then warn and "assert element" translate not queryFailed errors notExistingElement message code 1`] = `
+exports[`Test line results translation assert then warning translate then warning and "assert element" translate not queryFailed errors notExistingElement message code 1`] = `
 "✖ Assert: Unknown element (some-id) exists then warn
   fail: Element was not found in repository"
 `;
 
-exports[`Test line results translation assert then warn translate then warn and "assert element" translate not queryFailed errors notExistingPlatform message code 1`] = `
+exports[`Test line results translation assert then warning translate then warning and "assert element" translate not queryFailed errors notExistingPlatform message code 1`] = `
 "✖ Assert: Element 1 exists then warn
   fail: Element is not defined for selected platform"
 `;
 
-exports[`Test line results translation assert then warn translate then warn and "assert javascript expression" render with success result 1`] = `
+exports[`Test line results translation assert then warning translate then warning and "assert javascript expression" render with success result 1`] = `
 "✔ Assert: JavaScript expression then warn
   ✔ expression         
     > 1 + 1          
-  ✔ expression result = 3
+  ✖ expression result = 3
                       → 2
   success: Condition was not met"
 `;
 
-exports[`Test line results translation assert then warn translate then warn and "assert javascript expression" render with warn result 1`] = `
-"Assert: JavaScript expression then warn
-  expression         
-    > 1 + 1        
-  expression result = 3
-                    → 2
-  warn: Condition was met"
+exports[`Test line results translation assert then warning translate then warning and "assert javascript expression" render with warning result 1`] = `
+"‼ Assert: JavaScript expression then warn
+  ✔ expression         
+    > 1 + 1          
+  ✔ expression result = 3
+                      → 2
+  warning: Condition was met"
 `;
 
-exports[`Test line results translation assert then warn translate then warn and "assert javascript expression" render without result 1`] = `
+exports[`Test line results translation assert then warning translate then warning and "assert javascript expression" render without result 1`] = `
 "Assert: JavaScript expression then warn
   expression         
     > someJS()     
   expression result = returned value"
 `;
 
-exports[`Test line results translation assert then warn translate then warn and "assert ps video" render with success result 1`] = `
+exports[`Test line results translation assert then warning translate then warning and "assert ps video" render with success result 1`] = `
 "✔ Assert: PlayStation 4 video had no error for any source then warn
   success: Condition was not met"
 `;
 
-exports[`Test line results translation assert then warn translate then warn and "assert ps video" render with warn result 1`] = `
-"Assert: PlayStation 4 video had no error for any source then warn
-  warn: Condition was met"
+exports[`Test line results translation assert then warning translate then warning and "assert ps video" render with warning result 1`] = `
+"‼ Assert: PlayStation 4 video had no error for any source then warn
+  warning: Condition was met"
 `;
 
-exports[`Test line results translation assert then warn translate then warn and "assert ps video" render without result 1`] = `"Assert: PlayStation 4 video had no error for current source then warn"`;
+exports[`Test line results translation assert then warning translate then warning and "assert ps video" render without result 1`] = `"Assert: PlayStation 4 video had no error for current source then warn"`;
 
-exports[`Test line results translation assert then warn translate then warn and "assert ps video" render without result 2`] = `"Assert: PlayStation 4 video had no error for any source then warn"`;
+exports[`Test line results translation assert then warning translate then warning and "assert ps video" render without result 2`] = `"Assert: PlayStation 4 video had no error for any source then warn"`;
 
 exports[`Test line results translation should translate "ActionNotAvailable" error 1`] = `
 Object {
