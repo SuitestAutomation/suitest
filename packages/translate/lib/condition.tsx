@@ -432,17 +432,20 @@ export const translateCondition = (
 				return translatePSVideoCondition(condition, inverse, lineResult);
 			}
 
-			return translateElementCondition(condition as ElementPropertiesCondition, inverse, appConfig, elements, lineResult);
+			return translateElementCondition(
+				condition as ElementPropertiesCondition, inverse, appConfig, elements, lineResult);
 		case 'javascript':
 			return translateJavaScriptExpressionCondition(
 				condition as JavaScriptExpressionCondition, inverse, appConfig, lineResult
 			);
 		case 'location':
-			return translateCurrentLocationCondition(condition as CurrentLocationCondition, inverse, appConfig, lineResult);
+			return translateCurrentLocationCondition(
+				condition as CurrentLocationCondition, inverse, appConfig, lineResult);
 		case 'cookie':
 			return translateCookieCondition(condition as CookieCondition, inverse, appConfig, lineResult);
 		case 'network':
-			return translateNetworkRequestCondition(condition as NetworkRequestCondition, inverse, appConfig, lineResult);
+			return translateNetworkRequestCondition(
+				condition as NetworkRequestCondition, inverse, appConfig, lineResult);
 		case 'application':
 			return translateApplicationExitedCondition(inverse, lineResult);
 		default:
