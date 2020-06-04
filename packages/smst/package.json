@@ -32,9 +32,5 @@
   },
   "dependencies": {
     "unist-builder": "^2.0.3"
-  },
-  "devDependencies": {
-    "rollup": "^1.21.4",
-    "rimraf": "3.0.0"
   }
 }

@@ -6,7 +6,6 @@
     "moduleResolution": "node"
   },
   "include": [
-    "@suitest/smst",
     "lib"
   ],
   "exclude": [
