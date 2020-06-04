@@ -129,7 +129,7 @@ const wrapTextNodes = (
 			currentLineLength = 0;
 			output[output.length - 1] += renderTextNode(splitNodes[0]);
 			output.push('');
-			textNodes.splice(0, 1, splitNodes[1]);
+			textNodes.splice(0, 0, splitNodes[1]);
 			maxActualLength = maxLineLength;
 		}
 

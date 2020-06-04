@@ -147,7 +147,7 @@ describe('AST renderers', () => {
 				/>
 				<prop
 					name={<text>Empty code block</text>}
-					expectedValue={<code-block>{''}</code-block>}
+					expectedValue={<fragment><code>{'looooooooooooooo oooooooo ooooooo ooooo ooooo oooooooooo oooo oooo ng'}</code> (and some next text block)</fragment>}
 				/>
 			</props>)).toMatchSnapshot();
 		});
