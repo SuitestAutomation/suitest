@@ -28,7 +28,6 @@ import {
 } from '@suitest/types';
 import {translateTestLine} from './testLine';
 import {translateElementProperty} from './condition';
-import {mapStatus} from './utils';
 
 const baseScreenshotPath = 'https://the.suite.st';
 
@@ -441,14 +440,14 @@ export const translateTestLineResult = (options: {
 	const {then} = options.testLine as AssertTestLine;
 
 	if (lineResult && then !== 'success') {
-		const status = mapStatus(lineResult?.result) === 'success' ? then : 'success';
-		const messege = mapStatus(lineResult?.result) === 'fail'
+		const messege = lineResult?.result === 'success'
 			? <text>Condition was not met</text>
 			: <text>Condition was met</text>;
+		const unexpectedResult = lineResult.errorType && !['appRunning', 'queryFailed'].includes(lineResult.errorType);
 
 		return <test-line-result
-			status={status}
-			message={messege}
+			status={lineResult?.result}
+			message={unexpectedResult ? translateResultMessage(lineResult as TestLineErrorResult) : messege}
 		>{testLineTranslation}</test-line-result> as TestLineResultNode;
 	}
 
