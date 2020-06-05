@@ -45,6 +45,16 @@ html, body {
     color: darkblue;
 }
 
+.suitest-test-line--excluded .suitest-test-line__title:before {
+    content: '» ';
+    color: darkblue;
+}
+
+.suitest-test-line--exit .suitest-test-line__title:before {
+    content: '» ';
+    color: darkblue;
+}
+
 .suitest-test-line--success .suitest-test-line__title:before {
     content: '✔ ';
     color: darkgreen;
