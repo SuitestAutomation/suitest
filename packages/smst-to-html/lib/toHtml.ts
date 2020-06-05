@@ -6,6 +6,8 @@ import {
 	PropertiesNode,
 	TestLineNode,
 	TestLineResultNode,
+	SingleNode,
+	Node,
 } from '@suitest/smst/types/unistTestLine';
 
 export const escapeHtml = (text: string): string => text.replace(/[&<"']/g, m => {

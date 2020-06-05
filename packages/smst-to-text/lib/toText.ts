@@ -5,6 +5,10 @@ import {
 	PropertiesNode,
 	TestLineNode,
 	TestLineResultNode,
+    TestLineResultStatus,
+    SingleEntryStatus,
+    SingleNode,
+    Node,
 } from '@suitest/smst/types/unistTestLine';
 
 type RenderTextFunc = (node: ExtendedInlineNodes) => string;

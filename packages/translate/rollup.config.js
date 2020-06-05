@@ -1,23 +1,10 @@
-import typescript from 'rollup-plugin-typescript2';
-import { uglify } from "rollup-plugin-uglify";
+import fs from 'fs';
+import getConfig from "../../rollupUtils";
 
-export default {
-	input: './lib/index.ts',
-	external: [
-		'unist-builder',
-		'@suitest/smst',
-	],
-	plugins: [
-		uglify(),
-		typescript({tsconfigOverride: {compilerOptions: {module: 'ES2015'}}}),
-	],
-	output: {
-		file: `./${process.env.FORMAT}/index.js`,
-		name: 'translate',
-		format: process.env.FORMAT,
-		compact: process.env.FORMAT === 'umd',
-		globals: {
-			'unist-builder': 'ub',
-		},
-	},
-};
+const config = process.env.FORMAT === 'umd'
+	? getConfig('index.ts', 'umd', 'umd', ['@suitest/smst', 'unist-builder'], {'@suitest/smst': '@suitest/smst', 'unist-builder': 'ub'})
+	: fs.readdirSync('./lib')
+		.filter(fileName => fileName.match(/.tsx?$/))
+		.map(fileName => getConfig(fileName, 'commonjs', 'cjs', ['@suitest/smst', 'unist-builder'], {'@suitest/smst': '@suitest/smst', 'unist-builder': 'ub'}))
+
+export default config;
