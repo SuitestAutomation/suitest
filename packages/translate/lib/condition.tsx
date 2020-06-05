@@ -22,16 +22,17 @@ import {
 import {formatVariables, mapStatus, translateCodeProp} from './utils';
 import {translateComparator} from './comparator';
 
-const translateApplicationExitedCondition = (lineResult?: TestLineResult): ConditionNode =>
+const translateApplicationExitedCondition = (inverse: boolean, lineResult?: TestLineResult): ConditionNode =>
 	<condition
 		title={<text>Application has exited</text>}
-		status={mapStatus(lineResult?.result)}
+		status={mapStatus(lineResult?.result, inverse)}
 	/> as ConditionNode;
 
 const translateCurrentLocationCondition = (
 	condition: CurrentLocationCondition,
+	inverse: boolean,
 	appConfig: AppConfiguration,
-	lineResult?: TestLineResult
+	lineResult?: TestLineResult,
 ): ConditionNode => {
 	const isCodeBlock = condition.type === 'matches';
 
@@ -43,13 +44,13 @@ const translateCurrentLocationCondition = (
 					condition.val,
 					appConfig,
 					translateComparator(condition.type),
-					mapStatus(lineResult?.result)
+					mapStatus(lineResult?.result, inverse)
 				)
 				: <prop
 					name={<text>current location</text>}
 					expectedValue={formatVariables(condition.val, appConfig.configVariables)}
 					comparator={translateComparator(condition.type)}
-					status={mapStatus(lineResult?.result)}
+					status={mapStatus(lineResult?.result, inverse)}
 					actualValue={lineResult?.actualValue}
 				/>
 			}
@@ -58,7 +59,7 @@ const translateCurrentLocationCondition = (
 };
 
 const translateCookieCondition = (
-	condition: CookieCondition, appConfig: AppConfiguration, lineResult?: TestLineResult
+	condition: CookieCondition, inverse: boolean, appConfig: AppConfiguration, lineResult?: TestLineResult
 ): ConditionNode => {
 	const title = <fragment>cookie <subject>{condition.subject.val}</subject></fragment>;
 
@@ -78,7 +79,7 @@ const translateCookieCondition = (
 					condition.val,
 					appConfig,
 					condition.type,
-					mapStatus(lineResult?.result)
+					mapStatus(lineResult?.result, inverse)
 				)}
 			</props>
 		</condition> as ConditionNode;
@@ -91,7 +92,7 @@ const translateCookieCondition = (
 				comparator={translateComparator(condition.type)}
 				expectedValue={formatVariables(condition.val, appConfig.configVariables)}
 				actualValue={lineResult?.actualValue}
-				status={mapStatus(lineResult?.result)}
+				status={mapStatus(lineResult?.result, inverse)}
 			/>
 		</props>
 	</condition> as ConditionNode;
@@ -190,6 +191,7 @@ const translateElementName = (subject: ElementSubject | PSVideoSubject, elements
 
 const translateElementCondition = (
 	condition: ElementCondition,
+	inverse: boolean,
 	appConfig: AppConfiguration,
 	elements?: Elements,
 	lineResult?: TestLineResult,
@@ -201,22 +203,22 @@ const translateElementCondition = (
 		case 'exists':
 			return <condition
 				title={<fragment>{elementName} exists</fragment>}
-				status={mapStatus(lineResult?.result)}
+				status={mapStatus(lineResult?.result, inverse)}
 			/> as ConditionNode;
 		case '!exists':
 			return <condition
 				title={<fragment>{elementName} does not exist</fragment>}
-				status={mapStatus(lineResult?.result)}
+				status={mapStatus(lineResult?.result, inverse)}
 			/> as ConditionNode;
 		case 'visible':
 			return <condition
 				title={<fragment>{elementName} is visible</fragment>}
-				status={mapStatus(lineResult?.result)}
+				status={mapStatus(lineResult?.result, inverse)}
 			/> as ConditionNode;
 		case 'matches':
 			return <condition
 				title={<fragment>{elementName} matches JavaScript</fragment>}
-				status={mapStatus(lineResult?.result)}
+				status={mapStatus(lineResult?.result, inverse)}
 			>
 				<props>
 					{translateCodeProp(
@@ -224,14 +226,14 @@ const translateElementCondition = (
 						condition.val,
 						appConfig,
 						translateComparator(condition.type),
-						mapStatus(lineResult?.result)
+						mapStatus(lineResult?.result, inverse)
 					)}
 				</props>
 			</condition> as ConditionNode;
 		case 'has':
 			return <condition
 				title={elementName}
-				status={mapStatus(lineResult?.result)}
+				status={mapStatus(lineResult?.result, inverse)}
 			>
 				<props>
 					{condition.expression.map((exp, i) => {
@@ -264,17 +266,19 @@ const translateElementCondition = (
 
 const translatePSVideoCondition = (
 	condition: PSVideoHadNoErrorCondition,
+	inverse: boolean,
 	lineResult?: TestLineResult
 ): ConditionNode => {
 	const title = <fragment>PlayStation 4 video had no error {
 		condition.searchStrategy === 'all' ? 'for any source' : 'for current source'
 	}</fragment>;
 
-	return <condition title={title} status={mapStatus(lineResult?.result)} /> as ConditionNode;
+	return <condition title={title} status={mapStatus(lineResult?.result, inverse)} /> as ConditionNode;
 };
 
 const translateJavaScriptExpressionCondition = (
 	condition: JavaScriptExpressionCondition,
+	inverse: boolean,
 	appConfig: AppConfiguration,
 	lineResult?: TestLineResult,
 ): ConditionNode => {
@@ -296,7 +300,7 @@ const translateJavaScriptExpressionCondition = (
 					: <text>{notSpecifiedMessage}</text>}
 				actualValue={lineResult?.actualValue}
 				comparator={translateComparator(condition.type)}
-				status={mapStatus(lineResult?.result)}
+				status={mapStatus(lineResult?.result, inverse)}
 			/>
 		</props>
 	</condition> as ConditionNode;
@@ -374,6 +378,7 @@ export const sortNetworkInfo = (a: NetworkRequestInfo, b: NetworkRequestInfo): n
 
 const translateNetworkRequestCondition = (
 	condition: NetworkRequestCondition,
+	inverse: boolean,
 	appConfig: AppConfiguration,
 	lineResult?: TestLineResult,
 ): ConditionNode => {
@@ -394,7 +399,7 @@ const translateNetworkRequestCondition = (
 				name={<text>URL</text>}
 				comparator={translateComparator(condition.subject.compare)}
 				expectedValue={formatVariables(condition.subject.val, appConfig.configVariables)}
-				status={lineResult && ('errors' in lineResult) && lineResult.errors.find(err => err.type === 'noUriFound') ? 'fail' : undefined}
+				status={lineResult && ('errors' in lineResult) && lineResult.errors.find(err => err.type === 'noUriFound') ? (!inverse ? 'fail' : 'success') : undefined}
 			/>
 			{tableRows}
 		</props>
@@ -413,6 +418,7 @@ const assertUnknownConditionSubject = (subject: never): never => {
  */
 export const translateCondition = (
 	condition: Condition,
+	inverse: boolean,
 	appConfig: AppConfiguration,
 	elements?: Elements,
 	lineResult?: TestLineResult,
@@ -420,25 +426,28 @@ export const translateCondition = (
 	switch (condition.subject.type) {
 		case 'element':
 		case 'video':
-			return translateElementCondition(condition as ElementCondition, appConfig, elements, lineResult);
+			return translateElementCondition(condition as ElementCondition, inverse, appConfig, elements, lineResult);
 		case 'psVideo':
 			if (condition.type === 'hadNoError') {
-				return translatePSVideoCondition(condition, lineResult);
+				return translatePSVideoCondition(condition, inverse, lineResult);
 			}
 
-			return translateElementCondition(condition as ElementPropertiesCondition, appConfig, elements, lineResult);
+			return translateElementCondition(
+				condition as ElementPropertiesCondition, inverse, appConfig, elements, lineResult);
 		case 'javascript':
 			return translateJavaScriptExpressionCondition(
-				condition as JavaScriptExpressionCondition, appConfig, lineResult
+				condition as JavaScriptExpressionCondition, inverse, appConfig, lineResult
 			);
 		case 'location':
-			return translateCurrentLocationCondition(condition as CurrentLocationCondition, appConfig, lineResult);
+			return translateCurrentLocationCondition(
+				condition as CurrentLocationCondition, inverse, appConfig, lineResult);
 		case 'cookie':
-			return translateCookieCondition(condition as CookieCondition, appConfig, lineResult);
+			return translateCookieCondition(condition as CookieCondition, inverse, appConfig, lineResult);
 		case 'network':
-			return translateNetworkRequestCondition(condition as NetworkRequestCondition, appConfig, lineResult);
+			return translateNetworkRequestCondition(
+				condition as NetworkRequestCondition, inverse, appConfig, lineResult);
 		case 'application':
-			return translateApplicationExitedCondition(lineResult);
+			return translateApplicationExitedCondition(inverse, lineResult);
 		default:
 			/* istanbul ignore next */
 			return assertUnknownConditionSubject(condition.subject);

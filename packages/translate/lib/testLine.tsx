@@ -89,15 +89,11 @@ const translateAssertTestLine = (
 	elements?: Elements,
 	lineResult?: TestLineResult,
 ): TestLineNode => {
-	let status = lineResult?.result;
-	if (testLine.then !== 'success' && status) {
-		status = mapStatus(status) === 'success' ? testLine.then : 'success';
-	}
-	const condition = translateCondition(testLine.condition, appConfig, elements, lineResult);
+	const condition = translateCondition(testLine.condition, testLine.then !== 'success', appConfig, elements, lineResult);
 
 	return <test-line
 		title={<fragment>Assert: {condition.title}{testLine.timeout ? <fragment> timeout {formatTimeout(testLine.timeout, appConfig.configVariables)}</fragment> : undefined}{testLine.then !== 'success' ? <fragment> then {translateAssertThen(testLine.then)}</fragment> : undefined}</fragment>}
-		status={status}
+		status={lineResult?.result}
 	>
 		{condition.children}
 	</test-line> as TestLineNode;
@@ -220,7 +216,9 @@ const translatePressButtonTestLine = (
 		title={<fragment>Press button {ids}{titleFragment}</fragment>}
 		status={lineResult?.result}
 	>
-		{testLine.condition ? translateCondition(testLine.condition, appConfig, elements, lineResult) : undefined}
+		{testLine.condition
+			? translateCondition(testLine.condition, false, appConfig, elements, lineResult)
+			: undefined}
 	</test-line> as TestLineNode;
 };
 
@@ -247,7 +245,9 @@ const translateRunTestTestLine = (
 		title={<fragment>Run test {testName}{titleFragment}</fragment>}
 		status={lineResult?.result}
 	>
-		{testLine.condition ? translateCondition(testLine.condition, appConfig, elements, lineResult) : undefined}
+		{testLine.condition
+			? translateCondition(testLine.condition, false, appConfig, elements, lineResult)
+			: undefined}
 	</test-line> as TestLineNode;
 };
 
@@ -281,7 +281,9 @@ const translateSendTextTestLine = (
 	const title = <fragment>Send text {text} to {translateTarget(testLine.target)}{titleFragment}</fragment>;
 
 	return <test-line title={title} status={lineResult?.result}>
-		{testLine.condition ? translateCondition(testLine.condition, appConfig, elements, lineResult) : undefined}
+		{testLine.condition
+			? translateCondition(testLine.condition, false, appConfig, elements, lineResult)
+			: undefined}
 	</test-line> as TestLineNode;
 };
 
@@ -296,7 +298,9 @@ const translateSetTextTestLine = (
 	const title = <fragment>Set text {text} to {translateTarget(testLine.target)}{titleFragment}</fragment>;
 
 	return <test-line title={title} status={lineResult?.result}>
-		{testLine.condition ? translateCondition(testLine.condition, appConfig, elements, lineResult) : undefined}
+		{testLine.condition
+			? translateCondition(testLine.condition, false, appConfig, elements, lineResult)
+			: undefined}
 	</test-line> as TestLineNode;
 };
 
@@ -312,7 +316,7 @@ const translateBrowserCommandTestLine = (
 	lineResult?: TestLineResult,
 ): TestLineNode => {
 	const condition = testLine.condition
-		? translateCondition(testLine.condition, appConfig, elements, lineResult)
+		? translateCondition(testLine.condition, false, appConfig, elements, lineResult)
 		: undefined;
 
 	switch (testLine.browserCommand.type) {
@@ -377,7 +381,9 @@ const translateClickTestLine = (
 	const title = <fragment>Click on {translateTarget(testLine.target)}{titleFragment}</fragment>;
 
 	return <test-line title={title}>
-		{testLine.condition ? translateCondition(testLine.condition, appConfig, elements, lineResult) : undefined}
+		{testLine.condition
+			? translateCondition(testLine.condition, false, appConfig, elements, lineResult)
+			: undefined}
 	</test-line> as TestLineNode;
 };
 
@@ -391,12 +397,22 @@ const translateMoveToTestLine = (
 	const title = <fragment>Move pointer to {translateTarget(testLine.target)}{titleFragment}</fragment>;
 
 	return <test-line title={title} status={lineResult?.result}>
-		{testLine.condition ? translateCondition(testLine.condition, appConfig, elements, lineResult) : undefined}
+		{testLine.condition
+			? translateCondition(testLine.condition, false, appConfig, elements, lineResult)
+			: undefined}
 	</test-line> as TestLineNode;
 };
 
 const translateCommentTestLine = (testLine: CommentTestLine): TestLineNode =>
-	<test-line title={<text>{testLine.val}</text>} /> as TestLineNode;
+	<test-line title={
+		<text>{
+			testLine.val
+				.split('\n')
+				.map(l => l.trim() ? `# ${l}` : false)
+				.filter(Boolean)
+				.join('\n')
+		}</text>
+	} /> as TestLineNode;
 
 /* istanbul ignore next */
 const assertUnknownLineType = (testLine: never): never => {

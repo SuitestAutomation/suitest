@@ -104,16 +104,18 @@ export const translateCodeProp = (
 	return out;
 };
 
-export const mapStatus = (status?: TestLineResultStatus): SingleEntryStatus | undefined => {
+export const mapStatus = (status?: TestLineResultStatus, inverse?: boolean): SingleEntryStatus | undefined => {
 	switch (status) {
 		case 'success':
+			return inverse ? 'fail' : 'success';
 		case 'warning':
 			return 'success';
 		case 'fail':
 		case 'fatal':
-			return 'fail';
-		case 'excluded':
+			return inverse ? 'success' : 'fail';
 		case 'exit':
+			return inverse ? 'success' : undefined;
+		case 'excluded':
 		default:
 			return undefined;
 	}

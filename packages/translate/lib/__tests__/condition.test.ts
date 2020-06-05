@@ -5,7 +5,7 @@ import {NetworkRequestInfo} from '@suitest/types/lib';
 describe('conditions translation', () => {
 	for (const [name, condition] of Object.entries(conditions)) {
 		it(`should translate "${name}" line`, () => {
-			expect(translateCondition(condition(), appConfig, elements)).toMatchSnapshot();
+			expect(translateCondition(condition(), false, appConfig, elements)).toMatchSnapshot();
 		});
 	}
 
