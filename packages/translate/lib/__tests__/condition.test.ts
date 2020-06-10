@@ -7,6 +7,10 @@ describe('conditions translation', () => {
 		it(`should translate "${name}" line`, () => {
 			expect(translateCondition(condition(), false, appConfig, elements)).toMatchSnapshot();
 		});
+
+		it(`should translate "${name}" line without variables`, () => {
+			expect(translateCondition(condition(), false, undefined, elements)).toMatchSnapshot();
+		});
 	}
 
 	describe('translateElementProperty function', () => {

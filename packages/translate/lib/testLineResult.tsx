@@ -430,7 +430,7 @@ const getScreenshotUrl = (screenshotPath?: string): string | undefined => screen
 
 export const translateTestLineResult = (options: {
 	testLine: TestLine,
-	appConfig: AppConfiguration,
+	appConfig?: AppConfiguration,
 	lineResult?: TestLineResult,
 	elements?: Elements,
 	snippets?: Snippets,

@@ -5,6 +5,8 @@ exports[`Test line results translation Translate assert lines translate "assert 
   fail: App is still running"
 `;
 
+exports[`Test line results translation Translate assert lines translate "assert application has exited" render without appConfig 1`] = `"Assert: Application has exited"`;
+
 exports[`Test line results translation Translate assert lines translate "assert application has exited" render without result 1`] = `"Assert: Application has exited"`;
 
 exports[`Test line results translation Translate assert lines translate "assert cookie" existingSubject error 1`] = `
@@ -39,6 +41,11 @@ exports[`Test line results translation Translate assert lines translate "assert 
     > return false;
     > }           
   fail: Condition was not met"
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert cookie" without appConfig 1`] = `
+"Assert: cookie suitest-cookie
+  suitest-cookie = suitest"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert cookie" without result 1`] = `
@@ -78,6 +85,11 @@ exports[`Test line results translation Translate assert lines translate "assert 
 exports[`Test line results translation Translate assert lines translate "assert current location" with success result 1`] = `
 "✔ Assert: Current location
   ✔ current location contains http://some.url"
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert current location" without appConfig 1`] = `
+"Assert: Current location
+  current location contains http://some.url"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert current location" without result 1`] = `
@@ -204,6 +216,8 @@ exports[`Test line results translation Translate assert lines translate "assert 
   fail: Subject does not exist"
 `;
 
+exports[`Test line results translation Translate assert lines translate "assert element" without appConfig 1`] = `"Assert: Element 1 exists"`;
+
 exports[`Test line results translation Translate assert lines translate "assert element" without error "element ... does not exist" 1`] = `"Assert: Element 1 does not exist"`;
 
 exports[`Test line results translation Translate assert lines translate "assert element" without error "element ... exist" 1`] = `"Assert: Element 1 exists"`;
@@ -279,6 +293,13 @@ exports[`Test line results translation Translate assert lines translate "assert 
     > 1              
   ✖ expression result = [NOT SPECIFIED]
   fail: Test command received invalid input"
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert javascript expression" render without appConfig 1`] = `
+"Assert: JavaScript expression
+  expression         
+    > someJS()     
+  expression result = returned value"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert javascript expression" render without result 1`] = `
@@ -372,6 +393,11 @@ exports[`Test line results translation Translate assert lines translate "assert 
   fail: Condition was not met"
 `;
 
+exports[`Test line results translation Translate assert lines translate "assert network" render without appConfig 1`] = `
+"Assert: network request was made in entire network log
+  URL = http://suite.st/123 (http://suite.st/<%var1%>)"
+`;
+
 exports[`Test line results translation Translate assert lines translate "assert network" render without result 1`] = `
 "Assert: network request was made in entire network log
   URL = http://suite.st/123 (http://suite.st/<%var1%>)"
@@ -393,6 +419,8 @@ exports[`Test line results translation Translate assert lines translate "assert 
   fail: Please make sure that you have the PlayStation SDK installed. https://suite.st/docs/troubleshooting/playstation/#playstation-sdk-not-installed"
 `;
 
+exports[`Test line results translation Translate assert lines translate "assert ps video" render without appConfig 1`] = `"Assert: PlayStation 4 video had no error for current source"`;
+
 exports[`Test line results translation Translate assert lines translate "assert ps video" render without result 1`] = `"Assert: PlayStation 4 video had no error for current source"`;
 
 exports[`Test line results translation Translate assert lines translate "assert ps video" render without result 2`] = `"Assert: PlayStation 4 video had no error for any source"`;
@@ -408,6 +436,11 @@ exports[`Test line results translation Translate assert lines translate "openApp
 `;
 
 exports[`Test line results translation Translate assert lines translate "openAppOverrideFailed" render with lineId 1`] = `
+"✖ Open application
+  fail: Open app override failed"
+`;
+
+exports[`Test line results translation Translate assert lines translate "openAppOverrideFailed" render without appConfig 1`] = `
 "✖ Open application
   fail: Open app override failed"
 `;

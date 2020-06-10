@@ -1,4 +1,3 @@
-/// <reference path="../../../smst/types/intrinsicElements.d.ts" />
 import {jsx} from '@suitest/smst';
 import {AppConfiguration} from '@suitest/types';
 import {formatCount, formatTimeout, formatVariables, replaceVariables} from '../utils';
@@ -29,6 +28,11 @@ describe('Translation utils', () => {
 		it('should leave unknown variables untouched', () => {
 			expect(replaceVariables('<%unknown%>', vars)).toEqual('<%unknown%>');
 		});
+
+		it('should leave text without changes if variables undefined', () => {
+			expect(replaceVariables('some text')).toEqual('some text');
+			expect(replaceVariables('<%someVar%> lalala')).toEqual('<%someVar%> lalala');
+		});
 	});
 
 	describe('formatVariables util', () => {
@@ -46,6 +50,11 @@ describe('Translation utils', () => {
 
 		it('should leave unknown variables untouched', () => {
 			expect(formatVariables('<%unknown%>', vars)).toEqual(<input>{'<%unknown%>'}</input>);
+		});
+
+		it('should leave text as it is when variables undefined', () => {
+			expect(formatVariables('some text')).toEqual(<input>some text</input>);
+			expect(formatVariables('<%someVar%>')).toEqual(<input>{'<%someVar%>'}</input>);
 		});
 	});
 
@@ -66,6 +75,12 @@ describe('Translation utils', () => {
 			expect(formatTimeout('<%unknown%>', vars)).toEqual(<input>{'<%unknown%>'}</input>);
 			expect(formatTimeout('abc', vars)).toEqual(<input>abc</input>);
 		});
+
+		it('should working without variables', () => {
+			expect(formatTimeout('<%var1%>')).toEqual(<input>{'<%var1%>'}</input>);
+			expect(formatTimeout('abc')).toEqual(<input>abc</input>);
+			expect(formatTimeout('300')).toEqual(<input>0.3s</input>);
+		});
 	});
 
 	describe('formatCount util', () => {
@@ -84,6 +99,12 @@ describe('Translation utils', () => {
 		it('should display invalid values as is', () => {
 			expect(formatCount('<%unknown%>', vars)).toEqual(<input>{'<%unknown%>'}</input>);
 			expect(formatCount('abc', vars)).toEqual(<input>abc</input>);
+		});
+
+		it('should return formatted numbers with undefined variables', () => {
+			expect(formatCount(15)).toEqual(<fragment><input>15</input>x</fragment>);
+			expect(formatCount('<%unknown%>')).toEqual(<input>{'<%unknown%>'}</input>);
+			expect(formatCount('abc')).toEqual(<input>abc</input>);
 		});
 	});
 });
