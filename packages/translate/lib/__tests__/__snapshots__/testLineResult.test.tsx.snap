@@ -395,7 +395,7 @@ exports[`Test line results translation Translate assert lines translate "assert 
 
 exports[`Test line results translation Translate assert lines translate "assert network" render without appConfig 1`] = `
 "Assert: network request was made in entire network log
-  URL = http://suite.st/123 (http://suite.st/<%var1%>)"
+  URL = http://suite.st/<%var1%>"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert network" render without result 1`] = `

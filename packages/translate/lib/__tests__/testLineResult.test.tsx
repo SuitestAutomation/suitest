@@ -908,7 +908,6 @@ return true;
 			it('render without appConfig', () => {
 				expect(testLineToFormattedText({
 					testLine: assertLine(conditions['network request to URL was made including matched']()),
-					appConfig,
 				})).toMatchSnapshot();
 			});
 
