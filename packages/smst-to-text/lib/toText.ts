@@ -55,14 +55,14 @@ const formatString = (text: string, type: string): string => {
 
 	return text;
 };
-const calcPureLength = (str: string) => {
+const calcPureLength = (str: string): number => {
 	const specialChars = Object.values(format);
 
 	return specialChars
 		.reduce((s, char) => s.replace(char, ''), str).length;
-}
+};
 
-const wrapText = (text: string, limit: number = 115, wrappedLinesIndentation: number = 0) => {
+const wrapText = (text: string, limit = 115, wrappedLinesIndentation = 0): string => {
 	const roundedLimit = 5;
 	const wrappedLinesIndentationText = wrappedLinesIndentation === 0
 		? ''
@@ -99,7 +99,7 @@ const wrapText = (text: string, limit: number = 115, wrappedLinesIndentation: nu
 	} else {
 		return text;
 	}
-}
+};
 
 /**
  * Render a single text node as plain text
