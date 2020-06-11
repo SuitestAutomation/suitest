@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[` 1`] = `
-"[31m✖ [0mRun test [32mMy loooooooooo ooooo ooo oooooo ooooooo ooooooo ooooooo ooooo ooooo ng! test[0m until condition is met max 5x
+"[31m✖ [0mRun test[32mMy loooooooooo ooooo ooo oooooo ooooooo ooooooo ooooooo ooooo ooooo ng! test[0m until condition is met max 5x
   every 5s
   [31m✖ [0mcondition: element [32mMy element[0m exists
     [31m✖ [0mprop name prop name prop name prop name prop name ~ expected value expected value expected value expected value 
@@ -32,7 +32,7 @@ exports[` 2`] = `
 `;
 
 exports[` 3`] = `
-"✖ Run test My loooooooooo ooooo ooo oooooo ooooooo ooooooo ooooooo ooooo ooooo ng! test until condition is met max 5x
+"✖ Run testMy loooooooooo ooooo ooo oooooo ooooooo ooooooo ooooooo ooooo ooooo ng! test until condition is met max 5x
   every 5s
   ✖ condition: element My element exists
     ✖ prop name prop name prop name prop name prop name ~ expected value expected value expected value expected value 

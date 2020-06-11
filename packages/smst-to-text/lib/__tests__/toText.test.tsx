@@ -216,24 +216,24 @@ describe('AST renderers', () => {
 		const renderLongTexts = (format: boolean): void => {
 			expect(toText(<test-line-result
 				status="fail"
-				message={<text>Subject does not exist a very loooo oooooo ooooo ooooooo oooooo oooooo oooong
-					error message, possibly including "description" part for notStarterReason</text>}
+				message={<text>Subject does not exist a very loooo oooooo ooooo ooooooo oooooo oooooo oooong error
+					message, possibly including "description" part for notStarterReason</text>}
 			>
 				<test-line
 					title={<fragment>Run test
-						<subject>My loooooooooo ooooo ooo oooooo ooooooo ooooooo ooooooo ooooo ooooo ng! test</subject>
-						until condition is met max 5x every 5s</fragment>}
+						<subject>My loooooooooo ooooo ooo oooooo ooooooo ooooooo ooooooo ooooo ooooo ng!
+							test</subject> until condition is met max 5x every 5s</fragment>}
 					status="fail"
 				>{longCondition}</test-line>
 			</test-line-result>, format)).toMatchSnapshot();
 			expect(toText(<test-line-result
 				status="fail"
-				message={<text>Subject does not exist a very not so loooooooong error message, possibly including
-					"description" part for notStarterReason</text>}
+				message={<text>Subject does not exist a very not so loooooooong error message,
+					possibly including "description" part for notStarterReason</text>}
 			>
 				<test-line
-					title={<fragment>Run test <subject>My not so loooooooooong! test</subject>
-						until condition is met max 5x every 5s</fragment>}
+					title={<fragment>Run test <subject>My not so loooooooooong! test</subject> until condition
+						is met max 5x every 5s</fragment>}
 					status="fail"
 				>{longCondition}</test-line>
 			</test-line-result>, format)).toMatchSnapshot();
