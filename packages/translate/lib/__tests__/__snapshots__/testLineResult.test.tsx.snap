@@ -390,7 +390,8 @@ exports[`Test line results translation Translate assert lines translate "assert 
 
 exports[`Test line results translation Translate assert lines translate "assert ps video" render with fail result 1`] = `
 "✖ Assert: PlayStation 4 video had no error for any source
-  fail: Please make sure that you have the PlayStation SDK installed. https://suite.st/docs/troubleshooting/playstation/#playstation-sdk-not-installed"
+  fail: Please make sure that you have the PlayStation SDK installed. https://suite.st/docs/troubleshooting/playstat
+        ion/#playstation-sdk-not-installed"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert ps video" render without result 1`] = `"Assert: PlayStation 4 video had no error for current source"`;
@@ -424,7 +425,8 @@ exports[`Test line results translation Translate assert lines translate line wit
 
 exports[`Test line results translation Translate assert lines translate line with screenshot should render line with screenshot 2`] = `
 "✖ Press button OK
-  fail: ADB communication with the device has failed. Make sure your device is set up correctly and it can be connected to using ADB"
+  fail: ADB communication with the device has failed. Make sure your device is set up correctly and it can be connected
+        to using ADB"
 `;
 
 exports[`Test line results translation Translate assert lines translate line with screenshot should render line without screenshot 1`] = `
@@ -434,7 +436,8 @@ exports[`Test line results translation Translate assert lines translate line wit
 
 exports[`Test line results translation Translate assert lines translate line with screenshot should render line without screenshot 2`] = `
 "✖ Press button OK
-  fail: ADB communication with the device has failed. Make sure your device is set up correctly and it can be connected to using ADB"
+  fail: ADB communication with the device has failed. Make sure your device is set up correctly and it can be connected
+        to using ADB"
 `;
 
 exports[`Test line results translation assert then exit translate "assert network" render exit result 1`] = `
