@@ -131,7 +131,10 @@ export type SimpleError = BaseResult & {
 		| 'configuratorError'
 		| 'appStoreBuild'
 		| 'outdatedLibraryWarning'
-		| 'cyclicReference',
+		| 'cyclicReference'
+		| 'ioError'
+		| 'netError'
+		| 'sdComponentFailed',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {
