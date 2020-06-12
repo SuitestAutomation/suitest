@@ -66,7 +66,7 @@ const wrapText = (text: string, limit = 115, wrappedLinesIndentation = 0): strin
 	const roundedLimit = 5;
 	const wrappedLinesIndentationText = wrappedLinesIndentation === 0
 		? ''
-		: Array(wrappedLinesIndentation).join(' ') + ' ';
+		: ' '.repeat(wrappedLinesIndentation);
 
 	if (text.length > limit) {
 		const rows = text.split(/\s/).reduce((acc, item) => {
