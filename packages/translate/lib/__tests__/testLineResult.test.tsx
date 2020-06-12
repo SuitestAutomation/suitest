@@ -4,6 +4,7 @@ import {
 	TestLineErrorResult,
 	PSVideoHadNoErrorCondition,
 	TestLine,
+	SimpleError,
 } from '@suitest/types/lib';
 import {translateResultMessage, translateTestLineResult} from '../testLineResult';
 import {appConfig, conditions, elements, testLinesExamples} from './testLinesExamples';
@@ -18,7 +19,7 @@ describe('Test line results translation', () => {
 		timeScreenshotHr: [0, 0],
 	};
 
-	const simpleErrors = [
+	const simpleErrors: Array<SimpleError['errorType']> = [
 		'failedStart',
 		'appRunning',
 		'appNotRunning',
@@ -96,6 +97,8 @@ describe('Test line results translation', () => {
 		'appStoreBuild',
 		'outdatedLibraryWarning',
 		'cyclicReference',
+		'unsupportedOSVersion',
+		'targetManagerUnsupportedVersion',
 	];
 
 	// it('should translate success results', () => {
