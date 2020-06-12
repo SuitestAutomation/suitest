@@ -24,9 +24,7 @@
     "docs/"
   ],
   "scripts": {
-    "build": "npx rimraf dist && npm run compile && npm run compress",
-    "compile": "npx tsc -p tsconfig.json",
-    "compress": "for file in ./dist/*.js; do npx terser --compress --mangle -o $file -- $file; done",
+    "build": "npx rimraf dist && npx tsc -p tsconfig.json && node ../../compile.js",
     "test": "jest",
     "coverage": "jest --coverage",
     "prepublishOnly": "npm run coverage && npm run build"

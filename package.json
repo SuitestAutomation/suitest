@@ -28,5 +28,8 @@
       "pre-commit": "npm run lint",
       "pre-push": "npm run build && npm test"
     }
+  },
+  "dependencies": {
+    "terser": "^4.7.0"
   }
 }
