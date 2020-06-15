@@ -1358,6 +1358,20 @@ Object {
 }
 `;
 
+exports[`Test line results translation should translate "targetManagerUnsupportedVersion" error 1`] = `
+Array [
+  Object {
+    "type": "text",
+    "value": "Unsupported Target Manager Server, please see our ",
+  },
+  Object {
+    "href": "https://suite.st/docs/devices/playstation/",
+    "type": "link",
+    "value": "docs",
+  },
+]
+`;
+
 exports[`Test line results translation should translate "testIsNotStarted" error 1`] = `
 Object {
   "type": "text",
@@ -1398,6 +1412,20 @@ Object {
   "type": "text",
   "value": "This key is not supported on the target device",
 }
+`;
+
+exports[`Test line results translation should translate "unsupportedOSVersion" error 1`] = `
+Array [
+  Object {
+    "type": "text",
+    "value": "Unsupported OS version, please see our ",
+  },
+  Object {
+    "href": "https://suite.st/docs/devices/playstation/",
+    "type": "link",
+    "value": "docs",
+  },
+]
 `;
 
 exports[`Test line results translation should translate "wrongApp" error 1`] = `

@@ -131,7 +131,9 @@ export type SimpleError = BaseResult & {
 		| 'configuratorError'
 		| 'appStoreBuild'
 		| 'outdatedLibraryWarning'
-		| 'cyclicReference',
+		| 'cyclicReference'
+		| 'unsupportedOSVersion'
+		| 'targetManagerUnsupportedVersion',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {
