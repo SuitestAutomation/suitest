@@ -437,7 +437,7 @@ const assertUnknownLineType = (testLine: never): never => {
 	throw new Error(`Unknown line type: ${JSON.stringify(testLine)}`);
 };
 
-const getDocsLink = (lineType: TestLine['type'], result?: TestLineResult['result']) => {
+const getDocsLink = (lineType: TestLine['type'], result?: TestLineResult['result']): LinkNode | undefined => {
 	const docsPath = 'https://suite.st/docs';
 	let link = '';
 	switch (lineType) {
@@ -491,8 +491,8 @@ const getDocsLink = (lineType: TestLine['type'], result?: TestLineResult['result
 
 	return result && link && ['fail', 'fatal'].includes(result)
 		? <link href={link}>{link}</link> as LinkNode
-		: undefined
-}
+		: undefined;
+};
 
 export const translateTestLine = ({
 	testLine, appConfig, elements, snippets, lineResult,
