@@ -1,6 +1,6 @@
 import {jsx} from '@suitest/smst';
 import {toText} from '../toText';
-import {LinkNode} from '@suitest/smst/types/unistTestLine';
+import {LinkNode, Verbosity} from '@suitest/smst/types/unistTestLine';
 
 describe('AST renderers', () => {
 	const plainText = <text>TEXT</text>;
@@ -120,22 +120,27 @@ describe('AST renderers', () => {
 		/>
 	</test-line-result>;
 
-	function runTests(formatted = false): void {
+	function runTests(options: {format: boolean, verbosity: Verbosity}): void {
 		it('should handle code blocks', () => {
-			expect(toText(simpleCodeBlock, formatted)).toMatchSnapshot();
-			expect(toText(longCodeBlock, formatted)).toMatchSnapshot();
+			expect(toText(simpleCodeBlock, options)).toMatchSnapshot();
+			expect(toText(longCodeBlock, options)).toMatchSnapshot();
+		});
+
+		it('should render results with different verbosity level', () => {
+			expect(toText(simpleLine, {...options, verbosity: 'verbose'})).toMatchSnapshot();
+			expect(toText(failResult(), {...options, verbosity: 'quiet'})).toMatchSnapshot();
 		});
 
 		it('should handle props', () => {
-			expect(toText(simpleProps, formatted)).toMatchSnapshot();
-			expect(toText(longProps, formatted)).toMatchSnapshot();
+			expect(toText(simpleProps, options)).toMatchSnapshot();
+			expect(toText(longProps, options)).toMatchSnapshot();
 			expect(toText(<props>
 				<prop
 					name={<text>test</text>}
 					expectedValue={<text>short</text>}
 					actualValue="long long long"
 				/>
-			</props>, formatted)).toMatchSnapshot();
+			</props>, options)).toMatchSnapshot();
 			expect(toText(<props>
 				<prop
 					name={<text>Empty string</text>}
@@ -151,72 +156,84 @@ describe('AST renderers', () => {
 					name={<text>Empty code block</text>}
 					expectedValue={<fragment><code>{'looooooooooooooo oooooooo ooooooo ooooo ooooo oooooooooo oooo oooo ng'}</code> (and some next text block)</fragment>}
 				/>
-			</props>)).toMatchSnapshot();
+			</props>, options)).toMatchSnapshot();
 		});
 
 		it('should throw if trying to render a single prop', () => {
-			expect(() => toText(<prop name={<text>prop</text>} expectedValue={<text>test</text>} />)).toThrow();
+			expect(() => toText(<prop name={<text>prop</text>} expectedValue={<text>test</text>} />, options))
+				.toThrow();
 		});
 
 		it('should render condition', () => {
-			expect(toText(simpleCondition, formatted)).toMatchSnapshot();
-			expect(toText(longCondition, formatted)).toMatchSnapshot();
+			expect(toText(simpleCondition, options)).toMatchSnapshot();
+			expect(toText(longCondition, options)).toMatchSnapshot();
 		});
 
 		it('should render test line', () => {
-			expect(toText(simpleLine, formatted)).toMatchSnapshot();
-			expect(toText(longLine, formatted)).toMatchSnapshot();
+			expect(toText(simpleLine, options)).toMatchSnapshot();
+			expect(toText(longLine, options)).toMatchSnapshot();
 		});
 
 		it('should render test line results', () => {
-			expect(toText(failResult(), formatted)).toMatchSnapshot();
-			expect(toText(warningResult(), formatted)).toMatchSnapshot();
-			expect(toText(exitResult(), formatted)).toMatchSnapshot();
-			expect(toText(excludedResult(), formatted)).toMatchSnapshot();
-			expect(toText(fatalResult(), formatted)).toMatchSnapshot();
-			expect(toText(successResultWithScreenshot(), formatted)).toMatchSnapshot();
+			expect(toText(failResult(), options)).toMatchSnapshot();
+			expect(toText(warningResult(), options)).toMatchSnapshot();
+			expect(toText(exitResult(), options)).toMatchSnapshot();
+			expect(toText(excludedResult(), options)).toMatchSnapshot();
+			expect(toText(fatalResult(), options)).toMatchSnapshot();
+			expect(toText(successResultWithScreenshot(), options)).toMatchSnapshot();
 		});
 
 		it('should render test line results with screenshots', () => {
 			const screenshot = 'path/to/screenshot.png';
-			expect(toText(failResult(screenshot), formatted)).toMatchSnapshot();
-			expect(toText(warningResult(screenshot), formatted)).toMatchSnapshot();
-			expect(toText(exitResult(screenshot), formatted)).toMatchSnapshot();
-			expect(toText(excludedResult(screenshot), formatted)).toMatchSnapshot();
-			expect(toText(fatalResult(screenshot), formatted)).toMatchSnapshot();
-			expect(toText(successResultWithScreenshot(screenshot), formatted)).toMatchSnapshot();
+			expect(toText(failResult(screenshot), options)).toMatchSnapshot();
+			expect(toText(warningResult(screenshot), options)).toMatchSnapshot();
+			expect(toText(exitResult(screenshot), options)).toMatchSnapshot();
+			expect(toText(excludedResult(screenshot), options)).toMatchSnapshot();
+			expect(toText(fatalResult(screenshot), options)).toMatchSnapshot();
+			expect(toText(successResultWithScreenshot(screenshot), options)).toMatchSnapshot();
+
+			expect(toText(failResult(screenshot), {...options, verbosity: 'quiet'})).toMatchSnapshot();
+			expect(toText(warningResult(screenshot), {...options, verbosity: 'quiet'})).toMatchSnapshot();
+			expect(toText(exitResult(screenshot), {...options, verbosity: 'quiet'})).toMatchSnapshot();
+
+			expect(toText(failResult(screenshot), {...options, verbosity: 'verbose'})).toMatchSnapshot();
+			expect(toText(warningResult(screenshot), {...options, verbosity: 'verbose'})).toMatchSnapshot();
+			expect(toText(exitResult(screenshot), {...options, verbosity: 'verbose'})).toMatchSnapshot();
 		});
 	}
 
 	describe('plain text renderer', () => {
+		const options = {format: false, verbosity: 'normal' as const};
 		it('should handle textual nodes', () => {
-			expect(toText(plainText, false)).toEqual('TEXT');
-			expect(toText(subjectText, false)).toEqual('SUBJECT');
-			expect(toText(inputText, false)).toEqual('INPUT');
-			expect(toText(codeText, false)).toEqual('CODE');
-			expect(toText(mixedText, false)).toEqual('TEXT SUBJ TEXT');
-			expect(toText(emptyText, false)).toEqual('');
+			expect(toText(plainText, options)).toEqual('TEXT');
+			expect(toText(subjectText, options)).toEqual('SUBJECT');
+			expect(toText(inputText, options)).toEqual('INPUT');
+			expect(toText(codeText, options)).toEqual('CODE');
+			expect(toText(mixedText, options)).toEqual('TEXT SUBJ TEXT');
+			expect(toText(emptyText, options)).toEqual('');
 		});
 
-		runTests(false);
+		runTests(options);
 	});
 
 	describe('formatted text renderer', () => {
+		const options = {format: true, verbosity: 'normal' as const};
 		it('should handle textual nodes', () => {
-			expect(toText(plainText, true)).toEqual('TEXT');
-			expect(toText(subjectText, true)).toEqual('\u001b[32mSUBJECT\u001b[0m');
-			expect(toText(inputText, true)).toEqual('\u001b[4mINPUT\u001b[0m');
-			expect(toText(codeText, true)).toEqual('\u001b[36mCODE\u001b[0m');
-			expect(toText(mixedText, true)).toEqual('TEXT \u001b[32mSUBJ\u001b[0m TEXT');
-			expect(toText(emptyText, true)).toEqual('');
+			expect(toText(plainText, options)).toEqual('TEXT');
+			expect(toText(subjectText, options)).toEqual('\u001b[32mSUBJECT\u001b[0m');
+			expect(toText(inputText, options)).toEqual('\u001b[4mINPUT\u001b[0m');
+			expect(toText(codeText, options)).toEqual('\u001b[36mCODE\u001b[0m');
+			expect(toText(mixedText, options)).toEqual('TEXT \u001b[32mSUBJ\u001b[0m TEXT');
+			expect(toText(emptyText, options)).toEqual('');
 		});
 
-		runTests(true);
+		runTests(options);
 	});
 
 	it('render link', () => {
-		expect(toText(<link href="http://some.url">Some URL</link>)).toEqual('Some URL (http://some.url)');
-		expect(toText(<link href="http://some.url">http://some.url</link>)).toEqual('http://some.url');
-		expect(toText(<link href="http://some.url"/>)).toEqual('http://some.url');
+		const options = {format: true, verbosity: 'normal' as const};
+		expect(toText(<link href="http://some.url">Some URL</link>, options)).toEqual('Some URL (http://some.url)');
+		expect(toText(<link href="http://some.url">http://some.url</link>, options)).toEqual('http://some.url');
+		expect(toText(<link href="http://some.url"/>, options)).toEqual('http://some.url');
 	});
 });

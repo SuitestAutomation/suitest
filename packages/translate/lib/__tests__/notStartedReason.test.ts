@@ -23,8 +23,8 @@ describe('Testing not started reason translation.', () => {
 				const reason = translateNotStartedReason(code);
 
 				expect({
-					title: toText(reason.title),
-					description: reason.description ? toText(reason.description) : undefined,
+					title: toText(reason.title, {format: true, verbosity: 'normal'}),
+					description: reason.description ? toText(reason.description, {format: true, verbosity: 'normal'}) : undefined,
 				}).toMatchSnapshot();
 			});
 		}
@@ -37,8 +37,8 @@ describe('Testing not started reason translation.', () => {
 				const reason = translateNotStartedReason(code);
 
 				expect({
-					title: toHtml(reason.title),
-					description: toHtml(reason.title),
+					title: toHtml(reason.title, {verbosity: 'normal'}),
+					description: toHtml(reason.title, {verbosity: 'normal'}),
 				}).toMatchSnapshot();
 			});
 		}

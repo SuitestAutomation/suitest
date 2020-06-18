@@ -21,7 +21,7 @@ describe('Interactive progress explanation.', () => {
 		for (const status of progressStatuses) {
 			it(`"${status}"`, () => {
 				const progress = translateProgress({ status });
-				expect({ title: toText(progress.title) }).toMatchSnapshot();
+				expect({ title: toText(progress.title, {verbosity: 'normal', format: true}) }).toMatchSnapshot();
 			});
 		}
 	});
@@ -30,7 +30,7 @@ describe('Interactive progress explanation.', () => {
 		for (const status of progressStatuses) {
 			it(`"${status}"`, () => {
 				const progress = translateProgress({ status });
-				expect({ title: toHtml(progress.title) }).toMatchSnapshot();
+				expect({ title: toHtml(progress.title, {verbosity: 'normal'}) }).toMatchSnapshot();
 			});
 		}
 	});

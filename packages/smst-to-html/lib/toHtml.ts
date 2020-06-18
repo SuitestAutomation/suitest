@@ -7,7 +7,7 @@ import {
 	TestLineNode,
 	TestLineResultNode,
 	SingleNode,
-	Node,
+	Node, Verbosity,
 } from '@suitest/smst/types/unistTestLine';
 
 export const escapeHtml = (text: string): string => text.replace(/[&<"']/g, m => {
@@ -43,7 +43,8 @@ const renderFigure = (
 
 	const filteredNodes = titleNodes?.filter(node => typeof node !== 'undefined') as InlineTextNode[];
 	if (filteredNodes?.length) {
-		output.push(`<div class="${className}__header">${prefix + filteredNodes.map(renderNode).join('')}</div>`);
+		output.push(`<div class="${className}__header">${prefix + filteredNodes
+			.map(n => renderNode(n, {verbosity: 'normal'})).join('')}</div>`);
 	}
 
 	output[titleLast ? 'unshift' : 'push'](content);
@@ -57,7 +58,7 @@ const renderHtmlCodeBlockNode = (node: CodeBlockNode): string => renderFigure(
 	`<pre><code class="language-${node.language}">${escapeHtml(node.value ?? '')}</code></pre>`
 );
 
-const renderHtmlPropsNode = (node: PropertiesNode): string => renderFigure(
+const renderHtmlPropsNode = (node: PropertiesNode, {verbosity}: {verbosity: Verbosity}): string => renderFigure(
 	'suitest-test-line__props',
 	[
 		'<table>',
@@ -65,7 +66,7 @@ const renderHtmlPropsNode = (node: PropertiesNode): string => renderFigure(
 			const row = [`<tr class="suitest-test-line__props__prop--${prop.status}">`];
 
 			// Add name
-			row.push(`<td>${toHtml(prop.name)}</td>`);
+			row.push(`<td>${toHtml(prop.name, {verbosity})}</td>`);
 
 			// Add comparator
 			row.push(`<td>${prop.comparator}</td>`);
@@ -73,11 +74,11 @@ const renderHtmlPropsNode = (node: PropertiesNode): string => renderFigure(
 			// Add expected value
 			if (prop.contentType === 'inline') {
 				// Render inline content
-				row.push(`<td>${toHtml(prop.expectedValue)}</td>`);
+				row.push(`<td>${toHtml(prop.expectedValue, {verbosity})}</td>`);
 			} else {
 				// Add whole another row
 				row.push(`<td/></tr><tr><td class="suitest-test-line__code-block-prop" colspan="3">${
-					toHtml(prop.expectedValue)
+					toHtml(prop.expectedValue, {verbosity})
 				}</td>`);
 			}
 
@@ -95,36 +96,38 @@ const renderHtmlPropsNode = (node: PropertiesNode): string => renderFigure(
 	].join('')
 );
 
-const renderHtmlConditionNode = (node: ConditionNode): string => renderFigure(
+const renderHtmlConditionNode = (node: ConditionNode, {verbosity}: {verbosity: Verbosity}): string => renderFigure(
 	['suitest-test-line__condition', `suitest-test-line__condition--${node.status}`].join(' '),
-	node.children.map(renderNode).join(''),
+	node.children.map(n => renderNode(n, {verbosity})).join(''),
 	node.title,
 	'condition: '
 );
 
-const renderHtmlTestLineNode = (node: TestLineNode): string => {
+const renderHtmlTestLineNode = (node: TestLineNode, {verbosity}: {verbosity: Verbosity}): string => {
 	const out = [`<div class="suitest-test-line suitest-test-line--${node.status}">`];
 
 	// Line title
-	const title = toHtml(node.title ?? []);
+	const title = toHtml(node.title ?? [], {verbosity});
 	out.push(`<div class="suitest-test-line__title">${title}</div>`);
 
-	// Line extra details
-	out.push(toHtml(node.children));
+	if (verbosity !== 'quiet') {
+		// Line extra details
+		out.push(toHtml(node.children, {verbosity}));
+	}
 
 	out.push('</div>');
 
 	return out.join('');
 };
 
-const renderHtmlTestLineResultNode = (node: TestLineResultNode): string => {
+const renderHtmlTestLineResultNode = (node: TestLineResultNode, {verbosity}: {verbosity: Verbosity}): string => {
 	const out = [`<div class="suitest-test-line__result suitest-test-line__result--${node.status}">`];
 
 	// Body
-	out.push(node.children.map(renderNode).join(''));
+	out.push(node.children.map(n => renderNode(n, {verbosity})).join(''));
 
 	// Status
-	const message = toHtml(node.message ?? []);
+	const message = toHtml(node.message ?? [], {verbosity});
 	if (message) {
 		out.push(`<div class="suitest-test-line__result__message">${message}</div>`);
 	}
@@ -138,7 +141,7 @@ const renderHtmlTestLineResultNode = (node: TestLineResultNode): string => {
 	return out.join('');
 };
 
-const renderNode = (node: SingleNode): string => {
+const renderNode = (node: SingleNode, {verbosity}: {verbosity: Verbosity}): string => {
 	switch (node.type) {
 		case 'text':
 			return escapeHtml(node.value ?? '');
@@ -150,15 +153,15 @@ const renderNode = (node: SingleNode): string => {
 		case 'code-block':
 			return renderHtmlCodeBlockNode(node);
 		case 'props':
-			return renderHtmlPropsNode(node);
+			return renderHtmlPropsNode(node, {verbosity});
 		case 'prop':
 			throw new Error('Property node should not be rendered outside of Properties collection');
 		case 'test-line':
-			return renderHtmlTestLineNode(node);
+			return renderHtmlTestLineNode(node, {verbosity});
 		case 'condition':
-			return renderHtmlConditionNode(node);
+			return renderHtmlConditionNode(node, {verbosity});
 		case 'test-line-result':
-			return renderHtmlTestLineResultNode(node);
+			return renderHtmlTestLineResultNode(node, {verbosity});
 		case 'link':
 			// TODO: should we create special class for link?
 			return !node.value ?
@@ -170,10 +173,10 @@ const renderNode = (node: SingleNode): string => {
 	}
 };
 
-export const toHtml = (node: Node): string => {
+export const toHtml = (node: Node, {verbosity}: {verbosity: Verbosity}): string => {
 	if (!Array.isArray(node)) {
 		node = [node];
 	}
 
-	return node.filter(Boolean).map(renderNode).join('');
+	return node.filter(Boolean).map(n => renderNode(n, {verbosity})).join('');
 };
