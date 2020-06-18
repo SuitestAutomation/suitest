@@ -251,8 +251,8 @@ const renderProps = (
 	return lines.join(nl);
 };
 
-const  renderNode = (node: SingleNode, renderTextNode: RenderTextFunc, {prefix = '', verbosity}
-: {prefix?: string, verbosity: Verbosity}): string => {
+const  renderNode = (node: SingleNode, renderTextNode: RenderTextFunc, {prefix = '', verbosity}:
+	{ prefix?: string, verbosity: Verbosity}): string => {
 	switch (node.type) {
 		case 'text':
 		case 'code':
@@ -295,10 +295,10 @@ const renderTestLineOrCondition = (
 		: '';
 	const output = [prefix + status + title];
 	switch (verbosity) {
-		case "normal":
+		case 'normal':
 			output.push(body);
 			break;
-		case "verbose":
+		case 'verbose':
 			output.push(body, docs);
 			break;
 	}
