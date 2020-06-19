@@ -952,6 +952,13 @@ Object {
 }
 `;
 
+exports[`Test line results translation should translate "MoveTargetOutOfBounds" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Element is outside of the visible area of the screen",
+}
+`;
+
 exports[`Test line results translation should translate "NoAlertOpenError" error 1`] = `
 Object {
   "type": "text",
