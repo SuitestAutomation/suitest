@@ -132,7 +132,8 @@ export type SimpleError = BaseResult & {
 		| 'appStoreBuild'
 		| 'outdatedLibraryWarning'
 		| 'cyclicReference'
-		| 'MoveTargetOutOfBounds',
+		| 'MoveTargetOutOfBounds'
+		| 'ElementClickIntercepted',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {

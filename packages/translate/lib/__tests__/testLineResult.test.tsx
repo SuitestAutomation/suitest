@@ -97,6 +97,7 @@ describe('Test line results translation', () => {
 		'outdatedLibraryWarning',
 		'cyclicReference',
 		'MoveTargetOutOfBounds',
+		'ElementClickIntercepted',
 	];
 
 	// it('should translate success results', () => {

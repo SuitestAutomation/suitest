@@ -882,6 +882,13 @@ Object {
 }
 `;
 
+exports[`Test line results translation should translate "ElementClickIntercepted" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Click on the element was intercepted by another element",
+}
+`;
+
 exports[`Test line results translation should translate "ElementIsNotSelectable" error 1`] = `
 Object {
   "type": "text",
@@ -955,7 +962,7 @@ Object {
 exports[`Test line results translation should translate "MoveTargetOutOfBounds" error 1`] = `
 Object {
   "type": "text",
-  "value": "Element is outside of the visible area of the screen",
+  "value": "Move target is outside of the visible area of the screen",
 }
 `;
 

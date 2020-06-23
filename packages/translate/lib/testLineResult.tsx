@@ -112,7 +112,8 @@ const simpleErrorMap: {[key: string]: Node} = {
 	appStoreBuild: <text>Can’t install App Store distribution build</text>,
 	outdatedLibraryWarning: <text>We have detected that your instrumentation library is outdated, the package can still be opened. Consider updating</text>,
 	cyclicReference: <text>Cyclic reference detected</text>,
-	MoveTargetOutOfBounds: <text>Element is outside of the visible area of the screen</text>,
+	MoveTargetOutOfBounds: <text>Move target is outside of the visible area of the screen</text>,
+	ElementClickIntercepted: <text>Click on the element was intercepted by another element</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
