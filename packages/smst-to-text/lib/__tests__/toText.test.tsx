@@ -52,6 +52,10 @@ describe('AST renderers', () => {
 	const simpleLine = <test-line
 		title={<fragment>Assert element <subject>My element</subject> is visible</fragment>}
 	/>;
+	const simpleLineExcluded = <test-line
+		status="excluded"
+		title={<fragment>Assert element <subject>My element</subject> is visible</fragment>}
+	/>;
 	const longLine = <test-line
 		title={<fragment>Press <input>OK</input>, <input>LEFT</input> only if condition is met</fragment>}
 	>
@@ -164,6 +168,7 @@ describe('AST renderers', () => {
 		it('should render test line', () => {
 			expect(toText(simpleLine, formatted)).toMatchSnapshot();
 			expect(toText(longLine, formatted)).toMatchSnapshot();
+			expect(toText(simpleLineExcluded, formatted)).toMatchSnapshot();
 		});
 
 		it('should render test line results', () => {

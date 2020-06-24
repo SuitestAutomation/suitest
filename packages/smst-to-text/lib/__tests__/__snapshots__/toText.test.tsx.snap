@@ -60,6 +60,11 @@ exports[`AST renderers formatted text renderer should render test line 2`] = `
   condition: element [32mMy element[0m exists"
 `;
 
+exports[`AST renderers formatted text renderer should render test line 3`] = `
+"[34m» [0mAssert element [32mMy element[0m is visible
+  [34mexcluded: [0mTest line was not executed"
+`;
+
 exports[`AST renderers formatted text renderer should render test line results 1`] = `
 "[31m✖ [0mRun test [32mMy test[0m until condition is met max 5x every 5s
   [31m✖ [0mcondition: element [32mMy element[0m exists
@@ -87,7 +92,7 @@ exports[`AST renderers formatted text renderer should render test line results 3
 exports[`AST renderers formatted text renderer should render test line results 4`] = `
 "[34m» [0mPress [4mOK[0m only if condition is met
   condition: element [32mMy element[0m exists
-  [34mexcluded: [0mLine was not executed"
+  [34mexcluded: [0mTest line was not executed"
 `;
 
 exports[`AST renderers formatted text renderer should render test line results 5`] = `
@@ -127,7 +132,7 @@ exports[`AST renderers formatted text renderer should render test line results w
 exports[`AST renderers formatted text renderer should render test line results with screenshots 4`] = `
 "[34m» [0mPress [4mOK[0m only if condition is met
   condition: element [32mMy element[0m exists
-  [34mexcluded: [0mLine was not executed
+  [34mexcluded: [0mTest line was not executed
   screenshot: path/to/screenshot.png"
 `;
 
@@ -202,6 +207,11 @@ exports[`AST renderers plain text renderer should render test line 2`] = `
   condition: element My element exists"
 `;
 
+exports[`AST renderers plain text renderer should render test line 3`] = `
+"» Assert element My element is visible
+  excluded: Test line was not executed"
+`;
+
 exports[`AST renderers plain text renderer should render test line results 1`] = `
 "✖ Run test My test until condition is met max 5x every 5s
   ✖ condition: element My element exists
@@ -229,7 +239,7 @@ exports[`AST renderers plain text renderer should render test line results 3`] =
 exports[`AST renderers plain text renderer should render test line results 4`] = `
 "» Press OK only if condition is met
   condition: element My element exists
-  excluded: Line was not executed"
+  excluded: Test line was not executed"
 `;
 
 exports[`AST renderers plain text renderer should render test line results 5`] = `
@@ -269,7 +279,7 @@ exports[`AST renderers plain text renderer should render test line results with 
 exports[`AST renderers plain text renderer should render test line results with screenshots 4`] = `
 "» Press OK only if condition is met
   condition: element My element exists
-  excluded: Line was not executed
+  excluded: Test line was not executed
   screenshot: path/to/screenshot.png"
 `;
 

@@ -286,13 +286,16 @@ const renderTestLineOrCondition = (
 	const status = node.status ? renderTextNode(renderStatus(node.status)) : '';
 	const title = node.title.map(renderTextNode).join('');
 	const body = node.children.map(child => renderNode(child, renderTextNode, prefix + tab)).join('');
+	const excludedMessage = node.status === 'excluded'
+		? tab + renderTextNode({type: node.status, value: node.status + ': '}) + 'Test line was not executed'
+		: '';
 
-	return [prefix + status + title, body].filter(Boolean).join(nl);
+	return [prefix + status + title, body, excludedMessage].filter(Boolean).join(nl);
 };
 
 const renderTestLineResult = (node: TestLineResultNode, renderTextNode: RenderTextFunc, prefix = ''): string => {
 	const nodeMessage = node.message?.map(renderTextNode).join('');
-	const message = nodeMessage
+	const message = nodeMessage && node.status !== 'excluded'
 		? tab + renderTextNode({type: node.status, value: node.status + ': '}) + nodeMessage
 		: '';
 	const body = renderTestLineOrCondition(node.children[0], renderTextNode, prefix);

@@ -414,7 +414,7 @@ exports[`Test line results translation Translate assert lines translate "openApp
 
 exports[`Test line results translation Translate assert lines translate line with screenshot should render excluded lines 1`] = `
 "» Press button OK
-  excluded: Condition was met"
+  excluded: Test line was not executed"
 `;
 
 exports[`Test line results translation Translate assert lines translate line with screenshot should render line with screenshot 1`] = `
