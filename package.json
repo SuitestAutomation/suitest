@@ -19,6 +19,7 @@
     "jest": "26.0.1",
     "lerna": "^3.22.0",
     "rimraf": "3.0.2",
+    "terser": "^4.7.0",
     "ts-jest": "26.1.0",
     "tslint": "^6.1.2",
     "typescript": "^3.9.3"
@@ -28,8 +29,5 @@
       "pre-commit": "npm run lint",
       "pre-push": "npm run build && npm test"
     }
-  },
-  "dependencies": {
-    "terser": "^4.7.0"
   }
 }

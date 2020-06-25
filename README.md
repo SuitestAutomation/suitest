@@ -23,9 +23,6 @@ will be triggered automatically for you to link the packages.
 Since library depend on each other, it's important to run `npm run build` in the root
 of this repo before starting to work on the code. Otherwise, unit tests will not work.
 
-Make sure you're using unix-compatible terminal (e.g. git-bash, Cygwin or similar tool
-on Windows).
-
 [Suitest JavascriptApi]: https://github.com/SuitestAutomation/suitest-js-api
 [Suitest web application]: https://the.suite.st
 [unist]: https://github.com/syntax-tree/unist
