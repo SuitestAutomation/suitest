@@ -2,6 +2,8 @@
   "name": "@suitest/smst-to-html",
   "version": "3.0.2",
   "description": "Utility to convert SMST to HTML",
+  "homepage": "https://suite.st/",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SuitestAutomation/suitest.git",
@@ -11,22 +13,18 @@
     "suitest",
     "unist"
   ],
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/SuitestAutomation/suitest/issues"
   },
-  "homepage": "https://suite.st/",
-  "main": "umd/toHtml.js",
+  "main": "dist/toHtml.js",
+  "types": "dist/toHtml.d.ts",
   "files": [
-    "umd/",
-    "commonjs/",
+    "dist/",
     "suitest-test-line.css",
     "docs/"
   ],
   "scripts": {
-    "build": "npm run build:umd && npm run build:commonjs && cp ./lib/suitest-test-line.css ./",
-    "build:umd": "rimraf umd && rollup -c --environment FORMAT:umd",
-    "build:commonjs": "rimraf commonjs && rollup -c --environment FORMAT:commonjs",
+    "build": "npx rimraf dist && npx tsc -p tsconfig.json && node ../../compile.js && cp ./lib/suitest-test-line.css ./",
     "test": "jest",
     "coverage": "jest --coverage",
     "prepublishOnly": "npm run coverage && npm run build"

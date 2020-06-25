@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
+    "module": "umd",
     "lib": [
       "es5",
       "es6",
@@ -10,7 +10,7 @@
     ],
     "experimentalDecorators": true,
     "preserveConstEnums": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "strict": true,
     "forceConsistentCasingInFileNames": false,
     "noImplicitReturns": true,
@@ -20,7 +20,9 @@
     "declaration": true,
     "jsx": "react",
     "jsxFactory": "jsx",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "newLine": "lf",
+    "moduleResolution": "node"
   },
   "compileOnSave": false
 }
