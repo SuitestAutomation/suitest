@@ -149,7 +149,32 @@ describe('AST renderers', () => {
 					name={<text>Empty code block</text>}
 					expectedValue={<fragment><code>{'looooooooooooooo oooooooo ooooooo ooooo ooooo oooooooooo oooo oooo ng'}</code> (and some next text block)</fragment>}
 				/>
-			</props>)).toMatchSnapshot();
+			</props>, formatted)).toMatchSnapshot();
+			expect(toText(<props>
+				<prop
+					status="fail"
+					name={<fragment>request <text>header</text> name</fragment>}
+					comparator="="
+					expectedValue="another header"
+				/>
+				<prop
+					status="success"
+					name={<fragment>request <text>header</text> some name</fragment>}
+					comparator="="
+					expectedValue="another header"
+				/>
+				<prop
+					name={<fragment>request <text>header</text> some loong name</fragment>}
+					comparator="="
+					expectedValue="another header"
+				/>
+				<prop
+					status="fail"
+					name={<fragment>request <text>header</text> another name</fragment>}
+					comparator="="
+					expectedValue="another header"
+				/>
+			</props>, formatted)).toMatchSnapshot();
 		});
 
 		it('should throw if trying to render a single prop', () => {

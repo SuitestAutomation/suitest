@@ -55,6 +55,12 @@ const formatString = (text: string, type: string): string => {
 
 	return text;
 };
+const calcPureLength = (str: string): number => {
+	const specialChars = Object.values(format);
+
+	return specialChars
+		.reduce((s, char) => s.replace(char, ''), str).length;
+};
 
 /**
  * Render a single text node as plain text
@@ -236,9 +242,13 @@ const renderProps = (node: PropertiesNode, renderTextNode: RenderTextFunc, prefi
 			// While there is a non-empty line in at least one cell
 			lines.push(prefix + row
 				.map((cell, columnIndex) => {
-					const cellLine = cell.shift() ?? '';
+					let cellLine = cell.shift() ?? '';
+					const cellLineLength = calcPureLength(cellLine);
+					if (cellLineLength < columnsLength[columnIndex]) {
+						cellLine += ' '.repeat(columnsLength[columnIndex] - cellLineLength);
+					}
 
-					return cellLine.padEnd(columnsLength[columnIndex]);
+					return cellLine;
 				})
 				.join(' ')
 			);
