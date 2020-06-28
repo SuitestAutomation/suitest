@@ -24,12 +24,15 @@ import {
 	AppConfiguration,
 	Elements,
 	Snippets,
-	AssertTestLine,
+	SimpleError,
 } from '@suitest/types';
 import {translateTestLine} from './testLine';
 import {translateElementProperty} from './condition';
 
 const baseScreenshotPath = 'https://the.suite.st';
+
+const conditionWasMetMessage = <text>Condition was met</text>;
+const conditionWasNotMetMessage = <text>Condition was not met</text>;
 
 const simpleErrorMap: {[key: string]: string} = {
 	failedStart: 'Failed to open application',
@@ -123,7 +126,7 @@ const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
 		case 'missingSubject':
 			return <text>Subject does not exist</text>;
 		case 'existingSubject':
-			return <text>Subject expected not to exist</text>;
+			return <text>Subject exists</text>;
 		case 'orderErr':
 			return <text>Suitest instrumentation library should be placed as the first script in your HTML file. Loading the instrumentation library dynamically or after other scripts have loaded may cause many unusual errors</text>;
 		case 'updateAlert':
@@ -147,7 +150,7 @@ const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
 
 	}
 
-	return <text>Condition was not met</text>;
+	return conditionWasNotMetMessage;
 };
 
 const translateInvalidInputError = (result: InvalidInputError): TextNode => {
@@ -341,14 +344,14 @@ const translateOutdatedLibraryError = (result: OutdatedInstrumentationLibraryErr
 };
 
 const translateInvalidRepositoryReference = (result: InvalidRepositoryReferenceError): TextNode => {
-	let textMsg = 'Element was not found in repository';
+	let textMsg = 'Element was not found in the repository';
 
 	if (result.message) {
 		switch (result.message.code) {
 			case 'notExistingElement':
 				break;
 			case 'notExistingPlatform':
-				textMsg = 'Element is not defined for selected platform';
+				textMsg = 'Element is not defined for the selected platform';
 				break;
 			case 'unknownProperty':
 				textMsg = `Element does not support property ${translateElementProperty(result.message.property)}`;
@@ -362,71 +365,112 @@ const translateInvalidRepositoryReference = (result: InvalidRepositoryReferenceE
 	return <text>{textMsg}</text> as TextNode;
 };
 
-// TODO: better test coverage
-export const translateResultMessage = (result: TestLineErrorResult): Node => {
-	if (result.errorType in simpleErrorMap) {
-		return <text>{simpleErrorMap[result.errorType]}</text>;
-	}
-	if (result.errorType === 'queryFailed' && 'message' in result) {
-		return translateQueryFailedResults(result);
-	}
-	if (result.errorType === 'queryFailed') {
-		return <text>Condition was not met</text>;
-	}
-	if (result.errorType === 'invalidInput') {
-		return translateInvalidInputError(result);
-	}
-	if (result.errorType === 'syntaxError') {
-		return translateSyntaxError(result);
-	}
-	if (result.errorType === 'queryTimeout') {
-		return translateQueryTimeoutError(result);
-	}
-	if (result.errorType === 'deviceError') {
-		return translateDeviceError(result);
-	}
-	if (result.errorType === 'unsupportedButton' || result.errorType === 'illegalButton') {
-		return translateUnsupportedButtonError(result);
-	}
-	if (result.errorType === 'aborted') {
-		return translateAbortedError(result);
-	}
-	if (result.errorType === 'invalidVariable') {
-		return translateInvalidVariableError(result);
-	}
-	if (result.errorType === 'invalidValue') {
-		return translateInvalidValueError(result);
-	}
-	if (result.errorType === 'invalidResult') {
-		return translateInvalidResultError(result);
-	}
-	if (result.errorType === 'openAppOverrideFailed') {
-		return translateOpenAppOverrideFailedError();
-	}
-	if (result.errorType === 'invalidReference') {
-		return translateInvalidReferenceError(result);
-	}
-	if (result.errorType === 'adbError') {
-		return translateADBError(result);
-	}
-	if (result.errorType === 'invalidPackage') {
-		return translateInvalidPackageError(result);
-	}
-	if (result.errorType === 'outdatedLibrary' || result.errorType === 'outdatedLibraryConnected') {
-		return translateOutdatedLibraryError(result);
-	}
-	if (result.errorType === 'invalidRepositoryReference') {
-		return translateInvalidRepositoryReference(result);
-	}
+/**
+ * Type guard to help TypeScript better understand the code
+ * @param result
+ */
+const isSimpleErrorResult = (result: TestLineErrorResult): result is SimpleError =>
+	 result.errorType in simpleErrorMap;
 
-	console.warn('Error message not implemented for', JSON.stringify(result));
+/**
+ * This function should never be called in production, as long as all known errors
+ * have translation.
+ * @param result
+ */
+const unknownErrorMessage = (result: never): Node => {
+	console.warn(`Error message not implemented for: ${JSON.stringify(result)}. Make sure you are using the latest version of the @suitest/translate library.`);
 
 	return <text>Unknown error occurred</text>;
+};
+
+// TODO: better test coverage
+export const translateResultErrorMessage = (result: TestLineErrorResult): Node => {
+	if (isSimpleErrorResult(result)) {
+		return <text>{simpleErrorMap[result.errorType]}</text>;
+	}
+
+	switch (result.errorType) {
+		case 'queryFailed':
+			if ('message' in result) {
+				return translateQueryFailedResults(result);
+			}
+
+			return conditionWasNotMetMessage;
+		case 'invalidInput':
+			return translateInvalidInputError(result);
+		case 'syntaxError':
+			return translateSyntaxError(result);
+		case 'queryTimeout':
+			return translateQueryTimeoutError(result);
+		case 'deviceError':
+			return translateDeviceError(result);
+		case 'unsupportedButton':
+		case 'illegalButton':
+			return translateUnsupportedButtonError(result);
+		case 'aborted':
+			return translateAbortedError(result);
+		case 'invalidVariable':
+			return translateInvalidVariableError(result);
+		case 'invalidValue':
+			return translateInvalidValueError(result);
+		case 'invalidResult':
+			return translateInvalidResultError(result);
+		case 'openAppOverrideFailed':
+			return translateOpenAppOverrideFailedError();
+		case 'invalidReference':
+			return translateInvalidReferenceError(result);
+		case 'adbError':
+			return translateADBError(result);
+		case 'invalidPackage':
+			return translateInvalidPackageError(result);
+		case 'outdatedLibrary':
+		case 'outdatedLibraryConnected':
+			return translateOutdatedLibraryError(result);
+		case 'invalidRepositoryReference':
+			return translateInvalidRepositoryReference(result);
+		default:
+			return unknownErrorMessage(result);
+	}
 };
 
 const getScreenshotUrl = (screenshotPath?: string): string | undefined => screenshotPath
 	? baseScreenshotPath + screenshotPath
 	: undefined;
+
+const getInvertedResultMessage = (
+	testLine: TestLine,
+	lineResult?: TestLineResult
+): Node | undefined => {
+	if (
+		!lineResult // Does not make sense to translate inverted result if there is no result to compare to
+		|| (testLine.type !== 'assert' && testLine.type !== 'wait') // Only assert lines can be inverted by definition
+		|| !('then' in testLine) // Make the code future-proof, we might drop inverse conditions
+		|| testLine.then === 'success' // Not an inverse result
+		|| (lineResult.errorType && lineResult.errorType !== 'queryFailed' && lineResult.errorType !== 'appRunning') // failure not related to condition, thus can't be inverted
+	) {
+		return undefined;
+	}
+
+	return lineResult.result === testLine.then ? conditionWasMetMessage : conditionWasNotMetMessage;
+};
+
+const getLineResultMessage = (testLine: TestLine, lineResult?: TestLineResult): Node | undefined => {
+	const invertedResult = getInvertedResultMessage(testLine, lineResult);
+	if (invertedResult) {
+		return invertedResult;
+	}
+
+	// Handle case when result is success
+	if (!lineResult || lineResult.result === 'success') {
+		return undefined;
+	}
+
+	if (lineResult.result === 'excluded') {
+		return <text>Line was not executed</text>;
+	}
+
+	return translateResultErrorMessage(lineResult as TestLineErrorResult);
+};
 
 export const translateTestLineResult = (options: {
 	testLine: TestLine,
@@ -435,33 +479,11 @@ export const translateTestLineResult = (options: {
 	elements?: Elements,
 	snippets?: Snippets,
 }): TestLineResultNode => {
-	const testLineTranslation = translateTestLine(options);
 	const {lineResult} = options;
-	const {then} = options.testLine as AssertTestLine;
-
-	if (lineResult && then !== 'success') {
-		const messege = lineResult?.result === 'success'
-			? <text>Condition was not met</text>
-			: <text>Condition was met</text>;
-		const unexpectedResult = lineResult.errorType && !['appRunning', 'queryFailed'].includes(lineResult.errorType);
-
-		return <test-line-result
-			status={lineResult?.result}
-			message={unexpectedResult ? translateResultMessage(lineResult as TestLineErrorResult) : messege}
-		>{testLineTranslation}</test-line-result> as TestLineResultNode;
-	}
-
-	if (!lineResult || lineResult.result === 'success' || lineResult.result === 'excluded' || !('errorType' in lineResult)) {
-		// TODO: not pass "success" to status if lineResult is undefined
-		return <test-line-result
-			status={lineResult?.result ?? 'success'}
-			screenshot={getScreenshotUrl(lineResult?.screenshot)}
-		>{testLineTranslation}</test-line-result> as TestLineResultNode;
-	}
 
 	return <test-line-result
-		status={lineResult.result}
-		message={translateResultMessage(lineResult)}
-		screenshot={getScreenshotUrl(lineResult.screenshot)}
-	>{testLineTranslation}</test-line-result> as TestLineResultNode;
+		status={lineResult?.result ?? 'success'}
+		message={getLineResultMessage(options.testLine, lineResult)}
+		screenshot={getScreenshotUrl(lineResult?.screenshot)}
+	>{translateTestLine(options)}</test-line-result> as TestLineResultNode;
 };

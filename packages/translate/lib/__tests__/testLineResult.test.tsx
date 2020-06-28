@@ -5,7 +5,7 @@ import {
 	PSVideoHadNoErrorCondition,
 	TestLine,
 } from '@suitest/types/lib';
-import {translateResultMessage, translateTestLineResult} from '../testLineResult';
+import {translateResultErrorMessage, translateTestLineResult} from '../testLineResult';
 import {appConfig, conditions, elements, testLinesExamples} from './testLinesExamples';
 import {toText} from '@suitest/smst-to-text';
 
@@ -98,19 +98,17 @@ describe('Test line results translation', () => {
 		'cyclicReference',
 	];
 
-	// it('should translate success results', () => {
-	// 	expect(translateTestLineResult({...baseResult, result: 'success'} as TestLineResult)).toMatchSnapshot();
-	// });
-
-	for (const errorType of simpleErrors) {
-		it(`should translate "${errorType}" error`, () => {
-			expect(translateResultMessage({
-				...baseResult,
-				result: 'fail',
-				errorType,
-			} as TestLineErrorResult)).toMatchSnapshot();
-		});
-	}
+	describe('simple errors translations', () => {
+		for (const errorType of simpleErrors) {
+			it(`should translate "${errorType}" error`, () => {
+				expect(translateResultErrorMessage({
+					...baseResult,
+					result: 'fail',
+					errorType,
+				} as TestLineErrorResult)).toMatchSnapshot();
+			});
+		}
+	});
 
 	describe('Translate assert lines', () => {
 		const extendBaseError = (err: any): TestLineResult => ({
@@ -1203,7 +1201,7 @@ return true;
 			});
 
 			describe(`translate then ${then} and "assert current location"`, () => {
-				const assertLocation = assertLine(conditions['current location']('~', 'http://some.url'));
+				const assertLocation = assertLine(conditions['current location']('~', 'file.suite.st'));
 
 				it('without result', () => {
 					expect(testLineToFormattedText({
@@ -1235,10 +1233,10 @@ return true;
 						testLine: assertLocation,
 						appConfig,
 						lineResult: extendBaseError({
-							result: then,
+							result: 'success',
 							errorType: 'queryFailed',
-							actualValue: 'http://file.suite.st/sampleapp_staging/index-hbbtv.html',
-							expectedValue: 'http://some.url',
+							actualValue: 'http://the.suite.st/sampleapp_staging/index-hbbtv.html',
+							expectedValue: 'file.suite.st',
 						}),
 					})).toMatchSnapshot();
 				});
@@ -1264,8 +1262,6 @@ return true;
 						appConfig,
 						lineResult: extendBaseError({
 							result: then,
-							errorType: 'queryFailed',
-							actualValue: false,
 						}),
 					})).toMatchSnapshot();
 				});
@@ -1308,8 +1304,6 @@ return true;
 						elements,
 						lineResult: extendBaseError({
 							result: then,
-							errorType: 'queryFailed',
-							actualValue: false,
 						}),
 					})).toMatchSnapshot();
 				});
