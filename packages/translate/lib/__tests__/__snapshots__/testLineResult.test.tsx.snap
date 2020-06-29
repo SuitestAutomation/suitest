@@ -331,19 +331,16 @@ exports[`Test line results translation Translate assert lines translate "assert 
   ✔ response header Server                   =  nginx                                                       
   ✖ response body                            =  asdfasdddddd                                                
                                              →  <!DOCTYPE html PUBLIC \\"-//HbbTV//1.1.1//EN\\" \\"http://www.hbbt
-                                                v.org/dtd/HbbTV-1.1.1.dtd\\">
-<html xmlns=\\"http://www.w3.org/1
-                                                999/xhtml\\">
-<head>
-<title>HbbTv App</title>
-<link rel=\\"style
-                                                sheet\\" href=\\"css/base.css\\" />
-</head>
-<body>
-<div id=\\"conten
-                                                t\\"></div>
-</body>
-</html>                                   
+                                                v.org/dtd/HbbTV-1.1.1.dtd\\">                                 
+                                                <html xmlns=\\"http://www.w3.org/1999/xhtml\\">                 
+                                                <head>                                                      
+                                                	<title>HbbTv App</title>                                   
+                                                	<link rel=\\"stylesheet\\" href=\\"css/base.css\\" />              
+                                                </head>                                                     
+                                                <body>                                                      
+                                                	<div id=\\"content\\"></div>                                   
+                                                </body>                                                     
+                                                </html>                                                     
   fail: Condition was not met"
 `;
 

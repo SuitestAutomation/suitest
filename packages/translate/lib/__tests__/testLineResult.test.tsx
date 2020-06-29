@@ -967,11 +967,11 @@ return true;
 										`<!DOCTYPE html PUBLIC "-//HbbTV//1.1.1//EN" "http://www.hbbtv.org/dtd/HbbTV-1.1.1.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>HbbTv App</title>
-<link rel="stylesheet" href="css/base.css" />
+	<title>HbbTv App</title>
+	<link rel="stylesheet" href="css/base.css" />
 </head>
 <body>
-<div id="content"></div>
+	<div id="content"></div>
 </body>
 </html>`
 									),

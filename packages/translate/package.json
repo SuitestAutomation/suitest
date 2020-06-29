@@ -2,29 +2,27 @@
   "name": "@suitest/translate",
   "version": "3.0.4",
   "description": "A module that translate Suitest server messages to human readable strings",
+  "homepage": "https://suite.st/",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/SuitestAutomation/suitest",
+    "url": "git+https://github.com/SuitestAutomation/suitest.git",
     "directory": "packages/translate"
   },
   "keywords": [
     "suitest"
   ],
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/SuitestAutomation/suitest/issues"
   },
-  "homepage": "https://suite.st/",
-  "main": "umd/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "umd/",
-    "commonjs/",
-    "docs/"
+    "dist/",
+    "commonjs/"
   ],
   "scripts": {
-    "build": "npm run build:umd && npm run build:commonjs",
-    "build:umd": "rimraf umd && rollup -c --environment FORMAT:umd",
-    "build:commonjs": "rimraf commonjs && rollup -c --environment FORMAT:commonjs",
+    "build": "npx rimraf dist && npx tsc -p tsconfig.json && node ../../compile.js",
     "test": "jest",
     "coverage": "jest --coverage",
     "prepublishOnly": "npm run coverage && npm run build"
