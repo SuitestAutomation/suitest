@@ -134,7 +134,7 @@ export type SimpleError = BaseResult & {
 		| 'cyclicReference'
 		| 'ioError'
 		| 'netError'
-		| 'sdComponentFailed',
+		| 'sdComponentFailed'
 		| 'MoveTargetOutOfBounds'
 		| 'ElementClickIntercepted',
 };
