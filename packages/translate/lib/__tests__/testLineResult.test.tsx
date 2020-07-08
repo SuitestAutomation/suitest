@@ -1,9 +1,10 @@
 import {
+	SimpleError,
 	TestLineSuccessResult,
 	TestLineResult,
 	TestLineErrorResult,
 	PSVideoHadNoErrorCondition,
-	TestLine, SimpleError,
+	TestLine,
 } from '@suitest/types/lib';
 import {translateResultMessage, translateTestLineResult} from '../testLineResult';
 import {appConfig, conditions, elements, testLinesExamples} from './testLinesExamples';
@@ -96,6 +97,9 @@ describe('Test line results translation', () => {
 		'appStoreBuild',
 		'outdatedLibraryWarning',
 		'cyclicReference',
+		'ioError',
+		'netError',
+		'sdComponentFailed',
 		'MoveTargetOutOfBounds',
 		'ElementClickIntercepted',
 	];

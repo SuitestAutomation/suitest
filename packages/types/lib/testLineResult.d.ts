@@ -132,6 +132,9 @@ export type SimpleError = BaseResult & {
 		| 'appStoreBuild'
 		| 'outdatedLibraryWarning'
 		| 'cyclicReference'
+		| 'ioError'
+		| 'netError'
+		| 'sdComponentFailed'
 		| 'MoveTargetOutOfBounds'
 		| 'ElementClickIntercepted',
 };
