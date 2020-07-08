@@ -1,5 +1,5 @@
 import {jsx} from '@suitest/smst';
-import {toHtml, escapeHtml} from '../toHtml';
+import {toHtml, escapeHtml, escapeUrl} from '../toHtml';
 
 describe('AST renderers', () => {
 	const plainText = <fragment>TEXT</fragment>;
@@ -162,6 +162,10 @@ describe('AST renderers', () => {
 		expect(toHtml(<text>{script}</text>)).toMatchSnapshot();
 	});
 
+	describe('escape URLs', () => {
+		expect(<link href={'?<script>alert("xss")</script>'}>TEST</link>).toMatchSnapshot();
+	});
+
 	describe('Translation utils', () => {
 		describe('escapeHtml util', () => {
 			it('should escape special characters', () => {
@@ -170,6 +174,20 @@ describe('AST renderers', () => {
 
 			it('should replace entities even if they repeat', () => {
 				expect(escapeHtml('&&&')).toEqual('&amp;&amp;&amp;');
+			});
+		});
+
+		describe('escapeUri util', () => {
+			it('should escape special characters', () => {
+				expect(escapeUrl('& < " \'')).toEqual('&#x0026 &#x003c &#x0022 &#x0027');
+			});
+
+			it('should replace entities even if they repeat', () => {
+				expect(escapeUrl('&&&')).toEqual('&#x0026&#x0026&#x0026');
+			});
+
+			it('should return nothing if URL starts with javascript:', () => {
+				expect(escapeUrl('javascript:alert("xss")')).toEqual('');
 			});
 		});
 	});

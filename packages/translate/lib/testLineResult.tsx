@@ -115,6 +115,8 @@ const simpleErrorMap: {[key: string]: Node} = {
 	ioError: <fragment>Problem with storing data. Please check that there is enough disk space and that permissions are not limited. Contact <link href="mailto:support@suite.st">support</link> if problem persists</fragment>,
 	netError: <fragment>Downloading of the driver failed, please check your internet connection and try again later. Contact <link href="mailto:support@suite.st">support</link> if problem persists</fragment>,
 	sdComponentFailed: <fragment>Downloading of the driver failed, please try again later. Contact <link href="mailto:support@suite.st">support</link> if problem persists</fragment>,
+	MoveTargetOutOfBounds: <text>Move target is outside of the visible area of the screen</text>,
+	ElementClickIntercepted: <text>Click on the element was intercepted by another element</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {

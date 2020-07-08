@@ -135,6 +135,8 @@ export type SimpleError = BaseResult & {
 		| 'ioError'
 		| 'netError'
 		| 'sdComponentFailed',
+		| 'MoveTargetOutOfBounds'
+		| 'ElementClickIntercepted',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {
