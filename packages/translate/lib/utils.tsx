@@ -6,17 +6,19 @@ import {AppConfiguration} from '@suitest/types';
  * @param text - text to replace variables in
  * @param variables - array of configuration variables
  */
-export const replaceVariables = (text: string, variables: AppConfiguration['configVariables']): string =>
-	text.replace(
-		/<%([a-zA-Z0-9_]{1,20})%>/g,
-		(wholeMatch, varName) =>
-			variables.find(variable => variable.key === varName)?.value ?? wholeMatch
-	);
+export const replaceVariables = (text: string, variables?: AppConfiguration['configVariables']): string =>
+	variables ?
+		text.replace(
+			/<%([a-zA-Z0-9_]{1,20})%>/g,
+			(wholeMatch, varName) =>
+				variables.find(variable => variable.key === varName)?.value ?? wholeMatch
+		) :
+		text;
 
 /**
  * Replace variables and format the output to display both replaced and not replaced strings
  */
-export const formatVariables = (text: string, variables: AppConfiguration['configVariables']): JSX.Element => {
+export const formatVariables = (text: string, variables?: AppConfiguration['configVariables']): JSX.Element => {
 	const resultText = replaceVariables(text, variables);
 
 	if (resultText !== text) {
@@ -30,7 +32,7 @@ export const formatVariables = (text: string, variables: AppConfiguration['confi
 /**
  * Replace variable and output timeout value as unist node
  */
-export const formatTimeout = (timeout: number | string, variables: AppConfiguration['configVariables']): JSX.Element => {
+export const formatTimeout = (timeout: number | string, variables?: AppConfiguration['configVariables']): JSX.Element => {
 	// Replace variables (if any) in timeout
 	const t = typeof timeout === 'string' ? replaceVariables(timeout, variables) : String(timeout);
 	// Get final value in ms as a number
@@ -54,7 +56,7 @@ export const formatTimeout = (timeout: number | string, variables: AppConfigurat
 	return <input>{s}</input>;
 };
 
-export const formatCount = (count: number | string, variables: AppConfiguration['configVariables']): JSX.Element => {
+export const formatCount = (count: number | string, variables?: AppConfiguration['configVariables']): JSX.Element => {
 	const countAsString = String(count);
 	const countAsStringWithReplacedVars = typeof count === 'string' ? replaceVariables(count, variables) : countAsString;
 	// Get final value in ms as a number
@@ -78,11 +80,11 @@ export const formatCount = (count: number | string, variables: AppConfiguration[
 export const translateCodeProp = (
 	name: Node,
 	code: string,
-	appConfig: AppConfiguration,
+	appConfig?: AppConfiguration,
 	comparator?: string,
 	status?: SingleEntryStatus
 ): JSX.Element[] => {
-	const codeWithVars = replaceVariables(code, appConfig.configVariables);
+	const codeWithVars = replaceVariables(code, appConfig?.configVariables);
 
 	const out = [
 		<prop

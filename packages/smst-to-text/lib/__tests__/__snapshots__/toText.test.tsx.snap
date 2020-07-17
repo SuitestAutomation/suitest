@@ -93,12 +93,12 @@ exports[`AST renderers formatted text renderer should handle props 3`] = `
 `;
 
 exports[`AST renderers formatted text renderer should handle props 4`] = `
-"Empty string       [EMPTY STRING]                                              
-                 → [EMPTY STRING]                                              
-Empty number       0                                                           
-                 → NaN                                                         
-Empty code block   [36mlooooooooooooooo oooooooo ooooooo ooooo ooooo oooooooooo ooo[0m
-                   [36mo oooo ng[0m (and some next text block)               "
+"Empty string     contains [EMPTY STRING]                                              
+                        → [EMPTY STRING]                                              
+Empty number            > 0                                                           
+                        → NaN                                                         
+Empty code block        = [36mlooooooooooooooo oooooooo ooooooo ooooo ooooo oooooooooo ooo[0m
+                          [36mo oooo ng[0m (and some next text block)               "
 `;
 
 exports[`AST renderers formatted text renderer should render condition 1`] = `"condition: element [32mMy element[0m exists"`;
@@ -235,12 +235,12 @@ exports[`AST renderers plain text renderer should handle props 3`] = `
 `;
 
 exports[`AST renderers plain text renderer should handle props 4`] = `
-"Empty string       [EMPTY STRING]                                              
-                 → [EMPTY STRING]                                              
-Empty number       0                                                           
-                 → NaN                                                         
-Empty code block   [36mlooooooooooooooo oooooooo ooooooo ooooo ooooo oooooooooo ooo[0m
-                   [36mo oooo ng[0m (and some next text block)               "
+"Empty string     contains [EMPTY STRING]                                              
+                        → [EMPTY STRING]                                              
+Empty number            > 0                                                           
+                        → NaN                                                         
+Empty code block        = [36mlooooooooooooooo oooooooo ooooooo ooooo ooooo oooooooooo ooo[0m
+                          [36mo oooo ng[0m (and some next text block)               "
 `;
 
 exports[`AST renderers plain text renderer should render condition 1`] = `"condition: element My element exists"`;

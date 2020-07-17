@@ -6,5 +6,9 @@ describe('Test Lines translation', () => {
 		it(`Should translate test line "${name}"`, () => {
 			expect(translateTestLine({testLine: line(), appConfig, elements, snippets})).toMatchSnapshot();
 		});
+
+		it(`Should translate test line "${name}" without appConfig`, () => {
+			expect(translateTestLine({ testLine: line(), elements, snippets })).toMatchSnapshot();
+		});
 	}
 });

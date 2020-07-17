@@ -36,7 +36,7 @@ import {
 
 const getConditionInfo = (
 	testLine: TestLine,
-	appConfig: AppConfiguration,
+	appConfig?: AppConfiguration,
 ): Node | undefined => {
 	// Deconstruct with type casting to PressButtonTestLine, as it's the most complete line type
 	// and has all types of conditions and loops
@@ -45,8 +45,8 @@ const getConditionInfo = (
 	// Do something ... exactly ... every ...
 	if (!condition && count && (typeof count === 'string' || count > 1)) {
 		return <fragment> exactly {
-			formatCount(count, appConfig.configVariables)
-		} every {formatTimeout(delay ?? 0, appConfig.configVariables)}</fragment> as Node;
+			formatCount(count, appConfig?.configVariables)
+		} every {formatTimeout(delay ?? 0, appConfig?.configVariables)}</fragment> as Node;
 	}
 
 	// Do something ... only if ...
@@ -57,8 +57,8 @@ const getConditionInfo = (
 	// Do something ... until ...
 	if (condition && !negateCondition) {
 		return <fragment> until condition is met max {
-			formatCount(count ?? 1, appConfig.configVariables)
-		} every {formatTimeout(delay ?? 0, appConfig.configVariables)}</fragment>;
+			formatCount(count ?? 1, appConfig?.configVariables)
+		} every {formatTimeout(delay ?? 0, appConfig?.configVariables)}</fragment>;
 	}
 
 	// Do something ...
@@ -85,14 +85,14 @@ const translateAssertThen = (then: AssertThen): string => {
 
 const translateAssertTestLine = (
 	testLine: AssertTestLine | WaitUntilTestLine,
-	appConfig: AppConfiguration,
+	appConfig?: AppConfiguration,
 	elements?: Elements,
 	lineResult?: TestLineResult,
 ): TestLineNode => {
 	const condition = translateCondition(testLine.condition, testLine.then !== 'success', appConfig, elements, lineResult);
 
 	return <test-line
-		title={<fragment>Assert: {condition.title}{testLine.timeout ? <fragment> timeout {formatTimeout(testLine.timeout, appConfig.configVariables)}</fragment> : undefined}{testLine.then !== 'success' ? <fragment> then {translateAssertThen(testLine.then)}</fragment> : undefined}</fragment>}
+		title={<fragment>Assert: {condition.title}{testLine.timeout ? <fragment> timeout {formatTimeout(testLine.timeout, appConfig?.configVariables)}</fragment> : undefined}{testLine.then !== 'success' ? <fragment> then {translateAssertThen(testLine.then)}</fragment> : undefined}</fragment>}
 		status={lineResult?.result}
 	>
 		{condition.children}
@@ -107,7 +107,7 @@ const translateClearAppDataTestLine = (lineResult?: TestLineResult): TestLineNod
 
 const translateExecuteCommandTestLine = (
 	testLine: ExecuteCommandTestLine,
-	appConfig: AppConfiguration,
+	appConfig?: AppConfiguration,
 	lineResult?: TestLineResult,
 ): TestLineNode =>
 	<test-line
@@ -126,7 +126,9 @@ const translateExecuteCommandTestLine = (
 	</test-line> as TestLineNode;
 
 const translateOpenApp = (
-	testLine: OpenAppTestLine, appConfig: AppConfiguration, lineResult?: TestLineResult
+	testLine: OpenAppTestLine,
+	appConfig?: AppConfiguration,
+	lineResult?: TestLineResult
 ): TestLineNode => {
 	if (!testLine.relativeUrl) {
 		// Open app with default path
@@ -136,7 +138,7 @@ const translateOpenApp = (
 		/> as TestLineNode;
 	}
 
-	const relativeUrl = formatVariables(testLine.relativeUrl, appConfig.configVariables);
+	const relativeUrl = formatVariables(testLine.relativeUrl, appConfig?.configVariables);
 
 	return <test-line
 		title={<text>Open application at relative URL</text>}
@@ -153,9 +155,9 @@ const translateOpenApp = (
 };
 
 const translateOpenUrl = (
-	testLine: OpenUrlTestLine, appConfig: AppConfiguration, lineResult?: TestLineResult
+	testLine: OpenUrlTestLine, appConfig?: AppConfiguration, lineResult?: TestLineResult
 ): TestLineNode => {
-	const url = formatVariables(testLine.url, appConfig.configVariables);
+	const url = formatVariables(testLine.url, appConfig?.configVariables);
 
 	return <test-line title={<text>Open URL</text>} status={lineResult?.result}>
 		<props>
@@ -169,18 +171,18 @@ const translateOpenUrl = (
 };
 
 const translateSleepTestLine = (
-	testLine: SleepTestLine, appConfig: AppConfiguration, lineResult?: TestLineResult,
+	testLine: SleepTestLine, appConfig?: AppConfiguration, lineResult?: TestLineResult,
 ): TestLineNode => {
-	const title = <fragment>Sleep {formatTimeout(testLine.timeout, appConfig.configVariables)}</fragment>;
+	const title = <fragment>Sleep {formatTimeout(testLine.timeout, appConfig?.configVariables)}</fragment>;
 
 	return <test-line title={title} status={lineResult?.result} /> as TestLineNode;
 };
 
 const translatePollUrlTestLine = (
-	testLine: PollUrlTestLine, appConfig: AppConfiguration, lineResult?: TestLineResult,
+	testLine: PollUrlTestLine, appConfig?: AppConfiguration, lineResult?: TestLineResult,
 ): TestLineNode => {
-	const response = formatVariables(testLine.response, appConfig.configVariables);
-	const url = formatVariables(testLine.url, appConfig.configVariables);
+	const response = formatVariables(testLine.response, appConfig?.configVariables);
+	const url = formatVariables(testLine.url, appConfig?.configVariables);
 
 	return <test-line title={<text>Poll URL every 0.5s</text>} status={lineResult?.result}>
 		<props>
@@ -202,7 +204,7 @@ const translatePollUrlTestLine = (
 
 const translatePressButtonTestLine = (
 	testLine: PressButtonTestLine,
-	appConfig: AppConfiguration,
+	appConfig?: AppConfiguration,
 	elements?: Elements,
 	lineResult?: TestLineResult,
 ): TestLineNode => {
@@ -233,7 +235,7 @@ const translateTestName = (testId: string, snippets?: Snippets): JSX.Element => 
 // TODO BE will add snippets to the feed, otherwise we have to do extra requests to get snippet names
 const translateRunTestTestLine = (
 	testLine: RunTestTestLine,
-	appConfig: AppConfiguration,
+	appConfig?: AppConfiguration,
 	elements?: Elements,
 	snippets?: Snippets,
 	lineResult?: TestLineResult,
@@ -272,11 +274,11 @@ const translateTarget = (target: Target): JSX.Element => {
 // TODO what if text is too long?
 const translateSendTextTestLine = (
 	testLine: SendTextTestLine,
-	appConfig: AppConfiguration,
+	appConfig?: AppConfiguration,
 	elements?: Elements,
 	lineResult?: TestLineResult,
 ): TestLineNode => {
-	const text = formatVariables(testLine.val, appConfig.configVariables);
+	const text = formatVariables(testLine.val, appConfig?.configVariables);
 	const titleFragment = getConditionInfo(testLine, appConfig);
 	const title = <fragment>Send text {text} to {translateTarget(testLine.target)}{titleFragment}</fragment>;
 
@@ -289,11 +291,11 @@ const translateSendTextTestLine = (
 
 const translateSetTextTestLine = (
 	testLine: SetTextTestLine,
-	appConfig: AppConfiguration,
+	appConfig?: AppConfiguration,
 	elements?: Elements,
 	lineResult?: TestLineResult,
 ): TestLineNode => {
-	const text = formatVariables(testLine.val, appConfig.configVariables);
+	const text = formatVariables(testLine.val, appConfig?.configVariables);
 	const titleFragment = getConditionInfo(testLine, appConfig);
 	const title = <fragment>Set text {text} to {translateTarget(testLine.target)}{titleFragment}</fragment>;
 
@@ -311,7 +313,7 @@ const assertUnknownBrowserCommand = (browserCommand: never): never => {
 
 const translateBrowserCommandTestLine = (
 	testLine: BrowserCommandTestLine,
-	appConfig: AppConfiguration,
+	appConfig?: AppConfiguration,
 	elements?: Elements,
 	lineResult?: TestLineResult,
 ): TestLineNode => {
@@ -373,7 +375,7 @@ const translateBrowserCommandTestLine = (
 
 const translateClickTestLine = (
 	testLine: ClickTestLine,
-	appConfig: AppConfiguration,
+	appConfig?: AppConfiguration,
 	elements?: Elements,
 	lineResult?: TestLineResult,
 ): TestLineNode => {
@@ -389,7 +391,7 @@ const translateClickTestLine = (
 
 const translateMoveToTestLine = (
 	testLine: MoveToTestLine,
-	appConfig: AppConfiguration,
+	appConfig?: AppConfiguration,
 	elements?: Elements,
 	lineResult?: TestLineResult,
 ): TestLineNode => {
@@ -423,7 +425,7 @@ export const translateTestLine = ({
 	testLine, appConfig, elements, snippets, lineResult,
 }: {
 	testLine: TestLine,
-	appConfig: AppConfiguration,
+	appConfig?: AppConfiguration,
 	elements?: Elements,
 	snippets?: Snippets,
 	lineResult?: TestLineResult,

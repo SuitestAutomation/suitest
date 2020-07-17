@@ -18,10 +18,24 @@ type ExtendedInlineNodes = InlineTextNode | {
 	value: string,
 };
 
+type NewLineNode = {
+	type: 'newline',
+	value?: undefined,
+};
+
 const nl = '\n';
 const tab = '  ';
 const emptyString = '[EMPTY STRING]';
 const notDefined = '[NOT DEFINED]';
+const controlChars = new RegExp(
+	[
+		[0, 8],
+		[11, 12],
+		[14, 31],
+		[127, 159],
+	].map(([from, to]) => `[${String.fromCharCode(from)}-${String.fromCharCode(to)}]`).join('|'),
+	'g'
+);
 
 const formatNotDefined = <T>(val?: T, formatter: (val: T) => string = String): string => {
 	if (typeof val === 'undefined' || val === null) {
@@ -34,6 +48,9 @@ const formatNotDefined = <T>(val?: T, formatter: (val: T) => string = String): s
 
 	return formatter(val);
 };
+
+export const escapeControlChars = (text: string): string =>
+	text.replace(controlChars, '\uFFFD');
 
 const format = {
 	cancel: 	'\u001b[0m',
@@ -104,13 +121,14 @@ const wrapText = (text: string, limit = 115, wrappedLinesIndentation = 0): strin
 /**
  * Render a single text node as plain text
  */
-const renderPlainTextNode: RenderTextFunc = (node?: ExtendedInlineNodes): string => node ? node.value : '';
+const renderPlainTextNode: RenderTextFunc = (node?: ExtendedInlineNodes): string =>
+	node?.value ? escapeControlChars(node.value) : '';
 
 /**
  * Render a single text node with ANSI styling
  */
 const renderFormattedTextNode: RenderTextFunc = (node: ExtendedInlineNodes): string =>
-	formatString(node?.value ?? '', node?.type);
+	node?.value ? formatString(escapeControlChars(node.value), node.type) : '';
 
 const renderStatus = (type: TestLineResultStatus | SingleEntryStatus): ExtendedInlineNodes => {
 	let value = '';
@@ -153,13 +171,30 @@ const splitNode = (textNode: ExtendedInlineNodes, length: number): [ExtendedInli
  * Wrapped textual nodes to fit max length
  * @TODO consider wrapping by word and not by any character
  */
-const wrapTextNodes = (
-	textNodes: ExtendedInlineNodes[],
+export const wrapTextNodes = (
+	inputNodes: ExtendedInlineNodes[],
 	renderTextNode: RenderTextFunc,
 	maxLineLength = 60
 ): [number, string[]] => {
 	// Keep function immutable
-	textNodes = [...textNodes];
+	const textNodes: Array<ExtendedInlineNodes | NewLineNode> = [];
+
+	for (const node of inputNodes) {
+		const splitVal = node.value.split(/\r\n|\r|\n/);
+		if (splitVal.length === 1) {
+			// This is a single line node
+			textNodes.push(node);
+		} else {
+			// We have a multiline node
+			for (let i = 0; i < splitVal.length; i++) {
+				if (i !== 0) {
+					textNodes.push({type: 'newline'});
+				}
+
+				textNodes.push({type: node.type, value: splitVal[i]});
+			}
+		}
+	}
 
 	const output: string[] = [''];
 	let maxActualLength = 0;
@@ -167,7 +202,10 @@ const wrapTextNodes = (
 
 	let firstNode = textNodes.shift();
 	while (firstNode) {
-		if (firstNode.value.length < maxLineLength - currentLineLength) {
+		if (firstNode.type === 'newline') {
+			currentLineLength = 0;
+			output.push('');
+		} else if (firstNode.value.length <= maxLineLength - currentLineLength) {
 			// The whole textNode can fit into the line
 			currentLineLength += firstNode.value.length;
 			output[output.length - 1] += renderTextNode(firstNode);
@@ -283,7 +321,7 @@ const renderProps = (node: PropertiesNode, renderTextNode: RenderTextFunc, prefi
 				.map((cell, columnIndex) => {
 					const cellLine = cell.shift() ?? '';
 
-					return cellLine.padEnd(columnsLength[columnIndex]);
+					return cellLine[columnIndex === 1 ? 'padStart' : 'padEnd'](columnsLength[columnIndex]);
 				})
 				.join(' ')
 			);
