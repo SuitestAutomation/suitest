@@ -146,20 +146,20 @@ exports[`Test line results translation Translate assert lines translate "assert 
 
 exports[`Test line results translation Translate assert lines translate "assert element" queryFailed results expression error 2`] = `
 "✖ Assert: Unknown element (unknown-id)
-  ✔ background color        = rgba(0, 0, 0, 0)
-  ✔ border color            = rgb(255, 255, 255)
-  ✔ border style            = none
-  ✔ border width            = 0px
-  ✖ class                   = componentcontainer container widget
-                            → active componentcontainer container widget
-  ✔ height                  = 720
-  ✔ href                    = [EMPTY STRING]
-  ✔ id                      = maincontainer
-  ✔ image                   = [EMPTY STRING]
-  ✔ left                    = 0
-  ✔ opacity                 = 1
-  ✔ text color              = rgba(255, 255, 255, 1)
-  ✖ text                    = [EMPTY STRING]
+  ✔ background color        = rgba(0, 0, 0, 0)                                            
+  ✔ border color            = rgb(255, 255, 255)                                          
+  ✔ border style            = none                                                        
+  ✔ border width            = 0px                                                         
+  ✖ class                   = componentcontainer container widget                         
+                            → active componentcontainer container widget                  
+  ✔ height                  = 720                                                         
+  ✔ href                    = [EMPTY STRING]                                              
+  ✔ id                      = maincontainer                                               
+  ✔ image                   = [EMPTY STRING]                                              
+  ✔ left                    = 0                                                           
+  ✔ opacity                 = 1                                                           
+  ✔ text color              = rgba(255, 255, 255, 1)                                      
+  ✖ text                    = [EMPTY STRING]                                              
                             → WatchMe New Pictures Videos Music More All Files Candies Che
                               rries strawberry-cake Big Buck Bunny (trailer).mp4 boiled-sw
                               eets.jpg cakes_tarts_desserts_sweets_berries_strawberries_bl
@@ -169,16 +169,16 @@ exports[`Test line results translation Translate assert lines translate "assert 
                               s_blackberries_blueberries_currants_75280_1400x1050.jpg DSC_
                               0159.JPG 0 Music 6 Videos SINTEL.mp4 Big Buck Bunny (trailer
                               ).mp4                                                       
-  ✔ top                     = 0
-  ✔ width                   = 1280
-  ✖ z-index                 < 0
-                            → 0
-  ✖ visibility              = invisible
-                            → property missing
+  ✔ top                     = 0                                                           
+  ✔ width                   = 1280                                                        
+  ✖ z-index                 < 0                                                           
+                            → 0                                                           
+  ✖ visibility              = invisible                                                   
+                            → property missing                                            
   ✖ z-index          contains 0                                                           
-                            → wrong format
-  ✖ text color              = rgba(255, dddd, 255, 1)
-                            → wrong format
+                            → wrong format                                                
+  ✖ text color              = rgba(255, dddd, 255, 1)                                     
+                            → wrong format                                                
   fail: Test command received invalid input"
 `;
 
@@ -226,7 +226,7 @@ exports[`Test line results translation Translate assert lines translate "assert 
 
 exports[`Test line results translation Translate assert lines translate "assert element" without error "element properties" 1`] = `
 "Assert: Unknown element (unknown-id)
-  video position       >= 123
+  video position       >= 123                       
   height                = 123 ± 3v5 (123 ± <%var3%>)
   text           contains expected text             "
 `;
@@ -299,37 +299,37 @@ exports[`Test line results translation Translate assert lines translate "assert 
 
 exports[`Test line results translation Translate assert lines translate "assert network" render fail results request/response headers not matched 1`] = `
 "✖ Assert: network request was made in entire network log
-  URL                                         = http://suite.st/123 (http://suite.st/<%var1%>)
+  URL                                         = http://suite.st/123 (http://suite.st/<%var1%>)              
   ✖ request method                           != GET                                                         
-                                              → GET
+                                              → GET                                                         
   ✔ request header Accept                     = text/html,application/xhtml+xml,application/xml;q=0.9,image/
                                                 webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q
                                                 =0.9                                                        
-  ✔ request header Accept-Language            = en-US,en;q=0.9
-  ✔ request header Content-Length             = 0
-  ✔ request header Host                       = file.suite.st
-  ✖ request header If-Modified-Since          = Fri, 25 Jan 2019 16:33:31 GMT
-                                              → not found
-  ✖ request header If-None-Match              = W/\\"5c4b3a5b-19e2\\"
-                                              → not found
-  ✔ request header Upgrade-Insecure-Requests  = 1
+  ✔ request header Accept-Language            = en-US,en;q=0.9                                              
+  ✔ request header Content-Length             = 0                                                           
+  ✔ request header Host                       = file.suite.st                                               
+  ✖ request header If-Modified-Since          = Fri, 25 Jan 2019 16:33:31 GMT                               
+                                              → not found                                                   
+  ✖ request header If-None-Match              = W/\\"5c4b3a5b-19e2\\"                                           
+                                              → not found                                                   
+  ✔ request header Upgrade-Insecure-Requests  = 1                                                           
   ✔ request header User-Agent                 = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
                                                  (KHTML, like Gecko) Chrome/81.0.4044.122 Safari/537.36     
-  ✔ request header Via                        = 1.1 suitestify
-  ✖ request body                              = asdfs
-                                              → [EMPTY STRING]
-  ✖ response status                           = 303
-                                              → 200
-  ✔ response header Cache-Control             = max-age=300
-  ✔ response header Connection                = keep-alive
-  ✖ response header Date                      = Mon, 27 Apr 2020 13:08:59 GMT
-                                              → Tue, 28 Apr 2020 09:58:10 GMT
-  ✔ response header Etag                      = \\"5c4b3a5b-19e2\\"
-  ✖ response header Expires                   = Mon, 27 Apr 2020 13:13:59 GMT
-                                              → Tue, 28 Apr 2020 10:03:10 GMT
-  ✔ response header Last-Modified             = Fri, 25 Jan 2019 16:33:31 GMT
-  ✔ response header Server                    = nginx
-  ✖ response body                             = asdfasdddddd
+  ✔ request header Via                        = 1.1 suitestify                                              
+  ✖ request body                              = asdfs                                                       
+                                              → [EMPTY STRING]                                              
+  ✖ response status                           = 303                                                         
+                                              → 200                                                         
+  ✔ response header Cache-Control             = max-age=300                                                 
+  ✔ response header Connection                = keep-alive                                                  
+  ✖ response header Date                      = Mon, 27 Apr 2020 13:08:59 GMT                               
+                                              → Tue, 28 Apr 2020 09:58:10 GMT                               
+  ✔ response header Etag                      = \\"5c4b3a5b-19e2\\"                                             
+  ✖ response header Expires                   = Mon, 27 Apr 2020 13:13:59 GMT                               
+                                              → Tue, 28 Apr 2020 10:03:10 GMT                               
+  ✔ response header Last-Modified             = Fri, 25 Jan 2019 16:33:31 GMT                               
+  ✔ response header Server                    = nginx                                                       
+  ✖ response body                             = asdfasdddddd                                                
                                               → <!DOCTYPE html PUBLIC \\"-//HbbTV//1.1.1//EN\\" \\"http://www.hbbt
                                                 v.org/dtd/HbbTV-1.1.1.dtd\\">                                 
                                                 <html xmlns=\\"http://www.w3.org/1999/xhtml\\">                 
@@ -359,11 +359,11 @@ exports[`Test line results translation Translate assert lines translate "assert 
 
 exports[`Test line results translation Translate assert lines translate "assert network" render fail results url not matched 2`] = `
 "✖ Assert: network request was not made excluding previously matched requests
-  ✖ URL                                           contains /partial/url/123 (/partial/url/<%var1%>)
-  request method                                         = GET
-  request header Accept-Type                      contains text/javascript
-  request body                                           = request val2 body (request <%var2%> body)
-  response status                                        > 123
+  ✖ URL                                           contains /partial/url/123 (/partial/url/<%var1%>)                  
+  request method                                         = GET                                                       
+  request header Accept-Type                      contains text/javascript                                           
+  request body                                           = request val2 body (request <%var2%> body)                 
+  response status                                        > 123                                                       
   response header Content-123 (Content-<%var1%>) ends with val2/javascript (<%var2%>/javascript)                     
   response body                                          = response <%non_existing_var%> <%kind-of|var but not%> body
   fail: Condition was not met"
@@ -376,11 +376,11 @@ exports[`Test line results translation Translate assert lines translate "assert 
 
 exports[`Test line results translation Translate assert lines translate "assert network" render without result 2`] = `
 "Assert: network request was not made excluding previously matched requests
-  URL                                             contains /partial/url/123 (/partial/url/<%var1%>)
-  request method                                         = GET
-  request header Accept-Type                      contains text/javascript
-  request body                                           = request val2 body (request <%var2%> body)
-  response status                                        > 123
+  URL                                             contains /partial/url/123 (/partial/url/<%var1%>)                  
+  request method                                         = GET                                                       
+  request header Accept-Type                      contains text/javascript                                           
+  request body                                           = request val2 body (request <%var2%> body)                 
+  response status                                        > 123                                                       
   response header Content-123 (Content-<%var1%>) ends with val2/javascript (<%var2%>/javascript)                     
   response body                                          = response <%non_existing_var%> <%kind-of|var but not%> body"
 `;
@@ -491,7 +491,7 @@ exports[`Test line results translation assert then exit translate then exit and 
 
 exports[`Test line results translation assert then exit translate then exit and "assert current location" then exit with "queryFailed" 1`] = `
 "✔ Assert: Current location then stop test
-  ✖ current location contains file.suite.st
+  ✖ current location contains file.suite.st                                         
                             → http://the.suite.st/sampleapp_staging/index-hbbtv.html
   success: Condition was not met"
 `;
@@ -636,7 +636,7 @@ exports[`Test line results translation assert then fail translate then fail and 
 
 exports[`Test line results translation assert then fail translate then fail and "assert current location" then fail with "queryFailed" 1`] = `
 "✔ Assert: Current location then fail
-  ✖ current location contains file.suite.st
+  ✖ current location contains file.suite.st                                         
                             → http://the.suite.st/sampleapp_staging/index-hbbtv.html
   success: Condition was not met"
 `;
@@ -781,7 +781,7 @@ exports[`Test line results translation assert then warning translate then warnin
 
 exports[`Test line results translation assert then warning translate then warning and "assert current location" then warning with "queryFailed" 1`] = `
 "✔ Assert: Current location then warn
-  ✖ current location contains file.suite.st
+  ✖ current location contains file.suite.st                                         
                             → http://the.suite.st/sampleapp_staging/index-hbbtv.html
   success: Condition was not met"
 `;
@@ -874,7 +874,7 @@ Object {
 }
 `;
 
-exports[`Test line results translation should translate "ElementClickIntercepted" error 1`] = `
+exports[`Test line results translation simple errors translations should translate "ElementClickIntercepted" error 1`] = `
 Object {
   "type": "text",
   "value": "Click on the element was intercepted by another element",
@@ -951,7 +951,7 @@ Object {
 }
 `;
 
-exports[`Test line results translation should translate "MoveTargetOutOfBounds" error 1`] = `
+exports[`Test line results translation simple errors translations should translate "MoveTargetOutOfBounds" error 1`] = `
 Object {
   "type": "text",
   "value": "Move target is outside of the visible area of the screen",
@@ -1210,7 +1210,7 @@ Object {
 }
 `;
 
-exports[`Test line results translation should translate "ioError" error 1`] = `
+exports[`Test line results translation simple errors translations should translate "ioError" error 1`] = `
 Array [
   Object {
     "type": "text",
@@ -1277,7 +1277,7 @@ Object {
 }
 `;
 
-exports[`Test line results translation should translate "netError" error 1`] = `
+exports[`Test line results translation simple errors translations should translate "netError" error 1`] = `
 Array [
   Object {
     "type": "text",
@@ -1365,7 +1365,7 @@ Object {
 }
 `;
 
-exports[`Test line results translation should translate "sdComponentFailed" error 1`] = `
+exports[`Test line results translation simple errors translations should translate "sdComponentFailed" error 1`] = `
 Array [
   Object {
     "type": "text",
