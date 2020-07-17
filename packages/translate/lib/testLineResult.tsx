@@ -484,7 +484,7 @@ const getLineResultMessage = (testLine: TestLine, lineResult?: TestLineResult): 
 
 export const translateTestLineResult = (options: {
 	testLine: TestLine,
-	appConfig: AppConfiguration,
+	appConfig?: AppConfiguration,
 	lineResult?: TestLineResult,
 	elements?: Elements,
 	snippets?: Snippets,

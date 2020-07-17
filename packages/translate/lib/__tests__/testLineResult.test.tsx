@@ -192,6 +192,19 @@ describe('Test line results translation', () => {
 					}),
 				})).toMatchSnapshot();
 			});
+
+			it('render without appConfig', () => {
+				expect(testLineToFormattedText({
+					testLine: openAppCommand,
+					lineResult: extendBaseError({
+						errorType: 'openAppOverrideFailed',
+						message: {
+							errorType: 'queryFailed',
+							lineId: 'line-id-1',
+						},
+					}),
+				})).toMatchSnapshot();
+			});
 		});
 
 		describe('translate "assert current location"', () => {
@@ -202,6 +215,10 @@ describe('Test line results translation', () => {
 					testLine: assertLocation,
 					appConfig,
 				})).toMatchSnapshot();
+			});
+
+			it('without appConfig', () => {
+				expect(testLineToFormattedText({ testLine: assertLocation })).toMatchSnapshot();
 			});
 
 			it('with success result', () => {
@@ -277,6 +294,10 @@ return false;
 					testLine: assertCookie,
 					appConfig,
 				})).toMatchSnapshot();
+			});
+
+			it('without appConfig', () => {
+				expect(testLineToFormattedText({ testLine: assertCookie })).toMatchSnapshot();
 			});
 
 			it('missingSubject error', () => {
@@ -404,6 +425,13 @@ return false;
 						elements,
 					})).toMatchSnapshot();
 				});
+			});
+
+			it('without appConfig', () => {
+				expect(testLineToFormattedText({
+					testLine: assertLine(conditions['element ... exist']()),
+					elements,
+				})).toMatchSnapshot();
 			});
 
 			// translate for invalidRepositoryReference family errors
@@ -712,6 +740,10 @@ return true;
 				})).toMatchSnapshot();
 			});
 
+			it('render without appConfig', () => {
+				expect(testLineToFormattedText({ testLine: psVideoHadNoError() })).toMatchSnapshot();
+			});
+
 			it('render with fail result', () => {
 				expect(testLineToFormattedText({
 					testLine: psVideoHadNoError('all'),
@@ -733,6 +765,12 @@ return true;
 				expect(testLineToFormattedText({
 					testLine: assertLine(conditions['JavaScript expression with variables ... equals ...']()),
 					appConfig,
+				})).toMatchSnapshot();
+			});
+
+			it('render without appConfig', () => {
+				expect(testLineToFormattedText({
+					testLine: assertLine(conditions['JavaScript expression ... equals ...']()),
 				})).toMatchSnapshot();
 			});
 
@@ -841,6 +879,12 @@ return true;
 				})).toMatchSnapshot();
 			});
 
+			it('render without appConfig', () => {
+				expect(testLineToFormattedText({
+					testLine: assertLine(conditions['application has exited']()),
+				})).toMatchSnapshot();
+			});
+
 			it('render with fail result', () => {
 				expect(testLineToFormattedText({
 					testLine: assertLine(conditions['application has exited']()),
@@ -862,6 +906,12 @@ return true;
 				expect(testLineToFormattedText({
 					testLine: assertLine(conditions['network request matching URL was not made excluding previously matched']()),
 					appConfig,
+				})).toMatchSnapshot();
+			});
+
+			it('render without appConfig', () => {
+				expect(testLineToFormattedText({
+					testLine: assertLine(conditions['network request to URL was made including matched']()),
 				})).toMatchSnapshot();
 			});
 
@@ -1500,6 +1550,4 @@ return true;
 			});
 		});
 	});
-
-
 });

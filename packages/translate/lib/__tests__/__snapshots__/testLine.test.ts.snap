@@ -13,7 +13,33 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Assert ... then continue" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Assert: Application has exited",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Assert ... then exit" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Assert: Application has exited then stop test",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Assert ... then exit" without appConfig 1`] = `
 Object {
   "children": Array [],
   "title": Array [
@@ -39,6 +65,19 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Assert ... then fail" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Assert: Application has exited then fail",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Assert ... then warn" 1`] = `
 Object {
   "children": Array [],
@@ -52,7 +91,37 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Assert ... then warn" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Assert: Application has exited then warn",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Assert ... timeout ... then continue" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Assert: Application has exited timeout ",
+    },
+    Object {
+      "type": "input",
+      "value": "1s",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Assert ... timeout ... then continue" without appConfig 1`] = `
 Object {
   "children": Array [],
   "title": Array [
@@ -93,6 +162,30 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Browser command: Accept modal dialog only if ..." without appConfig 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Accept modal dialog",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Browser command: Accept modal dialog" 1`] = `
 Object {
   "children": Array [],
@@ -106,7 +199,68 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Browser command: Accept modal dialog" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Accept modal dialog",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Browser command: Accept prompt dialog with text ... only if ..." 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "actualValue": undefined,
+          "comparator": "=",
+          "contentType": "inline",
+          "expectedValue": Array [
+            Object {
+              "type": "text",
+              "value": "prompt text",
+            },
+          ],
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "message",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+      ],
+      "type": "props",
+    },
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Accept modal dialog with message",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Browser command: Accept prompt dialog with text ... only if ..." without appConfig 1`] = `
 Object {
   "children": Array [
     Object {
@@ -192,7 +346,69 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Browser command: Accept prompt dialog with text ..." without appConfig 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "actualValue": undefined,
+          "comparator": "=",
+          "contentType": "inline",
+          "expectedValue": Array [
+            Object {
+              "type": "text",
+              "value": "prompt text",
+            },
+          ],
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "message",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+      ],
+      "type": "props",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Accept modal dialog with message",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Browser command: Dismiss modal dialog only if ..." 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Dismiss modal dialog",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Browser command: Dismiss modal dialog only if ..." without appConfig 1`] = `
 Object {
   "children": Array [
     Object {
@@ -229,7 +445,44 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Browser command: Dismiss modal dialog" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Dismiss modal dialog",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Browser command: Go back only if ..." 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Go back",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Browser command: Go back only if ..." without appConfig 1`] = `
 Object {
   "children": Array [
     Object {
@@ -266,7 +519,44 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Browser command: Go back" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Go back",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Browser command: Go forward only if ..." 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Go forward",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Browser command: Go forward only if ..." without appConfig 1`] = `
 Object {
   "children": Array [
     Object {
@@ -303,6 +593,19 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Browser command: Go forward" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Go forward",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Browser command: Refresh only if ..." 1`] = `
 Object {
   "children": Array [
@@ -327,7 +630,44 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Browser command: Refresh only if ..." without appConfig 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Refresh",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Browser command: Refresh" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Refresh",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Browser command: Refresh" without appConfig 1`] = `
 Object {
   "children": Array [],
   "title": Array [
@@ -378,6 +718,44 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Browser command: Set window size" without appConfig 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "actualValue": undefined,
+          "comparator": "=",
+          "contentType": "inline",
+          "expectedValue": Array [
+            Object {
+              "type": "text",
+              "value": "123x234",
+            },
+          ],
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "size",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+      ],
+      "type": "props",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Resize window",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Clear app data" 1`] = `
 Object {
   "children": Array [],
@@ -391,7 +769,53 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Clear app data" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Clear application data",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Click on element ... every ... exactly ..." 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Click on ",
+    },
+    Object {
+      "type": "subject",
+      "value": "element",
+    },
+    Object {
+      "type": "text",
+      "value": " exactly ",
+    },
+    Object {
+      "type": "input",
+      "value": "4",
+    },
+    Object {
+      "type": "text",
+      "value": "x every ",
+    },
+    Object {
+      "type": "input",
+      "value": "1.5s",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Click on element ... every ... exactly ..." without appConfig 1`] = `
 Object {
   "children": Array [],
   "title": Array [
@@ -441,7 +865,56 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Click on element ... once" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Click on ",
+    },
+    Object {
+      "type": "subject",
+      "value": "element",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Click on element ... only if ..." 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Click on ",
+    },
+    Object {
+      "type": "subject",
+      "value": "element",
+    },
+    Object {
+      "type": "text",
+      "value": " only if condition is met",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Click on element ... only if ..." without appConfig 1`] = `
 Object {
   "children": Array [
     Object {
@@ -517,7 +990,68 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Click on element ... until ... every ... max ..." without appConfig 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Click on ",
+    },
+    Object {
+      "type": "subject",
+      "value": "element",
+    },
+    Object {
+      "type": "text",
+      "value": " until condition is met max ",
+    },
+    Object {
+      "type": "input",
+      "value": "6",
+    },
+    Object {
+      "type": "text",
+      "value": "x every ",
+    },
+    Object {
+      "type": "input",
+      "value": "5.7s",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Click on position ... once" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Click on ",
+    },
+    Object {
+      "type": "subject",
+      "value": "position",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Click on position ... once" without appConfig 1`] = `
 Object {
   "children": Array [],
   "title": Array [
@@ -547,7 +1081,56 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Comment" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "# This is a comment",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Execute command ..." 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "comparator": "",
+          "contentType": "block",
+          "expectedValue": Object {
+            "language": "javascript",
+            "type": "code-block",
+            "value": "someJS();",
+          },
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "JavaScript expression",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+      ],
+      "type": "props",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Execute JavaScript expression",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Execute command ..." without appConfig 1`] = `
 Object {
   "children": Array [
     Object {
@@ -615,6 +1198,38 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Move to element ... only if ..." without appConfig 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Move pointer to ",
+    },
+    Object {
+      "type": "subject",
+      "value": "element",
+    },
+    Object {
+      "type": "text",
+      "value": " only if condition is met",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Move to element ..." 1`] = `
 Object {
   "children": Array [],
@@ -632,7 +1247,41 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Move to element ..." without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Move pointer to ",
+    },
+    Object {
+      "type": "subject",
+      "value": "element",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Move to position ..." 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Move pointer to ",
+    },
+    Object {
+      "type": "subject",
+      "value": "position",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Move to position ..." without appConfig 1`] = `
 Object {
   "children": Array [],
   "title": Array [
@@ -687,6 +1336,44 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Open URL ..." without appConfig 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "actualValue": undefined,
+          "comparator": "=",
+          "contentType": "inline",
+          "expectedValue": Array [
+            Object {
+              "type": "input",
+              "value": "https://suite.st",
+            },
+          ],
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "URL",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+      ],
+      "type": "props",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Open URL",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Open app at homepage" 1`] = `
 Object {
   "children": Array [],
@@ -700,7 +1387,58 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Open app at homepage" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Open application",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Open app at relative URL ..." 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "actualValue": undefined,
+          "comparator": "=",
+          "contentType": "inline",
+          "expectedValue": Array [
+            Object {
+              "type": "input",
+              "value": "/some/path",
+            },
+          ],
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "relative path",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+      ],
+      "type": "props",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Open application at relative URL",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Open app at relative URL ..." without appConfig 1`] = `
 Object {
   "children": Array [
     Object {
@@ -795,7 +1533,97 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Poll URL ... until response is ..." without appConfig 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "actualValue": undefined,
+          "comparator": "=",
+          "contentType": "inline",
+          "expectedValue": Array [
+            Object {
+              "type": "input",
+              "value": "https://suite.st",
+            },
+          ],
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "poll URL",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+        Object {
+          "actualValue": undefined,
+          "comparator": "=",
+          "contentType": "inline",
+          "expectedValue": Array [
+            Object {
+              "type": "input",
+              "value": "expected response",
+            },
+          ],
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "until receive",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+      ],
+      "type": "props",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Poll URL every 0.5s",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Press ... every ... exactly ..." 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Press button ",
+    },
+    Object {
+      "type": "input",
+      "value": "LEFT",
+    },
+    Object {
+      "type": "text",
+      "value": " exactly ",
+    },
+    Object {
+      "type": "input",
+      "value": "2",
+    },
+    Object {
+      "type": "text",
+      "value": "x every ",
+    },
+    Object {
+      "type": "input",
+      "value": "3s",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Press ... every ... exactly ..." without appConfig 1`] = `
 Object {
   "children": Array [],
   "title": Array [
@@ -849,6 +1677,27 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Press ... once" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Press button ",
+    },
+    Object {
+      "type": "input",
+      "value": "LEFT",
+    },
+    Object {
+      "type": "text",
+      "value": "",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Press ... only if ..." 1`] = `
 Object {
   "children": Array [
@@ -881,7 +1730,91 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Press ... only if ..." without appConfig 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Press button ",
+    },
+    Object {
+      "type": "input",
+      "value": "LEFT",
+    },
+    Object {
+      "type": "text",
+      "value": " only if condition is met",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Press ... until ... every ... max ..." 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Press button ",
+    },
+    Object {
+      "type": "input",
+      "value": "LEFT",
+    },
+    Object {
+      "type": "text",
+      "value": ", ",
+    },
+    Object {
+      "type": "input",
+      "value": "RIGHT",
+    },
+    Object {
+      "type": "text",
+      "value": " until condition is met max ",
+    },
+    Object {
+      "type": "input",
+      "value": "2",
+    },
+    Object {
+      "type": "text",
+      "value": "x every ",
+    },
+    Object {
+      "type": "input",
+      "value": "3s",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Press ... until ... every ... max ..." without appConfig 1`] = `
 Object {
   "children": Array [
     Object {
@@ -966,6 +1899,39 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Run snippet ... every ... exactly ..." without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Run test (",
+    },
+    Object {
+      "type": "code",
+      "value": "unkn...id-1",
+    },
+    Object {
+      "type": "text",
+      "value": ") exactly ",
+    },
+    Object {
+      "type": "input",
+      "value": "2",
+    },
+    Object {
+      "type": "text",
+      "value": "x every ",
+    },
+    Object {
+      "type": "input",
+      "value": "3s",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Run snippet ... once" 1`] = `
 Object {
   "children": Array [],
@@ -983,7 +1949,56 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Run snippet ... once" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Run test ",
+    },
+    Object {
+      "type": "subject",
+      "value": "Snippet 1",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Run snippet ... only if ..." 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Run test ",
+    },
+    Object {
+      "type": "subject",
+      "value": "Snippet 1",
+    },
+    Object {
+      "type": "text",
+      "value": " only if condition is met",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Run snippet ... only if ..." without appConfig 1`] = `
 Object {
   "children": Array [
     Object {
@@ -1059,7 +2074,76 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Run snippet ... until ... every ... max ..." without appConfig 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Run test ",
+    },
+    Object {
+      "type": "subject",
+      "value": "Snippet 1",
+    },
+    Object {
+      "type": "text",
+      "value": " until condition is met max ",
+    },
+    Object {
+      "type": "input",
+      "value": "2",
+    },
+    Object {
+      "type": "text",
+      "value": "x every ",
+    },
+    Object {
+      "type": "input",
+      "value": "3s",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Send text ... to element ... once" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Send text ",
+    },
+    Object {
+      "type": "input",
+      "value": "text to send",
+    },
+    Object {
+      "type": "text",
+      "value": " to ",
+    },
+    Object {
+      "type": "subject",
+      "value": "element",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Send text ... to element ... once" without appConfig 1`] = `
 Object {
   "children": Array [],
   "title": Array [
@@ -1125,6 +2209,47 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Send text ... to window every ... exactly ..." without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Send text ",
+    },
+    Object {
+      "type": "input",
+      "value": "text to send",
+    },
+    Object {
+      "type": "text",
+      "value": " to ",
+    },
+    Object {
+      "type": "subject",
+      "value": "window",
+    },
+    Object {
+      "type": "text",
+      "value": " exactly ",
+    },
+    Object {
+      "type": "input",
+      "value": "2",
+    },
+    Object {
+      "type": "text",
+      "value": "x every ",
+    },
+    Object {
+      "type": "input",
+      "value": "1s",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Send text ... to window once" 1`] = `
 Object {
   "children": Array [],
@@ -1150,7 +2275,72 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Send text ... to window once" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Send text ",
+    },
+    Object {
+      "type": "input",
+      "value": "text to send",
+    },
+    Object {
+      "type": "text",
+      "value": " to ",
+    },
+    Object {
+      "type": "subject",
+      "value": "window",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Send text ... to window only if ..." 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Send text ",
+    },
+    Object {
+      "type": "input",
+      "value": "text to send",
+    },
+    Object {
+      "type": "text",
+      "value": " to ",
+    },
+    Object {
+      "type": "subject",
+      "value": "window",
+    },
+    Object {
+      "type": "text",
+      "value": " only if condition is met",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Send text ... to window only if ..." without appConfig 1`] = `
 Object {
   "children": Array [
     Object {
@@ -1242,7 +2432,99 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Send text ... to window until ... every ... max ..." without appConfig 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Send text ",
+    },
+    Object {
+      "type": "input",
+      "value": "text to send",
+    },
+    Object {
+      "type": "text",
+      "value": " to ",
+    },
+    Object {
+      "type": "subject",
+      "value": "window",
+    },
+    Object {
+      "type": "text",
+      "value": " until condition is met max ",
+    },
+    Object {
+      "type": "input",
+      "value": "4",
+    },
+    Object {
+      "type": "text",
+      "value": "x every ",
+    },
+    Object {
+      "type": "input",
+      "value": "1.2s",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Set text ... to element ... only if ..." 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Set text ",
+    },
+    Object {
+      "type": "input",
+      "value": "text to send",
+    },
+    Object {
+      "type": "text",
+      "value": " to ",
+    },
+    Object {
+      "type": "subject",
+      "value": "element",
+    },
+    Object {
+      "type": "text",
+      "value": " only if condition is met",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Set text ... to element ... only if ..." without appConfig 1`] = `
 Object {
   "children": Array [
     Object {
@@ -1307,6 +2589,31 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Set text ... to element ..." without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Set text ",
+    },
+    Object {
+      "type": "input",
+      "value": "text to send",
+    },
+    Object {
+      "type": "text",
+      "value": " to ",
+    },
+    Object {
+      "type": "subject",
+      "value": "element",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Sleep ..." 1`] = `
 Object {
   "children": Array [],
@@ -1324,7 +2631,41 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Sleep ..." without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Sleep ",
+    },
+    Object {
+      "type": "input",
+      "value": "2s",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Wait until ... max ... then continue" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Assert: Application has exited timeout ",
+    },
+    Object {
+      "type": "input",
+      "value": "1s",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Wait until ... max ... then continue" without appConfig 1`] = `
 Object {
   "children": Array [],
   "title": Array [
