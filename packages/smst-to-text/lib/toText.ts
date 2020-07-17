@@ -276,7 +276,7 @@ const renderProps = (node: PropertiesNode, renderTextNode: RenderTextFunc, prefi
 				.map((cell, columnIndex) => {
 					const cellLine = cell.shift() ?? '';
 
-					return cellLine.padEnd(columnsLength[columnIndex]);
+					return cellLine[columnIndex === 1 ? 'padStart' : 'padEnd'](columnsLength[columnIndex]);
 				})
 				.join(' ')
 			);

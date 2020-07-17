@@ -285,12 +285,6 @@ export type QueryFailedError = BaseResult & (QueryFailedWithCode | {
 	expression: ResultExpression,
 } | QueryFailedNetworkError);
 
-export type InvalidUrlError = BaseResult & {
-	errorType: 'invalidUrl',
-	actualValue: string,
-	expectedValue: string,
-};
-
 export type InvalidValueError = BaseResult & {
 	errorType: 'invalidValue',
 	args?: {
@@ -382,7 +376,6 @@ export type TestLineResult = TestLineSuccessResult
 	| UnsupportedButtonError
 	| AbortedError
 	| QueryFailedError
-	| InvalidUrlError
 	| InvalidValueError
 	| InvalidVariableError
 	| InvalidResultError
