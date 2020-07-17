@@ -474,6 +474,11 @@ const getLineResultMessage = (testLine: TestLine, lineResult?: TestLineResult): 
 		return <text>Line was not executed</text>;
 	}
 
+	if (testLine.type === 'runSnippet' && !lineResult.errorType) {
+		// Snippet failed because one of it's children failed
+		return undefined;
+	}
+
 	return translateResultErrorMessage(lineResult as TestLineErrorResult);
 };
 
