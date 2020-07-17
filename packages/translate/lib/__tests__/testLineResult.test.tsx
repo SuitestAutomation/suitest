@@ -1,4 +1,5 @@
 import {
+	SimpleError,
 	TestLineSuccessResult,
 	TestLineResult,
 	TestLineErrorResult,
@@ -18,7 +19,7 @@ describe('Test line results translation', () => {
 		timeScreenshotHr: [0, 0],
 	};
 
-	const simpleErrors = [
+	const simpleErrors: Array<SimpleError['errorType']> = [
 		'failedStart',
 		'appRunning',
 		'appNotRunning',
@@ -96,6 +97,11 @@ describe('Test line results translation', () => {
 		'appStoreBuild',
 		'outdatedLibraryWarning',
 		'cyclicReference',
+		'ioError',
+		'netError',
+		'sdComponentFailed',
+		'MoveTargetOutOfBounds',
+		'ElementClickIntercepted',
 	];
 
 	describe('simple errors translations', () => {
