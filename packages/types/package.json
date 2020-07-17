@@ -1,6 +1,6 @@
 {
   "name": "@suitest/types",
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "TypeScript definitions for common data structures",
   "homepage": "https://suite.st/",
   "license": "MIT",
