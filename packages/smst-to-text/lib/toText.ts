@@ -72,6 +72,51 @@ const formatString = (text: string, type: string): string => {
 
 	return text;
 };
+const calcPureLength = (str: string): number => {
+	const specialChars = Object.values(format);
+
+	return specialChars
+		.reduce((s, char) => s.replace(char, ''), str).length;
+};
+
+const wrapText = (text: string, limit = 115, wrappedLinesIndentation = 0): string => {
+	const roundedLimit = 5;
+	const wrappedLinesIndentationText = wrappedLinesIndentation === 0
+		? ''
+		: ' '.repeat(wrappedLinesIndentation);
+
+	if (text.length > limit) {
+		const rows = text.split(/\s/).reduce((acc, item) => {
+			const rowLimit = acc.length === 1 ? limit - wrappedLinesIndentation : limit;
+			const currentLine = acc[acc.length - 1];
+			const currentLineLength = calcPureLength(currentLine);
+			if ((currentLineLength + calcPureLength(item) + 1) > (rowLimit + roundedLimit)) {
+				if (currentLineLength >= rowLimit - roundedLimit) {
+					// push to new row
+					acc.push(wrappedLinesIndentationText + item);
+
+					return acc;
+				} else {
+					// split the word
+					const firstPart = item.slice(0, rowLimit - currentLineLength);
+					const secondPart = item.slice(rowLimit - currentLineLength);
+					acc[acc.length - 1] = currentLine + ` ${firstPart}`;
+					acc.push(wrappedLinesIndentationText + secondPart);
+
+					return acc;
+				}
+			} else {
+				acc[acc.length - 1] = (currentLine ? currentLine + ' ' : '') + item;
+
+				return acc;
+			}
+		}, ['']);
+
+		return rows.join(nl);
+	} else {
+		return text;
+	}
+};
 
 /**
  * Render a single text node as plain text
@@ -322,7 +367,7 @@ const renderTestLineOrCondition = (
 	prefix = ''
 ): string => {
 	const status = node.status ? renderTextNode(renderStatus(node.status)) : '';
-	const title = node.title.map(renderTextNode).join('');
+	const title = wrapText(node.title.map(renderTextNode).join(''), undefined, calcPureLength(prefix + status));
 	const body = node.children.map(child => renderNode(child, renderTextNode, prefix + tab)).join('');
 
 	return [prefix + status + title, body].filter(Boolean).join(nl);
@@ -330,9 +375,11 @@ const renderTestLineOrCondition = (
 
 const renderTestLineResult = (node: TestLineResultNode, renderTextNode: RenderTextFunc, prefix = ''): string => {
 	const nodeMessage = node.message?.map(renderTextNode).join('');
-	const message = nodeMessage
-		? tab + renderTextNode({type: node.status, value: node.status + ': '}) + nodeMessage
-		: '';
+	let message = '';
+	if (nodeMessage) {
+		const status = renderTextNode({type: node.status, value: node.status + ': '});
+		message = tab + status + wrapText(nodeMessage, undefined, 2 + calcPureLength(status));
+	}
 	const body = renderTestLineOrCondition(node.children[0], renderTextNode, prefix);
 	const screenshot = node.screenshot
 		? tab + 'screenshot: ' + node.screenshot
