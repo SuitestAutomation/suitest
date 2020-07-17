@@ -1,15 +1,20 @@
 {
   "name": "@suitest/types",
-  "version": "3.0.3",
+  "version": "3.0.6",
   "description": "TypeScript definitions for common data structures",
-  "homepage": "https://github.com/SuitestAutomation/suitest#readme",
+  "homepage": "https://suite.st/",
   "license": "MIT",
-  "main": "lib/index.d.ts",
-  "files": [
-    "lib/"
-  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SuitestAutomation/suitest.git"
-  }
+    "url": "git+https://github.com/SuitestAutomation/suitest.git",
+    "directory": "packages/types"
+  },
+  "bugs": {
+    "url": "https://github.com/SuitestAutomation/suitest/issues"
+  },
+  "main": "lib/index.d.ts",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib/"
+  ]
 }
