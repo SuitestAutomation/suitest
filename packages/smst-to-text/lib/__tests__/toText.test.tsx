@@ -139,15 +139,18 @@ describe('AST renderers', () => {
 					name={<text>Empty string</text>}
 					expectedValue={<text>{''}</text>}
 					actualValue={''}
+					comparator={'contains'}
 				/>
 				<prop
 					name={<text>Empty number</text>}
 					expectedValue={<text>0</text>}
 					actualValue={NaN}
+					comparator={'>'}
 				/>
 				<prop
 					name={<text>Empty code block</text>}
 					expectedValue={<fragment><code>{'looooooooooooooo oooooooo ooooooo ooooo ooooo oooooooooo oooo oooo ng'}</code> (and some next text block)</fragment>}
+					comparator={'='}
 				/>
 			</props>)).toMatchSnapshot();
 		});
