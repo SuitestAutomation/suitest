@@ -54,6 +54,10 @@ describe('AST renderers', () => {
 		title={<fragment>Assert element <subject>My element</subject> is visible</fragment>}
 		docs={<link href="http://suite.st/docs/"/> as LinkNode}
 	/>;
+	const simpleLineExcluded = <test-line
+		status="excluded"
+		title={<fragment>Assert element <subject>My element</subject> is visible</fragment>}
+	/>;
 	const longLine = <test-line
 		title={<fragment>Press <input>OK</input>, <input>LEFT</input> only if condition is met</fragment>}
 	>
@@ -175,6 +179,7 @@ describe('AST renderers', () => {
 		it('should render test line', () => {
 			expect(toText(simpleLine, options)).toMatchSnapshot();
 			expect(toText(longLine, options)).toMatchSnapshot();
+			expect(toText(simpleLineExcluded, options)).toMatchSnapshot();
 		});
 
 		it('should render test line results', () => {

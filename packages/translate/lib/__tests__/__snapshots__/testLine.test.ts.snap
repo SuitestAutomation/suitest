@@ -1,5 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Test Lines translation Should translate test line "Assert ... then continue excluded" 1`] = `
+Object {
+  "children": Array [],
+  "status": "excluded",
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Assert: Application has exited",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Assert ... then continue excluded" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "status": "excluded",
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Assert: Application has exited",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Assert ... then continue" 1`] = `
 Object {
   "children": Array [],
@@ -458,6 +486,34 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Browser command: Go back excluded" 1`] = `
+Object {
+  "children": Array [],
+  "status": "excluded",
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Go back",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Browser command: Go back excluded" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "status": "excluded",
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Go back",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Browser command: Go back only if ..." 1`] = `
 Object {
   "children": Array [
@@ -750,6 +806,34 @@ Object {
     Object {
       "type": "text",
       "value": "Resize window",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Clear app data excluded" 1`] = `
+Object {
+  "children": Array [],
+  "status": "excluded",
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Clear application data",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Clear app data excluded" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "status": "excluded",
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Clear application data",
     },
   ],
   "type": "test-line",
@@ -1094,6 +1178,80 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Execute command ... excluded" 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "comparator": "",
+          "contentType": "block",
+          "expectedValue": Object {
+            "language": "javascript",
+            "type": "code-block",
+            "value": "someJS();",
+          },
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "JavaScript expression",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+      ],
+      "type": "props",
+    },
+  ],
+  "status": "excluded",
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Execute JavaScript expression",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Execute command ... excluded" without appConfig 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "comparator": "",
+          "contentType": "block",
+          "expectedValue": Object {
+            "language": "javascript",
+            "type": "code-block",
+            "value": "someJS();",
+          },
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "JavaScript expression",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+      ],
+      "type": "props",
+    },
+  ],
+  "status": "excluded",
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Execute JavaScript expression",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Execute command ..." 1`] = `
 Object {
   "children": Array [
@@ -1160,6 +1318,72 @@ Object {
     Object {
       "type": "text",
       "value": "Execute JavaScript expression",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Move to element ... only if ... excluded" 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "status": "excluded",
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Move pointer to ",
+    },
+    Object {
+      "type": "subject",
+      "value": "element",
+    },
+    Object {
+      "type": "text",
+      "value": " only if condition is met",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Move to element ... only if ... excluded" without appConfig 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "status": "excluded",
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Move pointer to ",
+    },
+    Object {
+      "type": "subject",
+      "value": "element",
+    },
+    Object {
+      "type": "text",
+      "value": " only if condition is met",
     },
   ],
   "type": "test-line",
@@ -1368,6 +1592,34 @@ Object {
     Object {
       "type": "text",
       "value": "Open URL",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Open app at homepage excluded" 1`] = `
+Object {
+  "children": Array [],
+  "status": "excluded",
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Open application",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Open app at homepage excluded" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "status": "excluded",
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Open application",
     },
   ],
   "type": "test-line",
@@ -2608,6 +2860,42 @@ Object {
     Object {
       "type": "subject",
       "value": "element",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Sleep ... excluded" 1`] = `
+Object {
+  "children": Array [],
+  "status": "excluded",
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Sleep ",
+    },
+    Object {
+      "type": "input",
+      "value": "2s",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Sleep ... excluded" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "status": "excluded",
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Sleep ",
+    },
+    Object {
+      "type": "input",
+      "value": "2s",
     },
   ],
   "type": "test-line",

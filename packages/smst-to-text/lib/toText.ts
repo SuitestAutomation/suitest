@@ -376,6 +376,9 @@ const renderTestLineOrCondition = (
 	const docs = verbosity === 'verbose' && (node as TestLineNode).docs
 		? ' '.repeat(status.length) + 'docs: ' + renderNode((node as TestLineNode).docs!, renderTextNode, {verbosity})
 		: '';
+	const excludedMessage = node.status === 'excluded'
+		? tab + renderTextNode({type: node.status, value: node.status + ': '}) + 'Test line was not executed'
+		: '';
 	const output = [prefix + status + title];
 	switch (verbosity) {
 		case 'normal':
@@ -385,16 +388,19 @@ const renderTestLineOrCondition = (
 			output.push(body, docs);
 			break;
 	}
+	output.push(excludedMessage);
 
 	return output.filter(Boolean).join(nl);
 };
 
 const renderTestLineResult = (
-	node: TestLineResultNode, renderTextNode: RenderTextFunc, options: {prefix: string, verbosity: Verbosity}
+	node: TestLineResultNode,
+	renderTextNode: RenderTextFunc,
+	options: {prefix: string, verbosity: Verbosity}
 ): string => {
 	const nodeMessage = node.message?.map(renderTextNode).join('');
 	let message = '';
-	if (nodeMessage) {
+	if (nodeMessage && node.status !== 'excluded') {
 		const status = renderTextNode({type: node.status, value: node.status + ': '});
 		message = tab + status + wrapText(nodeMessage, undefined, 2 + calcPureLength(status));
 	}
