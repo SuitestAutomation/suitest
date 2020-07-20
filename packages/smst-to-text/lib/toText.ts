@@ -369,8 +369,11 @@ const renderTestLineOrCondition = (
 	const status = node.status ? renderTextNode(renderStatus(node.status)) : '';
 	const title = wrapText(node.title.map(renderTextNode).join(''), undefined, calcPureLength(prefix + status));
 	const body = node.children.map(child => renderNode(child, renderTextNode, prefix + tab)).join('');
+	const docs = (node as TestLineNode).docs
+		? ' '.repeat(status.length) + 'docs: ' + renderNode((node as TestLineNode).docs!, renderTextNode)
+		: '';
 
-	return [prefix + status + title, body].filter(Boolean).join(nl);
+	return [prefix + status + title, body, docs].filter(Boolean).join(nl);
 };
 
 const renderTestLineResult = (node: TestLineResultNode, renderTextNode: RenderTextFunc, prefix = ''): string => {

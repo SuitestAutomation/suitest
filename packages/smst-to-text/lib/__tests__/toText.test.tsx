@@ -1,5 +1,6 @@
 import {jsx} from '@suitest/smst';
 import {escapeControlChars, toText, wrapTextNodes} from '../toText';
+import {LinkNode} from '@suitest/smst/types/unistTestLine';
 
 describe('AST renderers', () => {
 	const plainText = <text>TEXT</text>;
@@ -51,6 +52,7 @@ describe('AST renderers', () => {
 	>{longProps}</condition>;
 	const simpleLine = <test-line
 		title={<fragment>Assert element <subject>My element</subject> is visible</fragment>}
+		docs={<link href="http://suite.st/docs/"/> as LinkNode}
 	/>;
 	const longLine = <test-line
 		title={<fragment>Press <input>OK</input>, <input>LEFT</input> only if condition is met</fragment>}

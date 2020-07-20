@@ -70,6 +70,7 @@ export type TestLineNode = {
 	title: InlineTextNode[],
 	children: Array<PropertiesNode | ConditionNode>,
 	status?: TestLineResultStatus,
+	docs?: LinkNode,
 };
 
 export type TestLineResultNode = {

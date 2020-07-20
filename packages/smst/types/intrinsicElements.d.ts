@@ -1,5 +1,6 @@
 type SingleNode = import('./unistTestLine').SingleNode;
 type Node = import('./unistTestLine').Node;
+type LinkNode = import('./unistTestLine').LinkNode;
 type CodeBlockLanguage = import('./unistTestLine').CodeBlockLanguage;
 type SingleEntryStatus = import('./unistTestLine').SingleEntryStatus;
 type TestLineResultStatus = import('./unistTestLine').TestLineResultStatus;
@@ -50,6 +51,7 @@ declare namespace JSX {
 			title: SmstNode,
 			children?: SmstNode,
 			status?: TestLineResultStatus,
+			docs?: LinkNode,
 		},
 		'test-line-result': {
 			status: TestLineResultStatus,

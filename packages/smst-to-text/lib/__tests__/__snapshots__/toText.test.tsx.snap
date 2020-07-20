@@ -115,7 +115,10 @@ exports[`AST renderers formatted text renderer should render condition 2`] = `
     > someJS(); someJS(); someJS();                  "
 `;
 
-exports[`AST renderers formatted text renderer should render test line 1`] = `"Assert element [32mMy element[0m is visible"`;
+exports[`AST renderers formatted text renderer should render test line 1`] = `
+"Assert element [32mMy element[0m is visible
+docs: http://suite.st/docs/"
+`;
 
 exports[`AST renderers formatted text renderer should render test line 2`] = `
 "Press [4mOK[0m, [4mLEFT[0m only if condition is met
@@ -257,7 +260,10 @@ exports[`AST renderers plain text renderer should render condition 2`] = `
     > someJS(); someJS(); someJS();                  "
 `;
 
-exports[`AST renderers plain text renderer should render test line 1`] = `"Assert element My element is visible"`;
+exports[`AST renderers plain text renderer should render test line 1`] = `
+"Assert element My element is visible
+docs: http://suite.st/docs/"
+`;
 
 exports[`AST renderers plain text renderer should render test line 2`] = `
 "Press OK, LEFT only if condition is met
