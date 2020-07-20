@@ -70,6 +70,7 @@ export type TestLineNode = {
 	title: InlineTextNode[],
 	children: Array<PropertiesNode | ConditionNode>,
 	status?: TestLineResultStatus,
+	docs?: LinkNode,
 };
 
 export type TestLineResultNode = {
@@ -96,3 +97,5 @@ export type SingleNode = InlineTextNode
 	| LinkNode;
 
 export type Node =  SingleNode | SingleNode[];
+
+export type Verbosity = 'quiet' | 'normal' | 'verbose';

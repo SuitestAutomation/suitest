@@ -61,9 +61,7 @@ typings/
 .next
 
 # package builds
-packages/**/build
-packages/**/umd
-packages/**/commonjs
+packages/**/dist
 
 .idea
 .DS_Store

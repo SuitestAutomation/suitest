@@ -174,6 +174,10 @@ export function jsx(
 				params.status = testLineProps.status;
 			}
 
+			if (testLineProps.docs) {
+				params.docs = testLineProps.docs;
+			}
+
 			return ub(type, params, processedChildren) as ConditionNode | TestLineNode;
 		case 'test-line-result':
 			const testLineResultProps = props as JSX.ElementsProps['test-line-result'];
