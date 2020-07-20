@@ -1,5 +1,5 @@
 import {jsx} from '@suitest/smst';
-import {toText} from '../toText';
+import {escapeControlChars, toText, wrapTextNodes} from '../toText';
 import {LinkNode, Verbosity} from '@suitest/smst/types/unistTestLine';
 
 describe('AST renderers', () => {
@@ -146,15 +146,18 @@ describe('AST renderers', () => {
 					name={<text>Empty string</text>}
 					expectedValue={<text>{''}</text>}
 					actualValue={''}
+					comparator={'contains'}
 				/>
 				<prop
 					name={<text>Empty number</text>}
 					expectedValue={<text>0</text>}
 					actualValue={NaN}
+					comparator={'>'}
 				/>
 				<prop
 					name={<text>Empty code block</text>}
 					expectedValue={<fragment><code>{'looooooooooooooo oooooooo ooooooo ooooo ooooo oooooooooo oooo oooo ng'}</code> (and some next text block)</fragment>}
+					comparator={'='}
 				/>
 			</props>, options)).toMatchSnapshot();
 		});
@@ -230,10 +233,105 @@ describe('AST renderers', () => {
 		runTests(options);
 	});
 
+	describe('wrapped title and error messages', () => {
+		const renderLongTexts = (format: boolean): void => {
+			const options = {format, verbosity: 'normal' as const};
+			expect(toText(<test-line-result
+				status="fail"
+				message={<text>Subject does not exist a very loooo oooooo ooooo ooooooo oooooo oooooo oooong error
+					message, possibly including "description" part for notStarterReason</text>}
+			>
+				<test-line
+					title={<fragment>Run test
+						<subject>My loooooooooo ooooo ooo oooooo ooooooo ooooooo ooooooo ooooo ooooo ng!
+							test</subject> until condition is met max 5x every 5s</fragment>}
+					status="fail"
+				>{longCondition}</test-line>
+			</test-line-result>, options)).toMatchSnapshot();
+			expect(toText(<test-line-result
+				status="fail"
+				message={<text>Subject does not exist a very not so loooooooong error message,
+					possibly including "description" part for notStarterReason</text>}
+			>
+				<test-line
+					title={<fragment>Run test <subject>My not so loooooooooong! test</subject> until condition
+						is met max 5x every 5s</fragment>}
+					status="fail"
+				>{longCondition}</test-line>
+			</test-line-result>, options)).toMatchSnapshot();
+		};
+
+		renderLongTexts(true);
+		renderLongTexts(false);
+	});
+
 	it('render link', () => {
 		const options = {format: true, verbosity: 'normal' as const};
 		expect(toText(<link href="http://some.url">Some URL</link>, options)).toEqual('Some URL (http://some.url)');
 		expect(toText(<link href="http://some.url">http://some.url</link>, options)).toEqual('http://some.url');
 		expect(toText(<link href="http://some.url"/>, options)).toEqual('http://some.url');
+	});
+
+	describe('escape control chars util', () => {
+		it('should escape all ASCII control chars and leave normal text untouched', () => {
+			expect(escapeControlChars('\u0001 \u001F~\u007F\u00A0\u009F'))
+				.toEqual('\uFFFD \uFFFD~\uFFFD \uFFFD');
+		});
+
+		it('should be used in toText function when rendering textual content without formatting', () => {
+			const options = {format: false, verbosity: 'normal' as const};
+			expect(toText(<text>{'\u0001'}</text>, options)).toEqual('\uFFFD');
+			expect(toText(<subject>{'\u0001'}</subject>, options)).toEqual('\uFFFD');
+			expect(toText(<input>{'\u0001'}</input>, options)).toEqual('\uFFFD');
+			expect(toText(<code>{'\u0001'}</code>, options)).toEqual('\uFFFD');
+		});
+
+		it('should be used in toText function when rendering textual content with formatting', () => {
+			const options = {format: true, verbosity: 'normal' as const};
+			expect(toText(<text>{'\u0001'}</text>, options)).toEqual('\uFFFD');
+			expect(toText(<subject>{'\u0001'}</subject>, options)).toEqual('\u001b[32m\uFFFD\u001b[0m');
+			expect(toText(<input>{'\u0001'}</input>, options)).toEqual('\u001b[4m\uFFFD\u001b[0m');
+			expect(toText(<code>{'\u0001'}</code>, options)).toEqual('\u001b[36m\uFFFD\u001b[0m');
+		});
+	});
+
+	describe('text wrapper util', () => {
+		it('should wrap long text', () => {
+			expect(wrapTextNodes(
+				[{type: 'text', value: '1234567890'}],
+				node => node.value,
+				5
+			)).toEqual([5, ['12345', '67890']]);
+
+			expect(wrapTextNodes(
+				[{type: 'text', value: '1234567890'}],
+				node => node.value,
+				6
+			)).toEqual([6, ['123456', '7890']]);
+		});
+
+		it('should not wrap short text', () => {
+			expect(wrapTextNodes(
+				[{type: 'text', value: '123'}],
+				node => node.value,
+				5
+			)).toEqual([3, ['123']]);
+		});
+
+		it('should handle newline characters correctly', () => {
+			expect(wrapTextNodes(
+				[{type: 'text', value: '123\n456\r789\r\n0'}],
+				node => node.value,
+				5
+			)).toEqual([3, ['123', '456', '789', '0']]);
+		});
+
+		it('should calculate correct length for the control characters to prevent misalignment', () => {
+			expect(wrapTextNodes(
+				[{type: 'text', value: '123\u001b4'}],
+				node => escapeControlChars(node.value),
+				3
+			)).toEqual([3, ['123', '\uFFFD4']]);
+		});
 	});
 });

@@ -1,11 +1,12 @@
 import {
+	SimpleError,
 	TestLineSuccessResult,
 	TestLineResult,
 	TestLineErrorResult,
 	PSVideoHadNoErrorCondition,
 	TestLine,
 } from '@suitest/types/lib';
-import {translateResultMessage, translateTestLineResult} from '../testLineResult';
+import {translateResultErrorMessage, translateTestLineResult} from '../testLineResult';
 import {appConfig, conditions, elements, testLinesExamples} from './testLinesExamples';
 import {toText} from '@suitest/smst-to-text';
 
@@ -18,7 +19,7 @@ describe('Test line results translation', () => {
 		timeScreenshotHr: [0, 0],
 	};
 
-	const simpleErrors = [
+	const simpleErrors: Array<SimpleError['errorType']> = [
 		'failedStart',
 		'appRunning',
 		'appNotRunning',
@@ -96,21 +97,24 @@ describe('Test line results translation', () => {
 		'appStoreBuild',
 		'outdatedLibraryWarning',
 		'cyclicReference',
+		'ioError',
+		'netError',
+		'sdComponentFailed',
+		'MoveTargetOutOfBounds',
+		'ElementClickIntercepted',
 	];
 
-	// it('should translate success results', () => {
-	// 	expect(translateTestLineResult({...baseResult, result: 'success'} as TestLineResult)).toMatchSnapshot();
-	// });
-
-	for (const errorType of simpleErrors) {
-		it(`should translate "${errorType}" error`, () => {
-			expect(translateResultMessage({
-				...baseResult,
-				result: 'fail',
-				errorType,
-			} as TestLineErrorResult)).toMatchSnapshot();
-		});
-	}
+	describe('simple errors translations', () => {
+		for (const errorType of simpleErrors) {
+			it(`should translate "${errorType}" error`, () => {
+				expect(translateResultErrorMessage({
+					...baseResult,
+					result: 'fail',
+					errorType,
+				} as TestLineErrorResult)).toMatchSnapshot();
+			});
+		}
+	});
 
 	describe('Translate assert lines', () => {
 		const extendBaseError = (err: any): TestLineResult => ({
@@ -220,6 +224,19 @@ describe('Test line results translation', () => {
 					}),
 				})).toMatchSnapshot();
 			});
+
+			it('render without appConfig', () => {
+				expect(testLineToFormattedText({
+					testLine: openAppCommand,
+					lineResult: extendBaseError({
+						errorType: 'openAppOverrideFailed',
+						message: {
+							errorType: 'queryFailed',
+							lineId: 'line-id-1',
+						},
+					}),
+				})).toMatchSnapshot();
+			});
 		});
 
 		describe('translate "assert current location"', () => {
@@ -230,6 +247,10 @@ describe('Test line results translation', () => {
 					testLine: assertLocation,
 					appConfig,
 				})).toMatchSnapshot();
+			});
+
+			it('without appConfig', () => {
+				expect(testLineToFormattedText({ testLine: assertLocation })).toMatchSnapshot();
 			});
 
 			it('with success result', () => {
@@ -323,6 +344,10 @@ return false;
 					testLine: assertCookie,
 					appConfig,
 				})).toMatchSnapshot();
+			});
+
+			it('without appConfig', () => {
+				expect(testLineToFormattedText({ testLine: assertCookie })).toMatchSnapshot();
 			});
 
 			it('missingSubject error', () => {
@@ -463,6 +488,13 @@ return false;
 						elements,
 					})).toMatchSnapshot();
 				});
+			});
+
+			it('without appConfig', () => {
+				expect(testLineToFormattedText({
+					testLine: assertLine(conditions['element ... exist']()),
+					elements,
+				})).toMatchSnapshot();
 			});
 
 			// translate for invalidRepositoryReference family errors
@@ -771,6 +803,10 @@ return true;
 				})).toMatchSnapshot();
 			});
 
+			it('render without appConfig', () => {
+				expect(testLineToFormattedText({ testLine: psVideoHadNoError() })).toMatchSnapshot();
+			});
+
 			it('render with fail result', () => {
 				expect(testLineToFormattedText({
 					testLine: psVideoHadNoError('all'),
@@ -792,6 +828,12 @@ return true;
 				expect(testLineToFormattedText({
 					testLine: assertLine(conditions['JavaScript expression with variables ... equals ...']()),
 					appConfig,
+				})).toMatchSnapshot();
+			});
+
+			it('render without appConfig', () => {
+				expect(testLineToFormattedText({
+					testLine: assertLine(conditions['JavaScript expression ... equals ...']()),
 				})).toMatchSnapshot();
 			});
 
@@ -903,6 +945,12 @@ return true;
 				})).toMatchSnapshot();
 			});
 
+			it('render without appConfig', () => {
+				expect(testLineToFormattedText({
+					testLine: assertLine(conditions['application has exited']()),
+				})).toMatchSnapshot();
+			});
+
 			it('render with fail result', () => {
 				expect(testLineToFormattedText({
 					testLine: assertLine(conditions['application has exited']()),
@@ -924,6 +972,12 @@ return true;
 				expect(testLineToFormattedText({
 					testLine: assertLine(conditions['network request matching URL was not made excluding previously matched']()),
 					appConfig,
+				})).toMatchSnapshot();
+			});
+
+			it('render without appConfig', () => {
+				expect(testLineToFormattedText({
+					testLine: assertLine(conditions['network request to URL was made including matched']()),
 				})).toMatchSnapshot();
 			});
 
@@ -1031,11 +1085,11 @@ return true;
 										`<!DOCTYPE html PUBLIC "-//HbbTV//1.1.1//EN" "http://www.hbbtv.org/dtd/HbbTV-1.1.1.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>HbbTv App</title>
-<link rel="stylesheet" href="css/base.css" />
+	<title>HbbTv App</title>
+	<link rel="stylesheet" href="css/base.css" />
 </head>
 <body>
-<div id="content"></div>
+	<div id="content"></div>
 </body>
 </html>`
 									),
@@ -1272,7 +1326,7 @@ return true;
 			});
 
 			describe(`translate then ${then} and "assert current location"`, () => {
-				const assertLocation = assertLine(conditions['current location']('~', 'http://some.url'));
+				const assertLocation = assertLine(conditions['current location']('~', 'file.suite.st'));
 
 				it('without result', () => {
 					expect(testLineToFormattedText({
@@ -1304,10 +1358,10 @@ return true;
 						testLine: assertLocation,
 						appConfig,
 						lineResult: extendBaseError({
-							result: then,
+							result: 'success',
 							errorType: 'queryFailed',
-							actualValue: 'http://file.suite.st/sampleapp_staging/index-hbbtv.html',
-							expectedValue: 'http://some.url',
+							actualValue: 'http://the.suite.st/sampleapp_staging/index-hbbtv.html',
+							expectedValue: 'file.suite.st',
 						}),
 					})).toMatchSnapshot();
 				});
@@ -1333,8 +1387,6 @@ return true;
 						appConfig,
 						lineResult: extendBaseError({
 							result: then,
-							errorType: 'queryFailed',
-							actualValue: false,
 						}),
 					})).toMatchSnapshot();
 				});
@@ -1377,8 +1429,6 @@ return true;
 						elements,
 						lineResult: extendBaseError({
 							result: then,
-							errorType: 'queryFailed',
-							actualValue: false,
 						}),
 					})).toMatchSnapshot();
 				});

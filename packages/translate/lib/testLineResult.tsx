@@ -24,94 +24,102 @@ import {
 	AppConfiguration,
 	Elements,
 	Snippets,
-	AssertTestLine,
+	SimpleError,
 } from '@suitest/types';
 import {translateTestLine} from './testLine';
 import {translateElementProperty} from './condition';
 
 const baseScreenshotPath = 'https://the.suite.st';
 
-const simpleErrorMap: {[key: string]: string} = {
-	failedStart: 'Failed to open application',
-	appRunning: 'App is still running',
-	appNotRunning: 'App is not running',
-	missingApp: 'Application is not installed on the device',
-	initPlatformFailed: 'Failed to start Suitest bootstrap application on this device',
-	packageNotFound: 'Selected configuration does not contain an app package. Upload a package on your app`s configuration page before continuing',
-	missingPackage: 'Application package was not found on the target device',
-	internalError: 'Internal error occurred',
-	serverError: 'Internal error occurred',
-	ILInternalError: 'Internal error occurred',
-	invalidCredentials: 'Credentials for this device were changed',
-	ActionNotAvailable: 'This test command is not supported by the current app configuration',
-	conditionNotSatisfied: 'Maximum amount of key presses reached. Condition was not satisfied',
-	wrongApp: 'Wrong app ID detected',
-	driverException: 'Unexpected exception occurred on connected device. Please, contact support@suite.st if you see this often',
-	noHasLines: 'No assertion properties defined',
-	appCrashed: 'App seems to have crashed',
-	timeLimitExceeded: 'Test execution limit exceeded (based on your subscription)',
-	notResponding: 'Device stopped responding',
-	suitestifyError: 'Suitestify failed to start. Check your Suitestify settings',
-	suitestifyRequired: 'This assertion only works with Suitestify. You can configure your app to use Suitestify in the app settings. Please note that Suitestify is not available for all platforms',
-	bootstrapPageNotDetected: 'App seems to have exited correctly but something went wrong when loading the Suitest channel autostart application',
-	wrongAppDetected: 'App seems to have exited correctly, however another app has been opened',
-	notExpectedResponse: 'Unexpected response received while polling URL',
-	noConnection: 'Could not connect to server while polling URL',
-	lateManualLaunch: 'In this configuration the "open app" commands inside the test are not supported. You may however start the test with "open app" command',
-	launchExpired: 'Identical scheduling aborted',
-	deviceIsBusy: 'Identical scheduling aborted',
-	notActiveDeveloperMode: 'Failed to launch application. Is "developer mode" turned on? https://suite.st/docs/devices/lg-webos/#enable-developer-mode-on-the-device',
-	invalidUrl: 'Application could not be launched. Please verify you have provided URL for this configuration',
-	invalidOpenAppOverrideReference: 'Could not start execution, please check open app override setting. https://suite.st/docs/application/more-configuration-options/#open-app-override-test',
-	Success: 'Command executed successfully',
-	NoSuchElement: 'Element was not found',
-	NoSuchFrame: 'Cannot switch to frame',
-	UnknownCommand: 'The requested resource could not be found, or a request was received using an HTTP method that is not supported by the mapped resource',
-	StaleElementReference: 'Element is no longer inside DOM',
-	ElementNotVisible: 'Element is not currently visible',
-	InvalidElementState: 'Cannot perform operation with element because this element is in an invalid state (e.g. attempting to click a disabled element)',
-	ElementIsNotSelectable: 'Element is not selectable',
-	UnknownError: 'An unknown server-side error occurred while processing the command',
-	XPathLookupError: 'An error occurred while searching for an element by XPath',
-	Timeout: 'This command takes too long to execute',
-	NoSuchWindow: 'A request to switch to a different window could not be satisfied because the window could not be found',
-	InvalidCookieDomain: 'Cannot set a cookie on a domain different from the current page',
-	UnableToSetCookie: 'Cannot set the specified cookie value',
-	UnexpectedAlertOpen: 'A modal dialog was open, blocking this operation',
-	NoAlertOpenError: 'There was no modal dialog on page',
-	ScriptTimeout: 'A script takes too long to execute',
-	InvalidElementCoordinates: 'The coordinates provided to an interactions operation are invalid',
-	IMENotAvailable: 'IME was not available',
-	IMEEngineActivationFailed: 'An IME engine could not be started',
-	InvalidSelector: 'Element selector is malformed',
-	ElementNotInteractable: 'Element is not currently interactable and may not be manipulated',
-	JavaScriptError: 'An error occurred while executing user supplied JavaScript',
-	unknownWebDriverKey: 'This key is not supported on the target device',
-	unfocusableElement: 'Element can\'t receive focus to enter text',
-	unclickableElement: 'Element click is obstructed by different element',
-	deviceConnectionError: 'Failed to initialize device control',
-	testIsNotStarted: 'Cannot continue with the current test anymore because of previous errors or bad initialization',
-	signInRequired: 'Account needs to be signed in on target device',
-	connectionNotAuthorized: 'Connection not authorized. Debug mode is not allowed on the device, please make sure it is enabled',
-	higherOSVersionRequired: 'The app package requires higher OS version',
-	appleError65: 'Failed to launch app: Apple ID account error. https://suite.st/docs/devices/apple-tv/#apple-id-account-error',
-	appleError70: 'Failed to launch app: Xcode error. https://suite.st/docs/devices/apple-tv/#xcode-error',
-	appleAppSignError: 'Failed to launch app: App code sign error. https://suite.st/docs/devices/apple-tv/#app-code-sign-error',
-	missingPSSDK: 'Please make sure that you have the PlayStation SDK installed. https://suite.st/docs/troubleshooting/playstation/#playstation-sdk-not-installed',
-	targetManagerBusy: 'Please try again in a few minutes',
-	missingDotNet: 'Please make sure you have the .NET Framework installed. https://suite.st/docs/troubleshooting/playstation/#net-framework-not-installed',
-	bootstrapAppNotDetected: 'The Suitest bootstrap application was not detected',
-	activationExpired: 'Could not open the app because the DevKit/TestKit expired',
-	missingCpp: 'Make sure you have Microsoft Visual C++ Redistributable installed. https://suite.st/docs/devices/playstation',
-	outOfMemory: 'Failed to open the app. Device is out of memory, please restart the device',
-	networkError: 'Network request matching given conditions was not made. https://suite.st/docs/faq/surprises/#network-request-condition-never-matches',
-	instrumentationFailed: 'Suitest was unable to automatically insert the instrumentation library',
-	packageCorrupted: 'Failed to open the app. Please make sure that your app is working correctly',
-	unknownElementProperty: 'Unknown element property',
-	configuratorError: 'Make sure that Apple Configurator 2 and Automation Tools are installed. https://suite.st/docs/devices/apple-tv/#installing-apple-configurator-2',
-	appStoreBuild: 'Can’t install App Store distribution build',
-	outdatedLibraryWarning: 'We have detected that your instrumentation library is outdated, the package can still be opened. Consider updating',
-	cyclicReference: 'Cyclic reference detected',
+const conditionWasMetMessage = <text>Condition was met</text>;
+const conditionWasNotMetMessage = <text>Condition was not met</text>;
+
+const simpleErrorMap: {[key: string]: Node} = {
+	failedStart: <text>Failed to open application</text>,
+	appRunning: <text>App is still running</text>,
+	appNotRunning: <text>App is not running</text>,
+	missingApp: <text>Application is not installed on the device</text>,
+	initPlatformFailed: <text>Failed to start Suitest bootstrap application on this device</text>,
+	packageNotFound: <text>Selected configuration does not contain an app package. Upload a package on your app`s configuration page before continuing</text>,
+	missingPackage: <text>Application package was not found on the target device</text>,
+	internalError: <text>Internal error occurred</text>,
+	serverError: <text>Internal error occurred</text>,
+	ILInternalError: <text>Internal error occurred</text>,
+	invalidCredentials: <text>Credentials for this device were changed</text>,
+	ActionNotAvailable: <text>This test command is not supported by the current app configuration</text>,
+	conditionNotSatisfied: <text>Maximum amount of key presses reached. Condition was not satisfied</text>,
+	wrongApp: <text>Wrong app ID detected</text>,
+	driverException: <text>Unexpected exception occurred on connected device. Please, contact support@suite.st if you see this often</text>,
+	noHasLines: <text>No assertion properties defined</text>,
+	appCrashed: <text>App seems to have crashed</text>,
+	timeLimitExceeded: <text>Test execution limit exceeded (based on your subscription)</text>,
+	notResponding: <text>Device stopped responding</text>,
+	suitestifyError: <text>Suitestify failed to start. Check your Suitestify settings</text>,
+	suitestifyRequired: <text>This assertion only works with Suitestify. You can configure your app to use Suitestify in the app settings. Please note that Suitestify is not available for all platforms</text>,
+	bootstrapPageNotDetected: <text>App seems to have exited correctly but something went wrong when loading the Suitest channel autostart application</text>,
+	wrongAppDetected: <text>App seems to have exited correctly, however another app has been opened</text>,
+	notExpectedResponse: <text>Unexpected response received while polling URL</text>,
+	noConnection: <text>Could not connect to server while polling URL</text>,
+	lateManualLaunch: <text>In this configuration the "open app" commands inside the test are not supported. You may however start the test with "open app" command</text>,
+	launchExpired: <text>Identical scheduling aborted</text>,
+	deviceIsBusy: <text>Identical scheduling aborted</text>,
+	notActiveDeveloperMode: <text>Failed to launch application. Is "developer mode" turned on? https://suite.st/docs/devices/lg-webos/#enable-developer-mode-on-the-device</text>,
+	invalidUrl: <text>Application could not be launched. Please verify you have provided URL for this configuration</text>,
+	invalidOpenAppOverrideReference: <text>Could not start execution, please check open app override setting. https://suite.st/docs/application/more-configuration-options/#open-app-override-test</text>,
+	Success: <text>Command executed successfully</text>,
+	NoSuchElement: <text>Element was not found</text>,
+	NoSuchFrame: <text>Cannot switch to frame</text>,
+	UnknownCommand: <text>The requested resource could not be found, or a request was received using an HTTP method that is not supported by the mapped resource</text>,
+	StaleElementReference: <text>Element is no longer inside DOM</text>,
+	ElementNotVisible: <text>Element is not currently visible</text>,
+	InvalidElementState: <text>Cannot perform operation with element because this element is in an invalid state (e.g. attempting to click a disabled element)</text>,
+	ElementIsNotSelectable: <text>Element is not selectable</text>,
+	UnknownError: <text>An unknown server-side error occurred while processing the command</text>,
+	XPathLookupError: <text>An error occurred while searching for an element by XPath</text>,
+	Timeout: <text>This command takes too long to execute</text>,
+	NoSuchWindow: <text>A request to switch to a different window could not be satisfied because the window could not be found</text>,
+	InvalidCookieDomain: <text>Cannot set a cookie on a domain different from the current page</text>,
+	UnableToSetCookie: <text>Cannot set the specified cookie value</text>,
+	UnexpectedAlertOpen: <text>A modal dialog was open, blocking this operation</text>,
+	NoAlertOpenError: <text>There was no modal dialog on page</text>,
+	ScriptTimeout: <text>A script takes too long to execute</text>,
+	InvalidElementCoordinates: <text>The coordinates provided to an interactions operation are invalid</text>,
+	IMENotAvailable: <text>IME was not available</text>,
+	IMEEngineActivationFailed: <text>An IME engine could not be started</text>,
+	InvalidSelector: <text>Element selector is malformed</text>,
+	ElementNotInteractable: <text>Element is not currently interactable and may not be manipulated</text>,
+	JavaScriptError: <text>An error occurred while executing user supplied JavaScript</text>,
+	unknownWebDriverKey: <text>This key is not supported on the target device</text>,
+	unfocusableElement: <text>Element can't receive focus to enter text</text>,
+	unclickableElement: <text>Element click is obstructed by different element</text>,
+	deviceConnectionError: <text>Failed to initialize device control</text>,
+	testIsNotStarted: <text>Cannot continue with the current test anymore because of previous errors or bad initialization</text>,
+	signInRequired: <text>Account needs to be signed in on target device</text>,
+	connectionNotAuthorized: <text>Connection not authorized. Debug mode is not allowed on the device, please make sure it is enabled</text>,
+	higherOSVersionRequired: <text>The app package requires higher OS version</text>,
+	appleError65: <text>Failed to launch app: Apple ID account error. https://suite.st/docs/devices/apple-tv/#apple-id-account-error</text>,
+	appleError70: <text>Failed to launch app: Xcode error. https://suite.st/docs/devices/apple-tv/#xcode-error</text>,
+	appleAppSignError: <text>Failed to launch app: App code sign error. https://suite.st/docs/devices/apple-tv/#app-code-sign-error</text>,
+	missingPSSDK: <text>Please make sure that you have the PlayStation SDK installed. https://suite.st/docs/troubleshooting/playstation/#playstation-sdk-not-installed</text>,
+	targetManagerBusy: <text>Please try again in a few minutes</text>,
+	missingDotNet: <text>Please make sure you have the .NET Framework installed. https://suite.st/docs/troubleshooting/playstation/#net-framework-not-installed</text>,
+	bootstrapAppNotDetected: <text>The Suitest bootstrap application was not detected</text>,
+	activationExpired: <text>Could not open the app because the DevKit/TestKit expired</text>,
+	missingCpp: <text>Make sure you have Microsoft Visual C++ Redistributable installed. https://suite.st/docs/devices/playstation</text>,
+	outOfMemory: <text>Failed to open the app. Device is out of memory, please restart the device</text>,
+	networkError: <text>Network request matching given conditions was not made. https://suite.st/docs/faq/surprises/#network-request-condition-never-matches</text>,
+	instrumentationFailed: <text>Suitest was unable to automatically insert the instrumentation library</text>,
+	packageCorrupted: <text>Failed to open the app. Please make sure that your app is working correctly</text>,
+	unknownElementProperty: <text>Unknown element property</text>,
+	configuratorError: <text>Make sure that Apple Configurator 2 and Automation Tools are installed. https://suite.st/docs/devices/apple-tv/#installing-apple-configurator-2</text>,
+	appStoreBuild: <text>Can’t install App Store distribution build</text>,
+	outdatedLibraryWarning: <text>We have detected that your instrumentation library is outdated, the package can still be opened. Consider updating</text>,
+	cyclicReference: <text>Cyclic reference detected</text>,
+	ioError: <fragment>Problem with storing data. Please check that there is enough disk space and that permissions are not limited. Contact <link href="mailto:support@suite.st">support</link> if problem persists</fragment>,
+	netError: <fragment>Downloading of the driver failed, please check your internet connection and try again later. Contact <link href="mailto:support@suite.st">support</link> if problem persists</fragment>,
+	sdComponentFailed: <fragment>Downloading of the driver failed, please try again later. Contact <link href="mailto:support@suite.st">support</link> if problem persists</fragment>,
+	MoveTargetOutOfBounds: <text>Move target is outside of the visible area of the screen</text>,
+	ElementClickIntercepted: <text>Click on the element was intercepted by another element</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
@@ -123,7 +131,7 @@ const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
 		case 'missingSubject':
 			return <text>Subject does not exist</text>;
 		case 'existingSubject':
-			return <text>Subject expected not to exist</text>;
+			return <text>Subject exists</text>;
 		case 'orderErr':
 			return <text>Suitest instrumentation library should be placed as the first script in your HTML file. Loading the instrumentation library dynamically or after other scripts have loaded may cause many unusual errors</text>;
 		case 'updateAlert':
@@ -147,7 +155,7 @@ const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
 
 	}
 
-	return <text>Condition was not met</text>;
+	return conditionWasNotMetMessage;
 };
 
 const translateInvalidInputError = (result: InvalidInputError): TextNode => {
@@ -228,7 +236,7 @@ const translateDeviceError = (result: DeviceError): TextNode => {
 		return <text>Video adapter error: {message.info.reason}</text> as TextNode;
 	}
 
-	return <text>{simpleErrorMap.internalError}</text> as TextNode;
+	return simpleErrorMap.internalError as TextNode;
 };
 
 const translateUnsupportedButtonError = (result: UnsupportedButtonError): TextNode => {
@@ -341,14 +349,14 @@ const translateOutdatedLibraryError = (result: OutdatedInstrumentationLibraryErr
 };
 
 const translateInvalidRepositoryReference = (result: InvalidRepositoryReferenceError): TextNode => {
-	let textMsg = 'Element was not found in repository';
+	let textMsg = 'Element was not found in the repository';
 
 	if (result.message) {
 		switch (result.message.code) {
 			case 'notExistingElement':
 				break;
 			case 'notExistingPlatform':
-				textMsg = 'Element is not defined for selected platform';
+				textMsg = 'Element is not defined for the selected platform';
 				break;
 			case 'unknownProperty':
 				textMsg = `Element does not support property ${translateElementProperty(result.message.property)}`;
@@ -362,106 +370,130 @@ const translateInvalidRepositoryReference = (result: InvalidRepositoryReferenceE
 	return <text>{textMsg}</text> as TextNode;
 };
 
-// TODO: better test coverage
-export const translateResultMessage = (result: TestLineErrorResult): Node => {
-	if (result.errorType in simpleErrorMap) {
-		return <text>{simpleErrorMap[result.errorType]}</text>;
-	}
-	if (result.errorType === 'queryFailed' && 'message' in result) {
-		return translateQueryFailedResults(result);
-	}
-	if (result.errorType === 'queryFailed') {
-		return <text>Condition was not met</text>;
-	}
-	if (result.errorType === 'invalidInput') {
-		return translateInvalidInputError(result);
-	}
-	if (result.errorType === 'syntaxError') {
-		return translateSyntaxError(result);
-	}
-	if (result.errorType === 'queryTimeout') {
-		return translateQueryTimeoutError(result);
-	}
-	if (result.errorType === 'deviceError') {
-		return translateDeviceError(result);
-	}
-	if (result.errorType === 'unsupportedButton' || result.errorType === 'illegalButton') {
-		return translateUnsupportedButtonError(result);
-	}
-	if (result.errorType === 'aborted') {
-		return translateAbortedError(result);
-	}
-	if (result.errorType === 'invalidVariable') {
-		return translateInvalidVariableError(result);
-	}
-	if (result.errorType === 'invalidValue') {
-		return translateInvalidValueError(result);
-	}
-	if (result.errorType === 'invalidResult') {
-		return translateInvalidResultError(result);
-	}
-	if (result.errorType === 'openAppOverrideFailed') {
-		return translateOpenAppOverrideFailedError();
-	}
-	if (result.errorType === 'invalidReference') {
-		return translateInvalidReferenceError(result);
-	}
-	if (result.errorType === 'adbError') {
-		return translateADBError(result);
-	}
-	if (result.errorType === 'invalidPackage') {
-		return translateInvalidPackageError(result);
-	}
-	if (result.errorType === 'outdatedLibrary' || result.errorType === 'outdatedLibraryConnected') {
-		return translateOutdatedLibraryError(result);
-	}
-	if (result.errorType === 'invalidRepositoryReference') {
-		return translateInvalidRepositoryReference(result);
-	}
+/**
+ * Type guard to help TypeScript better understand the code
+ * @param result
+ */
+const isSimpleErrorResult = (result: TestLineErrorResult): result is SimpleError =>
+	 result.errorType in simpleErrorMap;
 
-	console.warn('Error message not implemented for', JSON.stringify(result));
+/**
+ * This function should never be called in production, as long as all known errors
+ * have translation.
+ * @param result
+ */
+const unknownErrorMessage = (result: never): Node => {
+	console.warn(`Error message not implemented for: ${JSON.stringify(result)}. Make sure you are using the latest version of the @suitest/translate library.`);
 
 	return <text>Unknown error occurred</text>;
+};
+
+// TODO: better test coverage
+export const translateResultErrorMessage = (result: TestLineErrorResult): Node => {
+	if (isSimpleErrorResult(result)) {
+		return simpleErrorMap[result.errorType];
+	}
+
+	switch (result.errorType) {
+		case 'queryFailed':
+			if ('message' in result) {
+				return translateQueryFailedResults(result);
+			}
+
+			return conditionWasNotMetMessage;
+		case 'invalidInput':
+			return translateInvalidInputError(result);
+		case 'syntaxError':
+			return translateSyntaxError(result);
+		case 'queryTimeout':
+			return translateQueryTimeoutError(result);
+		case 'deviceError':
+			return translateDeviceError(result);
+		case 'unsupportedButton':
+		case 'illegalButton':
+			return translateUnsupportedButtonError(result);
+		case 'aborted':
+			return translateAbortedError(result);
+		case 'invalidVariable':
+			return translateInvalidVariableError(result);
+		case 'invalidValue':
+			return translateInvalidValueError(result);
+		case 'invalidResult':
+			return translateInvalidResultError(result);
+		case 'openAppOverrideFailed':
+			return translateOpenAppOverrideFailedError();
+		case 'invalidReference':
+			return translateInvalidReferenceError(result);
+		case 'adbError':
+			return translateADBError(result);
+		case 'invalidPackage':
+			return translateInvalidPackageError(result);
+		case 'outdatedLibrary':
+		case 'outdatedLibraryConnected':
+			return translateOutdatedLibraryError(result);
+		case 'invalidRepositoryReference':
+			return translateInvalidRepositoryReference(result);
+		default:
+			return unknownErrorMessage(result);
+	}
 };
 
 const getScreenshotUrl = (screenshotPath?: string): string | undefined => screenshotPath
 	? baseScreenshotPath + screenshotPath
 	: undefined;
 
+const getInvertedResultMessage = (
+	testLine: TestLine,
+	lineResult?: TestLineResult
+): Node | undefined => {
+	if (
+		!lineResult // Does not make sense to translate inverted result if there is no result to compare to
+		|| (testLine.type !== 'assert' && testLine.type !== 'wait') // Only assert lines can be inverted by definition
+		|| !('then' in testLine) // Make the code future-proof, we might drop inverse conditions
+		|| testLine.then === 'success' // Not an inverse result
+		|| (lineResult.errorType && lineResult.errorType !== 'queryFailed' && lineResult.errorType !== 'appRunning') // failure not related to condition, thus can't be inverted
+	) {
+		return undefined;
+	}
+
+	return lineResult.result === testLine.then ? conditionWasMetMessage : conditionWasNotMetMessage;
+};
+
+const getLineResultMessage = (testLine: TestLine, lineResult?: TestLineResult): Node | undefined => {
+	const invertedResult = getInvertedResultMessage(testLine, lineResult);
+	if (invertedResult) {
+		return invertedResult;
+	}
+
+	// Handle case when result is success
+	if (!lineResult || lineResult.result === 'success') {
+		return undefined;
+	}
+
+	if (lineResult.result === 'excluded') {
+		return <text>Line was not executed</text>;
+	}
+
+	if (testLine.type === 'runSnippet' && !lineResult.errorType) {
+		// Snippet failed because one of it's children failed
+		return undefined;
+	}
+
+	return translateResultErrorMessage(lineResult as TestLineErrorResult);
+};
+
 export const translateTestLineResult = (options: {
 	testLine: TestLine,
-	appConfig: AppConfiguration,
+	appConfig?: AppConfiguration,
 	lineResult?: TestLineResult,
 	elements?: Elements,
 	snippets?: Snippets,
 }): TestLineResultNode => {
-	const testLineTranslation = translateTestLine(options);
 	const {lineResult} = options;
-	const {then} = options.testLine as AssertTestLine;
-
-	if (lineResult && then !== 'success') {
-		const messege = lineResult?.result === 'success'
-			? <text>Condition was not met</text>
-			: <text>Condition was met</text>;
-		const unexpectedResult = lineResult.errorType && !['appRunning', 'queryFailed'].includes(lineResult.errorType);
-
-		return <test-line-result
-			status={lineResult?.result}
-			message={unexpectedResult ? translateResultMessage(lineResult as TestLineErrorResult) : messege}
-		>{testLineTranslation}</test-line-result> as TestLineResultNode;
-	}
-
-	if (!lineResult || lineResult.result === 'success' || lineResult.result === 'excluded' || !('errorType' in lineResult)) {
-		// TODO: not pass "success" to status if lineResult is undefined
-		return <test-line-result
-			status={lineResult?.result ?? 'success'}
-			screenshot={getScreenshotUrl(lineResult?.screenshot)}
-		>{testLineTranslation}</test-line-result> as TestLineResultNode;
-	}
 
 	return <test-line-result
-		status={lineResult.result}
-		message={translateResultMessage(lineResult)}
-		screenshot={getScreenshotUrl(lineResult.screenshot)}
-	>{testLineTranslation}</test-line-result> as TestLineResultNode;
+		status={lineResult?.result ?? 'success'}
+		message={getLineResultMessage(options.testLine, lineResult)}
+		screenshot={getScreenshotUrl(lineResult?.screenshot)}
+	>{translateTestLine(options)}</test-line-result> as TestLineResultNode;
 };

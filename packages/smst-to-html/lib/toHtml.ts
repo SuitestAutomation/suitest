@@ -23,6 +23,16 @@ export const escapeHtml = (text: string): string => text.replace(/[&<"']/g, m =>
 	}
 });
 
+export const escapeUrl = (url: string): string => {
+	if (url.startsWith('javascript:')) {
+		return '';
+	}
+
+	return url.replace(
+		/[^\w. ]/gi,
+		c => '&#x' + ('0000' + c.charCodeAt(0).toString(16)).slice(-4)
+	);
+};
 
 /**
  * Helper function to build HTML figure element
@@ -163,10 +173,7 @@ const renderNode = (node: SingleNode, {verbosity}: {verbosity: Verbosity}): stri
 		case 'test-line-result':
 			return renderHtmlTestLineResultNode(node, {verbosity});
 		case 'link':
-			// TODO: should we create special class for link?
-			return !node.value ?
-				`<a href="${node.href}">${node.href}</a>` :
-				`<a href="${node.href}">${node.value}</a>`;
+			return `<a class="suitest-test-line__text--link" href="${escapeUrl(node.href)}">${escapeHtml(node.value ? node.value : node.href)}</a>`;
 		default:
 			/* istanbul ignore next */
 			return assertUnknownSectionNode(node);

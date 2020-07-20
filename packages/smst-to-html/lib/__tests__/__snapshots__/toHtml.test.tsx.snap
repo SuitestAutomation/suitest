@@ -12,6 +12,14 @@ exports[` 5`] = `"<div class=\\"suitest-test-line__code-block\\"><pre><code clas
 
 exports[` 6`] = `"&lt;script>alert(&quot;xss&quot;)&lt;/script>"`;
 
+exports[` 7`] = `
+Object {
+  "href": "?<script>alert(\\"xss\\")</script>",
+  "type": "link",
+  "value": "TEST",
+}
+`;
+
 exports[`AST renderers html renderer should handle code blocks 1`] = `"<div class=\\"suitest-test-line__code-block\\"><pre><code class=\\"language-javascript\\">someJS();</code></pre></div>"`;
 
 exports[`AST renderers html renderer should handle code blocks 2`] = `
@@ -46,11 +54,11 @@ someJS(); someJS(); someJS();
 someJS(); someJS(); someJS();</code></pre></div></td></tr></table></div></div>"
 `;
 
-exports[`AST renderers html renderer should render link 1`] = `"<a href=\\"http://some.url\\">Some URL</a>"`;
+exports[`AST renderers html renderer should render link 1`] = `"<a class=\\"suitest-test-line__text--link\\" href=\\"http&#x003a&#x002f&#x002fsome.url\\">Some URL</a>"`;
 
-exports[`AST renderers html renderer should render link 2`] = `"<a href=\\"http://some.url\\">http://some.url</a>"`;
+exports[`AST renderers html renderer should render link 2`] = `"<a class=\\"suitest-test-line__text--link\\" href=\\"http&#x003a&#x002f&#x002fsome.url\\">http://some.url</a>"`;
 
-exports[`AST renderers html renderer should render link 3`] = `"<a href=\\"http://some.url\\">http://some.url</a>"`;
+exports[`AST renderers html renderer should render link 3`] = `"<a class=\\"suitest-test-line__text--link\\" href=\\"http&#x003a&#x002f&#x002fsome.url\\">http://some.url</a>"`;
 
 exports[`AST renderers html renderer should render results with quiet level 1`] = `"<div class=\\"suitest-test-line__result suitest-test-line__result--fail\\"><div class=\\"suitest-test-line suitest-test-line--fail\\"><div class=\\"suitest-test-line__title\\">Assert application has exited</div></div><div class=\\"suitest-test-line__result__message\\">Condition was not met</div></div>"`;
 
