@@ -307,10 +307,16 @@ const translateInvalidReferenceError = (result: InvalidReferenceError): TextNode
 		<text>{start} test definition contains "Run Test" lines that refer to non-existing test</text> as TextNode;
 };
 
-const translateADBError = (result: ADBError): TextNode => <text>{
-		result.message?.info.reason ??
-		'ADB communication with the device has failed. Make sure your device is set up correctly and it can be connected to using ADB'
-	}</text> as TextNode;
+const translateADBError = (result: ADBError): TextNode => {
+	if (result.message && 'code' in result.message && result.message.code === 'certificateError') {
+		return <text>{result.message.code}</text> as TextNode;
+	}
+	if (result.message && 'info' in result.message) {
+		return <text>{result.message.info.reason}</text> as TextNode;
+	}
+
+	return <text>ADB communication with the device has failed. Make sure your device is set up correctly and it can be connected to using ADB</text> as TextNode;
+};
 
 const translateInvalidPackageError = (result: InvalidPackageError): TextNode => {
 	const defaultMessage = <text>Package cannot be launched on simulator device</text> as TextNode;
