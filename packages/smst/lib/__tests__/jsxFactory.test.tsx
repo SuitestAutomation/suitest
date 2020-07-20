@@ -143,7 +143,8 @@ describe('jsxFactory', () => {
 			children: [{type: 'text', value: 'text'}],
 		});
 
-		expect(<test-line title={<fragment>Some <subject>subject</subject> title</fragment>}>
+		expect(<test-line docs={<link href={'//link/to/docs'}/> as LinkNode}
+						  title={<fragment>Some <subject>subject</subject> title</fragment>}>
 			<text>text</text>
 		</test-line>).toEqual({
 			type: 'test-line',
@@ -152,6 +153,11 @@ describe('jsxFactory', () => {
 				{type: 'subject', value: 'subject'},
 				{type: 'text', value: ' title'},
 			],
+			docs: {
+				'href': '//link/to/docs',
+				'type': 'link',
+				'value': '',
+			},
 			children: [{type: 'text', value: 'text'}],
 		});
 
