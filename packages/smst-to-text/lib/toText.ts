@@ -322,7 +322,11 @@ const renderProps = (
 			// While there is a non-empty line in at least one cell
 			lines.push(prefix + row
 				.map((cell, columnIndex) => {
-					const cellLine = cell.shift() ?? '';
+					let cellLine = cell.shift() ?? '';
+					const cellLineLength = calcPureLength(cellLine);
+					if (cellLineLength < columnsLength[columnIndex]) {
+						cellLine += ' '.repeat(columnsLength[columnIndex] - cellLineLength);
+					}
 
 					return cellLine[columnIndex === 1 ? 'padStart' : 'padEnd'](columnsLength[columnIndex]);
 				})

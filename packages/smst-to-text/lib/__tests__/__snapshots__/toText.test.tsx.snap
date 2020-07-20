@@ -7,7 +7,7 @@ exports[` 1`] = `
                                                           expected value                                              
                                                         → expected value expected value expected value expected value 
                                                           expected value                                              
-    [32m✔ [0mJavaScript expression                     
+    [32m✔ [0mJavaScript expression                              
       > someJS(); someJS(); someJS(); someJS();        
       > someJS(); someJS(); someJS();                  
       > someJS(); someJS(); someJS();                  
@@ -22,7 +22,7 @@ exports[` 2`] = `
                                                           expected value                                              
                                                         → expected value expected value expected value expected value 
                                                           expected value                                              
-    [32m✔ [0mJavaScript expression                     
+    [32m✔ [0mJavaScript expression                              
       > someJS(); someJS(); someJS(); someJS();        
       > someJS(); someJS(); someJS();                  
       > someJS(); someJS(); someJS();                  
@@ -79,7 +79,7 @@ exports[`AST renderers formatted text renderer should handle props 2`] = `
                                                       expected value                                              
                                                     → expected value expected value expected value expected value 
                                                       expected value                                              
-[32m✔ [0mJavaScript expression                     
+[32m✔ [0mJavaScript expression                              
   > someJS(); someJS(); someJS(); someJS();        
   > someJS(); someJS(); someJS();                  
   > someJS(); someJS(); someJS();                  "
@@ -92,11 +92,18 @@ exports[`AST renderers formatted text renderer should handle props 3`] = `
 
 exports[`AST renderers formatted text renderer should handle props 4`] = `
 "Empty string     contains [EMPTY STRING]                                              
-                        → [EMPTY STRING]                                              
-Empty number            > 0                                                           
-                        → NaN                                                         
-Empty code block        = [36mlooooooooooooooo oooooooo ooooooo ooooo ooooo oooooooooo ooo[0m
-                          [36mo oooo ng[0m (and some next text block)               "
+                 →        [EMPTY STRING]                                              
+Empty number     >        0                                                           
+                 →        NaN                                                         
+Empty code block =        [36mlooooooooooooooo oooooooo ooooooo ooooo ooooo oooooooooo ooo[0m
+                          [36mo oooo ng[0m (and some next text block)                        "
+`;
+
+exports[`AST renderers formatted text renderer should handle props 5`] = `
+"[31m✖ [0mrequest header name          = another header
+[32m✔ [0mrequest header some name     = another header
+request header some loong name = another header
+[31m✖ [0mrequest header another name  = another header"
 `;
 
 exports[`AST renderers formatted text renderer should render condition 1`] = `"condition: element [32mMy element[0m exists"`;
@@ -107,7 +114,7 @@ exports[`AST renderers formatted text renderer should render condition 2`] = `
                                                         expected value                                              
                                                       → expected value expected value expected value expected value 
                                                         expected value                                              
-  [32m✔ [0mJavaScript expression                     
+  [32m✔ [0mJavaScript expression                              
     > someJS(); someJS(); someJS(); someJS();        
     > someJS(); someJS(); someJS();                  
     > someJS(); someJS(); someJS();                  "
@@ -142,7 +149,7 @@ exports[`AST renderers formatted text renderer should render test line results 1
                                                           expected value                                              
                                                         → expected value expected value expected value expected value 
                                                           expected value                                              
-    [32m✔ [0mJavaScript expression                     
+    [32m✔ [0mJavaScript expression                              
       > someJS(); someJS(); someJS(); someJS();        
       > someJS(); someJS(); someJS();                  
       > someJS(); someJS(); someJS();                  
@@ -179,7 +186,7 @@ exports[`AST renderers formatted text renderer should render test line results w
                                                           expected value                                              
                                                         → expected value expected value expected value expected value 
                                                           expected value                                              
-    [32m✔ [0mJavaScript expression                     
+    [32m✔ [0mJavaScript expression                              
       > someJS(); someJS(); someJS(); someJS();        
       > someJS(); someJS(); someJS();                  
       > someJS(); someJS(); someJS();                  
@@ -242,7 +249,7 @@ exports[`AST renderers formatted text renderer should render test line results w
                                                           expected value                                              
                                                         → expected value expected value expected value expected value 
                                                           expected value                                              
-    [32m✔ [0mJavaScript expression                     
+    [32m✔ [0mJavaScript expression                              
       > someJS(); someJS(); someJS(); someJS();        
       > someJS(); someJS(); someJS();                  
       > someJS(); someJS(); someJS();                  
@@ -294,11 +301,18 @@ exports[`AST renderers plain text renderer should handle props 3`] = `
 
 exports[`AST renderers plain text renderer should handle props 4`] = `
 "Empty string     contains [EMPTY STRING]                                              
-                        → [EMPTY STRING]                                              
-Empty number            > 0                                                           
-                        → NaN                                                         
-Empty code block        = looooooooooooooo oooooooo ooooooo ooooo ooooo oooooooooo ooo
+                 →        [EMPTY STRING]                                              
+Empty number     >        0                                                           
+                 →        NaN                                                         
+Empty code block =        looooooooooooooo oooooooo ooooooo ooooo ooooo oooooooooo ooo
                           o oooo ng (and some next text block)                        "
+`;
+
+exports[`AST renderers plain text renderer should handle props 5`] = `
+"✖ request header name          = another header
+✔ request header some name     = another header
+request header some loong name = another header
+✖ request header another name  = another header"
 `;
 
 exports[`AST renderers plain text renderer should render condition 1`] = `"condition: element My element exists"`;

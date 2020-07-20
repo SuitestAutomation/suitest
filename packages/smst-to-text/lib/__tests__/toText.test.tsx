@@ -164,6 +164,31 @@ describe('AST renderers', () => {
 					comparator={'='}
 				/>
 			</props>, options)).toMatchSnapshot();
+			expect(toText(<props>
+				<prop
+					status="fail"
+					name={<fragment>request <text>header</text> name</fragment>}
+					comparator="="
+					expectedValue="another header"
+				/>
+				<prop
+					status="success"
+					name={<fragment>request <text>header</text> some name</fragment>}
+					comparator="="
+					expectedValue="another header"
+				/>
+				<prop
+					name={<fragment>request <text>header</text> some loong name</fragment>}
+					comparator="="
+					expectedValue="another header"
+				/>
+				<prop
+					status="fail"
+					name={<fragment>request <text>header</text> another name</fragment>}
+					comparator="="
+					expectedValue="another header"
+				/>
+			</props>, options)).toMatchSnapshot();
 		});
 
 		it('should throw if trying to render a single prop', () => {
