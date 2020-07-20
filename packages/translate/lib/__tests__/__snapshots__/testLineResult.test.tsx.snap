@@ -2,7 +2,6 @@
 
 exports[`Test line results translation Translate assert lines translate "assert application has exited" render with fail result 1`] = `
 "✖ Assert: Application has exited
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: App is still running"
 `;
 
@@ -12,7 +11,6 @@ exports[`Test line results translation Translate assert lines translate "assert 
 
 exports[`Test line results translation Translate assert lines translate "assert cookie" existingSubject error 1`] = `
 "✖ Assert: cookie cookie-name does not exist
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Subject exists"
 `;
 
@@ -20,18 +18,28 @@ exports[`Test line results translation Translate assert lines translate "assert 
 "✖ Assert: cookie cookieName
   ✖ cookieName matches
     > cookieValue
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Exception was thrown: \\"cookieValue is not defined\\""
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert cookie" missingSubject error 1`] = `
 "✖ Assert: cookie suitest-cookie
   ✖ suitest-cookie = suitest
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Subject does not exist"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert cookie" queryFailed (cookie value not matched) error 1`] = `
+"✖ Assert: cookie suitest-cookie
+  ✖ suitest-cookie = suitest          
+                   → some cookie value
+  fail: Condition was not met"
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert cookie" queryFailed (cookie value not matched) error 2`] = `
+"✖ Assert: cookie suitest-cookie
+  fail: Condition was not met"
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert cookie" queryFailed (cookie value not matched) error 3`] = `
 "✖ Assert: cookie suitest-cookie
   ✖ suitest-cookie = suitest          
                    → some cookie value
@@ -45,7 +53,6 @@ exports[`Test line results translation Translate assert lines translate "assert 
     > function somePredicate(val) {
     > return false;
     > }           
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Condition was not met"
 `;
 
@@ -65,7 +72,6 @@ exports[`Test line results translation Translate assert lines translate "assert 
     > function somePredicate(location) {
     > return false; 
     > }             
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Condition was not met"
 `;
 
@@ -73,14 +79,25 @@ exports[`Test line results translation Translate assert lines translate "assert 
 "✖ Assert: Current location
   ✖ current location matches JS
     > something     
+  fail: Exception was thrown: \\"something is not defined\\""
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert current location" errorType: "queryFailed" matchjs failed 3`] = `
+"✖ Assert: Current location
+  ✖ current location matches JS
+    > something     
   docs: https://suite.st/docs/testing/test-subjects/
+  fail: Exception was thrown: \\"something is not defined\\""
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert current location" errorType: "queryFailed" matchjs failed 4`] = `
+"✖ Assert: Current location
   fail: Exception was thrown: \\"something is not defined\\""
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert current location" errorType: "queryFailed" with message.code 1`] = `
 "✖ Assert: Current location
   ✖ current location contains http://some.url
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Wrong app ID detected"
 `;
 
@@ -88,7 +105,19 @@ exports[`Test line results translation Translate assert lines translate "assert 
 "✖ Assert: Current location
   ✖ current location contains http://some.url                                        
                             → http://file.suite.st/sampleapp_staging/index-hbbtv.html
+  fail: Condition was not met"
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert current location" errorType: "queryFailed", location value not matched 2`] = `
+"✖ Assert: Current location
+  ✖ current location contains http://some.url                                        
+                            → http://file.suite.st/sampleapp_staging/index-hbbtv.html
   docs: https://suite.st/docs/testing/test-subjects/
+  fail: Condition was not met"
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert current location" errorType: "queryFailed", location value not matched 3`] = `
+"✖ Assert: Current location
   fail: Condition was not met"
 `;
 
@@ -96,6 +125,13 @@ exports[`Test line results translation Translate assert lines translate "assert 
 "✔ Assert: Current location
   ✔ current location contains http://some.url"
 `;
+
+exports[`Test line results translation Translate assert lines translate "assert current location" with success result 2`] = `
+"✔ Assert: Current location
+  ✔ current location contains http://some.url"
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert current location" with success result 3`] = `"✔ Assert: Current location"`;
 
 exports[`Test line results translation Translate assert lines translate "assert current location" without appConfig 1`] = `
 "Assert: Current location
@@ -109,31 +145,26 @@ exports[`Test line results translation Translate assert lines translate "assert 
 
 exports[`Test line results translation Translate assert lines translate "assert element" invalidRepositoryReference results general error 1`] = `
 "✖ Assert: Unknown element (some-id) exists
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Element was not found in the repository"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert element" invalidRepositoryReference results notExistingElement message code 1`] = `
 "✖ Assert: Unknown element (some-id) exists
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Element was not found in the repository"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert element" invalidRepositoryReference results notExistingPlatform message code 1`] = `
 "✖ Assert: Element 1 exists
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Element is not defined for the selected platform"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert element" queryFailed results element visible fail 1`] = `
 "✖ Assert: My element is visible
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert element" queryFailed results existingSubject 1`] = `
 "✖ Assert: Element 1 does not exist
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Subject exists"
 `;
 
@@ -168,7 +199,6 @@ exports[`Test line results translation Translate assert lines translate "assert 
                      → 0                                                           
   ✖ visibility       = invisible                                                   
                      → property missing                                            
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Condition was not met"
 `;
 
@@ -207,7 +237,6 @@ exports[`Test line results translation Translate assert lines translate "assert 
                             → wrong format                                                
   ✖ text color              = rgba(255, dddd, 255, 1)                                     
                             → wrong format                                                
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Test command received invalid input"
 `;
 
@@ -218,7 +247,6 @@ exports[`Test line results translation Translate assert lines translate "assert 
     > console.log(testSubject);                    
     > return true;                                 
     > }                                            
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Exception was thrown: \\"Unexpected token '('\\""
 `;
 
@@ -226,19 +254,21 @@ exports[`Test line results translation Translate assert lines translate "assert 
 "✖ Assert: {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JavaScript
   ✖ {\\"css\\":\\".some.class\\",\\"xpath\\":\\"//div\\",\\"index\\":1} matches JS
     > someJS();                                    
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert element" queryFailed results missingSubject 1`] = `
 "✖ Assert: Element 1 exists
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Subject does not exist"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert element" without appConfig 1`] = `"Assert: Element 1 exists"`;
 
 exports[`Test line results translation Translate assert lines translate "assert element" without error "element ... does not exist" 1`] = `"Assert: Element 1 does not exist"`;
+
+exports[`Test line results translation Translate assert lines translate "assert element" without error "element ... does not exist" 2`] = `"Assert: Element 1 does not exist"`;
+
+exports[`Test line results translation Translate assert lines translate "assert element" without error "element ... does not exist" 3`] = `"Assert: Element 1 does not exist"`;
 
 exports[`Test line results translation Translate assert lines translate "assert element" without error "element ... exist" 1`] = `"Assert: Element 1 exists"`;
 
@@ -271,17 +301,30 @@ exports[`Test line results translation Translate assert lines translate "assert 
     > 1 + 1          
   ✖ expression result = 3
                       → 2
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert javascript expression" errorType: "queryFailed" expression matching failed 2`] = `
 "✖ Assert: JavaScript expression
+  fail: Condition was not met"
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert javascript expression" errorType: "queryFailed" expression matching failed 3`] = `
+"✖ Assert: JavaScript expression
+  ✖ expression         
+    > 1 + 1          
+  ✖ expression result = 3
+                      → 2
+  docs: https://suite.st/docs/testing/test-subjects/
+  fail: Condition was not met"
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert javascript expression" errorType: "queryFailed" expression matching failed 4`] = `
+"✖ Assert: JavaScript expression
   ✖ expression                  
     > 120 + 3        
   ✖ expression result ! contains 12 
                                → 123
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Condition was not met"
 `;
 
@@ -290,7 +333,6 @@ exports[`Test line results translation Translate assert lines translate "assert 
   ✖ expression         
     > function test() { return 123
   ✖ expression result = 123
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Exception was thrown: \\"Unexpected end of input\\""
 `;
 
@@ -299,7 +341,6 @@ exports[`Test line results translation Translate assert lines translate "assert 
   ✖ expression         
     > [NOT SPECIFIED]
   ✖ expression result = [NOT SPECIFIED]
-  docs: https://suite.st/docs/testing/test-subjects/
   fatal: Internal error occurred"
 `;
 
@@ -308,7 +349,6 @@ exports[`Test line results translation Translate assert lines translate "assert 
   ✖ expression         
     > [NOT SPECIFIED]
   ✖ expression result = 1
-  docs: https://suite.st/docs/testing/test-subjects/
   fatal: Internal error occurred"
 `;
 
@@ -317,7 +357,6 @@ exports[`Test line results translation Translate assert lines translate "assert 
   ✖ expression         
     > 1              
   ✖ expression result = [NOT SPECIFIED]
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Test command received invalid input"
 `;
 
@@ -388,7 +427,6 @@ exports[`Test line results translation Translate assert lines translate "assert 
                                                 	<div id=\\"content\\"></div>                                   
                                                 </body>                                                     
                                                 </html>                                                     
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Condition was not met"
 `;
 
@@ -396,14 +434,12 @@ exports[`Test line results translation Translate assert lines translate "assert 
 "✖ Assert: network request was made in entire network log
   URL                    = http://suite.st/123 (http://suite.st/<%var1%>)
   response status contains 303                                           
-  docs: https://suite.st/docs/testing/test-subjects/
   fatal: Test command received invalid input"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert network" render fail results url not matched 1`] = `
 "✖ Assert: network request was made in entire network log
   ✖ URL = http://suite.st/123 (http://suite.st/<%var1%>)
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Condition was not met"
 `;
 
@@ -416,7 +452,6 @@ exports[`Test line results translation Translate assert lines translate "assert 
   response status                                        > 123                                                       
   response header Content-123 (Content-<%var1%>) ends with val2/javascript (<%var2%>/javascript)                     
   response body                                          = response <%non_existing_var%> <%kind-of|var but not%> body
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Condition was not met"
 `;
 
@@ -443,7 +478,6 @@ exports[`Test line results translation Translate assert lines translate "assert 
 
 exports[`Test line results translation Translate assert lines translate "assert ps video" render with fail result 1`] = `
 "✖ Assert: PlayStation 4 video had no error for any source
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Please make sure that you have the PlayStation SDK installed. https://suite.st/docs/troubleshooting/playstat
         ion/#playstation-sdk-not-installed"
 `;
@@ -456,25 +490,32 @@ exports[`Test line results translation Translate assert lines translate "assert 
 
 exports[`Test line results translation Translate assert lines translate "openAppOverrideFailed" render with addition errorType 1`] = `
 "✖ Open application
-  docs: https://suite.st/docs/testing/test-operations/open-app-operation/
   fail: Open app override failed"
 `;
 
 exports[`Test line results translation Translate assert lines translate "openAppOverrideFailed" render with addition errorType 2`] = `
 "✖ Open application
+  fail: Open app override failed"
+`;
+
+exports[`Test line results translation Translate assert lines translate "openAppOverrideFailed" render with addition errorType 3`] = `
+"✖ Open application
   docs: https://suite.st/docs/testing/test-operations/open-app-operation/
+  fail: Open app override failed"
+`;
+
+exports[`Test line results translation Translate assert lines translate "openAppOverrideFailed" render with addition errorType 4`] = `
+"✖ Open application
   fail: Open app override failed"
 `;
 
 exports[`Test line results translation Translate assert lines translate "openAppOverrideFailed" render with lineId 1`] = `
 "✖ Open application
-  docs: https://suite.st/docs/testing/test-operations/open-app-operation/
   fail: Open app override failed"
 `;
 
 exports[`Test line results translation Translate assert lines translate "openAppOverrideFailed" render without appConfig 1`] = `
 "✖ Open application
-  docs: https://suite.st/docs/testing/test-operations/open-app-operation/
   fail: Open app override failed"
 `;
 
@@ -490,7 +531,21 @@ exports[`Test line results translation Translate assert lines translate line wit
 
 exports[`Test line results translation Translate assert lines translate line with screenshot should render line with screenshot 2`] = `
 "✖ Press button OK
+  fail: ADB communication with the device has failed. Make sure your device is set up correctly and it can be connected
+        to using ADB
+  screenshot: https://the.suite.st/path/to/file.png"
+`;
+
+exports[`Test line results translation Translate assert lines translate line with screenshot should render line with screenshot 3`] = `
+"✖ Press button OK
   docs: https://suite.st/docs/testing/test-operations/press-button-operation/
+  fail: ADB communication with the device has failed. Make sure your device is set up correctly and it can be connected
+        to using ADB
+  screenshot: https://the.suite.st/path/to/file.png"
+`;
+
+exports[`Test line results translation Translate assert lines translate line with screenshot should render line with screenshot 4`] = `
+"✖ Press button OK
   fail: ADB communication with the device has failed. Make sure your device is set up correctly and it can be connected
         to using ADB
   screenshot: https://the.suite.st/path/to/file.png"
@@ -500,7 +555,6 @@ exports[`Test line results translation Translate assert lines translate line wit
 
 exports[`Test line results translation Translate assert lines translate line with screenshot should render line without screenshot 2`] = `
 "✖ Press button OK
-  docs: https://suite.st/docs/testing/test-operations/press-button-operation/
   fail: ADB communication with the device has failed. Make sure your device is set up correctly and it can be connected
         to using ADB"
 `;
@@ -524,13 +578,11 @@ exports[`Test line results translation assert then exit translate "assert networ
 
 exports[`Test line results translation assert then exit translate "openAppOverrideFailed" with then exit render with addition errorType 1`] = `
 "✖ Open application
-  docs: https://suite.st/docs/testing/test-operations/open-app-operation/
   fail: Open app override failed"
 `;
 
 exports[`Test line results translation assert then exit translate "openAppOverrideFailed" with then exit render with addition errorType 2`] = `
 "✖ Open application
-  docs: https://suite.st/docs/testing/test-operations/open-app-operation/
   fail: Open app override failed"
 `;
 
@@ -600,19 +652,16 @@ exports[`Test line results translation assert then exit translate then exit and 
 
 exports[`Test line results translation assert then exit translate then exit and "assert element" translate not queryFailed errors general error 1`] = `
 "✖ Assert: Unknown element (some-id) exists then stop test
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Element was not found in the repository"
 `;
 
 exports[`Test line results translation assert then exit translate then exit and "assert element" translate not queryFailed errors notExistingElement message code 1`] = `
 "✖ Assert: Unknown element (some-id) exists then stop test
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Element was not found in the repository"
 `;
 
 exports[`Test line results translation assert then exit translate then exit and "assert element" translate not queryFailed errors notExistingPlatform message code 1`] = `
 "✖ Assert: Element 1 exists then stop test
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Element is not defined for the selected platform"
 `;
 
@@ -658,7 +707,6 @@ exports[`Test line results translation assert then exit translate then exit and 
 exports[`Test line results translation assert then fail translate "assert network" render fail result 1`] = `
 "✖ Assert: network request was made in entire network log then fail
   ✔ URL = http://suite.st/123 (http://suite.st/<%var1%>)
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Condition was met"
 `;
 
@@ -675,19 +723,16 @@ exports[`Test line results translation assert then fail translate "assert networ
 
 exports[`Test line results translation assert then fail translate "openAppOverrideFailed" with then fail render with addition errorType 1`] = `
 "✖ Open application
-  docs: https://suite.st/docs/testing/test-operations/open-app-operation/
   fail: Open app override failed"
 `;
 
 exports[`Test line results translation assert then fail translate "openAppOverrideFailed" with then fail render with addition errorType 2`] = `
 "✖ Open application
-  docs: https://suite.st/docs/testing/test-operations/open-app-operation/
   fail: Open app override failed"
 `;
 
 exports[`Test line results translation assert then fail translate then fail "assert application has exited" render with fail result 1`] = `
 "✖ Assert: Application has exited then fail
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Condition was met"
 `;
 
@@ -701,7 +746,6 @@ exports[`Test line results translation assert then fail translate then fail "ass
 exports[`Test line results translation assert then fail translate then fail and "assert cookie" with fail result 1`] = `
 "✖ Assert: cookie suitest-cookie then fail
   ✔ suitest-cookie = suitest-cookie
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Condition was met"
 `;
 
@@ -727,7 +771,6 @@ exports[`Test line results translation assert then fail translate then fail and 
 exports[`Test line results translation assert then fail translate then fail and "assert current location" with fail result 1`] = `
 "✖ Assert: Current location then fail
   ✔ current location contains file.suite.st
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Condition was met"
 `;
 
@@ -744,7 +787,6 @@ exports[`Test line results translation assert then fail translate then fail and 
 
 exports[`Test line results translation assert then fail translate then fail and "assert element" "element ... exist" fail 1`] = `
 "✖ Assert: Element 1 exists then fail
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Condition was met"
 `;
 
@@ -755,19 +797,16 @@ exports[`Test line results translation assert then fail translate then fail and 
 
 exports[`Test line results translation assert then fail translate then fail and "assert element" translate not queryFailed errors general error 1`] = `
 "✖ Assert: Unknown element (some-id) exists then fail
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Element was not found in the repository"
 `;
 
 exports[`Test line results translation assert then fail translate then fail and "assert element" translate not queryFailed errors notExistingElement message code 1`] = `
 "✖ Assert: Unknown element (some-id) exists then fail
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Element was not found in the repository"
 `;
 
 exports[`Test line results translation assert then fail translate then fail and "assert element" translate not queryFailed errors notExistingPlatform message code 1`] = `
 "✖ Assert: Element 1 exists then fail
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Element is not defined for the selected platform"
 `;
 
@@ -777,7 +816,6 @@ exports[`Test line results translation assert then fail translate then fail and 
     > 1 + 1          
   ✔ expression result = 3
                       → 2
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Condition was met"
 `;
 
@@ -799,7 +837,6 @@ exports[`Test line results translation assert then fail translate then fail and 
 
 exports[`Test line results translation assert then fail translate then fail and "assert ps video" render with fail result 1`] = `
 "✖ Assert: PlayStation 4 video had no error for any source then fail
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Condition was met"
 `;
 
@@ -831,13 +868,11 @@ exports[`Test line results translation assert then warning translate "assert net
 
 exports[`Test line results translation assert then warning translate "openAppOverrideFailed" with then warning render with addition errorType 1`] = `
 "✖ Open application
-  docs: https://suite.st/docs/testing/test-operations/open-app-operation/
   fail: Open app override failed"
 `;
 
 exports[`Test line results translation assert then warning translate "openAppOverrideFailed" with then warning render with addition errorType 2`] = `
 "✖ Open application
-  docs: https://suite.st/docs/testing/test-operations/open-app-operation/
   fail: Open app override failed"
 `;
 
@@ -907,19 +942,16 @@ exports[`Test line results translation assert then warning translate then warnin
 
 exports[`Test line results translation assert then warning translate then warning and "assert element" translate not queryFailed errors general error 1`] = `
 "✖ Assert: Unknown element (some-id) exists then warn
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Element was not found in the repository"
 `;
 
 exports[`Test line results translation assert then warning translate then warning and "assert element" translate not queryFailed errors notExistingElement message code 1`] = `
 "✖ Assert: Unknown element (some-id) exists then warn
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Element was not found in the repository"
 `;
 
 exports[`Test line results translation assert then warning translate then warning and "assert element" translate not queryFailed errors notExistingPlatform message code 1`] = `
 "✖ Assert: Element 1 exists then warn
-  docs: https://suite.st/docs/testing/test-subjects/
   fail: Element is not defined for the selected platform"
 `;
 

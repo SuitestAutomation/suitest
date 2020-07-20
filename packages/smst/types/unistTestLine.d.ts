@@ -97,3 +97,5 @@ export type SingleNode = InlineTextNode
 	| LinkNode;
 
 export type Node =  SingleNode | SingleNode[];
+
+export type Verbosity = 'quiet' | 'normal' | 'verbose';

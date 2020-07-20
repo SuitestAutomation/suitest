@@ -5,10 +5,11 @@ import {
 	PropertiesNode,
 	TestLineNode,
 	TestLineResultNode,
-    TestLineResultStatus,
-    SingleEntryStatus,
-    SingleNode,
-    Node,
+	TestLineResultStatus,
+	SingleEntryStatus,
+	SingleNode,
+	Node,
+	Verbosity,
 } from '@suitest/smst/types/unistTestLine';
 
 type RenderTextFunc = (node: ExtendedInlineNodes) => string;
@@ -226,7 +227,9 @@ export const wrapTextNodes = (
 	return [maxActualLength, output];
 };
 
-const renderProps = (node: PropertiesNode, renderTextNode: RenderTextFunc, prefix = ''): string => {
+const renderProps = (
+	node: PropertiesNode, renderTextNode: RenderTextFunc, options: {prefix: string, verbosity: Verbosity}): string => {
+	const {prefix = '', verbosity} = options;
 	const columnsLength: [number, number, number] = [0, 0, 0];
 	// Level 1 = table fragment (several rows)
 	// Level 2 = single table row
@@ -266,7 +269,7 @@ const renderProps = (node: PropertiesNode, renderTextNode: RenderTextFunc, prefi
 			currentRow = [];
 			table.push(currentRow);
 
-			currentRow.push(renderNode(prop.expectedValue, renderTextNode, tab).split(nl));
+			currentRow.push(renderNode(prop.expectedValue, renderTextNode, {prefix: tab, verbosity}).split(nl));
 		} else {
 			// Render non-code block value
 			const val = wrapTextNodes(prop.expectedValue, renderTextNode);
@@ -331,7 +334,8 @@ const renderProps = (node: PropertiesNode, renderTextNode: RenderTextFunc, prefi
 	return lines.join(nl);
 };
 
-const renderNode = (node: SingleNode, renderTextNode: RenderTextFunc, prefix = ''): string => {
+const  renderNode = (node: SingleNode, renderTextNode: RenderTextFunc, {prefix = '', verbosity}:
+	{ prefix?: string, verbosity: Verbosity}): string => {
 	switch (node.type) {
 		case 'text':
 		case 'code':
@@ -339,7 +343,7 @@ const renderNode = (node: SingleNode, renderTextNode: RenderTextFunc, prefix = '
 		case 'input':
 			return renderTextNode(node);
 		case 'props':
-			return renderProps(node, renderTextNode, prefix);
+			return renderProps(node, renderTextNode, {prefix, verbosity});
 		case 'prop':
 			throw new Error('Prop node can only be rendered as part of Props');
 		case 'code-block':
@@ -348,11 +352,11 @@ const renderNode = (node: SingleNode, renderTextNode: RenderTextFunc, prefix = '
 				val => val.split(nl).map(line => prefix + '> ' + line).join(nl)
 			);
 		case 'test-line':
-			return renderTestLineOrCondition(node, renderTextNode);
+			return renderTestLineOrCondition(node, renderTextNode, {prefix, verbosity});
 		case 'condition':
-			return renderTestLineOrCondition(node, renderTextNode, prefix);
+			return renderTestLineOrCondition(node, renderTextNode, {prefix, verbosity});
 		case 'test-line-result':
-			return renderTestLineResult(node, renderTextNode, prefix);
+			return renderTestLineResult(node, renderTextNode, {prefix, verbosity});
 		case 'link':
 			return node.value === node.href || !node.value ? node.href : `${node.value} (${node.href})`;
 		default:
@@ -364,26 +368,37 @@ const renderNode = (node: SingleNode, renderTextNode: RenderTextFunc, prefix = '
 const renderTestLineOrCondition = (
 	node: TestLineNode | ConditionNode,
 	renderTextNode: RenderTextFunc,
-	prefix = ''
+	{prefix = '', verbosity}: {prefix?: string, verbosity: Verbosity}
 ): string => {
 	const status = node.status ? renderTextNode(renderStatus(node.status)) : '';
-	const title = wrapText(node.title.map(renderTextNode).join(''), undefined, calcPureLength(prefix + status));
-	const body = node.children.map(child => renderNode(child, renderTextNode, prefix + tab)).join('');
-	const docs = (node as TestLineNode).docs
-		? ' '.repeat(status.length) + 'docs: ' + renderNode((node as TestLineNode).docs!, renderTextNode)
+	const title = node.title.map(renderTextNode).join('');
+	const body = node.children.map(child => renderNode(child, renderTextNode, {prefix: prefix + tab, verbosity})).join('');
+	const docs = verbosity === 'verbose' && (node as TestLineNode).docs
+		? ' '.repeat(status.length) + 'docs: ' + renderNode((node as TestLineNode).docs!, renderTextNode, {verbosity})
 		: '';
+	const output = [prefix + status + title];
+	switch (verbosity) {
+		case 'normal':
+			output.push(body);
+			break;
+		case 'verbose':
+			output.push(body, docs);
+			break;
+	}
 
-	return [prefix + status + title, body, docs].filter(Boolean).join(nl);
+	return output.filter(Boolean).join(nl);
 };
 
-const renderTestLineResult = (node: TestLineResultNode, renderTextNode: RenderTextFunc, prefix = ''): string => {
+const renderTestLineResult = (
+	node: TestLineResultNode, renderTextNode: RenderTextFunc, options: {prefix: string, verbosity: Verbosity}
+): string => {
 	const nodeMessage = node.message?.map(renderTextNode).join('');
 	let message = '';
 	if (nodeMessage) {
 		const status = renderTextNode({type: node.status, value: node.status + ': '});
 		message = tab + status + wrapText(nodeMessage, undefined, 2 + calcPureLength(status));
 	}
-	const body = renderTestLineOrCondition(node.children[0], renderTextNode, prefix);
+	const body = renderTestLineOrCondition(node.children[0], renderTextNode, options);
 	const screenshot = node.screenshot
 		? tab + 'screenshot: ' + node.screenshot
 		: '';
@@ -391,12 +406,12 @@ const renderTestLineResult = (node: TestLineResultNode, renderTextNode: RenderTe
 	return [body, message, screenshot].filter(Boolean).join(nl);
 };
 
-export const toText = (node: Node, format = true): string => {
+export const toText = (node: Node, {format, verbosity}: {format: boolean, verbosity: Verbosity}): string => {
 	const renderTextNode = format ? renderFormattedTextNode : renderPlainTextNode;
 
 	if (!Array.isArray(node)) {
 		node = [node];
 	}
 
-	return node.map(n => renderNode(n, renderTextNode)).join('');
+	return node.map(n => renderNode(n, renderTextNode, {verbosity})).join('');
 };

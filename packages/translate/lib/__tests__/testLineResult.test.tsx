@@ -134,7 +134,11 @@ describe('Test line results translation', () => {
 		});
 		const assertLine = testLinesExamples['Assert ... then continue'];
 		const testLineToFormattedText = (...args: Parameters<typeof translateTestLineResult>): string =>
-			toText(translateTestLineResult(...args), false);
+			toText(translateTestLineResult(...args), {verbosity: 'normal', format: false});
+		const testLineToVerboseFormattedText = (...args: Parameters<typeof translateTestLineResult>): string =>
+			toText(translateTestLineResult(...args), {format: false, verbosity: 'verbose'});
+		const testLineToQuietFormattedText = (...args: Parameters<typeof translateTestLineResult>): string =>
+			toText(translateTestLineResult(...args), {format: false, verbosity: 'quiet'});
 		const successLineResult: TestLineSuccessResult = {
 			result: 'success',
 			lineId: 'a625a00e-50b8-4a4c-a24f-b7e206e72199',
@@ -191,6 +195,34 @@ describe('Test line results translation', () => {
 						},
 					}),
 				})).toMatchSnapshot();
+
+				expect(testLineToVerboseFormattedText({
+					testLine: openAppCommand,
+					appConfig,
+					lineResult: extendBaseError({
+						errorType: 'openAppOverrideFailed',
+						message: {
+							errorType: 'invalidInput',
+							message: {
+								code: 'lineTypeNotSupported',
+							},
+						},
+					}),
+				})).toMatchSnapshot();
+
+				expect(testLineToQuietFormattedText({
+					testLine: openAppCommand,
+					appConfig,
+					lineResult: extendBaseError({
+						errorType: 'openAppOverrideFailed',
+						message: {
+							errorType: 'invalidInput',
+							message: {
+								code: 'lineTypeNotSupported',
+							},
+						},
+					}),
+				})).toMatchSnapshot();
 			});
 
 			it('render without appConfig', () => {
@@ -227,10 +259,22 @@ describe('Test line results translation', () => {
 					appConfig,
 					lineResult: successLineResult,
 				})).toMatchSnapshot();
+
+				expect(testLineToVerboseFormattedText({
+					testLine: assertLocation,
+					appConfig,
+					lineResult: successLineResult,
+				})).toMatchSnapshot();
+
+				expect(testLineToQuietFormattedText({
+					testLine: assertLocation,
+					appConfig,
+					lineResult: successLineResult,
+				})).toMatchSnapshot();
 			});
 
 			it('errorType: "queryFailed", location value not matched', () => {
-				expect(testLineToFormattedText({
+				const line = {
 					testLine: assertLocation,
 					appConfig,
 					lineResult: extendBaseError({
@@ -238,7 +282,10 @@ describe('Test line results translation', () => {
 						actualValue: 'http://file.suite.st/sampleapp_staging/index-hbbtv.html',
 						expectedValue: 'http://some.url',
 					}),
-				})).toMatchSnapshot();
+				};
+				expect(testLineToFormattedText(line)).toMatchSnapshot();
+				expect(testLineToVerboseFormattedText(line)).toMatchSnapshot();
+				expect(testLineToQuietFormattedText(line)).toMatchSnapshot();
 			});
 
 			it('errorType: "queryFailed" matchjs failed', () => {
@@ -255,7 +302,7 @@ return false;
 					}),
 				})).toMatchSnapshot();
 				// display javascript exception
-				expect(testLineToFormattedText({
+				const line = {
 					testLine: assertLine(conditions['current location']('matches', 'something')),
 					appConfig,
 					lineResult: extendBaseError({
@@ -267,7 +314,10 @@ return false;
 							},
 						},
 					}),
-				})).toMatchSnapshot();
+				};
+				expect(testLineToFormattedText(line)).toMatchSnapshot();
+				expect(testLineToVerboseFormattedText(line)).toMatchSnapshot();
+				expect(testLineToQuietFormattedText(line)).toMatchSnapshot();
 			});
 
 			it('errorType: "queryFailed" with message.code', () => {
@@ -330,7 +380,7 @@ return false;
 
 			it('queryFailed (cookie value not matched) error', () => {
 				// cookie value not matched error
-				expect(testLineToFormattedText({
+				const line = {
 					testLine: assertCookie,
 					appConfig,
 					lineResult: extendBaseError({
@@ -338,7 +388,10 @@ return false;
 						actualValue: 'some cookie value',
 						expectedValue: 'suitest',
 					}),
-				})).toMatchSnapshot();
+				};
+				expect(testLineToFormattedText(line)).toMatchSnapshot();
+				expect(testLineToQuietFormattedText(line)).toMatchSnapshot();
+				expect(testLineToVerboseFormattedText(line)).toMatchSnapshot();
 			});
 
 			it('queryFailed match js failed', () => {
@@ -388,6 +441,16 @@ return false;
 
 				it('"element ... does not exist"', () => {
 					expect(testLineToFormattedText({
+						testLine: assertLine(conditions['element ... does not exist']()),
+						appConfig,
+						elements,
+					})).toMatchSnapshot();
+					expect(testLineToVerboseFormattedText({
+						testLine: assertLine(conditions['element ... does not exist']()),
+						appConfig,
+						elements,
+					})).toMatchSnapshot();
+					expect(testLineToQuietFormattedText({
 						testLine: assertLine(conditions['element ... does not exist']()),
 						appConfig,
 						elements,
@@ -830,7 +893,7 @@ return true;
 					assertLine(conditions['JavaScript expression ... equals ...'](...args));
 
 				it('expression matching failed', () => {
-					expect(testLineToFormattedText({
+					const line = {
 						testLine: jsExpression('1 + 1', '3'),
 						appConfig,
 						lineResult: extendBaseError({
@@ -838,7 +901,10 @@ return true;
 							expectedValue: '3',
 							actualValue: '2',
 						}),
-					})).toMatchSnapshot();
+					};
+					expect(testLineToFormattedText(line)).toMatchSnapshot();
+					expect(testLineToQuietFormattedText(line)).toMatchSnapshot();
+					expect(testLineToVerboseFormattedText(line)).toMatchSnapshot();
 
 					expect(testLineToFormattedText({
 						// expected that '12' not contains in evaluation result
@@ -1143,9 +1209,9 @@ return true;
 					},
 				})).toMatchSnapshot();
 
-				expect(testLineToFormattedText({
+				const line = {
 					testLine: {
-						type: 'button',
+						type: 'button' as const,
 						ids: ['OK'],
 						screenshot: true,
 						lineId: '123',
@@ -1155,15 +1221,18 @@ return true;
 					appConfig,
 					lineResult: {
 						lineId: '123',
-						result: 'fail',
-						errorType: 'adbError',
+						result: 'fail' as const,
+						errorType: 'adbError' as const,
 						timeStarted: 0,
 						timeFinished: 0,
-						timeHrDiff: [0, 0],
-						timeScreenshotHr: [0, 0],
+						timeHrDiff: [0, 0] as [number, number],
+						timeScreenshotHr: [0, 0] as [number, number],
 						screenshot: '/path/to/file.png',
 					},
-				})).toMatchSnapshot();
+				};
+				expect(testLineToFormattedText(line)).toMatchSnapshot();
+				expect(testLineToVerboseFormattedText(line)).toMatchSnapshot();
+				expect(testLineToQuietFormattedText(line)).toMatchSnapshot();
 			});
 
 			it('should render excluded lines', () => {
@@ -1210,7 +1279,7 @@ return true;
 			const testLinesExampleKey = then === 'warning' ? 'Assert ... then warn' : `Assert ... then ${then}` as 'Assert ... then fail';
 			const assertLine = testLinesExamples[testLinesExampleKey];
 			const testLineToFormattedText = (...args: Parameters<typeof translateTestLineResult>): string =>
-				toText(translateTestLineResult(...args), false);
+				toText(translateTestLineResult(...args), {format: false, verbosity: 'normal'});
 			const successLineResult: TestLineSuccessResult = {
 				result: 'success',
 				lineId: 'a625a00e-50b8-4a4c-a24f-b7e206e72199',
