@@ -1225,6 +1225,13 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "appleNetworkLogsError" error 1`] = `
+Object {
+  "type": "text",
+  "value": "SuitestDrive can't launch NetworkLog service on Mac",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "bootstrapAppNotDetected" error 1`] = `
 Object {
   "type": "text",
