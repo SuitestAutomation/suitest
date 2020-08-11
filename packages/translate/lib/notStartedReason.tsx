@@ -122,6 +122,10 @@ export function translateNotStartedReason(code: NotStartedReason): Translation {
 				title: <text>Make sure that Apple Configurator 2 and Automation Tools are installed</text>,
 				description: <fragment>Please see <link href="https://suite.st/docs/devices/apple-tv/#installing-apple-configurator-2">our docs</link>.</fragment>,
 			};
+		case NOT_STARTED_REASON.APPLE_NETWORK_LOGS_ERROR:
+			return {
+				title: <text>SuitestDrive can't launch NetworkLog service on Mac</text>,
+			};
 		default:
 			const _code: never = code;
 			throw new Error(`Unknown not started reason received: ${_code}`);

@@ -112,6 +112,7 @@ const simpleErrorMap: {[key: string]: Node} = {
 	packageCorrupted: <text>Failed to open the app. Please make sure that your app is working correctly</text>,
 	unknownElementProperty: <text>Unknown element property</text>,
 	configuratorError: <text>Make sure that Apple Configurator 2 and Automation Tools are installed. https://suite.st/docs/devices/apple-tv/#installing-apple-configurator-2</text>,
+	appleNetworkLogsError: <text>SuitestDrive can't launch NetworkLog service on Mac</text>,
 	appStoreBuild: <text>Can’t install App Store distribution build</text>,
 	outdatedLibraryWarning: <text>We have detected that your instrumentation library is outdated, the package can still be opened. Consider updating</text>,
 	cyclicReference: <text>Cyclic reference detected</text>,

@@ -94,6 +94,7 @@ describe('Test line results translation', () => {
 		'packageCorrupted',
 		'unknownElementProperty',
 		'configuratorError',
+		'appleNetworkLogsError',
 		'appStoreBuild',
 		'outdatedLibraryWarning',
 		'cyclicReference',
