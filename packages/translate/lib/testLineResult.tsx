@@ -308,10 +308,10 @@ const translateInvalidReferenceError = (result: InvalidReferenceError): TextNode
 };
 
 const translateADBError = (result: ADBError): TextNode => {
-	if (result.message && 'code' in result.message && result.message.code === 'certificateError') {
+	if (result.message && ('code' in result.message) && result.message.code === 'certificateError') {
 		return <text>{result.message.code}</text> as TextNode;
 	}
-	if (result.message && 'info' in result.message) {
+	if (result.message && ('info' in result.message)) {
 		return <text>{result.message.info.reason}</text> as TextNode;
 	}
 
