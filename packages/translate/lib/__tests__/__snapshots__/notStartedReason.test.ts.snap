@@ -13,6 +13,15 @@ Object {
 }
 `;
 
+exports[`Testing not started reason translation. Should translate "appleNetworkLogsError" code 1`] = `
+Object {
+  "title": Object {
+    "type": "text",
+    "value": "SuitestDrive can't launch NetworkLog service on Mac",
+  },
+}
+`;
+
 exports[`Testing not started reason translation. Should translate "applePlatformError" code 1`] = `
 Object {
   "description": Object {
@@ -356,6 +365,13 @@ Object {
 }
 `;
 
+exports[`Testing not started reason translation. Translate to html:  "appleNetworkLogsError" 1`] = `
+Object {
+  "description": "SuitestDrive can&#039;t launch NetworkLog service on Mac",
+  "title": "SuitestDrive can&#039;t launch NetworkLog service on Mac",
+}
+`;
+
 exports[`Testing not started reason translation. Translate to html:  "applePlatformError" 1`] = `
 Object {
   "description": "Cannot continue: Apple TV driver has failed",
@@ -514,6 +530,13 @@ exports[`Testing not started reason translation. Translate to plain text:  "andr
 Object {
   "description": "Android driver has misbehaved. Please verify that the device is online and it's current IP address is correctly specified in Suitest. If nothing helps try rebooting the device and restarting SuitestDrive",
   "title": "Cannot continue: Android driver has failed",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to plain text:  "appleNetworkLogsError" 1`] = `
+Object {
+  "description": undefined,
+  "title": "SuitestDrive can't launch NetworkLog service on Mac",
 }
 `;
 

@@ -129,6 +129,7 @@ export type SimpleError = BaseResult & {
 		| 'packageCorrupted'
 		| 'unknownElementProperty'
 		| 'configuratorError'
+		| 'appleNetworkLogsError'
 		| 'appStoreBuild'
 		| 'outdatedLibraryWarning'
 		| 'cyclicReference'
