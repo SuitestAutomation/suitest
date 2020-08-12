@@ -350,6 +350,8 @@ export type ADBError = BaseResult & {
 		info: {
 			reason: string,
 		},
+	} | {
+		code: 'certificateError',
 	},
 };
 
