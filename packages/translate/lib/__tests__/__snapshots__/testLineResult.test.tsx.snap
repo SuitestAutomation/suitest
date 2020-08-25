@@ -1305,7 +1305,7 @@ Object {
 exports[`Test line results translation simple errors translations should translate "initPlatformFailed" error 1`] = `
 Object {
   "type": "text",
-  "value": "Failed to start Suitest bootstrap application on this device",
+  "value": "Failed to bootstrap platform on this device",
 }
 `;
 
