@@ -39,7 +39,7 @@ const simpleErrorMap: {[key: string]: Node} = {
 	appRunning: <text>App is still running</text>,
 	appNotRunning: <text>App is not running</text>,
 	missingApp: <text>Application is not installed on the device</text>,
-	initPlatformFailed: <text>Failed to start Suitest bootstrap application on this device</text>,
+	initPlatformFailed: <text>Failed to bootstrap platform on this device</text>,
 	packageNotFound: <text>Selected configuration does not contain an app package. Upload a package on your app`s configuration page before continuing</text>,
 	missingPackage: <text>Application package was not found on the target device</text>,
 	internalError: <text>Internal error occurred</text>,
