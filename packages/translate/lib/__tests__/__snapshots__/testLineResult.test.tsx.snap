@@ -41,7 +41,7 @@ exports[`Test line results translation Translate assert lines translate "assert 
 
 exports[`Test line results translation Translate assert lines translate "assert cookie" queryFailed (cookie value not matched) error 3`] = `
 "✖ Assert: cookie suitest-cookie
-  ✖ suitest-cookie = suitest
+  ✖ suitest-cookie = suitest          
                    → some cookie value
   docs: https://suite.st/docs/testing/test-subjects/
   fail: Condition was not met"
@@ -85,7 +85,7 @@ exports[`Test line results translation Translate assert lines translate "assert 
 exports[`Test line results translation Translate assert lines translate "assert current location" errorType: "queryFailed" matchjs failed 3`] = `
 "✖ Assert: Current location
   ✖ current location matches JS
-    > something
+    > something     
   docs: https://suite.st/docs/testing/test-subjects/
   fail: Exception was thrown: \\"something is not defined\\""
 `;
@@ -110,7 +110,7 @@ exports[`Test line results translation Translate assert lines translate "assert 
 
 exports[`Test line results translation Translate assert lines translate "assert current location" errorType: "queryFailed", location value not matched 2`] = `
 "✖ Assert: Current location
-  ✖ current location contains http://some.url
+  ✖ current location contains http://some.url                                        
                      →        http://file.suite.st/sampleapp_staging/index-hbbtv.html
   docs: https://suite.st/docs/testing/test-subjects/
   fail: Condition was not met"
@@ -311,8 +311,8 @@ exports[`Test line results translation Translate assert lines translate "assert 
 
 exports[`Test line results translation Translate assert lines translate "assert javascript expression" errorType: "queryFailed" expression matching failed 3`] = `
 "✖ Assert: JavaScript expression
-  ✖ expression
-    > 1 + 1
+  ✖ expression         
+    > 1 + 1          
   ✖ expression result = 3
                       → 2
   docs: https://suite.st/docs/testing/test-subjects/
@@ -362,8 +362,8 @@ exports[`Test line results translation Translate assert lines translate "assert 
 
 exports[`Test line results translation Translate assert lines translate "assert javascript expression" render without appConfig 1`] = `
 "Assert: JavaScript expression
-  expression
-    > someJS()
+  expression         
+    > someJS()     
   expression result = returned value"
 `;
 
@@ -417,16 +417,16 @@ exports[`Test line results translation Translate assert lines translate "assert 
   ✔ response header Server                   =  nginx                                                       
   ✖ response body                            =  asdfasdddddd                                                
                                              →  <!DOCTYPE html PUBLIC \\"-//HbbTV//1.1.1//EN\\" \\"http://www.hbbt
-                                                v.org/dtd/HbbTV-1.1.1.dtd\\">
-                                                <html xmlns=\\"http://www.w3.org/1999/xhtml\\">
-                                                <head>
-                                                	<title>HbbTv App</title>
-                                                	<link rel=\\"stylesheet\\" href=\\"css/base.css\\" />
-                                                </head>
-                                                <body>
-                                                	<div id=\\"content\\"></div>
-                                                </body>
-                                                </html>
+                                                v.org/dtd/HbbTV-1.1.1.dtd\\">                                 
+                                                <html xmlns=\\"http://www.w3.org/1999/xhtml\\">                 
+                                                <head>                                                      
+                                                	<title>HbbTv App</title>                                   
+                                                	<link rel=\\"stylesheet\\" href=\\"css/base.css\\" />              
+                                                </head>                                                     
+                                                <body>                                                      
+                                                	<div id=\\"content\\"></div>                                   
+                                                </body>                                                     
+                                                </html>                                                     
   fail: Condition was not met"
 `;
 
@@ -618,7 +618,7 @@ exports[`Test line results translation assert then exit translate then exit and 
 
 exports[`Test line results translation assert then exit translate then exit and "assert current location" then exit with "queryFailed" 1`] = `
 "✔ Assert: Current location then stop test
-  ✖ current location contains file.suite.st
+  ✖ current location contains file.suite.st                                         
                      →        http://the.suite.st/sampleapp_staging/index-hbbtv.html
   success: Condition was not met"
 `;
@@ -763,7 +763,7 @@ exports[`Test line results translation assert then fail translate then fail and 
 
 exports[`Test line results translation assert then fail translate then fail and "assert current location" then fail with "queryFailed" 1`] = `
 "✔ Assert: Current location then fail
-  ✖ current location contains file.suite.st
+  ✖ current location contains file.suite.st                                         
                      →        http://the.suite.st/sampleapp_staging/index-hbbtv.html
   success: Condition was not met"
 `;
@@ -908,7 +908,7 @@ exports[`Test line results translation assert then warning translate then warnin
 
 exports[`Test line results translation assert then warning translate then warning and "assert current location" then warning with "queryFailed" 1`] = `
 "✔ Assert: Current location then warn
-  ✖ current location contains file.suite.st
+  ✖ current location contains file.suite.st                                         
                      →        http://the.suite.st/sampleapp_staging/index-hbbtv.html
   success: Condition was not met"
 `;
@@ -1552,7 +1552,7 @@ Object {
 }
 `;
 
-exports[`Test line results translation should translate "targetManagerUnsupportedVersion" error 1`] = `
+exports[`Test line results translation simple errors translations should translate "targetManagerUnsupportedVersion" error 1`] = `
 Array [
   Object {
     "type": "text",
@@ -1608,7 +1608,7 @@ Object {
 }
 `;
 
-exports[`Test line results translation should translate "unsupportedOSVersion" error 1`] = `
+exports[`Test line results translation simple errors translations should translate "unsupportedOSVersion" error 1`] = `
 Array [
   Object {
     "type": "text",
