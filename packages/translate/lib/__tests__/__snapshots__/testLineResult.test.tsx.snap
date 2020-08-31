@@ -1559,7 +1559,7 @@ Array [
     "value": "Unsupported Target Manager Server, please see our ",
   },
   Object {
-    "href": "https://suite.st/docs/devices/playstation/",
+    "href": "https://suite.st/docs/devices/playstation/#sdk-650-or-system-software-701-or-lower",
     "type": "link",
     "value": "docs",
   },
@@ -1615,7 +1615,7 @@ Array [
     "value": "Unsupported OS version, please see our ",
   },
   Object {
-    "href": "https://suite.st/docs/devices/playstation/",
+    "href": "https://suite.st/docs/devices/playstation/#sdk-650-or-system-software-701-or-lower",
     "type": "link",
     "value": "docs",
   },
