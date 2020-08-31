@@ -121,8 +121,8 @@ const simpleErrorMap: {[key: string]: Node} = {
 	sdComponentFailed: <fragment>Downloading of the driver failed, please try again later. Contact <link href="mailto:support@suite.st">support</link> if problem persists</fragment>,
 	MoveTargetOutOfBounds: <text>Move target is outside of the visible area of the screen</text>,
 	ElementClickIntercepted: <text>Click on the element was intercepted by another element</text>,
-	unsupportedOSVersion: <fragment>Unsupported OS version, please see our <link href="https://suite.st/docs/devices/playstation/">docs</link></fragment>,
-	targetManagerUnsupportedVersion: <fragment>Unsupported Target Manager Server, please see our <link href="https://suite.st/docs/devices/playstation/">docs</link></fragment>,
+	unsupportedOSVersion: <fragment>Unsupported OS version, please see our <link href="https://suite.st/docs/devices/playstation/#sdk-650-or-system-software-701-or-lower">docs</link></fragment>,
+	targetManagerUnsupportedVersion: <fragment>Unsupported Target Manager Server, please see our <link href="https://suite.st/docs/devices/playstation/#sdk-650-or-system-software-701-or-lower">docs</link></fragment>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {

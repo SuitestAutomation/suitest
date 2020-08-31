@@ -138,7 +138,6 @@ export type SimpleError = BaseResult & {
 		| 'sdComponentFailed'
 		| 'MoveTargetOutOfBounds'
 		| 'ElementClickIntercepted'
-		| 'cyclicReference'
 		| 'unsupportedOSVersion'
 		| 'targetManagerUnsupportedVersion',
 };
