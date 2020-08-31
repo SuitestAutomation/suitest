@@ -1,5 +1,65 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[` 1`] = `
+"[31m✖ [0mRun test[32mMy loooooooooo ooooo ooo oooooo ooooooo ooooooo ooooooo ooooo ooooo ng! test[0m until condition is met max 5x every 5s
+  [31m✖ [0mcondition: element [32mMy element[0m exists
+    [31m✖ [0mprop name prop name prop name prop name prop name ~ expected value expected value expected value expected value 
+                                                          expected value                                              
+                                                        → expected value expected value expected value expected value 
+                                                          expected value                                              
+    [32m✔ [0mJavaScript expression                              
+      > someJS(); someJS(); someJS(); someJS();        
+      > someJS(); someJS(); someJS();                  
+      > someJS(); someJS(); someJS();                  
+  [31mfail: [0mSubject does not exist a very loooo oooooo ooooo ooooooo oooooo oooooo oooong error message, possibly including
+        \\"description\\" part for notStarterReason"
+`;
+
+exports[` 2`] = `
+"[31m✖ [0mRun test [32mMy not so loooooooooong! test[0m until condition is met max 5x every 5s
+  [31m✖ [0mcondition: element [32mMy element[0m exists
+    [31m✖ [0mprop name prop name prop name prop name prop name ~ expected value expected value expected value expected value 
+                                                          expected value                                              
+                                                        → expected value expected value expected value expected value 
+                                                          expected value                                              
+    [32m✔ [0mJavaScript expression                              
+      > someJS(); someJS(); someJS(); someJS();        
+      > someJS(); someJS(); someJS();                  
+      > someJS(); someJS(); someJS();                  
+  [31mfail: [0mSubject does not exist a very not so loooooooong error message, possibly including \\"description\\" part for
+        notStarterReason"
+`;
+
+exports[` 3`] = `
+"✖ Run testMy loooooooooo ooooo ooo oooooo ooooooo ooooooo ooooooo ooooo ooooo ng! test until condition is met max 5x every 5s
+  ✖ condition: element My element exists
+    ✖ prop name prop name prop name prop name prop name ~ expected value expected value expected value expected value 
+                                                          expected value                                              
+                                                        → expected value expected value expected value expected value 
+                                                          expected value                                              
+    ✔ JavaScript expression                              
+      > someJS(); someJS(); someJS(); someJS();        
+      > someJS(); someJS(); someJS();                  
+      > someJS(); someJS(); someJS();                  
+  fail: Subject does not exist a very loooo oooooo ooooo ooooooo oooooo oooooo oooong error message, possibly including
+        \\"description\\" part for notStarterReason"
+`;
+
+exports[` 4`] = `
+"✖ Run test My not so loooooooooong! test until condition is met max 5x every 5s
+  ✖ condition: element My element exists
+    ✖ prop name prop name prop name prop name prop name ~ expected value expected value expected value expected value 
+                                                          expected value                                              
+                                                        → expected value expected value expected value expected value 
+                                                          expected value                                              
+    ✔ JavaScript expression                              
+      > someJS(); someJS(); someJS(); someJS();        
+      > someJS(); someJS(); someJS();                  
+      > someJS(); someJS(); someJS();                  
+  fail: Subject does not exist a very not so loooooooong error message, possibly including \\"description\\" part for
+        notStarterReason"
+`;
+
 exports[`AST renderers formatted text renderer should handle code blocks 1`] = `"> someJS();"`;
 
 exports[`AST renderers formatted text renderer should handle code blocks 2`] = `
@@ -19,7 +79,7 @@ exports[`AST renderers formatted text renderer should handle props 2`] = `
                                                       expected value                                              
                                                     → expected value expected value expected value expected value 
                                                       expected value                                              
-[32m✔ [0mJavaScript expression                     
+[32m✔ [0mJavaScript expression                              
   > someJS(); someJS(); someJS(); someJS();        
   > someJS(); someJS(); someJS();                  
   > someJS(); someJS(); someJS();                  "
@@ -31,12 +91,19 @@ exports[`AST renderers formatted text renderer should handle props 3`] = `
 `;
 
 exports[`AST renderers formatted text renderer should handle props 4`] = `
-"Empty string       [EMPTY STRING]                                              
-                 → [EMPTY STRING]                                              
-Empty number       0                                                           
-                 → NaN                                                         
-Empty code block   [36mlooooooooooooooo oooooooo ooooooo ooooo ooooo oooooooooo ooo[0m
-                   [36mo oooo ng[0m (and some next text block)               "
+"Empty string     contains [EMPTY STRING]                                              
+                 →        [EMPTY STRING]                                              
+Empty number     >        0                                                           
+                 →        NaN                                                         
+Empty code block =        [36mlooooooooooooooo oooooooo ooooooo ooooo ooooo oooooooooo ooo[0m
+                          [36mo oooo ng[0m (and some next text block)                        "
+`;
+
+exports[`AST renderers formatted text renderer should handle props 5`] = `
+"[31m✖ [0mrequest header name          = another header
+[32m✔ [0mrequest header some name     = another header
+request header some loong name = another header
+[31m✖ [0mrequest header another name  = another header"
 `;
 
 exports[`AST renderers formatted text renderer should render condition 1`] = `"condition: element [32mMy element[0m exists"`;
@@ -47,10 +114,20 @@ exports[`AST renderers formatted text renderer should render condition 2`] = `
                                                         expected value                                              
                                                       → expected value expected value expected value expected value 
                                                         expected value                                              
-  [32m✔ [0mJavaScript expression                     
+  [32m✔ [0mJavaScript expression                              
     > someJS(); someJS(); someJS(); someJS();        
     > someJS(); someJS(); someJS();                  
     > someJS(); someJS(); someJS();                  "
+`;
+
+exports[`AST renderers formatted text renderer should render results with different verbosity level 1`] = `
+"Assert element [32mMy element[0m is visible
+docs: http://suite.st/docs/"
+`;
+
+exports[`AST renderers formatted text renderer should render results with different verbosity level 2`] = `
+"[31m✖ [0mRun test [32mMy test[0m until condition is met max 5x every 5s
+  [31mfail: [0mCondition was not met"
 `;
 
 exports[`AST renderers formatted text renderer should render test line 1`] = `"Assert element [32mMy element[0m is visible"`;
@@ -60,6 +137,11 @@ exports[`AST renderers formatted text renderer should render test line 2`] = `
   condition: element [32mMy element[0m exists"
 `;
 
+exports[`AST renderers formatted text renderer should render test line 3`] = `
+"[34m» [0mAssert element [32mMy element[0m is visible
+  [34mexcluded: [0mTest line was not executed"
+`;
+
 exports[`AST renderers formatted text renderer should render test line results 1`] = `
 "[31m✖ [0mRun test [32mMy test[0m until condition is met max 5x every 5s
   [31m✖ [0mcondition: element [32mMy element[0m exists
@@ -67,7 +149,7 @@ exports[`AST renderers formatted text renderer should render test line results 1
                                                           expected value                                              
                                                         → expected value expected value expected value expected value 
                                                           expected value                                              
-    [32m✔ [0mJavaScript expression                     
+    [32m✔ [0mJavaScript expression                              
       > someJS(); someJS(); someJS(); someJS();        
       > someJS(); someJS(); someJS();                  
       > someJS(); someJS(); someJS();                  
@@ -87,7 +169,7 @@ exports[`AST renderers formatted text renderer should render test line results 3
 exports[`AST renderers formatted text renderer should render test line results 4`] = `
 "[34m» [0mPress [4mOK[0m only if condition is met
   condition: element [32mMy element[0m exists
-  [34mexcluded: [0mLine was not executed"
+  [34mexcluded: [0mTest line was not executed"
 `;
 
 exports[`AST renderers formatted text renderer should render test line results 5`] = `
@@ -104,7 +186,7 @@ exports[`AST renderers formatted text renderer should render test line results w
                                                           expected value                                              
                                                         → expected value expected value expected value expected value 
                                                           expected value                                              
-    [32m✔ [0mJavaScript expression                     
+    [32m✔ [0mJavaScript expression                              
       > someJS(); someJS(); someJS(); someJS();        
       > someJS(); someJS(); someJS();                  
       > someJS(); someJS(); someJS();                  
@@ -127,7 +209,7 @@ exports[`AST renderers formatted text renderer should render test line results w
 exports[`AST renderers formatted text renderer should render test line results with screenshots 4`] = `
 "[34m» [0mPress [4mOK[0m only if condition is met
   condition: element [32mMy element[0m exists
-  [34mexcluded: [0mLine was not executed
+  [34mexcluded: [0mTest line was not executed
   screenshot: path/to/screenshot.png"
 `;
 
@@ -139,6 +221,51 @@ exports[`AST renderers formatted text renderer should render test line results w
 
 exports[`AST renderers formatted text renderer should render test line results with screenshots 6`] = `
 "[32m✔ [0mAssert application has exited
+  screenshot: path/to/screenshot.png"
+`;
+
+exports[`AST renderers formatted text renderer should render test line results with screenshots 7`] = `
+"[31m✖ [0mRun test [32mMy test[0m until condition is met max 5x every 5s
+  [31mfail: [0mCondition was not met
+  screenshot: path/to/screenshot.png"
+`;
+
+exports[`AST renderers formatted text renderer should render test line results with screenshots 8`] = `
+"[33m‼ [0mAssert application has exited
+  [33mwarning: [0mSome warning message
+  screenshot: path/to/screenshot.png"
+`;
+
+exports[`AST renderers formatted text renderer should render test line results with screenshots 9`] = `
+"[34m» [0mAssert application has exited
+  [34mexit: [0mCondition was met
+  screenshot: path/to/screenshot.png"
+`;
+
+exports[`AST renderers formatted text renderer should render test line results with screenshots 10`] = `
+"[31m✖ [0mRun test [32mMy test[0m until condition is met max 5x every 5s
+  [31m✖ [0mcondition: element [32mMy element[0m exists
+    [31m✖ [0mprop name prop name prop name prop name prop name ~ expected value expected value expected value expected value 
+                                                          expected value                                              
+                                                        → expected value expected value expected value expected value 
+                                                          expected value                                              
+    [32m✔ [0mJavaScript expression                              
+      > someJS(); someJS(); someJS(); someJS();        
+      > someJS(); someJS(); someJS();                  
+      > someJS(); someJS(); someJS();                  
+  [31mfail: [0mCondition was not met
+  screenshot: path/to/screenshot.png"
+`;
+
+exports[`AST renderers formatted text renderer should render test line results with screenshots 11`] = `
+"[33m‼ [0mAssert application has exited
+  [33mwarning: [0mSome warning message
+  screenshot: path/to/screenshot.png"
+`;
+
+exports[`AST renderers formatted text renderer should render test line results with screenshots 12`] = `
+"[34m» [0mAssert application has exited
+  [34mexit: [0mCondition was met
   screenshot: path/to/screenshot.png"
 `;
 
@@ -173,12 +300,19 @@ exports[`AST renderers plain text renderer should handle props 3`] = `
 `;
 
 exports[`AST renderers plain text renderer should handle props 4`] = `
-"Empty string       [EMPTY STRING]                                              
-                 → [EMPTY STRING]                                              
-Empty number       0                                                           
-                 → NaN                                                         
-Empty code block   [36mlooooooooooooooo oooooooo ooooooo ooooo ooooo oooooooooo ooo[0m
-                   [36mo oooo ng[0m (and some next text block)               "
+"Empty string     contains [EMPTY STRING]                                              
+                 →        [EMPTY STRING]                                              
+Empty number     >        0                                                           
+                 →        NaN                                                         
+Empty code block =        looooooooooooooo oooooooo ooooooo ooooo ooooo oooooooooo ooo
+                          o oooo ng (and some next text block)                        "
+`;
+
+exports[`AST renderers plain text renderer should handle props 5`] = `
+"✖ request header name          = another header
+✔ request header some name     = another header
+request header some loong name = another header
+✖ request header another name  = another header"
 `;
 
 exports[`AST renderers plain text renderer should render condition 1`] = `"condition: element My element exists"`;
@@ -195,11 +329,26 @@ exports[`AST renderers plain text renderer should render condition 2`] = `
     > someJS(); someJS(); someJS();                  "
 `;
 
+exports[`AST renderers plain text renderer should render results with different verbosity level 1`] = `
+"Assert element My element is visible
+docs: http://suite.st/docs/"
+`;
+
+exports[`AST renderers plain text renderer should render results with different verbosity level 2`] = `
+"✖ Run test My test until condition is met max 5x every 5s
+  fail: Condition was not met"
+`;
+
 exports[`AST renderers plain text renderer should render test line 1`] = `"Assert element My element is visible"`;
 
 exports[`AST renderers plain text renderer should render test line 2`] = `
 "Press OK, LEFT only if condition is met
   condition: element My element exists"
+`;
+
+exports[`AST renderers plain text renderer should render test line 3`] = `
+"» Assert element My element is visible
+  excluded: Test line was not executed"
 `;
 
 exports[`AST renderers plain text renderer should render test line results 1`] = `
@@ -229,7 +378,7 @@ exports[`AST renderers plain text renderer should render test line results 3`] =
 exports[`AST renderers plain text renderer should render test line results 4`] = `
 "» Press OK only if condition is met
   condition: element My element exists
-  excluded: Line was not executed"
+  excluded: Test line was not executed"
 `;
 
 exports[`AST renderers plain text renderer should render test line results 5`] = `
@@ -269,7 +418,7 @@ exports[`AST renderers plain text renderer should render test line results with 
 exports[`AST renderers plain text renderer should render test line results with screenshots 4`] = `
 "» Press OK only if condition is met
   condition: element My element exists
-  excluded: Line was not executed
+  excluded: Test line was not executed
   screenshot: path/to/screenshot.png"
 `;
 
@@ -281,5 +430,50 @@ exports[`AST renderers plain text renderer should render test line results with 
 
 exports[`AST renderers plain text renderer should render test line results with screenshots 6`] = `
 "✔ Assert application has exited
+  screenshot: path/to/screenshot.png"
+`;
+
+exports[`AST renderers plain text renderer should render test line results with screenshots 7`] = `
+"✖ Run test My test until condition is met max 5x every 5s
+  fail: Condition was not met
+  screenshot: path/to/screenshot.png"
+`;
+
+exports[`AST renderers plain text renderer should render test line results with screenshots 8`] = `
+"‼ Assert application has exited
+  warning: Some warning message
+  screenshot: path/to/screenshot.png"
+`;
+
+exports[`AST renderers plain text renderer should render test line results with screenshots 9`] = `
+"» Assert application has exited
+  exit: Condition was met
+  screenshot: path/to/screenshot.png"
+`;
+
+exports[`AST renderers plain text renderer should render test line results with screenshots 10`] = `
+"✖ Run test My test until condition is met max 5x every 5s
+  ✖ condition: element My element exists
+    ✖ prop name prop name prop name prop name prop name ~ expected value expected value expected value expected value 
+                                                          expected value                                              
+                                                        → expected value expected value expected value expected value 
+                                                          expected value                                              
+    ✔ JavaScript expression                              
+      > someJS(); someJS(); someJS(); someJS();        
+      > someJS(); someJS(); someJS();                  
+      > someJS(); someJS(); someJS();                  
+  fail: Condition was not met
+  screenshot: path/to/screenshot.png"
+`;
+
+exports[`AST renderers plain text renderer should render test line results with screenshots 11`] = `
+"‼ Assert application has exited
+  warning: Some warning message
+  screenshot: path/to/screenshot.png"
+`;
+
+exports[`AST renderers plain text renderer should render test line results with screenshots 12`] = `
+"» Assert application has exited
+  exit: Condition was met
   screenshot: path/to/screenshot.png"
 `;

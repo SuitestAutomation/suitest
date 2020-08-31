@@ -286,6 +286,13 @@ export const testLinesExamples = {
 		condition,
 		then: 'success',
 	}),
+	'Assert ... then continue excluded': (condition: Condition = appExitedCondition): TestLine => ({
+		...baseTestLine,
+		type: 'assert',
+		condition,
+		then: 'success',
+		excluded: true,
+	}),
 	'Assert ... then exit': (condition: Condition = appExitedCondition): TestLine => ({
 		...baseTestLine,
 		type: 'assert',
@@ -324,16 +331,32 @@ export const testLinesExamples = {
 		...baseTestLine,
 		type: 'clearAppData',
 	}),
+	'Clear app data excluded': (): TestLine => ({
+		...baseTestLine,
+		type: 'clearAppData',
+		excluded: true,
+	}),
 	// Execute command ...
 	'Execute command ...': (val = 'someJS();'): TestLine => ({
 		...baseTestLine,
 		type: 'execCmd',
 		val,
 	}),
+	'Execute command ... excluded': (val = 'someJS();'): TestLine => ({
+		...baseTestLine,
+		type: 'execCmd',
+		val,
+		excluded: true,
+	}),
 	// OPEN APP
 	'Open app at homepage': (): TestLine => ({
 		...baseTestLine,
 		type: 'openApp',
+	}),
+	'Open app at homepage excluded': (): TestLine => ({
+		...baseTestLine,
+		type: 'openApp',
+		excluded: true,
 	}),
 	'Open app at relative URL ...': (relativeUrl = '/some/path'): TestLine => ({
 		...baseTestLine,
@@ -351,6 +374,12 @@ export const testLinesExamples = {
 		...baseTestLine,
 		type: 'sleep',
 		timeout,
+	}),
+	'Sleep ... excluded': (timeout: string | number = 2000): TestLine => ({
+		...baseTestLine,
+		type: 'sleep',
+		timeout,
+		excluded: true,
 	}),
 	// POLL URL
 	'Poll URL ... until response is ...': (url = 'https://suite.st', response = 'expected response'): TestLine => ({
@@ -509,6 +538,14 @@ export const testLinesExamples = {
 		browserCommand: {
 			type: 'goBack',
 		},
+	}),
+	'Browser command: Go back excluded': (): TestLine => ({
+		...baseTestLine,
+		type: 'browserCommand',
+		browserCommand: {
+			type: 'goBack',
+		},
+		excluded: true,
 	}),
 	'Browser command: Go back only if ...': (condition: Condition = appExitedCondition): TestLine => ({
 		...baseTestLine,
@@ -707,6 +744,20 @@ export const testLinesExamples = {
 		},
 		condition,
 		negateCondition: true,
+	}),
+	'Move to element ... only if ... excluded': (
+		elementId = 'element-id-1',
+		condition: Condition = appExitedCondition
+	): TestLine => ({
+		...baseTestLine,
+		type: 'moveTo',
+		target: {
+			type: 'element',
+			elementId,
+		},
+		condition,
+		negateCondition: true,
+		excluded: true,
 	}),
 	// COMMENT
 	'Comment': (val = 'This is a comment'): TestLine => ({

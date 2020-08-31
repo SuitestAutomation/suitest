@@ -1,31 +1,29 @@
 {
   "name": "@suitest/smst",
-  "version": "3.0.2",
+  "version": "3.0.5",
   "description": "UNIST definition and JSX factory for Suitest test lines rendering",
+  "homepage": "https://suite.st/",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SuitestAutomation/suitest.git",
     "directory": "packages/smst"
   },
-  "kywords": [
+  "keywords": [
     "suitest",
     "unist"
   ],
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/SuitestAutomation/suitest/issues"
   },
-  "homepage": "https://suite.st/",
-  "main": "umd/jsxFactory.js",
+  "main": "dist/jsxFactory.js",
+  "types": "dist/jsxFactory.d.ts",
   "files": [
-    "umd/",
-    "commonjs/",
+    "dist/",
     "types/"
   ],
   "scripts": {
-    "build": "npm run build:umd && npm run build:commonjs",
-    "build:umd": "rimraf umd && rollup -c --environment FORMAT:umd && cp -r ./types ./umd",
-    "build:commonjs": "rimraf commonjs && rollup -c --environment FORMAT:commonjs && cp -r ./types ./umd",
+    "build": "npx rimraf dist && npx tsc -p tsconfig.json && node ../../compile.js",
     "test": "jest",
     "coverage": "jest --coverage",
     "prepublishOnly": "npm run coverage && npm run build"

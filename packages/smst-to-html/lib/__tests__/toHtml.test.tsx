@@ -1,7 +1,8 @@
 import {jsx} from '@suitest/smst';
-import {toHtml, escapeHtml} from '../toHtml';
+import {toHtml, escapeHtml, escapeUrl} from '../toHtml';
 
 describe('AST renderers', () => {
+	const defaultOptions = {verbosity: 'normal' as const};
 	const plainText = <fragment>TEXT</fragment>;
 	const subjectText = <subject>SUBJECT</subject>;
 	const inputText = <input>INPUT</input>;
@@ -102,64 +103,76 @@ describe('AST renderers', () => {
 
 	describe('html renderer', () => {
 		it('should handle textual nodes', () => {
-			expect(toHtml(plainText)).toEqual('TEXT');
-			expect(toHtml(subjectText)).toEqual('<span class="suitest-test-line__text--subject">SUBJECT</span>');
-			expect(toHtml(inputText)).toEqual('<span class="suitest-test-line__text--input">INPUT</span>');
-			expect(toHtml(codeText)).toEqual('<code class="suitest-test-line__text--code">CODE</code>');
+			expect(toHtml(plainText, defaultOptions)).toEqual('TEXT');
+			expect(toHtml(subjectText, defaultOptions)).toEqual('<span class="suitest-test-line__text--subject">SUBJECT</span>');
+			expect(toHtml(inputText, defaultOptions)).toEqual('<span class="suitest-test-line__text--input">INPUT</span>');
+			expect(toHtml(codeText, defaultOptions)).toEqual('<code class="suitest-test-line__text--code">CODE</code>');
 		});
 
 		it('should handle code blocks', () => {
-			expect(toHtml(simpleCodeBlock)).toMatchSnapshot();
-			expect(toHtml(longCodeBlock)).toMatchSnapshot();
+			expect(toHtml(simpleCodeBlock, defaultOptions)).toMatchSnapshot();
+			expect(toHtml(longCodeBlock, defaultOptions)).toMatchSnapshot();
 		});
 
 		it('should handle tables', () => {
-			expect(toHtml(simpleProps)).toMatchSnapshot();
-			expect(toHtml(longProps)).toMatchSnapshot();
+			expect(toHtml(simpleProps, defaultOptions)).toMatchSnapshot();
+			expect(toHtml(longProps, defaultOptions)).toMatchSnapshot();
 		});
 
 		it('should render condition', () => {
-			expect(toHtml(simpleCondition)).toMatchSnapshot();
-			expect(toHtml(longCondition)).toMatchSnapshot();
+			expect(toHtml(simpleCondition, defaultOptions)).toMatchSnapshot();
+			expect(toHtml(longCondition, defaultOptions)).toMatchSnapshot();
 		});
 
 		it('should render test line', () => {
-			expect(toHtml(simpleLine)).toMatchSnapshot();
-			expect(toHtml(longLine)).toMatchSnapshot();
+			expect(toHtml(simpleLine, defaultOptions)).toMatchSnapshot();
+			expect(toHtml(longLine, defaultOptions)).toMatchSnapshot();
 		});
 
 		it('should render alerts', () => {
-			expect(toHtml(failResult())).toMatchSnapshot();
-			expect(toHtml(warningResult())).toMatchSnapshot();
-			expect(toHtml(exitResult())).toMatchSnapshot();
-			expect(toHtml(excludedResult())).toMatchSnapshot();
-			expect(toHtml(fatalResult())).toMatchSnapshot();
+			expect(toHtml(failResult(), defaultOptions)).toMatchSnapshot();
+			expect(toHtml(warningResult(), defaultOptions)).toMatchSnapshot();
+			expect(toHtml(exitResult(), defaultOptions)).toMatchSnapshot();
+			expect(toHtml(excludedResult(), defaultOptions)).toMatchSnapshot();
+			expect(toHtml(fatalResult(), defaultOptions)).toMatchSnapshot();
+		});
+
+		it('should render results with quiet level', () => {
+			expect(toHtml(failResult(), {verbosity: 'quiet'})).toMatchSnapshot();
+			expect(toHtml(warningResult(), {verbosity: 'quiet'})).toMatchSnapshot();
+			expect(toHtml(exitResult(), {verbosity: 'quiet'})).toMatchSnapshot();
+			expect(toHtml(excludedResult(), {verbosity: 'quiet'})).toMatchSnapshot();
+			expect(toHtml(fatalResult(), {verbosity: 'quiet'})).toMatchSnapshot();
 		});
 
 		it('should render results with screenshots', () => {
 			const screenshot = 'path/to/screenshot.png';
-			expect(toHtml(failResult(screenshot))).toMatchSnapshot();
-			expect(toHtml(warningResult(screenshot))).toMatchSnapshot();
-			expect(toHtml(exitResult(screenshot))).toMatchSnapshot();
-			expect(toHtml(excludedResult(screenshot))).toMatchSnapshot();
-			expect(toHtml(fatalResult(screenshot))).toMatchSnapshot();
+			expect(toHtml(failResult(screenshot), defaultOptions)).toMatchSnapshot();
+			expect(toHtml(warningResult(screenshot), defaultOptions)).toMatchSnapshot();
+			expect(toHtml(exitResult(screenshot), defaultOptions)).toMatchSnapshot();
+			expect(toHtml(excludedResult(screenshot), defaultOptions)).toMatchSnapshot();
+			expect(toHtml(fatalResult(screenshot), defaultOptions)).toMatchSnapshot();
 		});
 
 		it('should render link', () => {
-			expect(toHtml(<link href="http://some.url">Some URL</link>)).toMatchSnapshot();
-			expect(toHtml(<link href="http://some.url">http://some.url</link>)).toMatchSnapshot();
-			expect(toHtml(<link href="http://some.url"/>)).toMatchSnapshot();
+			expect(toHtml(<link href="http://some.url">Some URL</link>, defaultOptions)).toMatchSnapshot();
+			expect(toHtml(<link href="http://some.url">http://some.url</link>, defaultOptions)).toMatchSnapshot();
+			expect(toHtml(<link href="http://some.url"/>, defaultOptions)).toMatchSnapshot();
 		});
 	});
 
 	describe('escape html tags', () => {
 		const script = '<script>alert("xss")</script>';
-		expect(toHtml(<fragment>{script}</fragment>)).toMatchSnapshot();
-		expect(toHtml(<subject>{script}</subject>)).toMatchSnapshot();
-		expect(toHtml(<input>{script}</input>)).toMatchSnapshot();
-		expect(toHtml(<code>{script}</code>)).toMatchSnapshot();
-		expect(toHtml(<code-block>{script}</code-block>)).toMatchSnapshot();
-		expect(toHtml(<text>{script}</text>)).toMatchSnapshot();
+		expect(toHtml(<fragment>{script}</fragment>, defaultOptions)).toMatchSnapshot();
+		expect(toHtml(<subject>{script}</subject>, defaultOptions)).toMatchSnapshot();
+		expect(toHtml(<input>{script}</input>, defaultOptions)).toMatchSnapshot();
+		expect(toHtml(<code>{script}</code>, defaultOptions)).toMatchSnapshot();
+		expect(toHtml(<code-block>{script}</code-block>, defaultOptions)).toMatchSnapshot();
+		expect(toHtml(<text>{script}</text>, defaultOptions)).toMatchSnapshot();
+	});
+
+	describe('escape URLs', () => {
+		expect(<link href={'?<script>alert("xss")</script>'}>TEST</link>).toMatchSnapshot();
 	});
 
 	describe('Translation utils', () => {
@@ -170,6 +183,20 @@ describe('AST renderers', () => {
 
 			it('should replace entities even if they repeat', () => {
 				expect(escapeHtml('&&&')).toEqual('&amp;&amp;&amp;');
+			});
+		});
+
+		describe('escapeUri util', () => {
+			it('should escape special characters', () => {
+				expect(escapeUrl('& < " \'')).toEqual('&#x0026 &#x003c &#x0022 &#x0027');
+			});
+
+			it('should replace entities even if they repeat', () => {
+				expect(escapeUrl('&&&')).toEqual('&#x0026&#x0026&#x0026');
+			});
+
+			it('should return nothing if URL starts with javascript:', () => {
+				expect(escapeUrl('javascript:alert("xss")')).toEqual('');
 			});
 		});
 	});

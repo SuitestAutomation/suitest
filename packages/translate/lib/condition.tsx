@@ -31,7 +31,7 @@ const translateApplicationExitedCondition = (inverse: boolean, lineResult?: Test
 const translateCurrentLocationCondition = (
 	condition: CurrentLocationCondition,
 	inverse: boolean,
-	appConfig: AppConfiguration,
+	appConfig?: AppConfiguration,
 	lineResult?: TestLineResult,
 ): ConditionNode => {
 	const isCodeBlock = condition.type === 'matches';
@@ -48,7 +48,7 @@ const translateCurrentLocationCondition = (
 				)
 				: <prop
 					name={<text>current location</text>}
-					expectedValue={formatVariables(condition.val, appConfig.configVariables)}
+					expectedValue={formatVariables(condition.val, appConfig?.configVariables)}
 					comparator={translateComparator(condition.type)}
 					status={mapStatus(lineResult?.result, inverse)}
 					actualValue={lineResult?.actualValue}
@@ -59,7 +59,7 @@ const translateCurrentLocationCondition = (
 };
 
 const translateCookieCondition = (
-	condition: CookieCondition, inverse: boolean, appConfig: AppConfiguration, lineResult?: TestLineResult
+	condition: CookieCondition, inverse: boolean, appConfig?: AppConfiguration, lineResult?: TestLineResult
 ): ConditionNode => {
 	const title = <fragment>cookie <subject>{condition.subject.val}</subject></fragment>;
 
@@ -90,7 +90,7 @@ const translateCookieCondition = (
 			<prop
 				name={<subject>{condition.subject.val}</subject>}
 				comparator={translateComparator(condition.type)}
-				expectedValue={formatVariables(condition.val, appConfig.configVariables)}
+				expectedValue={formatVariables(condition.val, appConfig?.configVariables)}
 				actualValue={lineResult?.actualValue}
 				status={mapStatus(lineResult?.result, inverse)}
 			/>
@@ -192,7 +192,7 @@ const translateElementName = (subject: ElementSubject | PSVideoSubject, elements
 const translateElementCondition = (
 	condition: ElementCondition,
 	inverse: boolean,
-	appConfig: AppConfiguration,
+	appConfig?: AppConfiguration,
 	elements?: Elements,
 	lineResult?: TestLineResult,
 ): ConditionNode => {
@@ -251,7 +251,7 @@ const translateElementCondition = (
 						return <prop
 							name={<text>{translateElementProperty(exp.property)}</text>}
 							comparator={translateComparator(exp.type)}
-							expectedValue={formatVariables(exp.val + (exp.type === '+-' ? ' ± ' + exp.deviation : ''), appConfig.configVariables)}
+							expectedValue={formatVariables(exp.val + (exp.type === '+-' ? ' ± ' + exp.deviation : ''), appConfig?.configVariables)}
 							actualValue={actualValue}
 							status={expResult?.result}
 						/>;
@@ -279,7 +279,7 @@ const translatePSVideoCondition = (
 const translateJavaScriptExpressionCondition = (
 	condition: JavaScriptExpressionCondition,
 	inverse: boolean,
-	appConfig: AppConfiguration,
+	appConfig?: AppConfiguration,
 	lineResult?: TestLineResult,
 ): ConditionNode => {
 	const notSpecifiedMessage = '[NOT SPECIFIED]';
@@ -296,7 +296,7 @@ const translateJavaScriptExpressionCondition = (
 			<prop
 				name={<text>expression result</text>}
 				expectedValue={condition.val
-					? formatVariables(condition.val, appConfig.configVariables)
+					? formatVariables(condition.val, appConfig?.configVariables)
 					: <text>{notSpecifiedMessage}</text>}
 				actualValue={lineResult?.actualValue}
 				comparator={translateComparator(condition.type)}
@@ -307,7 +307,7 @@ const translateJavaScriptExpressionCondition = (
 };
 
 const translateNetworkInfo = (
-	isRequest: boolean, appConfig: AppConfiguration, errors: QueryFailedNetworkError['errors'] = []
+	isRequest: boolean, appConfig?: AppConfiguration, errors: QueryFailedNetworkError['errors'] = []
 ) => (
 	{ name, compare, val }: { name: string, compare: Comparator, val: string | number },
 ): InlinePropertyNode => {
@@ -322,10 +322,10 @@ const translateNetworkInfo = (
 	const headerNode = <prop
 		name={<fragment>{isRequest ? 'request ' : 'response '}{name.startsWith('@')
 			? <text>{name.slice(1)}</text>
-			: <fragment>header {formatVariables(name, appConfig.configVariables)}</fragment>
+			: <fragment>header {formatVariables(name, appConfig?.configVariables)}</fragment>
 		}</fragment>}
 		comparator={translateComparator(compare)}
-		expectedValue={formatVariables(String(val), appConfig.configVariables)}
+		expectedValue={formatVariables(String(val), appConfig?.configVariables)}
 	/> as InlinePropertyNode;
 
 	// specify header status
@@ -379,7 +379,7 @@ export const sortNetworkInfo = (a: NetworkRequestInfo, b: NetworkRequestInfo): n
 const translateNetworkRequestCondition = (
 	condition: NetworkRequestCondition,
 	inverse: boolean,
-	appConfig: AppConfiguration,
+	appConfig?: AppConfiguration,
 	lineResult?: TestLineResult,
 ): ConditionNode => {
 	const errors = lineResult?.errorType === 'queryFailed' && 'errors' in lineResult ? lineResult.errors : [];
@@ -398,7 +398,7 @@ const translateNetworkRequestCondition = (
 			<prop
 				name={<text>URL</text>}
 				comparator={translateComparator(condition.subject.compare)}
-				expectedValue={formatVariables(condition.subject.val, appConfig.configVariables)}
+				expectedValue={formatVariables(condition.subject.val, appConfig?.configVariables)}
 				status={lineResult && ('errors' in lineResult) && lineResult.errors.find(err => err.type === 'noUriFound') ? (!inverse ? 'fail' : 'success') : undefined}
 			/>
 			{tableRows}
@@ -419,7 +419,7 @@ const assertUnknownConditionSubject = (subject: never): never => {
 export const translateCondition = (
 	condition: Condition,
 	inverse: boolean,
-	appConfig: AppConfiguration,
+	appConfig?: AppConfiguration,
 	elements?: Elements,
 	lineResult?: TestLineResult,
 ): ConditionNode => {

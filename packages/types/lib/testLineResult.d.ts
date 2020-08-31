@@ -129,8 +129,15 @@ export type SimpleError = BaseResult & {
 		| 'packageCorrupted'
 		| 'unknownElementProperty'
 		| 'configuratorError'
+		| 'appleNetworkLogsError'
 		| 'appStoreBuild'
 		| 'outdatedLibraryWarning'
+		| 'cyclicReference'
+		| 'ioError'
+		| 'netError'
+		| 'sdComponentFailed'
+		| 'MoveTargetOutOfBounds'
+		| 'ElementClickIntercepted'
 		| 'cyclicReference'
 		| 'unsupportedOSVersion'
 		| 'targetManagerUnsupportedVersion',
@@ -282,12 +289,6 @@ export type QueryFailedError = BaseResult & (QueryFailedWithCode | {
 	expression: ResultExpression,
 } | QueryFailedNetworkError);
 
-export type InvalidUrlError = BaseResult & {
-	errorType: 'invalidUrl',
-	actualValue: string,
-	expectedValue: string,
-};
-
 export type InvalidValueError = BaseResult & {
 	errorType: 'invalidValue',
 	args?: {
@@ -353,6 +354,8 @@ export type ADBError = BaseResult & {
 		info: {
 			reason: string,
 		},
+	} | {
+		code: 'certificateError',
 	},
 };
 
@@ -379,7 +382,6 @@ export type TestLineResult = TestLineSuccessResult
 	| UnsupportedButtonError
 	| AbortedError
 	| QueryFailedError
-	| InvalidUrlError
 	| InvalidValueError
 	| InvalidVariableError
 	| InvalidResultError
