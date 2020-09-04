@@ -137,7 +137,9 @@ export type SimpleError = BaseResult & {
 		| 'netError'
 		| 'sdComponentFailed'
 		| 'MoveTargetOutOfBounds'
-		| 'ElementClickIntercepted',
+		| 'ElementClickIntercepted'
+		| 'unsupportedOSVersion'
+		| 'targetManagerUnsupportedVersion',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {

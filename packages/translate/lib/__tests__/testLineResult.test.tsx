@@ -103,6 +103,8 @@ describe('Test line results translation', () => {
 		'sdComponentFailed',
 		'MoveTargetOutOfBounds',
 		'ElementClickIntercepted',
+		'unsupportedOSVersion',
+		'targetManagerUnsupportedVersion',
 	];
 
 	describe('simple errors translations', () => {
