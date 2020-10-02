@@ -477,7 +477,7 @@ const getQueryLineError = (line: QueryLine, lineResult: QueryLineError): Node =>
 	} else if (lineResult.cookieExists) {
 		text = 'Cookie was not found';
 	} else if (lineResult.executeThrowException) {
-		text = `Execution thrown exception "${lineResult.executeExceptionMessage}}"`
+		text = `Execution thrown exception "${lineResult.executeExceptionMessage}}"`;
 	} else if (lineResult.errorMessage) {
 		text = lineResult.errorMessage;
 	} else {
@@ -485,7 +485,7 @@ const getQueryLineError = (line: QueryLine, lineResult: QueryLineError): Node =>
 		switch (line.subject.type) {
 			case 'execute':
 				text += 'executing script on device';
-				break
+				break;
 			case 'cookie':
 				text += 'retrieving cookie';
 				break;
@@ -499,7 +499,7 @@ const getQueryLineError = (line: QueryLine, lineResult: QueryLineError): Node =>
 	}
 
 	return <text>{text}</text>;
-}
+};
 
 const getLineResultMessage = (testLine: TestLine | QueryLine, lineResult?: TestLineResult | QueryLineError): Node | undefined => {
 	if ((lineResult as QueryLineError)?.contentType === 'query') {

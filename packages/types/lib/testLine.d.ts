@@ -32,7 +32,7 @@ export type ClearAppDataTestLine = BaseTestLine & {
 export type TakeScreenshotTestLine = BaseTestLine & {
 	type: 'takeScreenshot',
 	dataFormat?: 'raw' | 'base64',
-	fileName?: string
+	fileName?: string,
 };
 
 export type ExecuteCommandTestLine = BaseTestLine & {

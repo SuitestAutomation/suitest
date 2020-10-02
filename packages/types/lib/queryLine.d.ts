@@ -2,8 +2,8 @@ export type CookieQueryLine = {
 	type: 'query',
 	subject: {
 		type: 'cookie',
-		cookieName: string
-	}
+		cookieName: string,
+	},
 };
 
 export type ElementQueryLine = {
@@ -22,23 +22,23 @@ export type ElementQueryLine = {
 			video?: boolean,
 			psVideo?: boolean,
 			ifMultipleFoundReturn?: number,
-		}
-	}
+		},
+	},
 };
 
 export type JsExpressionQueryLine = {
 	type: 'query',
 	subject: {
 		type: 'execute',
-		execute: string
-	}
+		execute: string,
+	},
 };
 
 export type LocationQueryLine = {
 	type: 'query',
 	subject: {
-		type: 'location'
-	}
+		type: 'location',
+	},
 };
 
 export type QueryLine = CookieQueryLine | ElementQueryLine | JsExpressionQueryLine | LocationQueryLine;

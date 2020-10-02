@@ -102,7 +102,9 @@ const translateAssertTestLine = (
 	</test-line> as TestLineNode;
 };
 
-const translateTakeScreenshotTestLine = (testLine: TakeScreenshotTestLine, lineResult?: TestLineResult): TestLineNode => {
+const translateTakeScreenshotTestLine = (
+	testLine: TakeScreenshotTestLine, lineResult?: TestLineResult
+): TestLineNode => {
 	let text = '';
 	if (testLine.dataFormat === 'raw') {
 		text = 'take screenshot (raw)';
@@ -111,6 +113,7 @@ const translateTakeScreenshotTestLine = (testLine: TakeScreenshotTestLine, lineR
 	} else if (testLine.fileName) {
 		text = `save screenshot ("${testLine.fileName}")`;
 	}
+
 	return <test-line
 		title={<text>{text}</text>}
 		status={lineResult?.result}
@@ -127,6 +130,7 @@ const translateClearAppDataTestLine = (testLine: ClearAppDataTestLine, lineResul
 
 const translateQueryTestLine = (testLine: QueryLine, lineResult?: TestLineResult | QueryLineError): TestLineNode => {
 	let title = '';
+
 	switch(testLine.subject.type) {
 		case 'cookie':
 			title = `Retrieve value for "${testLine.subject.cookieName}" cookie`;
@@ -135,10 +139,10 @@ const translateQueryTestLine = (testLine: QueryLine, lineResult?: TestLineResult
 			title = `Retrieve value of execution "${testLine.subject.execute}"`;
 			break;
 		case 'location':
-			title = `Retrieve value of current location`;
+			title = 'Retrieve value of current location';
 			break;
 		case 'elementProps':
-			title = `Retrieve info of `;
+			title = 'Retrieve info of ';
 			if (testLine.subject.selector.video || testLine.subject.selector.psVideo) {
 				title += 'video element';
 			} else {
@@ -571,8 +575,8 @@ export const translateTestLine = ({
 	lineResult?: TestLineResult | QueryLineError,
 }): TestLineNode => {
 	switch (testLine.type) {
-		case "query":
-			return translateQueryTestLine(testLine, lineResult)
+		case 'query':
+			return translateQueryTestLine(testLine, lineResult);
 		case 'assert':
 		case 'wait':
 			return translateAssertTestLine(testLine, appConfig, elements, lineResult as TestLineResult);
