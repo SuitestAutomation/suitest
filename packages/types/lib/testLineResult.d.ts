@@ -360,9 +360,9 @@ export type ADBError = BaseResult & {
 
 export type QueryLineError = {
 	contentType: 'query',
-	result: 'error',
-	errorType: 'deviceError',
-	errorMessage: 'cssSelectorInvalid',
+	result?: 'error',
+	errorType?: 'deviceError',
+	errorMessage?: 'cssSelectorInvalid',
 	elementExists?: boolean,
 	cookieExists?: boolean,
 	executeThrowException?: boolean,
