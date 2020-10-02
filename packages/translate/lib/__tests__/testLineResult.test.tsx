@@ -5,6 +5,10 @@ import {
 	TestLineErrorResult,
 	PSVideoHadNoErrorCondition,
 	TestLine,
+	QueryLineError,
+	ElementQueryLine,
+	CookieQueryLine,
+	JsExpressionQueryLine, QueryLine,
 } from '@suitest/types/lib';
 import {translateResultErrorMessage, translateTestLineResult} from '../testLineResult';
 import {appConfig, conditions, elements, testLinesExamples} from './testLinesExamples';
@@ -117,6 +121,45 @@ describe('Test line results translation', () => {
 				} as TestLineErrorResult)).toMatchSnapshot();
 			});
 		}
+	});
+
+	describe('Translate query lines', () => {
+		const testLineToFormattedText = (...args: Parameters<typeof translateTestLineResult>): string =>
+			toText(translateTestLineResult(...args), {verbosity: 'normal', format: false});
+		const extendQueryLineSubject = (subject: QueryLine['subject']): QueryLine => ({
+			type: 'query',
+			subject,
+		} as QueryLine);
+		expect(testLineToFormattedText({
+			testLine: extendQueryLineSubject({type: 'elementProps', selector: {css: 'div'}}) as ElementQueryLine,
+			lineResult: {
+				contentType: 'query',
+				elementExists: false,
+			} as QueryLineError,
+		})).toMatchSnapshot();
+		expect(testLineToFormattedText({
+			testLine: extendQueryLineSubject({type: 'elementProps', selector: {css: 'div'}}) as ElementQueryLine,
+			lineResult: {
+				contentType: 'query',
+				errorType: 'deviceError',
+				errorMessage: 'cssSelectorInvalid',
+			} as QueryLineError,
+		})).toMatchSnapshot();
+		expect(testLineToFormattedText({
+			testLine: extendQueryLineSubject({type: 'cookie', cookieName: 'cook'}) as CookieQueryLine,
+			lineResult: {
+				contentType: 'query',
+				cookieExists: false,
+			} as QueryLineError,
+		})).toMatchSnapshot();
+		expect(testLineToFormattedText({
+			testLine: extendQueryLineSubject({type: 'execute', execute: 'a + 1'}) as JsExpressionQueryLine,
+			lineResult: {
+				contentType: 'query',
+				executeThrowException: true,
+				executeExceptionMessage: '"a" is not defined',
+			} as QueryLineError,
+		})).toMatchSnapshot();
 	});
 
 	describe('Translate assert lines', () => {

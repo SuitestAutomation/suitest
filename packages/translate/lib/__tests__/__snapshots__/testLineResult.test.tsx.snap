@@ -1,5 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[` 1`] = `
+"Retrieve info of \\"div\\" element
+  fail: Element was not found"
+`;
+
+exports[` 2`] = `
+"Retrieve info of \\"div\\" element
+  fail: cssSelectorInvalid"
+`;
+
+exports[` 3`] = `
+"Retrieve value for \\"cook\\" cookie
+  fail: Error occurred while retrieving cookie"
+`;
+
+exports[` 4`] = `
+"Retrieve value of execution \\"a + 1\\"
+  fail: Execution thrown exception \\"\\"a\\" is not defined}\\""
+`;
+
 exports[`Test line results translation Translate assert lines translate "assert application has exited" render with fail result 1`] = `
 "✖ Assert: Application has exited
   fail: App is still running"

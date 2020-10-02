@@ -24,7 +24,7 @@ import {
 	AppConfiguration,
 	Elements,
 	Snippets,
-	SimpleError,
+	SimpleError, QueryLine, QueryLineError,
 } from '@suitest/types';
 import {translateTestLine} from './testLine';
 import {translateElementProperty} from './condition';
@@ -452,7 +452,7 @@ const getScreenshotUrl = (screenshotPath?: string): string | undefined => screen
 	: undefined;
 
 const getInvertedResultMessage = (
-	testLine: TestLine,
+	testLine: TestLine | QueryLine,
 	lineResult?: TestLineResult
 ): Node | undefined => {
 	if (
@@ -468,8 +468,44 @@ const getInvertedResultMessage = (
 	return lineResult.result === testLine.then ? conditionWasMetMessage : conditionWasNotMetMessage;
 };
 
-const getLineResultMessage = (testLine: TestLine, lineResult?: TestLineResult): Node | undefined => {
-	const invertedResult = getInvertedResultMessage(testLine, lineResult);
+const getQueryLineError = (line: QueryLine, lineResult: QueryLineError): Node => {
+	let text = '';
+	if (lineResult.error === 'notExistingElement') {
+		text = 'Element was not found in the repository';
+	} else if (lineResult.elementExists === false) {
+		text = 'Element was not found';
+	} else if (lineResult.cookieExists) {
+		text = 'Cookie was not found';
+	} else if (lineResult.executeThrowException) {
+		text = `Execution thrown exception "${lineResult.executeExceptionMessage}}"`
+	} else if (lineResult.errorMessage) {
+		text = lineResult.errorMessage;
+	} else {
+		text = 'Error occurred while ';
+		switch (line.subject.type) {
+			case 'execute':
+				text += 'executing script on device';
+				break
+			case 'cookie':
+				text += 'retrieving cookie';
+				break;
+			case 'elementProps':
+				text += 'retrieving element';
+				break;
+			case 'location':
+				text += 'retrieving current location';
+				break;
+		}
+	}
+
+	return <text>{text}</text>;
+}
+
+const getLineResultMessage = (testLine: TestLine | QueryLine, lineResult?: TestLineResult | QueryLineError): Node | undefined => {
+	if ((lineResult as QueryLineError)?.contentType === 'query') {
+		return getQueryLineError(testLine as QueryLine, lineResult as QueryLineError);
+	}
+	const invertedResult = getInvertedResultMessage(testLine, lineResult as TestLineResult);
 	if (invertedResult) {
 		return invertedResult;
 	}
@@ -483,7 +519,7 @@ const getLineResultMessage = (testLine: TestLine, lineResult?: TestLineResult): 
 		return <text>Line was not executed</text>;
 	}
 
-	if (testLine.type === 'runSnippet' && !lineResult.errorType) {
+	if (testLine.type === 'runSnippet' && !(lineResult as TestLineResult).errorType) {
 		// Snippet failed because one of it's children failed
 		return undefined;
 	}
@@ -492,17 +528,24 @@ const getLineResultMessage = (testLine: TestLine, lineResult?: TestLineResult): 
 };
 
 export const translateTestLineResult = (options: {
-	testLine: TestLine,
+	testLine: TestLine | QueryLine,
 	appConfig?: AppConfiguration,
-	lineResult?: TestLineResult,
+	lineResult?: TestLineResult | QueryLineError,
 	elements?: Elements,
 	snippets?: Snippets,
 }): TestLineResultNode => {
 	const {lineResult} = options;
 
+	if (lineResult && 'contentType' in lineResult && lineResult.contentType === 'query') {
+		return <test-line-result
+			status={'fail'}
+			message={getLineResultMessage(options.testLine, lineResult)}
+		>{translateTestLine(options)}</test-line-result> as TestLineResultNode;
+	}
+
 	return <test-line-result
-		status={lineResult?.result ?? 'success'}
+		status={(lineResult as TestLineResult)?.result ?? 'success'}
 		message={getLineResultMessage(options.testLine, lineResult)}
-		screenshot={getScreenshotUrl(lineResult?.screenshot)}
+		screenshot={getScreenshotUrl((lineResult as TestLineResult)?.screenshot)}
 	>{translateTestLine(options)}</test-line-result> as TestLineResultNode;
 };
