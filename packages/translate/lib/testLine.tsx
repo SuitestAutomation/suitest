@@ -131,7 +131,7 @@ const translateClearAppDataTestLine = (testLine: ClearAppDataTestLine, lineResul
 const translateQueryTestLine = (testLine: QueryLine, lineResult?: TestLineResult | QueryLineError): TestLineNode => {
 	let title = '';
 
-	switch(testLine.subject.type) {
+	switch (testLine.subject.type) {
 		case 'cookie':
 			title = `Retrieve value for "${testLine.subject.cookieName}" cookie`;
 			break;
