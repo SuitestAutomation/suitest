@@ -123,6 +123,7 @@ const simpleErrorMap: {[key: string]: Node} = {
 	ElementClickIntercepted: <text>Click on the element was intercepted by another element</text>,
 	unsupportedOSVersion: <fragment>Unsupported OS version, please see our <link href="https://suite.st/docs/devices/playstation/#sdk-650-or-system-software-701-or-lower">docs</link></fragment>,
 	targetManagerUnsupportedVersion: <fragment>Unsupported Target Manager Server, please see our <link href="https://suite.st/docs/devices/playstation/#sdk-650-or-system-software-701-or-lower">docs</link></fragment>,
+	systemOutdated: <text>System software version mismatch. New version of system software is required</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
