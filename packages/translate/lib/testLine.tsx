@@ -451,8 +451,8 @@ const translateScrollTestLine = (
 	const titleFragment = getConditionInfo(testLine, appConfig);
 	const direction = testLine.scroll[0].direction;
 	const distance = testLine.scroll[0].distance;
-	const title = <fragment>Scroll from
-		{translateTarget(testLine.target)}{titleFragment} to {direction} by {distance}px</fragment>;
+	const title = <fragment>Scroll from {translateTarget(testLine.target)}
+	{titleFragment} to {direction} by {distance}px</fragment>;
 	const status = testLine.excluded ? 'excluded' : lineResult?.result;
 
 	return <test-line title={title} status={status} docs={getDocsLink(testLine.type, lineResult?.result)}>
@@ -472,8 +472,8 @@ const translateSwipeTestLine = (
 	const direction = testLine.swipe[0].direction;
 	const distance = testLine.swipe[0].distance;
 	const duration = testLine.swipe[0].duration;
-	const title = <fragment>Swipe/Flick from
-		{translateTarget(testLine.target)}{titleFragment} to {direction} by {distance}px in {duration}ms</fragment>;
+	const title = <fragment>Swipe/Flick from {translateTarget(testLine.target)}
+		{titleFragment} to {direction} by {distance}px in {duration}ms</fragment>;
 	const status = testLine.excluded ? 'excluded' : lineResult?.result;
 
 	return <test-line title={title} status={status} docs={getDocsLink(testLine.type, lineResult?.result)}>
