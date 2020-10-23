@@ -3,7 +3,7 @@ export type LineDefinition = TestLineDefinitionType;
 // TODO: should it be replaced by TestLineResult?
 export type LineResult = {
 	lineId: string,
-	result: 'success' | 'warning' | 'fail' | 'fatal' | 'exit',
+	result: 'success' | 'warning' | 'fail' | 'fatal' | 'exit' | 'aborted',
 	timeFinished?: number,
 	timeStarted?: number,
 	timeHrDiff?: number[],

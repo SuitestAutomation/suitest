@@ -100,6 +100,16 @@ describe('AST renderers', () => {
 			status="fatal"
 		/>
 	</test-line-result>;
+	const abortedResult = (screenshot?: string): JSX.Element => <test-line-result
+		status="aborted"
+		message={<text>Execution was aborted.</text>}
+		screenshot={screenshot}
+	>
+		<test-line
+			title={<fragment>Sleep 10s</fragment>}
+			status="aborted"
+		/>
+	</test-line-result>;
 
 	describe('html renderer', () => {
 		it('should handle textual nodes', () => {
@@ -135,6 +145,7 @@ describe('AST renderers', () => {
 			expect(toHtml(exitResult(), defaultOptions)).toMatchSnapshot();
 			expect(toHtml(excludedResult(), defaultOptions)).toMatchSnapshot();
 			expect(toHtml(fatalResult(), defaultOptions)).toMatchSnapshot();
+			expect(toHtml(abortedResult(), defaultOptions)).toMatchSnapshot();
 		});
 
 		it('should render results with quiet level', () => {
@@ -143,6 +154,7 @@ describe('AST renderers', () => {
 			expect(toHtml(exitResult(), {verbosity: 'quiet'})).toMatchSnapshot();
 			expect(toHtml(excludedResult(), {verbosity: 'quiet'})).toMatchSnapshot();
 			expect(toHtml(fatalResult(), {verbosity: 'quiet'})).toMatchSnapshot();
+			expect(toHtml(abortedResult(), { verbosity: 'quiet'})).toMatchSnapshot();
 		});
 
 		it('should render results with screenshots', () => {
@@ -152,6 +164,7 @@ describe('AST renderers', () => {
 			expect(toHtml(exitResult(screenshot), defaultOptions)).toMatchSnapshot();
 			expect(toHtml(excludedResult(screenshot), defaultOptions)).toMatchSnapshot();
 			expect(toHtml(fatalResult(screenshot), defaultOptions)).toMatchSnapshot();
+			expect(toHtml(abortedResult(screenshot), defaultOptions)).toMatchSnapshot();
 		});
 
 		it('should render link', () => {

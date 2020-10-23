@@ -46,6 +46,8 @@ exports[`AST renderers html renderer should render alerts 4`] = `"<div class=\\"
 
 exports[`AST renderers html renderer should render alerts 5`] = `"<div class=\\"suitest-test-line__result suitest-test-line__result--fatal\\"><div class=\\"suitest-test-line suitest-test-line--fatal\\"><div class=\\"suitest-test-line__title\\">Assert application has exited</div></div></div>"`;
 
+exports[`AST renderers html renderer should render alerts 6`] = `"<div class=\\"suitest-test-line__result suitest-test-line__result--aborted\\"><div class=\\"suitest-test-line suitest-test-line--aborted\\"><div class=\\"suitest-test-line__title\\">Sleep 10s</div></div><div class=\\"suitest-test-line__result__message\\">Execution was aborted.</div></div>"`;
+
 exports[`AST renderers html renderer should render condition 1`] = `"<div class=\\"suitest-test-line__condition suitest-test-line__condition--undefined\\"><div class=\\"suitest-test-line__condition suitest-test-line__condition--undefined__header\\">condition: condition: element <span class=\\"suitest-test-line__text--subject\\">My element</span> exists</div></div>"`;
 
 exports[`AST renderers html renderer should render condition 2`] = `
@@ -70,6 +72,8 @@ exports[`AST renderers html renderer should render results with quiet level 4`] 
 
 exports[`AST renderers html renderer should render results with quiet level 5`] = `"<div class=\\"suitest-test-line__result suitest-test-line__result--fatal\\"><div class=\\"suitest-test-line suitest-test-line--fatal\\"><div class=\\"suitest-test-line__title\\">Assert application has exited</div></div></div>"`;
 
+exports[`AST renderers html renderer should render results with quiet level 6`] = `"<div class=\\"suitest-test-line__result suitest-test-line__result--aborted\\"><div class=\\"suitest-test-line suitest-test-line--aborted\\"><div class=\\"suitest-test-line__title\\">Sleep 10s</div></div><div class=\\"suitest-test-line__result__message\\">Execution was aborted.</div></div>"`;
+
 exports[`AST renderers html renderer should render results with screenshots 1`] = `"<div class=\\"suitest-test-line__result suitest-test-line__result--fail\\"><div class=\\"suitest-test-line suitest-test-line--fail\\"><div class=\\"suitest-test-line__title\\">Assert application has exited</div></div><div class=\\"suitest-test-line__result__message\\">Condition was not met</div><div class=\\"suitest-test-line__result__screenshot\\">screenshot: <a href=\\"path/to/screenshot.png\\" target=\\"_blank\\">path/to/screenshot.png</a></div></div>"`;
 
 exports[`AST renderers html renderer should render results with screenshots 2`] = `"<div class=\\"suitest-test-line__result suitest-test-line__result--warning\\"><div class=\\"suitest-test-line suitest-test-line--warning\\"><div class=\\"suitest-test-line__title\\">Assert application has exited</div></div><div class=\\"suitest-test-line__result__screenshot\\">screenshot: <a href=\\"path/to/screenshot.png\\" target=\\"_blank\\">path/to/screenshot.png</a></div></div>"`;
@@ -79,6 +83,8 @@ exports[`AST renderers html renderer should render results with screenshots 3`] 
 exports[`AST renderers html renderer should render results with screenshots 4`] = `"<div class=\\"suitest-test-line__result suitest-test-line__result--excluded\\"><div class=\\"suitest-test-line suitest-test-line--excluded\\"><div class=\\"suitest-test-line__title\\">Assert application has exited</div></div><div class=\\"suitest-test-line__result__screenshot\\">screenshot: <a href=\\"path/to/screenshot.png\\" target=\\"_blank\\">path/to/screenshot.png</a></div></div>"`;
 
 exports[`AST renderers html renderer should render results with screenshots 5`] = `"<div class=\\"suitest-test-line__result suitest-test-line__result--fatal\\"><div class=\\"suitest-test-line suitest-test-line--fatal\\"><div class=\\"suitest-test-line__title\\">Assert application has exited</div></div><div class=\\"suitest-test-line__result__screenshot\\">screenshot: <a href=\\"path/to/screenshot.png\\" target=\\"_blank\\">path/to/screenshot.png</a></div></div>"`;
+
+exports[`AST renderers html renderer should render results with screenshots 6`] = `"<div class=\\"suitest-test-line__result suitest-test-line__result--aborted\\"><div class=\\"suitest-test-line suitest-test-line--aborted\\"><div class=\\"suitest-test-line__title\\">Sleep 10s</div></div><div class=\\"suitest-test-line__result__message\\">Execution was aborted.</div><div class=\\"suitest-test-line__result__screenshot\\">screenshot: <a href=\\"path/to/screenshot.png\\" target=\\"_blank\\">path/to/screenshot.png</a></div></div>"`;
 
 exports[`AST renderers html renderer should render test line 1`] = `"<div class=\\"suitest-test-line suitest-test-line--undefined\\"><div class=\\"suitest-test-line__title\\">Assert element <span class=\\"suitest-test-line__text--subject\\">My element</span> is visible</div></div>"`;
 

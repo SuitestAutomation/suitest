@@ -123,6 +123,16 @@ describe('AST renderers', () => {
 			status="success"
 		/>
 	</test-line-result>;
+	const abortedResult = (screenshot?: string): JSX.Element => <test-line-result
+		status="aborted"
+		message={<text>Execution was aborted.</text>}
+		screenshot={screenshot}
+	>
+		<test-line
+			title={<fragment>Sleep 10s</fragment>}
+			status="aborted"
+		/>
+	</test-line-result>;
 
 	function runTests(options: {format: boolean, verbosity: Verbosity}): void {
 		it('should handle code blocks', () => {
@@ -214,6 +224,7 @@ describe('AST renderers', () => {
 			expect(toText(excludedResult(), options)).toMatchSnapshot();
 			expect(toText(fatalResult(), options)).toMatchSnapshot();
 			expect(toText(successResultWithScreenshot(), options)).toMatchSnapshot();
+			expect(toText(abortedResult(), options)).toMatchSnapshot();
 		});
 
 		it('should render test line results with screenshots', () => {
@@ -224,14 +235,17 @@ describe('AST renderers', () => {
 			expect(toText(excludedResult(screenshot), options)).toMatchSnapshot();
 			expect(toText(fatalResult(screenshot), options)).toMatchSnapshot();
 			expect(toText(successResultWithScreenshot(screenshot), options)).toMatchSnapshot();
+			expect(toText(abortedResult(), options)).toMatchSnapshot();
 
 			expect(toText(failResult(screenshot), {...options, verbosity: 'quiet'})).toMatchSnapshot();
 			expect(toText(warningResult(screenshot), {...options, verbosity: 'quiet'})).toMatchSnapshot();
 			expect(toText(exitResult(screenshot), {...options, verbosity: 'quiet'})).toMatchSnapshot();
+			expect(toText(abortedResult(), {...options, verbosity: 'quiet'})).toMatchSnapshot();
 
 			expect(toText(failResult(screenshot), {...options, verbosity: 'verbose'})).toMatchSnapshot();
 			expect(toText(warningResult(screenshot), {...options, verbosity: 'verbose'})).toMatchSnapshot();
 			expect(toText(exitResult(screenshot), {...options, verbosity: 'verbose'})).toMatchSnapshot();
+			expect(toText(abortedResult(), {...options, verbosity: 'verbose'})).toMatchSnapshot();
 		});
 	}
 

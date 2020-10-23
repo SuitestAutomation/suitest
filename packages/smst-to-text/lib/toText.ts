@@ -64,6 +64,7 @@ const format = {
 	warning: 	'\u001b[33m',	// yellow
 	exit: 		'\u001b[34m',	// blue
 	excluded: 	'\u001b[34m',	// blue
+	aborted: 	'\u001b[35m',	// magenta
 };
 
 const formatString = (text: string, type: string): string => {
@@ -148,6 +149,9 @@ const renderStatus = (type: TestLineResultStatus | SingleEntryStatus): ExtendedI
 		case 'excluded':
 		case 'exit':
 			value = '» ';
+			break;
+		case 'aborted':
+			value = '⦻ ';
 			break;
 	}
 

@@ -137,11 +137,11 @@ describe('Test line results translation', () => {
 			...err,
 		});
 		const assertLine = testLinesExamples['Assert ... then continue'];
-		const testLineToFormattedText = (...args: Parameters<typeof translateTestLineResult>): string =>
+		const testLineToPlainText = (...args: Parameters<typeof translateTestLineResult>): string =>
 			toText(translateTestLineResult(...args), {verbosity: 'normal', format: false});
-		const testLineToVerboseFormattedText = (...args: Parameters<typeof translateTestLineResult>): string =>
+		const testLineToVerbosePlainText = (...args: Parameters<typeof translateTestLineResult>): string =>
 			toText(translateTestLineResult(...args), {format: false, verbosity: 'verbose'});
-		const testLineToQuietFormattedText = (...args: Parameters<typeof translateTestLineResult>): string =>
+		const testLineToQuietPlainText = (...args: Parameters<typeof translateTestLineResult>): string =>
 			toText(translateTestLineResult(...args), {format: false, verbosity: 'quiet'});
 		const successLineResult: TestLineSuccessResult = {
 			result: 'success',
@@ -162,7 +162,7 @@ describe('Test line results translation', () => {
 			const openAppCommand = testLinesExamples['Open app at homepage']();
 
 			it('render with lineId', () => {
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: openAppCommand,
 					appConfig,
 					lineResult: extendBaseError({
@@ -176,7 +176,7 @@ describe('Test line results translation', () => {
 			});
 
 			it('render with addition errorType', () => {
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: openAppCommand,
 					appConfig,
 					lineResult: extendBaseError({
@@ -186,7 +186,7 @@ describe('Test line results translation', () => {
 						},
 					}),
 				})).toMatchSnapshot();
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: openAppCommand,
 					appConfig,
 					lineResult: extendBaseError({
@@ -200,7 +200,7 @@ describe('Test line results translation', () => {
 					}),
 				})).toMatchSnapshot();
 
-				expect(testLineToVerboseFormattedText({
+				expect(testLineToVerbosePlainText({
 					testLine: openAppCommand,
 					appConfig,
 					lineResult: extendBaseError({
@@ -214,7 +214,7 @@ describe('Test line results translation', () => {
 					}),
 				})).toMatchSnapshot();
 
-				expect(testLineToQuietFormattedText({
+				expect(testLineToQuietPlainText({
 					testLine: openAppCommand,
 					appConfig,
 					lineResult: extendBaseError({
@@ -230,7 +230,7 @@ describe('Test line results translation', () => {
 			});
 
 			it('render without appConfig', () => {
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: openAppCommand,
 					lineResult: extendBaseError({
 						errorType: 'openAppOverrideFailed',
@@ -247,30 +247,30 @@ describe('Test line results translation', () => {
 			const assertLocation = assertLine(conditions['current location']('~', 'http://some.url'));
 
 			it('without result', () => {
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: assertLocation,
 					appConfig,
 				})).toMatchSnapshot();
 			});
 
 			it('without appConfig', () => {
-				expect(testLineToFormattedText({ testLine: assertLocation })).toMatchSnapshot();
+				expect(testLineToPlainText({ testLine: assertLocation })).toMatchSnapshot();
 			});
 
 			it('with success result', () => {
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: assertLocation,
 					appConfig,
 					lineResult: successLineResult,
 				})).toMatchSnapshot();
 
-				expect(testLineToVerboseFormattedText({
+				expect(testLineToVerbosePlainText({
 					testLine: assertLocation,
 					appConfig,
 					lineResult: successLineResult,
 				})).toMatchSnapshot();
 
-				expect(testLineToQuietFormattedText({
+				expect(testLineToQuietPlainText({
 					testLine: assertLocation,
 					appConfig,
 					lineResult: successLineResult,
@@ -287,13 +287,13 @@ describe('Test line results translation', () => {
 						expectedValue: 'http://some.url',
 					}),
 				};
-				expect(testLineToFormattedText(line)).toMatchSnapshot();
-				expect(testLineToVerboseFormattedText(line)).toMatchSnapshot();
-				expect(testLineToQuietFormattedText(line)).toMatchSnapshot();
+				expect(testLineToPlainText(line)).toMatchSnapshot();
+				expect(testLineToVerbosePlainText(line)).toMatchSnapshot();
+				expect(testLineToQuietPlainText(line)).toMatchSnapshot();
 			});
 
 			it('errorType: "queryFailed" matchjs failed', () => {
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: assertLine(conditions['current location']('matches',
 						`function somePredicate(location) {
 return false;
@@ -319,13 +319,13 @@ return false;
 						},
 					}),
 				};
-				expect(testLineToFormattedText(line)).toMatchSnapshot();
-				expect(testLineToVerboseFormattedText(line)).toMatchSnapshot();
-				expect(testLineToQuietFormattedText(line)).toMatchSnapshot();
+				expect(testLineToPlainText(line)).toMatchSnapshot();
+				expect(testLineToVerbosePlainText(line)).toMatchSnapshot();
+				expect(testLineToQuietPlainText(line)).toMatchSnapshot();
 			});
 
 			it('errorType: "queryFailed" with message.code', () => {
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: assertLocation,
 					appConfig,
 					lineResult: extendBaseError({
@@ -344,19 +344,19 @@ return false;
 
 			it('without result', () => {
 				// display plain assert cookie line
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: assertCookie,
 					appConfig,
 				})).toMatchSnapshot();
 			});
 
 			it('without appConfig', () => {
-				expect(testLineToFormattedText({ testLine: assertCookie })).toMatchSnapshot();
+				expect(testLineToPlainText({ testLine: assertCookie })).toMatchSnapshot();
 			});
 
 			it('missingSubject error', () => {
 				// display cookie line with missing subject error (when cookie does not exists)
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: assertCookie,
 					appConfig,
 					lineResult: extendBaseError({
@@ -370,7 +370,7 @@ return false;
 
 			it('existingSubject error', () => {
 				// message for: check that cookie not exist
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: assertLine(conditions.cookie('cookie-name', '!exists')),
 					appConfig,
 					lineResult: extendBaseError({
@@ -393,14 +393,14 @@ return false;
 						expectedValue: 'suitest',
 					}),
 				};
-				expect(testLineToFormattedText(line)).toMatchSnapshot();
-				expect(testLineToQuietFormattedText(line)).toMatchSnapshot();
-				expect(testLineToVerboseFormattedText(line)).toMatchSnapshot();
+				expect(testLineToPlainText(line)).toMatchSnapshot();
+				expect(testLineToQuietPlainText(line)).toMatchSnapshot();
+				expect(testLineToVerbosePlainText(line)).toMatchSnapshot();
 			});
 
 			it('queryFailed match js failed', () => {
 				// match js query fail
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: assertLine(conditions.cookie('suitest-cookie', 'matches',
 						`function somePredicate(val) {
 return false;
@@ -416,7 +416,7 @@ return false;
 
 			it('exprException error', () => {
 				// translate JS runtime error
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: assertLine(conditions.cookie('cookieName', 'matches', 'cookieValue')),
 					appConfig,
 					lineResult: extendBaseError({
@@ -436,7 +436,7 @@ return false;
 		describe('translate "assert element"', () => {
 			describe('without error', () => {
 				it('"element ... exist"', () => {
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLine(conditions['element ... exist']()),
 						appConfig,
 						elements,
@@ -444,17 +444,17 @@ return false;
 				});
 
 				it('"element ... does not exist"', () => {
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLine(conditions['element ... does not exist']()),
 						appConfig,
 						elements,
 					})).toMatchSnapshot();
-					expect(testLineToVerboseFormattedText({
+					expect(testLineToVerbosePlainText({
 						testLine: assertLine(conditions['element ... does not exist']()),
 						appConfig,
 						elements,
 					})).toMatchSnapshot();
-					expect(testLineToQuietFormattedText({
+					expect(testLineToQuietPlainText({
 						testLine: assertLine(conditions['element ... does not exist']()),
 						appConfig,
 						elements,
@@ -462,7 +462,7 @@ return false;
 				});
 
 				it('"element matches JS"', () => {
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLine(conditions['element matches JS']()),
 						appConfig,
 						elements,
@@ -470,7 +470,7 @@ return false;
 				});
 
 				it('"element matches JS with vars"', () => {
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLine(conditions['element matches JS with vars']()),
 						appConfig,
 						elements,
@@ -478,7 +478,7 @@ return false;
 				});
 
 				it('"element ... is visible"', () => {
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLine(conditions['element ... is visible']()),
 						appConfig,
 						elements,
@@ -486,7 +486,7 @@ return false;
 				});
 
 				it('"element properties"', () => {
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLine(conditions['element properties']()),
 						appConfig,
 						elements,
@@ -495,7 +495,7 @@ return false;
 			});
 
 			it('without appConfig', () => {
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: assertLine(conditions['element ... exist']()),
 					elements,
 				})).toMatchSnapshot();
@@ -505,7 +505,7 @@ return false;
 			describe('invalidRepositoryReference results', () => {
 				it('general error', () => {
 					// display invalidRepositoryReference general error
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLine(conditions['element ... exist']('some-id')),
 						appConfig,
 						elements,
@@ -517,7 +517,7 @@ return false;
 
 				it('notExistingElement message code', () => {
 					// display notExistingElement error
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLine(conditions['element ... exist']('some-id')),
 						appConfig,
 						elements,
@@ -533,7 +533,7 @@ return false;
 
 				it('notExistingPlatform message code', () => {
 					// display notExistingPlatform error
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLine(conditions['element ... exist']('element-id-1')),
 						appConfig,
 						elements,
@@ -550,7 +550,7 @@ return false;
 
 			describe('queryFailed results', () => {
 				it('missingSubject', () => {
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLine(conditions['element ... exist']()),
 						appConfig,
 						elements,
@@ -564,7 +564,7 @@ return false;
 				});
 
 				it('existingSubject', () => {
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLine(conditions['element ... does not exist']()),
 						appConfig,
 						elements,
@@ -578,7 +578,7 @@ return false;
 				});
 
 				it('element visible fail', () => {
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLine(conditions['element ... is visible']()),
 						appConfig,
 						elements,
@@ -589,7 +589,7 @@ return false;
 				});
 
 				it('match js fail', () => {
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLine(conditions['element matches JS']()),
 						appConfig,
 						elements,
@@ -601,7 +601,7 @@ return false;
 				});
 
 				it('handle error because of js error for match js', () => {
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLine(conditions['element matches JS'](
 							`function(((testSubject) {
 console.log(testSubject);
@@ -624,7 +624,7 @@ return true;
 
 				it('expression error', () => {
 					// for queryFailed
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLine(conditions['element properties']([
 							{ property: 'backgroundColor', type: '=', val: 'rgba(0, 0, 0, 0)' },
 							{ property: 'borderColor', type: '=', val: 'rgb(255, 255, 255)' },
@@ -694,7 +694,7 @@ return true;
 					})).toMatchSnapshot();
 
 					// for invalidInput
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLine(conditions['element properties']([
 							{ property: 'backgroundColor', type: '=', val: 'rgba(0, 0, 0, 0)' },
 							{ property: 'borderColor', type: '=', val: 'rgb(255, 255, 255)' },
@@ -797,22 +797,22 @@ return true;
 				assertLine(conditions['ps video had not error'](searchStrategy));
 
 			it('render without result', () => {
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: psVideoHadNoError(),
 					appConfig,
 				})).toMatchSnapshot();
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: psVideoHadNoError('all'),
 					appConfig,
 				})).toMatchSnapshot();
 			});
 
 			it('render without appConfig', () => {
-				expect(testLineToFormattedText({ testLine: psVideoHadNoError() })).toMatchSnapshot();
+				expect(testLineToPlainText({ testLine: psVideoHadNoError() })).toMatchSnapshot();
 			});
 
 			it('render with fail result', () => {
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: psVideoHadNoError('all'),
 					appConfig,
 					lineResult: extendBaseError({
@@ -825,25 +825,25 @@ return true;
 
 		describe('translate "assert javascript expression"', () => {
 			it('render without result', () => {
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: assertLine(conditions['JavaScript expression ... equals ...']()),
 					appConfig,
 				})).toMatchSnapshot();
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: assertLine(conditions['JavaScript expression with variables ... equals ...']()),
 					appConfig,
 				})).toMatchSnapshot();
 			});
 
 			it('render without appConfig', () => {
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: assertLine(conditions['JavaScript expression ... equals ...']()),
 				})).toMatchSnapshot();
 			});
 
 			it('render error when javascript expression missed', () => {
 				// value for compare not specified
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: assertLine({
 						subject: {
 							type: 'javascript',
@@ -857,7 +857,7 @@ return true;
 					}),
 				})).toMatchSnapshot();
 				// value for compare specified
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: assertLine({
 						subject: {
 							type: 'javascript',
@@ -874,7 +874,7 @@ return true;
 			});
 
 			it('render error when js expression specified but comparing value is empty', () => {
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: assertLine({
 						subject: {
 							type: 'javascript',
@@ -906,11 +906,11 @@ return true;
 							actualValue: '2',
 						}),
 					};
-					expect(testLineToFormattedText(line)).toMatchSnapshot();
-					expect(testLineToQuietFormattedText(line)).toMatchSnapshot();
-					expect(testLineToVerboseFormattedText(line)).toMatchSnapshot();
+					expect(testLineToPlainText(line)).toMatchSnapshot();
+					expect(testLineToQuietPlainText(line)).toMatchSnapshot();
+					expect(testLineToVerbosePlainText(line)).toMatchSnapshot();
 
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						// expected that '12' not contains in evaluation result
 						testLine: jsExpression('120 + 3', '12', '!~'),
 						appConfig,
@@ -923,7 +923,7 @@ return true;
 				});
 
 				it('handle javascript exception', () => {
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: jsExpression('function test() { return 123', '123'),
 						appConfig,
 						lineResult: extendBaseError({
@@ -943,20 +943,20 @@ return true;
 
 		describe('translate "assert application has exited"', () => {
 			it('render without result', () => {
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: assertLine(conditions['application has exited']()),
 					appConfig,
 				})).toMatchSnapshot();
 			});
 
 			it('render without appConfig', () => {
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: assertLine(conditions['application has exited']()),
 				})).toMatchSnapshot();
 			});
 
 			it('render with fail result', () => {
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: assertLine(conditions['application has exited']()),
 					appConfig,
 					lineResult: extendBaseError({
@@ -969,18 +969,18 @@ return true;
 
 		describe('translate "assert network"', () => {
 			it('render without result', () => {
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: assertLine(conditions['network request to URL was made including matched']()),
 					appConfig,
 				})).toMatchSnapshot();
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: assertLine(conditions['network request matching URL was not made excluding previously matched']()),
 					appConfig,
 				})).toMatchSnapshot();
 			});
 
 			it('render without appConfig', () => {
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: assertLine(conditions['network request to URL was made including matched']()),
 				})).toMatchSnapshot();
 			});
@@ -993,13 +993,13 @@ return true;
 						failingRequestCount: 0,
 					});
 
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLine(conditions['network request to URL was made including matched']()),
 						appConfig,
 						lineResult,
 					})).toMatchSnapshot();
 
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLine(
 							conditions['network request matching URL was not made excluding previously matched']()
 						),
@@ -1009,7 +1009,7 @@ return true;
 				});
 
 				it('request/response headers not matched', () => {
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLine({
 							subject: {
 								type: 'network',
@@ -1124,7 +1124,7 @@ return true;
 				});
 
 				it('syntax error when status compare type is "CONTAINS"', () => {
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLine({
 							subject: {
 								type: 'network',
@@ -1149,7 +1149,7 @@ return true;
 		// ---- end of "translate "assert network"" ----
 		describe('translate line with screenshot', () => {
 			it('should render line without screenshot', () => {
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: {
 						type: 'button',
 						ids: ['OK'],
@@ -1169,7 +1169,7 @@ return true;
 					},
 				})).toMatchSnapshot();
 
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: {
 						type: 'button',
 						ids: ['OK'],
@@ -1192,7 +1192,7 @@ return true;
 			});
 
 			it('should render line with screenshot', () => {
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: {
 						type: 'button',
 						ids: ['OK'],
@@ -1234,13 +1234,13 @@ return true;
 						screenshot: '/path/to/file.png',
 					},
 				};
-				expect(testLineToFormattedText(line)).toMatchSnapshot();
-				expect(testLineToVerboseFormattedText(line)).toMatchSnapshot();
-				expect(testLineToQuietFormattedText(line)).toMatchSnapshot();
+				expect(testLineToPlainText(line)).toMatchSnapshot();
+				expect(testLineToVerbosePlainText(line)).toMatchSnapshot();
+				expect(testLineToQuietPlainText(line)).toMatchSnapshot();
 			});
 
 			it('should render excluded lines', () => {
-				expect(testLineToFormattedText({
+				expect(testLineToPlainText({
 					testLine: {
 						type: 'button',
 						ids: ['OK'],
@@ -1282,7 +1282,7 @@ return true;
 			});
 			const testLinesExampleKey = then === 'warning' ? 'Assert ... then warn' : `Assert ... then ${then}` as 'Assert ... then fail';
 			const assertLine = testLinesExamples[testLinesExampleKey];
-			const testLineToFormattedText = (...args: Parameters<typeof translateTestLineResult>): string =>
+			const testLineToPlainText = (...args: Parameters<typeof translateTestLineResult>): string =>
 				toText(translateTestLineResult(...args), {format: false, verbosity: 'normal'});
 			const successLineResult: TestLineSuccessResult = {
 				result: 'success',
@@ -1303,7 +1303,7 @@ return true;
 				const openAppCommand = testLinesExamples['Open app at homepage']();
 
 				it('render with addition errorType', () => {
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: openAppCommand,
 						appConfig,
 						lineResult: extendBaseError({
@@ -1313,7 +1313,7 @@ return true;
 							},
 						}),
 					})).toMatchSnapshot();
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: openAppCommand,
 						appConfig,
 						lineResult: extendBaseError({
@@ -1333,14 +1333,14 @@ return true;
 				const assertLocation = assertLine(conditions['current location']('~', 'file.suite.st'));
 
 				it('without result', () => {
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLocation,
 						appConfig,
 					})).toMatchSnapshot();
 				});
 
 				it('with success result', () => {
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLocation,
 						appConfig,
 						lineResult: successLineResult,
@@ -1348,7 +1348,7 @@ return true;
 				});
 
 				it(`with ${then} result`, () => {
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLocation,
 						appConfig,
 						lineResult: extendBaseError({
@@ -1358,7 +1358,7 @@ return true;
 				});
 
 				it(`then ${then} with "queryFailed"`, () => {
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLocation,
 						appConfig,
 						lineResult: extendBaseError({
@@ -1376,7 +1376,7 @@ return true;
 
 				it('without result', () => {
 					// display plain assert cookie line
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertCookie,
 						appConfig,
 					})).toMatchSnapshot();
@@ -1384,7 +1384,7 @@ return true;
 
 				it(`with ${then} result`, () => {
 					// match js query fail
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLine(conditions.cookie('suitest-cookie', '=',
 							'suitest-cookie'
 						)),
@@ -1397,7 +1397,7 @@ return true;
 
 				it('with success result', () => {
 					// match js query fail
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLine(conditions.cookie('suitest-cookie', '=',
 							'cookie'
 						)),
@@ -1413,7 +1413,7 @@ return true;
 
 			describe(`translate then ${then} and "assert element"`, () => {
 				it('"element ... exist" success', () => {
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLine(conditions['element ... exist']()),
 						appConfig,
 						elements,
@@ -1427,7 +1427,7 @@ return true;
 
 
 				it('"element ... exist" ' + then, () => {
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLine(conditions['element ... exist']()),
 						appConfig,
 						elements,
@@ -1439,7 +1439,7 @@ return true;
 
 				describe('translate not queryFailed errors', () => {
 					it('general error', () => {
-						expect(testLineToFormattedText({
+						expect(testLineToPlainText({
 							testLine: assertLine(conditions['element ... exist']('some-id')),
 							appConfig,
 							elements,
@@ -1450,7 +1450,7 @@ return true;
 					});
 
 					it('notExistingElement message code', () => {
-						expect(testLineToFormattedText({
+						expect(testLineToPlainText({
 							testLine: assertLine(conditions['element ... exist']('some-id')),
 							appConfig,
 							elements,
@@ -1465,7 +1465,7 @@ return true;
 					});
 
 					it('notExistingPlatform message code', () => {
-						expect(testLineToFormattedText({
+						expect(testLineToPlainText({
 							testLine: assertLine(conditions['element ... exist']('element-id-1')),
 							appConfig,
 							elements,
@@ -1486,18 +1486,18 @@ return true;
 					assertLine(conditions['ps video had not error'](searchStrategy));
 
 				it('render without result', () => {
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: psVideoHadNoError(),
 						appConfig,
 					})).toMatchSnapshot();
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: psVideoHadNoError('all'),
 						appConfig,
 					})).toMatchSnapshot();
 				});
 
 				it(`render with ${then} result`, () => {
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: psVideoHadNoError('all'),
 						appConfig,
 						lineResult: extendBaseError({
@@ -1507,7 +1507,7 @@ return true;
 				});
 
 				it('render with success result', () => {
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: psVideoHadNoError('all'),
 						appConfig,
 						lineResult: extendBaseError({
@@ -1521,13 +1521,13 @@ return true;
 				const jsExpression = (...args: Parameters<typeof conditions['JavaScript expression ... equals ...']>): TestLine =>
 					assertLine(conditions['JavaScript expression ... equals ...'](...args));
 				it('render without result', () => {
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLine(conditions['JavaScript expression ... equals ...']()),
 						appConfig,
 					})).toMatchSnapshot();
 				});
 				it(`render with ${then} result`, () => {
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: jsExpression('1 + 1', '3'),
 						appConfig,
 						lineResult: extendBaseError({
@@ -1539,7 +1539,7 @@ return true;
 					})).toMatchSnapshot();
 				});
 				it('render with success result', () => {
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: jsExpression('1 + 1', '3'),
 						appConfig,
 						lineResult: extendBaseError({
@@ -1554,7 +1554,7 @@ return true;
 
 			describe('translate "assert network"', () => {
 				it('render without result', () => {
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLine(conditions['network request to URL was made including matched']()),
 						appConfig,
 					})).toMatchSnapshot();
@@ -1568,7 +1568,7 @@ return true;
 						failingRequestCount: 0,
 					});
 
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLine(conditions['network request to URL was made including matched']()),
 						appConfig,
 						lineResult,
@@ -1583,7 +1583,7 @@ return true;
 						failingRequestCount: 0,
 					});
 
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLine(conditions['network request to URL was made including matched']()),
 						appConfig,
 						lineResult,
@@ -1593,14 +1593,14 @@ return true;
 
 			describe(`translate then ${then} "assert application has exited"`, () => {
 				it('render without result', () => {
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLine(conditions['application has exited']()),
 						appConfig,
 					})).toMatchSnapshot();
 				});
 
 				it(`render with ${then} result`, () => {
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLine(conditions['application has exited']()),
 						appConfig,
 						lineResult: extendBaseError({
@@ -1611,7 +1611,7 @@ return true;
 				});
 
 				it('render with success result', () => {
-					expect(testLineToFormattedText({
+					expect(testLineToPlainText({
 						testLine: assertLine(conditions['application has exited']()),
 						appConfig,
 						lineResult: extendBaseError({
@@ -1621,6 +1621,29 @@ return true;
 					})).toMatchSnapshot();
 				});
 			});
+		});
+	});
+
+	describe('Translate aborted result', () => {
+		const abortedLineJson = translateTestLineResult({
+			testLine: testLinesExamples['Sleep ...'](10e4),
+			appConfig,
+			lineResult: {
+				result: 'aborted',
+				lineId: '2',
+				timeStarted: 1603368650150,
+				timeFinished: 1603368655763,
+				timeHrDiff: [5, 611864587],
+				timeScreenshotHr: [0, 0],
+			},
+		});
+
+		it('as JSON', () => {
+			expect(abortedLineJson).toMatchSnapshot();
+		});
+
+		it('as plain text', () => {
+			expect(toText(abortedLineJson, { format: false, verbosity: 'normal' })).toMatchSnapshot();
 		});
 	});
 });

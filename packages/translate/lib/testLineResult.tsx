@@ -484,6 +484,10 @@ const getLineResultMessage = (testLine: TestLine, lineResult?: TestLineResult): 
 		return <text>Line was not executed</text>;
 	}
 
+	if (lineResult.result === 'aborted') {
+		return <text>Execution was aborted.</text>;
+	}
+
 	if (testLine.type === 'runSnippet' && !lineResult.errorType) {
 		// Snippet failed because one of it's children failed
 		return undefined;
