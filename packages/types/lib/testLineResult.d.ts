@@ -139,7 +139,8 @@ export type SimpleError = BaseResult & {
 		| 'MoveTargetOutOfBounds'
 		| 'ElementClickIntercepted'
 		| 'unsupportedOSVersion'
-		| 'targetManagerUnsupportedVersion',
+		| 'targetManagerUnsupportedVersion'
+		| 'systemOutdated',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {

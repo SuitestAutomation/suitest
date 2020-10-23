@@ -109,6 +109,7 @@ describe('Test line results translation', () => {
 		'ElementClickIntercepted',
 		'unsupportedOSVersion',
 		'targetManagerUnsupportedVersion',
+		'systemOutdated',
 	];
 
 	describe('simple errors translations', () => {

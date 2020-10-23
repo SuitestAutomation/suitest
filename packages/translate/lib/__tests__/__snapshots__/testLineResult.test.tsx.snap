@@ -1565,6 +1565,13 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "systemOutdated" error 1`] = `
+Object {
+  "type": "text",
+  "value": "System software version mismatch. New version of system software is required",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "targetManagerBusy" error 1`] = `
 Object {
   "type": "text",
