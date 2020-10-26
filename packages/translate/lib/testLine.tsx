@@ -6,6 +6,7 @@ import {
 	AssertThen,
 	BrowserCommandTestLine,
 	ClickTestLine,
+	TapTestLine,
 	CommentTestLine,
 	Elements,
 	ExecuteCommandTestLine,
@@ -19,11 +20,12 @@ import {
 	SetTextTestLine,
 	SleepTestLine,
 	Snippets,
-	Target,
+	WebTarget,
+	MobileTarget,
 	TestLine,
 	WaitUntilTestLine,
 	TestLineResult,
-	ClearAppDataTestLine,
+	ClearAppDataTestLine, ScrollTestLine, SwipeTestLine,
 } from '@suitest/types';
 import {translateComparator} from './comparator';
 import {translateCondition} from './condition';
@@ -277,13 +279,15 @@ const assertUnknownTarget = (target: never): never => {
 	throw new Error('Unknown target: ' + JSON.stringify(target));
 };
 
-const translateTarget = (target: Target): JSX.Element => {
+const translateTarget = (target: WebTarget | MobileTarget): JSX.Element => {
 	switch (target.type) {
 		case 'element': // TODO nyc for some reason reports an uncovered branch here
 			return <subject>element</subject>;
 		case 'window':
 			// TODO should we translate 'window' depending on running platform?
 			return <subject>{'coordinates' in target ? 'position' : 'window'}</subject>;
+		case 'screen':
+			return <subject>{'coordinates' in target ? 'position' : 'screen'}</subject>;
 		default:
 			/* istanbul ignore next */
 			return assertUnknownTarget(target);
@@ -410,6 +414,66 @@ const translateClickTestLine = (
 ): TestLineNode => {
 	const titleFragment = getConditionInfo(testLine, appConfig);
 	const title = <fragment>Click on {translateTarget(testLine.target)}{titleFragment}</fragment>;
+	const status = testLine.excluded ? 'excluded' : lineResult?.result;
+
+	return <test-line title={title} status={status} docs={getDocsLink(testLine.type, lineResult?.result)}>
+		{testLine.condition
+			? translateCondition(testLine.condition, false, appConfig, elements, lineResult)
+			: undefined}
+	</test-line> as TestLineNode;
+};
+
+const translateTapTestLine = (
+	testLine: TapTestLine,
+	appConfig?: AppConfiguration,
+	elements?: Elements,
+	lineResult?: TestLineResult,
+): TestLineNode => {
+	const titleFragment = getConditionInfo(testLine, appConfig);
+	const tapType = testLine.taps[0].type;
+	const tapTypeCapitalized = tapType.charAt(0).toUpperCase() + tapType.slice(1);
+	const title = <fragment>{tapTypeCapitalized} tap on {translateTarget(testLine.target)}{titleFragment}</fragment>;
+	const status = testLine.excluded ? 'excluded' : lineResult?.result;
+
+	return <test-line title={title} status={status} docs={getDocsLink(testLine.type, lineResult?.result)}>
+		{testLine.condition
+			? translateCondition(testLine.condition, false, appConfig, elements, lineResult)
+			: undefined}
+	</test-line> as TestLineNode;
+};
+
+const translateScrollTestLine = (
+	testLine: ScrollTestLine,
+	appConfig?: AppConfiguration,
+	elements?: Elements,
+	lineResult?: TestLineResult,
+): TestLineNode => {
+	const titleFragment = getConditionInfo(testLine, appConfig);
+	const direction = testLine.scroll[0].direction;
+	const distance = testLine.scroll[0].distance;
+	const title = <fragment>Scroll from {translateTarget(testLine.target)}
+	{titleFragment} to {direction} by {distance}px</fragment>;
+	const status = testLine.excluded ? 'excluded' : lineResult?.result;
+
+	return <test-line title={title} status={status} docs={getDocsLink(testLine.type, lineResult?.result)}>
+		{testLine.condition
+			? translateCondition(testLine.condition, false, appConfig, elements, lineResult)
+			: undefined}
+	</test-line> as TestLineNode;
+};
+
+const translateSwipeTestLine = (
+	testLine: SwipeTestLine,
+	appConfig?: AppConfiguration,
+	elements?: Elements,
+	lineResult?: TestLineResult,
+): TestLineNode => {
+	const titleFragment = getConditionInfo(testLine, appConfig);
+	const direction = testLine.swipe[0].direction;
+	const distance = testLine.swipe[0].distance;
+	const duration = testLine.swipe[0].duration;
+	const title = <fragment>Swipe/Flick from {translateTarget(testLine.target)}
+		{titleFragment} to {direction} by {distance}px in {duration}ms</fragment>;
 	const status = testLine.excluded ? 'excluded' : lineResult?.result;
 
 	return <test-line title={title} status={status} docs={getDocsLink(testLine.type, lineResult?.result)}>
@@ -546,6 +610,12 @@ export const translateTestLine = ({
 			return translateBrowserCommandTestLine(testLine, appConfig, elements, lineResult);
 		case 'click':
 			return translateClickTestLine(testLine, appConfig, elements, lineResult);
+		case 'tap':
+			return translateTapTestLine(testLine, appConfig, elements, lineResult);
+		case 'scroll':
+			return translateScrollTestLine(testLine, appConfig, elements, lineResult);
+		case 'swipe':
+			return translateSwipeTestLine(testLine, appConfig, elements, lineResult);
 		case 'moveTo':
 			return translateMoveToTestLine(testLine, appConfig, elements, lineResult);
 		case 'comment':
