@@ -45,6 +45,11 @@ html, body {
     color: darkblue;
 }
 
+.suitest-test-line__result--aborted .suitest-test-line__result__message:before {
+    content: 'aborted: ';
+    color: magenta;
+}
+
 .suitest-test-line--excluded .suitest-test-line__title:before {
     content: '» ';
     color: darkblue;
@@ -73,6 +78,11 @@ html, body {
 .suitest-test-line--fatal .suitest-test-line__title:before {
     content: '✖ ';
     color: darkred;
+}
+
+.suitest-test-line--aborted .suitest-test-line__title:before {
+    content: '⦻ ';
+    color: magenta;
 }
 
 .suitest-test-line>:not(.suitest-test-line__title) {

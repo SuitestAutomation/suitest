@@ -63,7 +63,7 @@ export type ConditionNode = {
 	status?: SingleEntryStatus,
 };
 
-export type TestLineResultStatus = 'success' | 'fatal' | 'fail' | 'warning' | 'exit' | 'excluded';
+export type TestLineResultStatus = 'success' | 'fatal' | 'fail' | 'warning' | 'exit' | 'excluded' | 'aborted';
 
 export type TestLineNode = {
 	type: 'test-line',

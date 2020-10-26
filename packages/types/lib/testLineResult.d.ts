@@ -2,7 +2,7 @@ import {LineId} from './testLine';
 import {ElementId} from './element';
 import {ElementProperty} from './condition';
 
-export type TestLineResultType = 'success' | 'fail' | 'fatal' | 'warning' | 'exit' | 'excluded';
+export type TestLineResultType = 'success' | 'fail' | 'fatal' | 'warning' | 'exit' | 'excluded' | 'aborted';
 
 export type BaseResult = {
 	lineId: LineId,
@@ -364,15 +364,28 @@ export type TestLineSuccessResult = BaseResult & {
 	errorType?: undefined,
 };
 
+export type TestLineAbortedResult = BaseResult & {
+	result: 'aborted',
+	message?: {
+		info?: unknown,
+	},
+	errorType?: undefined,
+};
+
+
 export type TestLineExcludedResult = BaseResult & {
 	result: 'excluded',
 	errorType?: undefined,
 };
 
-export type TestLineErrorResult = Exclude<TestLineResult, TestLineSuccessResult | TestLineExcludedResult>;
+export type TestLineErrorResult = Exclude<
+	TestLineResult,
+	TestLineSuccessResult | TestLineExcludedResult | TestLineAbortedResult
+>;
 
 export type TestLineResult = TestLineSuccessResult
 	| TestLineExcludedResult
+	| TestLineAbortedResult
 	| SimpleError
 	| OutdatedInstrumentationLibraryError
 	| QueryTimeoutError
