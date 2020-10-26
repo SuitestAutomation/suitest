@@ -15,18 +15,24 @@ export type AssertTestLine = BaseTestLine & {
 	type: 'assert',
 	condition: Condition,
 	timeout?: number | string, // String in case it's a variable
-	then: AssertThen,
+	then?: AssertThen,
 };
 
 export type  WaitUntilTestLine = BaseTestLine & {
 	type: 'wait',
 	condition: Condition,
 	timeout: number | string, // String in case it's a variable
-	then: AssertThen,
+	then?: AssertThen,
 };
 
 export type ClearAppDataTestLine = BaseTestLine & {
 	type: 'clearAppData',
+};
+
+export type TakeScreenshotTestLine = BaseTestLine & {
+	type: 'takeScreenshot',
+	dataFormat?: 'raw' | 'base64',
+	fileName?: string,
 };
 
 export type ExecuteCommandTestLine = BaseTestLine & {
@@ -178,4 +184,5 @@ export type TestLine = AssertTestLine
 	| MoveToTestLine
 	| SendTextTestLine
 	| SetTextTestLine
-	| CommentTestLine;
+	| CommentTestLine
+	| TakeScreenshotTestLine;

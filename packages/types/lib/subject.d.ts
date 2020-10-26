@@ -38,6 +38,7 @@ export type CustomElementSubject = {
 		size?: string,
 		color?: string,
 		video?: boolean,
+		psVideo?: boolean,
 		ifMultipleFoundReturn?: number,
 	},
 };

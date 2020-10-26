@@ -1,8 +1,14 @@
 import {
 	Comparator,
 	Condition,
-	Elements, NetworkRequestBodyInfo, NetworkRequestHeaderInfo, NetworkRequestMethodInfo, NetworkRequestStatusInfo,
-	Snippets, StringComparator,
+	Elements,
+	NetworkRequestBodyInfo,
+	NetworkRequestHeaderInfo,
+	NetworkRequestMethodInfo,
+	NetworkRequestStatusInfo,
+	QueryLine,
+	Snippets,
+	StringComparator,
 	TestLine,
 } from '@suitest/types';
 import {PSVideoHadNoErrorCondition, JavaScriptComparator, ExistComparator, ElementProperty} from '@suitest/types/lib';
@@ -764,5 +770,46 @@ export const testLinesExamples = {
 		...baseTestLine,
 		type: 'comment',
 		val,
+	}),
+	// QUERY LINES
+	'GET element props': (): QueryLine => ({
+		type: 'query',
+		subject: {
+			type: 'elementProps',
+			selector: {
+				css: 'div.className',
+			},
+		},
+	}),
+	'GET location': (): QueryLine => ({
+		type: 'query',
+		subject: {
+			type: 'location',
+		},
+	}),
+	'GET cookies': (): QueryLine => ({
+		type: 'query',
+		subject: {
+			type: 'cookie',
+			cookieName: 'cook',
+		},
+	}),
+	'JS expression': (): QueryLine => ({
+		type: 'query',
+		subject: {
+			type: 'execute',
+			execute: '1 + 1',
+		},
+	}),
+	// take screenshot
+	'get screenshot': (): TestLine => ({
+		...baseTestLine,
+		type: 'takeScreenshot',
+		dataFormat: 'base64',
+	}),
+	'save screenshot': (): TestLine => ({
+		...baseTestLine,
+		type: 'takeScreenshot',
+		fileName: 'screen.jpg',
 	}),
 };
