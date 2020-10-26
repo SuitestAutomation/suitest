@@ -20,6 +20,42 @@ exports[` 4`] = `
   fail: Execution thrown exception \\"\\"a\\" is not defined}\\""
 `;
 
+exports[`Test line results translation Translate aborted result as JSON 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "status": "aborted",
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Sleep ",
+        },
+        Object {
+          "type": "input",
+          "value": "100s",
+        },
+      ],
+      "type": "test-line",
+    },
+  ],
+  "message": Array [
+    Object {
+      "type": "text",
+      "value": "Execution was aborted.",
+    },
+  ],
+  "screenshot": undefined,
+  "status": "aborted",
+  "type": "test-line-result",
+}
+`;
+
+exports[`Test line results translation Translate aborted result as plain text 1`] = `
+"⦻ Sleep 100s
+  aborted: Execution was aborted."
+`;
+
 exports[`Test line results translation Translate assert lines translate "assert application has exited" render with fail result 1`] = `
 "✖ Assert: Application has exited
   fail: App is still running"
