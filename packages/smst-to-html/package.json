@@ -1,6 +1,6 @@
 {
   "name": "@suitest/smst-to-html",
-  "version": "3.0.5",
+  "version": "4.0.0",
   "description": "Utility to convert SMST to HTML",
   "homepage": "https://suite.st/",
   "license": "MIT",
@@ -30,6 +30,6 @@
     "prepublishOnly": "npm run coverage && npm run build"
   },
   "dependencies": {
-    "@suitest/smst": "^3.0.5"
+    "@suitest/smst": "^4.0.0"
   }
 }
