@@ -420,7 +420,10 @@ const renderTestLineResult = (
 	return [body, message, screenshot].filter(Boolean).join(nl);
 };
 
-export const toText = (node: Node, {format, verbosity}: {format: boolean, verbosity: Verbosity}): string => {
+export const toText = (
+	node: Node,
+	{format, verbosity}: {format: boolean, verbosity: Verbosity} = {format: false, verbosity: 'normal'}
+): string => {
 	const renderTextNode = format ? renderFormattedTextNode : renderPlainTextNode;
 
 	if (!Array.isArray(node)) {

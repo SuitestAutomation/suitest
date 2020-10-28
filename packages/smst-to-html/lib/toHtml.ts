@@ -123,6 +123,9 @@ const renderHtmlTestLineNode = (node: TestLineNode, {verbosity}: {verbosity: Ver
 	if (verbosity !== 'quiet') {
 		// Line extra details
 		out.push(toHtml(node.children, {verbosity}));
+		if (verbosity === 'verbose' && node.docs) {
+			out.push(`<div class="suitest-test-line__docs">docs: ${toHtml(node.docs, {verbosity})}<div>`);
+		}
 	}
 
 	out.push('</div>');
@@ -180,7 +183,7 @@ const renderNode = (node: SingleNode, {verbosity}: {verbosity: Verbosity}): stri
 	}
 };
 
-export const toHtml = (node: Node, {verbosity}: {verbosity: Verbosity}): string => {
+export const toHtml = (node: Node, {verbosity}: {verbosity: Verbosity} = {verbosity: 'normal'}): string => {
 	if (!Array.isArray(node)) {
 		node = [node];
 	}
