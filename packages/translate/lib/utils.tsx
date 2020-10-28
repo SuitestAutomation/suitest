@@ -106,11 +106,10 @@ export const translateCodeProp = (
 	return out;
 };
 
-export const shouldElMatchDetailsBeHidden = (result?: TestLineResult) => {
-	return ['invalidRepositoryReference', 'queryFailed'].includes(result?.errorType ?? '')
-		&& ['notExistingPlatform', 'notExistingElement', 'missingSubject']
+export const shouldElMatchDetailsBeHidden = (result?: TestLineResult): boolean =>
+	['invalidRepositoryReference', 'queryFailed'].includes(result?.errorType ?? '')
+	&& ['notExistingPlatform', 'notExistingElement', 'missingSubject']
 			.includes((result as InvalidRepositoryReferenceError)?.message?.code ?? '');
-}
 
 export const mapStatus = (status?: TestLineResultStatus, inverse?: boolean): SingleEntryStatus | undefined => {
 	switch (status) {
