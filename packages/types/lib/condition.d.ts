@@ -56,8 +56,9 @@ export type ElementPropertiesCondition = {
 export type ElementProperty = {
 	property: string,
 	type: Comparator,
-	val: string | number,
+	val?: string | number // can be avoided in case of inherited: true,
 	deviation?: number,
+	inherited?: boolean,
 };
 
 export type ElementCondition = ElementExistsCondition
