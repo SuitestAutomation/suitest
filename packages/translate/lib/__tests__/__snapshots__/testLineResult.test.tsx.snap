@@ -205,12 +205,12 @@ exports[`Test line results translation Translate assert lines translate "assert 
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert element" invalidRepositoryReference results notExistingElement message code 1`] = `
-"✖ Assert: Unknown element (some-id) exists
+"✖ Assert: Unknown element (unknown-id)
   fail: Element was not found in the repository"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert element" invalidRepositoryReference results notExistingPlatform message code 1`] = `
-"✖ Assert: Element 1 exists
+"✖ Assert: Unknown element (unknown-id)
   fail: Element is not defined for the selected platform"
 `;
 
@@ -261,7 +261,7 @@ exports[`Test line results translation Translate assert lines translate "assert 
 exports[`Test line results translation Translate assert lines translate "assert element" queryFailed results expression error 2`] = `
 "✖ Assert: Unknown element (unknown-id)
   ✔ background color =        rgba(0, 0, 0, 0)                                            
-  ✔ border color     =        rgb(255, 255, 255)                                          
+  ✔ border color     =        [element repository value]                                  
   ✔ border style     =        none                                                        
   ✔ border width     =        0px                                                         
   ✖ class            =        componentcontainer container widget                         
@@ -315,6 +315,11 @@ exports[`Test line results translation Translate assert lines translate "assert 
 
 exports[`Test line results translation Translate assert lines translate "assert element" queryFailed results missingSubject 1`] = `
 "✖ Assert: Element 1 exists
+  fail: Subject does not exist"
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert element" queryFailed results missingSubject with details 1`] = `
+"✖ Assert: Unknown element (unknown-id)
   fail: Subject does not exist"
 `;
 
