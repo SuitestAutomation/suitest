@@ -422,8 +422,10 @@ const renderTestLineResult = (
 
 export const toText = (
 	node: Node,
-	{format, verbosity}: {format: boolean, verbosity: Verbosity} = {format: false, verbosity: 'normal'}
+	options?: {format?: boolean, verbosity?: Verbosity}
 ): string => {
+	const format = options?.format ?? false;
+	const verbosity = options?.verbosity ?? 'normal';
 	const renderTextNode = format ? renderFormattedTextNode : renderPlainTextNode;
 
 	if (!Array.isArray(node)) {
