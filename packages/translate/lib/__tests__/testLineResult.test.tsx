@@ -561,7 +561,9 @@ return false;
 				it('notExistingElement message code', () => {
 					// display notExistingElement error
 					expect(testLineToPlainText({
-						testLine: assertLine(conditions['element ... exist']('some-id')),
+						testLine: assertLine(conditions['element properties']([
+							{ property: 'backgroundColor', type: '=', val: 'rgba(0, 0, 0, 0)' },
+						])),
 						appConfig,
 						elements,
 						lineResult: extendBaseError({
@@ -577,7 +579,9 @@ return false;
 				it('notExistingPlatform message code', () => {
 					// display notExistingPlatform error
 					expect(testLineToPlainText({
-						testLine: assertLine(conditions['element ... exist']('element-id-1')),
+						testLine: assertLine(conditions['element properties']([
+							{ property: 'backgroundColor', type: '=', val: 'rgba(0, 0, 0, 0)' },
+						])),
 						appConfig,
 						elements,
 						lineResult: extendBaseError({
@@ -595,6 +599,22 @@ return false;
 				it('missingSubject', () => {
 					expect(testLineToPlainText({
 						testLine: assertLine(conditions['element ... exist']()),
+						appConfig,
+						elements,
+						lineResult: extendBaseError({
+							errorType: 'queryFailed',
+							message: {
+								code: 'missingSubject',
+							},
+						}),
+					})).toMatchSnapshot();
+				});
+
+				it('missingSubject with details', () => {
+					expect(testLineToPlainText({
+						testLine: assertLine(conditions['element properties']([
+							{ property: 'backgroundColor', type: '=', val: 'rgba(0, 0, 0, 0)' },
+						])),
 						appConfig,
 						elements,
 						lineResult: extendBaseError({
@@ -740,7 +760,7 @@ return true;
 					expect(testLineToPlainText({
 						testLine: assertLine(conditions['element properties']([
 							{ property: 'backgroundColor', type: '=', val: 'rgba(0, 0, 0, 0)' },
-							{ property: 'borderColor', type: '=', val: 'rgb(255, 255, 255)' },
+							{ property: 'borderColor', type: '=', inherited: true },
 							{ property: 'borderStyle', type: '=', val: 'none' },
 							{ property: 'borderWidth', type: '=', val: '0px' },
 							{ property: 'class', type: '=', val: 'componentcontainer container widget' },

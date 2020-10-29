@@ -1,5 +1,5 @@
 import {jsx} from '@suitest/smst';
-import {AppConfiguration} from '@suitest/types';
+import {AppConfiguration, InvalidRepositoryReferenceError, TestLineResult} from '@suitest/types';
 
 /**
  * Replace variables in text
@@ -105,6 +105,11 @@ export const translateCodeProp = (
 
 	return out;
 };
+
+export const shouldElMatchDetailsBeHidden = (result?: TestLineResult): boolean =>
+	['invalidRepositoryReference', 'queryFailed'].includes(result?.errorType ?? '')
+	&& ['notExistingPlatform', 'notExistingElement', 'missingSubject']
+			.includes((result as InvalidRepositoryReferenceError)?.message?.code ?? '');
 
 export const mapStatus = (status?: TestLineResultStatus, inverse?: boolean): SingleEntryStatus | undefined => {
 	switch (status) {
