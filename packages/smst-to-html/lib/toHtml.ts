@@ -183,7 +183,9 @@ const renderNode = (node: SingleNode, {verbosity}: {verbosity: Verbosity}): stri
 	}
 };
 
-export const toHtml = (node: Node, {verbosity}: {verbosity: Verbosity} = {verbosity: 'normal'}): string => {
+export const toHtml = (node: Node, options?: {verbosity?: Verbosity}): string => {
+	const verbosity = options?.verbosity ?? 'normal';
+
 	if (!Array.isArray(node)) {
 		node = [node];
 	}
