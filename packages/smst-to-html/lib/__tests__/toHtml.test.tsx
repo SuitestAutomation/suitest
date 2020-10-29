@@ -50,7 +50,7 @@ describe('AST renderers', () => {
 	const simpleLine = <test-line
 		title={<fragment>Assert element <subject>My element</subject> is visible</fragment>}
 	/>;
-	const longLine = <test-line title={<fragment>Assert element <subject>My element</subject></fragment>}>
+	const longLine = <test-line docs={<link href={'//link/to/docs'}/> as LinkNode} title={<fragment>Assert element <subject>My element</subject></fragment>}>
 		{simpleCondition}
 	</test-line>;
 
@@ -62,6 +62,7 @@ describe('AST renderers', () => {
 		<test-line
 			title={<text>Assert application has exited</text>}
 			status="fail"
+			docs={<link href={'//link/to/docs'}/> as LinkNode}
 		/>
 	</test-line-result>;
 	const warningResult = (screenshot?: string): JSX.Element => <test-line-result
@@ -155,6 +156,17 @@ describe('AST renderers', () => {
 			expect(toHtml(excludedResult(), {verbosity: 'quiet'})).toMatchSnapshot();
 			expect(toHtml(fatalResult(), {verbosity: 'quiet'})).toMatchSnapshot();
 			expect(toHtml(abortedResult(), { verbosity: 'quiet'})).toMatchSnapshot();
+		});
+
+		it('should render test lines with quiet level', () => {
+			expect(toHtml(longLine, {verbosity: 'quiet'})).toMatchSnapshot();
+		});
+		it('should render test lines with normal level', () => {
+			expect(toHtml(longLine, {verbosity: 'normal'})).toMatchSnapshot();
+		});
+
+		it('should render test lines with verbose level', () => {
+			expect(toHtml(longLine, {verbosity: 'verbose'})).toMatchSnapshot();
 		});
 
 		it('should render results with screenshots', () => {
