@@ -103,6 +103,7 @@ const simpleErrorMap: {[key: string]: Node} = {
 	appleError70: <text>Failed to launch app: Xcode error. https://suite.st/docs/devices/apple-tv/#xcode-error</text>,
 	appleAppSignError: <text>Failed to launch app: App code sign error. https://suite.st/docs/devices/apple-tv/#app-code-sign-error</text>,
 	missingPSSDK: <text>Please make sure that you have the PlayStation SDK installed. https://suite.st/docs/troubleshooting/playstation/#playstation-sdk-not-installed</text>,
+	packageInstallationFailed: <text>Application installation on the device failed</text>,
 	targetManagerBusy: <text>Please try again in a few minutes</text>,
 	missingDotNet: <text>Please make sure you have the .NET Framework installed. https://suite.st/docs/troubleshooting/playstation/#net-framework-not-installed</text>,
 	bootstrapAppNotDetected: <text>The Suitest bootstrap application was not detected</text>,

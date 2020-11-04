@@ -87,6 +87,7 @@ describe('Test line results translation', () => {
 		'appleError70',
 		'appleAppSignError',
 		'missingPSSDK',
+		'packageInstallationFailed',
 		'targetManagerBusy',
 		'missingDotNet',
 		'bootstrapAppNotDetected',

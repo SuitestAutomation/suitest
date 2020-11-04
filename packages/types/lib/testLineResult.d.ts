@@ -118,6 +118,7 @@ export type SimpleError = BaseResult & {
 		| 'appleError70'
 		| 'appleAppSignError'
 		| 'missingPSSDK'
+		| 'packageInstallationFailed'
 		| 'targetManagerBusy'
 		| 'missingDotNet'
 		| 'bootstrapAppNotDetected'
