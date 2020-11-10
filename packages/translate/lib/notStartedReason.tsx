@@ -126,6 +126,10 @@ export function translateNotStartedReason(code: NotStartedReason): Translation {
 			return {
 				title: <text>SuitestDrive can't launch NetworkLog service on Mac</text>,
 			};
+		case NOT_STARTED_REASON.DEVICE_OFFLINE:
+			return {
+				title: <fragment>Device could not be reached, please try again later. Contact <link href="mailto:support@suite.st">support</link> if problem persists.</fragment>,
+			};
 		default:
 			const _code: never = code;
 			throw new Error(`Unknown not started reason received: ${_code}`);

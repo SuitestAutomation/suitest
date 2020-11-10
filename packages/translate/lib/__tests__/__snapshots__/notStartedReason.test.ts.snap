@@ -137,6 +137,26 @@ Object {
 }
 `;
 
+exports[`Testing not started reason translation. Should translate "deviceOffline" code 1`] = `
+Object {
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Device could not be reached, please try again later. Contact ",
+    },
+    Object {
+      "href": "mailto:support@suite.st",
+      "type": "link",
+      "value": "support",
+    },
+    Object {
+      "type": "text",
+      "value": " if problem persists.",
+    },
+  ],
+}
+`;
+
 exports[`Testing not started reason translation. Should translate "internalError" code 1`] = `
 Object {
   "description": Object {
@@ -428,6 +448,13 @@ Object {
 }
 `;
 
+exports[`Testing not started reason translation. Translate to html:  "deviceOffline" 1`] = `
+Object {
+  "description": "Device could not be reached, please try again later. Contact <a class=\\"suitest-test-line__text--link\\" href=\\"mailto&#x003asupport&#x0040suite.st\\">support</a> if problem persists.",
+  "title": "Device could not be reached, please try again later. Contact <a class=\\"suitest-test-line__text--link\\" href=\\"mailto&#x003asupport&#x0040suite.st\\">support</a> if problem persists.",
+}
+`;
+
 exports[`Testing not started reason translation. Translate to html:  "internalError" 1`] = `
 Object {
   "description": "Cannot continue: Internal error occurred",
@@ -593,6 +620,13 @@ exports[`Testing not started reason translation. Translate to plain text:  "devi
 Object {
   "description": "Execution will continue after the user disconnects",
   "title": "A user is currently connected to this device",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to plain text:  "deviceOffline" 1`] = `
+Object {
+  "description": undefined,
+  "title": "Device could not be reached, please try again later. Contact support (mailto:support@suite.st) if problem persists.",
 }
 `;
 
