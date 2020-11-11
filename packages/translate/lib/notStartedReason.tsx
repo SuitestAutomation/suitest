@@ -128,7 +128,7 @@ export function translateNotStartedReason(code: NotStartedReason): Translation {
 			};
 		case NOT_STARTED_REASON.DEVICE_OFFLINE:
 			return {
-				title: <fragment>Device could not be reached, please try again later. Contact <link href="mailto:support@suite.st">support</link> if problem persists.</fragment>,
+				title: <fragment>Device could not be reached, please try again in a few minutes. Contact <link href="mailto:support@suite.st">support</link> if the problem persists.</fragment>,
 			};
 		default:
 			const _code: never = code;

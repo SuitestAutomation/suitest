@@ -142,7 +142,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Device could not be reached, please try again later. Contact ",
+      "value": "Device could not be reached, please try again in a few minutes. Contact ",
     },
     Object {
       "href": "mailto:support@suite.st",
@@ -151,7 +151,7 @@ Object {
     },
     Object {
       "type": "text",
-      "value": " if problem persists.",
+      "value": " if the problem persists.",
     },
   ],
 }
@@ -450,8 +450,8 @@ Object {
 
 exports[`Testing not started reason translation. Translate to html:  "deviceOffline" 1`] = `
 Object {
-  "description": "Device could not be reached, please try again later. Contact <a class=\\"suitest-test-line__text--link\\" href=\\"mailto&#x003asupport&#x0040suite.st\\">support</a> if problem persists.",
-  "title": "Device could not be reached, please try again later. Contact <a class=\\"suitest-test-line__text--link\\" href=\\"mailto&#x003asupport&#x0040suite.st\\">support</a> if problem persists.",
+  "description": "Device could not be reached, please try again in a few minutes. Contact <a class=\\"suitest-test-line__text--link\\" href=\\"mailto&#x003asupport&#x0040suite.st\\">support</a> if the problem persists.",
+  "title": "Device could not be reached, please try again in a few minutes. Contact <a class=\\"suitest-test-line__text--link\\" href=\\"mailto&#x003asupport&#x0040suite.st\\">support</a> if the problem persists.",
 }
 `;
 
@@ -626,7 +626,7 @@ Object {
 exports[`Testing not started reason translation. Translate to plain text:  "deviceOffline" 1`] = `
 Object {
   "description": undefined,
-  "title": "Device could not be reached, please try again later. Contact support (mailto:support@suite.st) if problem persists.",
+  "title": "Device could not be reached, please try again in a few minutes. Contact support (mailto:support@suite.st) if the problem persists.",
 }
 `;
 
