@@ -25,6 +25,11 @@ Object {
   "children": Array [
     Object {
       "children": Array [],
+      "docs": Object {
+        "href": "https://suite.st/docs/testing/test-operations/sleep-operation/",
+        "type": "link",
+        "value": "https://suite.st/docs/testing/test-operations/sleep-operation/",
+      },
       "status": "aborted",
       "title": Array [
         Object {
@@ -184,7 +189,8 @@ exports[`Test line results translation Translate assert lines translate "assert 
 
 exports[`Test line results translation Translate assert lines translate "assert current location" with success result 2`] = `
 "✔ Assert: Current location
-  ✔ current location contains http://some.url"
+  ✔ current location contains http://some.url
+  docs: https://suite.st/docs/testing/test-subjects/"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert current location" with success result 3`] = `"✔ Assert: Current location"`;
@@ -327,7 +333,10 @@ exports[`Test line results translation Translate assert lines translate "assert 
 
 exports[`Test line results translation Translate assert lines translate "assert element" without error "element ... does not exist" 1`] = `"Assert: Element 1 does not exist"`;
 
-exports[`Test line results translation Translate assert lines translate "assert element" without error "element ... does not exist" 2`] = `"Assert: Element 1 does not exist"`;
+exports[`Test line results translation Translate assert lines translate "assert element" without error "element ... does not exist" 2`] = `
+"Assert: Element 1 does not exist
+docs: https://suite.st/docs/testing/test-subjects/"
+`;
 
 exports[`Test line results translation Translate assert lines translate "assert element" without error "element ... does not exist" 3`] = `"Assert: Element 1 does not exist"`;
 
