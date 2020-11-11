@@ -104,8 +104,8 @@ exports[`Test line results translation Translate assert lines translate "assert 
 "✖ Assert: cookie suitest-cookie
   ✖ suitest-cookie = suitest          
                    → some cookie value
-  docs: https://suite.st/docs/testing/test-subjects/
-  fail: Condition was not met"
+  fail: Condition was not met
+  docs: https://suite.st/docs/testing/test-subjects/"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert cookie" queryFailed match js failed 1`] = `
@@ -147,8 +147,8 @@ exports[`Test line results translation Translate assert lines translate "assert 
 "✖ Assert: Current location
   ✖ current location matches JS
     > something     
-  docs: https://suite.st/docs/testing/test-subjects/
-  fail: Exception was thrown: \\"something is not defined\\""
+  fail: Exception was thrown: \\"something is not defined\\"
+  docs: https://suite.st/docs/testing/test-subjects/"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert current location" errorType: "queryFailed" matchjs failed 4`] = `
@@ -173,8 +173,8 @@ exports[`Test line results translation Translate assert lines translate "assert 
 "✖ Assert: Current location
   ✖ current location contains http://some.url                                        
                      →        http://file.suite.st/sampleapp_staging/index-hbbtv.html
-  docs: https://suite.st/docs/testing/test-subjects/
-  fail: Condition was not met"
+  fail: Condition was not met
+  docs: https://suite.st/docs/testing/test-subjects/"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert current location" errorType: "queryFailed", location value not matched 3`] = `
@@ -335,7 +335,7 @@ exports[`Test line results translation Translate assert lines translate "assert 
 
 exports[`Test line results translation Translate assert lines translate "assert element" without error "element ... does not exist" 2`] = `
 "Assert: Element 1 does not exist
-docs: https://suite.st/docs/testing/test-subjects/"
+  docs: https://suite.st/docs/testing/test-subjects/"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert element" without error "element ... does not exist" 3`] = `"Assert: Element 1 does not exist"`;
@@ -385,8 +385,8 @@ exports[`Test line results translation Translate assert lines translate "assert 
     > 1 + 1          
   ✖ expression result = 3
                       → 2
-  docs: https://suite.st/docs/testing/test-subjects/
-  fail: Condition was not met"
+  fail: Condition was not met
+  docs: https://suite.st/docs/testing/test-subjects/"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert javascript expression" errorType: "queryFailed" expression matching failed 4`] = `
@@ -570,8 +570,8 @@ exports[`Test line results translation Translate assert lines translate "openApp
 
 exports[`Test line results translation Translate assert lines translate "openAppOverrideFailed" render with addition errorType 3`] = `
 "✖ Open application
-  docs: https://suite.st/docs/testing/test-operations/open-app-operation/
-  fail: Open app override failed"
+  fail: Open app override failed
+  docs: https://suite.st/docs/testing/test-operations/open-app-operation/"
 `;
 
 exports[`Test line results translation Translate assert lines translate "openAppOverrideFailed" render with addition errorType 4`] = `
@@ -608,9 +608,9 @@ exports[`Test line results translation Translate assert lines translate line wit
 
 exports[`Test line results translation Translate assert lines translate line with screenshot should render line with screenshot 3`] = `
 "✖ Press button OK
-  docs: https://suite.st/docs/testing/test-operations/press-button-operation/
   fail: ADB communication with the device has failed. Make sure your device is set up correctly and it can be connected
         to using ADB
+  docs: https://suite.st/docs/testing/test-operations/press-button-operation/
   screenshot: https://the.suite.st/path/to/file.png"
 `;
 
