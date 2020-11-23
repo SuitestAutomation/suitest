@@ -360,9 +360,9 @@ const  renderNode = (node: SingleNode, renderTextNode: RenderTextFunc, {prefix =
 				val => val.split(nl).map(line => prefix + '> ' + line).join(nl)
 			);
 		case 'test-line':
-			return renderTestLineOrCondition(node, renderTextNode, {prefix, verbosity}, true);
+			return renderTestLineOrCondition(node, renderTextNode, {prefix, verbosity});
 		case 'condition':
-			return renderTestLineOrCondition(node, renderTextNode, {prefix, verbosity}, true);
+			return renderTestLineOrCondition(node, renderTextNode, {prefix, verbosity});
 		case 'test-line-result':
 			return renderTestLineResult(node, renderTextNode, {prefix, verbosity});
 		case 'link':
@@ -376,28 +376,16 @@ const  renderNode = (node: SingleNode, renderTextNode: RenderTextFunc, {prefix =
 const renderTestLineOrCondition = (
 	node: TestLineNode | ConditionNode,
 	renderTextNode: RenderTextFunc,
-	{prefix = '', verbosity}: {prefix?: string, verbosity: Verbosity},
-	withDocs: boolean // in case of test results it will be added there
+	{prefix = '', verbosity}: {prefix?: string, verbosity: Verbosity}
 ): string => {
 	const status = node.status ? renderTextNode(renderStatus(node.status)) : '';
 	const title = node.title.map(renderTextNode).join('');
 	const body = node.children.map(child => renderNode(child, renderTextNode, {prefix: prefix + tab, verbosity})).join('');
-	const docs = (verbosity === 'verbose' && withDocs) && (node as TestLineNode).docs
-		? tab + 'docs: ' + renderNode((node as TestLineNode).docs!, renderTextNode, {verbosity})
-		: '';
-	const excludedMessage = node.status === 'excluded'
-		? tab + renderTextNode({type: node.status, value: node.status + ': '}) + 'Test line was not executed'
-		: '';
 	const output = [prefix + status + title];
-	switch (verbosity) {
-		case 'normal':
-			output.push(body);
-			break;
-		case 'verbose':
-			output.push(body, docs);
-			break;
+
+	if (verbosity === 'normal' || verbosity === 'verbose') {
+		output.push(body);
 	}
-	output.push(excludedMessage);
 
 	return output.filter(Boolean).join(nl);
 };
@@ -407,21 +395,34 @@ const renderTestLineResult = (
 	renderTextNode: RenderTextFunc,
 	options: {prefix: string, verbosity: Verbosity}
 ): string => {
-	const nodeMessage = node.message?.map(renderTextNode).join('');
+	const status = tab + renderTextNode({type: node.status, value: node.status + ': '});
 	let message = '';
-	if (nodeMessage && node.status !== 'excluded') {
-		const status = renderTextNode({type: node.status, value: node.status + ': '});
-		message = tab + status + wrapText(nodeMessage, undefined, 2 + calcPureLength(status));
-	}
-	const docs = options.verbosity === 'verbose' && node.children[0].docs
-		? tab + 'docs: ' + renderNode(node.children[0].docs!, renderTextNode, {verbosity: options.verbosity})
-		: '';
-	const body = renderTestLineOrCondition(node.children[0], renderTextNode, options, false);
-	const screenshot = node.screenshot
-		? tab + 'screenshot: ' + node.screenshot
-		: '';
 
-	return [body, message, docs, screenshot].filter(Boolean).join(nl);
+	if (node.status === 'excluded') {
+		message = status + 'Test line was not executed';
+	} else {
+		const nodeMessage = node.message?.map(renderTextNode).join('');
+
+		if (nodeMessage) {
+			message = status + wrapText(nodeMessage, undefined, calcPureLength(status));
+		}
+	}
+
+	const body = renderTestLineOrCondition(node.children[0], renderTextNode, options);
+	const screenshot = node.screenshot
+		? 'screenshot: ' + node.screenshot
+		: '';
+	const docs = options.verbosity === 'verbose' && node.docs
+		? 'docs: ' + node.docs
+		: '';
+	const extras = [docs, screenshot]
+		.filter(Boolean)
+		.map(line => line.split(nl))
+		.reduce((acc, item) => acc.concat(item), [])
+		.map(line => tab + line)
+		.join(nl);
+
+	return [body, message, extras].filter(Boolean).join(nl);
 };
 
 export const toText = (

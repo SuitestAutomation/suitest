@@ -107,16 +107,14 @@ const renderHtmlPropsNode = (node: PropertiesNode, {verbosity}: {verbosity: Verb
 );
 
 const renderHtmlConditionNode = (node: ConditionNode, {verbosity}: {verbosity: Verbosity}): string => renderFigure(
-	['suitest-test-line__condition', `suitest-test-line__condition--${node.status}`].join(' '),
+	['suitest-test-line__condition', node.status ? `suitest-test-line__condition--${node.status}` : ''].filter(Boolean).join(' '),
 	node.children.map(n => renderNode(n, {verbosity})).join(''),
 	node.title,
 	'condition: '
 );
 
-const getDocsLink = (html: string): string => `<div class="suitest-test-line__docs">docs: ${html}<div>`;
-
-const renderHtmlTestLineNode = (node: TestLineNode, {verbosity}: {verbosity: Verbosity}, withDocs: boolean): string => {
-	const out = [`<div class="suitest-test-line suitest-test-line--${node.status}">`];
+const renderHtmlTestLineNode = (node: TestLineNode, {verbosity}: {verbosity: Verbosity}): string => {
+	const out = [`<div class="suitest-test-line${node.status ? ` suitest-test-line--${node.status}` : ''}">`];
 
 	// Line title
 	const title = toHtml(node.title ?? [], {verbosity});
@@ -125,9 +123,6 @@ const renderHtmlTestLineNode = (node: TestLineNode, {verbosity}: {verbosity: Ver
 	if (verbosity !== 'quiet') {
 		// Line extra details
 		out.push(toHtml(node.children, {verbosity}));
-		if (verbosity === 'verbose' && node.docs && withDocs) {
-			out.push(getDocsLink(toHtml(node.docs, {verbosity})));
-		}
 	}
 
 	out.push('</div>');
@@ -136,32 +131,29 @@ const renderHtmlTestLineNode = (node: TestLineNode, {verbosity}: {verbosity: Ver
 };
 
 const renderHtmlTestLineResultNode = (node: TestLineResultNode, {verbosity}: {verbosity: Verbosity}): string => {
-	const out = [`<div class="suitest-test-line__result suitest-test-line__result--${node.status}">`];
-	let docs = '';
+	const out = [`<div class="suitest-test-line__result${node.status ? ` suitest-test-line__result--${node.status}` : ''}">`];
 
 	// Body
-	out.push(node.children.map(n => {
-		if (n.type === 'test-line' && n.docs) {
-			docs = getDocsLink(toHtml(n.docs, {verbosity}));
+	out.push(node.children.map(n => renderNode(n, {verbosity})).join(''));
 
-			return renderHtmlTestLineNode(n, {verbosity}, false);
-		}
-
-		return renderNode(n, {verbosity});
-	}).join(''));
+	// Screenshot
+	if (node.screenshot) {
+		out.push(`<div class="suitest-test-line__result__screenshot">screenshot: <a href="${node.screenshot}" target="_blank">${node.screenshot}</a></div>`);
+	}
 
 	// Status
 	const message = toHtml(node.message ?? [], {verbosity});
 	if (message) {
 		out.push(`<div class="suitest-test-line__result__message">${message}</div>`);
 	}
-	// docs
-	if (verbosity === 'verbose' && docs) {
-		out.push(docs);
-	}
-	// Screenshot
-	if (node.screenshot) {
-		out.push(`<div class="suitest-test-line__result__screenshot">screenshot: <a href="${node.screenshot}" target="_blank">${node.screenshot}</a></div>`);
+
+	// Docs
+	if (verbosity === 'verbose' && node.docs) {
+		out.push(`<div class="suitest-test-line__result__docs">${toHtml({
+			type: 'link',
+			value: 'Suitest documentation',
+			href: node.docs,
+		}, {verbosity})}</div>`);
 	}
 
 	out.push('</div>');
@@ -185,7 +177,7 @@ const renderNode = (node: SingleNode, {verbosity}: {verbosity: Verbosity}): stri
 		case 'prop':
 			throw new Error('Property node should not be rendered outside of Properties collection');
 		case 'test-line':
-			return renderHtmlTestLineNode(node, {verbosity}, true);
+			return renderHtmlTestLineNode(node, {verbosity});
 		case 'condition':
 			return renderHtmlConditionNode(node, {verbosity});
 		case 'test-line-result':

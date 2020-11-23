@@ -27,6 +27,7 @@ import {
 	SimpleError,
 	QueryLine,
 	QueryLineError,
+	Subject,
 } from '@suitest/types';
 import {translateTestLine} from './testLine';
 import {translateElementProperty} from './condition';
@@ -534,6 +535,50 @@ const getLineResultMessage = (testLine: TestLine | QueryLine, lineResult?: TestL
 	return translateResultErrorMessage(lineResult as TestLineErrorResult);
 };
 
+const lineTypeDocsMap = {
+	clearAppData: '/testing/test-operations/clear-app-data-operation/',
+	takeScreenshot: '/suitest-api/commands/#takescreenshot',
+	execCmd: '/testing/test-operations/execute-command-operation/',
+	openApp: '/testing/test-operations/open-app-operation/',
+	openUrl: '/testing/test-operations/open-url-operation/',
+	sleep: '/testing/test-operations/sleep-operation/',
+	pollUrl: '/testing/test-operations/poll-url-operation/',
+	button: '/testing/test-operations/press-button-operation/',
+	runSnippet: '/testing/test-operations/run-test-operation/',
+	sendText: '/testing/test-operations/send-text-operation/',
+	setText: '/testing/test-operations/set-text-operation/',
+	browserCommand: '/testing/test-operations/browser-command-operation/',
+	click: '/testing/test-operations/click-on-operation/',
+	moveTo: '/testing/test-operations/move-to-operation/',
+	comment: null,
+};
+const subjTypeDocsMap: {[key in Subject['type'] | 'elementProps' | 'execute']: string} = {
+	application: '/testing/test-subjects/application-subject/',
+	cookie: '/testing/test-subjects/cookie-subject/',
+	element: '/testing/test-subjects/view-element-subject/',
+	elementProps: '/testing/test-subjects/view-element-subject/',
+	javascript: '/testing/test-subjects/javascript-expression-subject/',
+	execute: '/testing/test-subjects/javascript-expression-subject/',
+	location: '/testing/test-subjects/current-location-subject/',
+	network: '/testing/test-subjects/network-request-subject/',
+	psVideo: '/testing/test-subjects/video-subject/#playstation-4-webmaf-video',
+	video: '/testing/test-subjects/video-subject/',
+};
+
+const getDocsLink = (line: TestLine | QueryLine): string | undefined => {
+	let link: string | null;
+
+	if ('query' === line.type) {
+		link = subjTypeDocsMap[line.subject.type];
+	} else if ('wait' === line.type || 'assert' === line.type) {
+		link = subjTypeDocsMap[line.condition.subject.type];
+	} else {
+		link = lineTypeDocsMap[line.type];
+	}
+
+	return link ? `https://suite.st/docs${link}` : undefined;
+};
+
 export const translateTestLineResult = (options: {
 	testLine: TestLine | QueryLine,
 	appConfig?: AppConfiguration,
@@ -541,12 +586,14 @@ export const translateTestLineResult = (options: {
 	elements?: Elements,
 	snippets?: Snippets,
 }): TestLineResultNode => {
-	const {lineResult} = options;
+	const {lineResult, testLine} = options;
+	const docs = getDocsLink(testLine);
 
 	if (lineResult && 'contentType' in lineResult && lineResult.contentType === 'query') {
 		return <test-line-result
 			status={'fail'}
 			message={getLineResultMessage(options.testLine, lineResult)}
+			docs={docs}
 		>{translateTestLine(options)}</test-line-result> as TestLineResultNode;
 	}
 
@@ -554,5 +601,6 @@ export const translateTestLineResult = (options: {
 		status={(lineResult as TestLineResult)?.result ?? 'success'}
 		message={getLineResultMessage(options.testLine, lineResult)}
 		screenshot={getScreenshotUrl((lineResult as TestLineResult)?.screenshot)}
+		docs={docs}
 	>{translateTestLine(options)}</test-line-result> as TestLineResultNode;
 };

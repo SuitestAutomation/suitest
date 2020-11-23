@@ -298,7 +298,7 @@ const translateJavaScriptExpressionCondition = (
 				lineResult?.errorType === 'JavaScriptError' ? 'fail' : mapStatus(lineResult?.result)
 			)}
 			<prop
-				name={<text>expression result</text>}
+				name={<text>expected result</text>}
 				expectedValue={condition.val
 					? formatVariables(condition.val, appConfig?.configVariables)
 					: <text>{notSpecifiedMessage}</text>}

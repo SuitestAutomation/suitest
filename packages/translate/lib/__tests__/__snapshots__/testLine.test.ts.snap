@@ -3,11 +3,6 @@
 exports[`Test Lines translation Should translate test line "Assert ... then continue excluded" 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-subjects/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-subjects/",
-  },
   "status": "excluded",
   "title": Array [
     Object {
@@ -22,11 +17,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Assert ... then continue excluded" without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-subjects/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-subjects/",
-  },
   "status": "excluded",
   "title": Array [
     Object {
@@ -41,11 +31,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Assert ... then continue" 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-subjects/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-subjects/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -59,11 +44,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Assert ... then continue" without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-subjects/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-subjects/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -77,11 +57,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Assert ... then exit" 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-subjects/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-subjects/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -95,11 +70,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Assert ... then exit" without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-subjects/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-subjects/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -113,11 +83,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Assert ... then fail" 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-subjects/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-subjects/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -131,11 +96,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Assert ... then fail" without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-subjects/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-subjects/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -149,11 +109,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Assert ... then warn" 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-subjects/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-subjects/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -167,11 +122,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Assert ... then warn" without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-subjects/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-subjects/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -185,11 +135,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Assert ... timeout ... then continue" 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-subjects/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-subjects/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -207,11 +152,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Assert ... timeout ... then continue" without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-subjects/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-subjects/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -240,11 +180,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -269,11 +204,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -287,11 +217,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Browser command: Accept modal dialog" 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -305,11 +230,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Browser command: Accept modal dialog" without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -358,11 +278,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -411,11 +326,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -454,11 +364,6 @@ Object {
       "type": "props",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -497,11 +402,6 @@ Object {
       "type": "props",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -526,11 +426,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -555,11 +450,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -573,11 +463,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Browser command: Dismiss modal dialog" 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -591,11 +476,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Browser command: Dismiss modal dialog" without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -609,11 +489,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Browser command: Go back excluded" 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-  },
   "status": "excluded",
   "title": Array [
     Object {
@@ -628,11 +503,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Browser command: Go back excluded" without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-  },
   "status": "excluded",
   "title": Array [
     Object {
@@ -658,11 +528,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -687,11 +552,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -705,11 +565,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Browser command: Go back" 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -723,11 +578,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Browser command: Go back" without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -752,11 +602,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -781,11 +626,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -799,11 +639,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Browser command: Go forward" 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -817,11 +652,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Browser command: Go forward" without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -846,11 +676,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -875,11 +700,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -893,11 +713,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Browser command: Refresh" 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -911,11 +726,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Browser command: Refresh" without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -954,11 +764,6 @@ Object {
       "type": "props",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -997,11 +802,6 @@ Object {
       "type": "props",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/browser-command-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -1015,11 +815,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Clear app data excluded" 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/clear-app-data-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/clear-app-data-operation/",
-  },
   "status": "excluded",
   "title": Array [
     Object {
@@ -1034,11 +829,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Clear app data excluded" without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/clear-app-data-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/clear-app-data-operation/",
-  },
   "status": "excluded",
   "title": Array [
     Object {
@@ -1053,11 +843,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Clear app data" 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/clear-app-data-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/clear-app-data-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -1071,11 +856,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Clear app data" without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/clear-app-data-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/clear-app-data-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -1089,11 +869,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Click on element ... every ... exactly ..." 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/click-on-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/click-on-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -1127,11 +902,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Click on element ... every ... exactly ..." without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/click-on-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/click-on-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -1165,11 +935,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Click on element ... once" 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/click-on-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/click-on-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -1187,11 +952,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Click on element ... once" without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/click-on-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/click-on-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -1220,11 +980,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/click-on-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/click-on-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -1257,11 +1012,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/click-on-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/click-on-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -1294,11 +1044,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/click-on-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/click-on-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -1343,11 +1088,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/click-on-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/click-on-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -1381,11 +1121,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Click on position ... once" 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/click-on-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/click-on-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -1403,11 +1138,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Click on position ... once" without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/click-on-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/click-on-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -1474,11 +1204,6 @@ Object {
       "type": "props",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/execute-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/execute-command-operation/",
-  },
   "status": "excluded",
   "title": Array [
     Object {
@@ -1516,11 +1241,6 @@ Object {
       "type": "props",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/execute-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/execute-command-operation/",
-  },
   "status": "excluded",
   "title": Array [
     Object {
@@ -1558,11 +1278,6 @@ Object {
       "type": "props",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/execute-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/execute-command-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -1599,11 +1314,6 @@ Object {
       "type": "props",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/execute-command-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/execute-command-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -1617,11 +1327,6 @@ Object {
 exports[`Test Lines translation Should translate test line "GET cookies" 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/docs/suitest-api/chain-types/#query",
-    "type": "link",
-    "value": "https://suite.st/docs/docs/suitest-api/chain-types/#query",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -1635,11 +1340,6 @@ Object {
 exports[`Test Lines translation Should translate test line "GET cookies" without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/docs/suitest-api/chain-types/#query",
-    "type": "link",
-    "value": "https://suite.st/docs/docs/suitest-api/chain-types/#query",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -1653,11 +1353,6 @@ Object {
 exports[`Test Lines translation Should translate test line "GET element props" 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/docs/suitest-api/chain-types/#query",
-    "type": "link",
-    "value": "https://suite.st/docs/docs/suitest-api/chain-types/#query",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -1671,11 +1366,6 @@ Object {
 exports[`Test Lines translation Should translate test line "GET element props" without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/docs/suitest-api/chain-types/#query",
-    "type": "link",
-    "value": "https://suite.st/docs/docs/suitest-api/chain-types/#query",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -1689,11 +1379,6 @@ Object {
 exports[`Test Lines translation Should translate test line "GET location" 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/docs/suitest-api/chain-types/#query",
-    "type": "link",
-    "value": "https://suite.st/docs/docs/suitest-api/chain-types/#query",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -1707,11 +1392,6 @@ Object {
 exports[`Test Lines translation Should translate test line "GET location" without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/docs/suitest-api/chain-types/#query",
-    "type": "link",
-    "value": "https://suite.st/docs/docs/suitest-api/chain-types/#query",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -1725,11 +1405,6 @@ Object {
 exports[`Test Lines translation Should translate test line "JS expression" 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/docs/suitest-api/chain-types/#query",
-    "type": "link",
-    "value": "https://suite.st/docs/docs/suitest-api/chain-types/#query",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -1743,11 +1418,6 @@ Object {
 exports[`Test Lines translation Should translate test line "JS expression" without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/docs/suitest-api/chain-types/#query",
-    "type": "link",
-    "value": "https://suite.st/docs/docs/suitest-api/chain-types/#query",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -1772,11 +1442,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/move-to-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/move-to-operation/",
-  },
   "status": "excluded",
   "title": Array [
     Object {
@@ -1810,11 +1475,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/move-to-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/move-to-operation/",
-  },
   "status": "excluded",
   "title": Array [
     Object {
@@ -1848,11 +1508,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/move-to-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/move-to-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -1885,11 +1540,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/move-to-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/move-to-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -1911,11 +1561,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Move to element ..." 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/move-to-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/move-to-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -1933,11 +1578,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Move to element ..." without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/move-to-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/move-to-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -1955,11 +1595,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Move to position ..." 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/move-to-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/move-to-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -1977,11 +1612,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Move to position ..." without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/move-to-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/move-to-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -2024,11 +1654,6 @@ Object {
       "type": "props",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/open-url-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/open-url-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -2067,11 +1692,6 @@ Object {
       "type": "props",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/open-url-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/open-url-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -2085,11 +1705,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Open app at homepage excluded" 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/open-app-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/open-app-operation/",
-  },
   "status": "excluded",
   "title": Array [
     Object {
@@ -2104,11 +1719,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Open app at homepage excluded" without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/open-app-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/open-app-operation/",
-  },
   "status": "excluded",
   "title": Array [
     Object {
@@ -2123,11 +1733,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Open app at homepage" 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/open-app-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/open-app-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -2141,11 +1746,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Open app at homepage" without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/open-app-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/open-app-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -2184,11 +1784,6 @@ Object {
       "type": "props",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/open-app-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/open-app-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -2227,11 +1822,6 @@ Object {
       "type": "props",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/open-app-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/open-app-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -2289,11 +1879,6 @@ Object {
       "type": "props",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/poll-url-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/poll-url-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -2351,11 +1936,6 @@ Object {
       "type": "props",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/poll-url-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/poll-url-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -2369,11 +1949,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Press ... every ... exactly ..." 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/press-button-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/press-button-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -2407,11 +1982,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Press ... every ... exactly ..." without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/press-button-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/press-button-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -2445,11 +2015,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Press ... once" 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/press-button-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/press-button-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -2471,11 +2036,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Press ... once" without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/press-button-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/press-button-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -2508,11 +2068,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/press-button-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/press-button-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -2545,11 +2100,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/press-button-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/press-button-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -2582,11 +2132,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/press-button-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/press-button-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -2639,11 +2184,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/press-button-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/press-button-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -2685,11 +2225,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Run snippet ... every ... exactly ..." 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/run-test-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/run-test-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -2723,11 +2258,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Run snippet ... every ... exactly ..." without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/run-test-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/run-test-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -2761,11 +2291,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Run snippet ... once" 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/run-test-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/run-test-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -2783,11 +2308,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Run snippet ... once" without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/run-test-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/run-test-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -2816,11 +2336,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/run-test-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/run-test-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -2853,11 +2368,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/run-test-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/run-test-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -2890,11 +2400,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/run-test-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/run-test-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -2939,11 +2444,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/run-test-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/run-test-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -2977,11 +2477,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Send text ... to element ... once" 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/send-text-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/send-text-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -3007,11 +2502,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Send text ... to element ... once" without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/send-text-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/send-text-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -3037,11 +2527,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Send text ... to window every ... exactly ..." 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/send-text-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/send-text-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -3083,11 +2568,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Send text ... to window every ... exactly ..." without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/send-text-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/send-text-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -3129,11 +2609,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Send text ... to window once" 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/send-text-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/send-text-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -3159,11 +2634,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Send text ... to window once" without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/send-text-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/send-text-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -3200,11 +2670,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/send-text-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/send-text-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -3245,11 +2710,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/send-text-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/send-text-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -3290,11 +2750,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/send-text-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/send-text-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -3347,11 +2802,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/send-text-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/send-text-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -3404,11 +2854,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/set-text-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/set-text-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -3449,11 +2894,6 @@ Object {
       "type": "condition",
     },
   ],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/set-text-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/set-text-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -3483,11 +2923,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Set text ... to element ..." 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/set-text-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/set-text-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -3513,11 +2948,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Set text ... to element ..." without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/set-text-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/set-text-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -3543,11 +2973,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Sleep ... excluded" 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/sleep-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/sleep-operation/",
-  },
   "status": "excluded",
   "title": Array [
     Object {
@@ -3566,11 +2991,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Sleep ... excluded" without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/sleep-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/sleep-operation/",
-  },
   "status": "excluded",
   "title": Array [
     Object {
@@ -3589,11 +3009,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Sleep ..." 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/sleep-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/sleep-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -3611,11 +3026,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Sleep ..." without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/sleep-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/sleep-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -3633,11 +3043,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Wait until ... max ... then continue" 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-subjects/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-subjects/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -3655,11 +3060,6 @@ Object {
 exports[`Test Lines translation Should translate test line "Wait until ... max ... then continue" without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-subjects/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-subjects/",
-  },
   "title": Array [
     Object {
       "type": "text",
@@ -3677,15 +3077,10 @@ Object {
 exports[`Test Lines translation Should translate test line "get screenshot" 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/clear-app-data-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/clear-app-data-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
-      "value": "take screenshot (base64)",
+      "value": "Take screenshot (base64)",
     },
   ],
   "type": "test-line",
@@ -3695,15 +3090,10 @@ Object {
 exports[`Test Lines translation Should translate test line "get screenshot" without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/clear-app-data-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/clear-app-data-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
-      "value": "take screenshot (base64)",
+      "value": "Take screenshot (base64)",
     },
   ],
   "type": "test-line",
@@ -3713,15 +3103,10 @@ Object {
 exports[`Test Lines translation Should translate test line "save screenshot" 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/clear-app-data-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/clear-app-data-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
-      "value": "save screenshot (\\"screen.jpg\\")",
+      "value": "Save screenshot (\\"screen.jpg\\")",
     },
   ],
   "type": "test-line",
@@ -3731,15 +3116,10 @@ Object {
 exports[`Test Lines translation Should translate test line "save screenshot" without appConfig 1`] = `
 Object {
   "children": Array [],
-  "docs": Object {
-    "href": "https://suite.st/docs/testing/test-operations/clear-app-data-operation/",
-    "type": "link",
-    "value": "https://suite.st/docs/testing/test-operations/clear-app-data-operation/",
-  },
   "title": Array [
     Object {
       "type": "text",
-      "value": "save screenshot (\\"screen.jpg\\")",
+      "value": "Save screenshot (\\"screen.jpg\\")",
     },
   ],
   "type": "test-line",

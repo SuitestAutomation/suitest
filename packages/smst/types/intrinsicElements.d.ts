@@ -51,13 +51,13 @@ declare namespace JSX {
 			title: SmstNode,
 			children?: SmstNode,
 			status?: TestLineResultStatus,
-			docs?: LinkNode,
 		},
 		'test-line-result': {
 			status: TestLineResultStatus,
 			children: SmstNode,
 			message?: SmstNode,
 			screenshot?: string,
+			docs?: string,
 		},
 		link: {
 			href: string,
