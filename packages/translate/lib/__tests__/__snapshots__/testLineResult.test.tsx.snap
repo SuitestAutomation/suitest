@@ -39,6 +39,7 @@ Object {
       "type": "test-line",
     },
   ],
+  "docs": "https://suite.st/docs/testing/test-operations/sleep-operation/",
   "message": Array [
     Object {
       "type": "text",
@@ -99,8 +100,8 @@ exports[`Test line results translation Translate assert lines translate "assert 
 "✖ Assert: cookie suitest-cookie
   ✖ suitest-cookie = suitest          
                    → some cookie value
-  docs: https://suite.st/docs/testing/test-subjects/
-  fail: Condition was not met"
+  fail: Condition was not met
+  docs: https://suite.st/docs/testing/test-subjects/cookie-subject/"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert cookie" queryFailed match js failed 1`] = `
@@ -142,8 +143,8 @@ exports[`Test line results translation Translate assert lines translate "assert 
 "✖ Assert: Current location
   ✖ current location matches JS
     > something     
-  docs: https://suite.st/docs/testing/test-subjects/
-  fail: Exception was thrown: \\"something is not defined\\""
+  fail: Exception was thrown: \\"something is not defined\\"
+  docs: https://suite.st/docs/testing/test-subjects/current-location-subject/"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert current location" errorType: "queryFailed" matchjs failed 4`] = `
@@ -168,8 +169,8 @@ exports[`Test line results translation Translate assert lines translate "assert 
 "✖ Assert: Current location
   ✖ current location contains http://some.url                                        
                      →        http://file.suite.st/sampleapp_staging/index-hbbtv.html
-  docs: https://suite.st/docs/testing/test-subjects/
-  fail: Condition was not met"
+  fail: Condition was not met
+  docs: https://suite.st/docs/testing/test-subjects/current-location-subject/"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert current location" errorType: "queryFailed", location value not matched 3`] = `
@@ -184,7 +185,8 @@ exports[`Test line results translation Translate assert lines translate "assert 
 
 exports[`Test line results translation Translate assert lines translate "assert current location" with success result 2`] = `
 "✔ Assert: Current location
-  ✔ current location contains http://some.url"
+  ✔ current location contains http://some.url
+  docs: https://suite.st/docs/testing/test-subjects/current-location-subject/"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert current location" with success result 3`] = `"✔ Assert: Current location"`;
@@ -327,7 +329,10 @@ exports[`Test line results translation Translate assert lines translate "assert 
 
 exports[`Test line results translation Translate assert lines translate "assert element" without error "element ... does not exist" 1`] = `"Assert: Element 1 does not exist"`;
 
-exports[`Test line results translation Translate assert lines translate "assert element" without error "element ... does not exist" 2`] = `"Assert: Element 1 does not exist"`;
+exports[`Test line results translation Translate assert lines translate "assert element" without error "element ... does not exist" 2`] = `
+"Assert: Element 1 does not exist
+  docs: https://suite.st/docs/testing/test-subjects/view-element-subject/"
+`;
 
 exports[`Test line results translation Translate assert lines translate "assert element" without error "element ... does not exist" 3`] = `"Assert: Element 1 does not exist"`;
 
@@ -358,10 +363,10 @@ exports[`Test line results translation Translate assert lines translate "assert 
 
 exports[`Test line results translation Translate assert lines translate "assert javascript expression" errorType: "queryFailed" expression matching failed 1`] = `
 "✖ Assert: JavaScript expression
-  ✖ expression         
-    > 1 + 1          
-  ✖ expression result = 3
-                      → 2
+  ✖ expression       
+    > 1 + 1        
+  ✖ expected result = 3
+                    → 2
   fail: Condition was not met"
 `;
 
@@ -372,76 +377,76 @@ exports[`Test line results translation Translate assert lines translate "assert 
 
 exports[`Test line results translation Translate assert lines translate "assert javascript expression" errorType: "queryFailed" expression matching failed 3`] = `
 "✖ Assert: JavaScript expression
-  ✖ expression         
-    > 1 + 1          
-  ✖ expression result = 3
-                      → 2
-  docs: https://suite.st/docs/testing/test-subjects/
-  fail: Condition was not met"
+  ✖ expression       
+    > 1 + 1        
+  ✖ expected result = 3
+                    → 2
+  fail: Condition was not met
+  docs: https://suite.st/docs/testing/test-subjects/javascript-expression-subject/"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert javascript expression" errorType: "queryFailed" expression matching failed 4`] = `
 "✖ Assert: JavaScript expression
-  ✖ expression                  
-    > 120 + 3        
-  ✖ expression result ! contains 12 
-                      →          123
+  ✖ expression                
+    > 120 + 3      
+  ✖ expected result ! contains 12 
+                    →          123
   fail: Condition was not met"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert javascript expression" errorType: "queryFailed" handle javascript exception 1`] = `
 "✖ Assert: JavaScript expression
-  ✖ expression         
+  ✖ expression       
     > function test() { return 123
-  ✖ expression result = 123
+  ✖ expected result = 123
   fail: Exception was thrown: \\"Unexpected end of input\\""
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert javascript expression" render error when javascript expression missed 1`] = `
 "✖ Assert: JavaScript expression
-  ✖ expression         
+  ✖ expression       
     > [NOT SPECIFIED]
-  ✖ expression result = [NOT SPECIFIED]
+  ✖ expected result = [NOT SPECIFIED]
   fatal: Internal error occurred"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert javascript expression" render error when javascript expression missed 2`] = `
 "✖ Assert: JavaScript expression
-  ✖ expression         
+  ✖ expression       
     > [NOT SPECIFIED]
-  ✖ expression result = 1
+  ✖ expected result = 1
   fatal: Internal error occurred"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert javascript expression" render error when js expression specified but comparing value is empty 1`] = `
 "✖ Assert: JavaScript expression
-  ✖ expression         
-    > 1              
-  ✖ expression result = [NOT SPECIFIED]
+  ✖ expression       
+    > 1            
+  ✖ expected result = [NOT SPECIFIED]
   fail: Test command received invalid input"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert javascript expression" render without appConfig 1`] = `
 "Assert: JavaScript expression
-  expression         
-    > someJS()     
-  expression result = returned value"
+  expression       
+    > someJS()   
+  expected result = returned value"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert javascript expression" render without result 1`] = `
 "Assert: JavaScript expression
-  expression         
-    > someJS()     
-  expression result = returned value"
+  expression       
+    > someJS()   
+  expected result = returned value"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert javascript expression" render without result 2`] = `
 "Assert: JavaScript expression
-  expression         
+  expression        
     > someJS(\\"123\\")
-  (with variables)   
+  (with variables)  
     > someJS(\\"<%var1%>\\")
-  expression result = returned value"
+  expected result  = returned value"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert network" render fail results request/response headers not matched 1`] = `
@@ -561,8 +566,8 @@ exports[`Test line results translation Translate assert lines translate "openApp
 
 exports[`Test line results translation Translate assert lines translate "openAppOverrideFailed" render with addition errorType 3`] = `
 "✖ Open application
-  docs: https://suite.st/docs/testing/test-operations/open-app-operation/
-  fail: Open app override failed"
+  fail: Open app override failed
+  docs: https://suite.st/docs/testing/test-operations/open-app-operation/"
 `;
 
 exports[`Test line results translation Translate assert lines translate "openAppOverrideFailed" render with addition errorType 4`] = `
@@ -599,9 +604,9 @@ exports[`Test line results translation Translate assert lines translate line wit
 
 exports[`Test line results translation Translate assert lines translate line with screenshot should render line with screenshot 3`] = `
 "✖ Press button OK
-  docs: https://suite.st/docs/testing/test-operations/press-button-operation/
   fail: ADB communication with the device has failed. Make sure your device is set up correctly and it can be connected
         to using ADB
+  docs: https://suite.st/docs/testing/test-operations/press-button-operation/
   screenshot: https://the.suite.st/path/to/file.png"
 `;
 
@@ -728,27 +733,27 @@ exports[`Test line results translation assert then exit translate then exit and 
 
 exports[`Test line results translation assert then exit translate then exit and "assert javascript expression" render with exit result 1`] = `
 "» Assert: JavaScript expression then stop test
-  expression           
-    > 1 + 1          
-  ✔ expression result = 3
-                      → 2
+  expression         
+    > 1 + 1        
+  ✔ expected result = 3
+                    → 2
   exit: Condition was met"
 `;
 
 exports[`Test line results translation assert then exit translate then exit and "assert javascript expression" render with success result 1`] = `
 "✔ Assert: JavaScript expression then stop test
-  ✔ expression         
-    > 1 + 1          
-  ✖ expression result = 3
-                      → 2
+  ✔ expression       
+    > 1 + 1        
+  ✖ expected result = 3
+                    → 2
   success: Condition was not met"
 `;
 
 exports[`Test line results translation assert then exit translate then exit and "assert javascript expression" render without result 1`] = `
 "Assert: JavaScript expression then stop test
-  expression         
-    > someJS()     
-  expression result = returned value"
+  expression       
+    > someJS()   
+  expected result = returned value"
 `;
 
 exports[`Test line results translation assert then exit translate then exit and "assert ps video" render with exit result 1`] = `
@@ -873,27 +878,27 @@ exports[`Test line results translation assert then fail translate then fail and 
 
 exports[`Test line results translation assert then fail translate then fail and "assert javascript expression" render with fail result 1`] = `
 "✖ Assert: JavaScript expression then fail
-  ✖ expression         
-    > 1 + 1          
-  ✔ expression result = 3
-                      → 2
+  ✖ expression       
+    > 1 + 1        
+  ✔ expected result = 3
+                    → 2
   fail: Condition was met"
 `;
 
 exports[`Test line results translation assert then fail translate then fail and "assert javascript expression" render with success result 1`] = `
 "✔ Assert: JavaScript expression then fail
-  ✔ expression         
-    > 1 + 1          
-  ✖ expression result = 3
-                      → 2
+  ✔ expression       
+    > 1 + 1        
+  ✖ expected result = 3
+                    → 2
   success: Condition was not met"
 `;
 
 exports[`Test line results translation assert then fail translate then fail and "assert javascript expression" render without result 1`] = `
 "Assert: JavaScript expression then fail
-  expression         
-    > someJS()     
-  expression result = returned value"
+  expression       
+    > someJS()   
+  expected result = returned value"
 `;
 
 exports[`Test line results translation assert then fail translate then fail and "assert ps video" render with fail result 1`] = `
@@ -1018,27 +1023,27 @@ exports[`Test line results translation assert then warning translate then warnin
 
 exports[`Test line results translation assert then warning translate then warning and "assert javascript expression" render with success result 1`] = `
 "✔ Assert: JavaScript expression then warn
-  ✔ expression         
-    > 1 + 1          
-  ✖ expression result = 3
-                      → 2
+  ✔ expression       
+    > 1 + 1        
+  ✖ expected result = 3
+                    → 2
   success: Condition was not met"
 `;
 
 exports[`Test line results translation assert then warning translate then warning and "assert javascript expression" render with warning result 1`] = `
 "‼ Assert: JavaScript expression then warn
-  ✔ expression         
-    > 1 + 1          
-  ✔ expression result = 3
-                      → 2
+  ✔ expression       
+    > 1 + 1        
+  ✔ expected result = 3
+                    → 2
   warning: Condition was met"
 `;
 
 exports[`Test line results translation assert then warning translate then warning and "assert javascript expression" render without result 1`] = `
 "Assert: JavaScript expression then warn
-  expression         
-    > someJS()     
-  expression result = returned value"
+  expression       
+    > someJS()   
+  expected result = returned value"
 `;
 
 exports[`Test line results translation assert then warning translate then warning and "assert ps video" render with success result 1`] = `

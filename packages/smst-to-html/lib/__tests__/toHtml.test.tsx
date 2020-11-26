@@ -42,15 +42,15 @@ describe('AST renderers', () => {
 	</props>;
 
 	const simpleCondition = <condition
-		title={<fragment>condition: element <subject>My element</subject> exists</fragment>}
+		title={<fragment>element <subject>My element</subject> exists</fragment>}
 	/>;
 	const longCondition = <condition
-		title={<fragment>condition: element <subject>My element</subject> exists</fragment>}
+		title={<fragment>element <subject>My element</subject> exists</fragment>}
 	>{longProps}</condition>;
 	const simpleLine = <test-line
 		title={<fragment>Assert element <subject>My element</subject> is visible</fragment>}
 	/>;
-	const longLine = <test-line docs={<link href={'//link/to/docs'}/> as LinkNode} title={<fragment>Assert element <subject>My element</subject></fragment>}>
+	const longLine = <test-line title={<fragment>Assert element <subject>My element</subject></fragment>}>
 		{simpleCondition}
 	</test-line>;
 
@@ -58,12 +58,17 @@ describe('AST renderers', () => {
 		status="fail"
 		message={<text>Condition was not met</text>}
 		screenshot={screenshot}
+		docs="//link/to/docs"
 	>
 		<test-line
-			title={<text>Assert application has exited</text>}
+			title={<fragment>Assert element <subject>My element</subject></fragment>}
 			status="fail"
-			docs={<link href={'//link/to/docs'}/> as LinkNode}
-		/>
+		>
+			<condition
+				title={<fragment>element <subject>My element</subject> exists</fragment>}
+				status="fail"
+			/>
+		</test-line>
 	</test-line-result>;
 	const warningResult = (screenshot?: string): JSX.Element => <test-line-result
 		status="warning"
@@ -159,14 +164,15 @@ describe('AST renderers', () => {
 		});
 
 		it('should render test lines with quiet level', () => {
-			expect(toHtml(longLine, {verbosity: 'quiet'})).toMatchSnapshot();
+			expect(toHtml(failResult(), {verbosity: 'quiet'})).toMatchSnapshot();
 		});
+
 		it('should render test lines with normal level', () => {
-			expect(toHtml(longLine, {verbosity: 'normal'})).toMatchSnapshot();
+			expect(toHtml(failResult(), {verbosity: 'normal'})).toMatchSnapshot();
 		});
 
 		it('should render test lines with verbose level', () => {
-			expect(toHtml(longLine, {verbosity: 'verbose'})).toMatchSnapshot();
+			expect(toHtml(failResult(), {verbosity: 'verbose'})).toMatchSnapshot();
 		});
 
 		it('should render results with screenshots', () => {

@@ -1,6 +1,6 @@
 import {jsx} from '@suitest/smst';
 import {escapeControlChars, toText, wrapTextNodes} from '../toText';
-import {LinkNode, Verbosity} from '@suitest/smst/types/unistTestLine';
+import {Verbosity} from '@suitest/smst/types/unistTestLine';
 
 describe('AST renderers', () => {
 	const plainText = <text>TEXT</text>;
@@ -52,7 +52,6 @@ describe('AST renderers', () => {
 	>{longProps}</condition>;
 	const simpleLine = <test-line
 		title={<fragment>Assert element <subject>My element</subject> is visible</fragment>}
-		docs={<link href="http://suite.st/docs/"/> as LinkNode}
 	/>;
 	const simpleLineExcluded = <test-line
 		status="excluded"
@@ -68,6 +67,7 @@ describe('AST renderers', () => {
 		status="fail"
 		message={<text>Condition was not met</text>}
 		screenshot={screenshot}
+		docs="http://suite.st/docs/"
 	>
 		<test-line
 			title={<fragment>Run test <subject>My test</subject> until condition is met max 5x every 5s</fragment>}
@@ -78,6 +78,7 @@ describe('AST renderers', () => {
 		status="warning"
 		message={<text>Some warning message</text>}
 		screenshot={screenshot}
+		docs="http://suite.st/docs/"
 	>
 		<test-line
 			title={<text>Assert application has exited</text>}

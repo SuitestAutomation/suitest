@@ -91,6 +91,7 @@ Object {
       "type": "test-line",
     },
   ],
+  "docs": undefined,
   "message": Array [
     Object {
       "type": "text",
@@ -117,6 +118,7 @@ Object {
       "type": "test-line",
     },
   ],
+  "docs": "//link/to/docs",
   "message": Array [
     Object {
       "type": "text",
