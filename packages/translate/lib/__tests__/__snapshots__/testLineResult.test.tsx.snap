@@ -1558,6 +1558,13 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "packageInstallationFailed" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Application installation on the device failed",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "packageNotFound" error 1`] = `
 Object {
   "type": "text",
