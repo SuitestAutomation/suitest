@@ -136,11 +136,6 @@ const renderHtmlTestLineResultNode = (node: TestLineResultNode, {verbosity}: {ve
 	// Body
 	out.push(node.children.map(n => renderNode(n, {verbosity})).join(''));
 
-	// Screenshot
-	if (node.screenshot) {
-		out.push(`<div class="suitest-test-line__result__screenshot">screenshot: <a href="${node.screenshot}" target="_blank">${node.screenshot}</a></div>`);
-	}
-
 	// Status
 	const message = toHtml(node.message ?? [], {verbosity});
 	if (message) {
@@ -154,6 +149,11 @@ const renderHtmlTestLineResultNode = (node: TestLineResultNode, {verbosity}: {ve
 			value: 'Suitest documentation',
 			href: node.docs,
 		}, {verbosity})}</div>`);
+	}
+
+	// Screenshot
+	if (node.screenshot) {
+		out.push(`<div class="suitest-test-line__result__screenshot">screenshot: <a href="${node.screenshot}" target="_blank">${node.screenshot}</a></div>`);
 	}
 
 	out.push('</div>');
