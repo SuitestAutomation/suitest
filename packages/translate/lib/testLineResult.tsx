@@ -316,7 +316,7 @@ const translateADBError = (result: ADBError): TextNode => {
 		return <text>{result.message.code}</text> as TextNode;
 	}
 	if (result.message && ('code' in result.message) && result.message.code === 'installationRestricted') {
-		return <fragment>Application installation is forbidden. See our <link href="https://suite.st/docs/troubleshooting/android/#application-installation-is-forbidden-on-xiaomi">docs</link> for more information</fragment> as TextNode;
+		return <fragment>Application installation is forbidden. See <link href="https://suite.st/docs/troubleshooting/android/#application-installation-is-forbidden-on-xiaomi">our docs</link> for more information</fragment> as TextNode;
 	}
 	if (result.message && ('info' in result.message)) {
 		return <text>{result.message.info.reason}</text> as TextNode;
