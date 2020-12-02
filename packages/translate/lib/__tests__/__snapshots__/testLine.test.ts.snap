@@ -2587,7 +2587,7 @@ Object {
     },
     Object {
       "type": "text",
-      "value": " to left by 1px",
+      "value": " left by 1px",
     },
   ],
   "type": "test-line",
@@ -2635,7 +2635,7 @@ Object {
     },
     Object {
       "type": "text",
-      "value": " to left by 1px",
+      "value": " left by 1px",
     },
   ],
   "type": "test-line",
@@ -3337,7 +3337,7 @@ Object {
     },
     Object {
       "type": "text",
-      "value": " to left by 1px in 3ms",
+      "value": " left by 1px in 3ms",
     },
   ],
   "type": "test-line",
@@ -3385,7 +3385,7 @@ Object {
     },
     Object {
       "type": "text",
-      "value": " to left by 1px in 3ms",
+      "value": " left by 1px in 3ms",
     },
   ],
   "type": "test-line",
