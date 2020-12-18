@@ -551,6 +551,7 @@ const lineTypeDocsMap = {
 	browserCommand: '/testing/test-operations/browser-command-operation/',
 	click: '/testing/test-operations/click-on-operation/',
 	moveTo: '/testing/test-operations/move-to-operation/',
+	deviceSettings: '/testing/test-operations/set-screen-orientation-operation/',
 	comment: null,
 };
 const subjTypeDocsMap: {[key in Subject['type'] | 'elementProps' | 'execute']: string} = {

@@ -35,6 +35,20 @@ export type TakeScreenshotTestLine = BaseTestLine & {
 	fileName?: string,
 };
 
+export type DeviceOrientationType = 'portrait' | 'portraitReversed' | 'landscape' | 'landscapeReversed';
+
+export type DeviceSettingsTestLine = BaseTestLine & {
+	type: 'deviceSettings',
+	deviceSettings: {
+		type: 'setOrientation',
+		params: {
+			orientation: DeviceOrientationType
+		}
+	},
+	condition?: Condition,
+	negateCondition?: boolean,
+};
+
 export type ExecuteCommandTestLine = BaseTestLine & {
 	type: 'execCmd',
 	val: string,
@@ -185,4 +199,5 @@ export type TestLine = AssertTestLine
 	| SendTextTestLine
 	| SetTextTestLine
 	| CommentTestLine
-	| TakeScreenshotTestLine;
+	| TakeScreenshotTestLine
+	| DeviceSettingsTestLine;

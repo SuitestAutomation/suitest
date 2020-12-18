@@ -812,4 +812,12 @@ export const testLinesExamples = {
 		type: 'takeScreenshot',
 		fileName: 'screen.jpg',
 	}),
+	'setOrientation': (): TestLine => ({
+		...baseTestLine,
+		type: 'deviceSettings',
+		deviceSettings: {
+			type: 'setOrientation',
+			params: {orientation: 'portrait'},
+		},
+	}),
 };
