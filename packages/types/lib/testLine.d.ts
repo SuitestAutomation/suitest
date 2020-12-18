@@ -42,8 +42,8 @@ export type DeviceSettingsTestLine = BaseTestLine & {
 	deviceSettings: {
 		type: 'setOrientation',
 		params: {
-			orientation: DeviceOrientationType
-		}
+			orientation: DeviceOrientationType,
+		},
 	},
 	condition?: Condition,
 	negateCondition?: boolean,
