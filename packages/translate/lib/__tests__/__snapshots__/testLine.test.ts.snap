@@ -3080,7 +3080,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "take screenshot (base64)",
+      "value": "Take screenshot (base64)",
     },
   ],
   "type": "test-line",
@@ -3093,7 +3093,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "take screenshot (base64)",
+      "value": "Take screenshot (base64)",
     },
   ],
   "type": "test-line",
@@ -3106,7 +3106,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "save screenshot (\\"screen.jpg\\")",
+      "value": "Save screenshot (\\"screen.jpg\\")",
     },
   ],
   "type": "test-line",
@@ -3119,7 +3119,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "save screenshot (\\"screen.jpg\\")",
+      "value": "Save screenshot (\\"screen.jpg\\")",
     },
   ],
   "type": "test-line",

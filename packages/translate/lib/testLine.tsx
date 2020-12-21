@@ -1,5 +1,5 @@
 import {jsx} from '@suitest/smst';
-import {LinkNode, TestLineNode} from '@suitest/smst/types/unistTestLine';
+import {TestLineNode} from '@suitest/smst/types/unistTestLine';
 import {
 	AppConfiguration,
 	AssertTestLine,
@@ -96,7 +96,6 @@ const translateAssertTestLine = (
 	return <test-line
 		title={<fragment>Assert: {condition.title}{testLine.timeout ? <fragment> timeout {formatTimeout(testLine.timeout, appConfig?.configVariables)}</fragment> : undefined}{testLine.then && testLine.then !== 'success' ? <fragment> then {translateAssertThen(testLine.then!)}</fragment> : undefined}</fragment>}
 		status={status}
-		docs={getDocsLink(testLine.type, lineResult?.result)}
 	>
 		{condition.children}
 	</test-line> as TestLineNode;
@@ -107,17 +106,16 @@ const translateTakeScreenshotTestLine = (
 ): TestLineNode => {
 	let text = '';
 	if (testLine.dataFormat === 'raw') {
-		text = 'take screenshot (raw)';
+		text = 'Take screenshot (raw)';
 	} else if (testLine.dataFormat === 'base64') {
-		text = 'take screenshot (base64)';
+		text = 'Take screenshot (base64)';
 	} else if (testLine.fileName) {
-		text = `save screenshot ("${testLine.fileName}")`;
+		text = `Save screenshot ("${testLine.fileName}")`;
 	}
 
 	return <test-line
 		title={<text>{text}</text>}
 		status={lineResult?.result}
-		docs={getDocsLink('clearAppData', lineResult?.result)}
 	/> as TestLineNode;
 };
 
@@ -125,7 +123,6 @@ const translateClearAppDataTestLine = (testLine: ClearAppDataTestLine, lineResul
 	<test-line
 		title={<text>Clear application data</text>}
 		status={testLine.excluded ? 'excluded' : lineResult?.result}
-		docs={getDocsLink('clearAppData', lineResult?.result)}
 	/> as TestLineNode;
 
 const translateQueryTestLine = (testLine: QueryLine, lineResult?: TestLineResult | QueryLineError): TestLineNode => {
@@ -155,7 +152,6 @@ const translateQueryTestLine = (testLine: QueryLine, lineResult?: TestLineResult
 	return <test-line
 		title={<text>{title}</text>}
 		status={result}
-		docs={getDocsLink('query', result)}
 	/> as TestLineNode;
 };
 
@@ -167,7 +163,6 @@ const translateExecuteCommandTestLine = (
 	<test-line
 		title={<text>Execute JavaScript expression</text>}
 		status={testLine.excluded ? 'excluded' : lineResult?.result}
-		docs={getDocsLink(testLine.type, lineResult?.result)}
 	>
 		<props>
 			{translateCodeProp(
@@ -191,7 +186,6 @@ const translateOpenApp = (
 		return <test-line
 			title={<text>Open application</text>}
 			status={status}
-			docs={getDocsLink(testLine.type, lineResult?.result)}
 		/> as TestLineNode;
 	}
 
@@ -200,7 +194,6 @@ const translateOpenApp = (
 	return <test-line
 		title={<text>Open application at relative URL</text>}
 		status={status}
-		docs={getDocsLink(testLine.type, lineResult?.result)}
 	>
 		<props>
 			<prop
@@ -218,8 +211,7 @@ const translateOpenUrl = (
 	const url = formatVariables(testLine.url, appConfig?.configVariables);
 	const status = testLine.excluded ? 'excluded' : lineResult?.result;
 
-	return <test-line docs={getDocsLink(testLine.type, lineResult?.result)}
-					  title={<text>Open URL</text>} status={status}>
+	return <test-line title={<text>Open URL</text>} status={status}>
 		<props>
 			<prop
 				name={<text>URL</text>}
@@ -236,8 +228,7 @@ const translateSleepTestLine = (
 	const status = testLine.excluded ? 'excluded' : lineResult?.result;
 	const title = <fragment>Sleep {formatTimeout(testLine.timeout, appConfig?.configVariables)}</fragment>;
 
-	return <test-line title={title} status={status}
-					  docs={getDocsLink(testLine.type, lineResult?.result)}/> as TestLineNode;
+	return <test-line title={title} status={status}/> as TestLineNode;
 };
 
 const translatePollUrlTestLine = (
@@ -247,9 +238,7 @@ const translatePollUrlTestLine = (
 	const url = formatVariables(testLine.url, appConfig?.configVariables);
 	const status = testLine.excluded ? 'excluded' : lineResult?.result;
 
-	return <test-line title={<text>Poll URL every 0.5s</text>}
-					  status={status}
-					  docs={getDocsLink(testLine.type, lineResult?.result)}>
+	return <test-line title={<text>Poll URL every 0.5s</text>} status={status}>
 		<props>
 			<prop
 				name={<text>poll URL</text>}
@@ -283,7 +272,6 @@ const translatePressButtonTestLine = (
 	return <test-line
 		title={<fragment>Press button {ids}{titleFragment}</fragment>}
 		status={status}
-		docs={getDocsLink(testLine.type, lineResult?.result)}
 	>
 		{testLine.condition
 			? translateCondition(testLine.condition, false, appConfig, elements, lineResult)
@@ -314,7 +302,6 @@ const translateRunTestTestLine = (
 	return <test-line
 		title={<fragment>Run test {testName}{titleFragment}</fragment>}
 		status={status}
-		docs={getDocsLink(testLine.type, lineResult?.result)}
 	>
 		{testLine.condition
 			? translateCondition(testLine.condition, false, appConfig, elements, lineResult)
@@ -352,7 +339,7 @@ const translateSendTextTestLine = (
 	const titleFragment = getConditionInfo(testLine, appConfig);
 	const title = <fragment>Send text {text} to {translateTarget(testLine.target)}{titleFragment}</fragment>;
 
-	return <test-line title={title} status={status} docs={getDocsLink(testLine.type, lineResult?.result)}>
+	return <test-line title={title} status={status}>
 		{testLine.condition
 			? translateCondition(testLine.condition, false, appConfig, elements, lineResult)
 			: undefined}
@@ -370,7 +357,7 @@ const translateSetTextTestLine = (
 	const status = testLine.excluded ? 'excluded' : lineResult?.result;
 	const title = <fragment>Set text {text} to {translateTarget(testLine.target)}{titleFragment}</fragment>;
 
-	return <test-line title={title} status={status} docs={getDocsLink(testLine.type, lineResult?.result)}>
+	return <test-line title={title} status={status}>
 		{testLine.condition
 			? translateCondition(testLine.condition, false, appConfig, elements, lineResult)
 			: undefined}
@@ -395,23 +382,19 @@ const translateBrowserCommandTestLine = (
 
 	switch (testLine.browserCommand.type) {
 		case 'goBack':
-			return <test-line title={<text>Go back</text>} status={status}
-							  docs={getDocsLink(testLine.type, lineResult?.result)}>
+			return <test-line title={<text>Go back</text>} status={status}>
 				{condition}
 			</test-line> as TestLineNode;
 		case 'goForward':
-			return <test-line title={<text>Go forward</text>} status={status}
-							  docs={getDocsLink(testLine.type, lineResult?.result)}>
+			return <test-line title={<text>Go forward</text>} status={status}>
 				{condition}
 			</test-line> as TestLineNode;
 		case 'refresh':
-			return <test-line title={<text>Refresh</text>} status={status}
-							  docs={getDocsLink(testLine.type, lineResult?.result)}>
+			return <test-line title={<text>Refresh</text>} status={status}>
 				{condition}
 			</test-line> as TestLineNode;
 		case 'setWindowSize':
-			return <test-line title={<text>Resize window</text>} status={status}
-							  docs={getDocsLink(testLine.type, lineResult?.result)}>
+			return <test-line title={<text>Resize window</text>} status={status}>
 				<props>
 					<prop
 						name={<text>size</text>}
@@ -424,19 +407,16 @@ const translateBrowserCommandTestLine = (
 				{condition}
 			</test-line> as TestLineNode;
 		case 'dismissAlertMessage':
-			return <test-line title={<text>Dismiss modal dialog</text>} status={status}
-							  docs={getDocsLink(testLine.type, lineResult?.result)}>
+			return <test-line title={<text>Dismiss modal dialog</text>} status={status}>
 				{condition}
 			</test-line> as TestLineNode;
 		case 'acceptAlertMessage':
-			return <test-line title={<text>Accept modal dialog</text>} status={status}
-							  docs={getDocsLink(testLine.type, lineResult?.result)}>
+			return <test-line title={<text>Accept modal dialog</text>} status={status}>
 				{condition}
 			</test-line> as TestLineNode;
 		case 'acceptPromptMessage':
 			// TODO variables
-			return <test-line title={<text>Accept modal dialog with message</text>} status={status}
-							  docs={getDocsLink(testLine.type, lineResult?.result)}>
+			return <test-line title={<text>Accept modal dialog with message</text>} status={status}>
 				<props>
 					<prop
 						name={<text>message</text>}
@@ -462,7 +442,7 @@ const translateClickTestLine = (
 	const title = <fragment>Click on {translateTarget(testLine.target)}{titleFragment}</fragment>;
 	const status = testLine.excluded ? 'excluded' : lineResult?.result;
 
-	return <test-line title={title} status={status} docs={getDocsLink(testLine.type, lineResult?.result)}>
+	return <test-line title={title} status={status}>
 		{testLine.condition
 			? translateCondition(testLine.condition, false, appConfig, elements, lineResult)
 			: undefined}
@@ -479,7 +459,7 @@ const translateMoveToTestLine = (
 	const title = <fragment>Move pointer to {translateTarget(testLine.target)}{titleFragment}</fragment>;
 	const status = testLine.excluded ? 'excluded' : lineResult?.result;
 
-	return <test-line title={title} status={status} docs={getDocsLink(testLine.type, lineResult?.result)}>
+	return <test-line title={title} status={status}>
 		{testLine.condition
 			? translateCondition(testLine.condition, false, appConfig, elements, lineResult)
 			: undefined}
@@ -500,69 +480,6 @@ const translateCommentTestLine = (testLine: CommentTestLine): TestLineNode =>
 /* istanbul ignore next */
 const assertUnknownLineType = (testLine: never): never => {
 	throw new Error(`Unknown line type: ${JSON.stringify(testLine)}`);
-};
-
-const getDocsLink = (lineType: TestLine['type'] | QueryLine['type'], result?: TestLineResult['result']): LinkNode | undefined => {
-	const docsPath = 'https://suite.st/docs';
-	let link = '';
-	switch (lineType) {
-		case 'query':
-			link = docsPath + '/docs/suitest-api/chain-types/#query';
-			break;
-		case 'wait':
-		case 'assert':
-			link = docsPath + '/testing/test-subjects/';
-			break;
-		case 'clearAppData':
-			link = docsPath + '/testing/test-operations/clear-app-data-operation/';
-			break;
-		case 'takeScreenshot':
-			link = docsPath + '/suitest-api/commands/#takescreenshot';
-			break;
-		case 'execCmd':
-			link = docsPath + '/testing/test-operations/execute-command-operation/';
-			break;
-		case 'openApp':
-			link = docsPath + '/testing/test-operations/open-app-operation/';
-			break;
-		case 'openUrl':
-			link = docsPath + '/testing/test-operations/open-url-operation/';
-			break;
-		case 'sleep':
-			link = docsPath + '/testing/test-operations/sleep-operation/';
-			break;
-		case 'pollUrl':
-			link = docsPath + '/testing/test-operations/poll-url-operation/';
-			break;
-		case 'button':
-			link = docsPath + '/testing/test-operations/press-button-operation/';
-			break;
-		case 'runSnippet':
-			link = docsPath + '/testing/test-operations/run-test-operation/';
-			break;
-		case 'sendText':
-			link = docsPath + '/testing/test-operations/send-text-operation/';
-			break;
-		case 'setText':
-			link = docsPath + '/testing/test-operations/set-text-operation/';
-			break;
-		case 'browserCommand':
-			link = docsPath + '/testing/test-operations/browser-command-operation/';
-			break;
-		case 'click':
-			link = docsPath + '/testing/test-operations/click-on-operation/';
-			break;
-		case 'moveTo':
-			link = docsPath + '/testing/test-operations/move-to-operation/';
-			break;
-		case 'comment':
-		default:
-			break;
-	}
-
-	return result && link && ['fail', 'fatal'].includes(result)
-		? <link href={link}>{link}</link> as LinkNode
-		: undefined;
 };
 
 export const translateTestLine = ({

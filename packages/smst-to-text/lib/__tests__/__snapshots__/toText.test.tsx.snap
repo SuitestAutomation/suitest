@@ -120,10 +120,7 @@ exports[`AST renderers formatted text renderer should render condition 2`] = `
     > someJS(); someJS(); someJS();                  "
 `;
 
-exports[`AST renderers formatted text renderer should render results with different verbosity level 1`] = `
-"Assert element [32mMy element[0m is visible
-docs: http://suite.st/docs/"
-`;
+exports[`AST renderers formatted text renderer should render results with different verbosity level 1`] = `"Assert element [32mMy element[0m is visible"`;
 
 exports[`AST renderers formatted text renderer should render results with different verbosity level 2`] = `
 "[31m✖ [0mRun test [32mMy test[0m until condition is met max 5x every 5s
@@ -137,10 +134,7 @@ exports[`AST renderers formatted text renderer should render test line 2`] = `
   condition: element [32mMy element[0m exists"
 `;
 
-exports[`AST renderers formatted text renderer should render test line 3`] = `
-"[34m» [0mAssert element [32mMy element[0m is visible
-  [34mexcluded: [0mTest line was not executed"
-`;
+exports[`AST renderers formatted text renderer should render test line 3`] = `"[34m» [0mAssert element [32mMy element[0m is visible"`;
 
 exports[`AST renderers formatted text renderer should render test line results 1`] = `
 "[31m✖ [0mRun test [32mMy test[0m until condition is met max 5x every 5s
@@ -269,12 +263,14 @@ exports[`AST renderers formatted text renderer should render test line results w
       > someJS(); someJS(); someJS();                  
       > someJS(); someJS(); someJS();                  
   [31mfail: [0mCondition was not met
+  docs: http://suite.st/docs/
   screenshot: path/to/screenshot.png"
 `;
 
 exports[`AST renderers formatted text renderer should render test line results with screenshots 13`] = `
 "[33m‼ [0mAssert application has exited
   [33mwarning: [0mSome warning message
+  docs: http://suite.st/docs/
   screenshot: path/to/screenshot.png"
 `;
 
@@ -349,10 +345,7 @@ exports[`AST renderers plain text renderer should render condition 2`] = `
     > someJS(); someJS(); someJS();                  "
 `;
 
-exports[`AST renderers plain text renderer should render results with different verbosity level 1`] = `
-"Assert element My element is visible
-docs: http://suite.st/docs/"
-`;
+exports[`AST renderers plain text renderer should render results with different verbosity level 1`] = `"Assert element My element is visible"`;
 
 exports[`AST renderers plain text renderer should render results with different verbosity level 2`] = `
 "✖ Run test My test until condition is met max 5x every 5s
@@ -366,10 +359,7 @@ exports[`AST renderers plain text renderer should render test line 2`] = `
   condition: element My element exists"
 `;
 
-exports[`AST renderers plain text renderer should render test line 3`] = `
-"» Assert element My element is visible
-  excluded: Test line was not executed"
-`;
+exports[`AST renderers plain text renderer should render test line 3`] = `"» Assert element My element is visible"`;
 
 exports[`AST renderers plain text renderer should render test line results 1`] = `
 "✖ Run test My test until condition is met max 5x every 5s
@@ -498,12 +488,14 @@ exports[`AST renderers plain text renderer should render test line results with 
       > someJS(); someJS(); someJS();                  
       > someJS(); someJS(); someJS();                  
   fail: Condition was not met
+  docs: http://suite.st/docs/
   screenshot: path/to/screenshot.png"
 `;
 
 exports[`AST renderers plain text renderer should render test line results with screenshots 13`] = `
 "‼ Assert application has exited
   warning: Some warning message
+  docs: http://suite.st/docs/
   screenshot: path/to/screenshot.png"
 `;
 

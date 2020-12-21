@@ -35,7 +35,7 @@ Object {
           "name": Array [
             Object {
               "type": "text",
-              "value": "expression result",
+              "value": "expected result",
             },
           ],
           "status": undefined,
@@ -90,7 +90,7 @@ Object {
           "name": Array [
             Object {
               "type": "text",
-              "value": "expression result",
+              "value": "expected result",
             },
           ],
           "status": undefined,
@@ -162,7 +162,7 @@ Object {
           "name": Array [
             Object {
               "type": "text",
-              "value": "expression result",
+              "value": "expected result",
             },
           ],
           "status": undefined,
@@ -217,7 +217,7 @@ Object {
           "name": Array [
             Object {
               "type": "text",
-              "value": "expression result",
+              "value": "expected result",
             },
           ],
           "status": undefined,
