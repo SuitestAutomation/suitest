@@ -453,7 +453,7 @@ const translateDeviceSettingsTestLine = (
 			const orientation = deviceOrientationsMap[testLine.deviceSettings.params.orientation];
 
 			return <test-line title={
-				<fragment><text>Set screen orientation to</text> <input>{orientation}</input></fragment>
+				<fragment>Set screen orientation to <input>{orientation}</input></fragment>
 			} status={status}>
 				{condition}
 			</test-line> as TestLineNode;
