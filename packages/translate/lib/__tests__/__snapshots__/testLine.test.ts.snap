@@ -3132,7 +3132,11 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Set screen orientation to Portrait",
+      "value": "Set screen orientation to ",
+    },
+    Object {
+      "type": "input",
+      "value": "Portrait",
     },
   ],
   "type": "test-line",
@@ -3145,7 +3149,11 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Set screen orientation to Portrait",
+      "value": "Set screen orientation to ",
+    },
+    Object {
+      "type": "input",
+      "value": "Portrait",
     },
   ],
   "type": "test-line",
