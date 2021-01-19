@@ -77,6 +77,13 @@ export const formatCount = (count: number | string, variables?: AppConfiguration
 	return <fragment><input>{countAsString}</input>x</fragment>;
 };
 
+export const deviceOrientationsMap = {
+	'portrait': 'Portrait',
+	'portraitReversed': 'Portrait - reversed',
+	'landscapeReversed': 'Landscape - reversed',
+	'landscape': 'Landscape',
+};
+
 export const translateCodeProp = (
 	name: Node,
 	code: string,

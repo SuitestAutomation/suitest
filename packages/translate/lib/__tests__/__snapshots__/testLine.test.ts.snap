@@ -3125,3 +3125,37 @@ Object {
   "type": "test-line",
 }
 `;
+
+exports[`Test Lines translation Should translate test line "setOrientation" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Set screen orientation to ",
+    },
+    Object {
+      "type": "input",
+      "value": "Portrait",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "setOrientation" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Set screen orientation to ",
+    },
+    Object {
+      "type": "input",
+      "value": "Portrait",
+    },
+  ],
+  "type": "test-line",
+}
+`;

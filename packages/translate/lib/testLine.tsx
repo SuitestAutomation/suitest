@@ -23,7 +23,7 @@ import {
 	TestLine,
 	WaitUntilTestLine,
 	TestLineResult,
-	ClearAppDataTestLine, TakeScreenshotTestLine, QueryLine, QueryLineError,
+	ClearAppDataTestLine, TakeScreenshotTestLine, QueryLine, QueryLineError, DeviceSettingsTestLine,
 } from '@suitest/types';
 import {translateComparator} from './comparator';
 import {translateCondition} from './condition';
@@ -32,7 +32,7 @@ import {
 	formatVariables,
 	mapStatus,
 	translateCodeProp,
-	formatCount,
+	formatCount, deviceOrientationsMap,
 } from './utils';
 
 const getConditionInfo = (
@@ -369,6 +369,11 @@ const assertUnknownBrowserCommand = (browserCommand: never): never => {
 	throw new Error(`Unknown browser command: ${JSON.stringify(browserCommand)}`);
 };
 
+/* istanbul ignore next */
+const assertUnknownDeviceSetting = (deviceSettings: never): never => {
+	throw new Error(`Unknown device setting: ${JSON.stringify(deviceSettings)}`);
+};
+
 const translateBrowserCommandTestLine = (
 	testLine: BrowserCommandTestLine,
 	appConfig?: AppConfiguration,
@@ -429,6 +434,32 @@ const translateBrowserCommandTestLine = (
 		default:
 			/* istanbul ignore next */
 			return assertUnknownBrowserCommand(testLine.browserCommand);
+	}
+};
+
+const translateDeviceSettingsTestLine = (
+	testLine: DeviceSettingsTestLine,
+	appConfig?: AppConfiguration,
+	elements?: Elements,
+	lineResult?: TestLineResult,
+): TestLineNode => {
+	const status = testLine.excluded ? 'excluded' : lineResult?.result;
+	const condition = testLine.condition
+		? translateCondition(testLine.condition, false, appConfig, elements, lineResult)
+		: undefined;
+
+	switch (testLine.deviceSettings.type) {
+		case 'setOrientation':
+			const orientation = deviceOrientationsMap[testLine.deviceSettings.params.orientation];
+
+			return <test-line title={
+				<fragment>Set screen orientation to <input>{orientation}</input></fragment>
+			} status={status}>
+				{condition}
+			</test-line> as TestLineNode;
+		default:
+			/* istanbul ignore next */
+			return assertUnknownDeviceSetting(testLine.deviceSettings as never);
 	}
 };
 
@@ -521,6 +552,8 @@ export const translateTestLine = ({
 			return translateSetTextTestLine(testLine, appConfig, elements, lineResult as TestLineResult);
 		case 'browserCommand':
 			return translateBrowserCommandTestLine(testLine, appConfig, elements, lineResult as TestLineResult);
+		case 'deviceSettings':
+			return translateDeviceSettingsTestLine(testLine, appConfig, elements, lineResult as TestLineResult);
 		case 'click':
 			return translateClickTestLine(testLine, appConfig, elements, lineResult as TestLineResult);
 		case 'moveTo':
