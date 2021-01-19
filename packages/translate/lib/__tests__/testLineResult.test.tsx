@@ -8,14 +8,14 @@ import {
 	QueryLineError,
 	ElementQueryLine,
 	CookieQueryLine,
-	JsExpressionQueryLine, QueryLine,
+	JsExpressionQueryLine, QueryLine, BaseResult,
 } from '@suitest/types/lib';
 import {translateResultErrorMessage, translateTestLineResult} from '../testLineResult';
 import {appConfig, conditions, elements, testLinesExamples} from './testLinesExamples';
 import {toText} from '@suitest/smst-to-text';
 
 describe('Test line results translation', () => {
-	const baseResult = {
+	const baseResult: Omit<BaseResult, 'result'> = {
 		lineId: 'line-id-1',
 		timeStarted: 0,
 		timeFinished: 1000,
@@ -123,6 +123,17 @@ describe('Test line results translation', () => {
 				} as TestLineErrorResult)).toMatchSnapshot();
 			});
 		}
+	});
+
+	it('translate notAllowedPrivileges error', () => {
+		expect(translateResultErrorMessage({
+			...baseResult,
+			result: 'fatal',
+			errorType: 'notAllowedPrivileges',
+			message: {
+				notAllowedPrivileges: ['https://some.com', 'https://some2.com'],
+			},
+		})).toMatchSnapshot();
 	});
 
 	describe('Translate query lines', () => {
