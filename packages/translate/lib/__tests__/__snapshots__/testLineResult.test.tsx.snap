@@ -1715,3 +1715,21 @@ Object {
   "value": "App seems to have exited correctly, however another app has been opened",
 }
 `;
+
+exports[`Test line results translation translate notAllowedPrivileges error 1`] = `
+Array [
+  Object {
+    "type": "text",
+    "value": "Application requires privileges not allowed on Suitest lab devices (https://some.com, https://some2.com). Read more in our ",
+  },
+  Object {
+    "href": "https://suite.st/docs/devices/device-lab",
+    "type": "link",
+    "value": "docs",
+  },
+  Object {
+    "type": "text",
+    "value": ".",
+  },
+]
+`;

@@ -27,7 +27,7 @@ import {
 	SimpleError,
 	QueryLine,
 	QueryLineError,
-	Subject,
+	Subject, NotAllowedPrivilegesError,
 } from '@suitest/types';
 import {translateTestLine} from './testLine';
 import {translateElementProperty} from './condition';
@@ -384,6 +384,12 @@ const translateInvalidRepositoryReference = (result: InvalidRepositoryReferenceE
 	return <text>{textMsg}</text> as TextNode;
 };
 
+const translateNotAllowedPrivileges = (result: NotAllowedPrivilegesError): Node =>
+	<fragment>
+		Application requires privileges not allowed on Suitest lab devices ({result.message.notAllowedPrivileges.join(', ')}).
+		Read more in our <link href="https://suite.st/docs/devices/device-lab">docs</link>.
+	</fragment>;
+
 /**
  * Type guard to help TypeScript better understand the code
  * @param result
@@ -447,6 +453,8 @@ export const translateResultErrorMessage = (result: TestLineErrorResult): Node =
 			return translateOutdatedLibraryError(result);
 		case 'invalidRepositoryReference':
 			return translateInvalidRepositoryReference(result);
+		case 'notAllowedPrivileges':
+			return translateNotAllowedPrivileges(result);
 		default:
 			return unknownErrorMessage(result);
 	}

@@ -360,6 +360,13 @@ export type ADBError = BaseResult & {
 	},
 };
 
+export type NotAllowedPrivilegesError = BaseResult & {
+	errorType: 'notAllowedPrivileges',
+	message: {
+		notAllowedPrivileges: string[],
+	},
+};
+
 export type QueryLineError = {
 	contentType: 'query',
 	result?: 'error',
@@ -416,4 +423,5 @@ export type TestLineResult = TestLineSuccessResult
 	| InvalidReferenceError
 	| OpenAppOverrideFailedError
 	| InvalidPackageError
-	| ADBError;
+	| ADBError
+	| NotAllowedPrivilegesError;
