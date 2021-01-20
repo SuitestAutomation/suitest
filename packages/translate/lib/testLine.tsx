@@ -497,7 +497,7 @@ const translateTapTestLine = (
 	const title = <fragment>{tapTypeCapitalized} tap on {translateTarget(testLine.target)}{titleFragment}</fragment>;
 	const status = testLine.excluded ? 'excluded' : lineResult?.result;
 
-	return <test-line title={title} status={status} docs={getDocsLink(testLine.type, lineResult?.result)}>
+	return <test-line title={title} status={status}>
 		{testLine.condition
 			? translateCondition(testLine.condition, false, appConfig, elements, lineResult)
 			: undefined}
@@ -517,7 +517,7 @@ const translateScrollTestLine = (
 	{titleFragment} {direction} by {distance}px</fragment>;
 	const status = testLine.excluded ? 'excluded' : lineResult?.result;
 
-	return <test-line title={title} status={status} docs={getDocsLink(testLine.type, lineResult?.result)}>
+	return <test-line title={title} status={status}>
 		{testLine.condition
 			? translateCondition(testLine.condition, false, appConfig, elements, lineResult)
 			: undefined}
@@ -538,7 +538,7 @@ const translateSwipeTestLine = (
 		{titleFragment} {direction} by {distance}px in {duration}ms</fragment>;
 	const status = testLine.excluded ? 'excluded' : lineResult?.result;
 
-	return <test-line title={title} status={status} docs={getDocsLink(testLine.type, lineResult?.result)}>
+	return <test-line title={title} status={status}>
 		{testLine.condition
 			? translateCondition(testLine.condition, false, appConfig, elements, lineResult)
 			: undefined}
