@@ -3,7 +3,7 @@ export type LineDefinition = TestLineDefinitionType;
 // TODO: should it be replaced by TestLineResult?
 export type LineResult = {
 	lineId: string,
-	result: 'success' | 'warning' | 'fail' | 'fatal' | 'exit',
+	result: 'success' | 'warning' | 'fail' | 'fatal' | 'exit' | 'aborted',
 	timeFinished?: number,
 	timeStarted?: number,
 	timeHrDiff?: number[],
@@ -91,6 +91,7 @@ type TestLineDefinitionType = TestLineButtonType
 	| TestLineAssertType
 	| TestLineWaitType
 	| TestLineBrowserCommandType
+	| TestLineDeviceSettingsType
 	| TestLineSendTextType
 	| TestLineSetTextType
 	| TestLineClickType
@@ -107,7 +108,7 @@ export type TestLineTypes =
 	'assert' | 'button' | 'runSnippet' |
 	'wait' | 'pollUrl' | 'sleep' | 'clearAppData' |
 	'execCmd' | 'execBRSCmd' | 'openApp' | 'openUrl' | 'comment' |
-	'browserCommand' | 'sendText' | 'setText' | 'click' | 'moveTo';
+	'browserCommand' | 'sendText' | 'setText' | 'click' | 'moveTo' | 'deviceSettings';
 
 type BrowserCommandTypes =
 	'goBack' | 'goForward' |
@@ -246,6 +247,19 @@ declare type TestLineBrowserCommandType = TestLineType & {
 			width?: number | null,
 			height?: number | null,
 			text?: string | null,
+		},
+	},
+	condition?: AssertConditionType,
+	negateCondition?: true,
+};
+
+// Device settings
+declare type TestLineDeviceSettingsType = TestLineType & {
+	type: 'deviceSettings',
+	deviceSettings: {
+		type: 'setOrientation',
+		params: {
+			orientation: 'portrait' | 'portraitReversed' | 'landscape' | 'landscapeReversed',
 		},
 	},
 	condition?: AssertConditionType,

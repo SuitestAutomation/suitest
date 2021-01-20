@@ -17,9 +17,9 @@ import {
 	PSVideoHadNoErrorCondition,
 	PSVideoSubject,
 	QueryFailedNetworkError,
-	TestLineResult,
+	TestLineResult, ResultExpressionItem,
 } from '@suitest/types';
-import {formatVariables, mapStatus, translateCodeProp} from './utils';
+import {formatVariables, mapStatus, shouldElMatchDetailsBeHidden, translateCodeProp} from './utils';
 import {translateComparator} from './comparator';
 
 const translateApplicationExitedCondition = (inverse: boolean, lineResult?: TestLineResult): ConditionNode =>
@@ -235,28 +235,32 @@ const translateElementCondition = (
 				title={elementName}
 				status={mapStatus(lineResult?.result, inverse)}
 			>
-				<props>
+				{shouldElMatchDetailsBeHidden(lineResult) ? null : <props>
 					{condition.expression.map((exp, i) => {
 						const expResult = lineResult && ('expression' in lineResult)
-							? lineResult.expression[i]
+							? lineResult.expression[i] as ResultExpressionItem
 							: undefined;
-
 						let actualValue = expResult && ('actualValue' in expResult) ? expResult.actualValue : undefined;
 						if (expResult && 'message' in expResult && expResult.message.code === 'missingProperty') {
 							actualValue = 'property missing';
 						} else if (expResult && 'message' in expResult && expResult.message.code === 'wrongExpression') {
 							actualValue = 'wrong format';
 						}
+						const expectedValue = exp.inherited
+							? (expResult && 'expectedValue' in expResult)
+								? expResult.expectedValue
+								: '[element repository value]'
+							: exp.val;
 
 						return <prop
 							name={<text>{translateElementProperty(exp.property)}</text>}
 							comparator={translateComparator(exp.type)}
-							expectedValue={formatVariables(exp.val + (exp.type === '+-' ? ' ± ' + exp.deviation : ''), appConfig?.configVariables)}
+							expectedValue={formatVariables(expectedValue + (exp.type === '+-' ? ' ± ' + exp.deviation : ''), appConfig?.configVariables)}
 							actualValue={actualValue}
 							status={expResult?.result}
 						/>;
 					})}
-				</props>
+				</props>}
 			</condition> as ConditionNode;
 		default:
 			/* istanbul ignore next */
@@ -294,7 +298,7 @@ const translateJavaScriptExpressionCondition = (
 				lineResult?.errorType === 'JavaScriptError' ? 'fail' : mapStatus(lineResult?.result)
 			)}
 			<prop
-				name={<text>expression result</text>}
+				name={<text>expected result</text>}
 				expectedValue={condition.val
 					? formatVariables(condition.val, appConfig?.configVariables)
 					: <text>{notSpecifiedMessage}</text>}

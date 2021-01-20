@@ -42,10 +42,10 @@ describe('AST renderers', () => {
 	</props>;
 
 	const simpleCondition = <condition
-		title={<fragment>condition: element <subject>My element</subject> exists</fragment>}
+		title={<fragment>element <subject>My element</subject> exists</fragment>}
 	/>;
 	const longCondition = <condition
-		title={<fragment>condition: element <subject>My element</subject> exists</fragment>}
+		title={<fragment>element <subject>My element</subject> exists</fragment>}
 	>{longProps}</condition>;
 	const simpleLine = <test-line
 		title={<fragment>Assert element <subject>My element</subject> is visible</fragment>}
@@ -58,11 +58,17 @@ describe('AST renderers', () => {
 		status="fail"
 		message={<text>Condition was not met</text>}
 		screenshot={screenshot}
+		docs="//link/to/docs"
 	>
 		<test-line
-			title={<text>Assert application has exited</text>}
+			title={<fragment>Assert element <subject>My element</subject></fragment>}
 			status="fail"
-		/>
+		>
+			<condition
+				title={<fragment>element <subject>My element</subject> exists</fragment>}
+				status="fail"
+			/>
+		</test-line>
 	</test-line-result>;
 	const warningResult = (screenshot?: string): JSX.Element => <test-line-result
 		status="warning"
@@ -100,6 +106,16 @@ describe('AST renderers', () => {
 			status="fatal"
 		/>
 	</test-line-result>;
+	const abortedResult = (screenshot?: string): JSX.Element => <test-line-result
+		status="aborted"
+		message={<text>Execution was aborted.</text>}
+		screenshot={screenshot}
+	>
+		<test-line
+			title={<fragment>Sleep 10s</fragment>}
+			status="aborted"
+		/>
+	</test-line-result>;
 
 	describe('html renderer', () => {
 		it('should handle textual nodes', () => {
@@ -135,6 +151,7 @@ describe('AST renderers', () => {
 			expect(toHtml(exitResult(), defaultOptions)).toMatchSnapshot();
 			expect(toHtml(excludedResult(), defaultOptions)).toMatchSnapshot();
 			expect(toHtml(fatalResult(), defaultOptions)).toMatchSnapshot();
+			expect(toHtml(abortedResult(), defaultOptions)).toMatchSnapshot();
 		});
 
 		it('should render results with quiet level', () => {
@@ -143,6 +160,19 @@ describe('AST renderers', () => {
 			expect(toHtml(exitResult(), {verbosity: 'quiet'})).toMatchSnapshot();
 			expect(toHtml(excludedResult(), {verbosity: 'quiet'})).toMatchSnapshot();
 			expect(toHtml(fatalResult(), {verbosity: 'quiet'})).toMatchSnapshot();
+			expect(toHtml(abortedResult(), { verbosity: 'quiet'})).toMatchSnapshot();
+		});
+
+		it('should render test lines with quiet level', () => {
+			expect(toHtml(failResult(), {verbosity: 'quiet'})).toMatchSnapshot();
+		});
+
+		it('should render test lines with normal level', () => {
+			expect(toHtml(failResult(), {verbosity: 'normal'})).toMatchSnapshot();
+		});
+
+		it('should render test lines with verbose level', () => {
+			expect(toHtml(failResult(), {verbosity: 'verbose'})).toMatchSnapshot();
 		});
 
 		it('should render results with screenshots', () => {
@@ -152,6 +182,7 @@ describe('AST renderers', () => {
 			expect(toHtml(exitResult(screenshot), defaultOptions)).toMatchSnapshot();
 			expect(toHtml(excludedResult(screenshot), defaultOptions)).toMatchSnapshot();
 			expect(toHtml(fatalResult(screenshot), defaultOptions)).toMatchSnapshot();
+			expect(toHtml(abortedResult(screenshot), defaultOptions)).toMatchSnapshot();
 		});
 
 		it('should render link', () => {

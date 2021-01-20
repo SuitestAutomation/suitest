@@ -63,14 +63,13 @@ export type ConditionNode = {
 	status?: SingleEntryStatus,
 };
 
-export type TestLineResultStatus = 'success' | 'fatal' | 'fail' | 'warning' | 'exit' | 'excluded';
+export type TestLineResultStatus = 'success' | 'fatal' | 'fail' | 'warning' | 'exit' | 'excluded' | 'aborted';
 
 export type TestLineNode = {
 	type: 'test-line',
 	title: InlineTextNode[],
 	children: Array<PropertiesNode | ConditionNode>,
 	status?: TestLineResultStatus,
-	docs?: LinkNode,
 };
 
 export type TestLineResultNode = {
@@ -79,6 +78,7 @@ export type TestLineResultNode = {
 	children: TestLineNode[],
 	message?: InlineTextNode[],
 	screenshot?: string,
+	docs?: string,
 };
 
 export type LinkNode = {

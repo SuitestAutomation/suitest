@@ -107,14 +107,14 @@ const renderHtmlPropsNode = (node: PropertiesNode, {verbosity}: {verbosity: Verb
 );
 
 const renderHtmlConditionNode = (node: ConditionNode, {verbosity}: {verbosity: Verbosity}): string => renderFigure(
-	['suitest-test-line__condition', `suitest-test-line__condition--${node.status}`].join(' '),
+	['suitest-test-line__condition', node.status ? `suitest-test-line__condition--${node.status}` : ''].filter(Boolean).join(' '),
 	node.children.map(n => renderNode(n, {verbosity})).join(''),
 	node.title,
 	'condition: '
 );
 
 const renderHtmlTestLineNode = (node: TestLineNode, {verbosity}: {verbosity: Verbosity}): string => {
-	const out = [`<div class="suitest-test-line suitest-test-line--${node.status}">`];
+	const out = [`<div class="suitest-test-line${node.status ? ` suitest-test-line--${node.status}` : ''}">`];
 
 	// Line title
 	const title = toHtml(node.title ?? [], {verbosity});
@@ -131,7 +131,7 @@ const renderHtmlTestLineNode = (node: TestLineNode, {verbosity}: {verbosity: Ver
 };
 
 const renderHtmlTestLineResultNode = (node: TestLineResultNode, {verbosity}: {verbosity: Verbosity}): string => {
-	const out = [`<div class="suitest-test-line__result suitest-test-line__result--${node.status}">`];
+	const out = [`<div class="suitest-test-line__result${node.status ? ` suitest-test-line__result--${node.status}` : ''}">`];
 
 	// Body
 	out.push(node.children.map(n => renderNode(n, {verbosity})).join(''));
@@ -141,6 +141,16 @@ const renderHtmlTestLineResultNode = (node: TestLineResultNode, {verbosity}: {ve
 	if (message) {
 		out.push(`<div class="suitest-test-line__result__message">${message}</div>`);
 	}
+
+	// Docs
+	if (verbosity === 'verbose' && node.docs) {
+		out.push(`<div class="suitest-test-line__result__docs">${toHtml({
+			type: 'link',
+			value: 'Suitest documentation',
+			href: node.docs,
+		}, {verbosity})}</div>`);
+	}
+
 	// Screenshot
 	if (node.screenshot) {
 		out.push(`<div class="suitest-test-line__result__screenshot">screenshot: <a href="${node.screenshot}" target="_blank">${node.screenshot}</a></div>`);
@@ -180,7 +190,9 @@ const renderNode = (node: SingleNode, {verbosity}: {verbosity: Verbosity}): stri
 	}
 };
 
-export const toHtml = (node: Node, {verbosity}: {verbosity: Verbosity}): string => {
+export const toHtml = (node: Node, options?: {verbosity?: Verbosity}): string => {
+	const verbosity = options?.verbosity ?? 'normal';
+
 	if (!Array.isArray(node)) {
 		node = [node];
 	}

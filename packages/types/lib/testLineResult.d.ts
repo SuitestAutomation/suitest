@@ -2,7 +2,7 @@ import {LineId} from './testLine';
 import {ElementId} from './element';
 import {ElementProperty} from './condition';
 
-export type TestLineResultType = 'success' | 'fail' | 'fatal' | 'warning' | 'exit' | 'excluded';
+export type TestLineResultType = 'success' | 'fail' | 'fatal' | 'warning' | 'exit' | 'excluded' | 'aborted';
 
 export type BaseResult = {
 	lineId: LineId,
@@ -118,6 +118,7 @@ export type SimpleError = BaseResult & {
 		| 'appleError70'
 		| 'appleAppSignError'
 		| 'missingPSSDK'
+		| 'packageInstallationFailed'
 		| 'targetManagerBusy'
 		| 'missingDotNet'
 		| 'bootstrapAppNotDetected'
@@ -361,20 +362,53 @@ export type ADBError = BaseResult & {
 	},
 };
 
+export type NotAllowedPrivilegesError = BaseResult & {
+	errorType: 'notAllowedPrivileges',
+	message: {
+		notAllowedPrivileges: string[],
+	},
+};
+
+export type QueryLineError = {
+	contentType: 'query',
+	result?: 'error',
+	errorType?: 'deviceError',
+	errorMessage?: 'cssSelectorInvalid',
+	elementExists?: boolean,
+	cookieExists?: boolean,
+	executeThrowException?: boolean,
+	executeExceptionMessage?: string,
+	error?: 'notExistingElement',
+
+};
+
 export type TestLineSuccessResult = BaseResult & {
 	result: 'success',
 	errorType?: undefined,
 };
+
+export type TestLineAbortedResult = BaseResult & {
+	result: 'aborted',
+	message?: {
+		info?: unknown,
+	},
+	errorType?: undefined,
+};
+
 
 export type TestLineExcludedResult = BaseResult & {
 	result: 'excluded',
 	errorType?: undefined,
 };
 
-export type TestLineErrorResult = Exclude<TestLineResult, TestLineSuccessResult | TestLineExcludedResult>;
+export type TestLineErrorResult = Exclude<
+	TestLineResult,
+	TestLineSuccessResult | TestLineExcludedResult | TestLineAbortedResult
+>;
 
 export type TestLineResult = TestLineSuccessResult
 	| TestLineExcludedResult
+	| TestLineAbortedResult
 	| SimpleError
 	| OutdatedInstrumentationLibraryError
 	| QueryTimeoutError
@@ -391,4 +425,5 @@ export type TestLineResult = TestLineSuccessResult
 	| InvalidReferenceError
 	| OpenAppOverrideFailedError
 	| InvalidPackageError
-	| ADBError;
+	| ADBError
+	| NotAllowedPrivilegesError;

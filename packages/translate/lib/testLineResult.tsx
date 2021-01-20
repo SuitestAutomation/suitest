@@ -25,6 +25,9 @@ import {
 	Elements,
 	Snippets,
 	SimpleError,
+	QueryLine,
+	QueryLineError,
+	Subject, NotAllowedPrivilegesError,
 } from '@suitest/types';
 import {translateTestLine} from './testLine';
 import {translateElementProperty} from './condition';
@@ -39,7 +42,7 @@ const simpleErrorMap: {[key: string]: Node} = {
 	appRunning: <text>App is still running</text>,
 	appNotRunning: <text>App is not running</text>,
 	missingApp: <text>Application is not installed on the device</text>,
-	initPlatformFailed: <text>Failed to start Suitest bootstrap application on this device</text>,
+	initPlatformFailed: <text>Failed to bootstrap platform on this device</text>,
 	packageNotFound: <text>Selected configuration does not contain an app package. Upload a package on your app`s configuration page before continuing</text>,
 	missingPackage: <text>Application package was not found on the target device</text>,
 	internalError: <text>Internal error occurred</text>,
@@ -101,6 +104,7 @@ const simpleErrorMap: {[key: string]: Node} = {
 	appleError70: <text>Failed to launch app: Xcode error. https://suite.st/docs/devices/apple-tv/#xcode-error</text>,
 	appleAppSignError: <text>Failed to launch app: App code sign error. https://suite.st/docs/devices/apple-tv/#app-code-sign-error</text>,
 	missingPSSDK: <text>Please make sure that you have the PlayStation SDK installed. https://suite.st/docs/troubleshooting/playstation/#playstation-sdk-not-installed</text>,
+	packageInstallationFailed: <text>Application installation on the device failed</text>,
 	targetManagerBusy: <text>Please try again in a few minutes</text>,
 	missingDotNet: <text>Please make sure you have the .NET Framework installed. https://suite.st/docs/troubleshooting/playstation/#net-framework-not-installed</text>,
 	bootstrapAppNotDetected: <text>The Suitest bootstrap application was not detected</text>,
@@ -383,6 +387,12 @@ const translateInvalidRepositoryReference = (result: InvalidRepositoryReferenceE
 	return <text>{textMsg}</text> as TextNode;
 };
 
+const translateNotAllowedPrivileges = (result: NotAllowedPrivilegesError): Node =>
+	<fragment>
+		Application requires privileges not allowed on Suitest lab devices ({result.message.notAllowedPrivileges.join(', ')}).
+		Read more in our <link href="https://suite.st/docs/devices/device-lab">docs</link>.
+	</fragment>;
+
 /**
  * Type guard to help TypeScript better understand the code
  * @param result
@@ -446,6 +456,8 @@ export const translateResultErrorMessage = (result: TestLineErrorResult): Node =
 			return translateOutdatedLibraryError(result);
 		case 'invalidRepositoryReference':
 			return translateInvalidRepositoryReference(result);
+		case 'notAllowedPrivileges':
+			return translateNotAllowedPrivileges(result);
 		default:
 			return unknownErrorMessage(result);
 	}
@@ -456,7 +468,7 @@ const getScreenshotUrl = (screenshotPath?: string): string | undefined => screen
 	: undefined;
 
 const getInvertedResultMessage = (
-	testLine: TestLine,
+	testLine: TestLine | QueryLine,
 	lineResult?: TestLineResult
 ): Node | undefined => {
 	if (
@@ -472,8 +484,44 @@ const getInvertedResultMessage = (
 	return lineResult.result === testLine.then ? conditionWasMetMessage : conditionWasNotMetMessage;
 };
 
-const getLineResultMessage = (testLine: TestLine, lineResult?: TestLineResult): Node | undefined => {
-	const invertedResult = getInvertedResultMessage(testLine, lineResult);
+const getQueryLineError = (line: QueryLine, lineResult: QueryLineError): Node => {
+	let text = '';
+	if (lineResult.error === 'notExistingElement') {
+		text = 'Element was not found in the repository';
+	} else if (lineResult.elementExists === false) {
+		text = 'Element was not found';
+	} else if (lineResult.cookieExists) {
+		text = 'Cookie was not found';
+	} else if (lineResult.executeThrowException) {
+		text = `Execution thrown exception "${lineResult.executeExceptionMessage}}"`;
+	} else if (lineResult.errorMessage) {
+		text = lineResult.errorMessage;
+	} else {
+		text = 'Error occurred while ';
+		switch (line.subject.type) {
+			case 'execute':
+				text += 'executing script on device';
+				break;
+			case 'cookie':
+				text += 'retrieving cookie';
+				break;
+			case 'elementProps':
+				text += 'retrieving element';
+				break;
+			case 'location':
+				text += 'retrieving current location';
+				break;
+		}
+	}
+
+	return <text>{text}</text>;
+};
+
+const getLineResultMessage = (testLine: TestLine | QueryLine, lineResult?: TestLineResult | QueryLineError): Node | undefined => {
+	if ((lineResult as QueryLineError)?.contentType === 'query') {
+		return getQueryLineError(testLine as QueryLine, lineResult as QueryLineError);
+	}
+	const invertedResult = getInvertedResultMessage(testLine, lineResult as TestLineResult);
 	if (invertedResult) {
 		return invertedResult;
 	}
@@ -487,7 +535,11 @@ const getLineResultMessage = (testLine: TestLine, lineResult?: TestLineResult): 
 		return <text>Line was not executed</text>;
 	}
 
-	if (testLine.type === 'runSnippet' && !lineResult.errorType) {
+	if (lineResult.result === 'aborted') {
+		return <text>Execution was aborted.</text>;
+	}
+
+	if (testLine.type === 'runSnippet' && !(lineResult as TestLineResult).errorType) {
 		// Snippet failed because one of it's children failed
 		return undefined;
 	}
@@ -495,18 +547,73 @@ const getLineResultMessage = (testLine: TestLine, lineResult?: TestLineResult): 
 	return translateResultErrorMessage(lineResult as TestLineErrorResult);
 };
 
+const lineTypeDocsMap = {
+	clearAppData: '/testing/test-operations/clear-app-data-operation/',
+	takeScreenshot: '/suitest-api/commands/#takescreenshot',
+	execCmd: '/testing/test-operations/execute-command-operation/',
+	openApp: '/testing/test-operations/open-app-operation/',
+	openUrl: '/testing/test-operations/open-url-operation/',
+	sleep: '/testing/test-operations/sleep-operation/',
+	pollUrl: '/testing/test-operations/poll-url-operation/',
+	button: '/testing/test-operations/press-button-operation/',
+	runSnippet: '/testing/test-operations/run-test-operation/',
+	sendText: '/testing/test-operations/send-text-operation/',
+	setText: '/testing/test-operations/set-text-operation/',
+	browserCommand: '/testing/test-operations/browser-command-operation/',
+	click: '/testing/test-operations/click-on-operation/',
+	moveTo: '/testing/test-operations/move-to-operation/',
+	deviceSettings: '/testing/test-operations/set-screen-orientation-operation/',
+	comment: null,
+};
+const subjTypeDocsMap: {[key in Subject['type'] | 'elementProps' | 'execute']: string} = {
+	application: '/testing/test-subjects/application-subject/',
+	cookie: '/testing/test-subjects/cookie-subject/',
+	element: '/testing/test-subjects/view-element-subject/',
+	elementProps: '/testing/test-subjects/view-element-subject/',
+	javascript: '/testing/test-subjects/javascript-expression-subject/',
+	execute: '/testing/test-subjects/javascript-expression-subject/',
+	location: '/testing/test-subjects/current-location-subject/',
+	network: '/testing/test-subjects/network-request-subject/',
+	psVideo: '/testing/test-subjects/video-subject/#playstation-4-webmaf-video',
+	video: '/testing/test-subjects/video-subject/',
+};
+
+const getDocsLink = (line: TestLine | QueryLine): string | undefined => {
+	let link: string | null;
+
+	if ('query' === line.type) {
+		link = subjTypeDocsMap[line.subject.type];
+	} else if ('wait' === line.type || 'assert' === line.type) {
+		link = subjTypeDocsMap[line.condition.subject.type];
+	} else {
+		link = lineTypeDocsMap[line.type];
+	}
+
+	return link ? `https://suite.st/docs${link}` : undefined;
+};
+
 export const translateTestLineResult = (options: {
-	testLine: TestLine,
+	testLine: TestLine | QueryLine,
 	appConfig?: AppConfiguration,
-	lineResult?: TestLineResult,
+	lineResult?: TestLineResult | QueryLineError,
 	elements?: Elements,
 	snippets?: Snippets,
 }): TestLineResultNode => {
-	const {lineResult} = options;
+	const {lineResult, testLine} = options;
+	const docs = getDocsLink(testLine);
+
+	if (lineResult && 'contentType' in lineResult && lineResult.contentType === 'query') {
+		return <test-line-result
+			status={'fail'}
+			message={getLineResultMessage(options.testLine, lineResult)}
+			docs={docs}
+		>{translateTestLine(options)}</test-line-result> as TestLineResultNode;
+	}
 
 	return <test-line-result
-		status={lineResult?.result ?? 'success'}
+		status={(lineResult as TestLineResult)?.result ?? 'success'}
 		message={getLineResultMessage(options.testLine, lineResult)}
-		screenshot={getScreenshotUrl(lineResult?.screenshot)}
+		screenshot={getScreenshotUrl((lineResult as TestLineResult)?.screenshot)}
+		docs={docs}
 	>{translateTestLine(options)}</test-line-result> as TestLineResultNode;
 };

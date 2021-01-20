@@ -15,18 +15,38 @@ export type AssertTestLine = BaseTestLine & {
 	type: 'assert',
 	condition: Condition,
 	timeout?: number | string, // String in case it's a variable
-	then: AssertThen,
+	then?: AssertThen,
 };
 
 export type  WaitUntilTestLine = BaseTestLine & {
 	type: 'wait',
 	condition: Condition,
 	timeout: number | string, // String in case it's a variable
-	then: AssertThen,
+	then?: AssertThen,
 };
 
 export type ClearAppDataTestLine = BaseTestLine & {
 	type: 'clearAppData',
+};
+
+export type TakeScreenshotTestLine = BaseTestLine & {
+	type: 'takeScreenshot',
+	dataFormat?: 'raw' | 'base64',
+	fileName?: string,
+};
+
+export type DeviceOrientationType = 'portrait' | 'portraitReversed' | 'landscape' | 'landscapeReversed';
+
+export type DeviceSettingsTestLine = BaseTestLine & {
+	type: 'deviceSettings',
+	deviceSettings: {
+		type: 'setOrientation',
+		params: {
+			orientation: DeviceOrientationType,
+		},
+	},
+	condition?: Condition,
+	negateCondition?: boolean,
 };
 
 export type ExecuteCommandTestLine = BaseTestLine & {
@@ -228,6 +248,8 @@ export type TestLine = AssertTestLine
 	| SendTextTestLine
 	| SetTextTestLine
 	| CommentTestLine
+	| TakeScreenshotTestLine
+	| DeviceSettingsTestLine
 	| TapTestLine
 	| ScrollTestLine
 	| SwipeTestLine;

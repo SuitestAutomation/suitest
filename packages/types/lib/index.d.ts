@@ -1,4 +1,5 @@
 export * from './appConfiguration';
+export * from './queryLine';
 export * from './comparator';
 export * from './condition';
 export * from './element';

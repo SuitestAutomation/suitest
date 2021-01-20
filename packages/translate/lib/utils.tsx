@@ -1,5 +1,5 @@
 import {jsx} from '@suitest/smst';
-import {AppConfiguration} from '@suitest/types';
+import {AppConfiguration, InvalidRepositoryReferenceError, TestLineResult} from '@suitest/types';
 
 /**
  * Replace variables in text
@@ -77,6 +77,13 @@ export const formatCount = (count: number | string, variables?: AppConfiguration
 	return <fragment><input>{countAsString}</input>x</fragment>;
 };
 
+export const deviceOrientationsMap = {
+	'portrait': 'Portrait',
+	'portraitReversed': 'Portrait - reversed',
+	'landscapeReversed': 'Landscape - reversed',
+	'landscape': 'Landscape',
+};
+
 export const translateCodeProp = (
 	name: Node,
 	code: string,
@@ -105,6 +112,11 @@ export const translateCodeProp = (
 
 	return out;
 };
+
+export const shouldElMatchDetailsBeHidden = (result?: TestLineResult): boolean =>
+	['invalidRepositoryReference', 'queryFailed'].includes(result?.errorType ?? '')
+	&& ['notExistingPlatform', 'notExistingElement', 'missingSubject']
+			.includes((result as InvalidRepositoryReferenceError)?.message?.code ?? '');
 
 export const mapStatus = (status?: TestLineResultStatus, inverse?: boolean): SingleEntryStatus | undefined => {
 	switch (status) {

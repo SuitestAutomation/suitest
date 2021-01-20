@@ -64,6 +64,7 @@ const format = {
 	warning: 	'\u001b[33m',	// yellow
 	exit: 		'\u001b[34m',	// blue
 	excluded: 	'\u001b[34m',	// blue
+	aborted: 	'\u001b[35m',	// magenta
 };
 
 const formatString = (text: string, type: string): string => {
@@ -148,6 +149,9 @@ const renderStatus = (type: TestLineResultStatus | SingleEntryStatus): ExtendedI
 		case 'excluded':
 		case 'exit':
 			value = '» ';
+			break;
+		case 'aborted':
+			value = '⦻ ';
 			break;
 	}
 
@@ -377,22 +381,11 @@ const renderTestLineOrCondition = (
 	const status = node.status ? renderTextNode(renderStatus(node.status)) : '';
 	const title = node.title.map(renderTextNode).join('');
 	const body = node.children.map(child => renderNode(child, renderTextNode, {prefix: prefix + tab, verbosity})).join('');
-	const docs = verbosity === 'verbose' && (node as TestLineNode).docs
-		? ' '.repeat(status.length) + 'docs: ' + renderNode((node as TestLineNode).docs!, renderTextNode, {verbosity})
-		: '';
-	const excludedMessage = node.status === 'excluded'
-		? tab + renderTextNode({type: node.status, value: node.status + ': '}) + 'Test line was not executed'
-		: '';
 	const output = [prefix + status + title];
-	switch (verbosity) {
-		case 'normal':
-			output.push(body);
-			break;
-		case 'verbose':
-			output.push(body, docs);
-			break;
+
+	if (verbosity === 'normal' || verbosity === 'verbose') {
+		output.push(body);
 	}
-	output.push(excludedMessage);
 
 	return output.filter(Boolean).join(nl);
 };
@@ -402,21 +395,42 @@ const renderTestLineResult = (
 	renderTextNode: RenderTextFunc,
 	options: {prefix: string, verbosity: Verbosity}
 ): string => {
-	const nodeMessage = node.message?.map(renderTextNode).join('');
+	const status = tab + renderTextNode({type: node.status, value: node.status + ': '});
 	let message = '';
-	if (nodeMessage && node.status !== 'excluded') {
-		const status = renderTextNode({type: node.status, value: node.status + ': '});
-		message = tab + status + wrapText(nodeMessage, undefined, 2 + calcPureLength(status));
+
+	if (node.status === 'excluded') {
+		message = status + 'Test line was not executed';
+	} else {
+		const nodeMessage = node.message?.map(renderTextNode).join('');
+
+		if (nodeMessage) {
+			message = status + wrapText(nodeMessage, undefined, calcPureLength(status));
+		}
 	}
+
 	const body = renderTestLineOrCondition(node.children[0], renderTextNode, options);
 	const screenshot = node.screenshot
-		? tab + 'screenshot: ' + node.screenshot
+		? 'screenshot: ' + node.screenshot
 		: '';
+	const docs = options.verbosity === 'verbose' && node.docs
+		? 'docs: ' + node.docs
+		: '';
+	const extras = [docs, screenshot]
+		.filter(Boolean)
+		.map(line => line.split(nl))
+		.reduce((acc, item) => acc.concat(item), [])
+		.map(line => tab + line)
+		.join(nl);
 
-	return [body, message, screenshot].filter(Boolean).join(nl);
+	return [body, message, extras].filter(Boolean).join(nl);
 };
 
-export const toText = (node: Node, {format, verbosity}: {format: boolean, verbosity: Verbosity}): string => {
+export const toText = (
+	node: Node,
+	options?: {format?: boolean, verbosity?: Verbosity}
+): string => {
+	const format = options?.format ?? false;
+	const verbosity = options?.verbosity ?? 'normal';
 	const renderTextNode = format ? renderFormattedTextNode : renderPlainTextNode;
 
 	if (!Array.isArray(node)) {

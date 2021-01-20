@@ -1,6 +1,6 @@
 {
   "name": "@suitest/translate",
-  "version": "3.0.6",
+  "version": "4.0.1",
   "description": "A module that translate Suitest server messages to human readable strings",
   "homepage": "https://suite.st/",
   "license": "MIT",
@@ -28,11 +28,11 @@
     "prepublishOnly": "npm run coverage && npm run build"
   },
   "dependencies": {
-    "@suitest/smst": "^3.0.5",
-    "@suitest/types": "^3.0.6"
+    "@suitest/smst": "^4.0.0",
+    "@suitest/types": "^4.0.1"
   },
   "devDependencies": {
-    "@suitest/smst-to-html": "^3.0.5",
-    "@suitest/smst-to-text": "^3.0.6"
+    "@suitest/smst-to-html": "^4.0.1",
+    "@suitest/smst-to-text": "^4.0.1"
   }
 }
