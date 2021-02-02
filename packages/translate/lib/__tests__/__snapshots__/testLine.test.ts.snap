@@ -1178,6 +1178,94 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Double tap on element ... until ... every ... max ..." 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Double tap on ",
+    },
+    Object {
+      "type": "subject",
+      "value": "element",
+    },
+    Object {
+      "type": "text",
+      "value": " until condition is met max ",
+    },
+    Object {
+      "type": "input",
+      "value": "6",
+    },
+    Object {
+      "type": "text",
+      "value": "x every ",
+    },
+    Object {
+      "type": "input",
+      "value": "5.7s",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Double tap on element ... until ... every ... max ..." without appConfig 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Double tap on ",
+    },
+    Object {
+      "type": "subject",
+      "value": "element",
+    },
+    Object {
+      "type": "text",
+      "value": " until condition is met max ",
+    },
+    Object {
+      "type": "input",
+      "value": "6",
+    },
+    Object {
+      "type": "text",
+      "value": "x every ",
+    },
+    Object {
+      "type": "input",
+      "value": "5.7s",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Execute command ... excluded" 1`] = `
 Object {
   "children": Array [
@@ -1422,6 +1510,94 @@ Object {
     Object {
       "type": "text",
       "value": "Retrieve value of execution \\"1 + 1\\"",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Long tap on element ... until ... every ... max ..." 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Long tap on ",
+    },
+    Object {
+      "type": "subject",
+      "value": "element",
+    },
+    Object {
+      "type": "text",
+      "value": " until condition is met max ",
+    },
+    Object {
+      "type": "input",
+      "value": "6",
+    },
+    Object {
+      "type": "text",
+      "value": "x every ",
+    },
+    Object {
+      "type": "input",
+      "value": "5.7s",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Long tap on element ... until ... every ... max ..." without appConfig 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Long tap on ",
+    },
+    Object {
+      "type": "subject",
+      "value": "element",
+    },
+    Object {
+      "type": "text",
+      "value": " until condition is met max ",
+    },
+    Object {
+      "type": "input",
+      "value": "6",
+    },
+    Object {
+      "type": "text",
+      "value": "x every ",
+    },
+    Object {
+      "type": "input",
+      "value": "5.7s",
     },
   ],
   "type": "test-line",
@@ -2474,6 +2650,102 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Scroll from element ... to ... until ... every ... max ..." 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Scroll from ",
+    },
+    Object {
+      "type": "subject",
+      "value": "element",
+    },
+    Object {
+      "type": "text",
+      "value": " until condition is met max ",
+    },
+    Object {
+      "type": "input",
+      "value": "6",
+    },
+    Object {
+      "type": "text",
+      "value": "x every ",
+    },
+    Object {
+      "type": "input",
+      "value": "5.7s",
+    },
+    Object {
+      "type": "text",
+      "value": " left by 1px",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Scroll from element ... to ... until ... every ... max ..." without appConfig 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Scroll from ",
+    },
+    Object {
+      "type": "subject",
+      "value": "element",
+    },
+    Object {
+      "type": "text",
+      "value": " until condition is met max ",
+    },
+    Object {
+      "type": "input",
+      "value": "6",
+    },
+    Object {
+      "type": "text",
+      "value": "x every ",
+    },
+    Object {
+      "type": "input",
+      "value": "5.7s",
+    },
+    Object {
+      "type": "text",
+      "value": " left by 1px",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Send text ... to element ... once" 1`] = `
 Object {
   "children": Array [],
@@ -2970,6 +3242,94 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Single tap on element ... until ... every ... max ..." 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Single tap on ",
+    },
+    Object {
+      "type": "subject",
+      "value": "element",
+    },
+    Object {
+      "type": "text",
+      "value": " until condition is met max ",
+    },
+    Object {
+      "type": "input",
+      "value": "6",
+    },
+    Object {
+      "type": "text",
+      "value": "x every ",
+    },
+    Object {
+      "type": "input",
+      "value": "5.7s",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Single tap on element ... until ... every ... max ..." without appConfig 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Single tap on ",
+    },
+    Object {
+      "type": "subject",
+      "value": "element",
+    },
+    Object {
+      "type": "text",
+      "value": " until condition is met max ",
+    },
+    Object {
+      "type": "input",
+      "value": "6",
+    },
+    Object {
+      "type": "text",
+      "value": "x every ",
+    },
+    Object {
+      "type": "input",
+      "value": "5.7s",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Sleep ... excluded" 1`] = `
 Object {
   "children": Array [],
@@ -3034,6 +3394,102 @@ Object {
     Object {
       "type": "input",
       "value": "2s",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Swipe from element ... to ... in ... until ... every ... max ..." 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Swipe/Flick from ",
+    },
+    Object {
+      "type": "subject",
+      "value": "element",
+    },
+    Object {
+      "type": "text",
+      "value": " until condition is met max ",
+    },
+    Object {
+      "type": "input",
+      "value": "6",
+    },
+    Object {
+      "type": "text",
+      "value": "x every ",
+    },
+    Object {
+      "type": "input",
+      "value": "5.7s",
+    },
+    Object {
+      "type": "text",
+      "value": " left by 1px in 3ms",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Swipe from element ... to ... in ... until ... every ... max ..." without appConfig 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Swipe/Flick from ",
+    },
+    Object {
+      "type": "subject",
+      "value": "element",
+    },
+    Object {
+      "type": "text",
+      "value": " until condition is met max ",
+    },
+    Object {
+      "type": "input",
+      "value": "6",
+    },
+    Object {
+      "type": "text",
+      "value": "x every ",
+    },
+    Object {
+      "type": "input",
+      "value": "5.7s",
+    },
+    Object {
+      "type": "text",
+      "value": " left by 1px in 3ms",
     },
   ],
   "type": "test-line",
@@ -3120,6 +3576,40 @@ Object {
     Object {
       "type": "text",
       "value": "Save screenshot (\\"screen.jpg\\")",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "setOrientation" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Set screen orientation to ",
+    },
+    Object {
+      "type": "input",
+      "value": "Portrait",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "setOrientation" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Set screen orientation to ",
+    },
+    Object {
+      "type": "input",
+      "value": "Portrait",
     },
   ],
   "type": "test-line",

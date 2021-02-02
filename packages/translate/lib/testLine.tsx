@@ -6,6 +6,7 @@ import {
 	AssertThen,
 	BrowserCommandTestLine,
 	ClickTestLine,
+	TapTestLine,
 	CommentTestLine,
 	Elements,
 	ExecuteCommandTestLine,
@@ -19,11 +20,13 @@ import {
 	SetTextTestLine,
 	SleepTestLine,
 	Snippets,
-	Target,
+	WebTarget,
+	MobileTarget,
 	TestLine,
 	WaitUntilTestLine,
 	TestLineResult,
-	ClearAppDataTestLine, TakeScreenshotTestLine, QueryLine, QueryLineError,
+	ClearAppDataTestLine, TakeScreenshotTestLine, QueryLine, QueryLineError, DeviceSettingsTestLine,
+	ScrollTestLine, SwipeTestLine,
 } from '@suitest/types';
 import {translateComparator} from './comparator';
 import {translateCondition} from './condition';
@@ -32,7 +35,7 @@ import {
 	formatVariables,
 	mapStatus,
 	translateCodeProp,
-	formatCount,
+	formatCount, deviceOrientationsMap,
 } from './utils';
 
 const getConditionInfo = (
@@ -314,13 +317,15 @@ const assertUnknownTarget = (target: never): never => {
 	throw new Error('Unknown target: ' + JSON.stringify(target));
 };
 
-const translateTarget = (target: Target): JSX.Element => {
+const translateTarget = (target: WebTarget | MobileTarget): JSX.Element => {
 	switch (target.type) {
 		case 'element': // TODO nyc for some reason reports an uncovered branch here
 			return <subject>element</subject>;
 		case 'window':
 			// TODO should we translate 'window' depending on running platform?
 			return <subject>{'coordinates' in target ? 'position' : 'window'}</subject>;
+		case 'screen':
+			return <subject>{'coordinates' in target ? 'position' : 'screen'}</subject>;
 		default:
 			/* istanbul ignore next */
 			return assertUnknownTarget(target);
@@ -367,6 +372,11 @@ const translateSetTextTestLine = (
 /* istanbul ignore next */
 const assertUnknownBrowserCommand = (browserCommand: never): never => {
 	throw new Error(`Unknown browser command: ${JSON.stringify(browserCommand)}`);
+};
+
+/* istanbul ignore next */
+const assertUnknownDeviceSetting = (deviceSettings: never): never => {
+	throw new Error(`Unknown device setting: ${JSON.stringify(deviceSettings)}`);
 };
 
 const translateBrowserCommandTestLine = (
@@ -432,6 +442,32 @@ const translateBrowserCommandTestLine = (
 	}
 };
 
+const translateDeviceSettingsTestLine = (
+	testLine: DeviceSettingsTestLine,
+	appConfig?: AppConfiguration,
+	elements?: Elements,
+	lineResult?: TestLineResult,
+): TestLineNode => {
+	const status = testLine.excluded ? 'excluded' : lineResult?.result;
+	const condition = testLine.condition
+		? translateCondition(testLine.condition, false, appConfig, elements, lineResult)
+		: undefined;
+
+	switch (testLine.deviceSettings.type) {
+		case 'setOrientation':
+			const orientation = deviceOrientationsMap[testLine.deviceSettings.params.orientation];
+
+			return <test-line title={
+				<fragment>Set screen orientation to <input>{orientation}</input></fragment>
+			} status={status}>
+				{condition}
+			</test-line> as TestLineNode;
+		default:
+			/* istanbul ignore next */
+			return assertUnknownDeviceSetting(testLine.deviceSettings as never);
+	}
+};
+
 const translateClickTestLine = (
 	testLine: ClickTestLine,
 	appConfig?: AppConfiguration,
@@ -440,6 +476,66 @@ const translateClickTestLine = (
 ): TestLineNode => {
 	const titleFragment = getConditionInfo(testLine, appConfig);
 	const title = <fragment>Click on {translateTarget(testLine.target)}{titleFragment}</fragment>;
+	const status = testLine.excluded ? 'excluded' : lineResult?.result;
+
+	return <test-line title={title} status={status}>
+		{testLine.condition
+			? translateCondition(testLine.condition, false, appConfig, elements, lineResult)
+			: undefined}
+	</test-line> as TestLineNode;
+};
+
+const translateTapTestLine = (
+	testLine: TapTestLine,
+	appConfig?: AppConfiguration,
+	elements?: Elements,
+	lineResult?: TestLineResult,
+): TestLineNode => {
+	const titleFragment = getConditionInfo(testLine, appConfig);
+	const tapType = testLine.taps[0].type;
+	const tapTypeCapitalized = tapType.charAt(0).toUpperCase() + tapType.slice(1);
+	const title = <fragment>{tapTypeCapitalized} tap on {translateTarget(testLine.target)}{titleFragment}</fragment>;
+	const status = testLine.excluded ? 'excluded' : lineResult?.result;
+
+	return <test-line title={title} status={status}>
+		{testLine.condition
+			? translateCondition(testLine.condition, false, appConfig, elements, lineResult)
+			: undefined}
+	</test-line> as TestLineNode;
+};
+
+const translateScrollTestLine = (
+	testLine: ScrollTestLine,
+	appConfig?: AppConfiguration,
+	elements?: Elements,
+	lineResult?: TestLineResult,
+): TestLineNode => {
+	const titleFragment = getConditionInfo(testLine, appConfig);
+	const direction = testLine.scroll[0].direction;
+	const distance = testLine.scroll[0].distance;
+	const title = <fragment>Scroll from {translateTarget(testLine.target)}
+	{titleFragment} {direction} by {distance}px</fragment>;
+	const status = testLine.excluded ? 'excluded' : lineResult?.result;
+
+	return <test-line title={title} status={status}>
+		{testLine.condition
+			? translateCondition(testLine.condition, false, appConfig, elements, lineResult)
+			: undefined}
+	</test-line> as TestLineNode;
+};
+
+const translateSwipeTestLine = (
+	testLine: SwipeTestLine,
+	appConfig?: AppConfiguration,
+	elements?: Elements,
+	lineResult?: TestLineResult,
+): TestLineNode => {
+	const titleFragment = getConditionInfo(testLine, appConfig);
+	const direction = testLine.swipe[0].direction;
+	const distance = testLine.swipe[0].distance;
+	const duration = testLine.swipe[0].duration;
+	const title = <fragment>Swipe/Flick from {translateTarget(testLine.target)}
+		{titleFragment} {direction} by {distance}px in {duration}ms</fragment>;
 	const status = testLine.excluded ? 'excluded' : lineResult?.result;
 
 	return <test-line title={title} status={status}>
@@ -521,8 +617,16 @@ export const translateTestLine = ({
 			return translateSetTextTestLine(testLine, appConfig, elements, lineResult as TestLineResult);
 		case 'browserCommand':
 			return translateBrowserCommandTestLine(testLine, appConfig, elements, lineResult as TestLineResult);
+		case 'deviceSettings':
+			return translateDeviceSettingsTestLine(testLine, appConfig, elements, lineResult as TestLineResult);
 		case 'click':
 			return translateClickTestLine(testLine, appConfig, elements, lineResult as TestLineResult);
+		case 'tap':
+			return translateTapTestLine(testLine, appConfig, elements, lineResult as TestLineResult);
+		case 'scroll':
+			return translateScrollTestLine(testLine, appConfig, elements, lineResult as TestLineResult);
+		case 'swipe':
+			return translateSwipeTestLine(testLine, appConfig, elements, lineResult as TestLineResult);
 		case 'moveTo':
 			return translateMoveToTestLine(testLine, appConfig, elements, lineResult as TestLineResult);
 		case 'comment':

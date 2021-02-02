@@ -27,10 +27,11 @@ import {
 	SimpleError,
 	QueryLine,
 	QueryLineError,
-	Subject,
+	NotAllowedPrivilegesError,
 } from '@suitest/types';
 import {translateTestLine} from './testLine';
 import {translateElementProperty} from './condition';
+import { getDocsLink } from './utils';
 
 const baseScreenshotPath = 'https://the.suite.st';
 
@@ -319,6 +320,9 @@ const translateADBError = (result: ADBError): TextNode => {
 	if (result.message && ('code' in result.message) && result.message.code === 'certificateError') {
 		return <text>{result.message.code}</text> as TextNode;
 	}
+	if (result.message && ('code' in result.message) && result.message.code === 'installationRestricted') {
+		return <fragment>Application installation is forbidden. See <link href="https://suite.st/docs/troubleshooting/android/#application-installation-is-forbidden-on-xiaomi">our docs</link> for more information</fragment> as TextNode;
+	}
 	if (result.message && ('info' in result.message)) {
 		return <text>{result.message.info.reason}</text> as TextNode;
 	}
@@ -384,6 +388,12 @@ const translateInvalidRepositoryReference = (result: InvalidRepositoryReferenceE
 	return <text>{textMsg}</text> as TextNode;
 };
 
+const translateNotAllowedPrivileges = (result: NotAllowedPrivilegesError): Node =>
+	<fragment>
+		Application requires privileges not allowed on Suitest lab devices ({result.message.notAllowedPrivileges.join(', ')}).
+		Read more in our <link href="https://suite.st/docs/devices/device-lab">docs</link>.
+	</fragment>;
+
 /**
  * Type guard to help TypeScript better understand the code
  * @param result
@@ -447,6 +457,8 @@ export const translateResultErrorMessage = (result: TestLineErrorResult): Node =
 			return translateOutdatedLibraryError(result);
 		case 'invalidRepositoryReference':
 			return translateInvalidRepositoryReference(result);
+		case 'notAllowedPrivileges':
+			return translateNotAllowedPrivileges(result);
 		default:
 			return unknownErrorMessage(result);
 	}
@@ -534,50 +546,6 @@ const getLineResultMessage = (testLine: TestLine | QueryLine, lineResult?: TestL
 	}
 
 	return translateResultErrorMessage(lineResult as TestLineErrorResult);
-};
-
-const lineTypeDocsMap = {
-	clearAppData: '/testing/test-operations/clear-app-data-operation/',
-	takeScreenshot: '/suitest-api/commands/#takescreenshot',
-	execCmd: '/testing/test-operations/execute-command-operation/',
-	openApp: '/testing/test-operations/open-app-operation/',
-	openUrl: '/testing/test-operations/open-url-operation/',
-	sleep: '/testing/test-operations/sleep-operation/',
-	pollUrl: '/testing/test-operations/poll-url-operation/',
-	button: '/testing/test-operations/press-button-operation/',
-	runSnippet: '/testing/test-operations/run-test-operation/',
-	sendText: '/testing/test-operations/send-text-operation/',
-	setText: '/testing/test-operations/set-text-operation/',
-	browserCommand: '/testing/test-operations/browser-command-operation/',
-	click: '/testing/test-operations/click-on-operation/',
-	moveTo: '/testing/test-operations/move-to-operation/',
-	comment: null,
-};
-const subjTypeDocsMap: {[key in Subject['type'] | 'elementProps' | 'execute']: string} = {
-	application: '/testing/test-subjects/application-subject/',
-	cookie: '/testing/test-subjects/cookie-subject/',
-	element: '/testing/test-subjects/view-element-subject/',
-	elementProps: '/testing/test-subjects/view-element-subject/',
-	javascript: '/testing/test-subjects/javascript-expression-subject/',
-	execute: '/testing/test-subjects/javascript-expression-subject/',
-	location: '/testing/test-subjects/current-location-subject/',
-	network: '/testing/test-subjects/network-request-subject/',
-	psVideo: '/testing/test-subjects/video-subject/#playstation-4-webmaf-video',
-	video: '/testing/test-subjects/video-subject/',
-};
-
-const getDocsLink = (line: TestLine | QueryLine): string | undefined => {
-	let link: string | null;
-
-	if ('query' === line.type) {
-		link = subjTypeDocsMap[line.subject.type];
-	} else if ('wait' === line.type || 'assert' === line.type) {
-		link = subjTypeDocsMap[line.condition.subject.type];
-	} else {
-		link = lineTypeDocsMap[line.type];
-	}
-
-	return link ? `https://suite.st/docs${link}` : undefined;
 };
 
 export const translateTestLineResult = (options: {

@@ -721,6 +721,99 @@ export const testLinesExamples = {
 		delay,
 		count,
 	}),
+	// Tap lines
+	'Single tap on element ... until ... every ... max ...': (
+		elementId = 'element-id-1',
+		condition: Condition = appExitedCondition,
+		delay: number | string = 5700,
+		count: number | string = 6
+	): TestLine => ({
+		...baseTestLine,
+		type: 'tap',
+		target: {
+			type: 'element',
+			elementId,
+		},
+		taps: [{type: 'single'}],
+		condition,
+		negateCondition: false,
+		delay,
+		count,
+	}),
+	'Double tap on element ... until ... every ... max ...': (
+		elementId = 'element-id-1',
+		condition: Condition = appExitedCondition,
+		delay: number | string = 5700,
+		count: number | string = 6
+	): TestLine => ({
+		...baseTestLine,
+		type: 'tap',
+		target: {
+			type: 'element',
+			elementId,
+		},
+		taps: [{type: 'double'}],
+		condition,
+		negateCondition: false,
+		delay,
+		count,
+	}),
+	'Long tap on element ... until ... every ... max ...': (
+		elementId = 'element-id-1',
+		condition: Condition = appExitedCondition,
+		delay: number | string = 5700,
+		count: number | string = 6
+	): TestLine => ({
+		...baseTestLine,
+		type: 'tap',
+		target: {
+			type: 'element',
+			elementId,
+		},
+		taps: [{type: 'long'}],
+		condition,
+		negateCondition: false,
+		delay,
+		count,
+	}),
+	// Scroll line
+	'Scroll from element ... to ... until ... every ... max ...': (
+		elementId = 'element-id-1',
+		condition: Condition = appExitedCondition,
+		delay: number | string = 5700,
+		count: number | string = 6
+	): TestLine => ({
+		...baseTestLine,
+		type: 'scroll',
+		target: {
+			type: 'element',
+			elementId,
+		},
+		scroll: [{direction: 'left', distance: 1}],
+		condition,
+		negateCondition: false,
+		delay,
+		count,
+	}),
+	// Swipe line
+	'Swipe from element ... to ... in ... until ... every ... max ...': (
+		elementId = 'element-id-1',
+		condition: Condition = appExitedCondition,
+		delay: number | string = 5700,
+		count: number | string = 6
+	): TestLine => ({
+		...baseTestLine,
+		type: 'swipe',
+		target: {
+			type: 'element',
+			elementId,
+		},
+		swipe: [{direction: 'left', distance: 1, duration: 3}],
+		condition,
+		negateCondition: false,
+		delay,
+		count,
+	}),
 	// MOVE TO
 	'Move to position ...': (x: number | string = 123, y: number | string = 234): TestLine => ({
 		...baseTestLine,
@@ -811,5 +904,13 @@ export const testLinesExamples = {
 		...baseTestLine,
 		type: 'takeScreenshot',
 		fileName: 'screen.jpg',
+	}),
+	'setOrientation': (): TestLine => ({
+		...baseTestLine,
+		type: 'deviceSettings',
+		deviceSettings: {
+			type: 'setOrientation',
+			params: {orientation: 'portrait'},
+		},
 	}),
 };

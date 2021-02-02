@@ -357,6 +357,15 @@ export type ADBError = BaseResult & {
 		},
 	} | {
 		code: 'certificateError',
+	} | {
+		code: 'installationRestricted',
+	},
+};
+
+export type NotAllowedPrivilegesError = BaseResult & {
+	errorType: 'notAllowedPrivileges',
+	message: {
+		notAllowedPrivileges: string[],
 	},
 };
 
@@ -416,4 +425,5 @@ export type TestLineResult = TestLineSuccessResult
 	| InvalidReferenceError
 	| OpenAppOverrideFailedError
 	| InvalidPackageError
-	| ADBError;
+	| ADBError
+	| NotAllowedPrivilegesError;
