@@ -131,7 +131,11 @@ export type WindowTarget = {
 	type: 'window',
 };
 
-export type PositionTarget = {
+export type ScreenTarget = {
+	type: 'screen',
+};
+
+export type WebPositionTarget = {
 	type: 'window',
 	coordinates: {
 		x: number | string,
@@ -139,13 +143,25 @@ export type PositionTarget = {
 	},
 };
 
-export type Target = ElementTarget
+export type MobilePositionTarget = {
+	type: 'screen',
+	coordinates: {
+		x: number | string,
+		y: number | string,
+	},
+};
+
+export type WebTarget = ElementTarget
 	| WindowTarget
-	| PositionTarget;
+	| WebPositionTarget;
+
+export type MobileTarget = ElementTarget
+	| ScreenTarget
+	| MobilePositionTarget;
 
 export type ClickTestLine = BaseTestLine & {
 	type: 'click',
-	target: ElementTarget | PositionTarget,
+	target: ElementTarget | WebPositionTarget,
 	delay?: number | string,
 	count?: number | string,
 	clicks: [{type: 'single', button: 'left'}],
@@ -153,9 +169,42 @@ export type ClickTestLine = BaseTestLine & {
 	negateCondition?: boolean,
 };
 
+export type TapTypes = 'single' | 'double' | 'long';
+export type Directions = 'up' | 'down' | 'left' | 'right';
+
+export type TapTestLine = BaseTestLine & {
+	type: 'tap',
+	target: ElementTarget | MobilePositionTarget,
+	delay?: number | string,
+	count?: number | string,
+	taps: [{type: TapTypes}],
+	condition?: Condition,
+	negateCondition?: boolean,
+};
+
+export type ScrollTestLine = BaseTestLine & {
+	type: 'scroll',
+	target: ElementTarget | MobilePositionTarget,
+	delay?: number | string,
+	count?: number | string,
+	scroll: [{direction: Directions, distance: number | string}],
+	condition?: Condition,
+	negateCondition?: boolean,
+};
+
+export type SwipeTestLine = BaseTestLine & {
+	type: 'swipe',
+	target: ElementTarget | MobilePositionTarget,
+	delay?: number | string,
+	count?: number | string,
+	swipe: [{direction: Directions, distance: number | string, duration: number | string}],
+	condition?: Condition,
+	negateCondition?: boolean,
+};
+
 export type MoveToTestLine = BaseTestLine & {
 	type: 'moveTo',
-	target: ElementTarget | PositionTarget,
+	target: ElementTarget | WebPositionTarget,
 	condition?: Condition,
 	negateCondition?: true,
 };
@@ -200,4 +249,7 @@ export type TestLine = AssertTestLine
 	| SetTextTestLine
 	| CommentTestLine
 	| TakeScreenshotTestLine
-	| DeviceSettingsTestLine;
+	| DeviceSettingsTestLine
+	| TapTestLine
+	| ScrollTestLine
+	| SwipeTestLine;

@@ -1,5 +1,5 @@
 import {jsx} from '@suitest/smst';
-import {AppConfiguration, InvalidRepositoryReferenceError, TestLineResult} from '@suitest/types';
+import {AppConfiguration, InvalidRepositoryReferenceError, TestLineResult, Subject, TestLine, QueryLine} from '@suitest/types';
 
 /**
  * Replace variables in text
@@ -133,4 +133,52 @@ export const mapStatus = (status?: TestLineResultStatus, inverse?: boolean): Sin
 		default:
 			return undefined;
 	}
+};
+
+const lineTypeDocsMap: {[key in Exclude<TestLine['type'], 'assert' | 'wait'>]: string | null} = {
+	clearAppData: '/testing/test-operations/clear-app-data-operation/',
+	takeScreenshot: '/suitest-api/commands/#takescreenshot',
+	execCmd: '/testing/test-operations/execute-command-operation/',
+	openApp: '/testing/test-operations/open-app-operation/',
+	openUrl: '/testing/test-operations/open-url-operation/',
+	sleep: '/testing/test-operations/sleep-operation/',
+	pollUrl: '/testing/test-operations/poll-url-operation/',
+	button: '/testing/test-operations/press-button-operation/',
+	runSnippet: '/testing/test-operations/run-test-operation/',
+	sendText: '/testing/test-operations/send-text-operation/',
+	setText: '/testing/test-operations/set-text-operation/',
+	browserCommand: '/testing/test-operations/browser-command-operation/',
+	click: '/testing/test-operations/click-on-operation/',
+	moveTo: '/testing/test-operations/move-to-operation/',
+	deviceSettings: '/testing/test-operations/set-screen-orientation-operation/',
+	tap: '/testing/test-operations/tap-operation/',
+	scroll: '/testing/test-operations/scroll-operation/',
+	swipe: '/testing/test-operations/swipe-flick-operation/',
+	comment: null,
+};
+const subjTypeDocsMap: {[key in Subject['type'] | 'elementProps' | 'execute']: string} = {
+	application: '/testing/test-subjects/application-subject/',
+	cookie: '/testing/test-subjects/cookie-subject/',
+	element: '/testing/test-subjects/view-element-subject/',
+	elementProps: '/testing/test-subjects/view-element-subject/',
+	javascript: '/testing/test-subjects/javascript-expression-subject/',
+	execute: '/testing/test-subjects/javascript-expression-subject/',
+	location: '/testing/test-subjects/current-location-subject/',
+	network: '/testing/test-subjects/network-request-subject/',
+	psVideo: '/testing/test-subjects/video-subject/#playstation-4-webmaf-video',
+	video: '/testing/test-subjects/video-subject/',
+};
+
+export const getDocsLink = (line: TestLine | QueryLine): string | undefined => {
+	let link: string | null;
+
+	if ('query' === line.type) {
+		link = subjTypeDocsMap[line.subject.type];
+	} else if ('wait' === line.type || 'assert' === line.type) {
+		link = subjTypeDocsMap[line.condition.subject.type];
+	} else {
+		link = lineTypeDocsMap[line.type];
+	}
+
+	return link ? `https://suite.st/docs${link}` : undefined;
 };

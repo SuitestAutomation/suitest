@@ -357,6 +357,8 @@ export type ADBError = BaseResult & {
 		},
 	} | {
 		code: 'certificateError',
+	} | {
+		code: 'installationRestricted',
 	},
 };
 
