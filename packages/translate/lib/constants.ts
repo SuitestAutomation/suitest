@@ -23,6 +23,7 @@ export const NOT_STARTED_REASON = Object.freeze({
 	PACKAGE_CORRUPTED: 'packageCorrupted',
 	CONFIGURATOR_ERROR: 'configuratorError',
 	APPLE_NETWORK_LOGS_ERROR: 'appleNetworkLogsError',
+	DEVICE_OFFLINE: 'deviceOffline',
 } as const);
 
 export type NotStartedReason = typeof NOT_STARTED_REASON[keyof typeof NOT_STARTED_REASON];
