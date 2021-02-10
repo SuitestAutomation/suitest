@@ -375,8 +375,8 @@ const assertUnknownBrowserCommand = (browserCommand: never): never => {
 };
 
 /* istanbul ignore next */
-const assertUnknownDeviceSetting = (deviceSettings: never): never => {
-	throw new Error(`Unknown device setting: ${JSON.stringify(deviceSettings)}`);
+const assertUnknownDeviceSetting = (deviceSettingsType: never): never => {
+	throw new Error(`Unknown device setting: ${JSON.stringify(deviceSettingsType)}`);
 };
 
 const translateBrowserCommandTestLine = (
@@ -464,7 +464,7 @@ const translateDeviceSettingsTestLine = (
 			</test-line> as TestLineNode;
 		default:
 			/* istanbul ignore next */
-			return assertUnknownDeviceSetting(testLine.deviceSettings as never);
+			return assertUnknownDeviceSetting(testLine.deviceSettings.type);
 	}
 };
 
