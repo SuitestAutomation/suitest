@@ -1333,6 +1333,13 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "controllerNotConnected" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Please check that all corresponding control units are working.",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "cyclicReference" error 1`] = `
 Object {
   "type": "text",
