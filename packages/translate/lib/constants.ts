@@ -24,6 +24,7 @@ export const NOT_STARTED_REASON = Object.freeze({
 	CONFIGURATOR_ERROR: 'configuratorError',
 	APPLE_NETWORK_LOGS_ERROR: 'appleNetworkLogsError',
 	DEVICE_OFFLINE: 'deviceOffline',
+	SUITEST_DRIVE_UPDATE: 'suitestDriveUpdate',
 } as const);
 
 export type NotStartedReason = typeof NOT_STARTED_REASON[keyof typeof NOT_STARTED_REASON];
