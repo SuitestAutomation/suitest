@@ -110,6 +110,7 @@ export type SimpleError = BaseResult & {
 		| 'unfocusableElement'
 		| 'unclickableElement'
 		| 'deviceConnectionError'
+		| 'controllerNotConnected'
 		| 'testIsNotStarted'
 		| 'signInRequired'
 		| 'connectionNotAuthorized'
