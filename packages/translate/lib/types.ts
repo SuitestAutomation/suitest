@@ -259,7 +259,13 @@ declare type TestLineDeviceSettingsType = TestLineType & {
 	deviceSettings: {
 		type: 'setOrientation',
 		params: {
-			orientation: 'portrait' | 'portraitReversed' | 'landscape' | 'landscapeReversed',
+			orientation:
+				| 'portrait'
+				| 'portraitReversed'
+				| 'landscape'
+				| 'landscapeReversed'
+				| 'landscapeRight'
+				| 'landscapeLeft',
 		},
 	},
 	condition?: AssertConditionType,
