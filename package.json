@@ -6,7 +6,7 @@
     "test": "lerna run test",
     "lint": "eslint packages/*/lib/**/*.{ts,tsx}",
     "coverage": "lerna run coverage",
-    "postinstall": "lerna bootstrap --hoist"
+    "postinstall": "lerna bootstrap"
   },
   "devDependencies": {
     "@types/jest": "25.2.3",
