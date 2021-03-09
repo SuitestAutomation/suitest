@@ -27,7 +27,7 @@ export function translateNotStartedReason(code: NotStartedReason): Translation {
 		case NOT_STARTED_REASON.NO_AUTOMATED_MINUTES:
 			return {
 				title: <text>Cannot continue: you've used up all of your testing minutes</text>,
-				description: <fragment>You testing a lot! How about <link href="https://the.suite.st/preferences/billing">getting a bigger subscription</link>? Or, if you would like to purchase more testing minutes for the current billing cycle, please contact <link href="mailto:sales@suite.st">sales@suite.st</link>. Your testing minutes will renew</fragment>,
+				description: <fragment>You are testing a lot! Please consider <link href="https://the.suite.st/preferences/summary?modal=create-organization">creating an organization</link> and purchasing a plan. Visit our <link href="https://suite.st/pricing.html">Pricing page</link> for more details.</fragment>,
 			};
 		case NOT_STARTED_REASON.NO_ACTIVE_PLAN:
 			return {
