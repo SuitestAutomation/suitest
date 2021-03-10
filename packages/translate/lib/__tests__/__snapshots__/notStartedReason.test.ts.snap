@@ -208,25 +208,25 @@ Object {
   "description": Array [
     Object {
       "type": "text",
-      "value": "You testing a lot! How about ",
+      "value": "You are testing a lot! Please consider ",
     },
     Object {
-      "href": "https://the.suite.st/preferences/billing",
+      "href": "https://the.suite.st/preferences/summary?modal=create-organization",
       "type": "link",
-      "value": "getting a bigger subscription",
+      "value": "creating an organization",
     },
     Object {
       "type": "text",
-      "value": "? Or, if you would like to purchase more testing minutes for the current billing cycle, please contact ",
+      "value": " and purchasing a plan. Visit our ",
     },
     Object {
-      "href": "mailto:sales@suite.st",
+      "href": "https://suite.st/pricing.html",
       "type": "link",
-      "value": "sales@suite.st",
+      "value": "Pricing page",
     },
     Object {
       "type": "text",
-      "value": ". Your testing minutes will renew",
+      "value": " for more details.",
     },
   ],
   "title": Object {
@@ -653,7 +653,7 @@ Object {
 
 exports[`Testing not started reason translation. Translate to plain text:  "noAvailableAutomatedMinutes" 1`] = `
 Object {
-  "description": "You testing a lot! How about getting a bigger subscription (https://the.suite.st/preferences/billing)? Or, if you would like to purchase more testing minutes for the current billing cycle, please contact sales@suite.st (mailto:sales@suite.st). Your testing minutes will renew",
+  "description": "You are testing a lot! Please consider creating an organization (https://the.suite.st/preferences/summary?modal=create-organization) and purchasing a plan. Visit our Pricing page (https://suite.st/pricing.html) for more details.",
   "title": "Cannot continue: you've used up all of your testing minutes",
 }
 `;
