@@ -1389,6 +1389,13 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "instrumentationFailedPrivilege" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Auto-instrumentation works for app packages with public or partner privileges only. Please use manual instrumentation instead",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "internalError" error 1`] = `
 Object {
   "type": "text",
