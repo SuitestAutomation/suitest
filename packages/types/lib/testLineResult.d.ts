@@ -142,7 +142,8 @@ export type SimpleError = BaseResult & {
 		| 'ElementClickIntercepted'
 		| 'unsupportedOSVersion'
 		| 'targetManagerUnsupportedVersion'
-		| 'systemOutdated',
+		| 'systemOutdated'
+		| 'instrumentationFailedPrivilege',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {

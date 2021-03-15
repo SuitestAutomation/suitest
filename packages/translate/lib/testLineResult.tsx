@@ -130,6 +130,7 @@ const simpleErrorMap: {[key: string]: Node} = {
 	unsupportedOSVersion: <fragment>Unsupported OS version, please see our <link href="https://suite.st/docs/devices/playstation/#sdk-650-or-system-software-701-or-lower">docs</link></fragment>,
 	targetManagerUnsupportedVersion: <fragment>Unsupported Target Manager Server, please see our <link href="https://suite.st/docs/devices/playstation/#sdk-650-or-system-software-701-or-lower">docs</link></fragment>,
 	systemOutdated: <text>System software version mismatch. New version of system software is required</text>,
+	instrumentationFailedPrivilege: <text>Auto-instrumentation works for app packages with public or partner privileges only. Please use manual instrumentation instead</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
