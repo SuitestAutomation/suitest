@@ -130,6 +130,10 @@ export function translateNotStartedReason(code: NotStartedReason): Translation {
 			return {
 				title: <fragment>Device could not be reached, please try again in a few minutes. Contact <link href="mailto:support@suite.st">support</link> if the problem persists.</fragment>,
 			};
+		case NOT_STARTED_REASON.SUITEST_DRIVE_UPDATE:
+			return {
+				title: <text>SuitestDrive is being automatically updated.</text>,
+			};
 		default:
 			const _code: never = code;
 			throw new Error(`Unknown not started reason received: ${_code}`);

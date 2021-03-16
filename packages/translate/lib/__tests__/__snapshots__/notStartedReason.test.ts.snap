@@ -352,6 +352,15 @@ Object {
 }
 `;
 
+exports[`Testing not started reason translation. Should translate "suitestDriveUpdate" code 1`] = `
+Object {
+  "title": Object {
+    "type": "text",
+    "value": "SuitestDrive is being automatically updated.",
+  },
+}
+`;
+
 exports[`Testing not started reason translation. Should translate "testQueued" code 1`] = `
 Object {
   "description": Object {
@@ -539,6 +548,13 @@ Object {
 }
 `;
 
+exports[`Testing not started reason translation. Translate to html:  "suitestDriveUpdate" 1`] = `
+Object {
+  "description": "SuitestDrive is being automatically updated.",
+  "title": "SuitestDrive is being automatically updated.",
+}
+`;
+
 exports[`Testing not started reason translation. Translate to html:  "testQueued" 1`] = `
 Object {
   "description": "Test is added to queue",
@@ -711,6 +727,13 @@ exports[`Testing not started reason translation. Translate to plain text:  "suit
 Object {
   "description": undefined,
   "title": "The SuitestDrive is not running on the CandyBox",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to plain text:  "suitestDriveUpdate" 1`] = `
+Object {
+  "description": undefined,
+  "title": "SuitestDrive is being automatically updated.",
 }
 `;
 
