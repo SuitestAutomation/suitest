@@ -141,7 +141,9 @@ export type SimpleError = BaseResult & {
 		| 'ElementClickIntercepted'
 		| 'unsupportedOSVersion'
 		| 'targetManagerUnsupportedVersion'
-		| 'systemOutdated',
+		| 'systemOutdated'
+		| 'noSpaceLeftOnDevice'
+		| 'invalidDeveloperIP',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {

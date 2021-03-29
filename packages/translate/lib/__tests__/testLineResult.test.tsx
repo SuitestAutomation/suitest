@@ -111,6 +111,8 @@ describe('Test line results translation', () => {
 		'unsupportedOSVersion',
 		'targetManagerUnsupportedVersion',
 		'systemOutdated',
+		'noSpaceLeftOnDevice',
+		'invalidDeveloperIP',
 	];
 
 	describe('simple errors translations', () => {

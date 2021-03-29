@@ -1396,6 +1396,24 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "invalidDeveloperIP" error 1`] = `
+Array [
+  Object {
+    "type": "text",
+    "value": "Host PC IP does not match control unit IP, please see our ",
+  },
+  Object {
+    "href": "https://suite.st/docs/devices/samsung-tizen/#set-up-developer-ip-on-the-target-device",
+    "type": "link",
+    "value": "docs",
+  },
+  Object {
+    "type": "text",
+    "value": ".",
+  },
+]
+`;
+
 exports[`Test line results translation simple errors translations should translate "invalidOpenAppOverrideReference" error 1`] = `
 Object {
   "type": "text",
@@ -1513,6 +1531,13 @@ exports[`Test line results translation simple errors translations should transla
 Object {
   "type": "text",
   "value": "No assertion properties defined",
+}
+`;
+
+exports[`Test line results translation simple errors translations should translate "noSpaceLeftOnDevice" error 1`] = `
+Object {
+  "type": "text",
+  "value": "App installation failed. No space left on the device.",
 }
 `;
 
