@@ -97,6 +97,7 @@ const simpleErrorMap: {[key: string]: Node} = {
 	unfocusableElement: <text>Element can't receive focus to enter text</text>,
 	unclickableElement: <text>Element click is obstructed by different element</text>,
 	deviceConnectionError: <text>Failed to initialize device control</text>,
+	controllerNotConnected: <text>Please check that all corresponding control units are working.</text>,
 	testIsNotStarted: <text>Cannot continue with the current test anymore because of previous errors or bad initialization</text>,
 	signInRequired: <text>Account needs to be signed in on target device</text>,
 	connectionNotAuthorized: <text>Connection not authorized. Debug mode is not allowed on the device, please make sure it is enabled</text>,
@@ -131,6 +132,7 @@ const simpleErrorMap: {[key: string]: Node} = {
 	systemOutdated: <text>System software version mismatch. New version of system software is required</text>,
 	noSpaceLeftOnDevice: <text>App installation failed. No space left on the device.</text>,
 	invalidDeveloperIP: <fragment>Host PC IP does not match control unit IP, please see our <link href="https://suite.st/docs/devices/samsung-tizen/#set-up-developer-ip-on-the-target-device">docs</link>.</fragment>,
+	instrumentationFailedPrivilege: <text>Auto-instrumentation works for app packages with public or partner privileges only. Please use manual instrumentation instead</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {

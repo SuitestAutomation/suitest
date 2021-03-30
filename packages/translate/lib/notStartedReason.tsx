@@ -27,7 +27,7 @@ export function translateNotStartedReason(code: NotStartedReason): Translation {
 		case NOT_STARTED_REASON.NO_AUTOMATED_MINUTES:
 			return {
 				title: <text>Cannot continue: you've used up all of your testing minutes</text>,
-				description: <fragment>You testing a lot! How about <link href="https://the.suite.st/preferences/billing">getting a bigger subscription</link>? Or, if you would like to purchase more testing minutes for the current billing cycle, please contact <link href="mailto:sales@suite.st">sales@suite.st</link>. Your testing minutes will renew</fragment>,
+				description: <fragment>You are testing a lot! Please consider <link href="https://the.suite.st/preferences/summary?modal=create-organization">creating an organization</link> and purchasing a plan. Visit our <link href="https://suite.st/pricing.html">Pricing page</link> for more details.</fragment>,
 			};
 		case NOT_STARTED_REASON.NO_ACTIVE_PLAN:
 			return {
@@ -129,6 +129,10 @@ export function translateNotStartedReason(code: NotStartedReason): Translation {
 		case NOT_STARTED_REASON.DEVICE_OFFLINE:
 			return {
 				title: <fragment>Device could not be reached, please try again in a few minutes. Contact <link href="mailto:support@suite.st">support</link> if the problem persists.</fragment>,
+			};
+		case NOT_STARTED_REASON.SUITEST_DRIVE_UPDATE:
+			return {
+				title: <text>SuitestDrive is being automatically updated.</text>,
 			};
 		default:
 			const _code: never = code;

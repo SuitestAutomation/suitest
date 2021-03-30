@@ -110,6 +110,7 @@ export type SimpleError = BaseResult & {
 		| 'unfocusableElement'
 		| 'unclickableElement'
 		| 'deviceConnectionError'
+		| 'controllerNotConnected'
 		| 'testIsNotStarted'
 		| 'signInRequired'
 		| 'connectionNotAuthorized'
@@ -143,7 +144,8 @@ export type SimpleError = BaseResult & {
 		| 'targetManagerUnsupportedVersion'
 		| 'systemOutdated'
 		| 'noSpaceLeftOnDevice'
-		| 'invalidDeveloperIP',
+		| 'invalidDeveloperIP'
+		| 'instrumentationFailedPrivilege',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {

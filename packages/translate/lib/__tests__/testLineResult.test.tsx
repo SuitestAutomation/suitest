@@ -79,6 +79,7 @@ describe('Test line results translation', () => {
 		'unfocusableElement',
 		'unclickableElement',
 		'deviceConnectionError',
+		'controllerNotConnected',
 		'testIsNotStarted',
 		'signInRequired',
 		'connectionNotAuthorized',
@@ -113,6 +114,7 @@ describe('Test line results translation', () => {
 		'systemOutdated',
 		'noSpaceLeftOnDevice',
 		'invalidDeveloperIP',
+		'instrumentationFailedPrivilege',
 	];
 
 	describe('simple errors translations', () => {
