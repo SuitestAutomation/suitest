@@ -776,6 +776,25 @@ export const testLinesExamples = {
 		delay,
 		count,
 	}),
+	'Long tap on element ... for ... until ... every ... max ...': (
+		elementId = 'element-id-1',
+		condition: Condition = appExitedCondition,
+		delay: number | string = 5700,
+		count: number | string = 6,
+		duration: number | string = 2000,
+	): TestLine => ({
+		...baseTestLine,
+		type: 'tap',
+		target: {
+			type: 'element',
+			elementId,
+		},
+		taps: [{type: 'long', duration}],
+		condition,
+		negateCondition: false,
+		delay,
+		count,
+	}),
 	// Scroll line
 	'Scroll from element ... to ... until ... every ... max ...': (
 		elementId = 'element-id-1',

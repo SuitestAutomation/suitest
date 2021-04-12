@@ -183,7 +183,7 @@ export type TapTestLine = BaseTestLine & {
 	target: ElementTarget | MobilePositionTarget,
 	delay?: number | string,
 	count?: number | string,
-	taps: [{type: TapTypes}],
+	taps: [{type: TapTypes, duration?: undefined} | {type: 'long', duration?: number | string}],
 	condition?: Condition,
 	negateCondition?: boolean,
 };
