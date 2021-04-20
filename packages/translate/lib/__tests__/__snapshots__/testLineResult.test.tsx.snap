@@ -1256,6 +1256,13 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "appOnBackgroundError" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Cannot process line, application is not active",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "appRunning" error 1`] = `
 Object {
   "type": "text",
