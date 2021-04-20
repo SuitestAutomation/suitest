@@ -1263,6 +1263,13 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "appOnBackgroundError" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Cannot process line, application is not active",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "appRunning" error 1`] = `
 Object {
   "type": "text",
@@ -1340,6 +1347,13 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "controllerNotConnected" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Please check that all corresponding control units are working.",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "cyclicReference" error 1`] = `
 Object {
   "type": "text",
@@ -1386,6 +1400,13 @@ exports[`Test line results translation simple errors translations should transla
 Object {
   "type": "text",
   "value": "Suitest was unable to automatically insert the instrumentation library",
+}
+`;
+
+exports[`Test line results translation simple errors translations should translate "instrumentationFailedPrivilege" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Auto-instrumentation works for app packages with public or partner privileges only. Please use manual instrumentation instead",
 }
 `;
 

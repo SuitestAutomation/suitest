@@ -97,6 +97,8 @@ const simpleErrorMap: {[key: string]: Node} = {
 	unfocusableElement: <text>Element can't receive focus to enter text</text>,
 	unclickableElement: <text>Element click is obstructed by different element</text>,
 	deviceConnectionError: <text>Failed to initialize device control</text>,
+	controllerNotConnected: <text>Please check that all corresponding control units are working.</text>,
+	appOnBackgroundError: <text>Cannot process line, application is not active</text>,
 	testIsNotStarted: <text>Cannot continue with the current test anymore because of previous errors or bad initialization</text>,
 	signInRequired: <text>Account needs to be signed in on target device</text>,
 	connectionNotAuthorized: <text>Connection not authorized. Debug mode is not allowed on the device, please make sure it is enabled</text>,
@@ -129,6 +131,7 @@ const simpleErrorMap: {[key: string]: Node} = {
 	unsupportedOSVersion: <fragment>Unsupported OS version, please see our <link href="https://suite.st/docs/devices/playstation/#sdk-650-or-system-software-701-or-lower">docs</link></fragment>,
 	targetManagerUnsupportedVersion: <fragment>Unsupported Target Manager Server, please see our <link href="https://suite.st/docs/devices/playstation/#sdk-650-or-system-software-701-or-lower">docs</link></fragment>,
 	systemOutdated: <text>System software version mismatch. New version of system software is required</text>,
+	instrumentationFailedPrivilege: <text>Auto-instrumentation works for app packages with public or partner privileges only. Please use manual instrumentation instead</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {

@@ -79,6 +79,8 @@ describe('Test line results translation', () => {
 		'unfocusableElement',
 		'unclickableElement',
 		'deviceConnectionError',
+		'controllerNotConnected',
+		'appOnBackgroundError',
 		'testIsNotStarted',
 		'signInRequired',
 		'connectionNotAuthorized',
@@ -111,6 +113,7 @@ describe('Test line results translation', () => {
 		'unsupportedOSVersion',
 		'targetManagerUnsupportedVersion',
 		'systemOutdated',
+		'instrumentationFailedPrivilege',
 	];
 
 	describe('simple errors translations', () => {

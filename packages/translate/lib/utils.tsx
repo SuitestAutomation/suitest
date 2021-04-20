@@ -82,6 +82,8 @@ export const deviceOrientationsMap = {
 	'portraitReversed': 'Portrait - reversed',
 	'landscapeReversed': 'Landscape - reversed',
 	'landscape': 'Landscape',
+	'landscapeRight': 'Landscape right',
+	'landscapeLeft': 'Landscape left',
 };
 
 export const translateCodeProp = (

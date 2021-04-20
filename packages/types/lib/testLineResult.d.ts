@@ -110,6 +110,8 @@ export type SimpleError = BaseResult & {
 		| 'unfocusableElement'
 		| 'unclickableElement'
 		| 'deviceConnectionError'
+		| 'controllerNotConnected'
+		| 'appOnBackgroundError'
 		| 'testIsNotStarted'
 		| 'signInRequired'
 		| 'connectionNotAuthorized'
@@ -141,7 +143,8 @@ export type SimpleError = BaseResult & {
 		| 'ElementClickIntercepted'
 		| 'unsupportedOSVersion'
 		| 'targetManagerUnsupportedVersion'
-		| 'systemOutdated',
+		| 'systemOutdated'
+		| 'instrumentationFailedPrivilege',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {
