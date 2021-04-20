@@ -80,6 +80,7 @@ describe('Test line results translation', () => {
 		'unclickableElement',
 		'deviceConnectionError',
 		'controllerNotConnected',
+		'appOnBackgroundError',
 		'testIsNotStarted',
 		'signInRequired',
 		'connectionNotAuthorized',
