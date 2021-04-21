@@ -215,6 +215,11 @@ const translateElementCondition = (
 				title={<fragment>{elementName} is visible</fragment>}
 				status={mapStatus(lineResult?.result, inverse)}
 			/> as ConditionNode;
+		case '!visible':
+			return <condition
+				title={<fragment>{elementName} is not visible</fragment>}
+				status={mapStatus(lineResult?.result, inverse)}
+			/> as ConditionNode;
 		case 'matches':
 			return <condition
 				title={<fragment>{elementName} matches JavaScript</fragment>}
