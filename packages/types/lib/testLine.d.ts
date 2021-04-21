@@ -41,7 +41,8 @@ export type ScreenOrientation =
 	| 'landscape'
 	| 'landscapeReversed'
 	| 'landscapeRight'
-	| 'landscapeLeft';
+	| 'landscapeLeft'
+	| 'portraitUpsideDown';
 
 export type DeviceSettingsTestLine = BaseTestLine & {
 	type: 'deviceSettings',
