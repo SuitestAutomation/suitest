@@ -1516,6 +1516,110 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Long tap on element ... for ... until ... every ... max ..." 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Long tap on ",
+    },
+    Object {
+      "type": "subject",
+      "value": "element",
+    },
+    Object {
+      "type": "text",
+      "value": " for ",
+    },
+    Object {
+      "type": "input",
+      "value": "2s",
+    },
+    Object {
+      "type": "text",
+      "value": " until condition is met max ",
+    },
+    Object {
+      "type": "input",
+      "value": "6",
+    },
+    Object {
+      "type": "text",
+      "value": "x every ",
+    },
+    Object {
+      "type": "input",
+      "value": "5.7s",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Long tap on element ... for ... until ... every ... max ..." without appConfig 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "title": Array [
+        Object {
+          "type": "text",
+          "value": "Application has exited",
+        },
+      ],
+      "type": "condition",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Long tap on ",
+    },
+    Object {
+      "type": "subject",
+      "value": "element",
+    },
+    Object {
+      "type": "text",
+      "value": " for ",
+    },
+    Object {
+      "type": "input",
+      "value": "2s",
+    },
+    Object {
+      "type": "text",
+      "value": " until condition is met max ",
+    },
+    Object {
+      "type": "input",
+      "value": "6",
+    },
+    Object {
+      "type": "text",
+      "value": "x every ",
+    },
+    Object {
+      "type": "input",
+      "value": "5.7s",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Long tap on element ... until ... every ... max ..." 1`] = `
 Object {
   "children": Array [

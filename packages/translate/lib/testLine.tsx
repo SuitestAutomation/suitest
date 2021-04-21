@@ -492,9 +492,18 @@ const translateTapTestLine = (
 	lineResult?: TestLineResult,
 ): TestLineNode => {
 	const titleFragment = getConditionInfo(testLine, appConfig);
-	const tapType = testLine.taps[0].type;
+	const [{ type: tapType, duration }] = testLine.taps;
 	const tapTypeCapitalized = tapType.charAt(0).toUpperCase() + tapType.slice(1);
-	const title = <fragment>{tapTypeCapitalized} tap on {translateTarget(testLine.target)}{titleFragment}</fragment>;
+	const title = (
+		<fragment>
+			{tapTypeCapitalized} tap on {translateTarget(testLine.target)}
+			{duration !== undefined ?
+				<fragment> for {formatTimeout(duration, appConfig?.configVariables)}</fragment>
+				: undefined
+			}
+			{titleFragment}
+		</fragment>
+	);
 	const status = testLine.excluded ? 'excluded' : lineResult?.result;
 
 	return <test-line title={title} status={status}>
