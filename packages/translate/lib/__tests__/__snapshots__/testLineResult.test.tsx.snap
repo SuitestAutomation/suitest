@@ -332,7 +332,7 @@ exports[`Test line results translation Translate assert lines translate "assert 
 
 exports[`Test line results translation Translate assert lines translate "assert element" without appConfig 1`] = `"Assert: Element 1 exists"`;
 
-exports[`Test line results translation Translate assert lines translate "assert element" without error ""element ... is not visible"" 1`] = `"Assert: My element is not visible"`;
+exports[`Test line results translation Translate assert lines translate "assert element" without error "element ... is not visible" 1`] = `"Assert: My element is not visible"`;
 
 exports[`Test line results translation Translate assert lines translate "assert element" without error "element ... does not exist" 1`] = `"Assert: Element 1 does not exist"`;
 
