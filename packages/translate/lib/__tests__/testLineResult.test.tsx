@@ -543,7 +543,7 @@ return false;
 					})).toMatchSnapshot();
 				});
 
-				it('""element ... is not visible""', () => {
+				it('"element ... is not visible"', () => {
 					expect(testLineToPlainText({
 						testLine: assertLine(conditions['element ... is not visible']()),
 						appConfig,
