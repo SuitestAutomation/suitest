@@ -17,6 +17,7 @@ export const NOT_STARTED_REASON = Object.freeze({
 	PLATFORM_ERROR_ROKU: 'rokuPlatformError',
 	PLATFORM_ERROR_XBOX: 'xboxPlatformError',
 	PLATFORM_ERROR_APPLE_TV: 'applePlatformError',
+	PLATFORM_ERROR_TIZEN: 'tizenPlatformError',
 	SUITEST_DRIVE_OFFLINE: 'suitestDriveOffline',
 	SUITEST_DRIVE_SERVICE_OFFLINE: 'suitestDriveServiceOffline',
 	TEST_QUEUED: 'testQueued',
