@@ -144,6 +144,8 @@ export type SimpleError = BaseResult & {
 		| 'unsupportedOSVersion'
 		| 'targetManagerUnsupportedVersion'
 		| 'systemOutdated'
+		| 'noSpaceLeftOnDevice'
+		| 'invalidDeveloperIP'
 		| 'instrumentationFailedPrivilege',
 };
 

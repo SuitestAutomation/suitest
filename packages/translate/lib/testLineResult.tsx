@@ -131,6 +131,8 @@ const simpleErrorMap: {[key: string]: Node} = {
 	unsupportedOSVersion: <fragment>Unsupported OS version, please see our <link href="https://suite.st/docs/devices/playstation/#sdk-650-or-system-software-701-or-lower">docs</link></fragment>,
 	targetManagerUnsupportedVersion: <fragment>Unsupported Target Manager Server, please see our <link href="https://suite.st/docs/devices/playstation/#sdk-650-or-system-software-701-or-lower">docs</link></fragment>,
 	systemOutdated: <text>System software version mismatch. New version of system software is required</text>,
+	noSpaceLeftOnDevice: <text>App installation failed. No space left on the device.</text>,
+	invalidDeveloperIP: <fragment>Host PC IP does not match control unit IP, please see our <link href="https://suite.st/docs/devices/samsung-tizen/#set-up-developer-ip-on-the-target-device">docs</link>.</fragment>,
 	instrumentationFailedPrivilege: <text>Auto-instrumentation works for app packages with public or partner privileges only. Please use manual instrumentation instead</text>,
 };
 
