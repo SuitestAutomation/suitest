@@ -374,6 +374,19 @@ Object {
 }
 `;
 
+exports[`Testing not started reason translation. Should translate "tizenPlatformError" code 1`] = `
+Object {
+  "description": Object {
+    "type": "text",
+    "value": "Tizen driver has misbehaved. Please verify that the device is online and it's current IP address is correctly specified in Suitest. Then double check if the developer mode is enabled and if host PC IP matches the control unit IP. If nothing helps try rebooting the device and restarting SuitestDrive",
+  },
+  "title": Object {
+    "type": "text",
+    "value": "Cannot continue: Tizen driver has failed",
+  },
+}
+`;
+
 exports[`Testing not started reason translation. Should translate "xboxPlatformError" code 1`] = `
 Object {
   "description": Object {
@@ -562,6 +575,13 @@ Object {
 }
 `;
 
+exports[`Testing not started reason translation. Translate to html:  "tizenPlatformError" 1`] = `
+Object {
+  "description": "Cannot continue: Tizen driver has failed",
+  "title": "Cannot continue: Tizen driver has failed",
+}
+`;
+
 exports[`Testing not started reason translation. Translate to html:  "xboxPlatformError" 1`] = `
 Object {
   "description": "Cannot continue: Xbox driver has failed",
@@ -741,6 +761,13 @@ exports[`Testing not started reason translation. Translate to plain text:  "test
 Object {
   "description": "Execution will start as soon as other tests queued on this device will finish execution",
   "title": "Test is added to queue",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to plain text:  "tizenPlatformError" 1`] = `
+Object {
+  "description": "Tizen driver has misbehaved. Please verify that the device is online and it's current IP address is correctly specified in Suitest. Then double check if the developer mode is enabled and if host PC IP matches the control unit IP. If nothing helps try rebooting the device and restarting SuitestDrive",
+  "title": "Cannot continue: Tizen driver has failed",
 }
 `;
 
