@@ -98,6 +98,7 @@ const simpleErrorMap: {[key: string]: Node} = {
 	unclickableElement: <text>Element click is obstructed by different element</text>,
 	deviceConnectionError: <text>Failed to initialize device control</text>,
 	controllerNotConnected: <text>Please check that all corresponding control units are working.</text>,
+	appOnBackgroundError: <text>Cannot process line, application is not active</text>,
 	testIsNotStarted: <text>Cannot continue with the current test anymore because of previous errors or bad initialization</text>,
 	signInRequired: <text>Account needs to be signed in on target device</text>,
 	connectionNotAuthorized: <text>Connection not authorized. Debug mode is not allowed on the device, please make sure it is enabled</text>,

@@ -41,6 +41,11 @@ export type ElementVisibleCondition = {
 	type: 'visible',
 };
 
+export type ElementNotVisibleCondition = {
+	subject: ElementSubject,
+	type: '!visible',
+};
+
 export type ElementMatchesJavaScriptCondition = {
 	subject: ElementSubject,
 	type: 'matches',
@@ -64,6 +69,7 @@ export type ElementProperty = {
 export type ElementCondition = ElementExistsCondition
 	| ElementDoesNotExistCondition
 	| ElementVisibleCondition
+	| ElementNotVisibleCondition
 	| ElementMatchesJavaScriptCondition
 	| ElementPropertiesCondition;
 

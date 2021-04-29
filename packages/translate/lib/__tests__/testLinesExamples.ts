@@ -117,6 +117,13 @@ export const conditions = {
 		},
 		type: 'visible',
 	}),
+	'element ... is not visible': (apiId = 'My element'): Condition => ({
+		subject: {
+			type: 'element',
+			apiId,
+		},
+		type: '!visible',
+	}),
 	'element matches JS': (val = 'someJS();'): Condition => ({
 		subject: {
 			type: 'element',
@@ -771,6 +778,25 @@ export const testLinesExamples = {
 			elementId,
 		},
 		taps: [{type: 'long'}],
+		condition,
+		negateCondition: false,
+		delay,
+		count,
+	}),
+	'Long tap on element ... for ... until ... every ... max ...': (
+		elementId = 'element-id-1',
+		condition: Condition = appExitedCondition,
+		delay: number | string = 5700,
+		count: number | string = 6,
+		duration: number | string = 2000,
+	): TestLine => ({
+		...baseTestLine,
+		type: 'tap',
+		target: {
+			type: 'element',
+			elementId,
+		},
+		taps: [{type: 'long', duration}],
 		condition,
 		negateCondition: false,
 		delay,

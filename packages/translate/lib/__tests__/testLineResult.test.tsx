@@ -80,6 +80,7 @@ describe('Test line results translation', () => {
 		'unclickableElement',
 		'deviceConnectionError',
 		'controllerNotConnected',
+		'appOnBackgroundError',
 		'testIsNotStarted',
 		'signInRequired',
 		'connectionNotAuthorized',
@@ -544,6 +545,14 @@ return false;
 					})).toMatchSnapshot();
 				});
 
+				it('"element ... is not visible"', () => {
+					expect(testLineToPlainText({
+						testLine: assertLine(conditions['element ... is not visible']()),
+						appConfig,
+						elements,
+					})).toMatchSnapshot();
+				});
+
 				it('"element properties"', () => {
 					expect(testLineToPlainText({
 						testLine: assertLine(conditions['element properties']()),
@@ -659,6 +668,17 @@ return false;
 				it('element visible fail', () => {
 					expect(testLineToPlainText({
 						testLine: assertLine(conditions['element ... is visible']()),
+						appConfig,
+						elements,
+						lineResult: extendBaseError({
+							errorType: 'queryFailed',
+						}),
+					})).toMatchSnapshot();
+				});
+
+				it('element not visible fail', () => {
+					expect(testLineToPlainText({
+						testLine: assertLine(conditions['element ... is not visible']()),
 						appConfig,
 						elements,
 						lineResult: extendBaseError({
