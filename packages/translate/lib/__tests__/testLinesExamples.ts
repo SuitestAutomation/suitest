@@ -117,6 +117,13 @@ export const conditions = {
 		},
 		type: 'visible',
 	}),
+	'element ... is not visible': (apiId = 'My element'): Condition => ({
+		subject: {
+			type: 'element',
+			apiId,
+		},
+		type: '!visible',
+	}),
 	'element matches JS': (val = 'someJS();'): Condition => ({
 		subject: {
 			type: 'element',

@@ -619,6 +619,40 @@ Object {
 }
 `;
 
+exports[`conditions translation should translate "element ... is not visible" line 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "subject",
+      "value": "My element",
+    },
+    Object {
+      "type": "text",
+      "value": " is not visible",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "element ... is not visible" line without variables 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "subject",
+      "value": "My element",
+    },
+    Object {
+      "type": "text",
+      "value": " is not visible",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
 exports[`conditions translation should translate "element ... is visible" line 1`] = `
 Object {
   "children": Array [],
