@@ -106,7 +106,7 @@ export function translateNotStartedReason(code: NotStartedReason): Translation {
 		case NOT_STARTED_REASON.PLATFORM_ERROR_TIZEN:
 			return {
 				title: <text>Cannot continue: Tizen driver has failed</text>,
-				description: <text>Tizen driver has misbehaved. Please verify that the device is online and it's current IP address and developer credentials are correctly specified in Suitest. Then double check if the Development mode is enabled on the device and your channel/application is valid. If the local IP of the device changes, make sure to set up a static IP for the device</text>,
+				description: <text>Tizen driver has misbehaved. Please verify that the device is online and it's current IP address is correctly specified in Suitest. Then double check if the developer mode is enabled and if host PC IP matches the control unit IP. If nothing helps try rebooting the device and restarting SuitestDrive</text>,
 			};
 		case NOT_STARTED_REASON.EXCEEDED_PLAN_LIMITS:
 			return {

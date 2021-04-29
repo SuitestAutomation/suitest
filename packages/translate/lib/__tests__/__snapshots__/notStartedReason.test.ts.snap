@@ -374,6 +374,19 @@ Object {
 }
 `;
 
+exports[`Testing not started reason translation. Should translate "tizenPlatformError" code 1`] = `
+Object {
+  "description": Object {
+    "type": "text",
+    "value": "Tizen driver has misbehaved. Please verify that the device is online and it's current IP address and developer credentials are correctly specified in Suitest. Then double check if the Development mode is enabled on the device and your channel/application is valid. If the local IP of the device changes, make sure to set up a static IP for the device",
+  },
+  "title": Object {
+    "type": "text",
+    "value": "Cannot continue: Tizen driver has failed",
+  },
+}
+`;
+
 exports[`Testing not started reason translation. Should translate "xboxPlatformError" code 1`] = `
 Object {
   "description": Object {
@@ -562,6 +575,13 @@ Object {
 }
 `;
 
+exports[`Testing not started reason translation. Translate to html:  "tizenPlatformError" 1`] = `
+Object {
+  "description": "Cannot continue: Tizen driver has failed",
+  "title": "Cannot continue: Tizen driver has failed",
+}
+`;
+
 exports[`Testing not started reason translation. Translate to html:  "xboxPlatformError" 1`] = `
 Object {
   "description": "Cannot continue: Xbox driver has failed",
@@ -741,6 +761,13 @@ exports[`Testing not started reason translation. Translate to plain text:  "test
 Object {
   "description": "Execution will start as soon as other tests queued on this device will finish execution",
   "title": "Test is added to queue",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to plain text:  "tizenPlatformError" 1`] = `
+Object {
+  "description": "Tizen driver has misbehaved. Please verify that the device is online and it's current IP address and developer credentials are correctly specified in Suitest. Then double check if the Development mode is enabled on the device and your channel/application is valid. If the local IP of the device changes, make sure to set up a static IP for the device",
+  "title": "Cannot continue: Tizen driver has failed",
 }
 `;
 
