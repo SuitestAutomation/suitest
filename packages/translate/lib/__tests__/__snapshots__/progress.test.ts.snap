@@ -125,6 +125,15 @@ Object {
 }
 `;
 
+exports[`Interactive progress explanation. Should translate "selectingSuitestifyInstance" status 1`] = `
+Object {
+  "title": Object {
+    "type": "text",
+    "value": "Selecting nearest suitestify instance…",
+  },
+}
+`;
+
 exports[`Interactive progress explanation. Should translate "unistallingApp" status 1`] = `
 Object {
   "title": Object {
@@ -203,6 +212,12 @@ Object {
 }
 `;
 
+exports[`Interactive progress explanation. Translate progress to html:  "selectingSuitestifyInstance" 1`] = `
+Object {
+  "title": "Selecting nearest suitestify instance…",
+}
+`;
+
 exports[`Interactive progress explanation. Translate progress to html:  "unistallingApp" 1`] = `
 Object {
   "title": "Uninstalling app…",
@@ -266,6 +281,12 @@ Object {
 exports[`Interactive progress explanation. Translate progress to text:  "recoveringID" 1`] = `
 Object {
   "title": "Trying to recover Suitest device ID…",
+}
+`;
+
+exports[`Interactive progress explanation. Translate progress to text:  "selectingSuitestifyInstance" 1`] = `
+Object {
+  "title": "Selecting nearest suitestify instance…",
 }
 `;
 

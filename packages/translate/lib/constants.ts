@@ -39,6 +39,7 @@ export const PROGRESS_STATUS = Object.freeze({
 	DEVICE_IDENTIFICATION: 'recoveringID',
 	NOTHING: 'nothing', // says that previous operation is finished (failed or succeed)
 	OPENING_APP: 'openingApp',
+	SELECTING_SUITESTIFY_INSTANCE: 'selectingSuitestifyInstance',
 	WAITING_FOR_BOOTSTRAP: 'waitingForConnectionFromBootstrap',
 	WAITING_FOR_IL: 'waitingForConnectionFromIL',
 	WAIT_FOR_MANUAL_ACTION: 'needManual',
