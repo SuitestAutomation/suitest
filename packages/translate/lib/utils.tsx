@@ -79,12 +79,12 @@ export const formatCount = (count: number | string, variables?: AppConfiguration
 
 export const deviceOrientationsMap = {
 	'portrait': 'Portrait',
-	'portraitReversed': 'Portrait - reversed',
-	'landscapeReversed': 'Landscape - reversed',
-	'landscape': 'Landscape',
-	'landscapeRight': 'Landscape right',
-	'landscapeLeft': 'Landscape left',
-	'portraitUpsideDown': 'Portrait upside down',
+	'portraitReversed': 'Portrait (upside down/reversed)',
+	'landscapeReversed': 'Landscape (right/reversed)',
+	'landscape': 'Landscape (left)',
+	'landscapeRight': 'Landscape (right/reversed)',
+	'landscapeLeft': 'Landscape (left)',
+	'portraitUpsideDown': 'Portrait (upside down/reversed)',
 };
 
 export const translateCodeProp = (
