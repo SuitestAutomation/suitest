@@ -263,10 +263,7 @@ declare type TestLineDeviceSettingsType = TestLineType & {
 				| 'portrait'
 				| 'portraitReversed'
 				| 'landscape'
-				| 'landscapeReversed'
-				| 'landscapeRight'
-				| 'landscapeLeft'
-				| 'portraitUpsideDown',
+				| 'landscapeReversed',
 		},
 	},
 	condition?: AssertConditionType,
