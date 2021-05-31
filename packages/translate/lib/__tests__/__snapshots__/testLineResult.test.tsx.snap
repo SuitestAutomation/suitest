@@ -551,8 +551,7 @@ exports[`Test line results translation Translate assert lines translate "assert 
 
 exports[`Test line results translation Translate assert lines translate "assert ps video" render with fail result 1`] = `
 "✖ Assert: PlayStation 4 video had no error for any source
-  fail: Please make sure that you have the PlayStation SDK installed. https://suite.st/docs/troubleshooting/playstat
-        ion/#playstation-sdk-not-installed"
+  fail: Please make sure that you have the PlayStation SDK installed"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert ps video" render without appConfig 1`] = `"Assert: PlayStation 4 video had no error for current source"`;
@@ -1512,7 +1511,7 @@ Object {
 exports[`Test line results translation simple errors translations should translate "missingPSSDK" error 1`] = `
 Object {
   "type": "text",
-  "value": "Please make sure that you have the PlayStation SDK installed. https://suite.st/docs/troubleshooting/playstation/#playstation-sdk-not-installed",
+  "value": "Please make sure that you have the PlayStation SDK installed",
 }
 `;
 
@@ -1625,6 +1624,13 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "releaseMode" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Device is in the Release Mode, please switch it to the Assist Mode (Debug Settings / Boot Parameters / Release Check Mode)",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "sdComponentFailed" error 1`] = `
 Array [
   Object {
@@ -1681,7 +1687,7 @@ Object {
 exports[`Test line results translation simple errors translations should translate "targetManagerBusy" error 1`] = `
 Object {
   "type": "text",
-  "value": "Please try again in a few minutes",
+  "value": "Device is busy, please try again later. Open Neighborhood (PS4) or Target Manager (PS5) app for more details",
 }
 `;
 
@@ -1753,6 +1759,13 @@ Array [
     "value": "docs",
   },
 ]
+`;
+
+exports[`Test line results translation simple errors translations should translate "unsupportedPatchPackage" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Patch package is not supported. You need to use a fully standalone application package",
+}
 `;
 
 exports[`Test line results translation simple errors translations should translate "wrongApp" error 1`] = `

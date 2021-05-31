@@ -116,6 +116,8 @@ describe('Test line results translation', () => {
 		'noSpaceLeftOnDevice',
 		'invalidDeveloperIP',
 		'instrumentationFailedPrivilege',
+		'releaseMode',
+		'unsupportedPatchPackage',
 	];
 
 	describe('simple errors translations', () => {

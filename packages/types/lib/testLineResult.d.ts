@@ -146,7 +146,9 @@ export type SimpleError = BaseResult & {
 		| 'systemOutdated'
 		| 'noSpaceLeftOnDevice'
 		| 'invalidDeveloperIP'
-		| 'instrumentationFailedPrivilege',
+		| 'instrumentationFailedPrivilege'
+		| 'releaseMode'
+		| 'unsupportedPatchPackage',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {
