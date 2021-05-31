@@ -106,9 +106,9 @@ const simpleErrorMap: {[key: string]: Node} = {
 	appleError65: <text>Failed to launch app: Apple ID account error. https://suite.st/docs/devices/apple-tv/#apple-id-account-error</text>,
 	appleError70: <text>Failed to launch app: Xcode error. https://suite.st/docs/devices/apple-tv/#xcode-error</text>,
 	appleAppSignError: <text>Failed to launch app: App code sign error. https://suite.st/docs/devices/apple-tv/#app-code-sign-error</text>,
-	missingPSSDK: <text>Please make sure that you have the PlayStation SDK installed. https://suite.st/docs/troubleshooting/playstation/#playstation-sdk-not-installed</text>,
+	missingPSSDK: <text>Please make sure that you have the PlayStation SDK installed</text>,
 	packageInstallationFailed: <text>Application installation on the device failed</text>,
-	targetManagerBusy: <text>Please try again in a few minutes</text>,
+	targetManagerBusy: <text>Device is busy, please try again later. Open Neighborhood (PS4) or Target Manager (PS5) app for more details</text>,
 	missingDotNet: <text>Please make sure you have the .NET Framework installed. https://suite.st/docs/troubleshooting/playstation/#net-framework-not-installed</text>,
 	bootstrapAppNotDetected: <text>The Suitest bootstrap application was not detected</text>,
 	activationExpired: <text>Could not open the app because the DevKit/TestKit expired</text>,
@@ -134,6 +134,8 @@ const simpleErrorMap: {[key: string]: Node} = {
 	noSpaceLeftOnDevice: <text>App installation failed. No space left on the device.</text>,
 	invalidDeveloperIP: <fragment>Host PC IP does not match control unit IP, please see our <link href="https://suite.st/docs/devices/samsung-tizen/#set-up-developer-ip-on-the-target-device">docs</link>.</fragment>,
 	instrumentationFailedPrivilege: <text>Auto-instrumentation works for app packages with public or partner privileges only. Please use manual instrumentation instead</text>,
+	releaseMode: <text>Device is in the Release Mode, please switch it to the Assist Mode (Debug Settings / Boot Parameters / Release Check Mode)</text>,
+	unsupportedPatchPackage: <text>Patch package is not supported. You need to use a fully standalone application package</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
