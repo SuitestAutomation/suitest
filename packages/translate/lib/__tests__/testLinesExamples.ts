@@ -939,4 +939,12 @@ export const testLinesExamples = {
 			params: {orientation: 'portrait'},
 		},
 	}),
+	'close application': (): TestLine => ({
+		...baseTestLine,
+		type: 'closeApp',
+	}),
+	'suspend application': (): TestLine => ({
+		...baseTestLine,
+		type: 'suspendApp',
+	}),
 };

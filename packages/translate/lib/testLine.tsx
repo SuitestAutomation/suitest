@@ -26,7 +26,7 @@ import {
 	WaitUntilTestLine,
 	TestLineResult,
 	ClearAppDataTestLine, TakeScreenshotTestLine, QueryLine, QueryLineError, DeviceSettingsTestLine,
-	ScrollTestLine, SwipeTestLine,
+	ScrollTestLine, SwipeTestLine, CloseAppTestLine, SuspendAppTestLine,
 } from '@suitest/types';
 import {translateComparator} from './comparator';
 import {translateCondition} from './condition';
@@ -206,6 +206,30 @@ const translateOpenApp = (
 			/>
 		</props>
 	</test-line> as TestLineNode;
+};
+
+const translateCloseAppTestLine = (
+	testLine: CloseAppTestLine,
+	lineResult?: TestLineResult,
+): TestLineNode => {
+	const status = testLine.excluded ? 'excluded' : lineResult?.result;
+
+	return <test-line
+		title={<text>Close application</text>}
+		status={status}
+	/> as TestLineNode;
+};
+
+const translateSuspendAppTestLine = (
+	testLine: SuspendAppTestLine,
+	lineResult?: TestLineResult,
+): TestLineNode => {
+	const status = testLine.excluded ? 'excluded' : lineResult?.result;
+
+	return <test-line
+		title={<text>Suspend application</text>}
+		status={status}
+	/> as TestLineNode;
 };
 
 const translateOpenUrl = (
@@ -638,6 +662,10 @@ export const translateTestLine = ({
 			return translateSwipeTestLine(testLine, appConfig, elements, lineResult as TestLineResult);
 		case 'moveTo':
 			return translateMoveToTestLine(testLine, appConfig, elements, lineResult as TestLineResult);
+		case 'closeApp':
+			return translateCloseAppTestLine(testLine, lineResult as TestLineResult);
+		case 'suspendApp':
+			return translateSuspendAppTestLine(testLine, lineResult as TestLineResult);
 		case 'comment':
 			return translateCommentTestLine(testLine);
 		default:
