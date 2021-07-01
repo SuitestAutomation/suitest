@@ -2502,6 +2502,58 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Restart application" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Restart application",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Restart application" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Restart application",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Resume background application" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Resume background application",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Resume background application" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Resume background application",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Run snippet ... every ... exactly ..." 1`] = `
 Object {
   "children": Array [],

@@ -58,9 +58,12 @@ export type ExecuteCommandTestLine = BaseTestLine & {
 	val: string,
 };
 
+export type OpenAppLaunchModes = 'resume' | 'restart';
+
 export type OpenAppTestLine = BaseTestLine & {
 	type: 'openApp',
 	relativeUrl?: string,
+	launchMode?: OpenAppLaunchModes,
 };
 
 export type CloseAppTestLine = BaseTestLine & {

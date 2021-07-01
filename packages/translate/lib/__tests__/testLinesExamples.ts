@@ -371,6 +371,16 @@ export const testLinesExamples = {
 		type: 'openApp',
 		excluded: true,
 	}),
+	'Restart application': (): TestLine => ({
+		...baseTestLine,
+		type: 'openApp',
+		launchMode: 'restart',
+	}),
+	'Resume background application': (): TestLine => ({
+		...baseTestLine,
+		type: 'openApp',
+		launchMode: 'resume',
+	}),
 	'Open app at relative URL ...': (relativeUrl = '/some/path'): TestLine => ({
 		...baseTestLine,
 		type: 'openApp',

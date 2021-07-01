@@ -184,6 +184,20 @@ const translateOpenApp = (
 	lineResult?: TestLineResult
 ): TestLineNode => {
 	const status = testLine.excluded ? 'excluded' : lineResult?.result;
+
+	if (testLine.launchMode) {
+		// Open app with launch mode
+		const message = {
+			resume: 'Resume background application',
+			restart: 'Restart application',
+		}[testLine.launchMode] ?? 'Open application';
+
+		return <test-line
+			title={<text>{message}</text>}
+			status={status}
+		/> as TestLineNode;
+	}
+
 	if (!testLine.relativeUrl) {
 		// Open app with default path
 		return <test-line
