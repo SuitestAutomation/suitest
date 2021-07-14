@@ -154,6 +154,8 @@ const lineTypeDocsMap: {[key in Exclude<TestLine['type'], 'assert' | 'wait'>]: s
 	tap: '/testing/test-operations/tap-operation/',
 	scroll: '/testing/test-operations/scroll-operation/',
 	swipe: '/testing/test-operations/swipe-flick-operation/',
+	closeApp: '/testing/test-operations/close-app-operation/',
+	suspendApp: '/testing/test-operations/suspend-app-operation/',
 	comment: null,
 };
 const subjTypeDocsMap: {[key in Subject['type'] | 'elementProps' | 'execute']: string} = {

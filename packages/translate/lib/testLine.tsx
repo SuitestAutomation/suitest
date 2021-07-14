@@ -26,7 +26,7 @@ import {
 	WaitUntilTestLine,
 	TestLineResult,
 	ClearAppDataTestLine, TakeScreenshotTestLine, QueryLine, QueryLineError, DeviceSettingsTestLine,
-	ScrollTestLine, SwipeTestLine,
+	ScrollTestLine, SwipeTestLine, CloseAppTestLine, SuspendAppTestLine,
 } from '@suitest/types';
 import {translateComparator} from './comparator';
 import {translateCondition} from './condition';
@@ -184,6 +184,20 @@ const translateOpenApp = (
 	lineResult?: TestLineResult
 ): TestLineNode => {
 	const status = testLine.excluded ? 'excluded' : lineResult?.result;
+
+	if (testLine.launchMode) {
+		// Open app with launch mode
+		const message = {
+			resume: 'Resume background application',
+			restart: 'Restart application',
+		}[testLine.launchMode] ?? 'Open application';
+
+		return <test-line
+			title={<text>{message}</text>}
+			status={status}
+		/> as TestLineNode;
+	}
+
 	if (!testLine.relativeUrl) {
 		// Open app with default path
 		return <test-line
@@ -206,6 +220,30 @@ const translateOpenApp = (
 			/>
 		</props>
 	</test-line> as TestLineNode;
+};
+
+const translateCloseAppTestLine = (
+	testLine: CloseAppTestLine,
+	lineResult?: TestLineResult,
+): TestLineNode => {
+	const status = testLine.excluded ? 'excluded' : lineResult?.result;
+
+	return <test-line
+		title={<text>Close application</text>}
+		status={status}
+	/> as TestLineNode;
+};
+
+const translateSuspendAppTestLine = (
+	testLine: SuspendAppTestLine,
+	lineResult?: TestLineResult,
+): TestLineNode => {
+	const status = testLine.excluded ? 'excluded' : lineResult?.result;
+
+	return <test-line
+		title={<text>Suspend application</text>}
+		status={status}
+	/> as TestLineNode;
 };
 
 const translateOpenUrl = (
@@ -638,6 +676,10 @@ export const translateTestLine = ({
 			return translateSwipeTestLine(testLine, appConfig, elements, lineResult as TestLineResult);
 		case 'moveTo':
 			return translateMoveToTestLine(testLine, appConfig, elements, lineResult as TestLineResult);
+		case 'closeApp':
+			return translateCloseAppTestLine(testLine, lineResult as TestLineResult);
+		case 'suspendApp':
+			return translateSuspendAppTestLine(testLine, lineResult as TestLineResult);
 		case 'comment':
 			return translateCommentTestLine(testLine);
 		default:
