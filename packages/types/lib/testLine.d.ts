@@ -58,9 +58,20 @@ export type ExecuteCommandTestLine = BaseTestLine & {
 	val: string,
 };
 
+export type OpenAppLaunchModes = 'resume' | 'restart';
+
 export type OpenAppTestLine = BaseTestLine & {
 	type: 'openApp',
 	relativeUrl?: string,
+	launchMode?: OpenAppLaunchModes,
+};
+
+export type CloseAppTestLine = BaseTestLine & {
+	type: 'closeApp',
+};
+
+export type SuspendAppTestLine = BaseTestLine & {
+	type: 'suspendApp',
 };
 
 export type OpenUrlTestLine = BaseTestLine & {
@@ -236,7 +247,8 @@ export type CommentTestLine = BaseTestLine & {
 	val: string,
 };
 
-export type TestLine = AssertTestLine
+export type TestLine =
+	| AssertTestLine
 	| WaitUntilTestLine
 	| ClearAppDataTestLine
 	| ExecuteCommandTestLine
@@ -256,4 +268,6 @@ export type TestLine = AssertTestLine
 	| DeviceSettingsTestLine
 	| TapTestLine
 	| ScrollTestLine
-	| SwipeTestLine;
+	| SwipeTestLine
+	| CloseAppTestLine
+	| SuspendAppTestLine;
