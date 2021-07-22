@@ -18,6 +18,9 @@ export type AssertTestLine = BaseTestLine & {
 	then?: AssertThen,
 };
 
+/*
+* @deprecated should be used AssertTestLine instead
+*/
 export type  WaitUntilTestLine = BaseTestLine & {
 	type: 'wait',
 	condition: Condition,
@@ -103,7 +106,6 @@ export type RunTestTestLine = BaseTestLine & {
 	type: 'runSnippet',
 	val: string,
 	count?: number | string,
-	delay?: number | string,
 	condition?: Condition,
 	negateCondition?: boolean,
 };
