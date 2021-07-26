@@ -23,7 +23,6 @@ export type ApiElementSubject = {
 export type IdElementSubject = {
 	type: 'element',
 	elementId: UUID,
-	name?: string, // TODO - drop it after feeds update
 	nameHint?: string,
 };
 
