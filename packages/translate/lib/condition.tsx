@@ -155,11 +155,6 @@ const translateElementName = (subject: ElementSubject | PSVideoSubject, elements
 			return <subject>{elements[subject.elementId].name}</subject>;
 		}
 
-		if (subject.name) {
-			// Deprecated
-			return <subject>{subject.name}</subject>;
-		}
-
 		if (subject.nameHint) {
 			// In case element was removed and we no longer have it on record
 			return <subject>{subject.nameHint}</subject>;

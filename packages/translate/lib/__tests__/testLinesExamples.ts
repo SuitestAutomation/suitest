@@ -1,6 +1,6 @@
 import {
 	Comparator,
-	Condition,
+	Condition, CssPropertiesQueryLine,
 	Elements,
 	NetworkRequestBodyInfo,
 	NetworkRequestHeaderInfo,
@@ -195,7 +195,7 @@ export const conditions = {
 		subject: {
 			type: 'element',
 			elementId: 'unknown-id',
-			name: 'Foo Bar',
+			nameHint: 'Foo Bar',
 		},
 		type: 'exists',
 	}),
@@ -921,6 +921,14 @@ export const testLinesExamples = {
 		subject: {
 			type: 'cookie',
 			cookieName: 'cook',
+		},
+	}),
+	'GET element css properties': (): CssPropertiesQueryLine => ({
+		type: 'query',
+		subject: {
+			type: 'elementCssProps',
+			selector: { apiId: 'element-api-id' },
+			elementCssProps: ['width', 'height', 'opacity'],
 		},
 	}),
 	'JS expression': (): QueryLine => ({

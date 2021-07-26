@@ -6,23 +6,25 @@ export type CookieQueryLine = {
 	},
 };
 
+export type ElementSelector = {
+	apiId?: string,
+	css?: string,
+	xpath?: string,
+	attributes?: string,
+	text?: string,
+	position?: string,
+	size?: string,
+	color?: string,
+	video?: boolean,
+	psVideo?: boolean,
+	ifMultipleFoundReturn?: number,
+};
+
 export type ElementQueryLine = {
 	type: 'query',
 	subject: {
 		type: 'elementProps',
-		selector: {
-			apiId?: string,
-			css?: string,
-			xpath?: string,
-			attributes?: string,
-			text?: string,
-			position?: string,
-			size?: string,
-			color?: string,
-			video?: boolean,
-			psVideo?: boolean,
-			ifMultipleFoundReturn?: number,
-		},
+		selector: ElementSelector,
 	},
 };
 
@@ -41,4 +43,18 @@ export type LocationQueryLine = {
 	},
 };
 
-export type QueryLine = CookieQueryLine | ElementQueryLine | JsExpressionQueryLine | LocationQueryLine;
+export type CssPropertiesQueryLine = {
+	type: 'query',
+	subject: {
+		selector: ElementSelector,
+		type: 'elementCssProps',
+		elementCssProps: string[],
+	},
+};
+
+export type QueryLine =
+	| CookieQueryLine
+	| ElementQueryLine
+	| JsExpressionQueryLine
+	| LocationQueryLine
+	| CssPropertiesQueryLine;

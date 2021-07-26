@@ -26,7 +26,7 @@ import {
 	WaitUntilTestLine,
 	TestLineResult,
 	ClearAppDataTestLine, TakeScreenshotTestLine, QueryLine, QueryLineError, DeviceSettingsTestLine,
-	ScrollTestLine, SwipeTestLine, CloseAppTestLine, SuspendAppTestLine,
+	ScrollTestLine, SwipeTestLine, CloseAppTestLine, SuspendAppTestLine, ElementSelector,
 } from '@suitest/types';
 import {translateComparator} from './comparator';
 import {translateCondition} from './condition';
@@ -130,6 +130,10 @@ const translateClearAppDataTestLine = (testLine: ClearAppDataTestLine, lineResul
 
 const translateQueryTestLine = (testLine: QueryLine, lineResult?: TestLineResult | QueryLineError): TestLineNode => {
 	let title = '';
+	const stringifySelector = (selector: ElementSelector): string =>
+		selector.video || selector.psVideo
+			? 'video element'
+			: `"${Object.values(selector).filter(Boolean)[0]}" element`;
 
 	switch (testLine.subject.type) {
 		case 'cookie':
@@ -142,12 +146,12 @@ const translateQueryTestLine = (testLine: QueryLine, lineResult?: TestLineResult
 			title = 'Retrieve value of current location';
 			break;
 		case 'elementProps':
-			title = 'Retrieve info of ';
-			if (testLine.subject.selector.video || testLine.subject.selector.psVideo) {
-				title += 'video element';
-			} else {
-				title += `"${Object.values(testLine.subject.selector).filter(Boolean)[0]}" element`;
-			}
+			title = 'Retrieve info of ' + stringifySelector(testLine.subject.selector);
+			break;
+		case 'elementCssProps':
+			const { elementCssProps, selector } = testLine.subject;
+			title += `Getting [${elementCssProps.join(', ')}] css properties of `
+				+ stringifySelector(selector);
 			break;
 	}
 	const result: TestLineResult['result'] | undefined = lineResult?.result === 'error' ? 'fail' : lineResult?.result;
