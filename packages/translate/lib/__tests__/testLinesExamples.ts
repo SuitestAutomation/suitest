@@ -10,7 +10,7 @@ import {
 	Snippets,
 	StringComparator,
 	TestLine,
-    ElementAttributesQueryLine,
+	ElementAttributesQueryLine,
 } from '@suitest/types';
 import {PSVideoHadNoErrorCondition, JavaScriptComparator, ExistComparator, ElementProperty} from '@suitest/types/lib';
 
