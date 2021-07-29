@@ -9,7 +9,7 @@ import {
 	QueryLine,
 	Snippets,
 	StringComparator,
-	TestLine,
+	TestLine, ElementHandleQueryLine,
 } from '@suitest/types';
 import {PSVideoHadNoErrorCondition, JavaScriptComparator, ExistComparator, ElementProperty} from '@suitest/types/lib';
 
@@ -424,11 +424,10 @@ export const testLinesExamples = {
 		condition,
 		negateCondition: true,
 	}),
-	'Run snippet ... until ... every ... max ...': (
+	'Run snippet ... until ... max ...': (
 		val = 'snippet-id-1',
 		condition: Condition = appExitedCondition,
 		count: number | string = 2,
-		delay: number | string = 3000
 	): TestLine => ({
 		...baseTestLine,
 		type: 'runSnippet',
@@ -436,18 +435,15 @@ export const testLinesExamples = {
 		condition,
 		negateCondition: false,
 		count,
-		delay,
 	}),
-	'Run snippet ... every ... exactly ...': (
+	'Run snippet ... exactly ...': (
 		val = 'unknown-snippet-id-1',
 		count: number | string = 2,
-		delay: number | string = 3000
 	): TestLine => ({
 		...baseTestLine,
 		type: 'runSnippet',
 		val,
 		count,
-		delay,
 	}),
 	// Press button
 	'Press ... once': (ids = ['LEFT']): TestLine => ({
@@ -929,6 +925,14 @@ export const testLinesExamples = {
 			type: 'elementCssProps',
 			selector: { apiId: 'element-api-id' },
 			elementCssProps: ['width', 'height', 'opacity'],
+		},
+	}),
+	'GET element handle': (): ElementHandleQueryLine => ({
+		type: 'query',
+		subject: {
+			type: 'elementHandle',
+			selector: { apiId: 'element-api-id' },
+			multiple: false,
 		},
 	}),
 	'JS expression': (): QueryLine => ({
