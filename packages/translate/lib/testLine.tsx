@@ -46,11 +46,14 @@ const getConditionInfo = (
 	// and has all types of conditions and loops
 	const {condition, count, negateCondition, delay} = (testLine as PressButtonTestLine);
 
+	const getDelayFragment = (delay?: number | string) => delay !== undefined
+		? <fragment> every {formatTimeout(delay, appConfig?.configVariables)}</fragment>
+		: '';
+
 	// Do something ... exactly ... every ...
 	if (!condition && count && (typeof count === 'string' || count > 1)) {
-		return <fragment> exactly {
-			formatCount(count, appConfig?.configVariables)
-		} every {formatTimeout(delay ?? 0, appConfig?.configVariables)}</fragment> as Node;
+		return <fragment> exactly {formatCount(count, appConfig?.configVariables)}
+			{getDelayFragment(delay)}</fragment> as Node;
 	}
 
 	// Do something ... only if ...
@@ -60,9 +63,8 @@ const getConditionInfo = (
 
 	// Do something ... until ...
 	if (condition && !negateCondition) {
-		return <fragment> until condition is met max {
-			formatCount(count ?? 1, appConfig?.configVariables)
-		} every {formatTimeout(delay ?? 0, appConfig?.configVariables)}</fragment>;
+		return <fragment> until condition is met max {formatCount(count ?? 1, appConfig?.configVariables)}
+			{getDelayFragment(delay)}</fragment>;
 	}
 
 	// Do something ...
@@ -152,6 +154,10 @@ const translateQueryTestLine = (testLine: QueryLine, lineResult?: TestLineResult
 			const { elementCssProps, selector } = testLine.subject;
 			title += `Getting [${elementCssProps.join(', ')}] css properties of `
 				+ stringifySelector(selector);
+			break;
+		case 'elementHandle':
+			title += `Getting handle${testLine.subject.multiple ? 's' : ''} of `
+				+ stringifySelector(testLine.subject.selector);
 			break;
 	}
 	const result: TestLineResult['result'] | undefined = lineResult?.result === 'error' ? 'fail' : lineResult?.result;

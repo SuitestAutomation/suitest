@@ -1464,6 +1464,32 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "GET element handle" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Getting handle of \\"element-api-id\\" element",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "GET element handle" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Getting handle of \\"element-api-id\\" element",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "GET element props" 1`] = `
 Object {
   "children": Array [],
@@ -2580,7 +2606,7 @@ Object {
 }
 `;
 
-exports[`Test Lines translation Should translate test line "Run snippet ... every ... exactly ..." 1`] = `
+exports[`Test Lines translation Should translate test line "Run snippet ... exactly ..." 1`] = `
 Object {
   "children": Array [],
   "title": Array [
@@ -2602,18 +2628,14 @@ Object {
     },
     Object {
       "type": "text",
-      "value": "x every ",
-    },
-    Object {
-      "type": "input",
-      "value": "3s",
+      "value": "x",
     },
   ],
   "type": "test-line",
 }
 `;
 
-exports[`Test Lines translation Should translate test line "Run snippet ... every ... exactly ..." without appConfig 1`] = `
+exports[`Test Lines translation Should translate test line "Run snippet ... exactly ..." without appConfig 1`] = `
 Object {
   "children": Array [],
   "title": Array [
@@ -2635,11 +2657,7 @@ Object {
     },
     Object {
       "type": "text",
-      "value": "x every ",
-    },
-    Object {
-      "type": "input",
-      "value": "3s",
+      "value": "x",
     },
   ],
   "type": "test-line",
@@ -2744,7 +2762,7 @@ Object {
 }
 `;
 
-exports[`Test Lines translation Should translate test line "Run snippet ... until ... every ... max ..." 1`] = `
+exports[`Test Lines translation Should translate test line "Run snippet ... until ... max ..." 1`] = `
 Object {
   "children": Array [
     Object {
@@ -2777,18 +2795,14 @@ Object {
     },
     Object {
       "type": "text",
-      "value": "x every ",
-    },
-    Object {
-      "type": "input",
-      "value": "3s",
+      "value": "x",
     },
   ],
   "type": "test-line",
 }
 `;
 
-exports[`Test Lines translation Should translate test line "Run snippet ... until ... every ... max ..." without appConfig 1`] = `
+exports[`Test Lines translation Should translate test line "Run snippet ... until ... max ..." without appConfig 1`] = `
 Object {
   "children": Array [
     Object {
@@ -2821,11 +2835,7 @@ Object {
     },
     Object {
       "type": "text",
-      "value": "x every ",
-    },
-    Object {
-      "type": "input",
-      "value": "3s",
+      "value": "x",
     },
   ],
   "type": "test-line",

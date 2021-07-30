@@ -52,9 +52,19 @@ export type CssPropertiesQueryLine = {
 	},
 };
 
+export type ElementHandleQueryLine = {
+	type: 'query',
+	subject: {
+		selector: ElementSelector,
+		type: 'elementHandle',
+		multiple: boolean,
+	},
+};
+
 export type QueryLine =
 	| CookieQueryLine
 	| ElementQueryLine
 	| JsExpressionQueryLine
 	| LocationQueryLine
-	| CssPropertiesQueryLine;
+	| CssPropertiesQueryLine
+	| ElementHandleQueryLine;
