@@ -52,6 +52,15 @@ export type CssPropertiesQueryLine = {
 	},
 };
 
+export type ElementHandleQueryLine = {
+	type: 'query',
+	subject: {
+		selector: ElementSelector,
+		type: 'elementHandle',
+		multiple: boolean,
+	},
+};
+
 export type ElementAttributesQueryLine = {
 	type: 'query',
 	subject: {
@@ -67,4 +76,5 @@ export type QueryLine =
 	| JsExpressionQueryLine
 	| LocationQueryLine
 	| CssPropertiesQueryLine
+	| ElementHandleQueryLine
 	| ElementAttributesQueryLine;

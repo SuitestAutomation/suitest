@@ -1490,6 +1490,32 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "GET element handle" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Getting handle of \\"element-api-id\\" element",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "GET element handle" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Getting handle of \\"element-api-id\\" element",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "GET element props" 1`] = `
 Object {
   "children": Array [],
@@ -2628,11 +2654,7 @@ Object {
     },
     Object {
       "type": "text",
-      "value": "x every ",
-    },
-    Object {
-      "type": "input",
-      "value": "0s",
+      "value": "x",
     },
   ],
   "type": "test-line",
@@ -2661,11 +2683,7 @@ Object {
     },
     Object {
       "type": "text",
-      "value": "x every ",
-    },
-    Object {
-      "type": "input",
-      "value": "0s",
+      "value": "x",
     },
   ],
   "type": "test-line",
@@ -2803,11 +2821,7 @@ Object {
     },
     Object {
       "type": "text",
-      "value": "x every ",
-    },
-    Object {
-      "type": "input",
-      "value": "0s",
+      "value": "x",
     },
   ],
   "type": "test-line",
@@ -2847,11 +2861,7 @@ Object {
     },
     Object {
       "type": "text",
-      "value": "x every ",
-    },
-    Object {
-      "type": "input",
-      "value": "0s",
+      "value": "x",
     },
   ],
   "type": "test-line",

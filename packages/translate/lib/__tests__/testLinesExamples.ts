@@ -10,6 +10,7 @@ import {
 	Snippets,
 	StringComparator,
 	TestLine,
+	ElementHandleQueryLine,
 	ElementAttributesQueryLine,
 } from '@suitest/types';
 import {PSVideoHadNoErrorCondition, JavaScriptComparator, ExistComparator, ElementProperty} from '@suitest/types/lib';
@@ -926,6 +927,14 @@ export const testLinesExamples = {
 			type: 'elementCssProps',
 			selector: { apiId: 'element-api-id' },
 			elementCssProps: ['width', 'height', 'opacity'],
+		},
+	}),
+	'GET element handle': (): ElementHandleQueryLine => ({
+		type: 'query',
+		subject: {
+			type: 'elementHandle',
+			selector: { apiId: 'element-api-id' },
+			multiple: false,
 		},
 	}),
 	'GET element attributes': (): ElementAttributesQueryLine => ({
