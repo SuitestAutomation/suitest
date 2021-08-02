@@ -159,7 +159,7 @@ const lineTypeDocsMap: {[key in Exclude<TestLine['type'], 'assert' | 'wait'>]: s
 	comment: null,
 };
 const subjTypeDocsMap: {
-	[key in Subject['type'] | 'elementProps' | 'execute' | 'elementCssProps' | 'elementHandle']: string
+	[key in Subject['type'] | 'elementProps' | 'execute' | 'elementCssProps' | 'elementHandle' | 'elementAttributes']: string
 } = {
 	application: '/testing/test-subjects/application-subject/',
 	cookie: '/testing/test-subjects/cookie-subject/',
@@ -175,6 +175,8 @@ const subjTypeDocsMap: {
 	elementCssProps: '/',
 	// FIXME: specify proper url to the docs section
 	elementHandle: '/',
+	// FIXME: specify proper url to the docs section
+	elementAttributes: '/',
 };
 
 export const getDocsLink = (line: TestLine | QueryLine): string | undefined => {

@@ -159,6 +159,16 @@ const translateQueryTestLine = (testLine: QueryLine, lineResult?: TestLineResult
 			title += `Getting handle${testLine.subject.multiple ? 's' : ''} of `
 				+ stringifySelector(testLine.subject.selector);
 			break;
+		case 'elementAttributes':
+			const { attributes } = testLine.subject;
+			const stringifiedAttrs = attributes.length ?
+				`[${attributes.join(', ')}] attribute${attributes.length > 1 ? 's' : ''}`
+				: 'all attributes';
+			title += `Getting ${stringifiedAttrs} of ` + stringifySelector(testLine.subject.selector);
+			break;
+		default:
+			const subject: never = testLine.subject;
+			console.warn(`Unknown subject "${JSON.stringify(subject)}" of query line.`);
 	}
 	const result: TestLineResult['result'] | undefined = lineResult?.result === 'error' ? 'fail' : lineResult?.result;
 

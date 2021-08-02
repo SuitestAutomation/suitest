@@ -61,10 +61,20 @@ export type ElementHandleQueryLine = {
 	},
 };
 
+export type ElementAttributesQueryLine = {
+	type: 'query',
+	subject: {
+		selector: ElementSelector,
+		type: 'elementAttributes',
+		attributes: string[],
+	},
+};
+
 export type QueryLine =
 	| CookieQueryLine
 	| ElementQueryLine
 	| JsExpressionQueryLine
 	| LocationQueryLine
 	| CssPropertiesQueryLine
-	| ElementHandleQueryLine;
+	| ElementHandleQueryLine
+	| ElementAttributesQueryLine;
