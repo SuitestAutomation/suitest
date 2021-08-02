@@ -136,6 +136,7 @@ const simpleErrorMap: {[key: string]: Node} = {
 	instrumentationFailedPrivilege: <text>Auto-instrumentation works for app packages with public or partner privileges only. Please use manual instrumentation instead</text>,
 	releaseMode: <text>Device is in the Release Mode, please switch it to the Assist Mode (Debug Settings / Boot Parameters / Release Check Mode)</text>,
 	unsupportedPatchPackage: <text>Patch package is not supported. You need to use a fully standalone application package</text>,
+	deviceLabException: <text>Suitest device lab - you do not have permission for this action under the current circumstances</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
