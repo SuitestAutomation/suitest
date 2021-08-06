@@ -17,6 +17,7 @@ export type ElementSelector = {
 	color?: string,
 	video?: boolean,
 	psVideo?: boolean,
+	active?: boolean,
 	ifMultipleFoundReturn?: number,
 };
 

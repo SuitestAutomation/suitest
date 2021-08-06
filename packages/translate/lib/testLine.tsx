@@ -130,12 +130,19 @@ const translateClearAppDataTestLine = (testLine: ClearAppDataTestLine, lineResul
 		status={testLine.excluded ? 'excluded' : lineResult?.result}
 	/> as TestLineNode;
 
+const stringifySelector = (selector: ElementSelector): string => {
+	if (selector.video || selector.psVideo) {
+		return 'video element';
+	}
+	if (selector.active) {
+		return 'active element';
+	}
+
+	return `"${Object.values(selector).filter(Boolean)[0]}" element`;
+};
+
 const translateQueryTestLine = (testLine: QueryLine, lineResult?: TestLineResult | QueryLineError): TestLineNode => {
 	let title = '';
-	const stringifySelector = (selector: ElementSelector): string =>
-		selector.video || selector.psVideo
-			? 'video element'
-			: `"${Object.values(selector).filter(Boolean)[0]}" element`;
 
 	switch (testLine.subject.type) {
 		case 'cookie':
