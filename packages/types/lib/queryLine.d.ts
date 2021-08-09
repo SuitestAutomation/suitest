@@ -10,6 +10,7 @@ export type ElementSelector = {
 	apiId?: string,
 	css?: string,
 	xpath?: string,
+	handle?: string,
 	attributes?: string,
 	text?: string,
 	position?: string,
