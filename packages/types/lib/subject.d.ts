@@ -31,6 +31,7 @@ export type CustomElementSubject = {
 	val: {
 		css?: string,
 		xpath?: string,
+		handle?: string,
 		attributes?: string,
 		text?: string,
 		position?: string,
@@ -38,6 +39,7 @@ export type CustomElementSubject = {
 		color?: string,
 		video?: boolean,
 		psVideo?: boolean,
+		active?: boolean,
 		ifMultipleFoundReturn?: number,
 	},
 };

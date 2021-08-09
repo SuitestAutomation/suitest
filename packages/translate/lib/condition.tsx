@@ -171,6 +171,14 @@ const translateElementName = (subject: ElementSubject | PSVideoSubject, elements
 		return <subject>{subject.apiId}</subject>;
 	}
 
+	if (subject.val.active) {
+		return <subject>active element</subject>;
+	}
+
+	if (subject.val.handle) {
+		return <subject>element by handle "{subject.val.handle}"</subject>;
+	}
+
 	// Otherwise it's a custom element defined by it's selector
 	const {ifMultipleFoundReturn, ...selector} = subject.val;
 	const selectorKeys = Object.keys(selector);

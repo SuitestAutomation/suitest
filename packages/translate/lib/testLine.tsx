@@ -137,6 +137,9 @@ const stringifySelector = (selector: ElementSelector): string => {
 	if (selector.active) {
 		return 'active element';
 	}
+	if (selector.handle) {
+		return `element by handle "${selector.handle}"`;
+	}
 
 	return `"${Object.values(selector).filter(Boolean)[0]}" element`;
 };
