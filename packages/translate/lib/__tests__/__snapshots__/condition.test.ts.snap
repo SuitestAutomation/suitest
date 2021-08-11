@@ -1044,6 +1044,40 @@ Object {
 }
 `;
 
+exports[`conditions translation should translate "element specified with selector array exists" line 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "subject",
+      "value": "#fooBar -> div -> span",
+    },
+    Object {
+      "type": "text",
+      "value": " exists",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "element specified with selector array exists" line without variables 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "subject",
+      "value": "#fooBar -> div -> span",
+    },
+    Object {
+      "type": "text",
+      "value": " exists",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
 exports[`conditions translation should translate "element with legacy name exists" line 1`] = `
 Object {
   "children": Array [],

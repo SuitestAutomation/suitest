@@ -6,7 +6,8 @@ export type CookieQueryLine = {
 	},
 };
 
-export type ElementSelector = {
+export type ElementSelector = ElementSelectorObject | ElementSelectorObject[];
+export type ElementSelectorObject = {
 	apiId?: string,
 	css?: string,
 	xpath?: string,
