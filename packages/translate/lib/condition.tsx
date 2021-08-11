@@ -141,11 +141,14 @@ const assertUnknownElementCondition = (condition: never): never => {
 };
 
 const translateElementName = (subject: ElementSubject | PSVideoSubject, elements?: Elements): JSX.Element => {
-	if (subject.type === 'video' || (subject as CustomElementSubject).val?.video) {
+	const isSubjectBelongTo = (type: 'video' | 'psVideo'): boolean =>
+		'val' in subject && !Array.isArray(subject.val) && !!subject.val[type];
+
+	if (subject.type === 'video' || isSubjectBelongTo('video')) {
 		return <subject>video</subject>;
 	}
 
-	if (subject.type === 'psVideo') {
+	if (subject.type === 'psVideo' || isSubjectBelongTo('psVideo')) {
 		return <subject>PlayStation 4 video</subject>;
 	}
 
@@ -171,25 +174,32 @@ const translateElementName = (subject: ElementSubject | PSVideoSubject, elements
 		return <subject>{subject.apiId}</subject>;
 	}
 
-	if (subject.val.active) {
-		return <subject>active element</subject>;
+	return <subject>{stringifyCustomElementSubjectVal(subject.val)}</subject>;
+};
+
+const stringifyCustomElementSubjectVal = (val: CustomElementSubject['val']): string => {
+	if (Array.isArray(val)) {
+		return val.map(stringifyCustomElementSubjectVal).join(' -> ');
+	}
+	if (val.active) {
+		return 'active element';
 	}
 
-	if (subject.val.handle) {
-		return <subject>element by handle "{subject.val.handle}"</subject>;
+	if (val.handle) {
+		return `element by handle "${val.handle}"`;
 	}
 
 	// Otherwise it's a custom element defined by it's selector
-	const {ifMultipleFoundReturn, ...selector} = subject.val;
-	const selectorKeys = Object.keys(selector);
+	const {ifMultipleFoundReturn, ...selector} = val;
+	const selectorEntries = Object.entries(selector);
 
-	if (selectorKeys.length === 1) {
+	if (selectorEntries.length === 1) {
 		// A common case when there is a single selector, e.g. css or xpath
 		// Casting to any because TS throws an unwarranted error otherwise
-		return <subject>{(selector as any)[selectorKeys[0]]}</subject>;
+		return selectorEntries[0][1];
 	}
 
-	return <subject>{JSON.stringify({...selector, index: ifMultipleFoundReturn ?? 1})}</subject>;
+	return JSON.stringify({...selector, index: ifMultipleFoundReturn ?? 1});
 };
 
 const translateElementCondition = (

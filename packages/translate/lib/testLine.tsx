@@ -131,6 +131,10 @@ const translateClearAppDataTestLine = (testLine: ClearAppDataTestLine, lineResul
 	/> as TestLineNode;
 
 const stringifySelector = (selector: ElementSelector): string => {
+	if (Array.isArray(selector)) {
+		return selector.map(s => `|${stringifySelector(s)}|`).join(' -> ');
+	}
+
 	if (selector.video || selector.psVideo) {
 		return 'video element';
 	}

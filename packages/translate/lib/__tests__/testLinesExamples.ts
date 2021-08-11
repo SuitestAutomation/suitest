@@ -185,6 +185,13 @@ export const conditions = {
 		},
 		type: 'exists',
 	}),
+	'element specified with selector array exists': (): Condition => ({
+		subject: {
+			type: 'element',
+			val: [{ css: '#fooBar' }, { css: 'div' }, { css: 'span' }],
+		},
+		type: 'exists',
+	}),
 	'element with name hint exists': (): Condition => ({
 		subject: {
 			type: 'element',
@@ -926,6 +933,14 @@ export const testLinesExamples = {
 		subject: {
 			type: 'elementCssProps',
 			selector: { apiId: 'element-api-id' },
+			elementCssProps: ['width', 'height', 'opacity'],
+		},
+	}),
+	'GET element css properties with array selector': (): CssPropertiesQueryLine => ({
+		type: 'query',
+		subject: {
+			type: 'elementCssProps',
+			selector: [{ css: '#app' }, { css: 'div' }, { css: 'span' }],
 			elementCssProps: ['width', 'height', 'opacity'],
 		},
 	}),

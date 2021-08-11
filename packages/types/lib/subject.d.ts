@@ -28,20 +28,22 @@ export type IdElementSubject = {
 
 export type CustomElementSubject = {
 	type: 'element',
-	val: {
-		css?: string,
-		xpath?: string,
-		handle?: string,
-		attributes?: string,
-		text?: string,
-		position?: string,
-		size?: string,
-		color?: string,
-		video?: boolean,
-		psVideo?: boolean,
-		active?: boolean,
-		ifMultipleFoundReturn?: number,
-	},
+	val: CustomElementSubjectVal | CustomElementSubjectVal[],
+};
+
+type CustomElementSubjectVal = {
+	css?: string,
+	xpath?: string,
+	handle?: string,
+	attributes?: string,
+	text?: string,
+	position?: string,
+	size?: string,
+	color?: string,
+	video?: boolean,
+	psVideo?: boolean,
+	active?: boolean,
+	ifMultipleFoundReturn?: number,
 };
 
 export type VideoSubject = {
