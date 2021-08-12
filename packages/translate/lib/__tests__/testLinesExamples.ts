@@ -208,6 +208,24 @@ export const conditions = {
 		},
 		type: 'exists',
 	}),
+	'link with "home page" text exists': (): Condition => ({
+		subject: {
+			type: 'element',
+			val: {
+				linkText: 'home page',
+			},
+		},
+		type: 'exists',
+	}),
+	'link containing "home" text exists': (): Condition => ({
+		subject: {
+			type: 'element',
+			val: {
+				partialLinkText: 'home',
+			},
+		},
+		type: 'exists',
+	}),
 	'PS4 video had no error': (searchStrategy: PSVideoHadNoErrorCondition['searchStrategy'] = 'all'): Condition => ({
 		subject: {type: 'psVideo'},
 		type: 'hadNoError',
@@ -950,6 +968,22 @@ export const testLinesExamples = {
 			type: 'elementHandle',
 			selector: { apiId: 'element-api-id' },
 			multiple: false,
+		},
+	}),
+	'GET link handle by "home page" text': (): ElementHandleQueryLine => ({
+		type: 'query',
+		subject: {
+			type: 'elementHandle',
+			multiple: false,
+			selector: { linkText: 'home page' },
+		},
+	}),
+	'GET link handle containing "home" text': (): ElementHandleQueryLine => ({
+		type: 'query',
+		subject: {
+			type: 'elementHandle',
+			multiple: false,
+			selector: { partialLinkText: 'home page' },
 		},
 	}),
 	'GET element attributes': (): ElementAttributesQueryLine => ({

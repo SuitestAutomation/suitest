@@ -177,6 +177,7 @@ const translateElementName = (subject: ElementSubject | PSVideoSubject, elements
 	return <subject>{stringifyCustomElementSubjectVal(subject.val)}</subject>;
 };
 
+// TODO: unify with stringifySelector from testLine.tsx?
 const stringifyCustomElementSubjectVal = (val: CustomElementSubject['val']): string => {
 	if (Array.isArray(val)) {
 		return val.map(stringifyCustomElementSubjectVal).join(' -> ');
@@ -187,6 +188,14 @@ const stringifyCustomElementSubjectVal = (val: CustomElementSubject['val']): str
 
 	if (val.handle) {
 		return `element by handle "${val.handle}"`;
+	}
+
+	if (typeof val.linkText === 'string') {
+		return `link with "${val.linkText}" text`;
+	}
+
+	if (typeof val.partialLinkText === 'string') {
+		return `link containing "${val.partialLinkText}" text`;
 	}
 
 	// Otherwise it's a custom element defined by it's selector
