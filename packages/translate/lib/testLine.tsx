@@ -130,6 +130,7 @@ const translateClearAppDataTestLine = (testLine: ClearAppDataTestLine, lineResul
 		status={testLine.excluded ? 'excluded' : lineResult?.result}
 	/> as TestLineNode;
 
+// TODO: unify with stringifyCustomElementSubjectVal from condition.tsx?
 const stringifySelector = (selector: ElementSelector): string => {
 	if (Array.isArray(selector)) {
 		return selector.map(s => `|${stringifySelector(s)}|`).join(' -> ');
@@ -143,6 +144,12 @@ const stringifySelector = (selector: ElementSelector): string => {
 	}
 	if (selector.handle) {
 		return `element by handle "${selector.handle}"`;
+	}
+	if (typeof selector.linkText === 'string') {
+		return `link with "${selector.linkText}" text`;
+	}
+	if (typeof selector.partialLinkText === 'string') {
+		return `link containing "${selector.partialLinkText}" text`;
 	}
 
 	return `"${Object.values(selector).filter(Boolean)[0]}" element`;

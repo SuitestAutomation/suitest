@@ -14,6 +14,8 @@ export type ElementSelectorObject = {
 	handle?: string,
 	attributes?: string,
 	text?: string,
+	linkText?: string,
+	partialLinkText?: string,
 	position?: string,
 	size?: string,
 	color?: string,

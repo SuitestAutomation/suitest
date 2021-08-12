@@ -1568,6 +1568,58 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "GET link handle by "home page" text" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Getting handle of link with \\"home page\\" text",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "GET link handle by "home page" text" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Getting handle of link with \\"home page\\" text",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "GET link handle containing "home" text" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Getting handle of link containing \\"home page\\" text",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "GET link handle containing "home" text" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Getting handle of link containing \\"home page\\" text",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "GET location" 1`] = `
 Object {
   "children": Array [],
