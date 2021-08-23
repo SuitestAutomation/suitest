@@ -12,6 +12,7 @@ export const NOT_STARTED_REASON = Object.freeze({
 	PLATFORM_ERROR_ANDROID: 'androidPlatformError',
 	PLATFORM_ERROR_BOOTSTRAP: 'bootstrappedPlatformError',
 	PLATFORM_ERROR_LG_WEBOS: 'lgWebosPlatformError',
+	PLATFORM_ERROR_GENERIC: 'genericPlatformError',
 	PLATFORM_ERROR_UNDEFINED: 'notDefinedPlatform',
 	PLATFORM_ERROR_PLAYSTATION: 'playstationPlatformError',
 	PLATFORM_ERROR_ROKU: 'rokuPlatformError',
