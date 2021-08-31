@@ -523,6 +523,17 @@ export const testLinesExamples = {
 		val,
 		target: {type: 'element', elementId},
 	}),
+	'Send text ... to active element once': (val = 'text to send'): TestLine => ({
+		...baseTestLine,
+		type: 'sendText',
+		val,
+		target: {
+			type: 'element',
+			val: {
+				active: true,
+			},
+		},
+	}),
 	'Send text ... to window every ... exactly ...': (
 		val = 'text to send',
 		count: number | string = 2,
@@ -564,6 +575,17 @@ export const testLinesExamples = {
 		type: 'setText',
 		val,
 		target: {type: 'element', elementId},
+	}),
+	'Set text ... to active element': (val = 'text to send'): TestLine => ({
+		...baseTestLine,
+		type: 'setText',
+		val,
+		target: {
+			type: 'element',
+			val: {
+				active: true,
+			},
+		},
 	}),
 	'Set text ... to element ... only if ...': (
 		val = 'text to send',
@@ -761,6 +783,17 @@ export const testLinesExamples = {
 		delay,
 		count,
 	}),
+	'Click on active element once': (): TestLine => ({
+		...baseTestLine,
+		type: 'click',
+		target: {
+			type: 'element',
+			val: {
+				active: true,
+			},
+		},
+		clicks: [{type: 'single', button: 'left'}],
+	}),
 	// Tap lines
 	'Single tap on element ... until ... every ... max ...': (
 		elementId = 'element-id-1',
@@ -835,6 +868,23 @@ export const testLinesExamples = {
 		delay,
 		count,
 	}),
+	'Single tap on active element': (): TestLine => ({
+		...baseTestLine,
+		type: 'tap',
+		target: {
+			type: 'element',
+			val: {
+				active: true,
+			},
+		},
+		delay: 1000,
+		count: 1,
+		taps: [
+			{
+				type: 'single',
+			},
+		],
+	}),
 	// Scroll line
 	'Scroll from element ... to ... until ... every ... max ...': (
 		elementId = 'element-id-1',
@@ -854,6 +904,25 @@ export const testLinesExamples = {
 		delay,
 		count,
 	}),
+	'Scroll from active element': (): TestLine => ({
+		...baseTestLine,
+		type: 'scroll',
+		target: {
+			type: 'element',
+			val: {
+				active: true,
+			},
+		},
+		delay: 1000,
+		count: 1,
+		scroll: [
+			{
+				direction: 'down',
+				distance: 1,
+			},
+		],
+	}),
+
 	// Swipe line
 	'Swipe from element ... to ... in ... until ... every ... max ...': (
 		elementId = 'element-id-1',
@@ -872,6 +941,25 @@ export const testLinesExamples = {
 		negateCondition: false,
 		delay,
 		count,
+	}),
+	'Swipe from active element once': (): TestLine => ({
+		...baseTestLine,
+		type: 'swipe',
+		target: {
+			type: 'element',
+			val: {
+				active: true,
+			},
+		},
+		delay: 1000,
+		count: 1,
+		swipe: [
+			{
+				direction: 'right',
+				duration: 1,
+				distance: 3,
+			},
+		],
 	}),
 	// MOVE TO
 	'Move to position ...': (x: number | string = 123, y: number | string = 234): TestLine => ({
@@ -916,6 +1004,16 @@ export const testLinesExamples = {
 		condition,
 		negateCondition: true,
 		excluded: true,
+	}),
+	'Move to active element': (): TestLine => ({
+		...baseTestLine,
+		type: 'moveTo',
+		target: {
+			type: 'element',
+			val: {
+				active: true,
+			},
+		},
 	}),
 	// COMMENT
 	'Comment': (val = 'This is a comment'): TestLine => ({
