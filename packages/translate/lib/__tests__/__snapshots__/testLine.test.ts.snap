@@ -866,6 +866,40 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Click on active element once" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Click on ",
+    },
+    Object {
+      "type": "subject",
+      "value": "active element",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Click on active element once" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Click on ",
+    },
+    Object {
+      "type": "subject",
+      "value": "active element",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Click on element ... every ... exactly ..." 1`] = `
 Object {
   "children": Array [],
@@ -1438,6 +1472,110 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "GET element attributes" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Getting [id, type, class] attributes of \\"element-api-id\\" element",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "GET element attributes" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Getting [id, type, class] attributes of \\"element-api-id\\" element",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "GET element css properties with array selector" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Getting [width, height, opacity] css properties of |\\"#app\\" element| -> |\\"div\\" element| -> |\\"span\\" element|",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "GET element css properties with array selector" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Getting [width, height, opacity] css properties of |\\"#app\\" element| -> |\\"div\\" element| -> |\\"span\\" element|",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "GET element css properties" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Getting [width, height, opacity] css properties of \\"element-api-id\\" element",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "GET element css properties" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Getting [width, height, opacity] css properties of \\"element-api-id\\" element",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "GET element handle" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Getting handle of \\"element-api-id\\" element",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "GET element handle" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Getting handle of \\"element-api-id\\" element",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "GET element props" 1`] = `
 Object {
   "children": Array [],
@@ -1458,6 +1596,58 @@ Object {
     Object {
       "type": "text",
       "value": "Retrieve info of \\"div.className\\" element",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "GET link handle by "home page" text" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Getting handle of link with \\"home page\\" text",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "GET link handle by "home page" text" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Getting handle of link with \\"home page\\" text",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "GET link handle containing "home" text" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Getting handle of link containing \\"home page\\" text",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "GET link handle containing "home" text" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Getting handle of link containing \\"home page\\" text",
     },
   ],
   "type": "test-line",
@@ -1702,6 +1892,40 @@ Object {
     Object {
       "type": "input",
       "value": "5.7s",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Move to active element" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Move pointer to ",
+    },
+    Object {
+      "type": "subject",
+      "value": "active element",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Move to active element" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Move pointer to ",
+    },
+    Object {
+      "type": "subject",
+      "value": "active element",
     },
   ],
   "type": "test-line",
@@ -2554,7 +2778,7 @@ Object {
 }
 `;
 
-exports[`Test Lines translation Should translate test line "Run snippet ... every ... exactly ..." 1`] = `
+exports[`Test Lines translation Should translate test line "Run snippet ... exactly ..." 1`] = `
 Object {
   "children": Array [],
   "title": Array [
@@ -2576,18 +2800,14 @@ Object {
     },
     Object {
       "type": "text",
-      "value": "x every ",
-    },
-    Object {
-      "type": "input",
-      "value": "3s",
+      "value": "x",
     },
   ],
   "type": "test-line",
 }
 `;
 
-exports[`Test Lines translation Should translate test line "Run snippet ... every ... exactly ..." without appConfig 1`] = `
+exports[`Test Lines translation Should translate test line "Run snippet ... exactly ..." without appConfig 1`] = `
 Object {
   "children": Array [],
   "title": Array [
@@ -2609,11 +2829,7 @@ Object {
     },
     Object {
       "type": "text",
-      "value": "x every ",
-    },
-    Object {
-      "type": "input",
-      "value": "3s",
+      "value": "x",
     },
   ],
   "type": "test-line",
@@ -2718,7 +2934,7 @@ Object {
 }
 `;
 
-exports[`Test Lines translation Should translate test line "Run snippet ... until ... every ... max ..." 1`] = `
+exports[`Test Lines translation Should translate test line "Run snippet ... until ... max ..." 1`] = `
 Object {
   "children": Array [
     Object {
@@ -2751,18 +2967,14 @@ Object {
     },
     Object {
       "type": "text",
-      "value": "x every ",
-    },
-    Object {
-      "type": "input",
-      "value": "3s",
+      "value": "x",
     },
   ],
   "type": "test-line",
 }
 `;
 
-exports[`Test Lines translation Should translate test line "Run snippet ... until ... every ... max ..." without appConfig 1`] = `
+exports[`Test Lines translation Should translate test line "Run snippet ... until ... max ..." without appConfig 1`] = `
 Object {
   "children": Array [
     Object {
@@ -2795,11 +3007,49 @@ Object {
     },
     Object {
       "type": "text",
-      "value": "x every ",
+      "value": "x",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Scroll from active element" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Scroll from ",
     },
     Object {
-      "type": "input",
-      "value": "3s",
+      "type": "subject",
+      "value": "active element",
+    },
+    Object {
+      "type": "text",
+      "value": " down by 1px",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Scroll from active element" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Scroll from ",
+    },
+    Object {
+      "type": "subject",
+      "value": "active element",
+    },
+    Object {
+      "type": "text",
+      "value": " down by 1px",
     },
   ],
   "type": "test-line",
@@ -2896,6 +3146,56 @@ Object {
     Object {
       "type": "text",
       "value": " left by 1px",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Send text ... to active element once" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Send text ",
+    },
+    Object {
+      "type": "input",
+      "value": "text to send",
+    },
+    Object {
+      "type": "text",
+      "value": " to ",
+    },
+    Object {
+      "type": "subject",
+      "value": "active element",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Send text ... to active element once" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Send text ",
+    },
+    Object {
+      "type": "input",
+      "value": "text to send",
+    },
+    Object {
+      "type": "text",
+      "value": " to ",
+    },
+    Object {
+      "type": "subject",
+      "value": "active element",
     },
   ],
   "type": "test-line",
@@ -3268,6 +3568,56 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Set text ... to active element" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Set text ",
+    },
+    Object {
+      "type": "input",
+      "value": "text to send",
+    },
+    Object {
+      "type": "text",
+      "value": " to ",
+    },
+    Object {
+      "type": "subject",
+      "value": "active element",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Set text ... to active element" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Set text ",
+    },
+    Object {
+      "type": "input",
+      "value": "text to send",
+    },
+    Object {
+      "type": "text",
+      "value": " to ",
+    },
+    Object {
+      "type": "subject",
+      "value": "active element",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Set text ... to element ... only if ..." 1`] = `
 Object {
   "children": Array [
@@ -3392,6 +3742,40 @@ Object {
     Object {
       "type": "subject",
       "value": "element",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Single tap on active element" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Single tap on ",
+    },
+    Object {
+      "type": "subject",
+      "value": "active element",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Single tap on active element" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Single tap on ",
+    },
+    Object {
+      "type": "subject",
+      "value": "active element",
     },
   ],
   "type": "test-line",
@@ -3550,6 +3934,48 @@ Object {
     Object {
       "type": "input",
       "value": "2s",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Swipe from active element once" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Swipe/Flick from ",
+    },
+    Object {
+      "type": "subject",
+      "value": "active element",
+    },
+    Object {
+      "type": "text",
+      "value": " right by 3px in 1ms",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Swipe from active element once" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Swipe/Flick from ",
+    },
+    Object {
+      "type": "subject",
+      "value": "active element",
+    },
+    Object {
+      "type": "text",
+      "value": " right by 3px in 1ms",
     },
   ],
   "type": "test-line",

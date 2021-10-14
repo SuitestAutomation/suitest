@@ -18,6 +18,9 @@ export type AssertTestLine = BaseTestLine & {
 	then?: AssertThen,
 };
 
+/*
+* @deprecated should be used AssertTestLine instead
+*/
 export type  WaitUntilTestLine = BaseTestLine & {
 	type: 'wait',
 	condition: Condition,
@@ -103,7 +106,6 @@ export type RunTestTestLine = BaseTestLine & {
 	type: 'runSnippet',
 	val: string,
 	count?: number | string,
-	delay?: number | string,
 	condition?: Condition,
 	negateCondition?: boolean,
 };
@@ -166,9 +168,17 @@ export type MobilePositionTarget = {
 	},
 };
 
+export type ActiveElementTarget = {
+	type: 'element',
+	val: {
+		active: true,
+	},
+};
+
 export type WebTarget = ElementTarget
 	| WindowTarget
-	| WebPositionTarget;
+	| WebPositionTarget
+	| ActiveElementTarget;
 
 export type MobileTarget = ElementTarget
 	| ScreenTarget
@@ -176,7 +186,7 @@ export type MobileTarget = ElementTarget
 
 export type ClickTestLine = BaseTestLine & {
 	type: 'click',
-	target: ElementTarget | WebPositionTarget,
+	target: ElementTarget | WebPositionTarget | ActiveElementTarget,
 	delay?: number | string,
 	count?: number | string,
 	clicks: [{type: 'single', button: 'left'}],
@@ -189,7 +199,7 @@ export type Directions = 'up' | 'down' | 'left' | 'right';
 
 export type TapTestLine = BaseTestLine & {
 	type: 'tap',
-	target: ElementTarget | MobilePositionTarget,
+	target: ElementTarget | MobilePositionTarget | ActiveElementTarget,
 	delay?: number | string,
 	count?: number | string,
 	taps: [{type: TapTypes, duration?: undefined} | {type: 'long', duration?: number | string}],
@@ -199,7 +209,7 @@ export type TapTestLine = BaseTestLine & {
 
 export type ScrollTestLine = BaseTestLine & {
 	type: 'scroll',
-	target: ElementTarget | MobilePositionTarget,
+	target: ElementTarget | MobilePositionTarget | ActiveElementTarget,
 	delay?: number | string,
 	count?: number | string,
 	scroll: [{direction: Directions, distance: number | string}],
@@ -209,7 +219,7 @@ export type ScrollTestLine = BaseTestLine & {
 
 export type SwipeTestLine = BaseTestLine & {
 	type: 'swipe',
-	target: ElementTarget | MobilePositionTarget,
+	target: ElementTarget | MobilePositionTarget | ActiveElementTarget,
 	delay?: number | string,
 	count?: number | string,
 	swipe: [{direction: Directions, distance: number | string, duration: number | string}],
@@ -219,14 +229,14 @@ export type SwipeTestLine = BaseTestLine & {
 
 export type MoveToTestLine = BaseTestLine & {
 	type: 'moveTo',
-	target: ElementTarget | WebPositionTarget,
+	target: ElementTarget | WebPositionTarget | ActiveElementTarget,
 	condition?: Condition,
 	negateCondition?: true,
 };
 
 export type SendTextTestLine = BaseTestLine & {
 	type: 'sendText',
-	target: ElementTarget | WindowTarget,
+	target: ElementTarget | WindowTarget | ActiveElementTarget,
 	val: string,
 	delay?: number | string,
 	count?: number | string,
@@ -236,7 +246,7 @@ export type SendTextTestLine = BaseTestLine & {
 
 export type SetTextTestLine = BaseTestLine & {
 	type: 'setText',
-	target: ElementTarget,
+	target: ElementTarget | ActiveElementTarget,
 	val: string,
 	condition?: Condition,
 	negateCondition?: true,

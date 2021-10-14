@@ -1,6 +1,6 @@
 import {
 	Comparator,
-	Condition,
+	Condition, CssPropertiesQueryLine,
 	Elements,
 	NetworkRequestBodyInfo,
 	NetworkRequestHeaderInfo,
@@ -10,6 +10,8 @@ import {
 	Snippets,
 	StringComparator,
 	TestLine,
+	ElementHandleQueryLine,
+	ElementAttributesQueryLine,
 } from '@suitest/types';
 import {PSVideoHadNoErrorCondition, JavaScriptComparator, ExistComparator, ElementProperty} from '@suitest/types/lib';
 
@@ -183,6 +185,13 @@ export const conditions = {
 		},
 		type: 'exists',
 	}),
+	'element specified with selector array exists': (): Condition => ({
+		subject: {
+			type: 'element',
+			val: [{ css: '#fooBar' }, { css: 'div' }, { css: 'span' }],
+		},
+		type: 'exists',
+	}),
 	'element with name hint exists': (): Condition => ({
 		subject: {
 			type: 'element',
@@ -195,7 +204,25 @@ export const conditions = {
 		subject: {
 			type: 'element',
 			elementId: 'unknown-id',
-			name: 'Foo Bar',
+			nameHint: 'Foo Bar',
+		},
+		type: 'exists',
+	}),
+	'link with "home page" text exists': (): Condition => ({
+		subject: {
+			type: 'element',
+			val: {
+				linkText: 'home page',
+			},
+		},
+		type: 'exists',
+	}),
+	'link containing "home" text exists': (): Condition => ({
+		subject: {
+			type: 'element',
+			val: {
+				partialLinkText: 'home',
+			},
 		},
 		type: 'exists',
 	}),
@@ -424,11 +451,10 @@ export const testLinesExamples = {
 		condition,
 		negateCondition: true,
 	}),
-	'Run snippet ... until ... every ... max ...': (
+	'Run snippet ... until ... max ...': (
 		val = 'snippet-id-1',
 		condition: Condition = appExitedCondition,
 		count: number | string = 2,
-		delay: number | string = 3000
 	): TestLine => ({
 		...baseTestLine,
 		type: 'runSnippet',
@@ -436,18 +462,15 @@ export const testLinesExamples = {
 		condition,
 		negateCondition: false,
 		count,
-		delay,
 	}),
-	'Run snippet ... every ... exactly ...': (
+	'Run snippet ... exactly ...': (
 		val = 'unknown-snippet-id-1',
 		count: number | string = 2,
-		delay: number | string = 3000
 	): TestLine => ({
 		...baseTestLine,
 		type: 'runSnippet',
 		val,
 		count,
-		delay,
 	}),
 	// Press button
 	'Press ... once': (ids = ['LEFT']): TestLine => ({
@@ -500,6 +523,17 @@ export const testLinesExamples = {
 		val,
 		target: {type: 'element', elementId},
 	}),
+	'Send text ... to active element once': (val = 'text to send'): TestLine => ({
+		...baseTestLine,
+		type: 'sendText',
+		val,
+		target: {
+			type: 'element',
+			val: {
+				active: true,
+			},
+		},
+	}),
 	'Send text ... to window every ... exactly ...': (
 		val = 'text to send',
 		count: number | string = 2,
@@ -541,6 +575,17 @@ export const testLinesExamples = {
 		type: 'setText',
 		val,
 		target: {type: 'element', elementId},
+	}),
+	'Set text ... to active element': (val = 'text to send'): TestLine => ({
+		...baseTestLine,
+		type: 'setText',
+		val,
+		target: {
+			type: 'element',
+			val: {
+				active: true,
+			},
+		},
 	}),
 	'Set text ... to element ... only if ...': (
 		val = 'text to send',
@@ -738,6 +783,17 @@ export const testLinesExamples = {
 		delay,
 		count,
 	}),
+	'Click on active element once': (): TestLine => ({
+		...baseTestLine,
+		type: 'click',
+		target: {
+			type: 'element',
+			val: {
+				active: true,
+			},
+		},
+		clicks: [{type: 'single', button: 'left'}],
+	}),
 	// Tap lines
 	'Single tap on element ... until ... every ... max ...': (
 		elementId = 'element-id-1',
@@ -812,6 +868,23 @@ export const testLinesExamples = {
 		delay,
 		count,
 	}),
+	'Single tap on active element': (): TestLine => ({
+		...baseTestLine,
+		type: 'tap',
+		target: {
+			type: 'element',
+			val: {
+				active: true,
+			},
+		},
+		delay: 1000,
+		count: 1,
+		taps: [
+			{
+				type: 'single',
+			},
+		],
+	}),
 	// Scroll line
 	'Scroll from element ... to ... until ... every ... max ...': (
 		elementId = 'element-id-1',
@@ -831,6 +904,25 @@ export const testLinesExamples = {
 		delay,
 		count,
 	}),
+	'Scroll from active element': (): TestLine => ({
+		...baseTestLine,
+		type: 'scroll',
+		target: {
+			type: 'element',
+			val: {
+				active: true,
+			},
+		},
+		delay: 1000,
+		count: 1,
+		scroll: [
+			{
+				direction: 'down',
+				distance: 1,
+			},
+		],
+	}),
+
 	// Swipe line
 	'Swipe from element ... to ... in ... until ... every ... max ...': (
 		elementId = 'element-id-1',
@@ -849,6 +941,25 @@ export const testLinesExamples = {
 		negateCondition: false,
 		delay,
 		count,
+	}),
+	'Swipe from active element once': (): TestLine => ({
+		...baseTestLine,
+		type: 'swipe',
+		target: {
+			type: 'element',
+			val: {
+				active: true,
+			},
+		},
+		delay: 1000,
+		count: 1,
+		swipe: [
+			{
+				direction: 'right',
+				duration: 1,
+				distance: 3,
+			},
+		],
 	}),
 	// MOVE TO
 	'Move to position ...': (x: number | string = 123, y: number | string = 234): TestLine => ({
@@ -894,6 +1005,16 @@ export const testLinesExamples = {
 		negateCondition: true,
 		excluded: true,
 	}),
+	'Move to active element': (): TestLine => ({
+		...baseTestLine,
+		type: 'moveTo',
+		target: {
+			type: 'element',
+			val: {
+				active: true,
+			},
+		},
+	}),
 	// COMMENT
 	'Comment': (val = 'This is a comment'): TestLine => ({
 		...baseTestLine,
@@ -921,6 +1042,54 @@ export const testLinesExamples = {
 		subject: {
 			type: 'cookie',
 			cookieName: 'cook',
+		},
+	}),
+	'GET element css properties': (): CssPropertiesQueryLine => ({
+		type: 'query',
+		subject: {
+			type: 'elementCssProps',
+			selector: { apiId: 'element-api-id' },
+			elementCssProps: ['width', 'height', 'opacity'],
+		},
+	}),
+	'GET element css properties with array selector': (): CssPropertiesQueryLine => ({
+		type: 'query',
+		subject: {
+			type: 'elementCssProps',
+			selector: [{ css: '#app' }, { css: 'div' }, { css: 'span' }],
+			elementCssProps: ['width', 'height', 'opacity'],
+		},
+	}),
+	'GET element handle': (): ElementHandleQueryLine => ({
+		type: 'query',
+		subject: {
+			type: 'elementHandle',
+			selector: { apiId: 'element-api-id' },
+			multiple: false,
+		},
+	}),
+	'GET link handle by "home page" text': (): ElementHandleQueryLine => ({
+		type: 'query',
+		subject: {
+			type: 'elementHandle',
+			multiple: false,
+			selector: { linkText: 'home page' },
+		},
+	}),
+	'GET link handle containing "home" text': (): ElementHandleQueryLine => ({
+		type: 'query',
+		subject: {
+			type: 'elementHandle',
+			multiple: false,
+			selector: { partialLinkText: 'home page' },
+		},
+	}),
+	'GET element attributes': (): ElementAttributesQueryLine => ({
+		type: 'query',
+		subject: {
+			type: 'elementAttributes',
+			selector: { apiId: 'element-api-id' },
+			attributes: ['id', 'type', 'class'],
 		},
 	}),
 	'JS expression': (): QueryLine => ({

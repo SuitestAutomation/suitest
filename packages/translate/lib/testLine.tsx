@@ -26,7 +26,7 @@ import {
 	WaitUntilTestLine,
 	TestLineResult,
 	ClearAppDataTestLine, TakeScreenshotTestLine, QueryLine, QueryLineError, DeviceSettingsTestLine,
-	ScrollTestLine, SwipeTestLine, CloseAppTestLine, SuspendAppTestLine,
+	ScrollTestLine, SwipeTestLine, CloseAppTestLine, SuspendAppTestLine, ElementSelector,
 } from '@suitest/types';
 import {translateComparator} from './comparator';
 import {translateCondition} from './condition';
@@ -46,11 +46,14 @@ const getConditionInfo = (
 	// and has all types of conditions and loops
 	const {condition, count, negateCondition, delay} = (testLine as PressButtonTestLine);
 
+	const getDelayFragment = (delay?: number | string) => delay !== undefined
+		? <fragment> every {formatTimeout(delay, appConfig?.configVariables)}</fragment>
+		: '';
+
 	// Do something ... exactly ... every ...
 	if (!condition && count && (typeof count === 'string' || count > 1)) {
-		return <fragment> exactly {
-			formatCount(count, appConfig?.configVariables)
-		} every {formatTimeout(delay ?? 0, appConfig?.configVariables)}</fragment> as Node;
+		return <fragment> exactly {formatCount(count, appConfig?.configVariables)}
+			{getDelayFragment(delay)}</fragment> as Node;
 	}
 
 	// Do something ... only if ...
@@ -60,9 +63,8 @@ const getConditionInfo = (
 
 	// Do something ... until ...
 	if (condition && !negateCondition) {
-		return <fragment> until condition is met max {
-			formatCount(count ?? 1, appConfig?.configVariables)
-		} every {formatTimeout(delay ?? 0, appConfig?.configVariables)}</fragment>;
+		return <fragment> until condition is met max {formatCount(count ?? 1, appConfig?.configVariables)}
+			{getDelayFragment(delay)}</fragment>;
 	}
 
 	// Do something ...
@@ -128,6 +130,31 @@ const translateClearAppDataTestLine = (testLine: ClearAppDataTestLine, lineResul
 		status={testLine.excluded ? 'excluded' : lineResult?.result}
 	/> as TestLineNode;
 
+// TODO: unify with stringifyCustomElementSubjectVal from condition.tsx?
+const stringifySelector = (selector: ElementSelector): string => {
+	if (Array.isArray(selector)) {
+		return selector.map(s => `|${stringifySelector(s)}|`).join(' -> ');
+	}
+
+	if (selector.video || selector.psVideo) {
+		return 'video element';
+	}
+	if (selector.active) {
+		return 'active element';
+	}
+	if (selector.handle) {
+		return `element by handle "${selector.handle}"`;
+	}
+	if (typeof selector.linkText === 'string') {
+		return `link with "${selector.linkText}" text`;
+	}
+	if (typeof selector.partialLinkText === 'string') {
+		return `link containing "${selector.partialLinkText}" text`;
+	}
+
+	return `"${Object.values(selector).filter(Boolean)[0]}" element`;
+};
+
 const translateQueryTestLine = (testLine: QueryLine, lineResult?: TestLineResult | QueryLineError): TestLineNode => {
 	let title = '';
 
@@ -142,13 +169,27 @@ const translateQueryTestLine = (testLine: QueryLine, lineResult?: TestLineResult
 			title = 'Retrieve value of current location';
 			break;
 		case 'elementProps':
-			title = 'Retrieve info of ';
-			if (testLine.subject.selector.video || testLine.subject.selector.psVideo) {
-				title += 'video element';
-			} else {
-				title += `"${Object.values(testLine.subject.selector).filter(Boolean)[0]}" element`;
-			}
+			title = 'Retrieve info of ' + stringifySelector(testLine.subject.selector);
 			break;
+		case 'elementCssProps':
+			const { elementCssProps, selector } = testLine.subject;
+			title += `Getting [${elementCssProps.join(', ')}] css properties of `
+				+ stringifySelector(selector);
+			break;
+		case 'elementHandle':
+			title += `Getting handle${testLine.subject.multiple ? 's' : ''} of `
+				+ stringifySelector(testLine.subject.selector);
+			break;
+		case 'elementAttributes':
+			const { attributes } = testLine.subject;
+			const stringifiedAttrs = attributes.length ?
+				`[${attributes.join(', ')}] attribute${attributes.length > 1 ? 's' : ''}`
+				: 'all attributes';
+			title += `Getting ${stringifiedAttrs} of ` + stringifySelector(testLine.subject.selector);
+			break;
+		default:
+			const subject: never = testLine.subject;
+			console.warn(`Unknown subject "${JSON.stringify(subject)}" of query line.`);
 	}
 	const result: TestLineResult['result'] | undefined = lineResult?.result === 'error' ? 'fail' : lineResult?.result;
 
@@ -358,7 +399,9 @@ const assertUnknownTarget = (target: never): never => {
 const translateTarget = (target: WebTarget | MobileTarget): JSX.Element => {
 	switch (target.type) {
 		case 'element': // TODO nyc for some reason reports an uncovered branch here
-			return <subject>element</subject>;
+			return 'val' in target && target.val.active
+				? <subject>active element</subject>
+				: <subject>element</subject>;
 		case 'window':
 			// TODO should we translate 'window' depending on running platform?
 			return <subject>{'coordinates' in target ? 'position' : 'window'}</subject>;
