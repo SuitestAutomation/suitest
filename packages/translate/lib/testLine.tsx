@@ -26,7 +26,7 @@ import {
 	WaitUntilTestLine,
 	TestLineResult,
 	ClearAppDataTestLine, TakeScreenshotTestLine, QueryLine, QueryLineError, DeviceSettingsTestLine,
-	ScrollTestLine, SwipeTestLine, CloseAppTestLine, SuspendAppTestLine, ElementSelector,
+	ScrollTestLine, SwipeTestLine, CloseAppTestLine, SuspendAppTestLine, ElementSelector, ChangeDeviceStateLine,
 } from '@suitest/types';
 import {translateComparator} from './comparator';
 import {translateCondition} from './condition';
@@ -283,6 +283,28 @@ const translateSuspendAppTestLine = (
 
 	return <test-line
 		title={<text>Suspend application</text>}
+		status={status}
+	/> as TestLineNode;
+};
+
+const translateChangeDeviceStateTestLine = (
+	testLine: ChangeDeviceStateLine,
+	lineResult?: TestLineResult,
+): TestLineNode => {
+	const status = testLine.excluded ? 'excluded' : lineResult?.result;
+	const titleParts = ['Changing device state to'];
+
+	if (testLine.action === 'lock') {
+		titleParts.push('locked');
+	} else if (testLine.action === 'unlock') {
+		titleParts.push(
+			'unlocked',
+			testLine.passcode ? `with ${testLine.passcode} passcode` : ''
+		);
+	}
+
+	return <test-line
+		title={<text>{titleParts}</text>}
 		status={status}
 	/> as TestLineNode;
 };
@@ -723,6 +745,8 @@ export const translateTestLine = ({
 			return translateCloseAppTestLine(testLine, lineResult as TestLineResult);
 		case 'suspendApp':
 			return translateSuspendAppTestLine(testLine, lineResult as TestLineResult);
+		case 'changeDeviceState':
+			return translateChangeDeviceStateTestLine(testLine, lineResult as TestLineResult);
 		case 'comment':
 			return translateCommentTestLine(testLine);
 		default:

@@ -12,6 +12,7 @@ import {
 	TestLine,
 	ElementHandleQueryLine,
 	ElementAttributesQueryLine,
+	ChangeDeviceStateLine,
 } from '@suitest/types';
 import {PSVideoHadNoErrorCondition, JavaScriptComparator, ExistComparator, ElementProperty} from '@suitest/types/lib';
 
@@ -1125,5 +1126,22 @@ export const testLinesExamples = {
 	'suspend application': (): TestLine => ({
 		...baseTestLine,
 		type: 'suspendApp',
+	}),
+	'Change device state to ...': (
+		action: ChangeDeviceStateLine['action'] = 'lock',
+		passcode: ChangeDeviceStateLine['passcode']
+	): TestLine => ({
+		...baseTestLine,
+		type: 'changeDeviceState',
+		action,
+		passcode,
+	}),
+	'Change device state to unlock with ... passcode': (
+		passcode: ChangeDeviceStateLine['passcode'] = 111111
+	): TestLine => ({
+		...baseTestLine,
+		type: 'changeDeviceState',
+		action: 'unlock',
+		passcode,
 	}),
 };
