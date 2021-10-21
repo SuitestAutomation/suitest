@@ -255,7 +255,7 @@ export type SetTextTestLine = BaseTestLine & {
 export type ChangeDeviceStateLine = BaseTestLine & {
 	type: 'changeDeviceState',
 	action: 'lock' | 'unlock',
-	passcode?: string | number,
+	passcode?: string,
 };
 
 export type CommentTestLine = BaseTestLine & {

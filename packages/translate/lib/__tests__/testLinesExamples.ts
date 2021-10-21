@@ -1137,7 +1137,7 @@ export const testLinesExamples = {
 		passcode,
 	}),
 	'Change device state to unlock with ... passcode': (
-		passcode: ChangeDeviceStateLine['passcode'] = 111111
+		passcode: ChangeDeviceStateLine['passcode'] = '111111'
 	): TestLine => ({
 		...baseTestLine,
 		type: 'changeDeviceState',
