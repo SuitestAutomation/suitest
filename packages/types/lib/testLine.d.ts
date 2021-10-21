@@ -252,6 +252,12 @@ export type SetTextTestLine = BaseTestLine & {
 	negateCondition?: true,
 };
 
+export type ChangeDeviceStateLine = BaseTestLine & {
+	type: 'changeDeviceState',
+	action: 'lock' | 'unlock',
+	passcode?: string,
+};
+
 export type CommentTestLine = BaseTestLine & {
 	type: 'comment',
 	val: string,
@@ -280,4 +286,5 @@ export type TestLine =
 	| ScrollTestLine
 	| SwipeTestLine
 	| CloseAppTestLine
-	| SuspendAppTestLine;
+	| SuspendAppTestLine
+	| ChangeDeviceStateLine;
