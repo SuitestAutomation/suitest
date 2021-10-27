@@ -304,7 +304,7 @@ const translateChangeDeviceStateTestLine = (
 	}
 
 	return <test-line
-		title={<text>{titleParts}</text>}
+		title={<text>{titleParts.join(' ')}</text>}
 		status={status}
 	/> as TestLineNode;
 };

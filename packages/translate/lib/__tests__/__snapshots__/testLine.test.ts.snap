@@ -818,7 +818,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Changing device state tolocked",
+      "value": "Changing device state to locked",
     },
   ],
   "type": "test-line",
@@ -831,7 +831,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Changing device state tolocked",
+      "value": "Changing device state to locked",
     },
   ],
   "type": "test-line",
@@ -844,7 +844,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Changing device state tounlockedwith 111111 passcode",
+      "value": "Changing device state to unlocked with 111111 passcode",
     },
   ],
   "type": "test-line",
@@ -857,7 +857,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Changing device state tounlockedwith 111111 passcode",
+      "value": "Changing device state to unlocked with 111111 passcode",
     },
   ],
   "type": "test-line",
