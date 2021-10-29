@@ -148,7 +148,8 @@ export type SimpleError = BaseResult & {
 		| 'invalidDeveloperIP'
 		| 'instrumentationFailedPrivilege'
 		| 'releaseMode'
-		| 'unsupportedPatchPackage',
+		| 'unsupportedPatchPackage'
+		| 'invalidCertificate',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {

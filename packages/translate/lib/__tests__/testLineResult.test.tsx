@@ -118,6 +118,7 @@ describe('Test line results translation', () => {
 		'instrumentationFailedPrivilege',
 		'releaseMode',
 		'unsupportedPatchPackage',
+		'invalidCertificate',
 	];
 
 	describe('simple errors translations', () => {
