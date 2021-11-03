@@ -1186,6 +1186,40 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Click on relative position ... once" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Click on ",
+    },
+    Object {
+      "type": "subject",
+      "value": "relative position",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Click on relative position ... once" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Click on ",
+    },
+    Object {
+      "type": "subject",
+      "value": "relative position",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Comment" 1`] = `
 Object {
   "children": Array [],
@@ -2124,6 +2158,40 @@ Object {
     Object {
       "type": "subject",
       "value": "position",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Move to relative position ..." 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Move pointer to ",
+    },
+    Object {
+      "type": "subject",
+      "value": "relative position",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Move to relative position ..." without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Move pointer to ",
+    },
+    Object {
+      "type": "subject",
+      "value": "relative position",
     },
   ],
   "type": "test-line",

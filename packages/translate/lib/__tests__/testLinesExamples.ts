@@ -727,6 +727,16 @@ export const testLinesExamples = {
 		},
 		clicks: [{type: 'single', button: 'left'}],
 	}),
+	'Click on relative position ... once': (x: number | string = 123, y: number | string = 234): TestLine => ({
+		...baseTestLine,
+		type: 'click',
+		target: {
+			type: 'window',
+			coordinates: {x, y},
+			relative: true,
+		},
+		clicks: [{type: 'single', button: 'left'}],
+	}),
 	'Click on element ... once': (elementId = 'element-id-1'): TestLine => ({
 		...baseTestLine,
 		type: 'click',
@@ -968,6 +978,15 @@ export const testLinesExamples = {
 		target: {
 			type: 'window',
 			coordinates: {x, y},
+		},
+	}),
+	'Move to relative position ...': (x: number | string = 123, y: number | string = 234): TestLine => ({
+		...baseTestLine,
+		type: 'moveTo',
+		target: {
+			type: 'window',
+			coordinates: {x, y},
+			relative: true,
 		},
 	}),
 	'Move to element ...': (elementId = 'element-id-1'): TestLine => ({
