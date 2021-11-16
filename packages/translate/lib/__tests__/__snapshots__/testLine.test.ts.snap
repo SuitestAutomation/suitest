@@ -2456,7 +2456,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Press button ",
+      "value": "Press ",
     },
     Object {
       "type": "input",
@@ -2489,7 +2489,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Press button ",
+      "value": "Press ",
     },
     Object {
       "type": "input",
@@ -2522,7 +2522,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Press button ",
+      "value": "Press ",
     },
     Object {
       "type": "input",
@@ -2543,7 +2543,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Press button ",
+      "value": "Press ",
     },
     Object {
       "type": "input",
@@ -2575,7 +2575,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Press button ",
+      "value": "Press ",
     },
     Object {
       "type": "input",
@@ -2607,7 +2607,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Press button ",
+      "value": "Press ",
     },
     Object {
       "type": "input",
@@ -2639,7 +2639,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Press button ",
+      "value": "Press ",
     },
     Object {
       "type": "input",
@@ -2691,7 +2691,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Press button ",
+      "value": "Press ",
     },
     Object {
       "type": "input",
@@ -2720,6 +2720,48 @@ Object {
     Object {
       "type": "input",
       "value": "3s",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Press long ... for ... once" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Press long ",
+    },
+    Object {
+      "type": "input",
+      "value": "LEFT",
+    },
+    Object {
+      "type": "text",
+      "value": " for 1000ms ",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Press long ... for ... once" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Press long ",
+    },
+    Object {
+      "type": "input",
+      "value": "LEFT",
+    },
+    Object {
+      "type": "text",
+      "value": " for 1000ms ",
     },
   ],
   "type": "test-line",
