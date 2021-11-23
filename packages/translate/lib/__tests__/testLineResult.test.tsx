@@ -118,6 +118,7 @@ describe('Test line results translation', () => {
 		'instrumentationFailedPrivilege',
 		'releaseMode',
 		'unsupportedPatchPackage',
+		'deviceLabException',
 	];
 
 	describe('simple errors translations', () => {
