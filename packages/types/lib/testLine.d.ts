@@ -185,6 +185,7 @@ export type WebTarget =
 export type MobileTarget =
 	| ElementTarget
 	| ScreenTarget
+	| ActiveElementTarget
 	| MobilePositionTarget;
 
 export type ClickTestLine = BaseTestLine & {
