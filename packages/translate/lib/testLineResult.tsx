@@ -249,6 +249,9 @@ const translateDeviceError = (result: DeviceError): TextNode => {
 	if (message.code === 'deviceFailure' && message.info.reason === 'cssSelectorInvalid') {
 		return <text>CSS selector is invalid</text> as TextNode;
 	}
+	if (message.code === 'deviceFailure' && message.info.reason === 'xpathNotValid') {
+		return <text>XPath selector is invalid</text> as TextNode;
+	}
 	if (['videoAdapterInvalidOutput', 'videoAdapterNotFunction', 'videoAdapterThrownError'].includes(message.code)) {
 		return <text>Video adapter error: {message.info.reason}</text> as TextNode;
 	}
