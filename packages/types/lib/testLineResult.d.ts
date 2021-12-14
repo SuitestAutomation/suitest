@@ -203,6 +203,11 @@ export type DeviceError = BaseResult & {
 			reason: 'cssSelectorInvalid',
 		},
 	} | {
+		code: 'deviceFailure',
+		info: {
+			reason: 'xpathNotValid',
+		},
+	} | {
 		code: 'videoAdapterInvalidOutput' | 'videoAdapterNotFunction' | 'videoAdapterThrownError',
 		info: {
 			reason: string, // TODO should be enumerable
