@@ -216,7 +216,7 @@ export type ScrollTestLine = BaseTestLine & {
 	target: ElementTarget | MobilePositionTarget | ActiveElementTarget,
 	delay?: number | string,
 	count?: number | string,
-	scroll: [{direction: Directions, distance: number | string}],
+	scroll: [{direction: Directions, distance?: number | string | null}],
 	condition?: Condition,
 	negateCondition?: boolean,
 };
