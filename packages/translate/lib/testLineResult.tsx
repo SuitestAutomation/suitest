@@ -190,6 +190,8 @@ const translateInvalidInputError = (result: InvalidInputError): TextNode => {
 			return <text>This test command is unsupported by this element</text> as TextNode;
 		case 'wrongExpression':
 			return defaultMessage;
+		case 'wrongDirection':
+			return <text>This test command contains unknown direction</text> as TextNode;
 		default:
 			const _code: never = message.code;
 			console.warn('invalidInput code was not handled', JSON.stringify(_code));

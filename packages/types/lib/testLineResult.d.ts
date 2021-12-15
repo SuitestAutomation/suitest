@@ -183,7 +183,8 @@ export type InvalidInputError = BaseResult & ({
 	message?: {
 		code: 'lineTypeNotSupported' // Line is not supported by platform
 			| 'elementNotSupported' // Command is unsupported by element
-			| 'wrongExpression', // Faced when javascript expression subject value is undefined
+			| 'wrongExpression' // Faced when javascript expression subject value is undefined
+			| 'wrongDirection', // When line specified with unknown direction
 	},
 } | {
 	errorType: 'invalidInput',
