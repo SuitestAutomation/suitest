@@ -404,7 +404,11 @@ const translateTarget = (target: WebTarget | MobileTarget): JSX.Element => {
 				: <subject>element</subject>;
 		case 'window':
 			// TODO should we translate 'window' depending on running platform?
-			return <subject>{'coordinates' in target ? 'position' : 'window'}</subject>;
+			return <subject>{
+				'coordinates' in target
+					? (target.relative ? 'relative position' : 'position')
+					: 'window'
+			}</subject>;
 		case 'screen':
 			return <subject>{'coordinates' in target ? 'position' : 'screen'}</subject>;
 		default:

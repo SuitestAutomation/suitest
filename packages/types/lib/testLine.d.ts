@@ -158,6 +158,7 @@ export type WebPositionTarget = {
 		x: number | string,
 		y: number | string,
 	},
+	relative?: boolean,
 };
 
 export type MobilePositionTarget = {
@@ -175,13 +176,16 @@ export type ActiveElementTarget = {
 	},
 };
 
-export type WebTarget = ElementTarget
+export type WebTarget =
+	| ElementTarget
 	| WindowTarget
 	| WebPositionTarget
 	| ActiveElementTarget;
 
-export type MobileTarget = ElementTarget
+export type MobileTarget =
+	| ElementTarget
 	| ScreenTarget
+	| ActiveElementTarget
 	| MobilePositionTarget;
 
 export type ClickTestLine = BaseTestLine & {
