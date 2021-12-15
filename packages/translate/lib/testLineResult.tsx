@@ -136,6 +136,7 @@ const simpleErrorMap: {[key: string]: Node} = {
 	instrumentationFailedPrivilege: <text>Auto-instrumentation works for app packages with public or partner privileges only. Please use manual instrumentation instead</text>,
 	releaseMode: <text>Device is in the Release Mode, please switch it to the Assist Mode (Debug Settings / Boot Parameters / Release Check Mode)</text>,
 	unsupportedPatchPackage: <text>Patch package is not supported. You need to use a fully standalone application package</text>,
+	deviceLabException: <text>Suitest device lab - you do not have permission for this action under the current circumstances</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
@@ -247,6 +248,9 @@ const translateDeviceError = (result: DeviceError): TextNode => {
 	}
 	if (message.code === 'deviceFailure' && message.info.reason === 'cssSelectorInvalid') {
 		return <text>CSS selector is invalid</text> as TextNode;
+	}
+	if (message.code === 'deviceFailure' && message.info.reason === 'xpathNotValid') {
+		return <text>XPath selector is invalid</text> as TextNode;
 	}
 	if (['videoAdapterInvalidOutput', 'videoAdapterNotFunction', 'videoAdapterThrownError'].includes(message.code)) {
 		return <text>Video adapter error: {message.info.reason}</text> as TextNode;

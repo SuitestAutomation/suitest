@@ -148,7 +148,8 @@ export type SimpleError = BaseResult & {
 		| 'invalidDeveloperIP'
 		| 'instrumentationFailedPrivilege'
 		| 'releaseMode'
-		| 'unsupportedPatchPackage',
+		| 'unsupportedPatchPackage'
+		| 'deviceLabException',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {
@@ -200,6 +201,11 @@ export type DeviceError = BaseResult & {
 		code: 'deviceFailure',
 		info: {
 			reason: 'cssSelectorInvalid',
+		},
+	} | {
+		code: 'deviceFailure',
+		info: {
+			reason: 'xpathNotValid',
 		},
 	} | {
 		code: 'videoAdapterInvalidOutput' | 'videoAdapterNotFunction' | 'videoAdapterThrownError',
