@@ -76,7 +76,7 @@ export type TestLineResultNode = {
 	type: 'test-line-result',
 	status: TestLineResultStatus,
 	children: TestLineNode[],
-	message?: InlineTextNode[],
+	message?: Array<InlineTextNode | LinkNode>,
 	screenshot?: string,
 	docs?: string,
 };
@@ -87,7 +87,8 @@ export type LinkNode = {
 	value: string,
 };
 
-export type SingleNode = InlineTextNode
+export type SingleNode =
+	| InlineTextNode
 	| CodeBlockNode
 	| PropertyNode
 	| PropertiesNode

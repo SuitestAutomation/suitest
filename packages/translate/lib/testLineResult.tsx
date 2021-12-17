@@ -175,7 +175,7 @@ const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
 	return conditionWasNotMetMessage;
 };
 
-const translateInvalidInputError = (result: InvalidInputError): TextNode => {
+const translateInvalidInputError = (result: InvalidInputError): Node => {
 	const defaultMessage = <text>Test command received invalid input</text> as TextNode;
 	const message = 'message' in result ? result.message : undefined;
 
@@ -191,7 +191,7 @@ const translateInvalidInputError = (result: InvalidInputError): TextNode => {
 		case 'wrongExpression':
 			return defaultMessage;
 		case 'wrongDirection':
-			return <text>This test command contains unknown direction</text> as TextNode;
+			return <fragment>Invalid direction. See <link href="https://suite.st/docs/suitest-api/test-operations/#scroll">our docs</link> for more information</fragment>;
 		default:
 			const _code: never = message.code;
 			console.warn('invalidInput code was not handled', JSON.stringify(_code));
