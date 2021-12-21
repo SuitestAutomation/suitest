@@ -607,8 +607,12 @@ const translateScrollTestLine = (
 	const titleFragment = getConditionInfo(testLine, appConfig);
 	const direction = testLine.scroll[0].direction;
 	const distance = testLine.scroll[0].distance;
-	const title = <fragment>Scroll from {translateTarget(testLine.target)}
-	{titleFragment} {direction} by {distance}px</fragment>;
+	const title = (
+		<fragment>
+			Scroll from {translateTarget(testLine.target)}
+			{titleFragment} {direction}{['string', 'number'].includes(typeof distance) ? ` by ${distance}px` : ''}
+		</fragment>
+	);
 	const status = testLine.excluded ? 'excluded' : lineResult?.result;
 
 	return <test-line title={title} status={status}>
