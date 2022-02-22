@@ -38,7 +38,7 @@ const baseScreenshotPath = 'https://the.suite.st';
 const conditionWasMetMessage = <text>Condition was met</text>;
 const conditionWasNotMetMessage = <text>Condition was not met</text>;
 
-const simpleErrorMap: {[key: string]: Node} = {
+const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	failedStart: <text>Failed to open application</text>,
 	appRunning: <text>App is still running</text>,
 	appNotRunning: <text>App is not running</text>,
@@ -136,6 +136,7 @@ const simpleErrorMap: {[key: string]: Node} = {
 	instrumentationFailedPrivilege: <text>Auto-instrumentation works for app packages with public or partner privileges only. Please use manual instrumentation instead</text>,
 	releaseMode: <text>Device is in the Release Mode, please switch it to the Assist Mode (Debug Settings / Boot Parameters / Release Check Mode)</text>,
 	unsupportedPatchPackage: <text>Patch package is not supported. You need to use a fully standalone application package</text>,
+	longPressNotSupported: <text>Current platform does not support long-press feature</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
