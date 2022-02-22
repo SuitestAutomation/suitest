@@ -1487,6 +1487,13 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "longPressNotSupported" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Current platform does not support long-press feature",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "missingApp" error 1`] = `
 Object {
   "type": "text",

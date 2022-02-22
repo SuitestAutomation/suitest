@@ -148,7 +148,8 @@ export type SimpleError = BaseResult & {
 		| 'invalidDeveloperIP'
 		| 'instrumentationFailedPrivilege'
 		| 'releaseMode'
-		| 'unsupportedPatchPackage',
+		| 'unsupportedPatchPackage'
+		| 'longPressNotSupported',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {
