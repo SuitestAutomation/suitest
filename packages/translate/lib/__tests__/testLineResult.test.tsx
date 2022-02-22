@@ -118,6 +118,7 @@ describe('Test line results translation', () => {
 		'instrumentationFailedPrivilege',
 		'releaseMode',
 		'unsupportedPatchPackage',
+		'deviceLabException',
 		'longPressNotSupported',
 	];
 
@@ -182,23 +183,23 @@ describe('Test line results translation', () => {
 			} as QueryLineError,
 		})).toMatchSnapshot();
 	});
+	const extendBaseError = (err: any): TestLineResult => ({
+		result: 'fail',
+		lineId: 'a625a00e-50b8-4a4c-a24f-b7e206e72199',
+		timeStarted: 1587127670927,
+		timeFinished: 1587127670981,
+		timeHrDiff: [
+			0,
+			53647599,
+		],
+		timeScreenshotHr: [
+			0,
+			0,
+		],
+		...err,
+	});
 
 	describe('Translate assert lines', () => {
-		const extendBaseError = (err: any): TestLineResult => ({
-			result: 'fail',
-			lineId: 'a625a00e-50b8-4a4c-a24f-b7e206e72199',
-			timeStarted: 1587127670927,
-			timeFinished: 1587127670981,
-			timeHrDiff: [
-				0,
-				53647599,
-			],
-			timeScreenshotHr: [
-				0,
-				0,
-			],
-			...err,
-		});
 		const assertLine = testLinesExamples['Assert ... then continue'];
 		const testLineToPlainText = (...args: Parameters<typeof translateTestLineResult>): string =>
 			toText(translateTestLineResult(...args), {verbosity: 'normal', format: false});
@@ -1746,6 +1747,27 @@ return true;
 
 		it('as plain text', () => {
 			expect(toText(abortedLineJson, { format: false, verbosity: 'normal' })).toMatchSnapshot();
+		});
+
+		it('translate line results that contains link', () => {
+			expect(toText(translateTestLineResult({
+				testLine: testLinesExamples['Scroll from active element'](),
+				appConfig,
+				lineResult: extendBaseError({
+					errorType: 'invalidInput',
+					message: {
+						code: 'wrongDirection',
+					},
+				}),
+			}))).toMatchSnapshot();
+
+			expect(toText(translateTestLineResult({
+				testLine: testLinesExamples['Assert ... then continue'](),
+				appConfig,
+				lineResult: extendBaseError({
+					errorType: 'unsupportedOSVersion',
+				}),
+			}))).toMatchSnapshot();
 		});
 	});
 });
