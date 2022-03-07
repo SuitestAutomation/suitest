@@ -310,6 +310,17 @@ describe('AST renderers', () => {
 		renderLongTexts(false);
 	});
 
+	it('render line result with messages that contains links', () => {
+		expect(toText(
+			<test-line-result
+				status="fail"
+				message={<fragment>Some unknown error, pls check <link href="http://some.url">docs</link></fragment>}
+			>
+				{simpleLine}
+			</test-line-result>
+		)).toMatchSnapshot();
+	});
+
 	it('render link', () => {
 		const options = {format: true, verbosity: 'normal' as const};
 		expect(toText(<link href="http://some.url">Some URL</link>, options)).toEqual('Some URL (http://some.url)');

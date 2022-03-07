@@ -509,3 +509,8 @@ exports[`AST renderers plain text renderer should render test line results with 
 "⦻ Sleep 10s
   aborted: Execution was aborted."
 `;
+
+exports[`AST renderers render line result with messages that contains links 1`] = `
+"Assert element My element is visible
+  fail: Some unknown error, pls check docs (http://some.url)"
+`;

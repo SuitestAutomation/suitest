@@ -57,6 +57,17 @@ exports[`Test line results translation Translate aborted result as plain text 1`
   aborted: Execution was aborted."
 `;
 
+exports[`Test line results translation Translate aborted result translate line results that contains link 1`] = `
+"✖ Scroll from active element down by 1px
+  fail: Invalid direction. See our docs (https://suite.st/docs/suitest-api/test-operations/#scroll) for more information"
+`;
+
+exports[`Test line results translation Translate aborted result translate line results that contains link 2`] = `
+"✖ Assert: Application has exited
+  fail: Unsupported OS version, please see our docs (https://suite.st/docs/devices/playstation/#sdk-650-or-system-so
+        ftware-701-or-lower)"
+`;
+
 exports[`Test line results translation Translate assert lines translate "assert application has exited" render with fail result 1`] = `
 "✖ Assert: Application has exited
   fail: App is still running"
@@ -1364,6 +1375,13 @@ exports[`Test line results translation simple errors translations should transla
 Object {
   "type": "text",
   "value": "Failed to initialize device control",
+}
+`;
+
+exports[`Test line results translation simple errors translations should translate "deviceLabException" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Suitest device lab - you do not have permission for this action under the current circumstances",
 }
 `;
 
