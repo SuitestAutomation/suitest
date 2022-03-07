@@ -137,7 +137,7 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	releaseMode: <text>Device is in the Release Mode, please switch it to the Assist Mode (Debug Settings / Boot Parameters / Release Check Mode)</text>,
 	unsupportedPatchPackage: <text>Patch package is not supported. You need to use a fully standalone application package</text>,
 	deviceLabException: <text>Suitest device lab - you do not have permission for this action under the current circumstances</text>,
-	longPressNotSupported: <text>Current platform does not support long-press feature</text>,
+	longPressNotSupported: <text>This device does not support long-press feature</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
