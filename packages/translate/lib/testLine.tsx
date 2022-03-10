@@ -350,9 +350,12 @@ const translatePressButtonTestLine = (
 		</fragment>);
 	const titleFragment = getConditionInfo(testLine, appConfig);
 	const status = testLine.excluded ? 'excluded' : lineResult?.result;
+	const title = testLine.longPressMs
+		? <fragment>Press long {ids} for {testLine.longPressMs}ms {titleFragment}</fragment>
+		: <fragment>Press {ids}{titleFragment}</fragment>;
 
 	return <test-line
-		title={<fragment>Press button {ids}{titleFragment}</fragment>}
+		title={title}
 		status={status}
 	>
 		{testLine.condition

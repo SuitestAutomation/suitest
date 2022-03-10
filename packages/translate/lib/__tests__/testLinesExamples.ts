@@ -478,6 +478,12 @@ export const testLinesExamples = {
 		type: 'button',
 		ids,
 	}),
+	'Press long ... for ... once': (ids = ['LEFT'], longPressMs = 1000): TestLine => ({
+		...baseTestLine,
+		type: 'button',
+		ids,
+		longPressMs,
+	}),
 	'Press ... only if ...': (ids = ['LEFT'], condition: Condition = appExitedCondition): TestLine => ({
 		...baseTestLine,
 		type: 'button',

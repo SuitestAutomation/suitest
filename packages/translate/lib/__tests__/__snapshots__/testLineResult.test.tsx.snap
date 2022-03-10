@@ -603,24 +603,24 @@ exports[`Test line results translation Translate assert lines translate "openApp
 `;
 
 exports[`Test line results translation Translate assert lines translate line with screenshot should render excluded lines 1`] = `
-"» Press button OK
+"» Press OK
   excluded: Test line was not executed"
 `;
 
 exports[`Test line results translation Translate assert lines translate line with screenshot should render line with screenshot 1`] = `
-"✔ Press button OK
+"✔ Press OK
   screenshot: https://the.suite.st/path/to/file.png"
 `;
 
 exports[`Test line results translation Translate assert lines translate line with screenshot should render line with screenshot 2`] = `
-"✖ Press button OK
+"✖ Press OK
   fail: ADB communication with the device has failed. Make sure your device is set up correctly and it can be connected
         to using ADB
   screenshot: https://the.suite.st/path/to/file.png"
 `;
 
 exports[`Test line results translation Translate assert lines translate line with screenshot should render line with screenshot 3`] = `
-"✖ Press button OK
+"✖ Press OK
   fail: ADB communication with the device has failed. Make sure your device is set up correctly and it can be connected
         to using ADB
   docs: https://suite.st/docs/testing/test-operations/press-button-operation/
@@ -628,16 +628,16 @@ exports[`Test line results translation Translate assert lines translate line wit
 `;
 
 exports[`Test line results translation Translate assert lines translate line with screenshot should render line with screenshot 4`] = `
-"✖ Press button OK
+"✖ Press OK
   fail: ADB communication with the device has failed. Make sure your device is set up correctly and it can be connected
         to using ADB
   screenshot: https://the.suite.st/path/to/file.png"
 `;
 
-exports[`Test line results translation Translate assert lines translate line with screenshot should render line without screenshot 1`] = `"✔ Press button OK"`;
+exports[`Test line results translation Translate assert lines translate line with screenshot should render line without screenshot 1`] = `"✔ Press OK"`;
 
 exports[`Test line results translation Translate assert lines translate line with screenshot should render line without screenshot 2`] = `
-"✖ Press button OK
+"✖ Press OK
   fail: ADB communication with the device has failed. Make sure your device is set up correctly and it can be connected
         to using ADB"
 `;
@@ -1502,6 +1502,13 @@ exports[`Test line results translation simple errors translations should transla
 Object {
   "type": "text",
   "value": "Identical scheduling aborted",
+}
+`;
+
+exports[`Test line results translation simple errors translations should translate "longPressNotSupported" error 1`] = `
+Object {
+  "type": "text",
+  "value": "This device does not support long-press feature",
 }
 `;
 

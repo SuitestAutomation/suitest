@@ -119,6 +119,7 @@ describe('Test line results translation', () => {
 		'releaseMode',
 		'unsupportedPatchPackage',
 		'deviceLabException',
+		'longPressNotSupported',
 	];
 
 	describe('simple errors translations', () => {
