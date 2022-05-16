@@ -150,7 +150,8 @@ export type SimpleError = BaseResult & {
 		| 'releaseMode'
 		| 'unsupportedPatchPackage'
 		| 'deviceLabException'
-		| 'longPressNotSupported',
+		| 'longPressNotSupported'
+		| 'notSupportedApplicationType',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {
