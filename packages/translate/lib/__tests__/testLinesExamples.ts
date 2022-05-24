@@ -413,6 +413,11 @@ export const testLinesExamples = {
 		type: 'openApp',
 		relativeUrl,
 	}),
+	'Open app at deep link ...': (deepLink = 'some deep link'): TestLine => ({
+		...baseTestLine,
+		type: 'openApp',
+		deepLink,
+	}),
 	// OPEN URL
 	'Open URL ...': (url = 'https://suite.st'): TestLine => ({
 		...baseTestLine,
