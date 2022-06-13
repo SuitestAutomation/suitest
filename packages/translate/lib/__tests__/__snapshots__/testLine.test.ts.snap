@@ -2274,6 +2274,32 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Open app at deep link ..." 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Open application at deep link some deep link",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Open app at deep link ..." without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Open application at deep link some deep link",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Open app at homepage excluded" 1`] = `
 Object {
   "children": Array [],
