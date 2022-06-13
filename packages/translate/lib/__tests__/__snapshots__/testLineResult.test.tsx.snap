@@ -1371,6 +1371,13 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "deepLinkFormatError" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Defined deep link is not valid",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "deviceConnectionError" error 1`] = `
 Object {
   "type": "text",

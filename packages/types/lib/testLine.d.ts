@@ -67,6 +67,7 @@ export type OpenAppTestLine = BaseTestLine & {
 	type: 'openApp',
 	relativeUrl?: string,
 	launchMode?: OpenAppLaunchModes,
+	deepLink?: string,
 };
 
 export type CloseAppTestLine = BaseTestLine & {

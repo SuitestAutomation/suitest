@@ -239,6 +239,15 @@ const translateOpenApp = (
 		/> as TestLineNode;
 	}
 
+	if (testLine.deepLink) {
+		return (
+			<test-line
+				title={'Open application at deep link ' + testLine.deepLink}
+				status={status}
+			/>
+		) as TestLineNode;
+	}
+
 	if (!testLine.relativeUrl) {
 		// Open app with default path
 		return <test-line

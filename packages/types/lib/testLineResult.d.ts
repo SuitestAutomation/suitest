@@ -151,7 +151,8 @@ export type SimpleError = BaseResult & {
 		| 'unsupportedPatchPackage'
 		| 'deviceLabException'
 		| 'longPressNotSupported'
-		| 'notSupportedApplicationType',
+		| 'notSupportedApplicationType'
+		| 'deepLinkFormatError',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {

@@ -121,6 +121,7 @@ describe('Test line results translation', () => {
 		'deviceLabException',
 		'longPressNotSupported',
 		'notSupportedApplicationType',
+		'deepLinkFormatError',
 	];
 
 	describe('simple errors translations', () => {
