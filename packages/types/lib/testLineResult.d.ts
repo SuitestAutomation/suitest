@@ -151,6 +151,7 @@ export type SimpleError = BaseResult & {
 		| 'unsupportedPatchPackage'
 		| 'deviceLabException'
 		| 'longPressNotSupported'
+		| 'notSupportedApplicationType'
 		| 'deepLinkFormatError',
 };
 

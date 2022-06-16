@@ -138,6 +138,7 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	unsupportedPatchPackage: <text>Patch package is not supported. You need to use a fully standalone application package</text>,
 	deviceLabException: <text>Suitest device lab - you do not have permission for this action under the current circumstances</text>,
 	longPressNotSupported: <text>This device does not support long-press feature</text>,
+	notSupportedApplicationType: <text>Application type inside the selected configuration is not supported on the device you are connected to</text>,
 	deepLinkFormatError: <text>Defined deep link is not valid</text>,
 };
 

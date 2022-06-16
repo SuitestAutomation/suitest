@@ -1621,6 +1621,13 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "notSupportedApplicationType" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Application type inside the selected configuration is not supported on the device you are connected to",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "outOfMemory" error 1`] = `
 Object {
   "type": "text",
