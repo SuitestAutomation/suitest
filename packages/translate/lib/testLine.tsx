@@ -399,9 +399,18 @@ const assertUnknownTarget = (target: never): never => {
 const translateTarget = (target: WebTarget | MobileTarget): JSX.Element => {
 	switch (target.type) {
 		case 'element': // TODO nyc for some reason reports an uncovered branch here
-			return 'val' in target && target.val.active
-				? <subject>active element</subject>
-				: <subject>element</subject>;
+			let coordinates = '';
+			if ('coordinates' in target && target.coordinates) {
+				coordinates = `with position x:${target.coordinates.x} y:${target.coordinates.y}`;
+			}
+
+			if ('val' in target && target.val.active) {
+				return <subject>active element</subject>;
+			} else if (coordinates) {
+				return <subject>element {coordinates}</subject>;
+			} else {
+				return <subject>element</subject>;
+			}
 		case 'window':
 			// TODO should we translate 'window' depending on running platform?
 			return <subject>{'coordinates' in target ? 'position' : 'window'}</subject>;

@@ -2106,7 +2106,7 @@ Object {
     },
     Object {
       "type": "subject",
-      "value": "element",
+      "value": "element with position x:10 y:10",
     },
   ],
   "type": "test-line",
@@ -2123,7 +2123,7 @@ Object {
     },
     Object {
       "type": "subject",
-      "value": "element",
+      "value": "element with position x:10 y:10",
     },
   ],
   "type": "test-line",
