@@ -978,6 +978,18 @@ export const testLinesExamples = {
 			elementId,
 		},
 	}),
+	'Move to element coordinates ...': (elementId = 'element-id-1', x = 10, y = 10): TestLine => ({
+		...baseTestLine,
+		type: 'moveTo',
+		target: {
+			type: 'element',
+			coordinates: {
+				x,
+				y,
+			},
+			elementId,
+		},
+	}),
 	'Move to element ... only if ...': (
 		elementId = 'element-id-1',
 		condition: Condition = appExitedCondition

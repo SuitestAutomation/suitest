@@ -142,6 +142,10 @@ export type BrowserCommandTestLine = BaseTestLine & {
 export type ElementTarget = {
 	type: 'element',
 	elementId: string,
+	coordinates?: {
+		x?: number | string,
+		y?: number | string,
+	},
 };
 
 export type WindowTarget = {
