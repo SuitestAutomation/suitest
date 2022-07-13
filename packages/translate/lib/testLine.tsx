@@ -46,7 +46,7 @@ const getConditionInfo = (
 	// and has all types of conditions and loops
 	const {condition, count, negateCondition, delay} = (testLine as PressButtonTestLine);
 
-	const getDelayFragment = (delay?: number | string) => delay !== undefined
+	const getDelayFragment = (delay?: number | string): Node | string => delay !== undefined
 		? <fragment> every {formatTimeout(delay, appConfig?.configVariables)}</fragment>
 		: '';
 

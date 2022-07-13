@@ -8,7 +8,10 @@ import {
 	QueryLineError,
 	ElementQueryLine,
 	CookieQueryLine,
-	JsExpressionQueryLine, QueryLine, BaseResult,
+	JsExpressionQueryLine,
+	QueryLine,
+	BaseResult,
+	ScreenLockFailedError,
 } from '@suitest/types/lib';
 import {translateResultErrorMessage, translateTestLineResult} from '../testLineResult';
 import {appConfig, conditions, elements, testLinesExamples} from './testLinesExamples';
@@ -145,6 +148,50 @@ describe('Test line results translation', () => {
 				notAllowedPrivileges: ['https://some.com', 'https://some2.com'],
 			},
 		})).toMatchSnapshot();
+	});
+
+	describe('translate screenLockFailed error', () => {
+		const screenLockFailedError = (code: ScreenLockFailedError['message']['code']): ScreenLockFailedError => ({
+			...baseResult,
+			result: 'fatal',
+			errorType: 'screenLockFailed',
+			message: {
+				code,
+			},
+		});
+
+		it('when message code is missingPasscode', () => {
+			expect(translateResultErrorMessage(screenLockFailedError('missingPasscode')))
+				.toStrictEqual({
+					 type: 'text',
+					 value: 'Missing passcode',
+				 });
+		});
+
+		it('when message code is unexpectedParameters', () => {
+			expect(translateResultErrorMessage(screenLockFailedError('unexpectedParameters')))
+				.toStrictEqual({
+					 type: 'text',
+					 value: 'Passcode unexpected. Please check if the passcode is configured on your device',
+				});
+		});
+
+		it('when message code is unknown', () => {
+			const unknownScreenLockFailedError: any = {
+				...baseResult,
+				result: 'fatal',
+				errorType: 'screenLockFailed',
+				message: {
+					code: 'unknown',
+					additionalInfo: 'info',
+				},
+			};
+			expect(translateResultErrorMessage(unknownScreenLockFailedError))
+				.toStrictEqual({
+					 type: 'text',
+					 value: 'screenLockFailed unknown message: {"code":"unknown","additionalInfo":"info"}',
+				});
+		});
 	});
 
 	describe('Translate query lines', () => {

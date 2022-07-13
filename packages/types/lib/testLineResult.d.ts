@@ -399,6 +399,13 @@ export type QueryLineError = {
 
 };
 
+export type ScreenLockFailedError = BaseResult & {
+	errorType: 'screenLockFailed',
+	message:
+		| { code: 'missingPasscode'}
+		| { code: 'unexpectedParameters' },
+};
+
 export type TestLineSuccessResult = BaseResult & {
 	result: 'success',
 	errorType?: undefined,
@@ -443,4 +450,5 @@ export type TestLineResult = TestLineSuccessResult
 	| OpenAppOverrideFailedError
 	| InvalidPackageError
 	| ADBError
-	| NotAllowedPrivilegesError;
+	| NotAllowedPrivilegesError
+	| ScreenLockFailedError;
