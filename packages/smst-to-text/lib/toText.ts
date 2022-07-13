@@ -342,8 +342,11 @@ const renderProps = (
 	return lines.join(nl);
 };
 
-const  renderNode = (node: SingleNode, renderTextNode: RenderTextFunc, {prefix = '', verbosity}:
-	{ prefix?: string, verbosity: Verbosity}): string => {
+const renderNode = (
+	node: SingleNode,
+	renderTextNode: RenderTextFunc,
+	{prefix = '', verbosity}: { prefix?: string, verbosity: Verbosity}
+): string => {
 	switch (node.type) {
 		case 'text':
 		case 'code':
@@ -401,7 +404,9 @@ const renderTestLineResult = (
 	if (node.status === 'excluded') {
 		message = status + 'Test line was not executed';
 	} else {
-		const nodeMessage = node.message?.map(renderTextNode).join('');
+		const nodeMessage = node.message
+			?.map(node => renderNode(node, renderTextNode, options))
+			.join('');
 
 		if (nodeMessage) {
 			message = status + wrapText(nodeMessage, undefined, calcPureLength(status));

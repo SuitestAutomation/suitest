@@ -239,6 +239,15 @@ const translateOpenApp = (
 		/> as TestLineNode;
 	}
 
+	if (testLine.deepLink) {
+		return (
+			<test-line
+				title={'Open application at deep link ' + testLine.deepLink}
+				status={status}
+			/>
+		) as TestLineNode;
+	}
+
 	if (!testLine.relativeUrl) {
 		// Open app with default path
 		return <test-line
@@ -372,9 +381,12 @@ const translatePressButtonTestLine = (
 		</fragment>);
 	const titleFragment = getConditionInfo(testLine, appConfig);
 	const status = testLine.excluded ? 'excluded' : lineResult?.result;
+	const title = testLine.longPressMs
+		? <fragment>Press long {ids} for {testLine.longPressMs}ms {titleFragment}</fragment>
+		: <fragment>Press {ids}{titleFragment}</fragment>;
 
 	return <test-line
-		title={<fragment>Press button {ids}{titleFragment}</fragment>}
+		title={title}
 		status={status}
 	>
 		{testLine.condition
@@ -426,7 +438,11 @@ const translateTarget = (target: WebTarget | MobileTarget): JSX.Element => {
 				: <subject>element</subject>;
 		case 'window':
 			// TODO should we translate 'window' depending on running platform?
-			return <subject>{'coordinates' in target ? 'position' : 'window'}</subject>;
+			return <subject>{
+				'coordinates' in target
+					? (target.relative ? 'relative position' : 'position')
+					: 'window'
+			}</subject>;
 		case 'screen':
 			return <subject>{'coordinates' in target ? 'position' : 'screen'}</subject>;
 		default:
@@ -625,8 +641,12 @@ const translateScrollTestLine = (
 	const titleFragment = getConditionInfo(testLine, appConfig);
 	const direction = testLine.scroll[0].direction;
 	const distance = testLine.scroll[0].distance;
-	const title = <fragment>Scroll from {translateTarget(testLine.target)}
-	{titleFragment} {direction} by {distance}px</fragment>;
+	const title = (
+		<fragment>
+			Scroll from {translateTarget(testLine.target)}
+			{titleFragment} {direction}{['string', 'number'].includes(typeof distance) ? ` by ${distance}px` : ''}
+		</fragment>
+	);
 	const status = testLine.excluded ? 'excluded' : lineResult?.result;
 
 	return <test-line title={title} status={status}>

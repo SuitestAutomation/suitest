@@ -38,7 +38,7 @@ const baseScreenshotPath = 'https://the.suite.st';
 const conditionWasMetMessage = <text>Condition was met</text>;
 const conditionWasNotMetMessage = <text>Condition was not met</text>;
 
-const simpleErrorMap: {[key: string]: Node} = {
+const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	failedStart: <text>Failed to open application</text>,
 	appRunning: <text>App is still running</text>,
 	appNotRunning: <text>App is not running</text>,
@@ -136,6 +136,10 @@ const simpleErrorMap: {[key: string]: Node} = {
 	instrumentationFailedPrivilege: <text>Auto-instrumentation works for app packages with public or partner privileges only. Please use manual instrumentation instead</text>,
 	releaseMode: <text>Device is in the Release Mode, please switch it to the Assist Mode (Debug Settings / Boot Parameters / Release Check Mode)</text>,
 	unsupportedPatchPackage: <text>Patch package is not supported. You need to use a fully standalone application package</text>,
+	deviceLabException: <text>Suitest device lab - you do not have permission for this action under the current circumstances</text>,
+	longPressNotSupported: <text>This device does not support long-press feature</text>,
+	notSupportedApplicationType: <text>Application type inside the selected configuration is not supported on the device you are connected to</text>,
+	deepLinkFormatError: <text>Defined deep link is not valid</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
@@ -174,7 +178,7 @@ const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
 	return conditionWasNotMetMessage;
 };
 
-const translateInvalidInputError = (result: InvalidInputError): TextNode => {
+const translateInvalidInputError = (result: InvalidInputError): Node => {
 	const defaultMessage = <text>Test command received invalid input</text> as TextNode;
 	const message = 'message' in result ? result.message : undefined;
 
@@ -189,6 +193,8 @@ const translateInvalidInputError = (result: InvalidInputError): TextNode => {
 			return <text>This test command is unsupported by this element</text> as TextNode;
 		case 'wrongExpression':
 			return defaultMessage;
+		case 'wrongDirection':
+			return <fragment>Invalid direction. See <link href="https://suite.st/docs/suitest-api/test-operations/#scroll">our docs</link> for more information</fragment>;
 		default:
 			const _code: never = message.code;
 			console.warn('invalidInput code was not handled', JSON.stringify(_code));
@@ -247,6 +253,9 @@ const translateDeviceError = (result: DeviceError): TextNode => {
 	}
 	if (message.code === 'deviceFailure' && message.info.reason === 'cssSelectorInvalid') {
 		return <text>CSS selector is invalid</text> as TextNode;
+	}
+	if (message.code === 'deviceFailure' && message.info.reason === 'xpathNotValid') {
+		return <text>XPath selector is invalid</text> as TextNode;
 	}
 	if (['videoAdapterInvalidOutput', 'videoAdapterNotFunction', 'videoAdapterThrownError'].includes(message.code)) {
 		return <text>Video adapter error: {message.info.reason}</text> as TextNode;

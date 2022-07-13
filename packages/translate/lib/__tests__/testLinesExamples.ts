@@ -414,6 +414,11 @@ export const testLinesExamples = {
 		type: 'openApp',
 		relativeUrl,
 	}),
+	'Open app at deep link ...': (deepLink = 'some deep link'): TestLine => ({
+		...baseTestLine,
+		type: 'openApp',
+		deepLink,
+	}),
 	// OPEN URL
 	'Open URL ...': (url = 'https://suite.st'): TestLine => ({
 		...baseTestLine,
@@ -478,6 +483,12 @@ export const testLinesExamples = {
 		...baseTestLine,
 		type: 'button',
 		ids,
+	}),
+	'Press long ... for ... once': (ids = ['LEFT'], longPressMs = 1000): TestLine => ({
+		...baseTestLine,
+		type: 'button',
+		ids,
+		longPressMs,
 	}),
 	'Press ... only if ...': (ids = ['LEFT'], condition: Condition = appExitedCondition): TestLine => ({
 		...baseTestLine,
@@ -728,6 +739,16 @@ export const testLinesExamples = {
 		},
 		clicks: [{type: 'single', button: 'left'}],
 	}),
+	'Click on relative position ... once': (x: number | string = 123, y: number | string = 234): TestLine => ({
+		...baseTestLine,
+		type: 'click',
+		target: {
+			type: 'window',
+			coordinates: {x, y},
+			relative: true,
+		},
+		clicks: [{type: 'single', button: 'left'}],
+	}),
 	'Click on element ... once': (elementId = 'element-id-1'): TestLine => ({
 		...baseTestLine,
 		type: 'click',
@@ -969,6 +990,15 @@ export const testLinesExamples = {
 		target: {
 			type: 'window',
 			coordinates: {x, y},
+		},
+	}),
+	'Move to relative position ...': (x: number | string = 123, y: number | string = 234): TestLine => ({
+		...baseTestLine,
+		type: 'moveTo',
+		target: {
+			type: 'window',
+			coordinates: {x, y},
+			relative: true,
 		},
 	}),
 	'Move to element ...': (elementId = 'element-id-1'): TestLine => ({
