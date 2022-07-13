@@ -28,6 +28,7 @@ import {
 	QueryLine,
 	QueryLineError,
 	NotAllowedPrivilegesError,
+	ScreenLockFailedError,
 } from '@suitest/types';
 import {translateTestLine} from './testLine';
 import {translateElementProperty} from './condition';
@@ -410,6 +411,21 @@ const translateNotAllowedPrivileges = (result: NotAllowedPrivilegesError): Node 
 		Read more in our <link href="https://suite.st/docs/devices/device-lab">docs</link>.
 	</fragment>;
 
+const translateScreenLockFailed = (result: ScreenLockFailedError): Node => {
+	const message = result.message;
+
+	switch (message.code) {
+		case 'missingPasscode':
+			return <text>Missing passcode</text>;
+		case 'unexpectedParameters':
+			return <text>Passcode unexpected. Please check if the passcode is configured on your device</text>;
+		default:
+			const unknownMessage: never = message;
+
+			return <text>{result.errorType} unknown message: {JSON.stringify(unknownMessage)}</text>;
+	}
+};
+
 /**
  * Type guard to help TypeScript better understand the code
  * @param result
@@ -475,6 +491,8 @@ export const translateResultErrorMessage = (result: TestLineErrorResult): Node =
 			return translateInvalidRepositoryReference(result);
 		case 'notAllowedPrivileges':
 			return translateNotAllowedPrivileges(result);
+		case 'screenLockFailed':
+			return translateScreenLockFailed(result);
 		default:
 			return unknownErrorMessage(result);
 	}
