@@ -403,7 +403,8 @@ export type ScreenLockFailedError = BaseResult & {
 	errorType: 'screenLockFailed',
 	message:
 		| { code: 'missingPasscode'}
-		| { code: 'unexpectedParameters' },
+		| { code: 'unexpectedParameters' }
+		| { code: 'invalidPasscode' },
 };
 
 export type TestLineSuccessResult = BaseResult & {

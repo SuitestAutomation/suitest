@@ -419,6 +419,8 @@ const translateScreenLockFailed = (result: ScreenLockFailedError): Node => {
 			return <text>Missing passcode</text>;
 		case 'unexpectedParameters':
 			return <text>Passcode unexpected. Please check if the passcode is configured on your device</text>;
+		case 'invalidPasscode':
+			return <text>The passcode you are trying to use is not valid</text>;
 		default:
 			const unknownMessage: never = message;
 
