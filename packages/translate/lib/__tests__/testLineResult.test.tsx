@@ -163,16 +163,24 @@ describe('Test line results translation', () => {
 		it('when message code is missingPasscode', () => {
 			expect(translateResultErrorMessage(screenLockFailedError('missingPasscode')))
 				.toStrictEqual({
-					 type: 'text',
-					 value: 'Missing passcode',
+					type: 'text',
+					value: 'Missing passcode',
 				 });
 		});
 
 		it('when message code is unexpectedParameters', () => {
 			expect(translateResultErrorMessage(screenLockFailedError('unexpectedParameters')))
 				.toStrictEqual({
-					 type: 'text',
-					 value: 'Passcode unexpected. Please check if the passcode is configured on your device',
+					type: 'text',
+					value: 'Passcode unexpected. Please check if the passcode is configured on your device',
+				});
+		});
+
+		it('when message code is invalidPasscode', () => {
+			expect(translateResultErrorMessage(screenLockFailedError('invalidPasscode')))
+				.toStrictEqual({
+					type: 'text',
+					value: 'The passcode you are trying to use is not valid',
 				});
 		});
 
