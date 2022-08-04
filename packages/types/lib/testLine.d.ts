@@ -83,6 +83,11 @@ export type OpenUrlTestLine = BaseTestLine & {
 	url: string,
 };
 
+export type OpenDeepLinkTestLine = BaseTestLine & {
+	type: 'openDeepLink',
+	deepLink: string,
+};
+
 export type PollUrlTestLine = BaseTestLine & {
 	type: 'pollUrl',
 	url: string,
@@ -286,4 +291,5 @@ export type TestLine =
 	| ScrollTestLine
 	| SwipeTestLine
 	| CloseAppTestLine
-	| SuspendAppTestLine;
+	| SuspendAppTestLine
+	| OpenDeepLinkTestLine;

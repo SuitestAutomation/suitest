@@ -424,6 +424,12 @@ export const testLinesExamples = {
 		type: 'openUrl',
 		url,
 	}),
+	// OPEN DEEP LINK
+	'Open Deep Link ...': (deepLink = 'some-deep-link'): TestLine => ({
+		...baseTestLine,
+		type: 'openDeepLink',
+		deepLink,
+	}),
 	// SLEEP
 	'Sleep ...': (timeout: string | number = 2000): TestLine => ({
 		...baseTestLine,
