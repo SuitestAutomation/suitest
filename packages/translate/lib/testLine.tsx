@@ -25,8 +25,18 @@ import {
 	TestLine,
 	WaitUntilTestLine,
 	TestLineResult,
-	ClearAppDataTestLine, TakeScreenshotTestLine, QueryLine, QueryLineError, DeviceSettingsTestLine,
-	ScrollTestLine, SwipeTestLine, CloseAppTestLine, SuspendAppTestLine, ElementSelector, ChangeDeviceStateLine,
+	ClearAppDataTestLine,
+	TakeScreenshotTestLine,
+	QueryLine,
+	QueryLineError,
+	DeviceSettingsTestLine,
+	ScrollTestLine,
+	SwipeTestLine,
+	CloseAppTestLine,
+	SuspendAppTestLine,
+	ElementSelector,
+	OpenDeepLinkTestLine,
+	ChangeDeviceStateLine,
 } from '@suitest/types';
 import {translateComparator} from './comparator';
 import {translateCondition} from './condition';
@@ -333,6 +343,31 @@ const translateOpenUrl = (
 			/>
 		</props>
 	</test-line> as TestLineNode;
+};
+
+
+const translateOpenDeepLink = (
+	testLine: OpenDeepLinkTestLine,
+	appConfig?: AppConfiguration,
+	lineResult?: TestLineResult,
+): TestLineNode => {
+	const deepLink = formatVariables(testLine.deepLink, appConfig?.configVariables);
+	const status = testLine.excluded ? 'excluded' : lineResult?.result;
+
+	return (
+		<test-line
+			title={<text>Open Deep Link</text>}
+			status={status}
+		>
+			<props>
+				<prop
+					name={<text>Deep Link</text>}
+					comparator={translateComparator('=')}
+					expectedValue={deepLink}
+				/>
+			</props>
+		</test-line> as TestLineNode
+	);
 };
 
 const translateSleepTestLine = (
@@ -735,6 +770,8 @@ export const translateTestLine = ({
 			return translateOpenApp(testLine, appConfig, lineResult as TestLineResult);
 		case 'openUrl':
 			return translateOpenUrl(testLine, appConfig, lineResult as TestLineResult);
+		case 'openDeepLink':
+			return translateOpenDeepLink(testLine, appConfig, lineResult as TestLineResult);
 		case 'sleep':
 			return translateSleepTestLine(testLine, appConfig, lineResult as TestLineResult);
 		case 'pollUrl':

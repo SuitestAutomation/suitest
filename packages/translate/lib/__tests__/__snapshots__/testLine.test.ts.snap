@@ -2250,6 +2250,82 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Open Deep Link ..." 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "actualValue": undefined,
+          "comparator": "=",
+          "contentType": "inline",
+          "expectedValue": Array [
+            Object {
+              "type": "input",
+              "value": "some-deep-link",
+            },
+          ],
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "Deep Link",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+      ],
+      "type": "props",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Open Deep Link",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Open Deep Link ..." without appConfig 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "actualValue": undefined,
+          "comparator": "=",
+          "contentType": "inline",
+          "expectedValue": Array [
+            Object {
+              "type": "input",
+              "value": "some-deep-link",
+            },
+          ],
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "Deep Link",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+      ],
+      "type": "props",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Open Deep Link",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Open URL ..." 1`] = `
 Object {
   "children": Array [

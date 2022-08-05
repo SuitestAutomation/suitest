@@ -141,6 +141,7 @@ const lineTypeDocsMap: {[key in Exclude<TestLine['type'], 'assert' | 'wait'>]: s
 	execCmd: '/testing/test-operations/execute-command-operation/',
 	openApp: '/testing/test-operations/open-app-operation/',
 	openUrl: '/testing/test-operations/open-url-operation/',
+	openDeepLink: '/testing/test-operations/open-deep-link-operation/',
 	sleep: '/testing/test-operations/sleep-operation/',
 	pollUrl: '/testing/test-operations/poll-url-operation/',
 	button: '/testing/test-operations/press-button-operation/',
