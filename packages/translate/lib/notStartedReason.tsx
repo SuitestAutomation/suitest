@@ -34,6 +34,11 @@ export function translateNotStartedReason(code: NotStartedReason): Translation {
 				title: <text>Cannot continue: Your subscription has expired</text>,
 				description: <fragment>Your subscription has expired, to continue using Suitest please <link href="https://the.suite.st/preferences/billing">renew your subscription</link></fragment>,
 			};
+		case NOT_STARTED_REASON.CAMERA_BUSY:
+			return {
+				title: <text>Cannot continue: Suitest Camera app is busy</text>,
+				description: <text>Suitest Camera app is busy, please try again in a few minutes</text>,
+			};
 		case NOT_STARTED_REASON.CANDYBOX_OFFLINE:
 			return {
 				title: <text>Cannot continue: CandyBox controlling this device is offline</text>,

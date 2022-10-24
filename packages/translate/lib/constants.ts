@@ -1,6 +1,7 @@
 export const NOT_STARTED_REASON = Object.freeze({
 	BLASTER_ERROR: 'blasterError',
 	BOOTING: 'runningBootSequence',
+	CAMERA_BUSY: 'cameraBusy',
 	CANDYBOX_OFFLINE: 'candyBoxOffline',
 	DEVICE_DELETED: 'deviceDeleted',
 	DEVICE_DISABLED: 'deviceDisabled',
