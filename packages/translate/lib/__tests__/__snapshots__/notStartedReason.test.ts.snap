@@ -61,6 +61,19 @@ Object {
 }
 `;
 
+exports[`Testing not started reason translation. Should translate "cameraBusy" code 1`] = `
+Object {
+  "description": Object {
+    "type": "text",
+    "value": "Suitest Camera app is busy, please try again in a few minutes",
+  },
+  "title": Object {
+    "type": "text",
+    "value": "Cannot continue: Suitest Camera app is busy",
+  },
+}
+`;
+
 exports[`Testing not started reason translation. Should translate "candyBoxOffline" code 1`] = `
 Object {
   "description": Object {
@@ -435,6 +448,13 @@ Object {
 }
 `;
 
+exports[`Testing not started reason translation. Translate to html:  "cameraBusy" 1`] = `
+Object {
+  "description": "Cannot continue: Suitest Camera app is busy",
+  "title": "Cannot continue: Suitest Camera app is busy",
+}
+`;
+
 exports[`Testing not started reason translation. Translate to html:  "candyBoxOffline" 1`] = `
 Object {
   "description": "Cannot continue: CandyBox controlling this device is offline",
@@ -621,6 +641,13 @@ exports[`Testing not started reason translation. Translate to plain text:  "boot
 Object {
   "description": "Suitest tried to start the bootstrap application on this device but failed several times and will try no more. Please connect to the device and start the bootstrap app manually, then disconnect and the scheduled test will continue. If you have configured the Suitest channel, tune the TV to this channel and verify that Suitest badge is displayed on TV in the top right corner. If you have not configured the Suitest channel, please contact support",
   "title": "Cannot continue: Suitest bootstrap app is not running",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to plain text:  "cameraBusy" 1`] = `
+Object {
+  "description": "Suitest Camera app is busy, please try again in a few minutes",
+  "title": "Cannot continue: Suitest Camera app is busy",
 }
 `;
 
