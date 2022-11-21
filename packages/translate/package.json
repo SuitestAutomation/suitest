@@ -1,6 +1,6 @@
 {
   "name": "@suitest/translate",
-  "version": "4.6.0",
+  "version": "4.6.1",
   "description": "A module that translate Suitest server messages to human readable strings",
   "homepage": "https://suite.st/",
   "license": "MIT",
