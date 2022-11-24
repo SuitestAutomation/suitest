@@ -1186,6 +1186,40 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Click on relative position ... once" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Click on ",
+    },
+    Object {
+      "type": "subject",
+      "value": "relative position",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Click on relative position ... once" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Click on ",
+    },
+    Object {
+      "type": "subject",
+      "value": "relative position",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Comment" 1`] = `
 Object {
   "children": Array [],
@@ -2130,6 +2164,116 @@ Object {
 }
 `;
 
+exports[`Test Lines translation Should translate test line "Move to relative position ..." 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Move pointer to ",
+    },
+    Object {
+      "type": "subject",
+      "value": "relative position",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Move to relative position ..." without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Move pointer to ",
+    },
+    Object {
+      "type": "subject",
+      "value": "relative position",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Open Deep Link ..." 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "actualValue": undefined,
+          "comparator": "=",
+          "contentType": "inline",
+          "expectedValue": Array [
+            Object {
+              "type": "input",
+              "value": "some-deep-link",
+            },
+          ],
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "Deep Link",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+      ],
+      "type": "props",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Open Deep Link",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Open Deep Link ..." without appConfig 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "actualValue": undefined,
+          "comparator": "=",
+          "contentType": "inline",
+          "expectedValue": Array [
+            Object {
+              "type": "input",
+              "value": "some-deep-link",
+            },
+          ],
+          "name": Array [
+            Object {
+              "type": "text",
+              "value": "Deep Link",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+      ],
+      "type": "props",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Open Deep Link",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
 exports[`Test Lines translation Should translate test line "Open URL ..." 1`] = `
 Object {
   "children": Array [
@@ -2200,6 +2344,32 @@ Object {
     Object {
       "type": "text",
       "value": "Open URL",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Open app at deep link ..." 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Open application at deep link some deep link",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Open app at deep link ..." without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Open application at deep link some deep link",
     },
   ],
   "type": "test-line",
@@ -2456,7 +2626,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Press button ",
+      "value": "Press ",
     },
     Object {
       "type": "input",
@@ -2489,7 +2659,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Press button ",
+      "value": "Press ",
     },
     Object {
       "type": "input",
@@ -2522,7 +2692,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Press button ",
+      "value": "Press ",
     },
     Object {
       "type": "input",
@@ -2543,7 +2713,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Press button ",
+      "value": "Press ",
     },
     Object {
       "type": "input",
@@ -2575,7 +2745,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Press button ",
+      "value": "Press ",
     },
     Object {
       "type": "input",
@@ -2607,7 +2777,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Press button ",
+      "value": "Press ",
     },
     Object {
       "type": "input",
@@ -2639,7 +2809,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Press button ",
+      "value": "Press ",
     },
     Object {
       "type": "input",
@@ -2691,7 +2861,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Press button ",
+      "value": "Press ",
     },
     Object {
       "type": "input",
@@ -2720,6 +2890,48 @@ Object {
     Object {
       "type": "input",
       "value": "3s",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Press long ... for ... once" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Press long ",
+    },
+    Object {
+      "type": "input",
+      "value": "LEFT",
+    },
+    Object {
+      "type": "text",
+      "value": " for 1000ms ",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "Press long ... for ... once" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Press long ",
+    },
+    Object {
+      "type": "input",
+      "value": "LEFT",
+    },
+    Object {
+      "type": "text",
+      "value": " for 1000ms ",
     },
   ],
   "type": "test-line",

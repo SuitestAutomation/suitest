@@ -67,6 +67,7 @@ export type OpenAppTestLine = BaseTestLine & {
 	type: 'openApp',
 	relativeUrl?: string,
 	launchMode?: OpenAppLaunchModes,
+	deepLink?: string,
 };
 
 export type CloseAppTestLine = BaseTestLine & {
@@ -80,6 +81,11 @@ export type SuspendAppTestLine = BaseTestLine & {
 export type OpenUrlTestLine = BaseTestLine & {
 	type: 'openUrl',
 	url: string,
+};
+
+export type OpenDeepLinkTestLine = BaseTestLine & {
+	type: 'openDeepLink',
+	deepLink: string,
 };
 
 export type PollUrlTestLine = BaseTestLine & {
@@ -96,6 +102,7 @@ export type SleepTestLine = BaseTestLine & {
 export type PressButtonTestLine = BaseTestLine & {
 	type: 'button',
 	ids: string[],
+	longPressMs?: number,
 	count?: number | string,
 	delay?: number | string,
 	condition?: Condition,
@@ -158,6 +165,7 @@ export type WebPositionTarget = {
 		x: number | string,
 		y: number | string,
 	},
+	relative?: boolean,
 };
 
 export type MobilePositionTarget = {
@@ -175,13 +183,16 @@ export type ActiveElementTarget = {
 	},
 };
 
-export type WebTarget = ElementTarget
+export type WebTarget =
+	| ElementTarget
 	| WindowTarget
 	| WebPositionTarget
 	| ActiveElementTarget;
 
-export type MobileTarget = ElementTarget
+export type MobileTarget =
+	| ElementTarget
 	| ScreenTarget
+	| ActiveElementTarget
 	| MobilePositionTarget;
 
 export type ClickTestLine = BaseTestLine & {
@@ -212,7 +223,7 @@ export type ScrollTestLine = BaseTestLine & {
 	target: ElementTarget | MobilePositionTarget | ActiveElementTarget,
 	delay?: number | string,
 	count?: number | string,
-	scroll: [{direction: Directions, distance: number | string}],
+	scroll: [{direction: Directions, distance?: number | string | null}],
 	condition?: Condition,
 	negateCondition?: boolean,
 };
@@ -280,4 +291,5 @@ export type TestLine =
 	| ScrollTestLine
 	| SwipeTestLine
 	| CloseAppTestLine
-	| SuspendAppTestLine;
+	| SuspendAppTestLine
+	| OpenDeepLinkTestLine;

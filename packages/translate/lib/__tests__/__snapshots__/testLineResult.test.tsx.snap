@@ -57,6 +57,17 @@ exports[`Test line results translation Translate aborted result as plain text 1`
   aborted: Execution was aborted."
 `;
 
+exports[`Test line results translation Translate aborted result translate line results that contains link 1`] = `
+"✖ Scroll from active element down by 1px
+  fail: Invalid direction. See our docs (https://suite.st/docs/suitest-api/test-operations/#scroll) for more information"
+`;
+
+exports[`Test line results translation Translate aborted result translate line results that contains link 2`] = `
+"✖ Assert: Application has exited
+  fail: Unsupported OS version, please see our docs (https://suite.st/docs/devices/playstation/#sdk-650-or-system-so
+        ftware-701-or-lower)"
+`;
+
 exports[`Test line results translation Translate assert lines translate "assert application has exited" render with fail result 1`] = `
 "✖ Assert: Application has exited
   fail: App is still running"
@@ -592,24 +603,24 @@ exports[`Test line results translation Translate assert lines translate "openApp
 `;
 
 exports[`Test line results translation Translate assert lines translate line with screenshot should render excluded lines 1`] = `
-"» Press button OK
+"» Press OK
   excluded: Test line was not executed"
 `;
 
 exports[`Test line results translation Translate assert lines translate line with screenshot should render line with screenshot 1`] = `
-"✔ Press button OK
+"✔ Press OK
   screenshot: https://the.suite.st/path/to/file.png"
 `;
 
 exports[`Test line results translation Translate assert lines translate line with screenshot should render line with screenshot 2`] = `
-"✖ Press button OK
+"✖ Press OK
   fail: ADB communication with the device has failed. Make sure your device is set up correctly and it can be connected
         to using ADB
   screenshot: https://the.suite.st/path/to/file.png"
 `;
 
 exports[`Test line results translation Translate assert lines translate line with screenshot should render line with screenshot 3`] = `
-"✖ Press button OK
+"✖ Press OK
   fail: ADB communication with the device has failed. Make sure your device is set up correctly and it can be connected
         to using ADB
   docs: https://suite.st/docs/testing/test-operations/press-button-operation/
@@ -617,16 +628,16 @@ exports[`Test line results translation Translate assert lines translate line wit
 `;
 
 exports[`Test line results translation Translate assert lines translate line with screenshot should render line with screenshot 4`] = `
-"✖ Press button OK
+"✖ Press OK
   fail: ADB communication with the device has failed. Make sure your device is set up correctly and it can be connected
         to using ADB
   screenshot: https://the.suite.st/path/to/file.png"
 `;
 
-exports[`Test line results translation Translate assert lines translate line with screenshot should render line without screenshot 1`] = `"✔ Press button OK"`;
+exports[`Test line results translation Translate assert lines translate line with screenshot should render line without screenshot 1`] = `"✔ Press OK"`;
 
 exports[`Test line results translation Translate assert lines translate line with screenshot should render line without screenshot 2`] = `
-"✖ Press button OK
+"✖ Press OK
   fail: ADB communication with the device has failed. Make sure your device is set up correctly and it can be connected
         to using ADB"
 `;
@@ -1360,10 +1371,24 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "deepLinkFormatError" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Defined deep link is not valid",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "deviceConnectionError" error 1`] = `
 Object {
   "type": "text",
   "value": "Failed to initialize device control",
+}
+`;
+
+exports[`Test line results translation simple errors translations should translate "deviceLabException" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Suitest device lab - you do not have permission for this action under the current circumstances",
 }
 `;
 
@@ -1494,6 +1519,13 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "longPressNotSupported" error 1`] = `
+Object {
+  "type": "text",
+  "value": "This device does not support long-press feature",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "missingApp" error 1`] = `
 Object {
   "type": "text",
@@ -1593,6 +1625,13 @@ exports[`Test line results translation simple errors translations should transla
 Object {
   "type": "text",
   "value": "Device stopped responding",
+}
+`;
+
+exports[`Test line results translation simple errors translations should translate "notSupportedApplicationType" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Application type inside the selected configuration is not supported on the device you are connected to",
 }
 `;
 
