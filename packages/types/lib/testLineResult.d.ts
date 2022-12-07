@@ -152,7 +152,15 @@ export type SimpleError = BaseResult & {
 		| 'deviceLabException'
 		| 'longPressNotSupported'
 		| 'notSupportedApplicationType'
-		| 'deepLinkFormatError',
+		| 'deepLinkFormatError'
+		| 'authorCertificateMismatch'
+		| 'appCertificateExpired'
+		| 'misconfiguredDevice'
+		| 'invalidSignatureTamper'
+		| 'invalidSignaturePartner'
+		| 'invalidSignaturePlatform'
+		| 'installAppFailure'
+		| 'openAppFailure',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {
