@@ -140,6 +140,14 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	longPressNotSupported: <text>This device does not support long-press feature</text>,
 	notSupportedApplicationType: <text>Application type inside the selected configuration is not supported on the device you are connected to</text>,
 	deepLinkFormatError: <text>Defined deep link is not valid</text>,
+	authorCertificateMismatch: <text>The app with the same app ID is already installed. In order to use auto-instrumentation or Suitestify, please uninstall the app manually or use a different app ID</text>,
+	appCertificateExpired: <text>Certificate in signature expired. Please create a new package</text>,
+	misconfiguredDevice: <fragment>In order to install an app with partner privileges, you must <link href="https://suite.st/docs/devices/samsung-tizen/#certificates-and-privileges">configure your device</link></fragment>,
+	invalidSignatureTamper: <text>Invalid signature. Please create a new package</text>,
+	invalidSignaturePartner: <text>Mismatched privilege level. Use at least partner signatured certificate and create a new package</text>,
+	invalidSignaturePlatform: <text>Mismatched privilege level. Use at least platform signatured certificate and create a new package</text>,
+	installAppFailure: <text>Failed to install the app. Make sure that the Smart Hub is working correctly. Restart of the device could help</text>,
+	openAppFailure: <text>Failed to open the app, please try again. Restart of the device could help</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {

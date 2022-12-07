@@ -122,6 +122,14 @@ describe('Test line results translation', () => {
 		'longPressNotSupported',
 		'notSupportedApplicationType',
 		'deepLinkFormatError',
+		'authorCertificateMismatch',
+		'appCertificateExpired',
+		'misconfiguredDevice',
+		'invalidSignatureTamper',
+		'invalidSignaturePartner',
+		'invalidSignaturePlatform',
+		'installAppFailure',
+		'openAppFailure',
 	];
 
 	describe('simple errors translations', () => {
