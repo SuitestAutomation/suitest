@@ -38,7 +38,7 @@ declare namespace JSX {
 			name: SmstNode,
 			comparator?: string,
 			expectedValue: SmstNode,
-			actualValue?: string | number,
+			actualValue?: string | number | boolean,
 			status?: SingleEntryStatus,
 		},
 		props: {children: SmstNode},
