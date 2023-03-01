@@ -257,6 +257,19 @@ export type QueryFailedNetworkError = {
 	>,
 };
 
+export type QueryFailedCookieProperties = BaseResult & {
+	errorType: 'queryFailed',
+	properties: Array<
+		| { result: 'success' }
+		| {
+			result: 'fail',
+			errorType: 'queryFailed',
+			actualValue: string | number | boolean,
+			expectedValue: string | number | boolean,
+		}
+	>,
+};
+
 export type NetworkNotMatchedError = {
 	actualValue: string | number, // TODO: probably number can be only for status header
 	reason: 'notMatched',
@@ -306,14 +319,20 @@ export type QueryFailedInvalidUrl = {
 	expectedValue: string,
 };
 
-export type QueryFailedError = BaseResult & (QueryFailedWithCode | {
-	errorType: 'queryFailed',
-	actualValue: string,
-	expectedValue: string,
-} | {
-	errorType: 'queryFailed',
-	expression: ResultExpression,
-} | QueryFailedNetworkError);
+export type QueryFailedError = BaseResult & (
+	| QueryFailedWithCode
+	| {
+		errorType: 'queryFailed',
+		actualValue: string,
+		expectedValue: string,
+	}
+	| {
+		errorType: 'queryFailed',
+		expression: ResultExpression,
+	}
+	| QueryFailedNetworkError
+	| QueryFailedCookieProperties
+);
 
 export type InvalidValueError = BaseResult & {
 	errorType: 'invalidValue',

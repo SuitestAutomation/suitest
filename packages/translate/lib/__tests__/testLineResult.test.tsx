@@ -8,7 +8,10 @@ import {
 	QueryLineError,
 	ElementQueryLine,
 	CookieQueryLine,
-	JsExpressionQueryLine, QueryLine, BaseResult,
+	JsExpressionQueryLine,
+	QueryLine,
+	BaseResult,
+	CookieProperty,
 } from '@suitest/types/lib';
 import {translateResultErrorMessage, translateTestLineResult} from '../testLineResult';
 import {appConfig, conditions, elements, testLinesExamples} from './testLinesExamples';
@@ -502,6 +505,79 @@ return false;
 							},
 						},
 					}),
+				})).toMatchSnapshot();
+			});
+
+			it('withProperties error', () => {
+				const cookieProperties: CookieProperty[] = [
+					{
+						property: 'value',
+						val: 'I am cookie',
+						type: '=',
+					},
+					{
+						property: 'path',
+						val: '/value',
+						type: '=',
+					},
+					{
+						property: 'domain',
+						val: 'domain',
+						type: '=',
+					},
+					{
+						property: 'httpOnly',
+						val: true,
+						type: '=',
+					},
+					{
+						property: 'secure',
+						val: true,
+						type: '=',
+					},
+				];
+
+				expect(testLineToPlainText({
+					testLine: assertLine(conditions['cookie with properties'](cookieProperties)),
+					appConfig,
+					lineResult: extendBaseError({
+						errorType: 'queryFailed',
+						properties: [
+							{
+								result: 'success',
+							},
+							{
+								result: 'fail',
+								errorType: 'queryFailed',
+								actualValue: '/drive2',
+								expectedValue: '/value',
+							},
+							{
+								result: 'fail',
+								errorType: 'queryFailed',
+								actualValue: 'watchme-dev.suite.st',
+								expectedValue: 'domain',
+							},
+							{
+								result: 'fail',
+								errorType: 'queryFailed',
+								actualValue: false,
+								expectedValue: true,
+							},
+							{
+								result: 'fail',
+								errorType: 'queryFailed',
+								actualValue: false,
+								expectedValue: true,
+							},
+						],
+					}),
+				})).toMatchSnapshot();
+
+				expect(testLineToPlainText({
+					testLine: assertLine(conditions['cookie with properties'](cookieProperties)),
+					appConfig,
+					lineResult: successLineResult,
 				})).toMatchSnapshot();
 			});
 		});

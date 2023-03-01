@@ -124,6 +124,29 @@ exports[`Test line results translation Translate assert lines translate "assert 
   fail: Condition was not met"
 `;
 
+exports[`Test line results translation Translate assert lines translate "assert cookie" withProperties error 1`] = `
+"✖ Assert: cookie my-cookie with expected properties
+  ✔ value    = I am cookie         
+  ✖ path     = /value              
+             → /drive2             
+  ✖ domain   = domain              
+             → watchme-dev.suite.st
+  ✖ httpOnly = true                
+             → false               
+  ✖ secure   = true                
+             → false               
+  fail: Condition was not met"
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert cookie" withProperties error 2`] = `
+"✔ Assert: cookie my-cookie with expected properties
+  value    = I am cookie
+  path     = /value     
+  domain   = domain     
+  httpOnly = true       
+  secure   = true       "
+`;
+
 exports[`Test line results translation Translate assert lines translate "assert cookie" without appConfig 1`] = `
 "Assert: cookie suitest-cookie
   suitest-cookie = suitest"

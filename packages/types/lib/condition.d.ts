@@ -20,10 +20,26 @@ export type CurrentLocationCondition = {
 	val: string,
 };
 
-export type CookieCondition = {
+export type CookieCondition =
+	| CookieValueCondition
+	| CookiePropertiesCondition;
+
+export type CookieValueCondition = {
 	subject: CookieSubject,
 	type: StringComparator | JavaScriptComparator | ExistComparator,
 	val: string,
+};
+
+export type CookiePropertiesCondition = {
+	subject: CookieSubject,
+	type: 'withProperties',
+	properties: CookieProperty[],
+};
+
+export type CookieProperty = {
+	property: 'value' | 'domain' | 'path' | 'httpOnly' | 'secure',
+	type: StringComparator,
+	val: string | boolean,
 };
 
 export type ElementExistsCondition = {

@@ -5,6 +5,7 @@
     "build": "lerna run build",
     "test": "lerna run test",
     "lint": "eslint packages/*/lib/**/*.{ts,tsx}",
+    "tsc:watch": "lerna exec --parallel -- tsc --noEmit --watch",
     "coverage": "lerna run coverage",
     "postinstall": "lerna bootstrap"
   },
