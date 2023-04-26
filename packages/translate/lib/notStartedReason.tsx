@@ -144,6 +144,10 @@ export function translateNotStartedReason(code: NotStartedReason): Translation {
 			return {
 				title: <text>SuitestDrive is being automatically updated.</text>,
 			};
+		case NOT_STARTED_REASON.DEV_TOOLS_NOT_SUPPORTED:
+			return {
+				title: <text>The configuration is not supported on selected device. HTML lite platform is supported only on devices with Chromium based browser at the moment.</text>,
+			};
 		default:
 			const _code: never = code;
 			throw new Error(`Unknown not started reason received: ${_code}`);
