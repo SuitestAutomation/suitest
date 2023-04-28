@@ -177,6 +177,8 @@ const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
 			const res = result as QueryFailedInvalidUrl;
 
 			return <text>App loaded {res.actualValue} instead of the expected {res.expectedValue}. Consider updating the app URL in settings</text>;
+		case 'devToolsRequired':
+			return <text>{result.message.info.exception}</text>;
 		default:
 			const _message: never = result.message;
 			console.warn('queryFailed message was not handled', JSON.stringify(_message));

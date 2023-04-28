@@ -287,28 +287,32 @@ export type NetworkErrorItemBase = {
 	name: string,
 };
 
-export type QueryFailedWithCode = QueryFailedInvalidUrl | {
-	errorType: 'queryFailed',
-	message: {
-		code: 'invalidApp'
-			| 'applicationError'
-			| 'missingSubject'
-			| 'existingSubject'
-			| 'orderErr'
-			| 'updateAlert'
-			| 'wrongExpression'
-			| 'notFunction'
-			| 'psImplicitVideo',
-	},
-} | {
-	errorType: 'queryFailed',
-	message: {
-		code: 'exprException',
-		info: {
-			exception: string,
+export type QueryFailedWithCode =
+	| QueryFailedInvalidUrl
+	| QueryFailedDevToolsRequired
+	| {
+		errorType: 'queryFailed',
+		message: {
+			code: 'invalidApp'
+				| 'applicationError'
+				| 'missingSubject'
+				| 'existingSubject'
+				| 'orderErr'
+				| 'updateAlert'
+				| 'wrongExpression'
+				| 'notFunction'
+				| 'psImplicitVideo',
 		},
-	},
-};
+	}
+	| {
+		errorType: 'queryFailed',
+		message: {
+			code: 'exprException',
+			info: {
+				exception: string,
+			},
+		},
+	};
 
 export type QueryFailedInvalidUrl = {
 	errorType: 'queryFailed',
@@ -317,6 +321,16 @@ export type QueryFailedInvalidUrl = {
 	},
 	actualValue: string,
 	expectedValue: string,
+};
+
+export type QueryFailedDevToolsRequired = BaseResult & {
+	errorType: 'queryFailed',
+	message: {
+		code: 'devToolsRequired',
+		info: {
+			exception: string,
+		},
+	},
 };
 
 export type QueryFailedError = BaseResult & (
