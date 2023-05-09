@@ -146,7 +146,7 @@ export function translateNotStartedReason(code: NotStartedReason): Translation {
 			};
 		case NOT_STARTED_REASON.DEV_TOOLS_NOT_SUPPORTED:
 			return {
-				title: <text>The configuration is not supported on selected device. HTML lite platform is supported only on devices with Chromium based browser at the moment.</text>,
+				title: <text>The selected instrumentation option (Lite version) of the configuration is not supported on the device.</text>,
 			};
 		default:
 			const _code: never = code;

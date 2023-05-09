@@ -115,7 +115,7 @@ exports[`Testing not started reason translation. Should translate "devToolsNotSu
 Object {
   "title": Object {
     "type": "text",
-    "value": "The configuration is not supported on selected device. HTML lite platform is supported only on devices with Chromium based browser at the moment.",
+    "value": "The selected instrumentation option (Lite version) of the configuration is not supported on the device.",
   },
 }
 `;
@@ -480,8 +480,8 @@ Object {
 
 exports[`Testing not started reason translation. Translate to html:  "devToolsNotSupported" 1`] = `
 Object {
-  "description": "The configuration is not supported on selected device. HTML lite platform is supported only on devices with Chromium based browser at the moment.",
-  "title": "The configuration is not supported on selected device. HTML lite platform is supported only on devices with Chromium based browser at the moment.",
+  "description": "The selected instrumentation option (Lite version) of the configuration is not supported on the device.",
+  "title": "The selected instrumentation option (Lite version) of the configuration is not supported on the device.",
 }
 `;
 
@@ -684,7 +684,7 @@ Object {
 exports[`Testing not started reason translation. Translate to plain text:  "devToolsNotSupported" 1`] = `
 Object {
   "description": undefined,
-  "title": "The configuration is not supported on selected device. HTML lite platform is supported only on devices with Chromium based browser at the moment.",
+  "title": "The selected instrumentation option (Lite version) of the configuration is not supported on the device.",
 }
 `;
 
