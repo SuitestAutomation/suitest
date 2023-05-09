@@ -12,6 +12,7 @@ import {
 	TestLine,
 	ElementHandleQueryLine,
 	ElementAttributesQueryLine,
+	CookieProperty,
 } from '@suitest/types';
 import {PSVideoHadNoErrorCondition, JavaScriptComparator, ExistComparator, ElementProperty} from '@suitest/types/lib';
 
@@ -84,6 +85,14 @@ export const conditions = {
 		},
 		type,
 		val,
+	}),
+	'cookie with properties': (properties: CookieProperty[] = []): Condition => ({
+		subject: {
+			type: 'cookie',
+			val: 'my-cookie',
+		},
+		type: 'withProperties',
+		properties,
 	}),
 	'video exists': (): Condition => ({
 		subject: {

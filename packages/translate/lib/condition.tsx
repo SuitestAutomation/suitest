@@ -17,7 +17,7 @@ import {
 	PSVideoHadNoErrorCondition,
 	PSVideoSubject,
 	QueryFailedNetworkError,
-	TestLineResult, ResultExpressionItem,
+	TestLineResult,
 } from '@suitest/types';
 import {formatVariables, mapStatus, shouldElMatchDetailsBeHidden, translateCodeProp} from './utils';
 import {translateComparator} from './comparator';
@@ -59,7 +59,10 @@ const translateCurrentLocationCondition = (
 };
 
 const translateCookieCondition = (
-	condition: CookieCondition, inverse: boolean, appConfig?: AppConfiguration, lineResult?: TestLineResult
+	condition: CookieCondition,
+	inverse: boolean,
+	appConfig?: AppConfiguration,
+	lineResult?: TestLineResult,
 ): ConditionNode => {
 	const title = <fragment>cookie <subject>{condition.subject.val}</subject></fragment>;
 
@@ -81,6 +84,31 @@ const translateCookieCondition = (
 					condition.type,
 					mapStatus(lineResult?.result, inverse)
 				)}
+			</props>
+		</condition> as ConditionNode;
+	}
+
+	if (condition.type === 'withProperties') {
+		const title = <fragment>cookie <subject>{condition.subject.val}</subject> with expected properties</fragment>;
+		const errors = lineResult && 'properties' in lineResult ? lineResult.properties : undefined;
+
+		return <condition title={title}>
+			<props>
+				{condition.properties.map((prop, index) => {
+					const propResult = errors?.[index];
+					const actualValue = propResult && propResult.result === 'fail' ? propResult.actualValue : undefined;
+					const expectedValue = typeof prop.val === 'boolean'
+						? prop.val
+						: formatVariables(prop.val, appConfig?.configVariables);
+
+					return <prop
+						name={prop.property}
+						comparator={translateComparator(prop.type)}
+						expectedValue={expectedValue}
+						actualValue={actualValue}
+						status={mapStatus(propResult?.result, inverse)}
+					/>;
+				})}
 			</props>
 		</condition> as ConditionNode;
 	}
@@ -265,7 +293,7 @@ const translateElementCondition = (
 				{shouldElMatchDetailsBeHidden(lineResult) ? null : <props>
 					{condition.expression.map((exp, i) => {
 						const expResult = lineResult && ('expression' in lineResult)
-							? lineResult.expression[i] as ResultExpressionItem
+							? lineResult.expression[i]
 							: undefined;
 						let actualValue = expResult && ('actualValue' in expResult) ? expResult.actualValue : undefined;
 						if (expResult && 'message' in expResult && expResult.message.code === 'missingProperty') {

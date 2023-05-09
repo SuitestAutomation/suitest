@@ -124,6 +124,29 @@ exports[`Test line results translation Translate assert lines translate "assert 
   fail: Condition was not met"
 `;
 
+exports[`Test line results translation Translate assert lines translate "assert cookie" withProperties error 1`] = `
+"✖ Assert: cookie my-cookie with expected properties
+  ✔ value    = I am cookie         
+  ✖ path     = /value              
+             → /drive2             
+  ✖ domain   = domain              
+             → watchme-dev.suite.st
+  ✖ httpOnly = true                
+             → false               
+  ✖ secure   = true                
+             → false               
+  fail: Condition was not met"
+`;
+
+exports[`Test line results translation Translate assert lines translate "assert cookie" withProperties error 2`] = `
+"✔ Assert: cookie my-cookie with expected properties
+  value    = I am cookie
+  path     = /value     
+  domain   = domain     
+  httpOnly = true       
+  secure   = true       "
+`;
+
 exports[`Test line results translation Translate assert lines translate "assert cookie" without appConfig 1`] = `
 "Assert: cookie suitest-cookie
   suitest-cookie = suitest"
@@ -1259,6 +1282,13 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "appCertificateExpired" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Certificate in signature expired. Please create a new package",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "appCrashed" error 1`] = `
 Object {
   "type": "text",
@@ -1319,6 +1349,13 @@ exports[`Test line results translation simple errors translations should transla
 Object {
   "type": "text",
   "value": "SuitestDrive can't launch NetworkLog service on Mac",
+}
+`;
+
+exports[`Test line results translation simple errors translations should translate "authorCertificateMismatch" error 1`] = `
+Object {
+  "type": "text",
+  "value": "The app with the same app ID is already installed. In order to use auto-instrumentation or Suitestify, please uninstall the app manually or use a different app ID",
 }
 `;
 
@@ -1420,6 +1457,13 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "installAppFailure" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Failed to install the app. Make sure that the Smart Hub is working correctly. Restart of the device could help",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "instrumentationFailed" error 1`] = `
 Object {
   "type": "text",
@@ -1473,6 +1517,27 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "invalidSignaturePartner" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Mismatched privilege level. Use at least partner signatured certificate and create a new package",
+}
+`;
+
+exports[`Test line results translation simple errors translations should translate "invalidSignaturePlatform" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Mismatched privilege level. Use at least platform signatured certificate and create a new package",
+}
+`;
+
+exports[`Test line results translation simple errors translations should translate "invalidSignatureTamper" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Invalid signature. Please create a new package",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "invalidUrl" error 1`] = `
 Object {
   "type": "text",
@@ -1517,6 +1582,20 @@ Object {
   "type": "text",
   "value": "This device does not support long-press feature",
 }
+`;
+
+exports[`Test line results translation simple errors translations should translate "misconfiguredDevice" error 1`] = `
+Array [
+  Object {
+    "type": "text",
+    "value": "In order to install an app with partner privileges, you must ",
+  },
+  Object {
+    "href": "https://suite.st/docs/devices/samsung-tizen/#certificates-and-privileges",
+    "type": "link",
+    "value": "configure your device",
+  },
+]
 `;
 
 exports[`Test line results translation simple errors translations should translate "missingApp" error 1`] = `
@@ -1625,6 +1704,13 @@ exports[`Test line results translation simple errors translations should transla
 Object {
   "type": "text",
   "value": "Application type inside the selected configuration is not supported on the device you are connected to",
+}
+`;
+
+exports[`Test line results translation simple errors translations should translate "openAppFailure" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Failed to open the app, please try again. Restart of the device could help",
 }
 `;
 
