@@ -160,7 +160,8 @@ export type SimpleError = BaseResult & {
 		| 'invalidSignaturePartner'
 		| 'invalidSignaturePlatform'
 		| 'installAppFailure'
-		| 'openAppFailure',
+		| 'openAppFailure'
+		| 'urlOverrideNotSupported',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {
