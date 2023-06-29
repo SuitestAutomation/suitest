@@ -149,6 +149,7 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	installAppFailure: <text>Failed to install the app. Make sure that the Smart Hub is working correctly. Restart of the device could help</text>,
 	openAppFailure: <text>Failed to open the app, please try again. Restart of the device could help</text>,
 	urlOverrideNotSupported: <fragment>Only AppId used - the device does not support URL override. Please look into <link href="https://suite.st/docs/application/setting-up-vidaa-apps#url-override-not-supported">our user documentation</link> for more details.</fragment>,
+	devToolsNotSupported: <fragment>The device has DevTools protocol disabled. Please look into <link href="https://suite.st/docs/devices/vidaa#enable-devtools-protocol">our user documentation</link> for more details.</fragment>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {

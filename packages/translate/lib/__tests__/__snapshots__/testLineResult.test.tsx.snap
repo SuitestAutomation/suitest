@@ -1415,6 +1415,24 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "devToolsNotSupported" error 1`] = `
+Array [
+  Object {
+    "type": "text",
+    "value": "The device has DevTools protocol disabled. Please look into ",
+  },
+  Object {
+    "href": "https://suite.st/docs/devices/vidaa#enable-devtools-protocol",
+    "type": "link",
+    "value": "our user documentation",
+  },
+  Object {
+    "type": "text",
+    "value": " for more details.",
+  },
+]
+`;
+
 exports[`Test line results translation simple errors translations should translate "deviceConnectionError" error 1`] = `
 Object {
   "type": "text",

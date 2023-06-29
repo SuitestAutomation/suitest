@@ -134,6 +134,7 @@ describe('Test line results translation', () => {
 		'installAppFailure',
 		'openAppFailure',
 		'urlOverrideNotSupported',
+		'devToolsNotSupported',
 	];
 
 	describe('simple errors translations', () => {
