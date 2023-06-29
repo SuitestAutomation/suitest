@@ -161,7 +161,8 @@ export type SimpleError = BaseResult & {
 		| 'invalidSignaturePlatform'
 		| 'installAppFailure'
 		| 'openAppFailure'
-		| 'urlOverrideNotSupported',
+		| 'urlOverrideNotSupported'
+		| 'devToolsNotSupported',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {
