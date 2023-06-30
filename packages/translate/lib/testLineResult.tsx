@@ -150,6 +150,8 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	openAppFailure: <text>Failed to open the app, please try again. Restart of the device could help</text>,
 	urlOverrideNotSupported: <fragment>Only AppId used - the device does not support URL override. Please look into <link href="https://suite.st/docs/application/setting-up-vidaa-apps#url-override-not-supported">our user documentation</link> for more details.</fragment>,
 	devToolsNotSupported: <fragment>The device has DevTools protocol disabled. Please look into <link href="https://suite.st/docs/devices/vidaa#enable-devtools-protocol">our user documentation</link> for more details.</fragment>,
+	deviceNotPaired: <text>You need to pair the device first.</text>,
+	appNotFound: <text>The application not found. Please make sure that you have entered a valid AppId.</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
