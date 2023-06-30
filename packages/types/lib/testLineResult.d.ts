@@ -162,7 +162,9 @@ export type SimpleError = BaseResult & {
 		| 'installAppFailure'
 		| 'openAppFailure'
 		| 'urlOverrideNotSupported'
-		| 'devToolsNotSupported',
+		| 'devToolsNotSupported'
+		| 'deviceNotPaired'
+		| 'appNotFound',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {

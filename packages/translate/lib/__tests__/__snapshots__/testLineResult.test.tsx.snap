@@ -1296,6 +1296,13 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "appNotFound" error 1`] = `
+Object {
+  "type": "text",
+  "value": "The application not found. Please make sure that you have entered a valid AppId.",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "appNotRunning" error 1`] = `
 Object {
   "type": "text",
@@ -1444,6 +1451,13 @@ exports[`Test line results translation simple errors translations should transla
 Object {
   "type": "text",
   "value": "Suitest device lab - you do not have permission for this action under the current circumstances",
+}
+`;
+
+exports[`Test line results translation simple errors translations should translate "deviceNotPaired" error 1`] = `
+Object {
+  "type": "text",
+  "value": "You need to pair the device first.",
 }
 `;
 
