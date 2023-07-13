@@ -1932,7 +1932,7 @@ Array [
     "value": "Only AppId used - the device does not support URL override. Please look into ",
   },
   Object {
-    "href": "https://suite.st/docs/application/setting-up-vidaa-apps#url-override-not-supported",
+    "href": "https://suite.st/docs/application/setting-up-vidaa-apps#specify-the-application",
     "type": "link",
     "value": "our user documentation",
   },
