@@ -160,7 +160,11 @@ export type SimpleError = BaseResult & {
 		| 'invalidSignaturePartner'
 		| 'invalidSignaturePlatform'
 		| 'installAppFailure'
-		| 'openAppFailure',
+		| 'openAppFailure'
+		| 'urlOverrideNotSupported'
+		| 'devToolsNotSupported'
+		| 'deviceNotPaired'
+		| 'appNotFound',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {

@@ -133,6 +133,10 @@ describe('Test line results translation', () => {
 		'invalidSignaturePlatform',
 		'installAppFailure',
 		'openAppFailure',
+		'urlOverrideNotSupported',
+		'devToolsNotSupported',
+		'deviceNotPaired',
+		'appNotFound',
 	];
 
 	describe('simple errors translations', () => {
