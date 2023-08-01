@@ -111,6 +111,15 @@ Object {
 }
 `;
 
+exports[`Testing not started reason translation. Should translate "devToolsNotSupported" code 1`] = `
+Object {
+  "title": Object {
+    "type": "text",
+    "value": "The selected instrumentation option (Lite version) of the configuration is not supported on the device.",
+  },
+}
+`;
+
 exports[`Testing not started reason translation. Should translate "deviceDeleted" code 1`] = `
 Object {
   "description": Object {
@@ -469,6 +478,13 @@ Object {
 }
 `;
 
+exports[`Testing not started reason translation. Translate to html:  "devToolsNotSupported" 1`] = `
+Object {
+  "description": "The selected instrumentation option (Lite version) of the configuration is not supported on the device.",
+  "title": "The selected instrumentation option (Lite version) of the configuration is not supported on the device.",
+}
+`;
+
 exports[`Testing not started reason translation. Translate to html:  "deviceDeleted" 1`] = `
 Object {
   "description": "Cannot continue: Device is deleted",
@@ -662,6 +678,13 @@ exports[`Testing not started reason translation. Translate to plain text:  "conf
 Object {
   "description": "Please see our docs (https://suite.st/docs/devices/apple-tv/#installing-apple-configurator-2).",
   "title": "Make sure that Apple Configurator 2 and Automation Tools are installed",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to plain text:  "devToolsNotSupported" 1`] = `
+Object {
+  "description": undefined,
+  "title": "The selected instrumentation option (Lite version) of the configuration is not supported on the device.",
 }
 `;
 

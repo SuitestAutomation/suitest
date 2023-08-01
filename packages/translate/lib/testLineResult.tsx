@@ -141,6 +141,18 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	notSupportedApplicationType: <text>Application type inside the selected configuration is not supported on the device you are connected to</text>,
 	deepLinkFormatError: <text>Defined deep link is not valid</text>,
 	invalidCertificate: <text>Invalid SSL certificate. See troubleshooting section for this platform</text>,
+	authorCertificateMismatch: <text>The app with the same app ID is already installed. In order to use auto-instrumentation or Suitestify, please uninstall the app manually or use a different app ID</text>,
+	appCertificateExpired: <text>Certificate in signature expired. Please create a new package</text>,
+	misconfiguredDevice: <fragment>In order to install an app with partner privileges, you must <link href="https://suite.st/docs/devices/samsung-tizen/#certificates-and-privileges">configure your device</link></fragment>,
+	invalidSignatureTamper: <text>Invalid signature. Please create a new package</text>,
+	invalidSignaturePartner: <text>Mismatched privilege level. Use at least partner signatured certificate and create a new package</text>,
+	invalidSignaturePlatform: <text>Mismatched privilege level. Use at least platform signatured certificate and create a new package</text>,
+	installAppFailure: <text>Failed to install the app. Make sure that the Smart Hub is working correctly. Restart of the device could help</text>,
+	openAppFailure: <text>Failed to open the app, please try again. Restart of the device could help</text>,
+	urlOverrideNotSupported: <fragment>Only AppId used - the device does not support URL override. Please look into <link href="https://suite.st/docs/application/setting-up-vidaa-apps#specify-the-application">our user documentation</link> for more details.</fragment>,
+	devToolsNotSupported: <fragment>The device has DevTools protocol disabled. Please look into <link href="https://suite.st/docs/devices/vidaa#enable-devtools-protocol">our user documentation</link> for more details.</fragment>,
+	deviceNotPaired: <text>You need to pair the device first.</text>,
+	appNotFound: <text>The application not found. Please make sure that you have entered a valid AppId.</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
@@ -170,6 +182,8 @@ const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
 			const res = result as QueryFailedInvalidUrl;
 
 			return <text>App loaded {res.actualValue} instead of the expected {res.expectedValue}. Consider updating the app URL in settings</text>;
+		case 'devToolsRequired':
+			return <text>{result.message.info.exception}</text>;
 		default:
 			const _message: never = result.message;
 			console.warn('queryFailed message was not handled', JSON.stringify(_message));

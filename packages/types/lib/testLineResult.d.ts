@@ -153,7 +153,19 @@ export type SimpleError = BaseResult & {
 		| 'longPressNotSupported'
 		| 'notSupportedApplicationType'
 		| 'deepLinkFormatError'
-		| 'invalidCertificate',
+		| 'invalidCertificate'
+		| 'authorCertificateMismatch'
+		| 'appCertificateExpired'
+		| 'misconfiguredDevice'
+		| 'invalidSignatureTamper'
+		| 'invalidSignaturePartner'
+		| 'invalidSignaturePlatform'
+		| 'installAppFailure'
+		| 'openAppFailure'
+		| 'urlOverrideNotSupported'
+		| 'devToolsNotSupported'
+		| 'deviceNotPaired'
+		| 'appNotFound',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {
@@ -250,6 +262,19 @@ export type QueryFailedNetworkError = {
 	>,
 };
 
+export type QueryFailedCookieProperties = BaseResult & {
+	errorType: 'queryFailed',
+	properties: Array<
+		| { result: 'success' }
+		| {
+			result: 'fail',
+			errorType: 'queryFailed',
+			actualValue: string | number | boolean,
+			expectedValue: string | number | boolean,
+		}
+	>,
+};
+
 export type NetworkNotMatchedError = {
 	actualValue: string | number, // TODO: probably number can be only for status header
 	reason: 'notMatched',
@@ -267,28 +292,32 @@ export type NetworkErrorItemBase = {
 	name: string,
 };
 
-export type QueryFailedWithCode = QueryFailedInvalidUrl | {
-	errorType: 'queryFailed',
-	message: {
-		code: 'invalidApp'
-			| 'applicationError'
-			| 'missingSubject'
-			| 'existingSubject'
-			| 'orderErr'
-			| 'updateAlert'
-			| 'wrongExpression'
-			| 'notFunction'
-			| 'psImplicitVideo',
-	},
-} | {
-	errorType: 'queryFailed',
-	message: {
-		code: 'exprException',
-		info: {
-			exception: string,
+export type QueryFailedWithCode =
+	| QueryFailedInvalidUrl
+	| QueryFailedDevToolsRequired
+	| {
+		errorType: 'queryFailed',
+		message: {
+			code: 'invalidApp'
+				| 'applicationError'
+				| 'missingSubject'
+				| 'existingSubject'
+				| 'orderErr'
+				| 'updateAlert'
+				| 'wrongExpression'
+				| 'notFunction'
+				| 'psImplicitVideo',
 		},
-	},
-};
+	}
+	| {
+		errorType: 'queryFailed',
+		message: {
+			code: 'exprException',
+			info: {
+				exception: string,
+			},
+		},
+	};
 
 export type QueryFailedInvalidUrl = {
 	errorType: 'queryFailed',
@@ -299,14 +328,30 @@ export type QueryFailedInvalidUrl = {
 	expectedValue: string,
 };
 
-export type QueryFailedError = BaseResult & (QueryFailedWithCode | {
+export type QueryFailedDevToolsRequired = BaseResult & {
 	errorType: 'queryFailed',
-	actualValue: string,
-	expectedValue: string,
-} | {
-	errorType: 'queryFailed',
-	expression: ResultExpression,
-} | QueryFailedNetworkError);
+	message: {
+		code: 'devToolsRequired',
+		info: {
+			exception: string,
+		},
+	},
+};
+
+export type QueryFailedError = BaseResult & (
+	| QueryFailedWithCode
+	| {
+		errorType: 'queryFailed',
+		actualValue: string,
+		expectedValue: string,
+	}
+	| {
+		errorType: 'queryFailed',
+		expression: ResultExpression,
+	}
+	| QueryFailedNetworkError
+	| QueryFailedCookieProperties
+);
 
 export type InvalidValueError = BaseResult & {
 	errorType: 'invalidValue',

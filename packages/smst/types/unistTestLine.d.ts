@@ -36,7 +36,7 @@ export type InlinePropertyNode = {
 	name: InlineTextNode[],
 	comparator?: string,
 	expectedValue: InlineTextNode[],
-	actualValue?: string | number,
+	actualValue?: string | number | boolean,
 	status?: SingleEntryStatus,
 };
 

@@ -144,6 +144,10 @@ export function translateNotStartedReason(code: NotStartedReason): Translation {
 			return {
 				title: <text>SuitestDrive is being automatically updated.</text>,
 			};
+		case NOT_STARTED_REASON.DEV_TOOLS_NOT_SUPPORTED:
+			return {
+				title: <text>The selected instrumentation option (Lite version) of the configuration is not supported on the device.</text>,
+			};
 		default:
 			const _code: never = code;
 			throw new Error(`Unknown not started reason received: ${_code}`);
