@@ -422,6 +422,15 @@ Object {
 }
 `;
 
+exports[`Testing not started reason translation. Should translate "xboxPlatformErrorInvalidCertificate" code 1`] = `
+Object {
+  "title": Object {
+    "type": "text",
+    "value": "Invalid SSL certificate. See troubleshooting section for this platform",
+  },
+}
+`;
+
 exports[`Testing not started reason translation. Translate to html:  "androidPlatformError" 1`] = `
 Object {
   "description": "Cannot continue: Android driver has failed",
@@ -625,6 +634,13 @@ Object {
 }
 `;
 
+exports[`Testing not started reason translation. Translate to html:  "xboxPlatformErrorInvalidCertificate" 1`] = `
+Object {
+  "description": "Invalid SSL certificate. See troubleshooting section for this platform",
+  "title": "Invalid SSL certificate. See troubleshooting section for this platform",
+}
+`;
+
 exports[`Testing not started reason translation. Translate to plain text:  "androidPlatformError" 1`] = `
 Object {
   "description": "Android driver has misbehaved. Please verify that the device is online and it's current IP address is correctly specified in Suitest. If nothing helps try rebooting the device and restarting SuitestDrive",
@@ -825,5 +841,12 @@ exports[`Testing not started reason translation. Translate to plain text:  "xbox
 Object {
   "description": "Xbox driver has misbehaved. Please verify that the device is online and it's current IP address and developer credentials are correctly specified in Suitest. If nothing helps try rebooting the device and restarting SuitestDrive",
   "title": "Cannot continue: Xbox driver has failed",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to plain text:  "xboxPlatformErrorInvalidCertificate" 1`] = `
+Object {
+  "description": undefined,
+  "title": "Invalid SSL certificate. See troubleshooting section for this platform",
 }
 `;
