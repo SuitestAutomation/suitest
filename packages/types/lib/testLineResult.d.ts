@@ -153,6 +153,7 @@ export type SimpleError = BaseResult & {
 		| 'longPressNotSupported'
 		| 'notSupportedApplicationType'
 		| 'deepLinkFormatError'
+		| 'invalidCertificate'
 		| 'authorCertificateMismatch'
 		| 'appCertificateExpired'
 		| 'misconfiguredDevice'

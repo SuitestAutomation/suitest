@@ -148,6 +148,10 @@ export function translateNotStartedReason(code: NotStartedReason): Translation {
 			return {
 				title: <text>The selected instrumentation option (Lite version) of the configuration is not supported on the device.</text>,
 			};
+		case NOT_STARTED_REASON.XBOX_PLATFORM_ERROR_IN_VALID_CERTIFICATE:
+			return {
+				title: <text>Invalid SSL certificate. See troubleshooting section for this platform</text>,
+			};
 		default:
 			const _code: never = code;
 			throw new Error(`Unknown not started reason received: ${_code}`);

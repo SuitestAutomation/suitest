@@ -125,6 +125,7 @@ describe('Test line results translation', () => {
 		'longPressNotSupported',
 		'notSupportedApplicationType',
 		'deepLinkFormatError',
+		'invalidCertificate',
 		'authorCertificateMismatch',
 		'appCertificateExpired',
 		'misconfiguredDevice',

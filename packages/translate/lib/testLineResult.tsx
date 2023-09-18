@@ -140,6 +140,7 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	longPressNotSupported: <text>This device does not support long-press feature</text>,
 	notSupportedApplicationType: <text>Application type inside the selected configuration is not supported on the device you are connected to</text>,
 	deepLinkFormatError: <text>Defined deep link is not valid</text>,
+	invalidCertificate: <text>Invalid SSL certificate. See troubleshooting section for this platform</text>,
 	authorCertificateMismatch: <text>The app with the same app ID is already installed. In order to use auto-instrumentation or Suitestify, please uninstall the app manually or use a different app ID</text>,
 	appCertificateExpired: <text>Certificate in signature expired. Please create a new package</text>,
 	misconfiguredDevice: <fragment>In order to install an app with partner privileges, you must <link href="https://suite.st/docs/devices/samsung-tizen/#certificates-and-privileges">configure your device</link></fragment>,

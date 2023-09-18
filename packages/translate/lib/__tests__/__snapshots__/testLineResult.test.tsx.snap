@@ -1517,6 +1517,13 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "invalidCertificate" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Invalid SSL certificate. See troubleshooting section for this platform",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "invalidCredentials" error 1`] = `
 Object {
   "type": "text",
