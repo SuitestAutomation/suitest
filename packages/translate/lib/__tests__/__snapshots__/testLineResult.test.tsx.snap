@@ -1795,6 +1795,20 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "rokuUpdateNeeded" error 1`] = `
+Array [
+  Object {
+    "type": "text",
+    "value": "The device needs to be updated manually. See ",
+  },
+  Object {
+    "href": "https://suite.st/docs/troubleshooting/roku/#system-update-needed",
+    "type": "link",
+    "value": "our user documentation",
+  },
+]
+`;
+
 exports[`Test line results translation simple errors translations should translate "sdComponentFailed" error 1`] = `
 Array [
   Object {
