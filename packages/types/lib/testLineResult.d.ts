@@ -165,7 +165,8 @@ export type SimpleError = BaseResult & {
 		| 'urlOverrideNotSupported'
 		| 'devToolsNotSupported'
 		| 'deviceNotPaired'
-		| 'appNotFound',
+		| 'appNotFound'
+		| 'vizioAppNotFound',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {

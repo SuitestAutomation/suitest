@@ -138,6 +138,7 @@ describe('Test line results translation', () => {
 		'devToolsNotSupported',
 		'deviceNotPaired',
 		'appNotFound',
+		'vizioAppNotFound',
 	];
 
 	describe('simple errors translations', () => {

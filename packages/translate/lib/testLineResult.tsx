@@ -153,6 +153,7 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	devToolsNotSupported: <fragment>The device has DevTools protocol disabled. Please look into <link href="https://suite.st/docs/devices/vidaa#enable-devtools-protocol">our user documentation</link> for more details.</fragment>,
 	deviceNotPaired: <text>You need to pair the device first.</text>,
 	appNotFound: <text>The application not found. Please make sure that you have entered a valid AppId.</text>,
+	vizioAppNotFound: <text>Failed to open the application. Please make sure that the application configuration is set correctly.</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
