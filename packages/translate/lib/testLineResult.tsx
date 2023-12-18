@@ -153,6 +153,7 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	devToolsNotSupported: <fragment>The device has DevTools protocol disabled. Please look into <link href="https://suite.st/docs/devices/vidaa#enable-devtools-protocol">our user documentation</link> for more details.</fragment>,
 	deviceNotPaired: <text>You need to pair the device first.</text>,
 	appNotFound: <text>The application not found. Please make sure that you have entered a valid AppId.</text>,
+	rokuUpdateNeeded: <fragment>The device needs to be updated manually. See <link href="https://suite.st/docs/troubleshooting/roku/#system-update-needed">our user documentation</link></fragment>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
