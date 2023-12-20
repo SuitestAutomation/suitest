@@ -139,6 +139,7 @@ describe('Test line results translation', () => {
 		'deviceNotPaired',
 		'appNotFound',
 		'rokuUpdateNeeded',
+		'vizioAppNotFound',
 	];
 
 	describe('simple errors translations', () => {
