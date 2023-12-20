@@ -166,6 +166,7 @@ export type SimpleError = BaseResult & {
 		| 'devToolsNotSupported'
 		| 'deviceNotPaired'
 		| 'appNotFound'
+		| 'rokuUpdateNeeded'
 		| 'vizioAppNotFound',
 };
 
