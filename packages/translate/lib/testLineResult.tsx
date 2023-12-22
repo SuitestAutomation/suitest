@@ -154,6 +154,7 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	deviceNotPaired: <text>You need to pair the device first.</text>,
 	appNotFound: <text>The application not found. Please make sure that you have entered a valid AppId.</text>,
 	rokuUpdateNeeded: <fragment>The device needs to be updated manually. See <link href="https://suite.st/docs/troubleshooting/roku/#system-update-needed">our user documentation</link></fragment>,
+	vizioAppNotFound: <text>Failed to open the application. Please make sure that the application configuration is set correctly.</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
