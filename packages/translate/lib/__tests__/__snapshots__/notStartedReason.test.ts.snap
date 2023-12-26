@@ -435,7 +435,7 @@ exports[`Testing not started reason translation. Should translate "xfinityPlatfo
 Object {
   "title": Object {
     "type": "text",
-    "value": "Your Comcast Xfinity key has ben expired.",
+    "value": "Your Comcast Xfinity key has been expired.",
   },
 }
 `;
@@ -652,8 +652,8 @@ Object {
 
 exports[`Testing not started reason translation. Translate to html:  "xfinityPlatformErrorExpiredApiKey" 1`] = `
 Object {
-  "description": "Your Comcast Xfinity key has ben expired.",
-  "title": "Your Comcast Xfinity key has ben expired.",
+  "description": "Your Comcast Xfinity key has been expired.",
+  "title": "Your Comcast Xfinity key has been expired.",
 }
 `;
 
@@ -870,6 +870,6 @@ Object {
 exports[`Testing not started reason translation. Translate to plain text:  "xfinityPlatformErrorExpiredApiKey" 1`] = `
 Object {
   "description": undefined,
-  "title": "Your Comcast Xfinity key has ben expired.",
+  "title": "Your Comcast Xfinity key has been expired.",
 }
 `;
