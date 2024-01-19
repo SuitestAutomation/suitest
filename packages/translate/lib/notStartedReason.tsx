@@ -154,7 +154,7 @@ export function translateNotStartedReason(code: NotStartedReason): Translation {
 			};
 		case NOT_STARTED_REASON.XFINITY_PLATFORM_ERROR_EXPIRED_API_KEY:
 			return {
-				title: <text>Your Comcast Xfinity key has ben expired.</text>,
+				title: <text>Your Comcast Xfinity key has been expired.</text>,
 			};
 		default:
 			const _code: never = code;
