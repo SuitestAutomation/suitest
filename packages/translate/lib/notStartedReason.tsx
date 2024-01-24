@@ -152,6 +152,10 @@ export function translateNotStartedReason(code: NotStartedReason): Translation {
 			return {
 				title: <text>Invalid SSL certificate. See troubleshooting section for this platform</text>,
 			};
+		case NOT_STARTED_REASON.XFINITY_PLATFORM_ERROR_EXPIRED_API_KEY:
+			return {
+				title: <text>Your Comcast Xfinity key has been expired.</text>,
+			};
 		default:
 			const _code: never = code;
 			throw new Error(`Unknown not started reason received: ${_code}`);
