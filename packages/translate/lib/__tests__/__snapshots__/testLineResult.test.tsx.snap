@@ -1362,7 +1362,7 @@ Object {
 exports[`Test line results translation simple errors translations should translate "authorCertificateMismatch" error 1`] = `
 Object {
   "type": "text",
-  "value": "The app with the same app ID is already installed. In order to use auto-instrumentation or Suitestify, please uninstall the app manually or use a different app ID",
+  "value": "The app with the same app ID is already installed. Please uninstall the app manually or use a different app ID.",
 }
 `;
 
