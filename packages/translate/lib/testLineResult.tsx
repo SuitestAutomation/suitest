@@ -155,6 +155,8 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	appNotFound: <text>The application not found. Please make sure that you have entered a valid AppId.</text>,
 	rokuUpdateNeeded: <fragment>The device needs to be updated manually. See <link href="https://suite.st/docs/troubleshooting/roku/#system-update-needed">our user documentation</link></fragment>,
 	vizioAppNotFound: <text>Failed to open the application. Please make sure that the application configuration is set correctly.</text>,
+	maxTestExecutionTimeExceeded: <fragment>Test execution time limit exceeded. Contact us at <link href="mailto:sales@suite.st">sales@suite.st</link> if you need to run longer tests.</fragment>,
+	planTestingMinutesExceeded: <fragment>You reached the limit of testing minutes specified by your subscription plan. If you need more minutes, contact us at <link href="mailto:sales@suite.st">sales@suite.st</link> or upgrade your subscription.</fragment>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {

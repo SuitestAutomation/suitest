@@ -140,6 +140,8 @@ describe('Test line results translation', () => {
 		'appNotFound',
 		'rokuUpdateNeeded',
 		'vizioAppNotFound',
+		'maxTestExecutionTimeExceeded',
+		'planTestingMinutesExceeded',
 	];
 
 	describe('simple errors translations', () => {

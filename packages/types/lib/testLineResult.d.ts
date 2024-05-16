@@ -167,7 +167,9 @@ export type SimpleError = BaseResult & {
 		| 'deviceNotPaired'
 		| 'appNotFound'
 		| 'rokuUpdateNeeded'
-		| 'vizioAppNotFound',
+		| 'vizioAppNotFound'
+		| 'maxTestExecutionTimeExceeded'
+		| 'planTestingMinutesExceeded',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {

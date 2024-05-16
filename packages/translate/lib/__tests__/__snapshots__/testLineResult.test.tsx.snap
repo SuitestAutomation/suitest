@@ -1623,6 +1623,24 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "maxTestExecutionTimeExceeded" error 1`] = `
+Array [
+  Object {
+    "type": "text",
+    "value": "Test execution time limit exceeded. Contact us at ",
+  },
+  Object {
+    "href": "mailto:sales@suite.st",
+    "type": "link",
+    "value": "sales@suite.st",
+  },
+  Object {
+    "type": "text",
+    "value": " if you need to run longer tests.",
+  },
+]
+`;
+
 exports[`Test line results translation simple errors translations should translate "misconfiguredDevice" error 1`] = `
 Array [
   Object {
@@ -1786,6 +1804,24 @@ Object {
   "type": "text",
   "value": "Selected configuration does not contain an app package. Upload a package on your app\`s configuration page before continuing",
 }
+`;
+
+exports[`Test line results translation simple errors translations should translate "planTestingMinutesExceeded" error 1`] = `
+Array [
+  Object {
+    "type": "text",
+    "value": "You reached the limit of testing minutes specified by your subscription plan. If you need more minutes, contact us at ",
+  },
+  Object {
+    "href": "mailto:sales@suite.st",
+    "type": "link",
+    "value": "sales@suite.st",
+  },
+  Object {
+    "type": "text",
+    "value": " or upgrade your subscription.",
+  },
+]
 `;
 
 exports[`Test line results translation simple errors translations should translate "releaseMode" error 1`] = `
