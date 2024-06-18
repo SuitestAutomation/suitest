@@ -1753,6 +1753,13 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "osUpdateNeeded" error 1`] = `
+Object {
+  "type": "text",
+  "value": "The device needs to be updated manually.",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "outOfMemory" error 1`] = `
 Object {
   "type": "text",
