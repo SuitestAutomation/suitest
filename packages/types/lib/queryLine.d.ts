@@ -1,3 +1,5 @@
+import {OcrComparator} from './condition';
+
 export type CookieQueryLine = {
 	type: 'query',
 	subject: {
@@ -75,6 +77,14 @@ export type ElementAttributesQueryLine = {
 	},
 };
 
+export type OcrQueryLine = {
+	type: 'query',
+	subject: {
+		type: 'ocr',
+		options?: OcrComparator[],
+	},
+};
+
 export type QueryLine =
 	| CookieQueryLine
 	| ElementQueryLine
@@ -82,4 +92,5 @@ export type QueryLine =
 	| LocationQueryLine
 	| CssPropertiesQueryLine
 	| ElementHandleQueryLine
-	| ElementAttributesQueryLine;
+	| ElementAttributesQueryLine
+	| OcrQueryLine;

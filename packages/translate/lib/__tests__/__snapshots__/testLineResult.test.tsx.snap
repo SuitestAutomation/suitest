@@ -625,6 +625,16 @@ exports[`Test line results translation Translate assert lines translate "openApp
   fail: Open app override failed"
 `;
 
+exports[`Test line results translation Translate assert lines translate line with ocr assertion queryFailed result 1`] = `
+"✖ Assert: OCR
+  ✔ text in region 100px 100px 100px 100px =           text1     
+  ✖ text on screen                         starts with text2     
+                                           →           not-match 
+  ✖ text on screen                         starts with text3     
+                                           →           not-match2
+  fail: Condition was not met"
+`;
+
 exports[`Test line results translation Translate assert lines translate line with screenshot should render excluded lines 1`] = `
 "» Press OK
   excluded: Test line was not executed"

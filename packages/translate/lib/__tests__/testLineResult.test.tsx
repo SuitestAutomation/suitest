@@ -11,7 +11,7 @@ import {
 	JsExpressionQueryLine,
 	QueryLine,
 	BaseResult,
-	CookieProperty,
+	CookieProperty, OcrComparator,
 } from '@suitest/types/lib';
 import {translateResultErrorMessage, translateTestLineResult} from '../testLineResult';
 import {appConfig, conditions, elements, testLinesExamples} from './testLinesExamples';
@@ -1458,6 +1458,56 @@ return true;
 				})).toMatchSnapshot();
 			});
 		});
+
+		describe('translate line with ocr assertion', () => {
+			const ocrComparators: OcrComparator[] = [
+				{
+					val: 'text1',
+					type: '=',
+					region: ['px', 100, 100, 100, 100],
+					readAs: 'single-word',
+				},
+				{
+					val: 'text2',
+					type: '^',
+					readAs: 'single-block',
+				},
+				{
+					val: 'text3',
+					type: '^',
+					whitelist: 'allowed-word',
+				},
+			];
+
+			it('queryFailed result', () => {
+				expect(testLineToPlainText({
+					testLine: assertLine(conditions['assert OCR comparators'](ocrComparators)),
+					lineResult: extendBaseError({
+						errorType: 'queryFailed',
+						comparators: [
+							{
+								result: 'success',
+							},
+							{
+								result: 'fail',
+								errorType: 'queryFailed',
+								actualValue: 'not-match',
+								expectedValue: 'text2',
+							},
+							{
+								result: 'fail',
+								errorType: 'queryFailed',
+								actualValue: 'not-match2',
+								expectedValue: 'text3',
+							},
+						],
+					}),
+				})).toMatchSnapshot();
+			});
+		});
+
+
+		// ---- end of "translate line with ocr assertion" ----
 	});
 
 	(['fail', 'warning', 'exit'] as const).forEach((then) => {
