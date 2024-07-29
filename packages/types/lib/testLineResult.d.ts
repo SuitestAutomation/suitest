@@ -278,6 +278,18 @@ export type QueryFailedCookieProperties = BaseResult & {
 	>,
 };
 
+export type QueryFailedOcrComparators = BaseResult & {
+	errorType: 'queryFailed',
+	comparators: Array<
+		| { result: 'success' }
+		| {
+			result: 'fail',
+			errorType: 'queryFailed',
+			actualValue: string,
+			expectedValue: string,
+		}>,
+};
+
 export type NetworkNotMatchedError = {
 	actualValue: string | number, // TODO: probably number can be only for status header
 	reason: 'notMatched',
@@ -354,6 +366,7 @@ export type QueryFailedError = BaseResult & (
 	}
 	| QueryFailedNetworkError
 	| QueryFailedCookieProperties
+	| QueryFailedOcrComparators
 );
 
 export type InvalidValueError = BaseResult & {
