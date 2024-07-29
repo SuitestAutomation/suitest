@@ -18,6 +18,7 @@ import {
 	PSVideoSubject,
 	QueryFailedNetworkError,
 	TestLineResult,
+	OcrCondition,
 } from '@suitest/types';
 import {formatVariables, mapStatus, shouldElMatchDetailsBeHidden, translateCodeProp} from './utils';
 import {translateComparator} from './comparator';
@@ -465,6 +466,46 @@ const translateNetworkRequestCondition = (
 	</condition> as ConditionNode;
 };
 
+/**
+ * @description translate OCR comparators assertions
+ */
+const translateOcrCondition = (
+	condition: OcrCondition,
+	inverse: boolean,
+	appConfig?: AppConfiguration,
+	lineResult?: TestLineResult,
+): ConditionNode => {
+	const ocrCompResults = lineResult && 'comparators' in lineResult
+		? lineResult.comparators
+		: [];
+
+	return (
+		<condition title={<text>OCR</text>}>
+			<props>
+				{condition.comparators.map((ocrComp, index) => {
+					const ocrCompResult = ocrCompResults?.[index];
+					const actualValue = ocrCompResult && ocrCompResult.result === 'fail' ? ocrCompResult.actualValue : undefined;
+					const expectedValue = formatVariables(ocrComp.val ?? '', appConfig?.configVariables);
+
+					let ocrCompTitle = 'text on screen';
+					if (ocrComp.region?.length) {
+						const [x, y, width, height] = ocrComp.region;
+						ocrCompTitle = `text in region ${x} ${y} ${width} ${height}`;
+					}
+
+					return <prop
+						name={ocrCompTitle}
+						comparator={translateComparator(ocrComp.type)}
+						expectedValue={expectedValue}
+						actualValue={actualValue}
+						status={mapStatus(ocrCompResult?.result, inverse)}
+					/>;
+				})}
+			</props>
+		</condition>
+	) as ConditionNode;
+};
+
 /* istanbul ignore next */
 const assertUnknownConditionSubject = (subject: never): never => {
 	throw new Error(`Unknown condition subject: ${JSON.stringify(subject)}`);
@@ -507,6 +548,8 @@ export const translateCondition = (
 				condition as NetworkRequestCondition, inverse, appConfig, lineResult);
 		case 'application':
 			return translateApplicationExitedCondition(inverse, lineResult);
+		case 'ocr':
+			return translateOcrCondition(condition as OcrCondition, inverse, appConfig, lineResult);
 		default:
 			/* istanbul ignore next */
 			return assertUnknownConditionSubject(condition.subject);
