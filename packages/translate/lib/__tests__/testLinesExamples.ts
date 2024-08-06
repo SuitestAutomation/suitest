@@ -13,6 +13,8 @@ import {
 	ElementHandleQueryLine,
 	ElementAttributesQueryLine,
 	CookieProperty,
+	OcrCondition,
+	OcrComparator,
 } from '@suitest/types';
 import {PSVideoHadNoErrorCondition, JavaScriptComparator, ExistComparator, ElementProperty} from '@suitest/types/lib';
 
@@ -322,6 +324,13 @@ export const conditions = {
 		},
 		type: '!made',
 		searchStrategy: 'notMatched',
+	}),
+	'assert OCR comparators': (comparators: OcrComparator[] = []): OcrCondition => ({
+		subject: {
+			type: 'ocr',
+		},
+		type: 'ocrComparators',
+		comparators,
 	}),
 } as const;
 

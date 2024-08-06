@@ -1,3 +1,5 @@
+import {StringComparator} from './comparator';
+
 export type CookieQueryLine = {
 	type: 'query',
 	subject: {
@@ -75,6 +77,25 @@ export type ElementAttributesQueryLine = {
 	},
 };
 
+export type OcrQueryLineOption = {
+	val?: string,
+	type?: StringComparator,
+	region?: [number, number, number, number],
+	readAs?: 'single-line' | 'single-word' | 'single-block',
+	align?: boolean,
+	color?: 'dark' | 'light',
+	whitelist?: string,
+	blacklist?: string,
+};
+
+export type OcrQueryLine = {
+	type: 'query',
+	subject: {
+		type: 'ocr',
+		options?: OcrQueryLineOption[],
+	},
+};
+
 export type QueryLine =
 	| CookieQueryLine
 	| ElementQueryLine
@@ -82,4 +103,5 @@ export type QueryLine =
 	| LocationQueryLine
 	| CssPropertiesQueryLine
 	| ElementHandleQueryLine
-	| ElementAttributesQueryLine;
+	| ElementAttributesQueryLine
+	| OcrQueryLine;

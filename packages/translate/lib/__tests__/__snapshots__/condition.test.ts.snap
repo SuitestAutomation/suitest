@@ -391,6 +391,42 @@ Object {
 }
 `;
 
+exports[`conditions translation should translate "assert OCR comparators" line 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "type": "props",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "OCR",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "assert OCR comparators" line without variables 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "type": "props",
+    },
+  ],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "OCR",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
 exports[`conditions translation should translate "cookie with properties" line 1`] = `
 Object {
   "children": Array [

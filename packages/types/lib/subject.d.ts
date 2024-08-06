@@ -100,10 +100,15 @@ export type JavaScriptExpressionSubject = {
 	val?: string,
 };
 
+export type OcrSubject = {
+	type: 'ocr',
+};
+
 export type Subject = ApplicationSubject
 	| CurrentLocationSubject
 	| CookieSubject
 	| ElementSubject
 	| PSVideoSubject
 	| NetworkRequestSubject
-	| JavaScriptExpressionSubject;
+	| JavaScriptExpressionSubject
+	| OcrSubject;
