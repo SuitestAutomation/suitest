@@ -19,6 +19,8 @@ import {
 	QueryFailedNetworkError,
 	TestLineResult,
 	OcrCondition,
+	ImageCondition,
+	ImageSubject,
 } from '@suitest/types';
 import {formatVariables, mapStatus, shouldElMatchDetailsBeHidden, translateCodeProp} from './utils';
 import {translateComparator} from './comparator';
@@ -506,6 +508,44 @@ const translateOcrCondition = (
 	) as ConditionNode;
 };
 
+/**
+ * @description translate OCR comparators assertions
+ */
+const translateImageCondition = (
+	condition: ImageCondition,
+	inverse: boolean,
+	lineResult?: TestLineResult,
+): ConditionNode => {
+	const stringifyImageSubject = (subject: ImageSubject): string => {
+		if ('url' in subject) {
+			return subject.url;
+		}
+		if ('filepath' in subject) {
+			return subject.filepath;
+		}
+		if ('imageId' in subject) {
+			return subject.imageId;
+		}
+
+		return '';
+	};
+
+	let title = `Image (${stringifyImageSubject(condition.subject)})`;
+	if (!condition.region) {
+		title += ' on screen';
+	} else {
+		const [x, y, width, height] = condition.region;
+		title += ` in region ${x} ${y} ${width} ${height}`;
+	}
+
+	return (
+		<condition
+			title={<text>{title}</text>}
+			status={mapStatus(lineResult?.result, inverse)}
+		></condition>
+	) as ConditionNode;
+};
+
 /* istanbul ignore next */
 const assertUnknownConditionSubject = (subject: never): never => {
 	throw new Error(`Unknown condition subject: ${JSON.stringify(subject)}`);
@@ -550,6 +590,8 @@ export const translateCondition = (
 			return translateApplicationExitedCondition(inverse, lineResult);
 		case 'ocr':
 			return translateOcrCondition(condition as OcrCondition, inverse, appConfig, lineResult);
+		case 'image':
+			return translateImageCondition(condition as ImageCondition, inverse, lineResult);
 		default:
 			/* istanbul ignore next */
 			return assertUnknownConditionSubject(condition.subject);

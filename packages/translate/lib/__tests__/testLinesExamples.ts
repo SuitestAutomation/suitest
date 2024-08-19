@@ -15,6 +15,7 @@ import {
 	CookieProperty,
 	OcrCondition,
 	OcrComparator,
+	ImageCondition,
 } from '@suitest/types';
 import {PSVideoHadNoErrorCondition, JavaScriptComparator, ExistComparator, ElementProperty} from '@suitest/types/lib';
 
@@ -331,6 +332,35 @@ export const conditions = {
 		},
 		type: 'ocrComparators',
 		comparators,
+	}),
+	'assert image by url on screen': (url = 'https://suite.st/'): ImageCondition => ({
+		subject: {
+			type: 'image',
+			url,
+		},
+		type: 'visible',
+	}),
+	'assert image by filepath on screen': (filepath = '/suitest-project/image.jpg'): ImageCondition => ({
+		subject: {
+			type: 'image',
+			filepath,
+		},
+		type: 'visible',
+	}),
+	'assert image by id on screen': (imageId = 'image-id'): ImageCondition => ({
+		subject: {
+			type: 'image',
+			imageId,
+		},
+		type: 'visible',
+	}),
+	'assert image by id in region': (imageId = 'image-id', region: ImageCondition['region'] = [10, 10, 10, 10]): ImageCondition => ({
+		subject: {
+			type: 'image',
+			imageId,
+		},
+		type: 'visible',
+		region,
 	}),
 } as const;
 
