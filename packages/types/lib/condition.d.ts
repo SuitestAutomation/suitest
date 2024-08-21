@@ -6,6 +6,8 @@ import {
 	JavaScriptExpressionSubject,
 	NetworkRequestSubject,
 	PSVideoSubject,
+	OcrSubject,
+	ImageSubject,
 } from './subject';
 import {Comparator, StringComparator, JavaScriptComparator, ExistComparator} from './comparator';
 
@@ -107,10 +109,36 @@ export type NetworkRequestCondition = {
 	searchStrategy: 'all' | 'notMatched',
 };
 
+export type OcrCondition = {
+	subject: OcrSubject,
+	type: 'ocrComparators',
+	comparators: OcrComparator[],
+};
+
+export type OcrComparator = {
+	val: string,
+	type: StringComparator,
+	region?: [number, number, number, number],
+	readAs?: 'single-line' | 'single-word' | 'single-block',
+	align?: boolean,
+	color?: 'dark' | 'light',
+	whitelist?: string,
+	blacklist?: string,
+};
+
+export type ImageCondition = {
+	subject: ImageSubject,
+	type: 'visible' | '!visible',
+	region?: [number, number, number, number],
+};
+
+
 export type Condition = ApplicationExitedCondition
 	| CurrentLocationCondition
 	| CookieCondition
 	| ElementCondition
 	| PSVideoHadNoErrorCondition
 	| JavaScriptExpressionCondition
-	| NetworkRequestCondition;
+	| NetworkRequestCondition
+	| OcrCondition
+	| ImageCondition;

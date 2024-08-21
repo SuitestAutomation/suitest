@@ -100,10 +100,21 @@ export type JavaScriptExpressionSubject = {
 	val?: string,
 };
 
+export type OcrSubject = {
+	type: 'ocr',
+};
+
+export type ImageSubject =
+	| { type: 'image', url: string }
+	| { type: 'image', filepath: string }
+	| { type: 'image', imageId: string };
+
 export type Subject = ApplicationSubject
 	| CurrentLocationSubject
 	| CookieSubject
 	| ElementSubject
 	| PSVideoSubject
 	| NetworkRequestSubject
-	| JavaScriptExpressionSubject;
+	| JavaScriptExpressionSubject
+	| OcrSubject
+	| ImageSubject;

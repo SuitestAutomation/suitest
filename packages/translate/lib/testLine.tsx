@@ -196,6 +196,9 @@ const translateQueryTestLine = (testLine: QueryLine, lineResult?: TestLineResult
 				: 'all attributes';
 			title += `Getting ${stringifiedAttrs} of ` + stringifySelector(testLine.subject.selector);
 			break;
+		case 'ocr':
+			title += 'Getting OCR result';
+			break;
 		default:
 			const subject: never = testLine.subject;
 			console.warn(`Unknown subject "${JSON.stringify(subject)}" of query line.`);
