@@ -180,6 +180,8 @@ const subjTypeDocsMap: {
 	elementAttributes: '/',
 	// FIXME: specify proper url to the docs section
 	ocr: '/',
+	// FIXME: specify proper url to the docs section
+	image: '/',
 };
 
 export const getDocsLink = (line: TestLine | QueryLine): string | undefined => {

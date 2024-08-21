@@ -427,6 +427,110 @@ Object {
 }
 `;
 
+exports[`conditions translation should translate "assert image by filepath on screen" line 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Image (/suitest-project/image.jpg) on screen",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "assert image by filepath on screen" line without variables 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Image (/suitest-project/image.jpg) on screen",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "assert image by id in region" line 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Image (image-id) in region 10 10 10 10",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "assert image by id in region" line without variables 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Image (image-id) in region 10 10 10 10",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "assert image by id on screen" line 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Image (image-id) on screen",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "assert image by id on screen" line without variables 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Image (image-id) on screen",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "assert image by url on screen" line 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Image (https://suite.st/) on screen",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
+exports[`conditions translation should translate "assert image by url on screen" line without variables 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Image (https://suite.st/) on screen",
+    },
+  ],
+  "type": "condition",
+}
+`;
+
 exports[`conditions translation should translate "cookie with properties" line 1`] = `
 Object {
   "children": Array [
