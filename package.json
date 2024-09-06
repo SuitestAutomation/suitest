@@ -5,7 +5,7 @@
     "build": "lerna run build",
     "test": "lerna run test",
     "lint": "eslint packages/*/lib/**/*.{ts,tsx}",
-    "tsc:watch": "lerna exec --parallel -- tsc --noEmit --watch",
+    "tsc:watch": "lerna exec -- tsc --noEmit --watch",
     "coverage": "lerna run coverage",
     "postinstall": "lerna bootstrap"
   },
@@ -18,7 +18,7 @@
     "eslint": "^6.8.0",
     "husky": "4.2.5",
     "jest": "26.0.1",
-    "lerna": "^3.22.0",
+    "lerna": "^6.6.2",
     "rimraf": "3.0.2",
     "terser": "^4.7.0",
     "ts-jest": "26.1.0",
