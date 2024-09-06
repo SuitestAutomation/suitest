@@ -1,6 +1,6 @@
 {
   "name": "@suitest/smst",
-  "version": "4.9.0",
+  "version": "4.13.0",
   "description": "UNIST definition and JSX factory for Suitest test lines rendering",
   "homepage": "https://suite.st/",
   "license": "MIT",
