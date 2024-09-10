@@ -1858,6 +1858,13 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "skySoftCatAppMissing" error 1`] = `
+Object {
+  "type": "text",
+  "value": "App launch blocked, typically caused by missing entitlements or app not appearing in SoftCat. Try toggling \\"Force all apps launchable\\" from the \\"Settings\\" menu.",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "suitestifyError" error 1`] = `
 Object {
   "type": "text",

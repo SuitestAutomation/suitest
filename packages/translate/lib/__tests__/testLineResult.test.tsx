@@ -142,6 +142,7 @@ describe('Test line results translation', () => {
 		'rokuUpdateNeeded',
 		'vizioAppNotFound',
 		'osUpdateNeeded',
+		'skySoftCatAppMissing',
 	];
 
 	describe('simple errors translations', () => {
