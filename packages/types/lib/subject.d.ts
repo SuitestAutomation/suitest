@@ -107,7 +107,7 @@ export type OcrSubject = {
 export type ImageSubject =
 	| { type: 'image', url: string }
 	| { type: 'image', filepath: string }
-	| { type: 'image', imageId: string };
+	| { type: 'image', apiId: string };
 
 export type Subject = ApplicationSubject
 	| CurrentLocationSubject

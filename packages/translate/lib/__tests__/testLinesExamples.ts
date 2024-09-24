@@ -347,17 +347,17 @@ export const conditions = {
 		},
 		type: 'visible',
 	}),
-	'assert image by id on screen': (imageId = 'image-id'): ImageCondition => ({
+	'assert image by id on screen': (apiId = 'image-api-id'): ImageCondition => ({
 		subject: {
 			type: 'image',
-			imageId,
+			apiId,
 		},
 		type: 'visible',
 	}),
-	'assert image by id in region': (imageId = 'image-id', region: ImageCondition['region'] = [10, 10, 10, 10]): ImageCondition => ({
+	'assert image by id in region': (apiId = 'image-api-id', region: ImageCondition['region'] = [10, 10, 10, 10]): ImageCondition => ({
 		subject: {
 			type: 'image',
-			imageId,
+			apiId,
 		},
 		type: 'visible',
 		region,
