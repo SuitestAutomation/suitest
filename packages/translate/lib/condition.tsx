@@ -520,8 +520,8 @@ const translateImageCondition = (
 		if ('filepath' in subject) {
 			return subject.filepath;
 		}
-		if ('imageId' in subject) {
-			return subject.imageId;
+		if ('apiId' in subject) {
+			return subject.apiId;
 		}
 
 		return '';

@@ -459,7 +459,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Image (image-id) in region 10 10 10 10",
+      "value": "Image (image-api-id) in region 10 10 10 10",
     },
   ],
   "type": "condition",
@@ -472,7 +472,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Image (image-id) in region 10 10 10 10",
+      "value": "Image (image-api-id) in region 10 10 10 10",
     },
   ],
   "type": "condition",
@@ -485,7 +485,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Image (image-id) on screen",
+      "value": "Image (image-api-id) on screen",
     },
   ],
   "type": "condition",
@@ -498,7 +498,7 @@ Object {
   "title": Array [
     Object {
       "type": "text",
-      "value": "Image (image-id) on screen",
+      "value": "Image (image-api-id) on screen",
     },
   ],
   "type": "condition",
