@@ -169,7 +169,7 @@ export type SimpleError = BaseResult & {
 		| 'rokuUpdateNeeded'
 		| 'vizioAppNotFound'
 		| 'osUpdateNeeded'
-		| 'skySoftCatAppMissing',
+		| 'catalogueAppMissing',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {
