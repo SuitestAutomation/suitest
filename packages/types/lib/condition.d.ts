@@ -113,6 +113,7 @@ export type OcrCondition = {
 	subject: OcrSubject,
 	type: 'ocrComparators',
 	comparators: OcrComparator[],
+	language?: 'eng' | 'deu' | 'fra' | 'ita' | 'nld' | 'spa',
 };
 
 export type OcrComparator = {
