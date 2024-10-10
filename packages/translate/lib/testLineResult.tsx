@@ -156,7 +156,7 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	rokuUpdateNeeded: <fragment>The device needs to be updated manually. See <link href="https://suite.st/docs/troubleshooting/roku/#system-update-needed">our user documentation</link></fragment>,
 	vizioAppNotFound: <text>Failed to open the application. Please make sure that the application configuration is set correctly.</text>,
 	osUpdateNeeded: <text>The device needs to be updated manually.</text>,
-	skySoftCatAppMissing: <text>App launch blocked, typically caused by missing entitlements or app not appearing in SoftCat. Try toggling "Force all apps launchable" from the "Settings" menu.</text>,
+	catalogueAppMissing: <text>App launch blocked, typically caused by missing entitlements or app not appearing in SoftCat. Try toggling "Force all apps launchable" from the "Settings" menu.</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
