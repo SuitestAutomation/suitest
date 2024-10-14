@@ -142,6 +142,7 @@ describe('Test line results translation', () => {
 		'rokuUpdateNeeded',
 		'vizioAppNotFound',
 		'osUpdateNeeded',
+		'catalogueAppMissing',
 	];
 
 	describe('simple errors translations', () => {

@@ -168,7 +168,8 @@ export type SimpleError = BaseResult & {
 		| 'appNotFound'
 		| 'rokuUpdateNeeded'
 		| 'vizioAppNotFound'
-		| 'osUpdateNeeded',
+		| 'osUpdateNeeded'
+		| 'catalogueAppMissing',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {
