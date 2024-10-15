@@ -414,6 +414,9 @@ const translateInvalidRepositoryReference = (result: InvalidRepositoryReferenceE
 			case 'unknownProperty':
 				textMsg = `Element does not support property ${translateElementProperty(result.message.property)}`;
 				break;
+			case 'notExistingImage':
+				textMsg = 'Image was not found in repository';
+				break;
 			default:
 				const _message: never = result.message;
 				console.warn('invalidRepositoryReference unknown message: ', JSON.stringify(_message));

@@ -402,6 +402,8 @@ export type InvalidRepositoryReferenceError = BaseResult & {
 		elementId?: ElementId,
 		apiId?: string,
 		property: string,
+	} | {
+		code: 'notExistingImage',
 	},
 };
 
