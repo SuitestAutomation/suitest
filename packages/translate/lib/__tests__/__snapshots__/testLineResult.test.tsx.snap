@@ -245,6 +245,11 @@ exports[`Test line results translation Translate assert lines translate "assert 
   fail: Element was not found in the repository"
 `;
 
+exports[`Test line results translation Translate assert lines translate "assert element" invalidRepositoryReference results notExistingImage message code 1`] = `
+"✖ Assert: Image (image-api-id) on screen
+  fail: Image was not found in repository"
+`;
+
 exports[`Test line results translation Translate assert lines translate "assert element" invalidRepositoryReference results notExistingPlatform message code 1`] = `
 "✖ Assert: Unknown element (unknown-id)
   fail: Element is not defined for the selected platform"
