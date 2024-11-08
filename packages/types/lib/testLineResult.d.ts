@@ -233,6 +233,8 @@ export type DeviceError = BaseResult & {
 		info: {
 			reason: string, // TODO should be enumerable
 		},
+	} | {
+		code: 'notSupportedDriver',
 	},
 };
 
