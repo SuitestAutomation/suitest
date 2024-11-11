@@ -233,6 +233,8 @@ export type DeviceError = BaseResult & {
 		info: {
 			reason: string, // TODO should be enumerable
 		},
+	} | {
+		code: 'notSupportedDriver',
 	},
 };
 
@@ -402,6 +404,8 @@ export type InvalidRepositoryReferenceError = BaseResult & {
 		elementId?: ElementId,
 		apiId?: string,
 		property: string,
+	} | {
+		code: 'notExistingImage',
 	},
 };
 

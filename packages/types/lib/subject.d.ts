@@ -104,6 +104,11 @@ export type OcrSubject = {
 	type: 'ocr',
 };
 
+export type ImageSubject =
+	| { type: 'image', url: string }
+	| { type: 'image', filepath: string }
+	| { type: 'image', apiId: string };
+
 export type Subject = ApplicationSubject
 	| CurrentLocationSubject
 	| CookieSubject
@@ -111,4 +116,5 @@ export type Subject = ApplicationSubject
 	| PSVideoSubject
 	| NetworkRequestSubject
 	| JavaScriptExpressionSubject
-	| OcrSubject;
+	| OcrSubject
+	| ImageSubject;

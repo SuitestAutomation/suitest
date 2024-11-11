@@ -276,6 +276,9 @@ const translateDeviceError = (result: DeviceError): TextNode => {
 	if (message.code === 'deviceFailure' && message.info.reason === 'xpathNotValid') {
 		return <text>XPath selector is invalid</text> as TextNode;
 	}
+	if (message.code === 'notSupportedDriver') {
+		return <text>The device failed to make a screenshot</text> as TextNode;
+	}
 	if (['videoAdapterInvalidOutput', 'videoAdapterNotFunction', 'videoAdapterThrownError'].includes(message.code)) {
 		return <text>Video adapter error: {message.info.reason}</text> as TextNode;
 	}
@@ -413,6 +416,9 @@ const translateInvalidRepositoryReference = (result: InvalidRepositoryReferenceE
 				break;
 			case 'unknownProperty':
 				textMsg = `Element does not support property ${translateElementProperty(result.message.property)}`;
+				break;
+			case 'notExistingImage':
+				textMsg = 'Image was not found in repository';
 				break;
 			default:
 				const _message: never = result.message;

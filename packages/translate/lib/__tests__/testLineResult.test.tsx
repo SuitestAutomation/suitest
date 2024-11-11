@@ -718,6 +718,21 @@ return false;
 						}),
 					})).toMatchSnapshot();
 				});
+
+				it('notExistingImage message code', () => {
+					expect(testLineToPlainText({
+						testLine: assertLine(conditions['assert image by id on screen']()),
+						appConfig,
+						elements,
+						lineResult: extendBaseError({
+							errorType: 'invalidRepositoryReference',
+							message: {
+								code: 'notExistingImage',
+								elementId: 'element-id-1',
+							},
+						}),
+					})).toMatchSnapshot();
+				});
 			});
 
 			describe('queryFailed results', () => {
