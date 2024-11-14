@@ -214,6 +214,10 @@ const translateInvalidInputError = (result: InvalidInputError): Node => {
 			return defaultMessage;
 		case 'wrongDirection':
 			return <fragment>Invalid direction. See <link href="https://suite.st/docs/suitest-api/test-operations/#scroll">our docs</link> for more information</fragment>;
+		case 'exceededRegion':
+			return <text>Screen size limit exceeded</text>;
+		case 'invalidRegion':
+			return <text>Test line is malformed. Region values are invalid</text>;
 		default:
 			const _code: never = message.code;
 			console.warn('invalidInput code was not handled', JSON.stringify(_code));
