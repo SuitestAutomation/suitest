@@ -157,6 +157,7 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	vizioAppNotFound: <text>Failed to open the application. Please make sure that the application configuration is set correctly.</text>,
 	osUpdateNeeded: <text>The device needs to be updated manually.</text>,
 	catalogueAppMissing: <text>App launch blocked, typically caused by missing entitlements or app not appearing in SoftCat. Try toggling "Force all apps launchable" from the "Settings" menu.</text>,
+	pairingLost: <text>Pairing with the device was lost. Please delete the device and add it again.</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
