@@ -143,6 +143,7 @@ describe('Test line results translation', () => {
 		'vizioAppNotFound',
 		'osUpdateNeeded',
 		'catalogueAppMissing',
+		'pairingLost',
 		'keyServerOffline',
 	];
 

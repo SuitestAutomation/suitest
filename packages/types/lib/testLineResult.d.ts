@@ -170,6 +170,7 @@ export type SimpleError = BaseResult & {
 		| 'vizioAppNotFound'
 		| 'osUpdateNeeded'
 		| 'catalogueAppMissing'
+		| 'pairingLost'
 		| 'keyServerOffline',
 };
 
