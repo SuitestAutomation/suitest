@@ -1624,6 +1624,13 @@ Array [
 ]
 `;
 
+exports[`Test line results translation simple errors translations should translate "keyServerOffline" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Something went wrong. Please open the Developer Mode app on the device, activate the Key Server, and reopen the app from Suitest.",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "lateManualLaunch" error 1`] = `
 Object {
   "type": "text",
