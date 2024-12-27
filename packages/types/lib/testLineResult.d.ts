@@ -171,7 +171,8 @@ export type SimpleError = BaseResult & {
 		| 'osUpdateNeeded'
 		| 'catalogueAppMissing'
 		| 'pairingLost'
-		| 'keyServerOffline',
+		| 'keyServerOffline'
+		| 'invalidConfiguration',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {
