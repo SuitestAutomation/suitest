@@ -1409,6 +1409,24 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "configNotFound" error 1`] = `
+Array [
+  Object {
+    "type": "text",
+    "value": "Application specification is incomplete - see ",
+  },
+  Object {
+    "href": "https://suite.st/docs/application/setting-up-vidaa-apps/#specify-the-application",
+    "type": "link",
+    "value": "our documentation",
+  },
+  Object {
+    "type": "text",
+    "value": " for more details.",
+  },
+]
+`;
+
 exports[`Test line results translation simple errors translations should translate "configuratorError" error 1`] = `
 Object {
   "type": "text",
@@ -1543,6 +1561,13 @@ exports[`Test line results translation simple errors translations should transla
 Object {
   "type": "text",
   "value": "Invalid SSL certificate. See troubleshooting section for this platform",
+}
+`;
+
+exports[`Test line results translation simple errors translations should translate "invalidConfiguration" error 1`] = `
+Object {
+  "type": "text",
+  "value": "The application configuration is invalid. Please select a valid configuration or fix the selected one.",
 }
 `;
 
