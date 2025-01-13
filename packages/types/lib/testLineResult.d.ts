@@ -164,6 +164,8 @@ export type SimpleError = BaseResult & {
 		| 'openAppFailure'
 		| 'urlOverrideNotSupported'
 		| 'devToolsNotSupported'
+		| 'devToolsNotSupportedVidaa'
+		| 'devToolsNotSupportedXbox'
 		| 'deviceNotPaired'
 		| 'appNotFound'
 		| 'rokuUpdateNeeded'

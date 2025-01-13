@@ -1448,6 +1448,15 @@ exports[`Test line results translation simple errors translations should transla
 Array [
   Object {
     "type": "text",
+    "value": "The device has DevTools protocol disabled. Please look into our user documentation for more details.",
+  },
+]
+`;
+
+exports[`Test line results translation simple errors translations should translate "devToolsNotSupportedVidaa" error 1`] = `
+Array [
+  Object {
+    "type": "text",
     "value": "The device has DevTools protocol disabled. Please look into ",
   },
   Object {
@@ -1458,6 +1467,24 @@ Array [
   Object {
     "type": "text",
     "value": " for more details.",
+  },
+]
+`;
+
+exports[`Test line results translation simple errors translations should translate "devToolsNotSupportedXbox" error 1`] = `
+Array [
+  Object {
+    "type": "text",
+    "value": "The application package is not correctly configured - ",
+  },
+  Object {
+    "href": "https://suite.st/docs/application/setting-up-xbox-apps/#lite-support-for-webview2-apps",
+    "type": "link",
+    "value": "more information",
+  },
+  Object {
+    "type": "text",
+    "value": ".",
   },
 ]
 `;
