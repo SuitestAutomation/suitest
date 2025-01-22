@@ -247,7 +247,7 @@ export type MoveToTestLine = BaseTestLine & {
 
 export type SendTextTestLine = BaseTestLine & {
 	type: 'sendText',
-	target: ElementTarget | WindowTarget | ActiveElementTarget,
+	target: ElementTarget | WindowTarget,
 	val: string,
 	delay?: number | string,
 	count?: number | string,
