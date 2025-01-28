@@ -1573,6 +1573,13 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "invalidConfiguration" error 1`] = `
+Object {
+  "type": "text",
+  "value": "The application configuration is invalid. Please select a valid configuration or fix the selected one.",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "invalidCredentials" error 1`] = `
 Object {
   "type": "text",

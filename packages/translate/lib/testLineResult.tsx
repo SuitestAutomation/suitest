@@ -161,6 +161,7 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	catalogueAppMissing: <text>App launch blocked, typically caused by missing entitlements or app not appearing in SoftCat. Try toggling "Force all apps launchable" from the "Settings" menu.</text>,
 	pairingLost: <text>Pairing with the device was lost. Please delete the device and add it again.</text>,
 	keyServerOffline: <text>Something went wrong. Please open the Developer Mode app on the device, activate the Key Server, and reopen the app from Suitest.</text>,
+	invalidConfiguration: <text>The application configuration is invalid. Please select a valid configuration or fix the selected one.</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
