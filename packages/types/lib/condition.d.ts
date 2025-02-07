@@ -109,11 +109,25 @@ export type NetworkRequestCondition = {
 	searchStrategy: 'all' | 'notMatched',
 };
 
+type OcrLanguage =
+	| 'eng'
+	| 'deu'
+	| 'fra'
+	| 'ita'
+	| 'nld'
+	| 'spa'
+	| 'pol'
+	| 'bul'
+	| 'rus'
+	| 'ukr'
+	| 'ara'
+	| 'heb';
+
 export type OcrCondition = {
 	subject: OcrSubject,
 	type: 'ocrComparators',
 	comparators: OcrComparator[],
-	language?: 'eng' | 'deu' | 'fra' | 'ita' | 'nld' | 'spa',
+	language?: OcrLanguage,
 };
 
 export type OcrComparator = {
