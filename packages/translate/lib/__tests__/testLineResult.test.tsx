@@ -147,6 +147,7 @@ describe('Test line results translation', () => {
 		'catalogueAppMissing',
 		'pairingLost',
 		'keyServerOffline',
+		'screenshotWasNotTaken',
 	];
 
 	describe('simple errors translations', () => {
