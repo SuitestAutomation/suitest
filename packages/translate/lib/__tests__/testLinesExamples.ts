@@ -588,17 +588,6 @@ export const testLinesExamples = {
 		val,
 		target: {type: 'element', elementId},
 	}),
-	'Send text ... to active element once': (val = 'text to send'): TestLine => ({
-		...baseTestLine,
-		type: 'sendText',
-		val,
-		target: {
-			type: 'element',
-			val: {
-				active: true,
-			},
-		},
-	}),
 	'Send text ... to window every ... exactly ...': (
 		val = 'text to send',
 		count: number | string = 2,
@@ -1193,6 +1182,11 @@ export const testLinesExamples = {
 		...baseTestLine,
 		type: 'takeScreenshot',
 		fileName: 'screen.jpg',
+	}),
+	'get last screenshot for visual testing': (): TestLine => ({
+		...baseTestLine,
+		type: 'lastScreenshot',
+		dataFormat: 'raw',
 	}),
 	'setOrientation': (): TestLine => ({
 		...baseTestLine,

@@ -138,6 +138,7 @@ export const mapStatus = (status?: TestLineResultStatus, inverse?: boolean): Sin
 const lineTypeDocsMap: {[key in Exclude<TestLine['type'], 'assert' | 'wait'>]: string | null} = {
 	clearAppData: '/testing/test-operations/clear-app-data-operation/',
 	takeScreenshot: '/suitest-api/commands/#takescreenshot',
+	lastScreenshot: '/suitest-api/commands/#getLastVTScreenshot',
 	execCmd: '/testing/test-operations/execute-command-operation/',
 	openApp: '/testing/test-operations/open-app-operation/',
 	openUrl: '/testing/test-operations/open-url-operation/',
