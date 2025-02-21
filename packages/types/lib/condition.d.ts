@@ -144,7 +144,7 @@ export type OcrComparator = {
 export type ImageCondition = {
 	subject: ImageSubject,
 	type: 'visible' | '!visible',
-	region?: [number, number, number, number],
+	region?: [number | null, number | null, number | null, number | null],
 };
 
 
