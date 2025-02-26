@@ -1453,6 +1453,15 @@ Array [
 ]
 `;
 
+exports[`Test line results translation simple errors translations should translate "devToolsNotSupportedPlaystation" error 1`] = `
+Array [
+  Object {
+    "type": "text",
+    "value": "DevTools protocol needs to be enabled inside the application package.",
+  },
+]
+`;
+
 exports[`Test line results translation simple errors translations should translate "devToolsNotSupportedVidaa" error 1`] = `
 Array [
   Object {
@@ -2038,6 +2047,13 @@ exports[`Test line results translation simple errors translations should transla
 Object {
   "type": "text",
   "value": "Failed to open the application. Please make sure that the application configuration is set correctly.",
+}
+`;
+
+exports[`Test line results translation simple errors translations should translate "webMafAppNotWorking" error 1`] = `
+Object {
+  "type": "text",
+  "value": "The WebMAF app can no longer be opened on PlayStation 5. Either downgrade your system software or use Media SDK.",
 }
 `;
 
