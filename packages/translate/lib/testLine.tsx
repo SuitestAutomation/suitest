@@ -36,6 +36,7 @@ import {
 	SuspendAppTestLine,
 	ElementSelector,
 	OpenDeepLinkTestLine,
+	LastScreenshotTestLine,
 } from '@suitest/types';
 import {translateComparator} from './comparator';
 import {translateCondition} from './condition';
@@ -125,6 +126,23 @@ const translateTakeScreenshotTestLine = (
 		text = 'Take screenshot (base64)';
 	} else if (testLine.fileName) {
 		text = `Save screenshot ("${testLine.fileName}")`;
+	}
+
+	return <test-line
+		title={<text>{text}</text>}
+		status={lineResult?.result}
+	/> as TestLineNode;
+};
+
+const translateLastScreenshotTestLine = (
+	testLine: LastScreenshotTestLine,
+	lineResult?: TestLineResult,
+): TestLineNode => {
+	let text = 'Get last screenshot for visual testing';
+	if (testLine.dataFormat === 'raw') {
+		text += ' (raw)';
+	} else if (testLine.dataFormat === 'base64') {
+		text += ' (base64)';
 	}
 
 	return <test-line
@@ -742,6 +760,8 @@ export const translateTestLine = ({
 			return translateAssertTestLine(testLine, appConfig, elements, lineResult as TestLineResult);
 		case 'takeScreenshot':
 			return translateTakeScreenshotTestLine(testLine, lineResult as TestLineResult);
+		case 'lastScreenshot':
+			return translateLastScreenshotTestLine(testLine, lineResult as TestLineResult);
 		case 'clearAppData':
 			return translateClearAppDataTestLine(testLine, lineResult as TestLineResult);
 		case 'execCmd':
