@@ -121,7 +121,8 @@ type OcrLanguage =
 	| 'rus'
 	| 'ukr'
 	| 'ara'
-	| 'heb';
+	| 'heb'
+	| 'por';
 
 export type OcrCondition = {
 	subject: OcrSubject,
