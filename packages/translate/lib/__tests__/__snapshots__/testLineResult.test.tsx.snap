@@ -1460,7 +1460,7 @@ Array [
     "value": "The device has DevTools protocol disabled. Please look into ",
   },
   Object {
-    "href": "https://suite.st/docs/devices/vidaa#enable-devtools-protocol",
+    "href": "https://suite.st/docs/devices/vidaa/#enable-devtools-on-your-vidaa-device",
     "type": "link",
     "value": "our user documentation",
   },
