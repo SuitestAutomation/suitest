@@ -1879,6 +1879,13 @@ Array [
 ]
 `;
 
+exports[`Test line results translation simple errors translations should translate "screenshotWasNotTaken" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Screenshot was not taken. This command works only after a visual testing operation has been executed.",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "sdComponentFailed" error 1`] = `
 Array [
   Object {
