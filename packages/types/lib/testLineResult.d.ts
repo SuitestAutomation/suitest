@@ -166,6 +166,7 @@ export type SimpleError = BaseResult & {
 		| 'devToolsNotSupported'
 		| 'devToolsNotSupportedVidaa'
 		| 'devToolsNotSupportedXbox'
+		| 'devToolsNotSupportedPlaystation'
 		| 'deviceNotPaired'
 		| 'appNotFound'
 		| 'rokuUpdateNeeded'
@@ -173,7 +174,8 @@ export type SimpleError = BaseResult & {
 		| 'osUpdateNeeded'
 		| 'catalogueAppMissing'
 		| 'pairingLost'
-		| 'keyServerOffline',
+		| 'keyServerOffline'
+		| 'webMafAppNotWorking',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {

@@ -139,6 +139,7 @@ describe('Test line results translation', () => {
 		'devToolsNotSupported',
 		'devToolsNotSupportedVidaa',
 		'devToolsNotSupportedXbox',
+		'devToolsNotSupportedPlaystation',
 		'deviceNotPaired',
 		'appNotFound',
 		'rokuUpdateNeeded',
@@ -147,6 +148,7 @@ describe('Test line results translation', () => {
 		'catalogueAppMissing',
 		'pairingLost',
 		'keyServerOffline',
+		'webMafAppNotWorking',
 	];
 
 	describe('simple errors translations', () => {

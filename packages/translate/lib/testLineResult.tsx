@@ -153,6 +153,7 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	devToolsNotSupported: <fragment>The device has DevTools protocol disabled. Please look into our user documentation for more details.</fragment>,
 	devToolsNotSupportedVidaa: <fragment>The device has DevTools protocol disabled. Please look into <link href="https://suite.st/docs/devices/vidaa/#enable-devtools-on-your-vidaa-device">our user documentation</link> for more details.</fragment>,
 	devToolsNotSupportedXbox: <fragment>The application package is not correctly configured - <link href="https://suite.st/docs/application/setting-up-xbox-apps/#lite-support-for-webview2-apps">more information</link>.</fragment>,
+	devToolsNotSupportedPlaystation: <fragment>DevTools protocol needs to be enabled inside the application package.</fragment>,
 	deviceNotPaired: <text>You need to pair the device first.</text>,
 	appNotFound: <text>The application not found. Please make sure that you have entered a valid AppId.</text>,
 	rokuUpdateNeeded: <fragment>The device needs to be updated manually. See <link href="https://suite.st/docs/troubleshooting/roku/#system-update-needed">our user documentation</link></fragment>,
@@ -161,6 +162,7 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	catalogueAppMissing: <text>App launch blocked, typically caused by missing entitlements or app not appearing in SoftCat. Try toggling "Force all apps launchable" from the "Settings" menu.</text>,
 	pairingLost: <text>Pairing with the device was lost. Please delete the device and add it again.</text>,
 	keyServerOffline: <text>Something went wrong. Please open the Developer Mode app on the device, activate the Key Server, and reopen the app from Suitest.</text>,
+	webMafAppNotWorking: <text>The WebMAF app can no longer be opened on PlayStation 5. Either downgrade your system software or use Media SDK.</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
