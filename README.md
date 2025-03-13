@@ -1,7 +1,7 @@
 # Suitest libraries
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/SuitestAutomation/suitest/blob/master/LICENSE)
-[![CircleCI](https://circleci.com/gh/SuitestAutomation/suitest.svg?style=shield)](https://circleci.com/gh/SuitestAutomation/suitest)
+[![unit tests](https://github.com/SuitestAutomation/suitest/actions/workflows/tests.yml/badge.svg)](https://github.com/SuitestAutomation/suitest/actions/workflows/tests.yml)
 
 This package contains several libraries that [Suitest JavascriptApi] and [Suitest web application] are using.
 
