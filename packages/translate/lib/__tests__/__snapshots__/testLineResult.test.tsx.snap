@@ -1802,6 +1802,13 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "notSupportedPlatform" error 1`] = `
+Object {
+  "type": "text",
+  "value": "This test line is not supported by the current app configuration.",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "openAppFailure" error 1`] = `
 Object {
   "type": "text",
