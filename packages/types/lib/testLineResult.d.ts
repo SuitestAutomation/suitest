@@ -173,7 +173,8 @@ export type SimpleError = BaseResult & {
 		| 'osUpdateNeeded'
 		| 'catalogueAppMissing'
 		| 'pairingLost'
-		| 'keyServerOffline',
+		| 'keyServerOffline'
+		| 'notSupportedPlatform',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {
