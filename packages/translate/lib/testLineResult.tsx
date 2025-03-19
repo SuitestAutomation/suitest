@@ -151,7 +151,7 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	openAppFailure: <text>Failed to open the app, please try again. Restart of the device could help</text>,
 	urlOverrideNotSupported: <fragment>Only AppId used - the device does not support URL override. Please look into <link href="https://suite.st/docs/application/setting-up-vidaa-apps#specify-the-application">our user documentation</link> for more details.</fragment>,
 	devToolsNotSupported: <fragment>The device has DevTools protocol disabled. Please look into our user documentation for more details.</fragment>,
-	devToolsNotSupportedVidaa: <fragment>The device has DevTools protocol disabled. Please look into <link href="https://suite.st/docs/devices/vidaa#enable-devtools-protocol">our user documentation</link> for more details.</fragment>,
+	devToolsNotSupportedVidaa: <fragment>The device has DevTools protocol disabled. Please look into <link href="https://suite.st/docs/devices/vidaa/#enable-devtools-on-your-vidaa-device">our user documentation</link> for more details.</fragment>,
 	devToolsNotSupportedXbox: <fragment>The application package is not correctly configured - <link href="https://suite.st/docs/application/setting-up-xbox-apps/#lite-support-for-webview2-apps">more information</link>.</fragment>,
 	deviceNotPaired: <text>You need to pair the device first.</text>,
 	appNotFound: <text>The application not found. Please make sure that you have entered a valid AppId.</text>,
@@ -161,6 +161,7 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	catalogueAppMissing: <text>App launch blocked, typically caused by missing entitlements or app not appearing in SoftCat. Try toggling "Force all apps launchable" from the "Settings" menu.</text>,
 	pairingLost: <text>Pairing with the device was lost. Please delete the device and add it again.</text>,
 	keyServerOffline: <text>Something went wrong. Please open the Developer Mode app on the device, activate the Key Server, and reopen the app from Suitest.</text>,
+	notSupportedPlatform: <text>This test line is not supported by the current app configuration.</text>,
 	screenshotWasNotTaken: <text>Screenshot was not taken. This command works only after a visual testing operation has been executed.</text>,
 };
 
@@ -219,6 +220,10 @@ const translateInvalidInputError = (result: InvalidInputError): Node => {
 			return defaultMessage;
 		case 'wrongDirection':
 			return <fragment>Invalid direction. See <link href="https://suite.st/docs/suitest-api/test-operations/#scroll">our docs</link> for more information</fragment>;
+		case 'exceededRegion':
+			return <text>Screen size limit exceeded</text>;
+		case 'invalidRegion':
+			return <text>Test line is malformed. Region values are invalid</text>;
 		default:
 			const _code: never = message.code;
 			console.warn('invalidInput code was not handled', JSON.stringify(_code));

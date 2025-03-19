@@ -1460,7 +1460,7 @@ Array [
     "value": "The device has DevTools protocol disabled. Please look into ",
   },
   Object {
-    "href": "https://suite.st/docs/devices/vidaa#enable-devtools-protocol",
+    "href": "https://suite.st/docs/devices/vidaa/#enable-devtools-on-your-vidaa-device",
     "type": "link",
     "value": "our user documentation",
   },
@@ -1799,6 +1799,13 @@ exports[`Test line results translation simple errors translations should transla
 Object {
   "type": "text",
   "value": "Application type inside the selected configuration is not supported on the device you are connected to",
+}
+`;
+
+exports[`Test line results translation simple errors translations should translate "notSupportedPlatform" error 1`] = `
+Object {
+  "type": "text",
+  "value": "This test line is not supported by the current app configuration.",
 }
 `;
 

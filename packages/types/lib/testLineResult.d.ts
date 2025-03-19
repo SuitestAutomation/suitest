@@ -174,6 +174,7 @@ export type SimpleError = BaseResult & {
 		| 'catalogueAppMissing'
 		| 'pairingLost'
 		| 'keyServerOffline'
+		| 'notSupportedPlatform'
 		| 'screenshotWasNotTaken',
 };
 
@@ -209,7 +210,9 @@ export type InvalidInputError = BaseResult & ({
 		code: 'lineTypeNotSupported' // Line is not supported by platform
 			| 'elementNotSupported' // Command is unsupported by element
 			| 'wrongExpression' // Faced when javascript expression subject value is undefined
-			| 'wrongDirection', // When line specified with unknown direction
+			| 'wrongDirection' // When line specified with unknown direction
+			| 'exceededRegion' // Specified values of region for ocr or image is nullable
+			| 'invalidRegion', // Specified region for ocr or image is out of bound device screen
 	},
 } | {
 	errorType: 'invalidInput',

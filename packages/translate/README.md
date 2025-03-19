@@ -2,7 +2,7 @@
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/SuitestAutomation/suitest/blob/master/LICENSE)
 [![npm version](https://img.shields.io/npm/v/@suitest/translate.svg?style=flat)](https://www.npmjs.com/package/@suitest/translate)
-[![CircleCI](https://circleci.com/gh/SuitestAutomation/suitest.svg?style=shield)](https://circleci.com/gh/SuitestAutomation/suitest)
+[![unit tests](https://github.com/SuitestAutomation/suitest/actions/workflows/tests.yml/badge.svg)](https://github.com/SuitestAutomation/suitest/actions/workflows/tests.yml)
 
 This package contains all results that Suitest may return for the test execution and translations for those errors.
 
