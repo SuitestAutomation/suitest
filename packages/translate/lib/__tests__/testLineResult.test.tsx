@@ -137,6 +137,8 @@ describe('Test line results translation', () => {
 		'openAppFailure',
 		'urlOverrideNotSupported',
 		'devToolsNotSupported',
+		'devToolsNotSupportedVidaa',
+		'devToolsNotSupportedXbox',
 		'deviceNotPaired',
 		'appNotFound',
 		'rokuUpdateNeeded',
@@ -145,6 +147,7 @@ describe('Test line results translation', () => {
 		'catalogueAppMissing',
 		'pairingLost',
 		'keyServerOffline',
+		'notSupportedPlatform',
 		'invalidConfiguration',
 		'configNotFound',
 	];

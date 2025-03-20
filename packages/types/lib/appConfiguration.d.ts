@@ -21,4 +21,5 @@ export type AppConfiguration = {
 	}>,
 	overrideOpenApps?: string,
 	launchActivity?: string,
+	composeJetpack?: boolean,
 };
