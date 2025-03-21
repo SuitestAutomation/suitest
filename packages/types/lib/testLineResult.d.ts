@@ -175,7 +175,9 @@ export type SimpleError = BaseResult & {
 		| 'pairingLost'
 		| 'keyServerOffline'
 		| 'notSupportedPlatform'
-		| 'screenshotWasNotTaken',
+		| 'screenshotWasNotTaken'
+		| 'invalidConfiguration'
+		| 'configNotFound',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {
