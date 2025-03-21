@@ -148,6 +148,7 @@ describe('Test line results translation', () => {
 		'pairingLost',
 		'keyServerOffline',
 		'notSupportedPlatform',
+		'screenshotWasNotTaken',
 		'invalidConfiguration',
 		'configNotFound',
 	];

@@ -38,6 +38,11 @@ export type TakeScreenshotTestLine = BaseTestLine & {
 	fileName?: string,
 };
 
+export type LastScreenshotTestLine = BaseTestLine & {
+	type: 'lastScreenshot',
+	dataFormat?: 'raw' | 'base64',
+};
+
 export type ScreenOrientation =
 	| 'portrait'
 	| 'portraitReversed'
@@ -286,6 +291,7 @@ export type TestLine =
 	| SetTextTestLine
 	| CommentTestLine
 	| TakeScreenshotTestLine
+	| LastScreenshotTestLine
 	| DeviceSettingsTestLine
 	| TapTestLine
 	| ScrollTestLine
