@@ -174,7 +174,8 @@ export type SimpleError = BaseResult & {
 		| 'catalogueAppMissing'
 		| 'pairingLost'
 		| 'keyServerOffline'
-		| 'notSupportedPlatform',
+		| 'notSupportedPlatform'
+		| 'screenshotWasNotTaken',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {

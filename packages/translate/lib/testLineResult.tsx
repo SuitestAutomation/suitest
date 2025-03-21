@@ -162,6 +162,7 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	pairingLost: <text>Pairing with the device was lost. Please delete the device and add it again.</text>,
 	keyServerOffline: <text>Something went wrong. Please open the Developer Mode app on the device, activate the Key Server, and reopen the app from Suitest.</text>,
 	notSupportedPlatform: <text>This test line is not supported by the current app configuration.</text>,
+	screenshotWasNotTaken: <text>Screenshot was not taken. This command works only after a visual testing operation has been executed.</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {

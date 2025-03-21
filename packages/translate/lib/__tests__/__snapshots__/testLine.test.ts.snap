@@ -3364,56 +3364,6 @@ Object {
 }
 `;
 
-exports[`Test Lines translation Should translate test line "Send text ... to active element once" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
-      "type": "text",
-      "value": "Send text ",
-    },
-    Object {
-      "type": "input",
-      "value": "text to send",
-    },
-    Object {
-      "type": "text",
-      "value": " to ",
-    },
-    Object {
-      "type": "subject",
-      "value": "active element",
-    },
-  ],
-  "type": "test-line",
-}
-`;
-
-exports[`Test Lines translation Should translate test line "Send text ... to active element once" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
-      "type": "text",
-      "value": "Send text ",
-    },
-    Object {
-      "type": "input",
-      "value": "text to send",
-    },
-    Object {
-      "type": "text",
-      "value": " to ",
-    },
-    Object {
-      "type": "subject",
-      "value": "active element",
-    },
-  ],
-  "type": "test-line",
-}
-`;
-
 exports[`Test Lines translation Should translate test line "Send text ... to element ... once" 1`] = `
 Object {
   "children": Array [],
@@ -4344,6 +4294,32 @@ Object {
     Object {
       "type": "text",
       "value": "Close application",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "get last screenshot for visual testing" 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Get last screenshot for visual testing (raw)",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "get last screenshot for visual testing" without appConfig 1`] = `
+Object {
+  "children": Array [],
+  "title": Array [
+    Object {
+      "type": "text",
+      "value": "Get last screenshot for visual testing (raw)",
     },
   ],
   "type": "test-line",
