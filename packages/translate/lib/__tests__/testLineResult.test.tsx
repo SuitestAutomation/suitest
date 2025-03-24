@@ -149,6 +149,8 @@ describe('Test line results translation', () => {
 		'keyServerOffline',
 		'notSupportedPlatform',
 		'screenshotWasNotTaken',
+		'invalidConfiguration',
+		'configNotFound',
 	];
 
 	describe('simple errors translations', () => {
