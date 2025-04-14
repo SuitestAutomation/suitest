@@ -379,7 +379,7 @@ const translateADBError = (result: ADBError): TextNode => {
 };
 
 const translateInvalidPackageError = (result: InvalidPackageError): TextNode => {
-	const defaultMessage = <text>Package cannot be launched on simulator device</text> as TextNode;
+	const defaultMessage = <text>An Apple device app package cannot be launched on device</text> as TextNode;
 
 	if (!result.message?.code) {
 		return defaultMessage;
@@ -389,6 +389,8 @@ const translateInvalidPackageError = (result: InvalidPackageError): TextNode => 
 			return <text>An Apple TV app package cannot be launched on simulator device</text> as TextNode;
 		case 'appleTvSimPackageOnDevice':
 			return <text>An Apple TV app simulator package cannot be launched on real device</text> as TextNode;
+		case 'iosSimPackageOnDevice':
+			return <text>An Apple iOS/iPad OS app simulator package cannot be launched on real device</text> as TextNode;
 		default:
 			const _code: never = result.message.code;
 			console.warn('invalidPackage code was not handled', JSON.stringify(_code));
