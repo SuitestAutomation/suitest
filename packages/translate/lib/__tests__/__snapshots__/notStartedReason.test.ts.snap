@@ -205,6 +205,19 @@ Object {
 }
 `;
 
+exports[`Testing not started reason translation. Should translate "genericPlatformError" code 1`] = `
+Object {
+  "description": Object {
+    "type": "text",
+    "value": "Please verify that the device is online and it's current IP address is correctly specified in Suitest. If nothing helps try rebooting the device.",
+  },
+  "title": Object {
+    "type": "text",
+    "value": "Cannot continue: Platform failed",
+  },
+}
+`;
+
 exports[`Testing not started reason translation. Should translate "noActivePlan" code 1`] = `
 Object {
   "description": Array [
@@ -545,6 +558,13 @@ Object {
 }
 `;
 
+exports[`Testing not started reason translation. Translate to html:  "genericPlatformError" 1`] = `
+Object {
+  "description": "Cannot continue: Platform failed",
+  "title": "Cannot continue: Platform failed",
+}
+`;
+
 exports[`Testing not started reason translation. Translate to html:  "noActivePlan" 1`] = `
 Object {
   "description": "Cannot continue: Your subscription has expired",
@@ -759,6 +779,13 @@ exports[`Testing not started reason translation. Translate to plain text:  "lgWe
 Object {
   "description": "LG WebOS driver has misbehaved. Please verify that the device is online and it's current IP address is correctly specified in Suitest. Then double check if the Development mode is enabled on the device. If nothing helps try rebooting the device",
   "title": "Cannot continue: LG WebOS driver has failed",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to plain text:  "genericPlatformError" 1`] = `
+Object {
+  "description": "Please verify that the device is online and it's current IP address is correctly specified in Suitest. If nothing helps try rebooting the device.",
+  "title": "Cannot continue: Platform failed",
 }
 `;
 

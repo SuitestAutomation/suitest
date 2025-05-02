@@ -103,6 +103,11 @@ export function translateNotStartedReason(code: NotStartedReason): Translation {
 				title: <text>Cannot continue: Apple TV driver has failed</text>,
 				description: <text>Apple driver has misbehaved. Please verify that the device is paired with Mac that is running SuitestDrive. Make sure that application build is installable on that device. If nothing helps try rebooting the device and restarting SuitestDrive</text>,
 			};
+		case NOT_STARTED_REASON.PLATFORM_ERROR_GENERIC:
+			return {
+				title: <text>Cannot continue: Platform failed</text>,
+				description: <text>Please verify that the device is online and it's current IP address is correctly specified in Suitest. If nothing helps try rebooting the device.</text>,
+			};
 		case NOT_STARTED_REASON.PLATFORM_ERROR_ROKU:
 			return {
 				title: <text>Cannot continue: Roku driver has failed</text>,
