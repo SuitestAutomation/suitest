@@ -431,7 +431,7 @@ export type OpenAppOverrideFailedError = BaseResult & {
 export type InvalidPackageError = BaseResult & {
 	errorType: 'invalidPackage',
 	message?: {
-		code: 'appleTvSimPackageOnDevice' | 'appleTvDevicePackageOnSim',
+		code: 'appleTvSimPackageOnDevice' | 'appleTvDevicePackageOnSim' | 'iosSimPackageOnDevice',
 	},
 };
 
