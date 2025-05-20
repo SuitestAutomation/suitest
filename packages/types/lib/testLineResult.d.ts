@@ -175,7 +175,8 @@ export type SimpleError = BaseResult & {
 		| 'pairingLost'
 		| 'keyServerOffline'
 		| 'notSupportedPlatform'
-		| 'screenshotWasNotTaken',
+		| 'screenshotWasNotTaken'
+		| 'invalidRokuCredentials',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {
