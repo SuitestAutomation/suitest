@@ -1598,6 +1598,13 @@ Array [
 ]
 `;
 
+exports[`Test line results translation simple errors translations should translate "invalidRokuCredentials" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Credentials for this device were changed",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "invalidOpenAppOverrideReference" error 1`] = `
 Object {
   "type": "text",

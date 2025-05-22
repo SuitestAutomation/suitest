@@ -50,6 +50,7 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	serverError: <text>Internal error occurred</text>,
 	ILInternalError: <text>Internal error occurred</text>,
 	invalidCredentials: <text>Credentials for this device were changed</text>,
+	invalidRokuCredentials: <text>Credentials for this device were changed</text>,
 	ActionNotAvailable: <text>This test command is not supported by the current app configuration</text>,
 	conditionNotSatisfied: <text>Maximum amount of key presses reached. Condition was not satisfied</text>,
 	wrongApp: <text>Wrong app ID detected</text>,
