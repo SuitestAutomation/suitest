@@ -176,7 +176,8 @@ export type SimpleError = BaseResult & {
 		| 'keyServerOffline'
 		| 'notSupportedPlatform'
 		| 'screenshotWasNotTaken'
-		| 'invalidRokuCredentials',
+		| 'invalidRokuCredentials'
+		| 'notExistingRegion',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {

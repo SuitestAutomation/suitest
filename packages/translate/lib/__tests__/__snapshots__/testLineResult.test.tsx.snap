@@ -1598,17 +1598,17 @@ Array [
 ]
 `;
 
-exports[`Test line results translation simple errors translations should translate "invalidRokuCredentials" error 1`] = `
-Object {
-  "type": "text",
-  "value": "Credentials for this device were changed",
-}
-`;
-
 exports[`Test line results translation simple errors translations should translate "invalidOpenAppOverrideReference" error 1`] = `
 Object {
   "type": "text",
   "value": "Could not start execution, please check open app override setting. https://suite.st/docs/application/more-configuration-options/#open-app-override-test",
+}
+`;
+
+exports[`Test line results translation simple errors translations should translate "invalidRokuCredentials" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Credentials for this device were changed",
 }
 `;
 
@@ -1785,6 +1785,13 @@ exports[`Test line results translation simple errors translations should transla
 Object {
   "type": "text",
   "value": "Failed to launch application. Is \\"developer mode\\" turned on? https://suite.st/docs/devices/lg-webos/#enable-developer-mode-on-the-device",
+}
+`;
+
+exports[`Test line results translation simple errors translations should translate "notExistingRegion" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Region is not defined.",
 }
 `;
 
