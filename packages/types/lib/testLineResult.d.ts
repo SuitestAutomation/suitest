@@ -176,7 +176,9 @@ export type SimpleError = BaseResult & {
 		| 'keyServerOffline'
 		| 'notSupportedPlatform'
 		| 'screenshotWasNotTaken'
-		| 'invalidRokuCredentials',
+		| 'invalidRokuCredentials'
+		| 'maxTestExecutionTimeExceeded'
+		| 'planTestingMinutesExceeded',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {
@@ -466,6 +468,14 @@ export type QueryLineError = {
 	contentType: 'query',
 	result?: 'error',
 	errorType?: 'deviceError',
+	executionError?:
+		| 'aborted'
+		| 'appNotRunning'
+		| 'appCrashed'
+		| 'wrongApp'
+		| 'planExpired'
+		| 'maxTestExecutionTimeExceeded'
+		| 'planTestingMinutesExceeded',
 	errorMessage?: 'cssSelectorInvalid',
 	elementExists?: boolean,
 	cookieExists?: boolean,
