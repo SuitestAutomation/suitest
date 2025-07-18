@@ -179,7 +179,8 @@ export type SimpleError = BaseResult & {
 		| 'invalidRokuCredentials'
 		| 'notExistingRegion'
 		| 'contextNotFound'
-		| 'invalidAppState',
+		| 'invalidAppState'
+		| 'planTestingMinutesExceeded',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {
@@ -469,6 +470,13 @@ export type QueryLineError = {
 	contentType: 'query',
 	result?: 'error',
 	errorType?: 'deviceError',
+	executionError?:
+		| 'aborted'
+		| 'appNotRunning'
+		| 'appCrashed'
+		| 'wrongApp'
+		| 'planExpired'
+		| 'planTestingMinutesExceeded',
 	errorMessage?: 'cssSelectorInvalid',
 	elementExists?: boolean,
 	cookieExists?: boolean,
