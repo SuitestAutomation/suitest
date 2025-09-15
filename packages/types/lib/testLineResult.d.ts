@@ -177,7 +177,8 @@ export type SimpleError = BaseResult & {
 		| 'notSupportedPlatform'
 		| 'screenshotWasNotTaken'
 		| 'invalidRokuCredentials'
-		| 'notExistingRegion',
+		| 'notExistingRegion'
+		| 'contextNotFound',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {
