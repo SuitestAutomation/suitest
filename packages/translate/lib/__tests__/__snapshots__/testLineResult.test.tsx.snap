@@ -1875,7 +1875,7 @@ Object {
 exports[`Test line results translation simple errors translations should translate "pairingLost" error 1`] = `
 Object {
   "type": "text",
-  "value": "Pairing with the device was lost. Please delete the device and add it again.",
+  "value": "Pairing with the device was lost. You can re-pair it from the device details.",
 }
 `;
 
