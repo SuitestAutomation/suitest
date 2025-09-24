@@ -28,6 +28,7 @@ const nl = '\n';
 const tab = '  ';
 const emptyString = '[EMPTY STRING]';
 const notDefined = '[NOT DEFINED]';
+const DEFAULT_LINE_LIMIT = 115;
 const controlChars = new RegExp(
 	[
 		[0, 8],
@@ -81,7 +82,7 @@ const calcPureLength = (str: string): number => {
 		.reduce((s, char) => s.replace(char, ''), str).length;
 };
 
-const wrapText = (text: string, limit = 115, wrappedLinesIndentation = 0): string => {
+const wrapText = (text: string, limit = DEFAULT_LINE_LIMIT, wrappedLinesIndentation = 0): string => {
 	const roundedLimit = 5;
 	const wrappedLinesIndentationText = wrappedLinesIndentation === 0
 		? ''
@@ -409,7 +410,12 @@ const renderTestLineResult = (
 			.join('');
 
 		if (nodeMessage) {
-			message = status + wrapText(nodeMessage, undefined, calcPureLength(status));
+			const wrappedMessage = wrapText(
+				nodeMessage,
+				DEFAULT_LINE_LIMIT - calcPureLength(status),
+				calcPureLength(status)
+			);
+			message = status + wrappedMessage;
 		}
 	}
 

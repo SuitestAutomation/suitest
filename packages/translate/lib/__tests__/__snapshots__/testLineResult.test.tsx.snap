@@ -59,13 +59,14 @@ exports[`Test line results translation Translate aborted result as plain text 1`
 
 exports[`Test line results translation Translate aborted result translate line results that contains link 1`] = `
 "✖ Scroll from active element down by 1px
-  fail: Invalid direction. See our docs (https://suite.st/docs/suitest-api/test-operations/#scroll) for more information"
+  fail: Invalid direction. See our docs (https://suite.st/docs/suitest-api/test-operations/#scroll) for more
+        information"
 `;
 
 exports[`Test line results translation Translate aborted result translate line results that contains link 2`] = `
 "✖ Assert: Application has exited
-  fail: Unsupported OS version, please see our docs (https://suite.st/docs/devices/playstation/#sdk-650-or-system-so
-        ftware-701-or-lower)"
+  fail: Unsupported OS version, please see our docs (https://suite.st/docs/devices/playstation/#sdk-650-or-s
+        ystem-software-701-or-lower)"
 `;
 
 exports[`Test line results translation Translate assert lines translate "assert application has exited" render with fail result 1`] = `
@@ -652,23 +653,23 @@ exports[`Test line results translation Translate assert lines translate line wit
 
 exports[`Test line results translation Translate assert lines translate line with screenshot should render line with screenshot 2`] = `
 "✖ Press OK
-  fail: ADB communication with the device has failed. Make sure your device is set up correctly and it can be connected
-        to using ADB
+  fail: ADB communication with the device has failed. Make sure your device is set up correctly and it can be
+        connected to using ADB
   screenshot: https://the.suite.st/path/to/file.png"
 `;
 
 exports[`Test line results translation Translate assert lines translate line with screenshot should render line with screenshot 3`] = `
 "✖ Press OK
-  fail: ADB communication with the device has failed. Make sure your device is set up correctly and it can be connected
-        to using ADB
+  fail: ADB communication with the device has failed. Make sure your device is set up correctly and it can be
+        connected to using ADB
   docs: https://suite.st/docs/testing/test-operations/press-button-operation/
   screenshot: https://the.suite.st/path/to/file.png"
 `;
 
 exports[`Test line results translation Translate assert lines translate line with screenshot should render line with screenshot 4`] = `
 "✖ Press OK
-  fail: ADB communication with the device has failed. Make sure your device is set up correctly and it can be connected
-        to using ADB
+  fail: ADB communication with the device has failed. Make sure your device is set up correctly and it can be
+        connected to using ADB
   screenshot: https://the.suite.st/path/to/file.png"
 `;
 
@@ -676,8 +677,8 @@ exports[`Test line results translation Translate assert lines translate line wit
 
 exports[`Test line results translation Translate assert lines translate line with screenshot should render line without screenshot 2`] = `
 "✖ Press OK
-  fail: ADB communication with the device has failed. Make sure your device is set up correctly and it can be connected
-        to using ADB"
+  fail: ADB communication with the device has failed. Make sure your device is set up correctly and it can be
+        connected to using ADB"
 `;
 
 exports[`Test line results translation assert then exit translate "assert network" render exit result 1`] = `
