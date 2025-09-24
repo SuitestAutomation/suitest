@@ -29,6 +29,7 @@ const tab = '  ';
 const emptyString = '[EMPTY STRING]';
 const notDefined = '[NOT DEFINED]';
 const DEFAULT_LINE_LIMIT = 115;
+const MIN_MESSAGE_WRAP_LIMIT = 10;
 const controlChars = new RegExp(
 	[
 		[0, 8],
@@ -410,9 +411,10 @@ const renderTestLineResult = (
 			.join('');
 
 		if (nodeMessage) {
+			const limit = Math.max(DEFAULT_LINE_LIMIT - calcPureLength(status), MIN_MESSAGE_WRAP_LIMIT);
 			const wrappedMessage = wrapText(
 				nodeMessage,
-				DEFAULT_LINE_LIMIT - calcPureLength(status),
+				limit,
 				calcPureLength(status)
 			);
 			message = status + wrappedMessage;
