@@ -165,6 +165,7 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	notSupportedPlatform: <text>This test line is not supported by the current app configuration.</text>,
 	screenshotWasNotTaken: <text>Screenshot was not taken. This command works only after a visual testing operation has been executed.</text>,
 	notExistingRegion: <text>Region is not defined.</text>,
+	contextNotFound: <text>Expected webview not found in the application.</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {

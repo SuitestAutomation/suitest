@@ -151,6 +151,7 @@ describe('Test line results translation', () => {
 		'screenshotWasNotTaken',
 		'invalidRokuCredentials',
 		'notExistingRegion',
+		'contextNotFound',
 	];
 
 	describe('simple errors translations', () => {

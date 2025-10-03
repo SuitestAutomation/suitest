@@ -1423,6 +1423,13 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "contextNotFound" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Expected webview not found in the application.",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "controllerNotConnected" error 1`] = `
 Object {
   "type": "text",
