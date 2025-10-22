@@ -32,6 +32,12 @@ Description: `Android driver has misbehaved. Please verify that the device is on
 
 ### applePlatformError
 
+Title: `Cannot continue: Apple driver has failed`
+
+Description: `Apple driver has misbehaved. Please verify that the device is paired with Mac that is running SuitestDrive. Make sure that application build is installable on that device. If nothing helps try rebooting the device and restarting SuitestDrive`
+
+### appleTVPlatformError
+
 Title: `Cannot continue: Apple TV driver has failed`
 
 Description: `Apple driver has misbehaved. Please verify that the device is paired with Mac that is running SuitestDrive. Make sure that application build is installable on that device. If nothing helps try rebooting the device and restarting SuitestDrive`

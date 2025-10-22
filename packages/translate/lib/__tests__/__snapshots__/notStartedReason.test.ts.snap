@@ -30,6 +30,19 @@ Object {
   },
   "title": Object {
     "type": "text",
+    "value": "Cannot continue: Apple driver has failed",
+  },
+}
+`;
+
+exports[`Testing not started reason translation. Should translate "appleTVPlatformError" code 1`] = `
+Object {
+  "description": Object {
+    "type": "text",
+    "value": "Please check the device setup and the application configuration.",
+  },
+  "title": Object {
+    "type": "text",
     "value": "Cannot continue: Apple TV driver has failed",
   },
 }
@@ -179,6 +192,19 @@ Object {
 }
 `;
 
+exports[`Testing not started reason translation. Should translate "genericPlatformError" code 1`] = `
+Object {
+  "description": Object {
+    "type": "text",
+    "value": "Please verify that the device is online and it's current IP address is correctly specified in Suitest. If nothing helps try rebooting the device.",
+  },
+  "title": Object {
+    "type": "text",
+    "value": "Cannot continue: Platform failed",
+  },
+}
+`;
+
 exports[`Testing not started reason translation. Should translate "internalError" code 1`] = `
 Object {
   "description": Object {
@@ -201,19 +227,6 @@ Object {
   "title": Object {
     "type": "text",
     "value": "Cannot continue: LG WebOS driver has failed",
-  },
-}
-`;
-
-exports[`Testing not started reason translation. Should translate "genericPlatformError" code 1`] = `
-Object {
-  "description": Object {
-    "type": "text",
-    "value": "Please verify that the device is online and it's current IP address is correctly specified in Suitest. If nothing helps try rebooting the device.",
-  },
-  "title": Object {
-    "type": "text",
-    "value": "Cannot continue: Platform failed",
   },
 }
 `;
@@ -469,6 +482,13 @@ Object {
 
 exports[`Testing not started reason translation. Translate to html:  "applePlatformError" 1`] = `
 Object {
+  "description": "Cannot continue: Apple driver has failed",
+  "title": "Cannot continue: Apple driver has failed",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to html:  "appleTVPlatformError" 1`] = `
+Object {
   "description": "Cannot continue: Apple TV driver has failed",
   "title": "Cannot continue: Apple TV driver has failed",
 }
@@ -544,6 +564,13 @@ Object {
 }
 `;
 
+exports[`Testing not started reason translation. Translate to html:  "genericPlatformError" 1`] = `
+Object {
+  "description": "Cannot continue: Platform failed",
+  "title": "Cannot continue: Platform failed",
+}
+`;
+
 exports[`Testing not started reason translation. Translate to html:  "internalError" 1`] = `
 Object {
   "description": "Cannot continue: Internal error occurred",
@@ -555,13 +582,6 @@ exports[`Testing not started reason translation. Translate to html:  "lgWebosPla
 Object {
   "description": "Cannot continue: LG WebOS driver has failed",
   "title": "Cannot continue: LG WebOS driver has failed",
-}
-`;
-
-exports[`Testing not started reason translation. Translate to html:  "genericPlatformError" 1`] = `
-Object {
-  "description": "Cannot continue: Platform failed",
-  "title": "Cannot continue: Platform failed",
 }
 `;
 
@@ -694,6 +714,13 @@ Object {
 exports[`Testing not started reason translation. Translate to plain text:  "applePlatformError" 1`] = `
 Object {
   "description": "Apple driver has misbehaved. Please verify that the device is paired with Mac that is running SuitestDrive. Make sure that application build is installable on that device. If nothing helps try rebooting the device and restarting SuitestDrive",
+  "title": "Cannot continue: Apple driver has failed",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to plain text:  "appleTVPlatformError" 1`] = `
+Object {
+  "description": "Please check the device setup and the application configuration.",
   "title": "Cannot continue: Apple TV driver has failed",
 }
 `;
@@ -768,6 +795,13 @@ Object {
 }
 `;
 
+exports[`Testing not started reason translation. Translate to plain text:  "genericPlatformError" 1`] = `
+Object {
+  "description": "Please verify that the device is online and it's current IP address is correctly specified in Suitest. If nothing helps try rebooting the device.",
+  "title": "Cannot continue: Platform failed",
+}
+`;
+
 exports[`Testing not started reason translation. Translate to plain text:  "internalError" 1`] = `
 Object {
   "description": "We are very sorry, but some fishy error occurred when Suitest was trying to execute your test. Our developers have been notified and are already working hard to resolve the problem",
@@ -779,13 +813,6 @@ exports[`Testing not started reason translation. Translate to plain text:  "lgWe
 Object {
   "description": "LG WebOS driver has misbehaved. Please verify that the device is online and it's current IP address is correctly specified in Suitest. Then double check if the Development mode is enabled on the device. If nothing helps try rebooting the device",
   "title": "Cannot continue: LG WebOS driver has failed",
-}
-`;
-
-exports[`Testing not started reason translation. Translate to plain text:  "genericPlatformError" 1`] = `
-Object {
-  "description": "Please verify that the device is online and it's current IP address is correctly specified in Suitest. If nothing helps try rebooting the device.",
-  "title": "Cannot continue: Platform failed",
 }
 `;
 
