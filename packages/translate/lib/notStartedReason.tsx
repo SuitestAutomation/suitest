@@ -98,10 +98,15 @@ export function translateNotStartedReason(code: NotStartedReason): Translation {
 				title: <text>Cannot continue: Android driver has failed</text>,
 				description: <text>Android driver has misbehaved. Please verify that the device is online and it's current IP address is correctly specified in Suitest. If nothing helps try rebooting the device and restarting SuitestDrive</text>,
 			};
+		case NOT_STARTED_REASON.PLATFORM_ERROR_APPLE_IOS:
+			return {
+				title: <text>Cannot continue: Apple driver has failed</text>,
+				description: <text>Apple driver has misbehaved. Please verify that the device is paired with Mac that is running SuitestDrive. Make sure that application build is installable on that device. If nothing helps try rebooting the device and restarting SuitestDrive</text>,
+			};
 		case NOT_STARTED_REASON.PLATFORM_ERROR_APPLE_TV:
 			return {
 				title: <text>Cannot continue: Apple TV driver has failed</text>,
-				description: <text>Apple driver has misbehaved. Please verify that the device is paired with Mac that is running SuitestDrive. Make sure that application build is installable on that device. If nothing helps try rebooting the device and restarting SuitestDrive</text>,
+				description: <text>Please check the device setup and the application configuration.</text>,
 			};
 		case NOT_STARTED_REASON.PLATFORM_ERROR_GENERIC:
 			return {
