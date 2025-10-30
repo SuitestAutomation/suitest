@@ -160,7 +160,7 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	vizioAppNotFound: <text>Failed to open the application. Please make sure that the application configuration is set correctly.</text>,
 	osUpdateNeeded: <text>The device needs to be updated manually.</text>,
 	catalogueAppMissing: <text>App launch blocked, typically caused by missing entitlements or app not appearing in SoftCat. Try toggling "Force all apps launchable" from the "Settings" menu.</text>,
-	pairingLost: <text>Pairing with the device was lost. You can re-pair it from the device details.</text>,
+	pairingLost: <text>Pairing with the device was lost. You can re-pair it from the device details or delete the device and add it again.</text>,
 	keyServerOffline: <text>Something went wrong. Please open the Developer Mode app on the device, activate the Key Server, and reopen the app from Suitest.</text>,
 	notSupportedPlatform: <text>This test line is not supported by the current app configuration.</text>,
 	screenshotWasNotTaken: <text>Screenshot was not taken. This command works only after a visual testing operation has been executed.</text>,
