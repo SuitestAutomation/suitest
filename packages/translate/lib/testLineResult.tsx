@@ -389,7 +389,7 @@ const translateInvalidPackageError = (result: InvalidPackageError): TextNode => 
 	}
 	switch (result.message.code) {
 		case 'appleTvDevicePackageOnSim':
-			return <text>An Apple TV app package cannot be launched on simulator device</text> as TextNode;
+			return <text>Selected configuration is not supported by the device.</text> as TextNode;
 		case 'appleTvSimPackageOnDevice':
 			return <text>An Apple TV app simulator package cannot be launched on real device</text> as TextNode;
 		case 'iosSimPackageOnDevice':
