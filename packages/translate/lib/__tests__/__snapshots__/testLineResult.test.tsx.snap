@@ -1430,6 +1430,13 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "invalidAppState" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Cannot execute the test operation, selected app communication method is not reachable.",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "controllerNotConnected" error 1`] = `
 Object {
   "type": "text",

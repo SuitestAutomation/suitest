@@ -152,6 +152,7 @@ describe('Test line results translation', () => {
 		'invalidRokuCredentials',
 		'notExistingRegion',
 		'contextNotFound',
+		'invalidAppState',
 	];
 
 	describe('simple errors translations', () => {
