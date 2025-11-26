@@ -166,6 +166,7 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	screenshotWasNotTaken: <text>Screenshot was not taken. This command works only after a visual testing operation has been executed.</text>,
 	notExistingRegion: <text>Region is not defined.</text>,
 	contextNotFound: <text>Expected webview not found in the application.</text>,
+	invalidAppState: <text>Cannot execute the test operation, selected app communication method is not reachable.</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
