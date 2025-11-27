@@ -167,6 +167,8 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	notExistingRegion: <text>Region is not defined.</text>,
 	contextNotFound: <text>Expected webview not found in the application.</text>,
 	invalidAppState: <text>Cannot execute the test operation, selected app communication method is not reachable.</text>,
+	openAppResumeFailure: <text>Resuming the application failed. App opened using 'restart' option instead.</text>,
+	closeAppSuspendFailure: <text>Failed to suspend the application.</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {

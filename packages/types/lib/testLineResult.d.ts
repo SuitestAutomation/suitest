@@ -179,7 +179,9 @@ export type SimpleError = BaseResult & {
 		| 'invalidRokuCredentials'
 		| 'notExistingRegion'
 		| 'contextNotFound'
-		| 'invalidAppState',
+		| 'invalidAppState'
+		| 'openAppResumeFailure'
+		| 'closeAppSuspendFailure',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {
