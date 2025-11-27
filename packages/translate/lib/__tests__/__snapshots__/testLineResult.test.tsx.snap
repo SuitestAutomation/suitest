@@ -1402,6 +1402,13 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "closeAppSuspendFailure" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Failed to suspend the application.",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "conditionNotSatisfied" error 1`] = `
 Object {
   "type": "text",
@@ -1427,13 +1434,6 @@ exports[`Test line results translation simple errors translations should transla
 Object {
   "type": "text",
   "value": "Expected webview not found in the application.",
-}
-`;
-
-exports[`Test line results translation simple errors translations should translate "invalidAppState" error 1`] = `
-Object {
-  "type": "text",
-  "value": "Cannot execute the test operation, selected app communication method is not reachable.",
 }
 `;
 
@@ -1577,6 +1577,13 @@ exports[`Test line results translation simple errors translations should transla
 Object {
   "type": "text",
   "value": "Internal error occurred",
+}
+`;
+
+exports[`Test line results translation simple errors translations should translate "invalidAppState" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Cannot execute the test operation, selected app communication method is not reachable.",
 }
 `;
 
@@ -1841,6 +1848,13 @@ exports[`Test line results translation simple errors translations should transla
 Object {
   "type": "text",
   "value": "Failed to open the app, please try again. Restart of the device could help",
+}
+`;
+
+exports[`Test line results translation simple errors translations should translate "openAppResumeFailure" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Resuming the application failed. App opened using 'restart' option instead.",
 }
 `;
 
