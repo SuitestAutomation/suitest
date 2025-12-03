@@ -632,11 +632,11 @@ exports[`Test line results translation Translate assert lines translate "openApp
 
 exports[`Test line results translation Translate assert lines translate line with ocr assertion queryFailed result 1`] = `
 "✖ Assert: OCR
-  ✔ text in region 100 100 100 100 =           text1     
-  ✖ text on screen                 starts with text2     
-                                   →           not-match 
-  ✖ text on screen                 starts with text3     
-                                   →           not-match2
+  ✔ text in region (x:100, y:100, w:100, h:100) =           text1     
+  ✖ text on screen                              starts with text2     
+                                                →           not-match 
+  ✖ text on screen                              starts with text3     
+                                                →           not-match2
   fail: Condition was not met"
 `;
 
@@ -1430,13 +1430,6 @@ Object {
 }
 `;
 
-exports[`Test line results translation simple errors translations should translate "invalidAppState" error 1`] = `
-Object {
-  "type": "text",
-  "value": "Cannot execute the test operation, selected app communication method is not reachable.",
-}
-`;
-
 exports[`Test line results translation simple errors translations should translate "controllerNotConnected" error 1`] = `
 Object {
   "type": "text",
@@ -1577,6 +1570,13 @@ exports[`Test line results translation simple errors translations should transla
 Object {
   "type": "text",
   "value": "Internal error occurred",
+}
+`;
+
+exports[`Test line results translation simple errors translations should translate "invalidAppState" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Cannot execute the test operation, selected app communication method is not reachable.",
 }
 `;
 
