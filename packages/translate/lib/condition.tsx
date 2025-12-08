@@ -492,7 +492,7 @@ const translateOcrCondition = (
 					let ocrCompTitle = 'text on screen';
 					if (ocrComp.region?.length) {
 						const [x, y, width, height] = ocrComp.region;
-						ocrCompTitle = `text in region ${x} ${y} ${width} ${height}`;
+						ocrCompTitle = `text in region (x:${x}, y:${y}, w:${width}, h:${height})`;
 					}
 
 					return <prop
