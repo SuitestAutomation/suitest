@@ -167,6 +167,7 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	notExistingRegion: <text>Region is not defined.</text>,
 	contextNotFound: <text>Expected webview not found in the application.</text>,
 	invalidAppState: <text>Cannot execute the test operation, selected app communication method is not reachable.</text>,
+	planTestingMinutesExceeded: <text>You have used up all testing minutes included in your subscription.</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
@@ -542,6 +543,31 @@ const getInvertedResultMessage = (
 	return lineResult.result === testLine.then ? conditionWasMetMessage : conditionWasNotMetMessage;
 };
 
+const translateQueryLineExecutionError = (lineResult: QueryLineError): string => {
+	if (!lineResult.executionError) {
+		return '';
+	}
+
+	switch (lineResult.executionError) {
+		case 'aborted':
+			return 'Test execution was aborted';
+		case 'appNotRunning':
+			return 'App is not running';
+		case 'appCrashed':
+			return 'App seems to have crashed';
+		case 'wrongApp':
+			return 'Wrong app ID detected';
+		case 'planExpired':
+			return 'Your subscription has expired. To continue using Suitest please make a payment';
+		case 'planTestingMinutesExceeded':
+			return 'You have used up all testing minutes included in your subscription';
+		default:
+			const unknownExecutionError: never = lineResult.executionError;
+
+			return `Unknown execution error: "${unknownExecutionError}"`;
+	}
+};
+
 const getQueryLineError = (line: QueryLine, lineResult: QueryLineError): Node => {
 	let text = '';
 	if (lineResult.error === 'notExistingElement') {
@@ -554,6 +580,8 @@ const getQueryLineError = (line: QueryLine, lineResult: QueryLineError): Node =>
 		text = `Execution thrown exception "${lineResult.executeExceptionMessage}}"`;
 	} else if (lineResult.errorMessage) {
 		text = lineResult.errorMessage;
+	} else if (lineResult.executionError) {
+		text = translateQueryLineExecutionError(lineResult);
 	} else {
 		text = 'Error occurred while ';
 		switch (line.subject.type) {
@@ -569,6 +597,21 @@ const getQueryLineError = (line: QueryLine, lineResult: QueryLineError): Node =>
 			case 'location':
 				text += 'retrieving current location';
 				break;
+			case 'elementAttributes':
+				text += 'retrieving element attributes';
+				break;
+			case 'elementCssProps':
+				text += 'retrieving element CSS properties';
+				break;
+			case 'elementHandle':
+				text += 'retrieving element handle';
+				break;
+			case 'ocr':
+				text += 'retrieving OCR text';
+				break;
+			default:
+				const unknownSubject: never = line.subject;
+				text += `Unknown query subject (${JSON.stringify(unknownSubject)})`;
 		}
 	}
 
