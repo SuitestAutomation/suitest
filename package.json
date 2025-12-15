@@ -1,16 +1,19 @@
 {
   "name": "suitest",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "build": "lerna run build",
     "test": "lerna run test",
     "lint": "eslint packages/*/lib/**/*.{ts,tsx}",
     "tsc:watch": "lerna exec -- tsc --noEmit --watch",
-    "coverage": "lerna run coverage",
-    "postinstall": "lerna bootstrap"
+    "coverage": "lerna run coverage"
   },
   "devDependencies": {
     "@types/jest": "25.2.3",
+    "@types/node": "^14.18.63",
     "@types/unist": "^2.0.3",
     "@typescript-eslint/eslint-plugin": "^2.21.0",
     "@typescript-eslint/eslint-plugin-tslint": "^2.21.0",
@@ -18,7 +21,7 @@
     "eslint": "^6.8.0",
     "husky": "4.2.5",
     "jest": "26.0.1",
-    "lerna": "^6.6.2",
+    "lerna": "^9.0.3",
     "rimraf": "3.0.2",
     "terser": "^4.7.0",
     "ts-jest": "26.1.0",

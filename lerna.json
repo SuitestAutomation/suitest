@@ -3,5 +3,6 @@
     "packages/*"
   ],
   "npmClient": "npm",
-  "version": "4.28.1"
+  "version": "4.28.1",
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json"
 }
