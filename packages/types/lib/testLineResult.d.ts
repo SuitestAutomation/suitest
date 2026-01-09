@@ -180,6 +180,7 @@ export type SimpleError = BaseResult & {
 		| 'notExistingRegion'
 		| 'contextNotFound'
 		| 'invalidAppState'
+		| 'planTestingMinutesExceeded'
 		| 'openAppResumeFailure'
 		| 'closeAppSuspendFailure',
 };
@@ -471,6 +472,13 @@ export type QueryLineError = {
 	contentType: 'query',
 	result?: 'error',
 	errorType?: 'deviceError',
+	executionError?:
+		| 'aborted'
+		| 'appNotRunning'
+		| 'appCrashed'
+		| 'wrongApp'
+		| 'planExpired'
+		| 'planTestingMinutesExceeded',
 	errorMessage?: 'cssSelectorInvalid',
 	elementExists?: boolean,
 	cookieExists?: boolean,

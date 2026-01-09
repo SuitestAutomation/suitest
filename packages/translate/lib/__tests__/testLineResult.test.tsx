@@ -181,43 +181,188 @@ describe('Test line results translation', () => {
 	});
 
 	describe('Translate query lines', () => {
-		const testLineToFormattedText = (...args: Parameters<typeof translateTestLineResult>): string =>
+		const testLineResultToText = (...args: Parameters<typeof translateTestLineResult>): string =>
 			toText(translateTestLineResult(...args), {verbosity: 'normal', format: false});
-		const extendQueryLineSubject = (subject: QueryLine['subject']): QueryLine => ({
+		const queryLineWithSubject = (subject: QueryLine['subject']): QueryLine => ({
 			type: 'query',
 			subject,
 		} as QueryLine);
-		expect(testLineToFormattedText({
-			testLine: extendQueryLineSubject({type: 'elementProps', selector: {css: 'div'}}) as ElementQueryLine,
-			lineResult: {
-				contentType: 'query',
-				elementExists: false,
-			} as QueryLineError,
-		})).toMatchSnapshot();
-		expect(testLineToFormattedText({
-			testLine: extendQueryLineSubject({type: 'elementProps', selector: {css: 'div'}}) as ElementQueryLine,
-			lineResult: {
-				contentType: 'query',
-				errorType: 'deviceError',
-				errorMessage: 'cssSelectorInvalid',
-			} as QueryLineError,
-		})).toMatchSnapshot();
-		expect(testLineToFormattedText({
-			testLine: extendQueryLineSubject({type: 'cookie', cookieName: 'cook'}) as CookieQueryLine,
-			lineResult: {
-				contentType: 'query',
-				cookieExists: false,
-			} as QueryLineError,
-		})).toMatchSnapshot();
-		expect(testLineToFormattedText({
-			testLine: extendQueryLineSubject({type: 'execute', execute: 'a + 1'}) as JsExpressionQueryLine,
-			lineResult: {
-				contentType: 'query',
-				executeThrowException: true,
-				executeExceptionMessage: '"a" is not defined',
-			} as QueryLineError,
-		})).toMatchSnapshot();
+
+		it('base examples', () => {
+			expect(testLineResultToText({
+				testLine: queryLineWithSubject({type: 'elementProps', selector: {css: 'div'}}) as ElementQueryLine,
+				lineResult: {
+					contentType: 'query',
+					elementExists: false,
+				} as QueryLineError,
+			})).toMatchSnapshot();
+			expect(testLineResultToText({
+				testLine: queryLineWithSubject({type: 'elementProps', selector: {css: 'div'}}) as ElementQueryLine,
+				lineResult: {
+					contentType: 'query',
+					errorType: 'deviceError',
+					errorMessage: 'cssSelectorInvalid',
+				} as QueryLineError,
+			})).toMatchSnapshot();
+			expect(testLineResultToText({
+				testLine: queryLineWithSubject({type: 'cookie', cookieName: 'cook'}) as CookieQueryLine,
+				lineResult: {
+					contentType: 'query',
+					cookieExists: false,
+				} as QueryLineError,
+			})).toMatchSnapshot();
+			expect(testLineResultToText({
+				testLine: queryLineWithSubject({type: 'execute', execute: 'a + 1'}) as JsExpressionQueryLine,
+				lineResult: {
+					contentType: 'query',
+					executeThrowException: true,
+					executeExceptionMessage: '"a" is not defined',
+				} as QueryLineError,
+			})).toMatchSnapshot();
+		});
+
+		it('empty query line results', () => {
+			expect(testLineResultToText({
+				testLine: queryLineWithSubject({
+					type: 'execute',
+					execute: '1 + 1',
+				}),
+				lineResult: {
+					contentType: 'query',
+				},
+			})).toMatchSnapshot();
+			expect(testLineResultToText({
+				testLine: queryLineWithSubject({
+					type: 'cookie',
+					cookieName: 'some-cookie-name',
+				}),
+				lineResult: {
+					contentType: 'query',
+				},
+			})).toMatchSnapshot();
+			expect(testLineResultToText({
+				testLine: queryLineWithSubject({
+					type: 'elementProps',
+					selector: {
+						css: 'body',
+					},
+				}),
+				lineResult: {
+					contentType: 'query',
+				},
+			})).toMatchSnapshot();
+			expect(testLineResultToText({
+				testLine: queryLineWithSubject({
+					type: 'location',
+				}),
+				lineResult: {
+					contentType: 'query',
+				},
+			})).toMatchSnapshot();
+			expect(testLineResultToText({
+				testLine: queryLineWithSubject({
+					type: 'elementAttributes',
+					selector: {
+						css: 'body',
+					},
+					attributes: [],
+				}),
+				lineResult: {
+					contentType: 'query',
+				},
+			})).toMatchSnapshot();
+			expect(testLineResultToText({
+				testLine: queryLineWithSubject({
+					type: 'elementCssProps',
+					selector: {
+						css: 'body',
+					},
+					elementCssProps: ['width'],
+				}),
+				lineResult: {
+					contentType: 'query',
+				},
+			})).toMatchSnapshot();
+			expect(testLineResultToText({
+				testLine: queryLineWithSubject({
+					type: 'elementHandle',
+					selector: {
+						css: 'body',
+					},
+					multiple: false,
+				}),
+				lineResult: {
+					contentType: 'query',
+				},
+			})).toMatchSnapshot();
+			expect(testLineResultToText({
+				testLine: queryLineWithSubject({
+					type: 'ocr',
+				}),
+				lineResult: {
+					contentType: 'query',
+				},
+			})).toMatchSnapshot();
+		});
+
+		it('executionError query line results', () => {
+			expect(testLineResultToText({
+				testLine: queryLineWithSubject({
+					type: 'location',
+				}),
+				lineResult: {
+					contentType: 'query',
+					executionError: 'aborted',
+				},
+			})).toMatchSnapshot();
+			expect(testLineResultToText({
+				testLine: queryLineWithSubject({
+					type: 'location',
+				}),
+				lineResult: {
+					contentType: 'query',
+					executionError: 'appNotRunning',
+				},
+			})).toMatchSnapshot();
+			expect(testLineResultToText({
+				testLine: queryLineWithSubject({
+					type: 'location',
+				}),
+				lineResult: {
+					contentType: 'query',
+					executionError: 'appCrashed',
+				},
+			})).toMatchSnapshot();
+			expect(testLineResultToText({
+				testLine: queryLineWithSubject({
+					type: 'location',
+				}),
+				lineResult: {
+					contentType: 'query',
+					executionError: 'wrongApp',
+				},
+			})).toMatchSnapshot();
+			expect(testLineResultToText({
+				testLine: queryLineWithSubject({
+					type: 'location',
+				}),
+				lineResult: {
+					contentType: 'query',
+					executionError: 'planExpired',
+				},
+			})).toMatchSnapshot();
+			expect(testLineResultToText({
+				testLine: queryLineWithSubject({
+					type: 'location',
+				}),
+				lineResult: {
+					contentType: 'query',
+					executionError: 'planTestingMinutesExceeded',
+				},
+			})).toMatchSnapshot();
+		});
 	});
+
 	const extendBaseError = (err: any): TestLineResult => ({
 		result: 'fail',
 		lineId: 'a625a00e-50b8-4a4c-a24f-b7e206e72199',

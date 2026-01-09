@@ -435,6 +435,19 @@ Object {
 }
 `;
 
+exports[`Testing not started reason translation. Should translate "vidaaPlatformError" code 1`] = `
+Object {
+  "description": Object {
+    "type": "text",
+    "value": "Please verify that the device is online and it's current IP address is correctly specified in Suitest. If nothing helps try rebooting the device.",
+  },
+  "title": Object {
+    "type": "text",
+    "value": "Cannot continue: Platform failed",
+  },
+}
+`;
+
 exports[`Testing not started reason translation. Should translate "xboxPlatformError" code 1`] = `
 Object {
   "description": Object {
@@ -676,6 +689,13 @@ Object {
 }
 `;
 
+exports[`Testing not started reason translation. Translate to html:  "vidaaPlatformError" 1`] = `
+Object {
+  "description": "Cannot continue: Platform failed",
+  "title": "Cannot continue: Platform failed",
+}
+`;
+
 exports[`Testing not started reason translation. Translate to html:  "xboxPlatformError" 1`] = `
 Object {
   "description": "Cannot continue: Xbox driver has failed",
@@ -904,6 +924,13 @@ exports[`Testing not started reason translation. Translate to plain text:  "tize
 Object {
   "description": "Tizen driver has misbehaved. Please verify that the device is online and it's current IP address is correctly specified in Suitest. Then double check if the developer mode is enabled and if host PC IP matches the control unit IP. If nothing helps try rebooting the device and restarting SuitestDrive",
   "title": "Cannot continue: Tizen driver has failed",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to plain text:  "vidaaPlatformError" 1`] = `
+Object {
+  "description": "Please verify that the device is online and it's current IP address is correctly specified in Suitest. If nothing helps try rebooting the device.",
+  "title": "Cannot continue: Platform failed",
 }
 `;
 

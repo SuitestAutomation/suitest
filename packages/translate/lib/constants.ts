@@ -32,6 +32,7 @@ export const NOT_STARTED_REASON = Object.freeze({
 	DEV_TOOLS_NOT_SUPPORTED: 'devToolsNotSupported',
 	XBOX_PLATFORM_ERROR_IN_VALID_CERTIFICATE: 'xboxPlatformErrorInvalidCertificate',
 	XFINITY_PLATFORM_ERROR_EXPIRED_API_KEY: 'xfinityPlatformErrorExpiredApiKey',
+	VIDAA_PLATFORM_ERROR: 'vidaaPlatformError',
 } as const);
 
 export type NotStartedReason = typeof NOT_STARTED_REASON[keyof typeof NOT_STARTED_REASON];

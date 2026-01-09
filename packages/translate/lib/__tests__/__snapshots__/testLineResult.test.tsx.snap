@@ -1,25 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[` 1`] = `
-"Retrieve info of \\"div\\" element
-  fail: Element was not found"
-`;
-
-exports[` 2`] = `
-"Retrieve info of \\"div\\" element
-  fail: cssSelectorInvalid"
-`;
-
-exports[` 3`] = `
-"Retrieve value for \\"cook\\" cookie
-  fail: Error occurred while retrieving cookie"
-`;
-
-exports[` 4`] = `
-"Retrieve value of execution \\"a + 1\\"
-  fail: Execution thrown exception \\"\\"a\\" is not defined}\\""
-`;
-
 exports[`Test line results translation Translate aborted result as JSON 1`] = `
 Object {
   "children": Array [
@@ -632,11 +612,11 @@ exports[`Test line results translation Translate assert lines translate "openApp
 
 exports[`Test line results translation Translate assert lines translate line with ocr assertion queryFailed result 1`] = `
 "✖ Assert: OCR
-  ✔ text in region 100 100 100 100 =           text1     
-  ✖ text on screen                 starts with text2     
-                                   →           not-match 
-  ✖ text on screen                 starts with text3     
-                                   →           not-match2
+  ✔ text in region (x:100, y:100, w:100, h:100) =           text1     
+  ✖ text on screen                              starts with text2     
+                                                →           not-match 
+  ✖ text on screen                              starts with text3     
+                                                →           not-match2
   fail: Condition was not met"
 `;
 
@@ -678,6 +658,96 @@ exports[`Test line results translation Translate assert lines translate line wit
 "✖ Press OK
   fail: ADB communication with the device has failed. Make sure your device is set up correctly and it can be connected
         to using ADB"
+`;
+
+exports[`Test line results translation Translate query lines base examples 1`] = `
+"Retrieve info of \\"div\\" element
+  fail: Element was not found"
+`;
+
+exports[`Test line results translation Translate query lines base examples 2`] = `
+"Retrieve info of \\"div\\" element
+  fail: cssSelectorInvalid"
+`;
+
+exports[`Test line results translation Translate query lines base examples 3`] = `
+"Retrieve value for \\"cook\\" cookie
+  fail: Error occurred while retrieving cookie"
+`;
+
+exports[`Test line results translation Translate query lines base examples 4`] = `
+"Retrieve value of execution \\"a + 1\\"
+  fail: Execution thrown exception \\"\\"a\\" is not defined}\\""
+`;
+
+exports[`Test line results translation Translate query lines empty query line results 1`] = `
+"Retrieve value of execution \\"1 + 1\\"
+  fail: Error occurred while executing script on device"
+`;
+
+exports[`Test line results translation Translate query lines empty query line results 2`] = `
+"Retrieve value for \\"some-cookie-name\\" cookie
+  fail: Error occurred while retrieving cookie"
+`;
+
+exports[`Test line results translation Translate query lines empty query line results 3`] = `
+"Retrieve info of \\"body\\" element
+  fail: Error occurred while retrieving element"
+`;
+
+exports[`Test line results translation Translate query lines empty query line results 4`] = `
+"Retrieve value of current location
+  fail: Error occurred while retrieving current location"
+`;
+
+exports[`Test line results translation Translate query lines empty query line results 5`] = `
+"Getting all attributes of \\"body\\" element
+  fail: Error occurred while retrieving element attributes"
+`;
+
+exports[`Test line results translation Translate query lines empty query line results 6`] = `
+"Getting [width] css properties of \\"body\\" element
+  fail: Error occurred while retrieving element CSS properties"
+`;
+
+exports[`Test line results translation Translate query lines empty query line results 7`] = `
+"Getting handle of \\"body\\" element
+  fail: Error occurred while retrieving element handle"
+`;
+
+exports[`Test line results translation Translate query lines empty query line results 8`] = `
+"Getting OCR result
+  fail: Error occurred while retrieving OCR text"
+`;
+
+exports[`Test line results translation Translate query lines executionError query line results 1`] = `
+"Retrieve value of current location
+  fail: Test execution was aborted"
+`;
+
+exports[`Test line results translation Translate query lines executionError query line results 2`] = `
+"Retrieve value of current location
+  fail: App is not running"
+`;
+
+exports[`Test line results translation Translate query lines executionError query line results 3`] = `
+"Retrieve value of current location
+  fail: App seems to have crashed"
+`;
+
+exports[`Test line results translation Translate query lines executionError query line results 4`] = `
+"Retrieve value of current location
+  fail: Wrong app ID detected"
+`;
+
+exports[`Test line results translation Translate query lines executionError query line results 5`] = `
+"Retrieve value of current location
+  fail: Your subscription has expired. To continue using Suitest please make a payment"
+`;
+
+exports[`Test line results translation Translate query lines executionError query line results 6`] = `
+"Retrieve value of current location
+  fail: You have used up all testing minutes included in your subscription"
 `;
 
 exports[`Test line results translation assert then exit translate "assert network" render exit result 1`] = `
