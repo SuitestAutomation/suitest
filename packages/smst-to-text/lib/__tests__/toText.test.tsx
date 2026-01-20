@@ -390,4 +390,62 @@ describe('AST renderers', () => {
 			)).toEqual([3, ['123', '\uFFFD4']]);
 		});
 	});
+
+	describe('assertion error message wrapping fix', () => {
+		it('should not crop error messages when status prefix is present', () => {
+			const options = {format: false, verbosity: 'normal' as const};
+
+			// Test the error from the issue
+			const assertionErrorResult =
+				<test-line-result
+					status="fail"
+					message={<text>Some of your Suitest chains were not executed. Put an "await" in front of those chains or call .abandon() to suppress these warnings.</text>}
+				>
+					<test-line
+						title={<fragment>Assert element <subject>My element</subject> exists</fragment>}
+						status="fail"
+					/>
+				</test-line-result>;
+
+			const result = toText(assertionErrorResult, options);
+
+			// Should not start with "A e"
+			expect(result).not.toMatch(/fail: A e of your Suitest chains/);
+
+			// Should contain the full message properly wrapped
+			expect(result).toContain('Some of your Suitest chains were not executed');
+			expect(result).toContain('Put an "await" in front of those chains');
+			expect(result).toContain('suppress these warnings');
+
+			expect(result).toMatchSnapshot();
+		});
+
+		it('should handle very long error messages without awkward word breaks', () => {
+			const options = {format: true, verbosity: 'normal' as const};
+
+			const longErrorResult =
+				<test-line-result
+					status="fatal"
+					message={
+						<text>This is a very long error message that should wrap properly without cutting off
+							 important words in the middle and should maintain readability throughout the
+							  entire message even when it spans multiple lines.</text>}
+				>
+					<test-line
+						title={<fragment>Execute command <code>someVeryLongJavaScriptFunction()</code></fragment>}
+						status="fatal"
+					/>
+				</test-line-result>;
+
+			const result = toText(longErrorResult, options);
+
+			// Should not have single-character beginnings
+			expect(result).not.toMatch(/fatal: [A-Z] [a-z]/);
+
+			// Should start properly
+			expect(result).toMatch(/fatal:.*This is a very long error message/);
+
+			expect(result).toMatchSnapshot();
+		});
+	});
 });

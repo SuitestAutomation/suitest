@@ -11,8 +11,8 @@ exports[` 1`] = `
       > someJS(); someJS(); someJS(); someJS();        
       > someJS(); someJS(); someJS();                  
       > someJS(); someJS(); someJS();                  
-  [31mfail: [0mSubject does not exist a very loooo oooooo ooooo ooooooo oooooo oooooo oooong error message, possibly including
-        \\"description\\" part for notStarterReason"
+  [31mfail: [0mSubject does not exist a very loooo oooooo ooooo ooooooo oooooo oooooo oooong error message, possibly
+        including \\"description\\" part for notStarterReason"
 `;
 
 exports[` 2`] = `
@@ -26,8 +26,8 @@ exports[` 2`] = `
       > someJS(); someJS(); someJS(); someJS();        
       > someJS(); someJS(); someJS();                  
       > someJS(); someJS(); someJS();                  
-  [31mfail: [0mSubject does not exist a very not so loooooooong error message, possibly including \\"description\\" part for
-        notStarterReason"
+  [31mfail: [0mSubject does not exist a very not so loooooooong error message, possibly including \\"description\\" part
+        for notStarterReason"
 `;
 
 exports[` 3`] = `
@@ -41,8 +41,8 @@ exports[` 3`] = `
       > someJS(); someJS(); someJS(); someJS();        
       > someJS(); someJS(); someJS();                  
       > someJS(); someJS(); someJS();                  
-  fail: Subject does not exist a very loooo oooooo ooooo ooooooo oooooo oooooo oooong error message, possibly including
-        \\"description\\" part for notStarterReason"
+  fail: Subject does not exist a very loooo oooooo ooooo ooooooo oooooo oooooo oooong error message, possibly
+        including \\"description\\" part for notStarterReason"
 `;
 
 exports[` 4`] = `
@@ -56,8 +56,21 @@ exports[` 4`] = `
       > someJS(); someJS(); someJS(); someJS();        
       > someJS(); someJS(); someJS();                  
       > someJS(); someJS(); someJS();                  
-  fail: Subject does not exist a very not so loooooooong error message, possibly including \\"description\\" part for
-        notStarterReason"
+  fail: Subject does not exist a very not so loooooooong error message, possibly including \\"description\\" part
+        for notStarterReason"
+`;
+
+exports[`AST renderers assertion error message wrapping fix should handle very long error messages without awkward word breaks 1`] = `
+"[31m✖ [0mExecute command [36msomeVeryLongJavaScriptFunction()[0m
+  [31mfatal: [0mThis is a very long error message that should wrap properly without cutting off important words in the
+         middle and should maintain readability throughout the entire message even when it spans multiple
+         lines."
+`;
+
+exports[`AST renderers assertion error message wrapping fix should not crop error messages when status prefix is present 1`] = `
+"✖ Assert element My element exists
+  fail: Some of your Suitest chains were not executed. Put an \\"await\\" in front of those chains or call
+        .abandon() to suppress these warnings."
 `;
 
 exports[`AST renderers formatted text renderer should handle code blocks 1`] = `"> someJS();"`;
