@@ -171,6 +171,11 @@ export function translateNotStartedReason(code: NotStartedReason): Translation {
 				title: <text>Cannot continue: Platform failed</text>,
 				description: <text>Please verify that the device is online and it's current IP address is correctly specified in Suitest. If nothing helps try rebooting the device.</text>,
 			};
+		case NOT_STARTED_REASON.SKY_PLATFORM_ERROR:
+			return {
+				title: <text>Cannot continue: Platform failed</text>,
+				description: <text>Please verify that the device is online and it's current IP address is correctly specified in Suitest. If nothing helps try rebooting the device.</text>,
+			};
 		default:
 			const _code: never = code;
 			throw new Error(`Unknown not started reason received: ${_code}`);
