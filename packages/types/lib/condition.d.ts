@@ -122,7 +122,12 @@ type OcrLanguage =
 	| 'ukr'
 	| 'ara'
 	| 'heb'
-	| 'por';
+	| 'por'
+	| 'nor'
+	| 'swe'
+	| 'fin'
+	| 'dan'
+	| 'hun';
 
 export type OcrCondition = {
 	subject: OcrSubject,
