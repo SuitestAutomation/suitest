@@ -448,6 +448,19 @@ Object {
 }
 `;
 
+exports[`Testing not started reason translation. Should translate "skyPlatformError" code 1`] = `
+Object {
+  "description": Object {
+    "type": "text",
+    "value": "Please verify that the device is online and it's current IP address is correctly specified in Suitest. If nothing helps try rebooting the device.",
+  },
+  "title": Object {
+    "type": "text",
+    "value": "Cannot continue: Platform failed",
+  },
+}
+`;
+
 exports[`Testing not started reason translation. Should translate "xboxPlatformError" code 1`] = `
 Object {
   "description": Object {
@@ -696,6 +709,13 @@ Object {
 }
 `;
 
+exports[`Testing not started reason translation. Translate to html:  "skyPlatformError" 1`] = `
+Object {
+  "description": "Cannot continue: Platform failed",
+  "title": "Cannot continue: Platform failed",
+}
+`;
+
 exports[`Testing not started reason translation. Translate to html:  "xboxPlatformError" 1`] = `
 Object {
   "description": "Cannot continue: Xbox driver has failed",
@@ -933,6 +953,14 @@ Object {
   "title": "Cannot continue: Platform failed",
 }
 `;
+
+exports[`Testing not started reason translation. Translate to plain text:  "skyPlatformError" 1`] = `
+Object {
+  "description": "Please verify that the device is online and it's current IP address is correctly specified in Suitest. If nothing helps try rebooting the device.",
+  "title": "Cannot continue: Platform failed",
+}
+`;
+
 
 exports[`Testing not started reason translation. Translate to plain text:  "xboxPlatformError" 1`] = `
 Object {
