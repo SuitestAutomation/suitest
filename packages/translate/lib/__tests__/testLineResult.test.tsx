@@ -139,6 +139,7 @@ describe('Test line results translation', () => {
 		'devToolsNotSupported',
 		'devToolsNotSupportedVidaa',
 		'devToolsNotSupportedXbox',
+		'devToolsNotSupportedVega',
 		'deviceNotPaired',
 		'appNotFound',
 		'rokuUpdateNeeded',

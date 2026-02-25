@@ -1537,6 +1537,15 @@ Array [
 ]
 `;
 
+exports[`Test line results translation simple errors translations should translate "devToolsNotSupportedVega" error 1`] = `
+Array [
+  Object {
+    "type": "text",
+    "value": "This type of configuration is available only for WebView debug builds. Please contact your app developer to verify that you are using the correct build.",
+  },
+]
+`;
+
 exports[`Test line results translation simple errors translations should translate "devToolsNotSupportedVidaa" error 1`] = `
 Array [
   Object {
