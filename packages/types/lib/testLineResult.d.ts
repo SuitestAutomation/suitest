@@ -166,6 +166,7 @@ export type SimpleError = BaseResult & {
 		| 'devToolsNotSupported'
 		| 'devToolsNotSupportedVidaa'
 		| 'devToolsNotSupportedXbox'
+		| 'devToolsNotSupportedVega'
 		| 'deviceNotPaired'
 		| 'appNotFound'
 		| 'rokuUpdateNeeded'
