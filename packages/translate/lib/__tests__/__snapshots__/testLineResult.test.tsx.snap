@@ -1971,6 +1971,13 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "releasingDevice" error 1`] = `
+Object {
+  "type": "text",
+  "value": "The device has been disconnected.",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "rokuUpdateNeeded" error 1`] = `
 Array [
   Object {

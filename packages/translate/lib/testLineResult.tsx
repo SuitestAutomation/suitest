@@ -168,6 +168,7 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	contextNotFound: <text>Expected webview not found in the application.</text>,
 	invalidAppState: <text>Cannot execute the test operation, selected app communication method is not reachable.</text>,
 	planTestingMinutesExceeded: <text>You have used up all testing minutes included in your subscription.</text>,
+	releasingDevice: <text>The device has been disconnected.</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {

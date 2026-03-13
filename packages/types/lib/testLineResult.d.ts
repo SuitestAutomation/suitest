@@ -180,7 +180,8 @@ export type SimpleError = BaseResult & {
 		| 'notExistingRegion'
 		| 'contextNotFound'
 		| 'invalidAppState'
-		| 'planTestingMinutesExceeded',
+		| 'planTestingMinutesExceeded'
+		| 'releasingDevice',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {

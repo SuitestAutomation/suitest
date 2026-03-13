@@ -153,6 +153,7 @@ describe('Test line results translation', () => {
 		'notExistingRegion',
 		'contextNotFound',
 		'invalidAppState',
+		'releasingDevice',
 	];
 
 	describe('simple errors translations', () => {
