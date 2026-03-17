@@ -139,6 +139,7 @@ describe('Test line results translation', () => {
 		'devToolsNotSupported',
 		'devToolsNotSupportedVidaa',
 		'devToolsNotSupportedXbox',
+		'devToolsNotSupportedVega',
 		'deviceNotPaired',
 		'appNotFound',
 		'rokuUpdateNeeded',
@@ -153,6 +154,8 @@ describe('Test line results translation', () => {
 		'notExistingRegion',
 		'contextNotFound',
 		'invalidAppState',
+		'openAppResumeFailure',
+		'closeAppSuspendFailure',
 	];
 
 	describe('simple errors translations', () => {

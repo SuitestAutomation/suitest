@@ -166,6 +166,7 @@ export type SimpleError = BaseResult & {
 		| 'devToolsNotSupported'
 		| 'devToolsNotSupportedVidaa'
 		| 'devToolsNotSupportedXbox'
+		| 'devToolsNotSupportedVega'
 		| 'deviceNotPaired'
 		| 'appNotFound'
 		| 'rokuUpdateNeeded'
@@ -180,7 +181,9 @@ export type SimpleError = BaseResult & {
 		| 'notExistingRegion'
 		| 'contextNotFound'
 		| 'invalidAppState'
-		| 'planTestingMinutesExceeded',
+		| 'planTestingMinutesExceeded'
+		| 'openAppResumeFailure'
+		| 'closeAppSuspendFailure',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {

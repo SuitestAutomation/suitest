@@ -1473,6 +1473,13 @@ Object {
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "closeAppSuspendFailure" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Failed to suspend the application.",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "conditionNotSatisfied" error 1`] = `
 Object {
   "type": "text",
@@ -1527,6 +1534,15 @@ Array [
   Object {
     "type": "text",
     "value": "The device has DevTools protocol disabled. Please look into our user documentation for more details.",
+  },
+]
+`;
+
+exports[`Test line results translation simple errors translations should translate "devToolsNotSupportedVega" error 1`] = `
+Array [
+  Object {
+    "type": "text",
+    "value": "This type of configuration is available only for WebView debug builds. Please contact your app developer to verify that you are using the correct build.",
   },
 ]
 `;
@@ -1912,6 +1928,13 @@ exports[`Test line results translation simple errors translations should transla
 Object {
   "type": "text",
   "value": "Failed to open the app, please try again. Restart of the device could help",
+}
+`;
+
+exports[`Test line results translation simple errors translations should translate "openAppResumeFailure" error 1`] = `
+Object {
+  "type": "text",
+  "value": "Resuming the application failed. App opened using 'restart' option instead.",
 }
 `;
 

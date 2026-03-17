@@ -154,6 +154,7 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	devToolsNotSupported: <fragment>The device has DevTools protocol disabled. Please look into our user documentation for more details.</fragment>,
 	devToolsNotSupportedVidaa: <fragment>The device has DevTools protocol disabled. Please look into <link href="https://suite.st/docs/devices/vidaa/#enable-devtools-on-your-vidaa-device">our user documentation</link> for more details.</fragment>,
 	devToolsNotSupportedXbox: <fragment>The application package is not correctly configured - <link href="https://suite.st/docs/application/setting-up-xbox-apps/#lite-support-for-webview2-apps">more information</link>.</fragment>,
+	devToolsNotSupportedVega: <fragment>This type of configuration is available only for WebView debug builds. Please contact your app developer to verify that you are using the correct build.</fragment>,
 	deviceNotPaired: <text>You need to pair the device first.</text>,
 	appNotFound: <text>The application not found. Please make sure that you have entered a valid AppId.</text>,
 	rokuUpdateNeeded: <fragment>The device needs to be updated manually. See <link href="https://suite.st/docs/troubleshooting/roku/#system-update-needed">our user documentation</link></fragment>,
@@ -168,6 +169,8 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	contextNotFound: <text>Expected webview not found in the application.</text>,
 	invalidAppState: <text>Cannot execute the test operation, selected app communication method is not reachable.</text>,
 	planTestingMinutesExceeded: <text>You have used up all testing minutes included in your subscription.</text>,
+	openAppResumeFailure: <text>Resuming the application failed. App opened using 'restart' option instead.</text>,
+	closeAppSuspendFailure: <text>Failed to suspend the application.</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
