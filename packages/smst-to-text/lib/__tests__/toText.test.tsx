@@ -317,7 +317,7 @@ describe('AST renderers', () => {
 				message={<fragment>Some unknown error, pls check <link href="http://some.url">docs</link></fragment>}
 			>
 				{simpleLine}
-			</test-line-result>
+			</test-line-result>,
 		)).toMatchSnapshot();
 	});
 
@@ -356,13 +356,13 @@ describe('AST renderers', () => {
 			expect(wrapTextNodes(
 				[{type: 'text', value: '1234567890'}],
 				node => node.value,
-				5
+				5,
 			)).toEqual([5, ['12345', '67890']]);
 
 			expect(wrapTextNodes(
 				[{type: 'text', value: '1234567890'}],
 				node => node.value,
-				6
+				6,
 			)).toEqual([6, ['123456', '7890']]);
 		});
 
@@ -370,7 +370,7 @@ describe('AST renderers', () => {
 			expect(wrapTextNodes(
 				[{type: 'text', value: '123'}],
 				node => node.value,
-				5
+				5,
 			)).toEqual([3, ['123']]);
 		});
 
@@ -378,7 +378,7 @@ describe('AST renderers', () => {
 			expect(wrapTextNodes(
 				[{type: 'text', value: '123\n456\r789\r\n0'}],
 				node => node.value,
-				5
+				5,
 			)).toEqual([3, ['123', '456', '789', '0']]);
 		});
 
@@ -386,7 +386,7 @@ describe('AST renderers', () => {
 			expect(wrapTextNodes(
 				[{type: 'text', value: '123\u001b4'}],
 				node => escapeControlChars(node.value),
-				3
+				3,
 			)).toEqual([3, ['123', '\uFFFD4']]);
 		});
 	});

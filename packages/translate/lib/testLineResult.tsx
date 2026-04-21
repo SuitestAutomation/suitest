@@ -531,7 +531,7 @@ const getScreenshotUrl = (screenshotPath?: string): string | undefined => screen
 
 const getInvertedResultMessage = (
 	testLine: TestLine | QueryLine,
-	lineResult?: TestLineResult
+	lineResult?: TestLineResult,
 ): Node | undefined => {
 	if (
 		!lineResult // Does not make sense to translate inverted result if there is no result to compare to

@@ -1,6 +1,6 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["lib"],
+  "include": ["lib", "../smst/types"],
   "exclude": ["lib/__tests__"],
   "compilerOptions": {
     "outDir": "dist",

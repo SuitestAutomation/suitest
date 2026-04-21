@@ -30,7 +30,7 @@ export const escapeUrl = (url: string): string => {
 
 	return url.replace(
 		/[^\w. ]/gi,
-		c => '&#x' + ('0000' + c.charCodeAt(0).toString(16)).slice(-4)
+		c => '&#x' + ('0000' + c.charCodeAt(0).toString(16)).slice(-4),
 	);
 };
 
@@ -47,7 +47,7 @@ const renderFigure = (
 	content: string,
 	titleNodes?: Array<InlineTextNode | undefined>,
 	prefix = '',
-	titleLast = false
+	titleLast = false,
 ): string => {
 	const output = [`<div class="${className}">`];
 
@@ -65,7 +65,7 @@ const renderFigure = (
 
 const renderHtmlCodeBlockNode = (node: CodeBlockNode): string => renderFigure(
 	'suitest-test-line__code-block',
-	`<pre><code class="language-${node.language}">${escapeHtml(node.value ?? '')}</code></pre>`
+	`<pre><code class="language-${node.language}">${escapeHtml(node.value ?? '')}</code></pre>`,
 );
 
 const renderHtmlPropsNode = (node: PropertiesNode, {verbosity}: {verbosity: Verbosity}): string => renderFigure(
@@ -103,14 +103,14 @@ const renderHtmlPropsNode = (node: PropertiesNode, {verbosity}: {verbosity: Verb
 			return row.join('');
 		}),
 		'</table>',
-	].join('')
+	].join(''),
 );
 
 const renderHtmlConditionNode = (node: ConditionNode, {verbosity}: {verbosity: Verbosity}): string => renderFigure(
 	['suitest-test-line__condition', node.status ? `suitest-test-line__condition--${node.status}` : ''].filter(Boolean).join(' '),
 	node.children.map(n => renderNode(n, {verbosity})).join(''),
 	node.title,
-	'condition: '
+	'condition: ',
 );
 
 const renderHtmlTestLineNode = (node: TestLineNode, {verbosity}: {verbosity: Verbosity}): string => {

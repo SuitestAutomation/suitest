@@ -1,7 +1,11 @@
 module.exports = {
 	"preset": "ts-jest",
 	"transform": {
-		"^.+\\.tsx?$": "ts-jest"
+		"^.+\\.tsx?$": ["ts-jest", {
+			"diagnostics": {
+				"warnOnly": true
+			},
+		}],
 	},
 	"testMatch": [
 		"<rootDir>/lib/__tests__/*.test.ts",
@@ -23,11 +27,4 @@ module.exports = {
 	"moduleFileExtensions": [
 		"js", "json", "jsx", "ts", "d.ts", "tsx", "node",
 	],
-	"globals": {
-		"ts-jest": {
-			"diagnostics": {
-				"warnOnly": true
-			},
-		},
-	},
 };

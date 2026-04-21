@@ -542,7 +542,7 @@ describe('Test line results translation', () => {
 					testLine: assertLine(conditions['current location']('matches',
 						`function somePredicate(location) {
 return false;
-}`
+}`,
 					)),
 					appConfig,
 					lineResult: extendBaseError({
@@ -649,7 +649,7 @@ return false;
 					testLine: assertLine(conditions.cookie('suitest-cookie', 'matches',
 						`function somePredicate(val) {
 return false;
-}`
+}`,
 					)),
 					appConfig,
 					lineResult: extendBaseError({
@@ -978,7 +978,7 @@ return false;
 							`function(((testSubject) {
 console.log(testSubject);
 return true;
-}`
+}`,
 						)),
 						appConfig,
 						elements,
@@ -1373,7 +1373,7 @@ return true;
 
 					expect(testLineToPlainText({
 						testLine: assertLine(
-							conditions['network request matching URL was not made excluding previously matched']()
+							conditions['network request matching URL was not made excluding previously matched'](),
 						),
 						appConfig,
 						lineResult,
@@ -1806,7 +1806,7 @@ return true;
 					// match js query fail
 					expect(testLineToPlainText({
 						testLine: assertLine(conditions.cookie('suitest-cookie', '=',
-							'suitest-cookie'
+							'suitest-cookie',
 						)),
 						appConfig,
 						lineResult: extendBaseError({
@@ -1819,7 +1819,7 @@ return true;
 					// match js query fail
 					expect(testLineToPlainText({
 						testLine: assertLine(conditions.cookie('suitest-cookie', '=',
-							'cookie'
+							'cookie',
 						)),
 						appConfig,
 						lineResult: extendBaseError({

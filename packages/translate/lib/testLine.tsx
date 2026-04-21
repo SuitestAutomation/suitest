@@ -117,7 +117,7 @@ const translateAssertTestLine = (
 };
 
 const translateTakeScreenshotTestLine = (
-	testLine: TakeScreenshotTestLine, lineResult?: TestLineResult
+	testLine: TakeScreenshotTestLine, lineResult?: TestLineResult,
 ): TestLineNode => {
 	let text = '';
 	if (testLine.dataFormat === 'raw') {
@@ -244,7 +244,7 @@ const translateExecuteCommandTestLine = (
 				testLine.val,
 				appConfig,
 				'',
-				mapStatus(lineResult?.result)
+				mapStatus(lineResult?.result),
 			)}
 		</props>
 	</test-line> as TestLineNode;
@@ -252,7 +252,7 @@ const translateExecuteCommandTestLine = (
 const translateOpenApp = (
 	testLine: OpenAppTestLine,
 	appConfig?: AppConfiguration,
-	lineResult?: TestLineResult
+	lineResult?: TestLineResult,
 ): TestLineNode => {
 	const status = testLine.excluded ? 'excluded' : lineResult?.result;
 
@@ -327,7 +327,7 @@ const translateSuspendAppTestLine = (
 };
 
 const translateOpenUrl = (
-	testLine: OpenUrlTestLine, appConfig?: AppConfiguration, lineResult?: TestLineResult
+	testLine: OpenUrlTestLine, appConfig?: AppConfiguration, lineResult?: TestLineResult,
 ): TestLineNode => {
 	const url = formatVariables(testLine.url, appConfig?.configVariables);
 	const status = testLine.excluded ? 'excluded' : lineResult?.result;

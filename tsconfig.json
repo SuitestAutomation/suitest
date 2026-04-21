@@ -1,15 +1,9 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "CommonJS",
-    "lib": [
-      "es5",
-      "es6",
-      "es7",
-      "es2017",
-      "es2018",
-      "es2019",
-    ],
+    "target": "ES2019",
+    "module": "node16",
+    "lib": ["ES2019"],
+    "types": ["jest", "node"],
     "experimentalDecorators": true,
     "preserveConstEnums": true,
     "sourceMap": false,
@@ -18,13 +12,12 @@
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "downlevelIteration": true,
     "declaration": true,
     "jsx": "react",
     "jsxFactory": "jsx",
     "esModuleInterop": true,
     "newLine": "lf",
-    "moduleResolution": "node"
+    "moduleResolution": "node16"
   },
   "compileOnSave": false
 }

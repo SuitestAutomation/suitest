@@ -37,7 +37,7 @@ const controlChars = new RegExp(
 		[14, 31],
 		[127, 159],
 	].map(([from, to]) => `[${String.fromCharCode(from)}-${String.fromCharCode(to)}]`).join('|'),
-	'g'
+	'g',
 );
 
 const formatNotDefined = <T>(val?: T, formatter: (val: T) => string = String): string => {
@@ -181,7 +181,7 @@ const splitNode = (textNode: ExtendedInlineNodes, length: number): [ExtendedInli
 export const wrapTextNodes = (
 	inputNodes: ExtendedInlineNodes[],
 	renderTextNode: RenderTextFunc,
-	maxLineLength = 60
+	maxLineLength = 60,
 ): [number, string[]] => {
 	// Keep function immutable
 	const textNodes: Array<ExtendedInlineNodes | NewLineNode> = [];
@@ -336,7 +336,7 @@ const renderProps = (
 
 					return cellLine[columnIndex === 1 ? 'padStart' : 'padEnd'](columnsLength[columnIndex]);
 				})
-				.join(' ')
+				.join(' '),
 			);
 		}
 	}
@@ -347,7 +347,7 @@ const renderProps = (
 const renderNode = (
 	node: SingleNode,
 	renderTextNode: RenderTextFunc,
-	{prefix = '', verbosity}: { prefix?: string, verbosity: Verbosity}
+	{prefix = '', verbosity}: { prefix?: string, verbosity: Verbosity},
 ): string => {
 	switch (node.type) {
 		case 'text':
@@ -362,7 +362,7 @@ const renderNode = (
 		case 'code-block':
 			return formatNotDefined(
 				node.value,
-				val => val.split(nl).map(line => prefix + '> ' + line).join(nl)
+				val => val.split(nl).map(line => prefix + '> ' + line).join(nl),
 			);
 		case 'test-line':
 			return renderTestLineOrCondition(node, renderTextNode, {prefix, verbosity});
@@ -381,7 +381,7 @@ const renderNode = (
 const renderTestLineOrCondition = (
 	node: TestLineNode | ConditionNode,
 	renderTextNode: RenderTextFunc,
-	{prefix = '', verbosity}: {prefix?: string, verbosity: Verbosity}
+	{prefix = '', verbosity}: {prefix?: string, verbosity: Verbosity},
 ): string => {
 	const status = node.status ? renderTextNode(renderStatus(node.status)) : '';
 	const title = node.title.map(renderTextNode).join('');
@@ -398,7 +398,7 @@ const renderTestLineOrCondition = (
 const renderTestLineResult = (
 	node: TestLineResultNode,
 	renderTextNode: RenderTextFunc,
-	options: {prefix: string, verbosity: Verbosity}
+	options: {prefix: string, verbosity: Verbosity},
 ): string => {
 	const status = tab + renderTextNode({type: node.status, value: node.status + ': '});
 	let message = '';
@@ -415,7 +415,7 @@ const renderTestLineResult = (
 			const wrappedMessage = wrapText(
 				nodeMessage,
 				limit,
-				calcPureLength(status)
+				calcPureLength(status),
 			);
 			message = status + wrappedMessage;
 		}
@@ -440,7 +440,7 @@ const renderTestLineResult = (
 
 export const toText = (
 	node: Node,
-	options?: {format?: boolean, verbosity?: Verbosity}
+	options?: {format?: boolean, verbosity?: Verbosity},
 ): string => {
 	const format = options?.format ?? false;
 	const verbosity = options?.verbosity ?? 'normal';

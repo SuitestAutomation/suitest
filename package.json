@@ -12,21 +12,21 @@
     "coverage": "lerna run coverage"
   },
   "devDependencies": {
-    "@types/jest": "25.2.3",
-    "@types/node": "^14.18.63",
-    "@types/unist": "^2.0.3",
-    "@typescript-eslint/eslint-plugin": "^2.21.0",
-    "@typescript-eslint/eslint-plugin-tslint": "^2.21.0",
-    "@typescript-eslint/parser": "^2.21.0",
-    "eslint": "^6.8.0",
+    "@eslint/js": "^9.39.0",
+    "@stylistic/eslint-plugin": "^4.4.1",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.15.0",
+    "@types/unist": "^3.0.3",
+    "eslint": "^9.39.0",
+    "globals": "^17.4.0",
     "husky": "4.2.5",
-    "jest": "26.0.1",
+    "jest": "^29.7.0",
     "lerna": "^9.0.3",
     "rimraf": "3.0.2",
     "terser": "^4.7.0",
-    "ts-jest": "26.1.0",
-    "tslint": "^6.1.2",
-    "typescript": "^3.9.3"
+    "ts-jest": "^29.3.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.32.0"
   },
   "husky": {
     "hooks": {
