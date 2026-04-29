@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Test Lines translation Should translate test line "Assert ... then continue excluded" 1`] = `
-Object {
-  "children": Array [],
+{
+  "children": [],
   "status": "excluded",
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Assert: Application has exited",
     },
@@ -15,11 +15,11 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Assert ... then continue excluded" without appConfig 1`] = `
-Object {
-  "children": Array [],
+{
+  "children": [],
   "status": "excluded",
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Assert: Application has exited",
     },
@@ -29,10 +29,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Assert ... then continue" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Assert: Application has exited",
     },
@@ -42,10 +42,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Assert ... then continue" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Assert: Application has exited",
     },
@@ -55,10 +55,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Assert ... then exit" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Assert: Application has exited then stop test",
     },
@@ -68,10 +68,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Assert ... then exit" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Assert: Application has exited then stop test",
     },
@@ -81,10 +81,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Assert ... then fail" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Assert: Application has exited then fail",
     },
@@ -94,10 +94,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Assert ... then fail" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Assert: Application has exited then fail",
     },
@@ -107,10 +107,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Assert ... then warn" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Assert: Application has exited then warn",
     },
@@ -120,10 +120,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Assert ... then warn" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Assert: Application has exited then warn",
     },
@@ -133,14 +133,14 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Assert ... timeout ... then continue" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Assert: Application has exited timeout ",
     },
-    Object {
+    {
       "type": "input",
       "value": "1s",
     },
@@ -150,14 +150,14 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Assert ... timeout ... then continue" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Assert: Application has exited timeout ",
     },
-    Object {
+    {
       "type": "input",
       "value": "1s",
     },
@@ -167,12 +167,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Browser command: Accept modal dialog only if ..." 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -180,8 +180,8 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Accept modal dialog",
     },
@@ -191,12 +191,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Browser command: Accept modal dialog only if ..." without appConfig 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -204,8 +204,8 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Accept modal dialog",
     },
@@ -215,10 +215,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Browser command: Accept modal dialog" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Accept modal dialog",
     },
@@ -228,10 +228,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Browser command: Accept modal dialog" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Accept modal dialog",
     },
@@ -241,22 +241,22 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Browser command: Accept prompt dialog with text ... only if ..." 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [
+        {
           "actualValue": undefined,
           "comparator": "=",
           "contentType": "inline",
-          "expectedValue": Array [
-            Object {
+          "expectedValue": [
+            {
               "type": "text",
               "value": "prompt text",
             },
           ],
-          "name": Array [
-            Object {
+          "name": [
+            {
               "type": "text",
               "value": "message",
             },
@@ -267,10 +267,10 @@ Object {
       ],
       "type": "props",
     },
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -278,8 +278,8 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Accept modal dialog with message",
     },
@@ -289,22 +289,22 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Browser command: Accept prompt dialog with text ... only if ..." without appConfig 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [
+        {
           "actualValue": undefined,
           "comparator": "=",
           "contentType": "inline",
-          "expectedValue": Array [
-            Object {
+          "expectedValue": [
+            {
               "type": "text",
               "value": "prompt text",
             },
           ],
-          "name": Array [
-            Object {
+          "name": [
+            {
               "type": "text",
               "value": "message",
             },
@@ -315,10 +315,10 @@ Object {
       ],
       "type": "props",
     },
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -326,8 +326,8 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Accept modal dialog with message",
     },
@@ -337,22 +337,22 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Browser command: Accept prompt dialog with text ..." 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [
+        {
           "actualValue": undefined,
           "comparator": "=",
           "contentType": "inline",
-          "expectedValue": Array [
-            Object {
+          "expectedValue": [
+            {
               "type": "text",
               "value": "prompt text",
             },
           ],
-          "name": Array [
-            Object {
+          "name": [
+            {
               "type": "text",
               "value": "message",
             },
@@ -364,8 +364,8 @@ Object {
       "type": "props",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Accept modal dialog with message",
     },
@@ -375,22 +375,22 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Browser command: Accept prompt dialog with text ..." without appConfig 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [
+        {
           "actualValue": undefined,
           "comparator": "=",
           "contentType": "inline",
-          "expectedValue": Array [
-            Object {
+          "expectedValue": [
+            {
               "type": "text",
               "value": "prompt text",
             },
           ],
-          "name": Array [
-            Object {
+          "name": [
+            {
               "type": "text",
               "value": "message",
             },
@@ -402,8 +402,8 @@ Object {
       "type": "props",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Accept modal dialog with message",
     },
@@ -413,12 +413,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Browser command: Dismiss modal dialog only if ..." 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -426,8 +426,8 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Dismiss modal dialog",
     },
@@ -437,12 +437,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Browser command: Dismiss modal dialog only if ..." without appConfig 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -450,8 +450,8 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Dismiss modal dialog",
     },
@@ -461,10 +461,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Browser command: Dismiss modal dialog" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Dismiss modal dialog",
     },
@@ -474,10 +474,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Browser command: Dismiss modal dialog" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Dismiss modal dialog",
     },
@@ -487,11 +487,11 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Browser command: Go back excluded" 1`] = `
-Object {
-  "children": Array [],
+{
+  "children": [],
   "status": "excluded",
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Go back",
     },
@@ -501,11 +501,11 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Browser command: Go back excluded" without appConfig 1`] = `
-Object {
-  "children": Array [],
+{
+  "children": [],
   "status": "excluded",
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Go back",
     },
@@ -515,12 +515,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Browser command: Go back only if ..." 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -528,8 +528,8 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Go back",
     },
@@ -539,12 +539,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Browser command: Go back only if ..." without appConfig 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -552,8 +552,8 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Go back",
     },
@@ -563,10 +563,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Browser command: Go back" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Go back",
     },
@@ -576,10 +576,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Browser command: Go back" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Go back",
     },
@@ -589,12 +589,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Browser command: Go forward only if ..." 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -602,8 +602,8 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Go forward",
     },
@@ -613,12 +613,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Browser command: Go forward only if ..." without appConfig 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -626,8 +626,8 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Go forward",
     },
@@ -637,10 +637,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Browser command: Go forward" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Go forward",
     },
@@ -650,10 +650,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Browser command: Go forward" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Go forward",
     },
@@ -663,12 +663,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Browser command: Refresh only if ..." 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -676,8 +676,8 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Refresh",
     },
@@ -687,12 +687,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Browser command: Refresh only if ..." without appConfig 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -700,8 +700,8 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Refresh",
     },
@@ -711,10 +711,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Browser command: Refresh" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Refresh",
     },
@@ -724,10 +724,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Browser command: Refresh" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Refresh",
     },
@@ -737,22 +737,22 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Browser command: Set window size" 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [
+        {
           "actualValue": undefined,
           "comparator": "=",
           "contentType": "inline",
-          "expectedValue": Array [
-            Object {
+          "expectedValue": [
+            {
               "type": "text",
               "value": "123x234",
             },
           ],
-          "name": Array [
-            Object {
+          "name": [
+            {
               "type": "text",
               "value": "size",
             },
@@ -764,8 +764,8 @@ Object {
       "type": "props",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Resize window",
     },
@@ -775,22 +775,22 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Browser command: Set window size" without appConfig 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [
+        {
           "actualValue": undefined,
           "comparator": "=",
           "contentType": "inline",
-          "expectedValue": Array [
-            Object {
+          "expectedValue": [
+            {
               "type": "text",
               "value": "123x234",
             },
           ],
-          "name": Array [
-            Object {
+          "name": [
+            {
               "type": "text",
               "value": "size",
             },
@@ -802,8 +802,8 @@ Object {
       "type": "props",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Resize window",
     },
@@ -813,11 +813,11 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Clear app data excluded" 1`] = `
-Object {
-  "children": Array [],
+{
+  "children": [],
   "status": "excluded",
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Clear application data",
     },
@@ -827,11 +827,11 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Clear app data excluded" without appConfig 1`] = `
-Object {
-  "children": Array [],
+{
+  "children": [],
   "status": "excluded",
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Clear application data",
     },
@@ -841,10 +841,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Clear app data" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Clear application data",
     },
@@ -854,10 +854,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Clear app data" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Clear application data",
     },
@@ -867,14 +867,14 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Click on active element once" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Click on ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "active element",
     },
@@ -884,14 +884,14 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Click on active element once" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Click on ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "active element",
     },
@@ -901,30 +901,30 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Click on element ... every ... exactly ..." 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Click on ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
-    Object {
+    {
       "type": "text",
       "value": " exactly ",
     },
-    Object {
+    {
       "type": "input",
       "value": "4",
     },
-    Object {
+    {
       "type": "text",
       "value": "x every ",
     },
-    Object {
+    {
       "type": "input",
       "value": "1.5s",
     },
@@ -934,30 +934,30 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Click on element ... every ... exactly ..." without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Click on ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
-    Object {
+    {
       "type": "text",
       "value": " exactly ",
     },
-    Object {
+    {
       "type": "input",
       "value": "4",
     },
-    Object {
+    {
       "type": "text",
       "value": "x every ",
     },
-    Object {
+    {
       "type": "input",
       "value": "1.5s",
     },
@@ -967,14 +967,14 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Click on element ... once" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Click on ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
@@ -984,14 +984,14 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Click on element ... once" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Click on ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
@@ -1001,12 +1001,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Click on element ... only if ..." 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -1014,16 +1014,16 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Click on ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
-    Object {
+    {
       "type": "text",
       "value": " only if condition is met",
     },
@@ -1033,12 +1033,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Click on element ... only if ..." without appConfig 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -1046,16 +1046,16 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Click on ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
-    Object {
+    {
       "type": "text",
       "value": " only if condition is met",
     },
@@ -1065,12 +1065,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Click on element ... until ... every ... max ..." 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -1078,28 +1078,28 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Click on ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
-    Object {
+    {
       "type": "text",
       "value": " until condition is met max ",
     },
-    Object {
+    {
       "type": "input",
       "value": "6",
     },
-    Object {
+    {
       "type": "text",
       "value": "x every ",
     },
-    Object {
+    {
       "type": "input",
       "value": "5.7s",
     },
@@ -1109,12 +1109,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Click on element ... until ... every ... max ..." without appConfig 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -1122,28 +1122,28 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Click on ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
-    Object {
+    {
       "type": "text",
       "value": " until condition is met max ",
     },
-    Object {
+    {
       "type": "input",
       "value": "6",
     },
-    Object {
+    {
       "type": "text",
       "value": "x every ",
     },
-    Object {
+    {
       "type": "input",
       "value": "5.7s",
     },
@@ -1153,14 +1153,14 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Click on position ... once" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Click on ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "position",
     },
@@ -1170,14 +1170,14 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Click on position ... once" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Click on ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "position",
     },
@@ -1187,14 +1187,14 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Click on relative position ... once" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Click on ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "relative position",
     },
@@ -1204,14 +1204,14 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Click on relative position ... once" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Click on ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "relative position",
     },
@@ -1221,10 +1221,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Comment" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "# This is a comment",
     },
@@ -1234,10 +1234,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Comment" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "# This is a comment",
     },
@@ -1247,12 +1247,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Double tap on element ... until ... every ... max ..." 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -1260,28 +1260,28 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Double tap on ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
-    Object {
+    {
       "type": "text",
       "value": " until condition is met max ",
     },
-    Object {
+    {
       "type": "input",
       "value": "6",
     },
-    Object {
+    {
       "type": "text",
       "value": "x every ",
     },
-    Object {
+    {
       "type": "input",
       "value": "5.7s",
     },
@@ -1291,12 +1291,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Double tap on element ... until ... every ... max ..." without appConfig 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -1304,28 +1304,28 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Double tap on ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
-    Object {
+    {
       "type": "text",
       "value": " until condition is met max ",
     },
-    Object {
+    {
       "type": "input",
       "value": "6",
     },
-    Object {
+    {
       "type": "text",
       "value": "x every ",
     },
-    Object {
+    {
       "type": "input",
       "value": "5.7s",
     },
@@ -1335,20 +1335,20 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Execute command ... excluded" 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [
+        {
           "comparator": "",
           "contentType": "block",
-          "expectedValue": Object {
+          "expectedValue": {
             "language": "javascript",
             "type": "code-block",
             "value": "someJS();",
           },
-          "name": Array [
-            Object {
+          "name": [
+            {
               "type": "text",
               "value": "JavaScript expression",
             },
@@ -1361,8 +1361,8 @@ Object {
     },
   ],
   "status": "excluded",
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Execute JavaScript expression",
     },
@@ -1372,20 +1372,20 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Execute command ... excluded" without appConfig 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [
+        {
           "comparator": "",
           "contentType": "block",
-          "expectedValue": Object {
+          "expectedValue": {
             "language": "javascript",
             "type": "code-block",
             "value": "someJS();",
           },
-          "name": Array [
-            Object {
+          "name": [
+            {
               "type": "text",
               "value": "JavaScript expression",
             },
@@ -1398,8 +1398,8 @@ Object {
     },
   ],
   "status": "excluded",
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Execute JavaScript expression",
     },
@@ -1409,20 +1409,20 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Execute command ..." 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [
+        {
           "comparator": "",
           "contentType": "block",
-          "expectedValue": Object {
+          "expectedValue": {
             "language": "javascript",
             "type": "code-block",
             "value": "someJS();",
           },
-          "name": Array [
-            Object {
+          "name": [
+            {
               "type": "text",
               "value": "JavaScript expression",
             },
@@ -1434,8 +1434,8 @@ Object {
       "type": "props",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Execute JavaScript expression",
     },
@@ -1445,20 +1445,20 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Execute command ..." without appConfig 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [
+        {
           "comparator": "",
           "contentType": "block",
-          "expectedValue": Object {
+          "expectedValue": {
             "language": "javascript",
             "type": "code-block",
             "value": "someJS();",
           },
-          "name": Array [
-            Object {
+          "name": [
+            {
               "type": "text",
               "value": "JavaScript expression",
             },
@@ -1470,8 +1470,8 @@ Object {
       "type": "props",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Execute JavaScript expression",
     },
@@ -1481,12 +1481,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "GET cookies" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
-      "value": "Retrieve value for \\"cook\\" cookie",
+      "value": "Retrieve value for "cook" cookie",
     },
   ],
   "type": "test-line",
@@ -1494,12 +1494,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "GET cookies" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
-      "value": "Retrieve value for \\"cook\\" cookie",
+      "value": "Retrieve value for "cook" cookie",
     },
   ],
   "type": "test-line",
@@ -1507,12 +1507,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "GET element attributes" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
-      "value": "Getting [id, type, class] attributes of \\"element-api-id\\" element",
+      "value": "Getting [id, type, class] attributes of "element-api-id" element",
     },
   ],
   "type": "test-line",
@@ -1520,12 +1520,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "GET element attributes" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
-      "value": "Getting [id, type, class] attributes of \\"element-api-id\\" element",
+      "value": "Getting [id, type, class] attributes of "element-api-id" element",
     },
   ],
   "type": "test-line",
@@ -1533,12 +1533,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "GET element css properties with array selector" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
-      "value": "Getting [width, height, opacity] css properties of |\\"#app\\" element| -> |\\"div\\" element| -> |\\"span\\" element|",
+      "value": "Getting [width, height, opacity] css properties of |"#app" element| -> |"div" element| -> |"span" element|",
     },
   ],
   "type": "test-line",
@@ -1546,12 +1546,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "GET element css properties with array selector" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
-      "value": "Getting [width, height, opacity] css properties of |\\"#app\\" element| -> |\\"div\\" element| -> |\\"span\\" element|",
+      "value": "Getting [width, height, opacity] css properties of |"#app" element| -> |"div" element| -> |"span" element|",
     },
   ],
   "type": "test-line",
@@ -1559,12 +1559,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "GET element css properties" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
-      "value": "Getting [width, height, opacity] css properties of \\"element-api-id\\" element",
+      "value": "Getting [width, height, opacity] css properties of "element-api-id" element",
     },
   ],
   "type": "test-line",
@@ -1572,12 +1572,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "GET element css properties" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
-      "value": "Getting [width, height, opacity] css properties of \\"element-api-id\\" element",
+      "value": "Getting [width, height, opacity] css properties of "element-api-id" element",
     },
   ],
   "type": "test-line",
@@ -1585,12 +1585,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "GET element handle" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
-      "value": "Getting handle of \\"element-api-id\\" element",
+      "value": "Getting handle of "element-api-id" element",
     },
   ],
   "type": "test-line",
@@ -1598,12 +1598,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "GET element handle" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
-      "value": "Getting handle of \\"element-api-id\\" element",
+      "value": "Getting handle of "element-api-id" element",
     },
   ],
   "type": "test-line",
@@ -1611,12 +1611,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "GET element props" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
-      "value": "Retrieve info of \\"div.className\\" element",
+      "value": "Retrieve info of "div.className" element",
     },
   ],
   "type": "test-line",
@@ -1624,12 +1624,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "GET element props" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
-      "value": "Retrieve info of \\"div.className\\" element",
+      "value": "Retrieve info of "div.className" element",
     },
   ],
   "type": "test-line",
@@ -1637,12 +1637,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "GET link handle by "home page" text" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
-      "value": "Getting handle of link with \\"home page\\" text",
+      "value": "Getting handle of link with "home page" text",
     },
   ],
   "type": "test-line",
@@ -1650,12 +1650,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "GET link handle by "home page" text" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
-      "value": "Getting handle of link with \\"home page\\" text",
+      "value": "Getting handle of link with "home page" text",
     },
   ],
   "type": "test-line",
@@ -1663,12 +1663,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "GET link handle containing "home" text" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
-      "value": "Getting handle of link containing \\"home page\\" text",
+      "value": "Getting handle of link containing "home page" text",
     },
   ],
   "type": "test-line",
@@ -1676,12 +1676,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "GET link handle containing "home" text" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
-      "value": "Getting handle of link containing \\"home page\\" text",
+      "value": "Getting handle of link containing "home page" text",
     },
   ],
   "type": "test-line",
@@ -1689,10 +1689,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "GET location" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Retrieve value of current location",
     },
@@ -1702,10 +1702,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "GET location" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Retrieve value of current location",
     },
@@ -1715,12 +1715,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "JS expression" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
-      "value": "Retrieve value of execution \\"1 + 1\\"",
+      "value": "Retrieve value of execution "1 + 1"",
     },
   ],
   "type": "test-line",
@@ -1728,12 +1728,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "JS expression" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
-      "value": "Retrieve value of execution \\"1 + 1\\"",
+      "value": "Retrieve value of execution "1 + 1"",
     },
   ],
   "type": "test-line",
@@ -1741,12 +1741,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Long tap on element ... for ... until ... every ... max ..." 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -1754,36 +1754,36 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Long tap on ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
-    Object {
+    {
       "type": "text",
       "value": " for ",
     },
-    Object {
+    {
       "type": "input",
       "value": "2s",
     },
-    Object {
+    {
       "type": "text",
       "value": " until condition is met max ",
     },
-    Object {
+    {
       "type": "input",
       "value": "6",
     },
-    Object {
+    {
       "type": "text",
       "value": "x every ",
     },
-    Object {
+    {
       "type": "input",
       "value": "5.7s",
     },
@@ -1793,12 +1793,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Long tap on element ... for ... until ... every ... max ..." without appConfig 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -1806,36 +1806,36 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Long tap on ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
-    Object {
+    {
       "type": "text",
       "value": " for ",
     },
-    Object {
+    {
       "type": "input",
       "value": "2s",
     },
-    Object {
+    {
       "type": "text",
       "value": " until condition is met max ",
     },
-    Object {
+    {
       "type": "input",
       "value": "6",
     },
-    Object {
+    {
       "type": "text",
       "value": "x every ",
     },
-    Object {
+    {
       "type": "input",
       "value": "5.7s",
     },
@@ -1845,12 +1845,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Long tap on element ... until ... every ... max ..." 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -1858,28 +1858,28 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Long tap on ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
-    Object {
+    {
       "type": "text",
       "value": " until condition is met max ",
     },
-    Object {
+    {
       "type": "input",
       "value": "6",
     },
-    Object {
+    {
       "type": "text",
       "value": "x every ",
     },
-    Object {
+    {
       "type": "input",
       "value": "5.7s",
     },
@@ -1889,12 +1889,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Long tap on element ... until ... every ... max ..." without appConfig 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -1902,28 +1902,28 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Long tap on ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
-    Object {
+    {
       "type": "text",
       "value": " until condition is met max ",
     },
-    Object {
+    {
       "type": "input",
       "value": "6",
     },
-    Object {
+    {
       "type": "text",
       "value": "x every ",
     },
-    Object {
+    {
       "type": "input",
       "value": "5.7s",
     },
@@ -1933,14 +1933,14 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Move to active element" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Move pointer to ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "active element",
     },
@@ -1950,14 +1950,14 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Move to active element" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Move pointer to ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "active element",
     },
@@ -1967,12 +1967,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Move to element ... only if ... excluded" 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -1981,16 +1981,16 @@ Object {
     },
   ],
   "status": "excluded",
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Move pointer to ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
-    Object {
+    {
       "type": "text",
       "value": " only if condition is met",
     },
@@ -2000,12 +2000,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Move to element ... only if ... excluded" without appConfig 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -2014,16 +2014,16 @@ Object {
     },
   ],
   "status": "excluded",
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Move pointer to ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
-    Object {
+    {
       "type": "text",
       "value": " only if condition is met",
     },
@@ -2033,12 +2033,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Move to element ... only if ..." 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -2046,16 +2046,16 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Move pointer to ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
-    Object {
+    {
       "type": "text",
       "value": " only if condition is met",
     },
@@ -2065,12 +2065,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Move to element ... only if ..." without appConfig 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -2078,16 +2078,16 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Move pointer to ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
-    Object {
+    {
       "type": "text",
       "value": " only if condition is met",
     },
@@ -2097,14 +2097,14 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Move to element ..." 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Move pointer to ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
@@ -2114,14 +2114,14 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Move to element ..." without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Move pointer to ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
@@ -2131,14 +2131,14 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Move to position ..." 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Move pointer to ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "position",
     },
@@ -2148,14 +2148,14 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Move to position ..." without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Move pointer to ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "position",
     },
@@ -2165,14 +2165,14 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Move to relative position ..." 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Move pointer to ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "relative position",
     },
@@ -2182,14 +2182,14 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Move to relative position ..." without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Move pointer to ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "relative position",
     },
@@ -2199,22 +2199,22 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Open Deep Link ..." 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [
+        {
           "actualValue": undefined,
           "comparator": "=",
           "contentType": "inline",
-          "expectedValue": Array [
-            Object {
+          "expectedValue": [
+            {
               "type": "input",
               "value": "some-deep-link",
             },
           ],
-          "name": Array [
-            Object {
+          "name": [
+            {
               "type": "text",
               "value": "Deep Link",
             },
@@ -2226,8 +2226,8 @@ Object {
       "type": "props",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Open Deep Link",
     },
@@ -2237,22 +2237,22 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Open Deep Link ..." without appConfig 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [
+        {
           "actualValue": undefined,
           "comparator": "=",
           "contentType": "inline",
-          "expectedValue": Array [
-            Object {
+          "expectedValue": [
+            {
               "type": "input",
               "value": "some-deep-link",
             },
           ],
-          "name": Array [
-            Object {
+          "name": [
+            {
               "type": "text",
               "value": "Deep Link",
             },
@@ -2264,8 +2264,8 @@ Object {
       "type": "props",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Open Deep Link",
     },
@@ -2275,22 +2275,22 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Open URL ..." 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [
+        {
           "actualValue": undefined,
           "comparator": "=",
           "contentType": "inline",
-          "expectedValue": Array [
-            Object {
+          "expectedValue": [
+            {
               "type": "input",
               "value": "https://suite.st",
             },
           ],
-          "name": Array [
-            Object {
+          "name": [
+            {
               "type": "text",
               "value": "URL",
             },
@@ -2302,8 +2302,8 @@ Object {
       "type": "props",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Open URL",
     },
@@ -2313,22 +2313,22 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Open URL ..." without appConfig 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [
+        {
           "actualValue": undefined,
           "comparator": "=",
           "contentType": "inline",
-          "expectedValue": Array [
-            Object {
+          "expectedValue": [
+            {
               "type": "input",
               "value": "https://suite.st",
             },
           ],
-          "name": Array [
-            Object {
+          "name": [
+            {
               "type": "text",
               "value": "URL",
             },
@@ -2340,8 +2340,8 @@ Object {
       "type": "props",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Open URL",
     },
@@ -2351,10 +2351,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Open app at deep link ..." 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Open application at deep link some deep link",
     },
@@ -2364,10 +2364,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Open app at deep link ..." without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Open application at deep link some deep link",
     },
@@ -2377,11 +2377,11 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Open app at homepage excluded" 1`] = `
-Object {
-  "children": Array [],
+{
+  "children": [],
   "status": "excluded",
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Open application",
     },
@@ -2391,11 +2391,11 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Open app at homepage excluded" without appConfig 1`] = `
-Object {
-  "children": Array [],
+{
+  "children": [],
   "status": "excluded",
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Open application",
     },
@@ -2405,10 +2405,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Open app at homepage" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Open application",
     },
@@ -2418,10 +2418,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Open app at homepage" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Open application",
     },
@@ -2431,22 +2431,22 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Open app at relative URL ..." 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [
+        {
           "actualValue": undefined,
           "comparator": "=",
           "contentType": "inline",
-          "expectedValue": Array [
-            Object {
+          "expectedValue": [
+            {
               "type": "input",
               "value": "/some/path",
             },
           ],
-          "name": Array [
-            Object {
+          "name": [
+            {
               "type": "text",
               "value": "relative path",
             },
@@ -2458,8 +2458,8 @@ Object {
       "type": "props",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Open application at relative URL",
     },
@@ -2469,22 +2469,22 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Open app at relative URL ..." without appConfig 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [
+        {
           "actualValue": undefined,
           "comparator": "=",
           "contentType": "inline",
-          "expectedValue": Array [
-            Object {
+          "expectedValue": [
+            {
               "type": "input",
               "value": "/some/path",
             },
           ],
-          "name": Array [
-            Object {
+          "name": [
+            {
               "type": "text",
               "value": "relative path",
             },
@@ -2496,8 +2496,8 @@ Object {
       "type": "props",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Open application at relative URL",
     },
@@ -2507,22 +2507,22 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Poll URL ... until response is ..." 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [
+        {
           "actualValue": undefined,
           "comparator": "=",
           "contentType": "inline",
-          "expectedValue": Array [
-            Object {
+          "expectedValue": [
+            {
               "type": "input",
               "value": "https://suite.st",
             },
           ],
-          "name": Array [
-            Object {
+          "name": [
+            {
               "type": "text",
               "value": "poll URL",
             },
@@ -2530,18 +2530,18 @@ Object {
           "status": undefined,
           "type": "prop",
         },
-        Object {
+        {
           "actualValue": undefined,
           "comparator": "=",
           "contentType": "inline",
-          "expectedValue": Array [
-            Object {
+          "expectedValue": [
+            {
               "type": "input",
               "value": "expected response",
             },
           ],
-          "name": Array [
-            Object {
+          "name": [
+            {
               "type": "text",
               "value": "until receive",
             },
@@ -2553,8 +2553,8 @@ Object {
       "type": "props",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Poll URL every 0.5s",
     },
@@ -2564,22 +2564,22 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Poll URL ... until response is ..." without appConfig 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [
+        {
           "actualValue": undefined,
           "comparator": "=",
           "contentType": "inline",
-          "expectedValue": Array [
-            Object {
+          "expectedValue": [
+            {
               "type": "input",
               "value": "https://suite.st",
             },
           ],
-          "name": Array [
-            Object {
+          "name": [
+            {
               "type": "text",
               "value": "poll URL",
             },
@@ -2587,18 +2587,18 @@ Object {
           "status": undefined,
           "type": "prop",
         },
-        Object {
+        {
           "actualValue": undefined,
           "comparator": "=",
           "contentType": "inline",
-          "expectedValue": Array [
-            Object {
+          "expectedValue": [
+            {
               "type": "input",
               "value": "expected response",
             },
           ],
-          "name": Array [
-            Object {
+          "name": [
+            {
               "type": "text",
               "value": "until receive",
             },
@@ -2610,8 +2610,8 @@ Object {
       "type": "props",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Poll URL every 0.5s",
     },
@@ -2621,30 +2621,30 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Press ... every ... exactly ..." 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Press ",
     },
-    Object {
+    {
       "type": "input",
       "value": "LEFT",
     },
-    Object {
+    {
       "type": "text",
       "value": " exactly ",
     },
-    Object {
+    {
       "type": "input",
       "value": "2",
     },
-    Object {
+    {
       "type": "text",
       "value": "x every ",
     },
-    Object {
+    {
       "type": "input",
       "value": "3s",
     },
@@ -2654,30 +2654,30 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Press ... every ... exactly ..." without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Press ",
     },
-    Object {
+    {
       "type": "input",
       "value": "LEFT",
     },
-    Object {
+    {
       "type": "text",
       "value": " exactly ",
     },
-    Object {
+    {
       "type": "input",
       "value": "2",
     },
-    Object {
+    {
       "type": "text",
       "value": "x every ",
     },
-    Object {
+    {
       "type": "input",
       "value": "3s",
     },
@@ -2687,18 +2687,18 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Press ... once" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Press ",
     },
-    Object {
+    {
       "type": "input",
       "value": "LEFT",
     },
-    Object {
+    {
       "type": "text",
       "value": "",
     },
@@ -2708,18 +2708,18 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Press ... once" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Press ",
     },
-    Object {
+    {
       "type": "input",
       "value": "LEFT",
     },
-    Object {
+    {
       "type": "text",
       "value": "",
     },
@@ -2729,12 +2729,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Press ... only if ..." 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -2742,16 +2742,16 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Press ",
     },
-    Object {
+    {
       "type": "input",
       "value": "LEFT",
     },
-    Object {
+    {
       "type": "text",
       "value": " only if condition is met",
     },
@@ -2761,12 +2761,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Press ... only if ..." without appConfig 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -2774,16 +2774,16 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Press ",
     },
-    Object {
+    {
       "type": "input",
       "value": "LEFT",
     },
-    Object {
+    {
       "type": "text",
       "value": " only if condition is met",
     },
@@ -2793,12 +2793,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Press ... until ... every ... max ..." 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -2806,36 +2806,36 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Press ",
     },
-    Object {
+    {
       "type": "input",
       "value": "LEFT",
     },
-    Object {
+    {
       "type": "text",
       "value": ", ",
     },
-    Object {
+    {
       "type": "input",
       "value": "RIGHT",
     },
-    Object {
+    {
       "type": "text",
       "value": " until condition is met max ",
     },
-    Object {
+    {
       "type": "input",
       "value": "2",
     },
-    Object {
+    {
       "type": "text",
       "value": "x every ",
     },
-    Object {
+    {
       "type": "input",
       "value": "3s",
     },
@@ -2845,12 +2845,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Press ... until ... every ... max ..." without appConfig 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -2858,36 +2858,36 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Press ",
     },
-    Object {
+    {
       "type": "input",
       "value": "LEFT",
     },
-    Object {
+    {
       "type": "text",
       "value": ", ",
     },
-    Object {
+    {
       "type": "input",
       "value": "RIGHT",
     },
-    Object {
+    {
       "type": "text",
       "value": " until condition is met max ",
     },
-    Object {
+    {
       "type": "input",
       "value": "2",
     },
-    Object {
+    {
       "type": "text",
       "value": "x every ",
     },
-    Object {
+    {
       "type": "input",
       "value": "3s",
     },
@@ -2897,18 +2897,18 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Press long ... for ... once" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Press long ",
     },
-    Object {
+    {
       "type": "input",
       "value": "LEFT",
     },
-    Object {
+    {
       "type": "text",
       "value": " for 1000ms ",
     },
@@ -2918,18 +2918,18 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Press long ... for ... once" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Press long ",
     },
-    Object {
+    {
       "type": "input",
       "value": "LEFT",
     },
-    Object {
+    {
       "type": "text",
       "value": " for 1000ms ",
     },
@@ -2939,10 +2939,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Restart application" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Restart application",
     },
@@ -2952,10 +2952,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Restart application" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Restart application",
     },
@@ -2965,10 +2965,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Resume background application" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Resume background application",
     },
@@ -2978,10 +2978,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Resume background application" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Resume background application",
     },
@@ -2991,26 +2991,26 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Run snippet ... exactly ..." 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Run test (",
     },
-    Object {
+    {
       "type": "code",
       "value": "unkn...id-1",
     },
-    Object {
+    {
       "type": "text",
       "value": ") exactly ",
     },
-    Object {
+    {
       "type": "input",
       "value": "2",
     },
-    Object {
+    {
       "type": "text",
       "value": "x",
     },
@@ -3020,26 +3020,26 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Run snippet ... exactly ..." without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Run test (",
     },
-    Object {
+    {
       "type": "code",
       "value": "unkn...id-1",
     },
-    Object {
+    {
       "type": "text",
       "value": ") exactly ",
     },
-    Object {
+    {
       "type": "input",
       "value": "2",
     },
-    Object {
+    {
       "type": "text",
       "value": "x",
     },
@@ -3049,14 +3049,14 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Run snippet ... once" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Run test ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "Snippet 1",
     },
@@ -3066,14 +3066,14 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Run snippet ... once" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Run test ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "Snippet 1",
     },
@@ -3083,12 +3083,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Run snippet ... only if ..." 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -3096,16 +3096,16 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Run test ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "Snippet 1",
     },
-    Object {
+    {
       "type": "text",
       "value": " only if condition is met",
     },
@@ -3115,12 +3115,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Run snippet ... only if ..." without appConfig 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -3128,16 +3128,16 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Run test ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "Snippet 1",
     },
-    Object {
+    {
       "type": "text",
       "value": " only if condition is met",
     },
@@ -3147,12 +3147,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Run snippet ... until ... max ..." 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -3160,24 +3160,24 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Run test ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "Snippet 1",
     },
-    Object {
+    {
       "type": "text",
       "value": " until condition is met max ",
     },
-    Object {
+    {
       "type": "input",
       "value": "2",
     },
-    Object {
+    {
       "type": "text",
       "value": "x",
     },
@@ -3187,12 +3187,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Run snippet ... until ... max ..." without appConfig 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -3200,24 +3200,24 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Run test ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "Snippet 1",
     },
-    Object {
+    {
       "type": "text",
       "value": " until condition is met max ",
     },
-    Object {
+    {
       "type": "input",
       "value": "2",
     },
-    Object {
+    {
       "type": "text",
       "value": "x",
     },
@@ -3227,18 +3227,18 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Scroll from active element" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Scroll from ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "active element",
     },
-    Object {
+    {
       "type": "text",
       "value": " down by 1px",
     },
@@ -3248,18 +3248,18 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Scroll from active element" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Scroll from ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "active element",
     },
-    Object {
+    {
       "type": "text",
       "value": " down by 1px",
     },
@@ -3269,12 +3269,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Scroll from element ... to ... until ... every ... max ..." 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -3282,32 +3282,32 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Scroll from ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
-    Object {
+    {
       "type": "text",
       "value": " until condition is met max ",
     },
-    Object {
+    {
       "type": "input",
       "value": "6",
     },
-    Object {
+    {
       "type": "text",
       "value": "x every ",
     },
-    Object {
+    {
       "type": "input",
       "value": "5.7s",
     },
-    Object {
+    {
       "type": "text",
       "value": " left by 1px",
     },
@@ -3317,12 +3317,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Scroll from element ... to ... until ... every ... max ..." without appConfig 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -3330,32 +3330,32 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Scroll from ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
-    Object {
+    {
       "type": "text",
       "value": " until condition is met max ",
     },
-    Object {
+    {
       "type": "input",
       "value": "6",
     },
-    Object {
+    {
       "type": "text",
       "value": "x every ",
     },
-    Object {
+    {
       "type": "input",
       "value": "5.7s",
     },
-    Object {
+    {
       "type": "text",
       "value": " left by 1px",
     },
@@ -3365,22 +3365,22 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Send text ... to element ... once" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Send text ",
     },
-    Object {
+    {
       "type": "input",
       "value": "text to send",
     },
-    Object {
+    {
       "type": "text",
       "value": " to ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
@@ -3390,22 +3390,22 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Send text ... to element ... once" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Send text ",
     },
-    Object {
+    {
       "type": "input",
       "value": "text to send",
     },
-    Object {
+    {
       "type": "text",
       "value": " to ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
@@ -3415,38 +3415,38 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Send text ... to window every ... exactly ..." 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Send text ",
     },
-    Object {
+    {
       "type": "input",
       "value": "text to send",
     },
-    Object {
+    {
       "type": "text",
       "value": " to ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "window",
     },
-    Object {
+    {
       "type": "text",
       "value": " exactly ",
     },
-    Object {
+    {
       "type": "input",
       "value": "2",
     },
-    Object {
+    {
       "type": "text",
       "value": "x every ",
     },
-    Object {
+    {
       "type": "input",
       "value": "1s",
     },
@@ -3456,38 +3456,38 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Send text ... to window every ... exactly ..." without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Send text ",
     },
-    Object {
+    {
       "type": "input",
       "value": "text to send",
     },
-    Object {
+    {
       "type": "text",
       "value": " to ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "window",
     },
-    Object {
+    {
       "type": "text",
       "value": " exactly ",
     },
-    Object {
+    {
       "type": "input",
       "value": "2",
     },
-    Object {
+    {
       "type": "text",
       "value": "x every ",
     },
-    Object {
+    {
       "type": "input",
       "value": "1s",
     },
@@ -3497,22 +3497,22 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Send text ... to window once" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Send text ",
     },
-    Object {
+    {
       "type": "input",
       "value": "text to send",
     },
-    Object {
+    {
       "type": "text",
       "value": " to ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "window",
     },
@@ -3522,22 +3522,22 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Send text ... to window once" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Send text ",
     },
-    Object {
+    {
       "type": "input",
       "value": "text to send",
     },
-    Object {
+    {
       "type": "text",
       "value": " to ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "window",
     },
@@ -3547,12 +3547,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Send text ... to window only if ..." 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -3560,24 +3560,24 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Send text ",
     },
-    Object {
+    {
       "type": "input",
       "value": "text to send",
     },
-    Object {
+    {
       "type": "text",
       "value": " to ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "window",
     },
-    Object {
+    {
       "type": "text",
       "value": " only if condition is met",
     },
@@ -3587,12 +3587,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Send text ... to window only if ..." without appConfig 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -3600,24 +3600,24 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Send text ",
     },
-    Object {
+    {
       "type": "input",
       "value": "text to send",
     },
-    Object {
+    {
       "type": "text",
       "value": " to ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "window",
     },
-    Object {
+    {
       "type": "text",
       "value": " only if condition is met",
     },
@@ -3627,12 +3627,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Send text ... to window until ... every ... max ..." 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -3640,36 +3640,36 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Send text ",
     },
-    Object {
+    {
       "type": "input",
       "value": "text to send",
     },
-    Object {
+    {
       "type": "text",
       "value": " to ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "window",
     },
-    Object {
+    {
       "type": "text",
       "value": " until condition is met max ",
     },
-    Object {
+    {
       "type": "input",
       "value": "4",
     },
-    Object {
+    {
       "type": "text",
       "value": "x every ",
     },
-    Object {
+    {
       "type": "input",
       "value": "1.2s",
     },
@@ -3679,12 +3679,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Send text ... to window until ... every ... max ..." without appConfig 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -3692,36 +3692,36 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Send text ",
     },
-    Object {
+    {
       "type": "input",
       "value": "text to send",
     },
-    Object {
+    {
       "type": "text",
       "value": " to ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "window",
     },
-    Object {
+    {
       "type": "text",
       "value": " until condition is met max ",
     },
-    Object {
+    {
       "type": "input",
       "value": "4",
     },
-    Object {
+    {
       "type": "text",
       "value": "x every ",
     },
-    Object {
+    {
       "type": "input",
       "value": "1.2s",
     },
@@ -3731,22 +3731,22 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Set text ... to active element" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Set text ",
     },
-    Object {
+    {
       "type": "input",
       "value": "text to send",
     },
-    Object {
+    {
       "type": "text",
       "value": " to ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "active element",
     },
@@ -3756,22 +3756,22 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Set text ... to active element" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Set text ",
     },
-    Object {
+    {
       "type": "input",
       "value": "text to send",
     },
-    Object {
+    {
       "type": "text",
       "value": " to ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "active element",
     },
@@ -3781,12 +3781,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Set text ... to element ... only if ..." 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -3794,24 +3794,24 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Set text ",
     },
-    Object {
+    {
       "type": "input",
       "value": "text to send",
     },
-    Object {
+    {
       "type": "text",
       "value": " to ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
-    Object {
+    {
       "type": "text",
       "value": " only if condition is met",
     },
@@ -3821,12 +3821,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Set text ... to element ... only if ..." without appConfig 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -3834,24 +3834,24 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Set text ",
     },
-    Object {
+    {
       "type": "input",
       "value": "text to send",
     },
-    Object {
+    {
       "type": "text",
       "value": " to ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
-    Object {
+    {
       "type": "text",
       "value": " only if condition is met",
     },
@@ -3861,22 +3861,22 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Set text ... to element ..." 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Set text ",
     },
-    Object {
+    {
       "type": "input",
       "value": "text to send",
     },
-    Object {
+    {
       "type": "text",
       "value": " to ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
@@ -3886,22 +3886,22 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Set text ... to element ..." without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Set text ",
     },
-    Object {
+    {
       "type": "input",
       "value": "text to send",
     },
-    Object {
+    {
       "type": "text",
       "value": " to ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
@@ -3911,14 +3911,14 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Single tap on active element" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Single tap on ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "active element",
     },
@@ -3928,14 +3928,14 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Single tap on active element" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Single tap on ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "active element",
     },
@@ -3945,12 +3945,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Single tap on element ... until ... every ... max ..." 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -3958,28 +3958,28 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Single tap on ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
-    Object {
+    {
       "type": "text",
       "value": " until condition is met max ",
     },
-    Object {
+    {
       "type": "input",
       "value": "6",
     },
-    Object {
+    {
       "type": "text",
       "value": "x every ",
     },
-    Object {
+    {
       "type": "input",
       "value": "5.7s",
     },
@@ -3989,12 +3989,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Single tap on element ... until ... every ... max ..." without appConfig 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -4002,28 +4002,28 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Single tap on ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
-    Object {
+    {
       "type": "text",
       "value": " until condition is met max ",
     },
-    Object {
+    {
       "type": "input",
       "value": "6",
     },
-    Object {
+    {
       "type": "text",
       "value": "x every ",
     },
-    Object {
+    {
       "type": "input",
       "value": "5.7s",
     },
@@ -4033,15 +4033,15 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Sleep ... excluded" 1`] = `
-Object {
-  "children": Array [],
+{
+  "children": [],
   "status": "excluded",
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Sleep ",
     },
-    Object {
+    {
       "type": "input",
       "value": "2s",
     },
@@ -4051,15 +4051,15 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Sleep ... excluded" without appConfig 1`] = `
-Object {
-  "children": Array [],
+{
+  "children": [],
   "status": "excluded",
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Sleep ",
     },
-    Object {
+    {
       "type": "input",
       "value": "2s",
     },
@@ -4069,14 +4069,14 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Sleep ..." 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Sleep ",
     },
-    Object {
+    {
       "type": "input",
       "value": "2s",
     },
@@ -4086,14 +4086,14 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Sleep ..." without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Sleep ",
     },
-    Object {
+    {
       "type": "input",
       "value": "2s",
     },
@@ -4103,18 +4103,18 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Swipe from active element once" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Swipe/Flick from ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "active element",
     },
-    Object {
+    {
       "type": "text",
       "value": " right by 3px in 1ms",
     },
@@ -4124,18 +4124,18 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Swipe from active element once" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Swipe/Flick from ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "active element",
     },
-    Object {
+    {
       "type": "text",
       "value": " right by 3px in 1ms",
     },
@@ -4145,12 +4145,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Swipe from element ... to ... in ... until ... every ... max ..." 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -4158,32 +4158,32 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Swipe/Flick from ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
-    Object {
+    {
       "type": "text",
       "value": " until condition is met max ",
     },
-    Object {
+    {
       "type": "input",
       "value": "6",
     },
-    Object {
+    {
       "type": "text",
       "value": "x every ",
     },
-    Object {
+    {
       "type": "input",
       "value": "5.7s",
     },
-    Object {
+    {
       "type": "text",
       "value": " left by 1px in 3ms",
     },
@@ -4193,12 +4193,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Swipe from element ... to ... in ... until ... every ... max ..." without appConfig 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [],
-      "title": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [],
+      "title": [
+        {
           "type": "text",
           "value": "Application has exited",
         },
@@ -4206,32 +4206,32 @@ Object {
       "type": "condition",
     },
   ],
-  "title": Array [
-    Object {
+  "title": [
+    {
       "type": "text",
       "value": "Swipe/Flick from ",
     },
-    Object {
+    {
       "type": "subject",
       "value": "element",
     },
-    Object {
+    {
       "type": "text",
       "value": " until condition is met max ",
     },
-    Object {
+    {
       "type": "input",
       "value": "6",
     },
-    Object {
+    {
       "type": "text",
       "value": "x every ",
     },
-    Object {
+    {
       "type": "input",
       "value": "5.7s",
     },
-    Object {
+    {
       "type": "text",
       "value": " left by 1px in 3ms",
     },
@@ -4241,14 +4241,14 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Wait until ... max ... then continue" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Assert: Application has exited timeout ",
     },
-    Object {
+    {
       "type": "input",
       "value": "1s",
     },
@@ -4258,14 +4258,14 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "Wait until ... max ... then continue" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Assert: Application has exited timeout ",
     },
-    Object {
+    {
       "type": "input",
       "value": "1s",
     },
@@ -4275,10 +4275,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "close application" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Close application",
     },
@@ -4288,10 +4288,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "close application" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Close application",
     },
@@ -4301,10 +4301,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "get last screenshot for visual testing" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Get last screenshot for visual testing (raw)",
     },
@@ -4314,10 +4314,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "get last screenshot for visual testing" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Get last screenshot for visual testing (raw)",
     },
@@ -4327,10 +4327,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "get screenshot" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Take screenshot (base64)",
     },
@@ -4340,10 +4340,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "get screenshot" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Take screenshot (base64)",
     },
@@ -4353,12 +4353,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "save screenshot" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
-      "value": "Save screenshot (\\"screen.jpg\\")",
+      "value": "Save screenshot ("screen.jpg")",
     },
   ],
   "type": "test-line",
@@ -4366,12 +4366,12 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "save screenshot" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
-      "value": "Save screenshot (\\"screen.jpg\\")",
+      "value": "Save screenshot ("screen.jpg")",
     },
   ],
   "type": "test-line",
@@ -4379,14 +4379,14 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "setOrientation" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Set screen orientation to ",
     },
-    Object {
+    {
       "type": "input",
       "value": "Portrait",
     },
@@ -4396,14 +4396,14 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "setOrientation" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Set screen orientation to ",
     },
-    Object {
+    {
       "type": "input",
       "value": "Portrait",
     },
@@ -4413,10 +4413,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "suspend application" 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Suspend application",
     },
@@ -4426,10 +4426,10 @@ Object {
 `;
 
 exports[`Test Lines translation Should translate test line "suspend application" without appConfig 1`] = `
-Object {
-  "children": Array [],
-  "title": Array [
-    Object {
+{
+  "children": [],
+  "title": [
+    {
       "type": "text",
       "value": "Suspend application",
     },

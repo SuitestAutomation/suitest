@@ -11,7 +11,7 @@ export const replaceVariables = (text: string, variables?: AppConfiguration['con
 		text.replace(
 			/<%([a-zA-Z0-9_]{1,20})%>/g,
 			(wholeMatch, varName) =>
-				variables.find(variable => variable.key === varName)?.value ?? wholeMatch
+				variables.find(variable => variable.key === varName)?.value ?? wholeMatch,
 		) :
 		text;
 
@@ -89,7 +89,7 @@ export const translateCodeProp = (
 	code: string,
 	appConfig?: AppConfiguration,
 	comparator?: string,
-	status?: SingleEntryStatus
+	status?: SingleEntryStatus,
 ): JSX.Element[] => {
 	const codeWithVars = replaceVariables(code, appConfig?.configVariables);
 

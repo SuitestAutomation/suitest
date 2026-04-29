@@ -36,7 +36,7 @@ function normalizePlainChildren
 	(children: JSX.SmstFlatNode[], parentType: K): R[];
 function normalizePlainChildren(
 	children: JSX.SmstFlatNode[],
-	parentType: keyof JSX.IntrinsicElements
+	parentType: keyof JSX.IntrinsicElements,
 ): SingleNode[] {
 	return children.reduce((output: SingleNode[], child) => {
 		if (child === undefined || child === null) {

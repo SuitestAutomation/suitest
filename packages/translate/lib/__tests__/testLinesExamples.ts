@@ -80,7 +80,7 @@ export const conditions = {
 	'cookie': (
 		cookieName = 'my-cookie',
 		type: StringComparator | JavaScriptComparator | ExistComparator = '!=',
-		val = 'expect value'
+		val = 'expect value',
 	): Condition => ({
 		subject: {
 			type: 'cookie',
@@ -257,7 +257,7 @@ export const conditions = {
 		],
 	}),
 	'JavaScript expression ... equals ...': (
-		jsCode = 'someJS()', val = 'returned value', type: StringComparator = '='
+		jsCode = 'someJS()', val = 'returned value', type: StringComparator = '=',
 	): Condition => ({
 		subject: {
 			type: 'javascript',
@@ -554,7 +554,7 @@ export const testLinesExamples = {
 		ids = ['LEFT', 'RIGHT'],
 		condition: Condition = appExitedCondition,
 		count: number | string = 2,
-		delay: number | string = 3000
+		delay: number | string = 3000,
 	): TestLine => ({
 		...baseTestLine,
 		type: 'button',
@@ -567,7 +567,7 @@ export const testLinesExamples = {
 	'Press ... every ... exactly ...': (
 		ids = ['LEFT'],
 		count: number | string = 2,
-		delay: number | string = 3000
+		delay: number | string = 3000,
 	): TestLine => ({
 		...baseTestLine,
 		type: 'button',
@@ -591,7 +591,7 @@ export const testLinesExamples = {
 	'Send text ... to window every ... exactly ...': (
 		val = 'text to send',
 		count: number | string = 2,
-		delay: number | string = 1000
+		delay: number | string = 1000,
 	): TestLine => ({
 		...baseTestLine,
 		type: 'sendText',
@@ -612,7 +612,7 @@ export const testLinesExamples = {
 		val = 'text to send',
 		condition: Condition = appExitedCondition,
 		count: number | string = 4,
-		delay: number | string = 1200
+		delay: number | string = 1200,
 	): TestLine => ({
 		...baseTestLine,
 		type: 'sendText',
@@ -644,7 +644,7 @@ export const testLinesExamples = {
 	'Set text ... to element ... only if ...': (
 		val = 'text to send',
 		elementId = 'element-id-1',
-		condition: Condition = appExitedCondition
+		condition: Condition = appExitedCondition,
 	): TestLine => ({
 		...baseTestLine,
 		type: 'setText',
@@ -752,7 +752,7 @@ export const testLinesExamples = {
 	}),
 	'Browser command: Accept prompt dialog with text ... only if ...': (
 		text = 'prompt text',
-		condition: Condition = appExitedCondition
+		condition: Condition = appExitedCondition,
 	): TestLine => ({
 		...baseTestLine,
 		type: 'browserCommand',
@@ -803,7 +803,7 @@ export const testLinesExamples = {
 	'Click on element ... every ... exactly ...': (
 		elementId = 'element-id-1',
 		delay: number | string = 1500,
-		count: number | string = 4
+		count: number | string = 4,
 	): TestLine => ({
 		...baseTestLine,
 		type: 'click',
@@ -817,7 +817,7 @@ export const testLinesExamples = {
 	}),
 	'Click on element ... only if ...': (
 		elementId = 'element-id-1',
-		condition: Condition = appExitedCondition
+		condition: Condition = appExitedCondition,
 	): TestLine => ({
 		...baseTestLine,
 		type: 'click',
@@ -833,7 +833,7 @@ export const testLinesExamples = {
 		elementId = 'element-id-1',
 		condition: Condition = appExitedCondition,
 		delay: number | string = 5700,
-		count: number | string = 6
+		count: number | string = 6,
 	): TestLine => ({
 		...baseTestLine,
 		type: 'click',
@@ -863,7 +863,7 @@ export const testLinesExamples = {
 		elementId = 'element-id-1',
 		condition: Condition = appExitedCondition,
 		delay: number | string = 5700,
-		count: number | string = 6
+		count: number | string = 6,
 	): TestLine => ({
 		...baseTestLine,
 		type: 'tap',
@@ -881,7 +881,7 @@ export const testLinesExamples = {
 		elementId = 'element-id-1',
 		condition: Condition = appExitedCondition,
 		delay: number | string = 5700,
-		count: number | string = 6
+		count: number | string = 6,
 	): TestLine => ({
 		...baseTestLine,
 		type: 'tap',
@@ -899,7 +899,7 @@ export const testLinesExamples = {
 		elementId = 'element-id-1',
 		condition: Condition = appExitedCondition,
 		delay: number | string = 5700,
-		count: number | string = 6
+		count: number | string = 6,
 	): TestLine => ({
 		...baseTestLine,
 		type: 'tap',
@@ -954,7 +954,7 @@ export const testLinesExamples = {
 		elementId = 'element-id-1',
 		condition: Condition = appExitedCondition,
 		delay: number | string = 5700,
-		count: number | string = 6
+		count: number | string = 6,
 	): TestLine => ({
 		...baseTestLine,
 		type: 'scroll',
@@ -992,7 +992,7 @@ export const testLinesExamples = {
 		elementId = 'element-id-1',
 		condition: Condition = appExitedCondition,
 		delay: number | string = 5700,
-		count: number | string = 6
+		count: number | string = 6,
 	): TestLine => ({
 		...baseTestLine,
 		type: 'swipe',
@@ -1053,7 +1053,7 @@ export const testLinesExamples = {
 	}),
 	'Move to element ... only if ...': (
 		elementId = 'element-id-1',
-		condition: Condition = appExitedCondition
+		condition: Condition = appExitedCondition,
 	): TestLine => ({
 		...baseTestLine,
 		type: 'moveTo',
@@ -1066,7 +1066,7 @@ export const testLinesExamples = {
 	}),
 	'Move to element ... only if ... excluded': (
 		elementId = 'element-id-1',
-		condition: Condition = appExitedCondition
+		condition: Condition = appExitedCondition,
 	): TestLine => ({
 		...baseTestLine,
 		type: 'moveTo',

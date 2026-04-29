@@ -47,7 +47,7 @@ const translateCurrentLocationCondition = (
 					condition.val,
 					appConfig,
 					translateComparator(condition.type),
-					mapStatus(lineResult?.result, inverse)
+					mapStatus(lineResult?.result, inverse),
 				)
 				: <prop
 					name={<text>current location</text>}
@@ -85,7 +85,7 @@ const translateCookieCondition = (
 					condition.val,
 					appConfig,
 					condition.type,
-					mapStatus(lineResult?.result, inverse)
+					mapStatus(lineResult?.result, inverse),
 				)}
 			</props>
 		</condition> as ConditionNode;
@@ -236,7 +236,7 @@ const stringifyCustomElementSubjectVal = (val: CustomElementSubject['val']): str
 	if (selectorEntries.length === 1) {
 		// A common case when there is a single selector, e.g. css or xpath
 		// Casting to any because TS throws an unwarranted error otherwise
-		return selectorEntries[0][1];
+		return String(selectorEntries[0][1]);
 	}
 
 	return JSON.stringify({...selector, index: ifMultipleFoundReturn ?? 1});
@@ -284,7 +284,7 @@ const translateElementCondition = (
 						condition.val,
 						appConfig,
 						translateComparator(condition.type),
-						mapStatus(lineResult?.result, inverse)
+						mapStatus(lineResult?.result, inverse),
 					)}
 				</props>
 			</condition> as ConditionNode;
@@ -329,7 +329,7 @@ const translateElementCondition = (
 const translatePSVideoCondition = (
 	condition: PSVideoHadNoErrorCondition,
 	inverse: boolean,
-	lineResult?: TestLineResult
+	lineResult?: TestLineResult,
 ): ConditionNode => {
 	const title = <fragment>PlayStation 4 video had no error {
 		condition.searchStrategy === 'all' ? 'for any source' : 'for current source'
@@ -353,7 +353,7 @@ const translateJavaScriptExpressionCondition = (
 				condition.subject.val ?? notSpecifiedMessage,
 				appConfig,
 				'',
-				lineResult?.errorType === 'JavaScriptError' ? 'fail' : mapStatus(lineResult?.result)
+				lineResult?.errorType === 'JavaScriptError' ? 'fail' : mapStatus(lineResult?.result),
 			)}
 			<prop
 				name={<text>expected result</text>}
@@ -369,7 +369,7 @@ const translateJavaScriptExpressionCondition = (
 };
 
 const translateNetworkInfo = (
-	isRequest: boolean, appConfig?: AppConfiguration, errors: QueryFailedNetworkError['errors'] = []
+	isRequest: boolean, appConfig?: AppConfiguration, errors: QueryFailedNetworkError['errors'] = [],
 ) => (
 	{ name, compare, val }: { name: string, compare: Comparator, val: string | number },
 ): InlinePropertyNode => {
@@ -573,7 +573,7 @@ export const translateCondition = (
 				condition as ElementPropertiesCondition, inverse, appConfig, elements, lineResult);
 		case 'javascript':
 			return translateJavaScriptExpressionCondition(
-				condition as JavaScriptExpressionCondition, inverse, appConfig, lineResult
+				condition as JavaScriptExpressionCondition, inverse, appConfig, lineResult,
 			);
 		case 'location':
 			return translateCurrentLocationCondition(
