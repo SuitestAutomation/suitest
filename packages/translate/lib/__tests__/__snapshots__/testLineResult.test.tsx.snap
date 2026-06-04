@@ -1368,6 +1368,13 @@ exports[`Test line results translation simple errors translations should transla
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "appAlreadyRunning" error 1`] = `
+{
+  "type": "text",
+  "value": "The application is already running in the foreground.",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "appCertificateExpired" error 1`] = `
 {
   "type": "text",
