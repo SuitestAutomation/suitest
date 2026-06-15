@@ -171,6 +171,7 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	planTestingMinutesExceeded: <text>You have used up all testing minutes included in your subscription.</text>,
 	openAppResumeFailure: <text>Resuming the application failed. App opened using 'restart' option instead.</text>,
 	closeAppSuspendFailure: <text>Failed to suspend the application.</text>,
+	appAlreadyRunning: <text>The application is already running in the foreground.</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {

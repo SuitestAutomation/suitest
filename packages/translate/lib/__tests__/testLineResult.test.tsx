@@ -156,6 +156,7 @@ describe('Test line results translation', () => {
 		'invalidAppState',
 		'openAppResumeFailure',
 		'closeAppSuspendFailure',
+		'appAlreadyRunning',
 	];
 
 	describe('simple errors translations', () => {

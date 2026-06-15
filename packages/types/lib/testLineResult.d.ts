@@ -183,7 +183,8 @@ export type SimpleError = BaseResult & {
 		| 'invalidAppState'
 		| 'planTestingMinutesExceeded'
 		| 'openAppResumeFailure'
-		| 'closeAppSuspendFailure',
+		| 'closeAppSuspendFailure'
+		| 'appAlreadyRunning',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {
