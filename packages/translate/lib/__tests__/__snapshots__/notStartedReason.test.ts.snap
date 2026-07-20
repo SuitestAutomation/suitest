@@ -231,6 +231,15 @@ exports[`Testing not started reason translation. Should translate "lgWebosPlatfo
 }
 `;
 
+exports[`Testing not started reason translation. Should translate "monitoringInProgressError" code 1`] = `
+{
+  "title": {
+    "type": "text",
+    "value": "The device is blocked by running monitoring session.",
+  },
+}
+`;
+
 exports[`Testing not started reason translation. Should translate "noActivePlan" code 1`] = `
 {
   "description": [
@@ -611,6 +620,13 @@ exports[`Testing not started reason translation. Translate to html:  "lgWebosPla
 }
 `;
 
+exports[`Testing not started reason translation. Translate to html:  "monitoringInProgressError" 1`] = `
+{
+  "description": "The device is blocked by running monitoring session.",
+  "title": "The device is blocked by running monitoring session.",
+}
+`;
+
 exports[`Testing not started reason translation. Translate to html:  "noActivePlan" 1`] = `
 {
   "description": "Cannot continue: Your subscription has expired",
@@ -853,6 +869,13 @@ exports[`Testing not started reason translation. Translate to plain text:  "lgWe
 {
   "description": "LG WebOS driver has misbehaved. Please verify that the device is online and it's current IP address is correctly specified in Suitest. Then double check if the Development mode is enabled on the device. If nothing helps try rebooting the device",
   "title": "Cannot continue: LG WebOS driver has failed",
+}
+`;
+
+exports[`Testing not started reason translation. Translate to plain text:  "monitoringInProgressError" 1`] = `
+{
+  "description": undefined,
+  "title": "The device is blocked by running monitoring session.",
 }
 `;
 
