@@ -37,6 +37,8 @@ import {
 	ElementSelector,
 	OpenDeepLinkTestLine,
 	LastScreenshotTestLine,
+	WebPositionTarget,
+	MobilePositionTarget,
 } from '@suitest/types';
 import {translateComparator} from './comparator';
 import {translateCondition} from './condition';
@@ -45,7 +47,9 @@ import {
 	formatVariables,
 	mapStatus,
 	translateCodeProp,
-	formatCount, deviceOrientationsMap,
+	formatCount,
+	deviceOrientationsMap,
+	formatVariableWithUnit,
 } from './utils';
 
 const getConditionInfo = (
@@ -58,12 +62,18 @@ const getConditionInfo = (
 
 	const getDelayFragment = (delay?: number | string) => delay !== undefined
 		? <fragment> every {formatTimeout(delay, appConfig?.configVariables)}</fragment>
-		: '';
+		: undefined;
 
 	// Do something ... exactly ... every ...
 	if (!condition && count && (typeof count === 'string' || count > 1)) {
 		return <fragment> exactly {formatCount(count, appConfig?.configVariables)}
 			{getDelayFragment(delay)}</fragment> as Node;
+	}
+
+	// test lines may contain a numeric default delay even when it was not explicitly configured.
+	// a string delay represents an explicitly provided config variable, so display it to clarify logs/errors.
+	if (!condition && typeof delay === 'string') {
+		return getDelayFragment(delay);
 	}
 
 	// Do something ... only if ...
@@ -414,9 +424,15 @@ const translatePressButtonTestLine = (
 		</fragment>);
 	const titleFragment = getConditionInfo(testLine, appConfig);
 	const status = testLine.excluded ? 'excluded' : lineResult?.result;
-	const title = testLine.longPressMs
-		? <fragment>Press long {ids} for {testLine.longPressMs}ms {titleFragment}</fragment>
-		: <fragment>Press {ids}{titleFragment}</fragment>;
+	const {longPressMs} = testLine;
+	const translatedLongPressDuration = typeof longPressMs === 'string'
+		? formatVariableWithUnit(longPressMs, 'ms', appConfig?.configVariables)
+		: undefined;
+	const title = translatedLongPressDuration
+		? <fragment>Press long {ids} for {translatedLongPressDuration} {titleFragment}</fragment>
+		: longPressMs
+			? <fragment>Press long {ids} for {longPressMs}ms {titleFragment}</fragment>
+			: <fragment>Press {ids}{titleFragment}</fragment>;
 
 	return <test-line
 		title={title}
@@ -463,7 +479,25 @@ const assertUnknownTarget = (target: never): never => {
 	throw new Error('Unknown target: ' + JSON.stringify(target));
 };
 
-const translateTarget = (target: WebTarget | MobileTarget): JSX.Element => {
+const translatePositionTarget = (
+	target: WebPositionTarget | MobilePositionTarget,
+	appConfig?: AppConfiguration,
+): JSX.Element => {
+	const {x, y} = target.coordinates;
+	const positionName = target.type === 'window' && target.relative
+		? 'relative position'
+		: 'position';
+
+	return <fragment>
+		<subject>{positionName}</subject> (x:{formatVariables(String(x), appConfig?.configVariables)},
+		y:{formatVariables(String(y), appConfig?.configVariables)})
+	</fragment>;
+};
+
+const translateTarget = (
+	target: WebTarget | MobileTarget,
+	appConfig?: AppConfiguration,
+): JSX.Element => {
 	switch (target.type) {
 		case 'element': // TODO nyc for some reason reports an uncovered branch here
 			return 'val' in target && target.val.active
@@ -471,13 +505,13 @@ const translateTarget = (target: WebTarget | MobileTarget): JSX.Element => {
 				: <subject>element</subject>;
 		case 'window':
 			// TODO should we translate 'window' depending on running platform?
-			return <subject>{
-				'coordinates' in target
-					? (target.relative ? 'relative position' : 'position')
-					: 'window'
-			}</subject>;
+			return 'coordinates' in target
+				? translatePositionTarget(target, appConfig)
+				: <subject>window</subject>;
 		case 'screen':
-			return <subject>{'coordinates' in target ? 'position' : 'screen'}</subject>;
+			return 'coordinates' in target
+				? translatePositionTarget(target, appConfig)
+				: <subject>screen</subject>;
 		default:
 			/* istanbul ignore next */
 			return assertUnknownTarget(target);
@@ -555,19 +589,32 @@ const translateBrowserCommandTestLine = (
 			return <test-line title={<text>Refresh</text>} status={status}>
 				{condition}
 			</test-line> as TestLineNode;
-		case 'setWindowSize':
+		case 'setWindowSize': {
+			const {width, height} = testLine.browserCommand.params;
+			const hasVariableSize = typeof width === 'string' || typeof height === 'string';
+			const expectedSize = hasVariableSize
+				? <fragment>
+					{typeof width === 'string'
+						? formatVariables(width, appConfig?.configVariables)
+						: <input>{String(width)}</input>}
+					x
+					{typeof height === 'string'
+						? formatVariables(height, appConfig?.configVariables)
+						: <input>{String(height)}</input>}
+				</fragment>
+				: <text>{String(width)}x{String(height)}</text>;
+
 			return <test-line title={<text>Resize window</text>} status={status}>
 				<props>
 					<prop
 						name={<text>size</text>}
 						comparator={translateComparator('=')}
-						expectedValue={<text>{ // TODO - variables in width / height
-							String(testLine.browserCommand.params.width)}x{String(testLine.browserCommand.params.height)
-						}</text>}
+						expectedValue={expectedSize}
 					/>
 				</props>
 				{condition}
 			</test-line> as TestLineNode;
+		}
 		case 'dismissAlertMessage':
 			return <test-line title={<text>Dismiss modal dialog</text>} status={status}>
 				{condition}
@@ -627,7 +674,7 @@ const translateClickTestLine = (
 	lineResult?: TestLineResult,
 ): TestLineNode => {
 	const titleFragment = getConditionInfo(testLine, appConfig);
-	const title = <fragment>Click on {translateTarget(testLine.target)}{titleFragment}</fragment>;
+	const title = <fragment>Click on {translateTarget(testLine.target, appConfig)}{titleFragment}</fragment>;
 	const status = testLine.excluded ? 'excluded' : lineResult?.result;
 
 	return <test-line title={title} status={status}>
@@ -648,7 +695,7 @@ const translateTapTestLine = (
 	const tapTypeCapitalized = tapType.charAt(0).toUpperCase() + tapType.slice(1);
 	const title = (
 		<fragment>
-			{tapTypeCapitalized} tap on {translateTarget(testLine.target)}
+			{tapTypeCapitalized} tap on {translateTarget(testLine.target, appConfig)}
 			{duration !== undefined ?
 				<fragment> for {formatTimeout(duration, appConfig?.configVariables)}</fragment>
 				: undefined
@@ -674,10 +721,18 @@ const translateScrollTestLine = (
 	const titleFragment = getConditionInfo(testLine, appConfig);
 	const direction = testLine.scroll[0].direction;
 	const distance = testLine.scroll[0].distance;
+	const translatedDistance = typeof distance === 'string'
+		? formatVariableWithUnit(distance, 'px', appConfig?.configVariables)
+		: undefined;
+	const distanceFragment = translatedDistance
+		? <fragment> by {translatedDistance}</fragment>
+		: ['string', 'number'].includes(typeof distance)
+			? ` by ${distance}px`
+			: '';
 	const title = (
 		<fragment>
-			Scroll from {translateTarget(testLine.target)}
-			{titleFragment} {direction}{['string', 'number'].includes(typeof distance) ? ` by ${distance}px` : ''}
+			Scroll from {translateTarget(testLine.target, appConfig)}
+			{titleFragment} {direction}{distanceFragment}
 		</fragment>
 	);
 	const status = testLine.excluded ? 'excluded' : lineResult?.result;
@@ -699,8 +754,16 @@ const translateSwipeTestLine = (
 	const direction = testLine.swipe[0].direction;
 	const distance = testLine.swipe[0].distance;
 	const duration = testLine.swipe[0].duration;
-	const title = <fragment>Swipe/Flick from {translateTarget(testLine.target)}
-		{titleFragment} {direction} by {distance}px in {duration}ms</fragment>;
+	const translatedDistance = typeof distance === 'string'
+		? formatVariableWithUnit(distance, 'px', appConfig?.configVariables)
+		: undefined;
+	const translatedDuration = typeof duration === 'string'
+		? formatVariableWithUnit(duration, 'ms', appConfig?.configVariables)
+		: undefined;
+	const displayedDistance = translatedDistance ?? `${distance}px`;
+	const displayedDuration = translatedDuration ?? `${duration}ms`;
+	const title = <fragment>Swipe/Flick from {translateTarget(testLine.target, appConfig)}
+		{titleFragment} {direction} by {displayedDistance} in {displayedDuration}</fragment>;
 	const status = testLine.excluded ? 'excluded' : lineResult?.result;
 
 	return <test-line title={title} status={status}>
@@ -717,7 +780,7 @@ const translateMoveToTestLine = (
 	lineResult?: TestLineResult,
 ): TestLineNode => {
 	const titleFragment = getConditionInfo(testLine, appConfig);
-	const title = <fragment>Move pointer to {translateTarget(testLine.target)}{titleFragment}</fragment>;
+	const title = <fragment>Move pointer to {translateTarget(testLine.target, appConfig)}{titleFragment}</fragment>;
 	const status = testLine.excluded ? 'excluded' : lineResult?.result;
 
 	return <test-line title={title} status={status}>
