@@ -15,6 +15,21 @@ export const replaceVariables = (text: string, variables?: AppConfiguration['con
 		) :
 		text;
 
+const EMPTY_STRING = '[EMPTY STRING]';
+
+/**
+ * Replace variables for human-readable output while making empty values explicit.
+ * Keep replaceVariables unchanged so callers can still use the actual resolved value.
+ */
+const replaceVariablesForDisplay = (text: string, variables?: AppConfiguration['configVariables']): string =>
+	replaceVariables(
+		text,
+		variables?.map(({key, value}) => ({
+			key,
+			value: value === '' ? EMPTY_STRING : value,
+		})),
+	);
+
 /**
  * Replace variables and format the output to display both replaced and not replaced strings
  */
@@ -23,10 +38,30 @@ export const formatVariables = (text: string, variables?: AppConfiguration['conf
 
 	if (resultText !== text) {
 		// There was some replacing done
-		return <fragment><input>{resultText}</input> (<code>{text}</code>)</fragment>;
+		return <fragment><input>{resultText === '' ? EMPTY_STRING : resultText}</input> (<code>{text}</code>)</fragment>;
 	}
 
 	return <input>{text}</input>;
+};
+
+/**
+ * Format a resolved configuration variable with its unit while keeping the original expression visible.
+ * Return undefined when no replacement occurred.
+ */
+export const formatVariableWithUnit = (
+	expression: string,
+	unit: string,
+	variables?: AppConfiguration['configVariables'],
+): JSX.Element | undefined => {
+	const resolvedValue = replaceVariables(expression, variables);
+
+	if (resolvedValue === expression) {
+		return undefined;
+	}
+
+	return <fragment>
+		<input>{resolvedValue === '' ? EMPTY_STRING : `${resolvedValue}${unit}`}</input> (<code>{expression}</code>)
+	</fragment>;
 };
 
 /**
@@ -35,6 +70,13 @@ export const formatVariables = (text: string, variables?: AppConfiguration['conf
 export const formatTimeout = (timeout: number | string, variables?: AppConfiguration['configVariables']): JSX.Element => {
 	// Replace variables (if any) in timeout
 	const t = typeof timeout === 'string' ? replaceVariables(timeout, variables) : String(timeout);
+	const displayedTimeout = typeof timeout === 'string' ? replaceVariablesForDisplay(timeout, variables) : t;
+
+	// Handle a fully empty resolved value before numeric conversion because Number('') evaluates to 0.
+	if (t === '' && displayedTimeout !== t) {
+		return <fragment><input>{displayedTimeout}</input> (<code>{String(timeout)}</code>)</fragment>;
+	}
+
 	// Get final value in ms as a number
 	const ms = +t;
 
@@ -59,7 +101,16 @@ export const formatTimeout = (timeout: number | string, variables?: AppConfigura
 export const formatCount = (count: number | string, variables?: AppConfiguration['configVariables']): JSX.Element => {
 	const countAsString = String(count);
 	const countAsStringWithReplacedVars = typeof count === 'string' ? replaceVariables(count, variables) : countAsString;
-	// Get final value in ms as a number
+	const displayedCount = typeof count === 'string'
+		? replaceVariablesForDisplay(count, variables)
+		: countAsStringWithReplacedVars;
+
+	// Handle a fully empty resolved value before numeric conversion because +'' evaluates to 0.
+	if (countAsStringWithReplacedVars === '' && displayedCount !== countAsStringWithReplacedVars) {
+		return <fragment><input>{displayedCount}</input> (<code>{countAsString}</code>)</fragment>;
+	}
+
+	// Get final count as a number
 	const countAsNumberWithReplacedVars = +countAsStringWithReplacedVars;
 
 	if (isNaN(countAsNumberWithReplacedVars)) {

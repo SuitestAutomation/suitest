@@ -107,7 +107,7 @@ export type SleepTestLine = BaseTestLine & {
 export type PressButtonTestLine = BaseTestLine & {
 	type: 'button',
 	ids: string[],
-	longPressMs?: number,
+	longPressMs?: number | string,
 	count?: number | string,
 	delay?: number | string,
 	condition?: Condition,
