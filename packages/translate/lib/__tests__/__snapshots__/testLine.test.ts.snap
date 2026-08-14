@@ -1164,6 +1164,26 @@ exports[`Test Lines translation Should translate test line "Click on position ..
       "type": "subject",
       "value": "position",
     },
+    {
+      "type": "text",
+      "value": " (x:",
+    },
+    {
+      "type": "input",
+      "value": "123",
+    },
+    {
+      "type": "text",
+      "value": ", y:",
+    },
+    {
+      "type": "input",
+      "value": "234",
+    },
+    {
+      "type": "text",
+      "value": ")",
+    },
   ],
   "type": "test-line",
 }
@@ -1180,6 +1200,26 @@ exports[`Test Lines translation Should translate test line "Click on position ..
     {
       "type": "subject",
       "value": "position",
+    },
+    {
+      "type": "text",
+      "value": " (x:",
+    },
+    {
+      "type": "input",
+      "value": "123",
+    },
+    {
+      "type": "text",
+      "value": ", y:",
+    },
+    {
+      "type": "input",
+      "value": "234",
+    },
+    {
+      "type": "text",
+      "value": ")",
     },
   ],
   "type": "test-line",
@@ -1198,6 +1238,26 @@ exports[`Test Lines translation Should translate test line "Click on relative po
       "type": "subject",
       "value": "relative position",
     },
+    {
+      "type": "text",
+      "value": " (x:",
+    },
+    {
+      "type": "input",
+      "value": "123",
+    },
+    {
+      "type": "text",
+      "value": ", y:",
+    },
+    {
+      "type": "input",
+      "value": "234",
+    },
+    {
+      "type": "text",
+      "value": ")",
+    },
   ],
   "type": "test-line",
 }
@@ -1214,6 +1274,26 @@ exports[`Test Lines translation Should translate test line "Click on relative po
     {
       "type": "subject",
       "value": "relative position",
+    },
+    {
+      "type": "text",
+      "value": " (x:",
+    },
+    {
+      "type": "input",
+      "value": "123",
+    },
+    {
+      "type": "text",
+      "value": ", y:",
+    },
+    {
+      "type": "input",
+      "value": "234",
+    },
+    {
+      "type": "text",
+      "value": ")",
     },
   ],
   "type": "test-line",
@@ -2142,6 +2222,26 @@ exports[`Test Lines translation Should translate test line "Move to position ...
       "type": "subject",
       "value": "position",
     },
+    {
+      "type": "text",
+      "value": " (x:",
+    },
+    {
+      "type": "input",
+      "value": "123",
+    },
+    {
+      "type": "text",
+      "value": ", y:",
+    },
+    {
+      "type": "input",
+      "value": "234",
+    },
+    {
+      "type": "text",
+      "value": ")",
+    },
   ],
   "type": "test-line",
 }
@@ -2158,6 +2258,26 @@ exports[`Test Lines translation Should translate test line "Move to position ...
     {
       "type": "subject",
       "value": "position",
+    },
+    {
+      "type": "text",
+      "value": " (x:",
+    },
+    {
+      "type": "input",
+      "value": "123",
+    },
+    {
+      "type": "text",
+      "value": ", y:",
+    },
+    {
+      "type": "input",
+      "value": "234",
+    },
+    {
+      "type": "text",
+      "value": ")",
     },
   ],
   "type": "test-line",
@@ -2176,6 +2296,26 @@ exports[`Test Lines translation Should translate test line "Move to relative pos
       "type": "subject",
       "value": "relative position",
     },
+    {
+      "type": "text",
+      "value": " (x:",
+    },
+    {
+      "type": "input",
+      "value": "123",
+    },
+    {
+      "type": "text",
+      "value": ", y:",
+    },
+    {
+      "type": "input",
+      "value": "234",
+    },
+    {
+      "type": "text",
+      "value": ")",
+    },
   ],
   "type": "test-line",
 }
@@ -2192,6 +2332,26 @@ exports[`Test Lines translation Should translate test line "Move to relative pos
     {
       "type": "subject",
       "value": "relative position",
+    },
+    {
+      "type": "text",
+      "value": " (x:",
+    },
+    {
+      "type": "input",
+      "value": "123",
+    },
+    {
+      "type": "text",
+      "value": ", y:",
+    },
+    {
+      "type": "input",
+      "value": "234",
+    },
+    {
+      "type": "text",
+      "value": ")",
     },
   ],
   "type": "test-line",

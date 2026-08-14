@@ -1,6 +1,13 @@
 import {jsx} from '@suitest/smst';
+import {toText} from '@suitest/smst-to-text';
 import {AppConfiguration} from '@suitest/types';
-import {formatCount, formatTimeout, formatVariables, replaceVariables} from '../utils';
+import {
+	formatCount,
+	formatTimeout,
+	formatVariables,
+	formatVariableWithUnit,
+	replaceVariables,
+} from '../utils';
 
 describe('Translation utils', () => {
 	const vars: AppConfiguration['configVariables'] = [
@@ -11,6 +18,10 @@ describe('Translation utils', () => {
 		{
 			key: 'var2',
 			value: '456',
+		},
+		{
+			key: 'emptyVar',
+			value: '',
 		},
 	];
 
@@ -27,6 +38,10 @@ describe('Translation utils', () => {
 
 		it('should leave unknown variables untouched', () => {
 			expect(replaceVariables('<%unknown%>', vars)).toEqual('<%unknown%>');
+		});
+
+		it('should replace variables with empty values', () => {
+			expect(replaceVariables('<%emptyVar%>', vars)).toEqual('');
 		});
 
 		it('should leave text without changes if variables undefined', () => {
@@ -52,9 +67,68 @@ describe('Translation utils', () => {
 			expect(formatVariables('<%unknown%>', vars)).toEqual(<input>{'<%unknown%>'}</input>);
 		});
 
+		it('should format partially replaced variables', () => {
+			expect(formatVariables('<%var1%> <%unknown%>', vars))
+				.toEqual(
+					<fragment>
+						<input>{'123 <%unknown%>'}</input> (<code>{'<%var1%> <%unknown%>'}</code>)
+					</fragment>,
+				);
+		});
+
+		it('should format variables with empty values', () => {
+			const result = formatVariables('<%emptyVar%>', vars);
+
+			expect(result).toEqual(
+				<fragment><input>[EMPTY STRING]</input> (<code>{'<%emptyVar%>'}</code>)</fragment>,
+			);
+			expect(toText(result, {format: false, verbosity: 'normal'}))
+				.toEqual('[EMPTY STRING] (<%emptyVar%>)');
+		});
+
+		it('should preserve resolved values when empty and non-empty variables are mixed', () => {
+			const result = formatVariables('<%emptyVar%> <%var1%>', vars);
+
+			expect(toText(result, {format: false, verbosity: 'normal'}))
+				.toEqual(' 123 (<%emptyVar%> <%var1%>)');
+		});
+
+		it('should display empty values inside text', () => {
+			const result = formatVariables('before <%emptyVar%> after', vars);
+
+			expect(toText(result, {format: false, verbosity: 'normal'}))
+				.toEqual('before  after (before <%emptyVar%> after)');
+		});
+
 		it('should leave text as it is when variables undefined', () => {
 			expect(formatVariables('some text')).toEqual(<input>some text</input>);
 			expect(formatVariables('<%someVar%>')).toEqual(<input>{'<%someVar%>'}</input>);
+		});
+	});
+
+	describe('formatVariableWithUnit util', () => {
+		it('should append the unit to a resolved variable value', () => {
+			expect(formatVariableWithUnit('<%var1%>', 'px', vars))
+				.toEqual(<fragment><input>123px</input> (<code>{'<%var1%>'}</code>)</fragment>);
+		});
+
+		it('should display an empty variable value without the unit', () => {
+			expect(formatVariableWithUnit('<%emptyVar%>', 'px', vars))
+				.toEqual(
+					<fragment><input>[EMPTY STRING]</input> (<code>{'<%emptyVar%>'}</code>)</fragment>,
+				);
+		});
+
+		it('should append the unit to a value resolved from empty and non-empty variables', () => {
+			expect(formatVariableWithUnit('<%emptyVar%><%var1%>', 'px', vars))
+				.toEqual(
+					<fragment><input>123px</input> (<code>{'<%emptyVar%><%var1%>'}</code>)</fragment>,
+				);
+		});
+
+		it('should return undefined when no variable was resolved', () => {
+			expect(formatVariableWithUnit('<%unknown%>', 'px', vars)).toBeUndefined();
+			expect(formatVariableWithUnit('<%var1%>', 'px')).toBeUndefined();
 		});
 	});
 
@@ -64,6 +138,20 @@ describe('Translation utils', () => {
 				.toEqual(<fragment><input>0.123s</input> (<code>{'<%var1%>'}</code>)</fragment>);
 			expect(formatTimeout('<%var1%><%var2%>', vars))
 				.toEqual(<fragment><input>123.456s</input> (<code>{'<%var1%><%var2%>'}</code>)</fragment>);
+		});
+
+		it('should display empty variable values instead of formatting them as zero', () => {
+			expect(formatTimeout('<%emptyVar%>', vars))
+				.toEqual(
+					<fragment><input>[EMPTY STRING]</input> (<code>{'<%emptyVar%>'}</code>)</fragment>,
+				);
+		});
+
+		it('should preserve numeric formatting when empty and non-empty variables are mixed', () => {
+			expect(formatTimeout('<%emptyVar%><%var1%>', vars))
+				.toEqual(
+					<fragment><input>0.123s</input> (<code>{'<%emptyVar%><%var1%>'}</code>)</fragment>,
+				);
 		});
 
 		it('should leave numbers without variables untouched', () => {
@@ -89,6 +177,20 @@ describe('Translation utils', () => {
 				.toEqual(<fragment><input>123</input>x (<code>{'<%var1%>'}</code>)</fragment>);
 			expect(formatCount('<%var1%><%var2%>', vars))
 				.toEqual(<fragment><input>123456</input>x (<code>{'<%var1%><%var2%>'}</code>)</fragment>);
+		});
+
+		it('should display empty variable values instead of formatting them as zero', () => {
+			expect(formatCount('<%emptyVar%>', vars))
+				.toEqual(
+					<fragment><input>[EMPTY STRING]</input> (<code>{'<%emptyVar%>'}</code>)</fragment>,
+				);
+		});
+
+		it('should preserve numeric formatting when empty and non-empty variables are mixed', () => {
+			expect(formatCount('<%emptyVar%><%var1%>', vars))
+				.toEqual(
+					<fragment><input>123</input>x (<code>{'<%emptyVar%><%var1%>'}</code>)</fragment>,
+				);
 		});
 
 		it('should leave numbers without variables untouched', () => {
