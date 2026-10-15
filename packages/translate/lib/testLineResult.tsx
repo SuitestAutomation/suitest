@@ -172,6 +172,7 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	openAppResumeFailure: <text>Resuming the application failed. App opened using 'restart' option instead.</text>,
 	closeAppSuspendFailure: <text>Failed to suspend the application.</text>,
 	appAlreadyRunning: <text>The application is already running in the foreground.</text>,
+	clearAppDataNotAllowed: <text>Clearing app data is not supported for this type of app.</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
