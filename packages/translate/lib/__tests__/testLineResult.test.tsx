@@ -157,6 +157,7 @@ describe('Test line results translation', () => {
 		'openAppResumeFailure',
 		'closeAppSuspendFailure',
 		'appAlreadyRunning',
+		'clearAppDataNotAllowed',
 	];
 
 	describe('simple errors translations', () => {

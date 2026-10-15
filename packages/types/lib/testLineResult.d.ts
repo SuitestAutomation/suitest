@@ -184,7 +184,8 @@ export type SimpleError = BaseResult & {
 		| 'planTestingMinutesExceeded'
 		| 'openAppResumeFailure'
 		| 'closeAppSuspendFailure'
-		| 'appAlreadyRunning',
+		| 'appAlreadyRunning'
+		| 'clearAppDataNotAllowed',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {
