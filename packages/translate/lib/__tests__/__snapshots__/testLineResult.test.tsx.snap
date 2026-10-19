@@ -1480,6 +1480,13 @@ exports[`Test line results translation simple errors translations should transla
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "clearAppDataNotAllowed" error 1`] = `
+{
+  "type": "text",
+  "value": "Clearing app data is not supported for this type of app.",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "closeAppSuspendFailure" error 1`] = `
 {
   "type": "text",
