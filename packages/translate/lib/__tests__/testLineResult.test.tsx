@@ -207,6 +207,20 @@ describe('Test line results translation', () => {
 		});
 	});
 
+	it('should translate deviceError with the "invalidSelector" reason', () => {
+		expect(translateResultErrorMessage({
+			...baseResult,
+			result: 'fatal',
+			errorType: 'deviceError',
+			message: {
+				code: 'deviceFailure',
+				info: {
+					reason: 'invalidSelector',
+				},
+			},
+		})).toMatchSnapshot();
+	});
+
 	describe('Translate query lines', () => {
 		const testLineResultToText = (...args: Parameters<typeof translateTestLineResult>): string =>
 			toText(translateTestLineResult(...args), {verbosity: 'normal', format: false});

@@ -1200,6 +1200,13 @@ exports[`Test line results translation incompatibleConfig error translations sho
 }
 `;
 
+exports[`Test line results translation should translate deviceError with the "invalidSelector" reason 1`] = `
+{
+  "type": "text",
+  "value": "Element selector is invalid",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "ActionNotAvailable" error 1`] = `
 {
   "type": "text",

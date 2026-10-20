@@ -300,6 +300,9 @@ const translateDeviceError = (result: DeviceError): TextNode => {
 	if (message.code === 'deviceFailure' && message.info.reason === 'xpathNotValid') {
 		return <text>XPath selector is invalid</text> as TextNode;
 	}
+	if (message.code === 'deviceFailure' && message.info.reason === 'invalidSelector') {
+		return <text>Element selector is invalid</text> as TextNode;
+	}
 	if (message.code === 'notSupportedDriver') {
 		return <text>The device failed to make a screenshot</text> as TextNode;
 	}
