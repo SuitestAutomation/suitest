@@ -1186,6 +1186,20 @@ exports[`Test line results translation assert then warning translate then warnin
 
 exports[`Test line results translation assert then warning translate then warning and "assert ps video" render without result 2`] = `"Assert: PlayStation 4 video had no error for any source then warn"`;
 
+exports[`Test line results translation incompatibleConfig error translations should translate "tvosTypePackageMismatch" code 1`] = `
+{
+  "type": "text",
+  "value": "The app package is not compatible with the selected app communication method. Change the method in the app configuration, or upload a matching package.",
+}
+`;
+
+exports[`Test line results translation incompatibleConfig error translations should translate the error without a code 1`] = `
+{
+  "type": "text",
+  "value": "The app configuration is not compatible with the app package.",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "ActionNotAvailable" error 1`] = `
 {
   "type": "text",
@@ -1445,10 +1459,31 @@ exports[`Test line results translation simple errors translations should transla
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "appleMissingSwda" error 1`] = `
+{
+  "type": "text",
+  "value": "Failed to launch app: WebDriverAgent is not installed on the device. It is required for Apple TV testing.",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "appleNetworkLogsError" error 1`] = `
 {
   "type": "text",
   "value": "SuitestDrive can't launch NetworkLog service on Mac",
+}
+`;
+
+exports[`Test line results translation simple errors translations should translate "appleOpenAppUnknownError" error 1`] = `
+{
+  "type": "text",
+  "value": "Failed to launch app: the device returned an unexpected response.",
+}
+`;
+
+exports[`Test line results translation simple errors translations should translate "appleRestrictedAppOrigin" error 1`] = `
+{
+  "type": "text",
+  "value": "You are not allowed to test this type of application. Please contact sales@suite.st for more details.",
 }
 `;
 

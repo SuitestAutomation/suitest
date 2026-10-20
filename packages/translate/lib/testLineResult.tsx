@@ -16,6 +16,7 @@ import {
 	InvalidReferenceError,
 	ADBError,
 	InvalidPackageError,
+	IncompatibleConfigError,
 	OutdatedInstrumentationLibraryError,
 	InvalidRepositoryReferenceError,
 	TestLineErrorResult,
@@ -173,6 +174,9 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	closeAppSuspendFailure: <text>Failed to suspend the application.</text>,
 	appAlreadyRunning: <text>The application is already running in the foreground.</text>,
 	clearAppDataNotAllowed: <text>Clearing app data is not supported for this type of app.</text>,
+	appleMissingSwda: <text>Failed to launch app: WebDriverAgent is not installed on the device. It is required for Apple TV testing.</text>,
+	appleRestrictedAppOrigin: <text>You are not allowed to test this type of application. Please contact sales@suite.st for more details.</text>,
+	appleOpenAppUnknownError: <text>Failed to launch app: the device returned an unexpected response.</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {
@@ -409,6 +413,23 @@ const translateInvalidPackageError = (result: InvalidPackageError): TextNode => 
 	}
 };
 
+const translateIncompatibleConfigError = (result: IncompatibleConfigError): TextNode => {
+	const defaultMessage = <text>The app configuration is not compatible with the app package.</text> as TextNode;
+
+	if (!result.message?.code) {
+		return defaultMessage;
+	}
+	switch (result.message.code) {
+		case 'tvosTypePackageMismatch':
+			return <text>The app package is not compatible with the selected app communication method. Change the method in the app configuration, or upload a matching package.</text> as TextNode;
+		default:
+			const _code: never = result.message.code;
+			console.warn('incompatibleConfig code was not handled', JSON.stringify(_code));
+
+			return defaultMessage;
+	}
+};
+
 const translateOutdatedLibraryError = (result: OutdatedInstrumentationLibraryError): TextNode => {
 	const defaultMessage = <text>We have detected that your instrumentation library is outdated</text> as TextNode;
 
@@ -515,6 +536,8 @@ export const translateResultErrorMessage = (result: TestLineErrorResult): Node =
 			return translateADBError(result);
 		case 'invalidPackage':
 			return translateInvalidPackageError(result);
+		case 'incompatibleConfig':
+			return translateIncompatibleConfigError(result);
 		case 'outdatedLibrary':
 		case 'outdatedLibraryConnected':
 			return translateOutdatedLibraryError(result);
