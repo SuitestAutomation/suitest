@@ -185,7 +185,10 @@ export type SimpleError = BaseResult & {
 		| 'openAppResumeFailure'
 		| 'closeAppSuspendFailure'
 		| 'appAlreadyRunning'
-		| 'clearAppDataNotAllowed',
+		| 'clearAppDataNotAllowed'
+		| 'appleMissingSwda'
+		| 'appleRestrictedAppOrigin'
+		| 'appleOpenAppUnknownError',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {
@@ -245,6 +248,11 @@ export type DeviceError = BaseResult & {
 		code: 'deviceFailure',
 		info: {
 			reason: 'xpathNotValid',
+		},
+	} | {
+		code: 'deviceFailure',
+		info: {
+			reason: 'invalidSelector',
 		},
 	} | {
 		code: 'videoAdapterInvalidOutput' | 'videoAdapterNotFunction' | 'videoAdapterThrownError',
@@ -445,6 +453,13 @@ export type InvalidPackageError = BaseResult & {
 	},
 };
 
+export type IncompatibleConfigError = BaseResult & {
+	errorType: 'incompatibleConfig',
+	message?: {
+		code: 'tvosTypePackageMismatch',
+	},
+};
+
 // TODO: clarify response
 export type InvalidReferenceError = BaseResult & {
 	errorType: 'invalidReference',
@@ -534,5 +549,6 @@ export type TestLineResult = TestLineSuccessResult
 	| InvalidReferenceError
 	| OpenAppOverrideFailedError
 	| InvalidPackageError
+	| IncompatibleConfigError
 	| ADBError
 	| NotAllowedPrivilegesError;

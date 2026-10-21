@@ -158,6 +158,9 @@ describe('Test line results translation', () => {
 		'closeAppSuspendFailure',
 		'appAlreadyRunning',
 		'clearAppDataNotAllowed',
+		'appleMissingSwda',
+		'appleRestrictedAppOrigin',
+		'appleOpenAppUnknownError',
 	];
 
 	describe('simple errors translations', () => {
@@ -179,6 +182,41 @@ describe('Test line results translation', () => {
 			errorType: 'notAllowedPrivileges',
 			message: {
 				notAllowedPrivileges: ['https://some.com', 'https://some2.com'],
+			},
+		})).toMatchSnapshot();
+	});
+
+	describe('incompatibleConfig error translations', () => {
+		it('should translate "tvosTypePackageMismatch" code', () => {
+			expect(translateResultErrorMessage({
+				...baseResult,
+				result: 'fatal',
+				errorType: 'incompatibleConfig',
+				message: {
+					code: 'tvosTypePackageMismatch',
+				},
+			})).toMatchSnapshot();
+		});
+
+		it('should translate the error without a code', () => {
+			expect(translateResultErrorMessage({
+				...baseResult,
+				result: 'fatal',
+				errorType: 'incompatibleConfig',
+			})).toMatchSnapshot();
+		});
+	});
+
+	it('should translate deviceError with the "invalidSelector" reason', () => {
+		expect(translateResultErrorMessage({
+			...baseResult,
+			result: 'fatal',
+			errorType: 'deviceError',
+			message: {
+				code: 'deviceFailure',
+				info: {
+					reason: 'invalidSelector',
+				},
 			},
 		})).toMatchSnapshot();
 	});
