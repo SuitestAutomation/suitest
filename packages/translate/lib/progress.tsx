@@ -35,6 +35,9 @@ export function translateProgress(message: ProgressMessage): Translation {
 		case PROGRESS_STATUS.SELECTING_SUITESTIFY_INSTANCE: return {
 			title: <text>Selecting nearest suitestify instance…</text>,
 		};
+		case PROGRESS_STATUS.SETTING_DEVICE_LAB_PROTECTION: return {
+			title: <text>Preparing device lab configuration…</text>,
+		};
 		case PROGRESS_STATUS.WAITING_FOR_BOOTSTRAP: return {
 			title: <text>Waiting for connection from the Suitest app on device…</text>,
 		};
