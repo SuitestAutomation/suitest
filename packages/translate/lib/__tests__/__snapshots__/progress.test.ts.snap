@@ -134,6 +134,15 @@ exports[`Interactive progress explanation. Should translate "selectingSuitestify
 }
 `;
 
+exports[`Interactive progress explanation. Should translate "settingDeviceLabProtection" status 1`] = `
+{
+  "title": {
+    "type": "text",
+    "value": "Preparing device lab configuration…",
+  },
+}
+`;
+
 exports[`Interactive progress explanation. Should translate "unistallingApp" status 1`] = `
 {
   "title": {
@@ -218,6 +227,12 @@ exports[`Interactive progress explanation. Translate progress to html:  "selecti
 }
 `;
 
+exports[`Interactive progress explanation. Translate progress to html:  "settingDeviceLabProtection" 1`] = `
+{
+  "title": "Preparing device lab configuration…",
+}
+`;
+
 exports[`Interactive progress explanation. Translate progress to html:  "unistallingApp" 1`] = `
 {
   "title": "Uninstalling app…",
@@ -287,6 +302,12 @@ exports[`Interactive progress explanation. Translate progress to text:  "recover
 exports[`Interactive progress explanation. Translate progress to text:  "selectingSuitestifyInstance" 1`] = `
 {
   "title": "Selecting nearest suitestify instance…",
+}
+`;
+
+exports[`Interactive progress explanation. Translate progress to text:  "settingDeviceLabProtection" 1`] = `
+{
+  "title": "Preparing device lab configuration…",
 }
 `;
 
