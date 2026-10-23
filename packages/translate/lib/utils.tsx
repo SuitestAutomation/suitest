@@ -128,6 +128,31 @@ export const formatCount = (count: number | string, variables?: AppConfiguration
 	return <fragment><input>{countAsString}</input>x</fragment>;
 };
 
+/**
+ * Output a network rate in bytes per second as a bit rate, the unit of the throttling profiles
+ */
+export const formatBytesPerSec = (bytesPerSec: number | null): JSX.Element => {
+	if (bytesPerSec === null) {
+		return <input>no limit</input>;
+	}
+
+	if (bytesPerSec === 0) {
+		return <input>offline</input>;
+	}
+
+	const bits = bytesPerSec * 8;
+
+	if (bits < 1000) {
+		return <input>{`${bits} bit/s`}</input>;
+	}
+
+	if (bits < 1000000) {
+		return <input>{`${Number((bits / 1000).toPrecision(3))} Kbit/s`}</input>;
+	}
+
+	return <input>{`${Number((bits / 1000000).toPrecision(3))} Mbit/s`}</input>;
+};
+
 export const deviceOrientationsMap = {
 	'portrait': 'Portrait',
 	'portraitReversed': 'Portrait (upside down/reversed)',
@@ -209,6 +234,8 @@ const lineTypeDocsMap: {[key in Exclude<TestLine['type'], 'assert' | 'wait'>]: s
 	swipe: '/testing/test-operations/swipe-flick-operation/',
 	closeApp: '/testing/test-operations/close-app-operation/',
 	suspendApp: '/testing/test-operations/suspend-app-operation/',
+	// No docs page yet (SUIT-22975)
+	throttleNetwork: null,
 	comment: null,
 };
 const subjTypeDocsMap: {

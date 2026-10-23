@@ -34,6 +34,7 @@ import {
 	SwipeTestLine,
 	CloseAppTestLine,
 	SuspendAppTestLine,
+	ThrottleNetworkTestLine,
 	ElementSelector,
 	OpenDeepLinkTestLine,
 	LastScreenshotTestLine,
@@ -50,6 +51,7 @@ import {
 	formatCount,
 	deviceOrientationsMap,
 	formatVariableWithUnit,
+	formatBytesPerSec,
 } from './utils';
 
 const getConditionInfo = (
@@ -334,6 +336,37 @@ const translateSuspendAppTestLine = (
 		title={<text>Suspend application</text>}
 		status={status}
 	/> as TestLineNode;
+};
+
+const translateThrottleNetworkTestLine = (
+	testLine: ThrottleNetworkTestLine,
+	lineResult?: TestLineResult,
+): TestLineNode => {
+	const status = testLine.excluded ? 'excluded' : lineResult?.result;
+	const {profileName, downloadBytesPerSec, uploadBytesPerSec} = testLine;
+	const title = profileName
+		? <text>Throttle network with {profileName}</text>
+		: <text>Throttle network</text>;
+
+	// No throttling picked in the test editor reads as the profile name alone, as in the editor
+	if (profileName && downloadBytesPerSec === null && uploadBytesPerSec === null) {
+		return <test-line title={title} status={status}/> as TestLineNode;
+	}
+
+	return <test-line title={title} status={status}>
+		<props>
+			<prop
+				name={<text>Download</text>}
+				comparator={translateComparator('=')}
+				expectedValue={formatBytesPerSec(downloadBytesPerSec)}
+			/>
+			<prop
+				name={<text>Upload</text>}
+				comparator={translateComparator('=')}
+				expectedValue={formatBytesPerSec(uploadBytesPerSec)}
+			/>
+		</props>
+	</test-line> as TestLineNode;
 };
 
 const translateOpenUrl = (
@@ -865,6 +898,8 @@ export const translateTestLine = ({
 			return translateCloseAppTestLine(testLine, lineResult as TestLineResult);
 		case 'suspendApp':
 			return translateSuspendAppTestLine(testLine, lineResult as TestLineResult);
+		case 'throttleNetwork':
+			return translateThrottleNetworkTestLine(testLine, lineResult as TestLineResult);
 		case 'comment':
 			return translateCommentTestLine(testLine);
 		default:

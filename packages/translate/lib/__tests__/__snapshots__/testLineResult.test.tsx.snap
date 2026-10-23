@@ -2152,6 +2152,34 @@ exports[`Test line results translation simple errors translations should transla
 }
 `;
 
+exports[`Test line results translation simple errors translations should translate "throttlingDeviceIpUnknown" error 1`] = `
+{
+  "type": "text",
+  "value": "SuitestDrive cannot find the IP address of this device, so throttling is not applied.",
+}
+`;
+
+exports[`Test line results translation simple errors translations should translate "throttlingNotOnSuitestDrive" error 1`] = `
+{
+  "type": "text",
+  "value": "Network throttling works only for devices connected through a SuitestDrive.",
+}
+`;
+
+exports[`Test line results translation simple errors translations should translate "throttlingProxyOff" error 1`] = `
+{
+  "type": "text",
+  "value": "The traffic proxy is off on this SuitestDrive.",
+}
+`;
+
+exports[`Test line results translation simple errors translations should translate "throttlingProxyUnreachable" error 1`] = `
+{
+  "type": "text",
+  "value": "SuitestDrive could not reach the proxy, so throttling may not be applied.",
+}
+`;
+
 exports[`Test line results translation simple errors translations should translate "timeLimitExceeded" error 1`] = `
 {
   "type": "text",

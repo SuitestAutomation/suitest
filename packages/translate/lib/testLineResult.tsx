@@ -177,6 +177,10 @@ const simpleErrorMap: {[key in SimpleError['errorType']]: Node} = {
 	appleMissingSwda: <text>Failed to launch app: WebDriverAgent is not installed on the device. It is required for Apple TV testing.</text>,
 	appleRestrictedAppOrigin: <text>You are not allowed to test this type of application. Please contact sales@suite.st for more details.</text>,
 	appleOpenAppUnknownError: <text>Failed to launch app: the device returned an unexpected response.</text>,
+	throttlingProxyOff: <text>The traffic proxy is off on this SuitestDrive.</text>,
+	throttlingDeviceIpUnknown: <text>SuitestDrive cannot find the IP address of this device, so throttling is not applied.</text>,
+	throttlingProxyUnreachable: <text>SuitestDrive could not reach the proxy, so throttling may not be applied.</text>,
+	throttlingNotOnSuitestDrive: <text>Network throttling works only for devices connected through a SuitestDrive.</text>,
 };
 
 const translateQueryFailedResults = (result: QueryFailedWithCode): Node => {

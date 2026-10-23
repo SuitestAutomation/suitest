@@ -4597,3 +4597,371 @@ exports[`Test Lines translation Should translate test line "suspend application"
   "type": "test-line",
 }
 `;
+
+exports[`Test Lines translation Should translate test line "throttle network offline" 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "actualValue": undefined,
+          "comparator": "=",
+          "contentType": "inline",
+          "expectedValue": [
+            {
+              "type": "input",
+              "value": "offline",
+            },
+          ],
+          "name": [
+            {
+              "type": "text",
+              "value": "Download",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+        {
+          "actualValue": undefined,
+          "comparator": "=",
+          "contentType": "inline",
+          "expectedValue": [
+            {
+              "type": "input",
+              "value": "offline",
+            },
+          ],
+          "name": [
+            {
+              "type": "text",
+              "value": "Upload",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+      ],
+      "type": "props",
+    },
+  ],
+  "title": [
+    {
+      "type": "text",
+      "value": "Throttle network with Offline",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "throttle network offline" without appConfig 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "actualValue": undefined,
+          "comparator": "=",
+          "contentType": "inline",
+          "expectedValue": [
+            {
+              "type": "input",
+              "value": "offline",
+            },
+          ],
+          "name": [
+            {
+              "type": "text",
+              "value": "Download",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+        {
+          "actualValue": undefined,
+          "comparator": "=",
+          "contentType": "inline",
+          "expectedValue": [
+            {
+              "type": "input",
+              "value": "offline",
+            },
+          ],
+          "name": [
+            {
+              "type": "text",
+              "value": "Upload",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+      ],
+      "type": "props",
+    },
+  ],
+  "title": [
+    {
+      "type": "text",
+      "value": "Throttle network with Offline",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "throttle network with No throttling" 1`] = `
+{
+  "children": [],
+  "title": [
+    {
+      "type": "text",
+      "value": "Throttle network with No throttling",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "throttle network with No throttling" without appConfig 1`] = `
+{
+  "children": [],
+  "title": [
+    {
+      "type": "text",
+      "value": "Throttle network with No throttling",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "throttle network with a preset" 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "actualValue": undefined,
+          "comparator": "=",
+          "contentType": "inline",
+          "expectedValue": [
+            {
+              "type": "input",
+              "value": "8.1 Mbit/s",
+            },
+          ],
+          "name": [
+            {
+              "type": "text",
+              "value": "Download",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+        {
+          "actualValue": undefined,
+          "comparator": "=",
+          "contentType": "inline",
+          "expectedValue": [
+            {
+              "type": "input",
+              "value": "1.35 Mbit/s",
+            },
+          ],
+          "name": [
+            {
+              "type": "text",
+              "value": "Upload",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+      ],
+      "type": "props",
+    },
+  ],
+  "title": [
+    {
+      "type": "text",
+      "value": "Throttle network with Fast 4G",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "throttle network with a preset" without appConfig 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "actualValue": undefined,
+          "comparator": "=",
+          "contentType": "inline",
+          "expectedValue": [
+            {
+              "type": "input",
+              "value": "8.1 Mbit/s",
+            },
+          ],
+          "name": [
+            {
+              "type": "text",
+              "value": "Download",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+        {
+          "actualValue": undefined,
+          "comparator": "=",
+          "contentType": "inline",
+          "expectedValue": [
+            {
+              "type": "input",
+              "value": "1.35 Mbit/s",
+            },
+          ],
+          "name": [
+            {
+              "type": "text",
+              "value": "Upload",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+      ],
+      "type": "props",
+    },
+  ],
+  "title": [
+    {
+      "type": "text",
+      "value": "Throttle network with Fast 4G",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "throttle network without a profile" 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "actualValue": undefined,
+          "comparator": "=",
+          "contentType": "inline",
+          "expectedValue": [
+            {
+              "type": "input",
+              "value": "1.44 Mbit/s",
+            },
+          ],
+          "name": [
+            {
+              "type": "text",
+              "value": "Download",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+        {
+          "actualValue": undefined,
+          "comparator": "=",
+          "contentType": "inline",
+          "expectedValue": [
+            {
+              "type": "input",
+              "value": "no limit",
+            },
+          ],
+          "name": [
+            {
+              "type": "text",
+              "value": "Upload",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+      ],
+      "type": "props",
+    },
+  ],
+  "title": [
+    {
+      "type": "text",
+      "value": "Throttle network",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "throttle network without a profile" without appConfig 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "actualValue": undefined,
+          "comparator": "=",
+          "contentType": "inline",
+          "expectedValue": [
+            {
+              "type": "input",
+              "value": "1.44 Mbit/s",
+            },
+          ],
+          "name": [
+            {
+              "type": "text",
+              "value": "Download",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+        {
+          "actualValue": undefined,
+          "comparator": "=",
+          "contentType": "inline",
+          "expectedValue": [
+            {
+              "type": "input",
+              "value": "no limit",
+            },
+          ],
+          "name": [
+            {
+              "type": "text",
+              "value": "Upload",
+            },
+          ],
+          "status": undefined,
+          "type": "prop",
+        },
+      ],
+      "type": "props",
+    },
+  ],
+  "title": [
+    {
+      "type": "text",
+      "value": "Throttle network",
+    },
+  ],
+  "type": "test-line",
+}
+`;

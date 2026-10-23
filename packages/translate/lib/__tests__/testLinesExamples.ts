@@ -1204,4 +1204,31 @@ export const testLinesExamples = {
 		...baseTestLine,
 		type: 'suspendApp',
 	}),
+	'throttle network with a preset': (): TestLine => ({
+		...baseTestLine,
+		type: 'throttleNetwork',
+		profileName: 'Fast 4G',
+		downloadBytesPerSec: 1012500,
+		uploadBytesPerSec: 168750,
+	}),
+	'throttle network offline': (): TestLine => ({
+		...baseTestLine,
+		type: 'throttleNetwork',
+		profileName: 'Offline',
+		downloadBytesPerSec: 0,
+		uploadBytesPerSec: 0,
+	}),
+	'throttle network with No throttling': (): TestLine => ({
+		...baseTestLine,
+		type: 'throttleNetwork',
+		profileName: 'No throttling',
+		downloadBytesPerSec: null,
+		uploadBytesPerSec: null,
+	}),
+	'throttle network without a profile': (): TestLine => ({
+		...baseTestLine,
+		type: 'throttleNetwork',
+		downloadBytesPerSec: 180000,
+		uploadBytesPerSec: null,
+	}),
 };

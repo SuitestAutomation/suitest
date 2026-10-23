@@ -188,7 +188,12 @@ export type SimpleError = BaseResult & {
 		| 'clearAppDataNotAllowed'
 		| 'appleMissingSwda'
 		| 'appleRestrictedAppOrigin'
-		| 'appleOpenAppUnknownError',
+		| 'appleOpenAppUnknownError'
+		// Stand-ins for the throttle network line until BE (SUIT-22973) names them
+		| 'throttlingProxyOff'
+		| 'throttlingDeviceIpUnknown'
+		| 'throttlingProxyUnreachable'
+		| 'throttlingNotOnSuitestDrive',
 };
 
 export type OutdatedInstrumentationLibraryError = BaseResult & {

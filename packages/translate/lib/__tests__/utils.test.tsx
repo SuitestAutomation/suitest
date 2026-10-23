@@ -2,6 +2,7 @@ import {jsx} from '@suitest/smst';
 import {toText} from '@suitest/smst-to-text';
 import {AppConfiguration} from '@suitest/types';
 import {
+	formatBytesPerSec,
 	formatCount,
 	formatTimeout,
 	formatVariables,
@@ -207,6 +208,20 @@ describe('Translation utils', () => {
 			expect(formatCount(15)).toEqual(<fragment><input>15</input>x</fragment>);
 			expect(formatCount('<%unknown%>')).toEqual(<input>{'<%unknown%>'}</input>);
 			expect(formatCount('abc')).toEqual(<input>abc</input>);
+		});
+	});
+
+	describe('formatBytesPerSec util', () => {
+		it('should display no limit and offline', () => {
+			expect(formatBytesPerSec(null)).toEqual(<input>no limit</input>);
+			expect(formatBytesPerSec(0)).toEqual(<input>offline</input>);
+		});
+
+		it('should display the rate in the bit unit that fits', () => {
+			expect(formatBytesPerSec(100)).toEqual(<input>800 bit/s</input>);
+			expect(formatBytesPerSec(50000)).toEqual(<input>400 Kbit/s</input>);
+			expect(formatBytesPerSec(84375)).toEqual(<input>675 Kbit/s</input>);
+			expect(formatBytesPerSec(1012500)).toEqual(<input>8.1 Mbit/s</input>);
 		});
 	});
 });

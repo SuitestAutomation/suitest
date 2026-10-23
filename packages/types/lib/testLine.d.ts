@@ -83,6 +83,14 @@ export type SuspendAppTestLine = BaseTestLine & {
 	type: 'suspendApp',
 };
 
+// Stand-in until BE (SUIT-22973) names the type and fields
+export type ThrottleNetworkTestLine = BaseTestLine & {
+	type: 'throttleNetwork',
+	downloadBytesPerSec: number | null, // null = no limit, 0 = offline
+	uploadBytesPerSec: number | null,
+	profileName?: string | null, // set by the test editor, absent when the line comes from the JS API
+};
+
 export type OpenUrlTestLine = BaseTestLine & {
 	type: 'openUrl',
 	url: string,
@@ -298,4 +306,5 @@ export type TestLine =
 	| SwipeTestLine
 	| CloseAppTestLine
 	| SuspendAppTestLine
+	| ThrottleNetworkTestLine
 	| OpenDeepLinkTestLine;

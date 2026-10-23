@@ -161,6 +161,10 @@ describe('Test line results translation', () => {
 		'appleMissingSwda',
 		'appleRestrictedAppOrigin',
 		'appleOpenAppUnknownError',
+		'throttlingProxyOff',
+		'throttlingDeviceIpUnknown',
+		'throttlingProxyUnreachable',
+		'throttlingNotOnSuitestDrive',
 	];
 
 	describe('simple errors translations', () => {
