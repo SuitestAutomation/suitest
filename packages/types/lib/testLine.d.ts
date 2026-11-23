@@ -83,6 +83,11 @@ export type SuspendAppTestLine = BaseTestLine & {
 	type: 'suspendApp',
 };
 
+export type SwitchContextTestLine = BaseTestLine & {
+	type: 'switchContext',
+	context: 'native' | 'webview',
+};
+
 export type OpenUrlTestLine = BaseTestLine & {
 	type: 'openUrl',
 	url: string,
@@ -298,4 +303,5 @@ export type TestLine =
 	| SwipeTestLine
 	| CloseAppTestLine
 	| SuspendAppTestLine
+	| SwitchContextTestLine
 	| OpenDeepLinkTestLine;

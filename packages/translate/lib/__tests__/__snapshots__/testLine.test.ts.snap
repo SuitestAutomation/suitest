@@ -4597,3 +4597,55 @@ exports[`Test Lines translation Should translate test line "suspend application"
   "type": "test-line",
 }
 `;
+
+exports[`Test Lines translation Should translate test line "switch context to Native" 1`] = `
+{
+  "children": [],
+  "title": [
+    {
+      "type": "text",
+      "value": "Switch context to Native",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "switch context to Native" without appConfig 1`] = `
+{
+  "children": [],
+  "title": [
+    {
+      "type": "text",
+      "value": "Switch context to Native",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "switch context to WebView" 1`] = `
+{
+  "children": [],
+  "title": [
+    {
+      "type": "text",
+      "value": "Switch context to WebView",
+    },
+  ],
+  "type": "test-line",
+}
+`;
+
+exports[`Test Lines translation Should translate test line "switch context to WebView" without appConfig 1`] = `
+{
+  "children": [],
+  "title": [
+    {
+      "type": "text",
+      "value": "Switch context to WebView",
+    },
+  ],
+  "type": "test-line",
+}
+`;

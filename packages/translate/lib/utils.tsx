@@ -209,6 +209,7 @@ const lineTypeDocsMap: {[key in Exclude<TestLine['type'], 'assert' | 'wait'>]: s
 	swipe: '/testing/test-operations/swipe-flick-operation/',
 	closeApp: '/testing/test-operations/close-app-operation/',
 	suspendApp: '/testing/test-operations/suspend-app-operation/',
+	switchContext: '/testing/test-operations/switch-context/',
 	comment: null,
 };
 const subjTypeDocsMap: {

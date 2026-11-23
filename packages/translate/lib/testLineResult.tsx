@@ -306,6 +306,12 @@ const translateDeviceError = (result: DeviceError): TextNode => {
 	if (message.code === 'notSupportedDriver') {
 		return <text>The device failed to make a screenshot</text> as TextNode;
 	}
+	if (message.code === 'chromedriverMissing') {
+		return <text>Context switch failed: the device has no Chromedriver matching its WebView version. Please contact Suitest support.</text> as TextNode;
+	}
+	if (message.code === 'webviewNotResponding') {
+		return <text>Context switch failed: the WebView did not respond. Check that the WebViews on the screen have content loaded.</text> as TextNode;
+	}
 	if (['videoAdapterInvalidOutput', 'videoAdapterNotFunction', 'videoAdapterThrownError'].includes(message.code)) {
 		return <text>Video adapter error: {message.info.reason}</text> as TextNode;
 	}
@@ -674,6 +680,15 @@ const getLineResultMessage = (testLine: TestLine | QueryLine, lineResult?: TestL
 	if (testLine.type === 'runSnippet' && !(lineResult as TestLineResult).errorType) {
 		// Snippet failed because one of it's children failed
 		return undefined;
+	}
+
+	// the generic queryTimeout text names 60 seconds, which is not the wait of a context switch
+	if (
+		testLine.type === 'switchContext'
+		&& (lineResult as TestLineErrorResult).errorType === 'queryTimeout'
+		&& !(lineResult as QueryTimeoutError).message
+	) {
+		return <text>Context switch failed: the device did not respond in time.</text>;
 	}
 
 	return translateResultErrorMessage(lineResult as TestLineErrorResult);

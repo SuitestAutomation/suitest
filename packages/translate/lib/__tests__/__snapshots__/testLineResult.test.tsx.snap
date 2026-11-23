@@ -1200,6 +1200,20 @@ exports[`Test line results translation incompatibleConfig error translations sho
 }
 `;
 
+exports[`Test line results translation should translate deviceError of a context switch with the "chromedriverMissing" code 1`] = `
+{
+  "type": "text",
+  "value": "Context switch failed: the device has no Chromedriver matching its WebView version. Please contact Suitest support.",
+}
+`;
+
+exports[`Test line results translation should translate deviceError of a context switch with the "webviewNotResponding" code 1`] = `
+{
+  "type": "text",
+  "value": "Context switch failed: the WebView did not respond. Check that the WebViews on the screen have content loaded.",
+}
+`;
+
 exports[`Test line results translation should translate deviceError with the "invalidSelector" reason 1`] = `
 {
   "type": "text",
