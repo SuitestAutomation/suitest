@@ -207,6 +207,46 @@ describe('Test line results translation', () => {
 		});
 	});
 
+	it('should translate deviceError of a context switch with the "chromedriverMissing" code', () => {
+		expect(translateResultErrorMessage({
+			...baseResult,
+			result: 'fatal',
+			errorType: 'deviceError',
+			message: {
+				code: 'chromedriverMissing',
+				info: {
+					reason: '154.0.8037',
+				},
+			},
+		})).toMatchSnapshot();
+	});
+
+	it('should translate deviceError of a context switch with the "webviewNotResponding" code', () => {
+		expect(translateResultErrorMessage({
+			...baseResult,
+			result: 'fatal',
+			errorType: 'deviceError',
+			message: {
+				code: 'webviewNotResponding',
+				info: {
+					reason: 'WebView context not responding',
+				},
+			},
+		})).toMatchSnapshot();
+	});
+
+	it('should translate queryTimeout of a Switch context line', () => {
+		const translate = (testLine: TestLine): string => toText(translateTestLineResult({
+			testLine,
+			lineResult: {...baseResult, result: 'fatal', errorType: 'queryTimeout'} as TestLineResult,
+		}), {verbosity: 'normal', format: false});
+
+		expect(translate(testLinesExamples['switch context to WebView']()))
+			.toContain('Context switch failed: the device did not respond in time.');
+		expect(translate(testLinesExamples['suspend application']()))
+			.toContain('Application did not respond for 60 seconds');
+	});
+
 	it('should translate deviceError with the "invalidSelector" reason', () => {
 		expect(translateResultErrorMessage({
 			...baseResult,

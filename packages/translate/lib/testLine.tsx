@@ -34,6 +34,7 @@ import {
 	SwipeTestLine,
 	CloseAppTestLine,
 	SuspendAppTestLine,
+	SwitchContextTestLine,
 	ElementSelector,
 	OpenDeepLinkTestLine,
 	LastScreenshotTestLine,
@@ -332,6 +333,23 @@ const translateSuspendAppTestLine = (
 
 	return <test-line
 		title={<text>Suspend application</text>}
+		status={status}
+	/> as TestLineNode;
+};
+
+const contextNames: {[key in SwitchContextTestLine['context']]: string} = {
+	native: 'Native',
+	webview: 'WebView',
+};
+
+const translateSwitchContextTestLine = (
+	testLine: SwitchContextTestLine,
+	lineResult?: TestLineResult,
+): TestLineNode => {
+	const status = testLine.excluded ? 'excluded' : lineResult?.result;
+
+	return <test-line
+		title={<text>Switch context to {contextNames[testLine.context] ?? testLine.context}</text>}
 		status={status}
 	/> as TestLineNode;
 };
@@ -865,6 +883,8 @@ export const translateTestLine = ({
 			return translateCloseAppTestLine(testLine, lineResult as TestLineResult);
 		case 'suspendApp':
 			return translateSuspendAppTestLine(testLine, lineResult as TestLineResult);
+		case 'switchContext':
+			return translateSwitchContextTestLine(testLine, lineResult as TestLineResult);
 		case 'comment':
 			return translateCommentTestLine(testLine);
 		default:

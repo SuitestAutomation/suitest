@@ -1204,4 +1204,14 @@ export const testLinesExamples = {
 		...baseTestLine,
 		type: 'suspendApp',
 	}),
+	'switch context to WebView': (): TestLine => ({
+		...baseTestLine,
+		type: 'switchContext',
+		context: 'webview',
+	}),
+	'switch context to Native': (): TestLine => ({
+		...baseTestLine,
+		type: 'switchContext',
+		context: 'native',
+	}),
 };

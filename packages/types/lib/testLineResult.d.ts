@@ -261,6 +261,16 @@ export type DeviceError = BaseResult & {
 		},
 	} | {
 		code: 'notSupportedDriver',
+	} | {
+		code: 'chromedriverMissing',
+		info: {
+			reason: string, // Chrome version of the WebView
+		},
+	} | {
+		code: 'webviewNotResponding',
+		info?: {
+			reason: string,
+		},
 	},
 };
 
